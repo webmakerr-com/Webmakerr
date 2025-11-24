@@ -43,7 +43,7 @@ class MenuHandler
 
         add_action('admin_init', function () {
             $page = App::request()->get('page') ?? '';
-            if ($page == 'fluent-cart') {
+            if ($page == 'webmakerr') {
                 \FluentCart\App\Events\FirstTimePluginActivation::handle();
 
                 add_action('admin_enqueue_scripts', function () {
@@ -53,6 +53,16 @@ class MenuHandler
 
                     Vite::enqueueScript('fluent_cart_admin_global_js',
                         'admin/global.js',
+                    );
+
+                    wp_add_inline_script(
+                        'fluent_cart_admin_global_js',
+                        'document.addEventListener("DOMContentLoaded", function () {' .
+                        'const menuEl = document.querySelector(".toplevel_page_webmakerr");' .
+                        'if (menuEl && !menuEl.classList.contains("toplevel_page_fluent-cart")) {' .
+                        'menuEl.classList.add("toplevel_page_fluent-cart");' .
+                        '}' .
+                        '});'
                     );
                 });
 
@@ -132,7 +142,7 @@ class MenuHandler
                     $submenu_file = 'edit-tags.php?taxonomy=' . esc_attr($request['taxonomy']) . '&post_type=' . $current_screen->post_type;
                 }
 
-                $parent_file = 'fluent-cart';
+                $parent_file = 'webmakerr';
             }
 
             return $parent_file;
@@ -166,25 +176,25 @@ class MenuHandler
             $adminMenuTitle,
             $adminMenuTitle,
             $capability,
-            'fluent-cart',
+            'webmakerr',
             [$this, 'renderAdmin'],
             $this->getMenuIcon(),
             apply_filters('fluent_cart/admin_menu_position', 3)
         );
 
-        $submenu['fluent-cart']['dashboard'] = array(
+        $submenu['webmakerr']['dashboard'] = array(
             __('Dashboard', 'fluent-cart'),
             $capability,
-            'admin.php?page=fluent-cart#/',
+            'admin.php?page=webmakerr#/',
             '',
             'fluent_cart_dashboard'
         );
 
         if (PermissionManager::hasPermission(["orders/view"])) {
-            $submenu['fluent-cart']['orders'] = array(
+            $submenu['webmakerr']['orders'] = array(
                 __('Orders', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/orders',
+                'admin.php?page=webmakerr#/orders',
                 '',
                 'fluent_cart_orders'
             );
@@ -192,70 +202,70 @@ class MenuHandler
 
 
         if (PermissionManager::hasPermission(["customers/view", "customers/manage"])) {
-            $submenu['fluent-cart']['customers'] = array(
+            $submenu['webmakerr']['customers'] = array(
                 __('Customers', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/customers',
+                'admin.php?page=webmakerr#/customers',
                 '',
                 'fluent_cart_customers'
             );
         }
 
         if (PermissionManager::hasPermission(['products/view'])) {
-            $submenu['fluent-cart']['products'] = array(
+            $submenu['webmakerr']['products'] = array(
                 __('Products', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/products',
+                'admin.php?page=webmakerr#/products',
                 '',
                 'fluent_cart_products'
             );
         }
 
         if (PermissionManager::userCan('is_super_admin')) {
-            $submenu['fluent-cart']['integrations'] = array(
+            $submenu['webmakerr']['integrations'] = array(
                 __('Integrations', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/integrations',
+                'admin.php?page=webmakerr#/integrations',
                 '',
                 'fluent_cart_integrations'
             );
         }
 
         if (PermissionManager::hasPermission(['reports/view'])) {
-            $submenu['fluent-cart']['reports'] = array(
+            $submenu['webmakerr']['reports'] = array(
                 __('Reports', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/reports/overview',
+                'admin.php?page=webmakerr#/reports/overview',
                 '',
                 'fluent_cart_reports'
             );
         }
 
         if (PermissionManager::hasPermission(["store/settings", 'store/sensitive'])) {
-            $submenu['fluent-cart']['settings'] = array(
+            $submenu['webmakerr']['settings'] = array(
                 __('Settings', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/settings/store-settings/',
+                'admin.php?page=webmakerr#/settings/store-settings/',
                 '',
                 'fluent_cart_settings'
             );
         }
 
         if (PermissionManager::hasPermission(['coupons/manage', 'coupons/view'])) {
-            $submenu['fluent-cart']['coupons'] = array(
+            $submenu['webmakerr']['coupons'] = array(
                 __('Coupons', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/coupons',
+                'admin.php?page=webmakerr#/coupons',
                 '',
                 'fluent_cart_coupons'
             );
         }
 
         if (PermissionManager::userCan('is_super_admin')) {
-            $submenu['fluent-cart']['logs'] = array(
+            $submenu['webmakerr']['logs'] = array(
                 __('Logs', 'fluent-cart'),
                 $capability,
-                'admin.php?page=fluent-cart#/logs',
+                'admin.php?page=webmakerr#/logs',
                 '',
                 'fluent_cart_logs'
             );
@@ -269,7 +279,7 @@ class MenuHandler
 
             foreach ($taxonomies as $key => $taxonomy) {
                 $menuUrl = admin_url('edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . FluentProducts::CPT_NAME);
-                $submenu['fluent-cart'][$key] = [
+                $submenu['webmakerr'][$key] = [
                     $taxonomy->label,
                     $capability,
                     $menuUrl,
@@ -308,7 +318,7 @@ class MenuHandler
 
         $slug = $config->get('app.slug');
 
-        $baseUrl = apply_filters('fluent_connector_base_url', admin_url('admin.php?page=newproject#/'));
+        $baseUrl = apply_filters('fluent_connector_base_url', admin_url('admin.php?page=webmakerr#/'));
 
         $app = App::getInstance();
         $assets = $app['url.assets'];
@@ -396,7 +406,7 @@ class MenuHandler
         $adminLocalizeData = apply_filters('fluent_cart/admin_app_data', [
             'app_config'                       => $appConfig,
             'slug'                             => $app->config->get('app.slug'),
-            'admin_url'                        => admin_url('admin.php?page=fluent-cart#/'),
+            'admin_url'                        => admin_url('admin.php?page=webmakerr#/'),
             'frontend_url'                     => URL::getFrontEndUrl(''),
             'nonce'                            => wp_create_nonce($slug),
             'rest'                             => $restVars,
@@ -428,7 +438,7 @@ class MenuHandler
             'fulfillment_types'                => Helper::getFulfilmentTypes(),
             'variation_types'                  => Helper::getVariationTypes(),
             'trans'                            => TransStrings::getStrings(),
-            'dashboard_url'                    => admin_url('admin.php?page=fluent-cart#'),
+            'dashboard_url'                    => admin_url('admin.php?page=webmakerr#'),
             'checkout_url'                     => $checkoutUrl,
             'dummy_product_info'               => apply_filters('fluent_cart/dummy_product_info', []) ?: [],
             'currency_signs'                   => CurrenciesHelper::getCurrencySigns(),
@@ -474,7 +484,7 @@ class MenuHandler
         $slug = $app->config->get('app.slug');
         wp_enqueue_script($slug . '_edit_wp_user_admin_global_js', Vite::getEnqueuePath('admin/utils/edit-wp-user-global.js'), ['jquery'], FLUENTCART_VERSION, true);
 
-        $baseUrl = apply_filters('fluent_cart/admin_base_url', admin_url('admin.php?page=fluent-cart#/'), []);
+        $baseUrl = apply_filters('fluent_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
 
         $editingUserVars = null;
 
