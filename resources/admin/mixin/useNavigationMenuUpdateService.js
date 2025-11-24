@@ -5,8 +5,8 @@ export function useNavigationMenuUpdateService(router) {
 
         jQuery('.fct_menu li.fct_menu_item_' + activeMenu).addClass('active_admin_menu');
 
-        jQuery('.toplevel_page_fluent-cart li').removeClass('current');
-        jQuery('.toplevel_page_fluent-cart li.fluent_cart_' + activeMenu).addClass('current');
+        jQuery('.toplevel_page_webmakerr li').removeClass('current');
+        jQuery('.toplevel_page_webmakerr li.fluent_cart_' + activeMenu).addClass('current');
 
         if (to.meta.title) {
             jQuery('head title').text(to.meta.title + ' - FluentCart');
