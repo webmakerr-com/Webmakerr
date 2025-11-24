@@ -1,5 +1,5 @@
 <template>
-    <div class="setting-wrap">
+    <div class="setting-wrap wm-container-enhanced">
         <CardContainer class="overflow-hidden">
             <CardHeader :title="$t('Webhooks')">
                 <template #action>

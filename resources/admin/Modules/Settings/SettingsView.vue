@@ -1,5 +1,5 @@
 <template>
-  <div class="fct-setting-container setting-container">
+  <div class="fct-setting-container setting-container wm-container-enhanced">
     <div class="fct-settings-menu-overlay" @click="toggleMenu" v-if="isMenuOpen"></div>
     <div class="fct-settings-menu-toggle">
       <el-button @click="toggleMenu">

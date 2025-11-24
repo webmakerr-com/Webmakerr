@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-wrap">
+  <div class="setting-wrap wm-container-enhanced">
     <Card.Container>
       <Card.Header :title="$t('Payment Settings')" border_bottom/>
       <Card.Body>

@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-wrap">
+  <div class="setting-wrap wm-container-enhanced">
     <el-skeleton
         :loading="loading"
         class="bg-white rounded p-6 mb-7.5 dark:bg-dark-700"

@@ -1,5 +1,5 @@
 <template>
-    <div class="setting-wrap">
+    <div class="setting-wrap wm-container-enhanced">
         <div class="fct-checkout-fields-wrapp">
             <Card>
                 <CardHeader :title="$t('Checkout Fields')" border_bottom/>

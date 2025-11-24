@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-wrap">
+  <div class="setting-wrap wm-container-enhanced">
     <div class="mb-5 flex items-center justify-between">
       <el-breadcrumb class="mb-0" :separator-icon="ArrowRight">
         <el-breadcrumb-item :to="{ path: '/settings/payments' }">

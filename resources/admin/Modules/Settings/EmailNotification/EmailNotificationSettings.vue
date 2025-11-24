@@ -105,7 +105,7 @@ onMounted(() => {
 
 <template>
 
-  <div class="setting-wrap">
+  <div class="setting-wrap wm-container-enhanced">
     <el-dialog
         v-model="dialogVisible"
         :title="translate('Coming Soon')"

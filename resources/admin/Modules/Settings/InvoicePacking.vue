@@ -81,7 +81,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="setting-wrap">
+  <div class="setting-wrap wm-container-enhanced">
 
     <Alert
         class="mb-5"
