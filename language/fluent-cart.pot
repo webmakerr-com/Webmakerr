@@ -11331,8 +11331,20 @@ msgstr ""
 msgid "Integrations & Addons"
 msgstr ""
 
-#: app/Helpers/Status.php:257
 #: app/Services/Translations/admin-translation.php:821
+msgid "Need help or customisation?"
+msgstr ""
+
+#: app/Services/Translations/admin-translation.php:822
+msgid "We are here to help tailor your experience with Webmakerr. Let us know what you need and our team will reach out."
+msgstr ""
+
+#: app/Services/Translations/admin-translation.php:823
+msgid "Contact Now"
+msgstr ""
+
+#: app/Helpers/Status.php:257
+#: app/Services/Translations/admin-translation.php:824
 #: app/Services/Translations/customer-profile-translation.php:108
 msgid "Intended"
 msgstr ""
@@ -11341,11 +11353,11 @@ msgstr ""
 msgid "Intent ID is required to confirm the payment."
 msgstr ""
 
-#: app/Services/Translations/admin-translation.php:822
+#: app/Services/Translations/admin-translation.php:825
 msgid "Internal Notes"
 msgstr ""
 
-#: app/Services/Translations/admin-translation.php:823
+#: app/Services/Translations/admin-translation.php:826
 msgid "Interval"
 msgstr ""
 
