@@ -9,7 +9,7 @@ export function useNavigationMenuUpdateService(router) {
         jQuery('.toplevel_page_webmakerr li.fluent_cart_' + activeMenu).addClass('current');
 
         if (to.meta.title) {
-            jQuery('head title').text(to.meta.title + ' - FluentCart');
+            jQuery('head title').text(to.meta.title + ' - Webmakerr');
         }
     });
 }

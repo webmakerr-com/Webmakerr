@@ -35,7 +35,7 @@
           <ProFeatureNotice
               class="py-7.5"
               :title="translate('Upgrade to Pro for filtering')"
-              :text="translate('This feature is only available in FluentCart Pro.')"
+              :text="translate('This feature is only available in Webmakerr.')"
           />
         </div>
       </div>

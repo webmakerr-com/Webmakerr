@@ -179,8 +179,8 @@
       <div v-else class="border border-solid border-gray-divider mt-5 pt-5 border-x-0 border-b-0 dark:border-dark-400">
         <ProFeatureNotice
             class="py-7.5"
-            :title="translate('Get access to this feature by Upgrading to FluentCart Pro')"
-            :text="translate('This feature is only available in FluentCart Pro.')"
+            :title="translate('Get access to this feature by Upgrading to Webmakerr')"
+            :text="translate('This feature is only available in Webmakerr.')"
         />
       </div>
 

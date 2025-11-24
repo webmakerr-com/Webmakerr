@@ -9,7 +9,7 @@ const FluentCartViewProfile = {
     maybeUserProfile(profileVars) {
         const $targetElement = window.jQuery('#profile-page > .wp-header-end');
         if (!$targetElement.length) {
-            console.warn('FluentCart: Target element "#profile-page > .wp-header-end" not found');
+            console.warn('Webmakerr: Target element "#profile-page > .wp-header-end" not found');
             return;
         }
 
@@ -18,10 +18,10 @@ const FluentCartViewProfile = {
             style="background: #00009f;color: white;border-color: #00009f;"
             target="_blank"
             class="page-title-action" 
-            href="${profileVars.fct_profile_url}">View FluentCart Profile</a>`);
+            href="${profileVars.fct_profile_url}">View Webmakerr Profile</a>`);
             $link.insertBefore($targetElement);
         } catch (error) {
-            console.error('FluentCart: Error inserting profile link:', error);
+            console.error('Webmakerr: Error inserting profile link:', error);
         }
     }
 }

@@ -41,7 +41,7 @@ return function ($file) {
                 add_action('admin_notices', function () {
                     ?>
                     <div class="notice notice-warning">
-                        <p><?php echo 'FluentCart requires MySQL/MariaDB database Engine. Looks like you are using sqlite database. FluentCart will not work on this site.'; ?></p>
+                        <p><?php echo 'Webmakerr requires MySQL/MariaDB database Engine. Looks like you are using sqlite database. Webmakerr will not work on this site.'; ?></p>
                     </div>
                     <?php
                 });
@@ -57,7 +57,7 @@ return function ($file) {
 
                     $updateUrl = admin_url('plugins.php?s=fluent-cart&plugin_status=all&fluent-cart-pro-check-update=' . time());
 
-                    $notices[] = '<div>FluentCart Pro Plugin needs to be updated to the latest version. <a href="' . esc_url($updateUrl) . '">Click here to update</a></div>';
+                    $notices[] = '<div>Webmakerr plugin needs to be updated to the latest version. <a href="' . esc_url($updateUrl) . '">Click here to update</a></div>';
                 }
                 return $notices;
             });

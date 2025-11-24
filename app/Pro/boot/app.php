@@ -22,7 +22,7 @@ return function ($file) {
             'version'      => FLUENTCART_PRO_PLUGIN_VERSION,
             'api_url'      => 'https://fluentcart.com/',
             'activate_url' => admin_url('admin.php?page=webmakerr#/settings/licensing'),
-            'plugin_title' => 'FluentCart Pro',
+            'plugin_title' => 'Webmakerr',
         ]);
 
         $licenseNotice = $fluentLicensing->getLicenseNotice();
