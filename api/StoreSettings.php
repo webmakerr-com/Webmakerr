@@ -518,7 +518,7 @@ class StoreSettings implements ArrayableInterface
                                         'hide_note'    => true,
                                         'value'        => '',
                                         'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
-                                            '[fluent_cart_products]',
+                                            '[webmakerr_products]',
                                             __('Products', 'fluent-cart')
                                         ),
                                     ],
@@ -555,7 +555,7 @@ class StoreSettings implements ArrayableInterface
                                         'options'      => $pages,
                                         'value'        => '',
                                         'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
-                                            '[fluent_cart_customer_profile]',
+                                            '[webmakerr_customer_profile]',
                                             __('Account', 'fluent-cart')
                                         ),
                                     ],
@@ -592,7 +592,7 @@ class StoreSettings implements ArrayableInterface
                                         'options'      => $pages,
                                         'value'        => '',
                                         'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
-                                            '[fluent_cart_cart]',
+                                            '[webmakerr_cart]',
                                             __('Cart', 'fluent-cart')
                                         ),
                                     ],
@@ -629,7 +629,7 @@ class StoreSettings implements ArrayableInterface
                                         'options'      => $pages,
                                         'value'        => '',
                                         'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
-                                            '[fluent_cart_receipt]',
+                                            '[webmakerr_receipt]',
                                             __('Receipt', 'fluent-cart')
                                         ),
                                     ],
@@ -666,7 +666,7 @@ class StoreSettings implements ArrayableInterface
                                         'options'      => $pages,
                                         'value'        => '',
                                         'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
-                                            '[fluent_cart_checkout]',
+                                            '[webmakerr_checkout]',
                                             __('Checkout', 'fluent-cart')
                                         ),
                                     ],
