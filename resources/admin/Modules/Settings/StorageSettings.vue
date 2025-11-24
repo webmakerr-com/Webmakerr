@@ -1,5 +1,5 @@
 <template>
-    <div class="setting-wrap">
+    <div class="setting-wrap wm-container-enhanced">
       <CardContainer>
         <CardHeader :title="$t('Storage Providers')" border_bottom/>
         <CardBody>

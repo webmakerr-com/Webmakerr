@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-wrap">
+  <div class="setting-wrap wm-container-enhanced">
     <template v-if="!hasFormFieldsError">
       <div class="bg-white rounded p-6 dark:bg-dark-700" v-if="formLoading">
         <el-skeleton :loading="formLoading" animated>

@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-wrap">
+  <div class="setting-wrap wm-container-enhanced">
     <Card.Container class="overflow-hidden">
       <Card.Header :title="translate('Roles and Permissions')">
         <template #action v-if="isProActive">

@@ -1,5 +1,5 @@
 <template>
-  <div class="setting-wrap" :class="route_name">
+  <div class="setting-wrap wm-container-enhanced" :class="route_name">
     <div class="single-page-header flex items-center justify-between">
       <el-breadcrumb class="mb-0" :separator-icon="ArrowRight">
         <el-breadcrumb-item :to="{ name: 'storage' }">
