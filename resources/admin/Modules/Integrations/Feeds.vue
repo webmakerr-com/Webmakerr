@@ -181,13 +181,16 @@
                         </el-table>
                     </div>
 
-                    <div v-if="!feeds.length" class="fct-integration-table-footer">
-                        <a
-                            target="_blank"
-                            rel="noopener"
-                            href="https://docs.fluentcart.com"
-                        >{{ $t("View Documentations") }}</a
-                        >
+                    <div v-if="!feeds.length" class="fct-integration-table-footer text-center">
+                        <h3 class="text-lg font-semibold mb-1">{{ $t('Need Customisation?') }}</h3>
+                        <p class="text-sm text-gray-700 mb-3">
+                            {{ $t('We are here to help you tailor Webmakerr to your business.') }}
+                        </p>
+                        <el-button
+                            tag="a"
+                            type="primary"
+                            href="https://webmakerr.com/contact"
+                        >{{ $t('Contact Us') }}</el-button>
                     </div>
                 </template>
             </Card.Body>
