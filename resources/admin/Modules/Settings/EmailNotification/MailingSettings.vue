@@ -81,7 +81,7 @@ onMounted(() => {
           :title="translate('Mailing Settings')"
           :text="
             /* translators: %s is the plugin name */
-            translate('Set your from name, email, and email footer. These configurations will be used to send emails from %s.', 'FluentCart')
+            translate('Set your from name, email, and email footer. These configurations will be used to send emails from %s.', 'Webmakerr')
           "
           border_bottom />
       <MailingSettingsLoader v-if="saving" />
@@ -173,12 +173,12 @@ receive it.`)
                   field-key="email_footer"
               />
               <div class="form-note">
-                <p>{{
-                    translate(`This email footer will be used for all emails sent from FluentCart, It's highly recommended to use your business name and address in the footer for
+                  <p>{{
+                      translate(`This email footer will be used for all emails sent from Webmakerr, It's highly recommended to use your business name and address in the footer for
 compliance.`)
-                  }}</p>
+                    }}</p>
+                </div>
               </div>
-            </div>
 
             <div class="fct-powered-by-email-footer-checkbox mb-4 pb-4 border-[1px] border-l-0 border-t-0 border-r-0 border-solid border-gray-outline dark:border-dark-400">
               <el-checkbox
@@ -187,7 +187,7 @@ compliance.`)
                   false-value="no"
                   :disabled="!hasPro"
               >
-                {{ translate('Enable powered by FluentCart in the email footer') }}
+                {{ translate('Enable powered by Webmakerr in the email footer') }}
               </el-checkbox>
             </div>
 
@@ -204,7 +204,7 @@ compliance.`)
                   <div class="setting-html-wrapper">
                     <span class="setting-label">{{ translate('Admin Email Address') }}</span>
                     <div class="form-note"><p>
-                      {{ translate('FluentCart will send admin notification to this email address.') }}</p></div>
+                      {{ translate('Webmakerr will send admin notification to this email address.') }}</p></div>
                   </div>
                 </el-col>
                 <el-col :lg="12">

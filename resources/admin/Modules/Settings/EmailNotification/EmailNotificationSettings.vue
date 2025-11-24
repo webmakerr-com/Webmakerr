@@ -194,7 +194,7 @@ onMounted(() => {
 
             <template #empty>
               <Empty icon="Empty/EmailNotification" :has-dark="true"
-                     :text="translate('No email notifications available! Please reactivate FluentCart!')"/>
+                     :text="translate('No email notifications available! Please reactivate Webmakerr!')"/>
             </template>
           </el-table>
         </div>

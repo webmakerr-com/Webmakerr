@@ -88,7 +88,7 @@
         <ProFeatureNotice
             class="py-7.5"
             :title="translate('Upgrade to Pro for Roles & Permission')"
-            :text="translate('This feature is only available in FluentCart Pro.')"
+            :text="translate('This feature is only available in Webmakerr.')"
         />
       </Card.Body>
     </Card.Container>

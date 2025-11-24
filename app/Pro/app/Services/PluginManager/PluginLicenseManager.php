@@ -26,7 +26,7 @@ class PluginLicenseManager
             'purchase_url'   => 'https://fluentcart.com',
             'settings_key'   => '__fct_pro_plugin_license',
             'activate_url'   => $urlBase . 'settings/license',
-            'plugin_title'   => 'FluentCart Pro',
+            'plugin_title'   => 'Webmakerr',
             'author'         => 'your plugin author name',
         ];
     }

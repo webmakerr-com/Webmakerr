@@ -73,7 +73,7 @@
 
               <div v-else class="fct-license-box-content">
                 <h3>
-                  {{ translate('Please Provide a license key of') }} FluentCart
+                  {{ translate('Please Provide a license key of') }} Webmakerr
                 </h3>
                 <el-input v-model="licenseKey" :placeholder="translate('License Key')"/>
                 <p v-if="!showNewLicenseInput">{{ translate("Don't have a license key?") }} <a target="_blank"

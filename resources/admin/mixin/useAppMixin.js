@@ -79,7 +79,7 @@ export function useAppMixin(app) {
                 return parseAddress(object, type, shouldExcludeName);
             },
             changeTitle(title) {
-                jQuery('head title').text(title + ' - FluentCart');
+                jQuery('head title').text(title + ' - Webmakerr');
             },
             handleError(response) {
                 if (!response) {

@@ -89,7 +89,7 @@ receive it.`)
         <div class="mt-2 mb-2">
           <div class="form-note">
             <p>{{
-                translate(`This email footer will be used for all emails sent from FluentCart, It's highly recommended to use your business name and address in the footer for
+                translate(`This email footer will be used for all emails sent from Webmakerr, It's highly recommended to use your business name and address in the footer for
 compliance.`)
               }}</p>
           </div>
@@ -116,7 +116,7 @@ compliance.`)
               <div class="setting-html-wrapper">
                 <span class="setting-label">{{ translate('Admin Email Address') }}</span>
                 <div class="form-note"><p>
-                  {{ translate('FluentCart will send admin notification to this email address.') }}</p></div>
+                  {{ translate('Webmakerr will send admin notification to this email address.') }}</p></div>
               </div>
             </el-col>
             <el-col :lg="12">

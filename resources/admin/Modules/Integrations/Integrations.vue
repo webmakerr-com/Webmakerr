@@ -17,7 +17,7 @@
                             </h2>
                             <p class="card-header-text mt-0">
                                 {{
-                                    $t("Configure your integrations and extend FluentCart to enhance your store\'s functionality.")
+                                    $t("Configure your integrations and extend Webmakerr to enhance your store\'s functionality.")
                                 }}
                             </p>
                         </div>

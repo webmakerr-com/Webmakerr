@@ -14,10 +14,10 @@
 <template>
   <div class="fluent-cart-admin-pages">
     <ProFeatureNotice>
-        <h4 class="fct-pro-feature-title">
+            <h4 class="fct-pro-feature-title">
           {{
             /* translators: %s is the feature name */
-            translate('%s requires FluentCart Pro', featureName)
+            translate('%s requires Webmakerr', featureName)
           }}
         </h4>
         <p class="fct-pro-feature-text" v-if="featureDescription" v-html="featureDescription"></p>
