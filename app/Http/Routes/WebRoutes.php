@@ -30,7 +30,8 @@ class WebRoutes
     public static function registerRoutes()
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-       $page = sanitize_text_field(wp_unslash($_REQUEST['fluent-cart'] ?? ''));
+        $pageParam = $_REQUEST['webmakerr'] ?? $_REQUEST['fluent-cart'] ?? '';
+        $page = sanitize_text_field(wp_unslash($pageParam));
 
         if (empty($page)) {
             return;
@@ -112,6 +113,7 @@ class WebRoutes
                 parse_str($queryString, $queryArray);
             }
 
+            unset($queryArray['webmakerr']);
             unset($queryArray['fluent-cart']);
             unset($queryArray['item_id']);
             unset($queryArray['quantity']);

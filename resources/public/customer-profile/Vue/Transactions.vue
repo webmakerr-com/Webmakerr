@@ -146,7 +146,7 @@ const receiptUrl = (uuid) => {
   if (!uuid) {
     return '';
   }
-  return window.fluentcart_customer_profile_vars.site_url+'?fluent-cart=receipt&order_hash='+uuid+'&download=1';
+  return window.fluentcart_customer_profile_vars.site_url+'?webmakerr=receipt&order_hash='+uuid+'&download=1';
 }
 const assetsPath = computed(() => {
   return window.fluentcart_customer_profile_vars.assets_path;
