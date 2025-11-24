@@ -25,14 +25,14 @@ class StripeSettingsBase extends BaseGatewaySettings
             $settings = wp_parse_args($settings, $defaults);
         }
 
+        $settings['provider'] = 'api_keys';
+
         //define key's handle
         $isTestDefined = defined('FCT_STRIPE_TEST_PUBLIC_KEY') && defined('FCT_STRIPE_TEST_SECRET_KEY');
         $isLiveDefined = defined('FCT_STRIPE_LIVE_PUBLIC_KEY') && defined('FCT_STRIPE_LIVE_SECRET_KEY');
-        if ($isTestDefined || $isLiveDefined) {
-            $settings['define_test_keys'] = $isTestDefined;
-            $settings['define_live_keys'] = $isLiveDefined;
-            $settings['provider'] = 'api_keys';
-        }
+
+        $settings['define_test_keys'] = $isTestDefined || !empty($settings['test_secret_key']);
+        $settings['define_live_keys'] = $isLiveDefined || !empty($settings['live_secret_key']);
 
 
         $this->settings = apply_filters('fluent_cart/stripe_settings', $settings);
@@ -45,7 +45,7 @@ class StripeSettingsBase extends BaseGatewaySettings
     {
         return [
             'is_active'            => 'no',
-            'provider'             => 'connect',
+            'provider'             => 'api_keys',
             //define keys
             'define_test_keys'     => false,
             'define_live_keys'     => false,
