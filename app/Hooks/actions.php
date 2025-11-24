@@ -60,6 +60,30 @@ use FluentCart\Framework\Support\Arr;
 \FluentCart\App\Hooks\Handlers\BlockEditors\BuySectionBlockEditor::register();
 \FluentCart\App\Hooks\Handlers\ShortCodes\ProductCardShortCode::register();
 
+$registerShortcodeAlias = function ($alias, $originalShortcode) {
+    add_shortcode($alias, function ($shortcodeAttributes, $content = null, $block = null) use ($originalShortcode) {
+        $attributeString = '';
+
+        foreach ((array) $shortcodeAttributes as $attributeKey => $attributeValue) {
+            if (is_bool($attributeValue)) {
+                $attributeValue = $attributeValue ? 'true' : 'false';
+            } elseif (is_array($attributeValue)) {
+                $attributeValue = wp_json_encode($attributeValue);
+            }
+
+            $attributeString .= sprintf(' %s="%s"', esc_attr($attributeKey), esc_attr($attributeValue));
+        }
+
+        return do_shortcode('[' . $originalShortcode . $attributeString . ']');
+    });
+};
+
+$registerShortcodeAlias('webmakerr_products', 'fluent_cart_products');
+$registerShortcodeAlias('webmakerr_customer_profile', 'fluent_cart_customer_profile');
+$registerShortcodeAlias('webmakerr_cart', 'fluent_cart_cart');
+$registerShortcodeAlias('webmakerr_receipt', 'fluent_cart_receipt');
+$registerShortcodeAlias('webmakerr_checkout', 'fluent_cart_checkout');
+
 if (\FluentCart\Api\ModuleSettings::isActive('stock_management')) {
     \FluentCart\App\Hooks\Handlers\BlockEditors\StockBlock::register();
 }
