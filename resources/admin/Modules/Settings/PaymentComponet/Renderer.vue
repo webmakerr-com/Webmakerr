@@ -47,7 +47,15 @@ const currentMode = computed(() => {
   return props.settings?.payment_mode === 'test' ? 'test' : 'live';
 });
 
+const hasConnectProvider = computed(() => {
+  return Object.values(props.fields || {}).some((field) => field.type === 'provider' && field.value === 'connect');
+});
+
 const getConnectConfig = () => {
+  if (!hasConnectProvider.value) {
+    return;
+  }
+
   fetching_connect.value = true;
   selfRef.$get('settings/payment-methods/connect/info', {
     method: props.route_name
@@ -77,7 +85,9 @@ const getConnectConfig = () => {
 }
 
 onMounted(() => {
-  getConnectConfig();
+  if (hasConnectProvider.value) {
+    getConnectConfig();
+  }
 })
 
 </script>
@@ -135,7 +145,7 @@ onMounted(() => {
               <ContentCard :title="translate('Your API setup is Up & Running 🎉')">
                 <div class="flex items-center justify-between">
                   <div>
-                    <b>{{ translate('Payment API settings is enabled by defined API keys.') }}</b>
+                    <b>{{ translate('Stripe API settings are enabled by the provided keys.') }}</b>
                   </div>
                 </div>
               </ContentCard>
@@ -143,9 +153,9 @@ onMounted(() => {
           </div>
           <div v-else class="flex items-center justify-between">
             <div>
-              <b>{{ translate('Payment API settings is not enabled by API keys / Connect') }}</b>
+              <b>{{ translate('Stripe API keys are required to enable payments.') }}</b>
               <br/>
-              <p>{{ translate('You can Set Up API keys defined as constant, Or use connect.') }}</p>
+              <p>{{ translate('Add your publishable, secret, and webhook keys above to finish setup.') }}</p>
               <p class="text-red-700">{{ errors?.error }}</p>
             </div>
           </div>

@@ -153,18 +153,13 @@ class Stripe extends AbstractPaymentGateway
 
     public static function beforeSettingsUpdate($data, $oldSettings): array
     {
-        $provider = Arr::get($data, 'provider', 'connect');
-        $mode = Arr::get($data, 'payment_mode', 'test');
+        foreach (['test', 'live'] as $mode) {
+            $secretKey = Arr::get($data, $mode . '_secret_key');
 
-        if ('connect' == $provider) {
-            $data[$mode . '_secret_key'] = Helper::encryptKey(Arr::get($data, $mode . '_secret_key'));
-        }
-
-        if (Arr::get($data, 'provider') === 'api_keys') {
-            $data['test_publishable_key'] = '';
-            $data['live_publishable_key'] = '';
-            $data['test_secret_key'] = '';
-            $data['live_secret_key'] = '';
+            if ($secretKey && !Helper::isValueEncrypted($secretKey)) {
+                $data[$mode . '_secret_key'] = Helper::encryptKey($secretKey);
+                $data[$mode . '_is_encrypted'] = 'yes';
+            }
         }
 
         return $data;
@@ -173,28 +168,16 @@ class Stripe extends AbstractPaymentGateway
     public static function validateSettings($data): array
     {
         $mode = Arr::get($data, 'payment_mode', 'test');
-        $provider = Arr::get($data, 'provider', 'connect');
-
-        if ($provider === 'api_keys') {
-            if ($mode === 'live') {
-                $sk = defined('FCT_STRIPE_LIVE_SECRET_KEY') ? FCT_STRIPE_LIVE_SECRET_KEY : Arr::get($data, 'live_secret_key');
-            } else {
-                $sk = defined('FCT_STRIPE_TEST_SECRET_KEY') ? FCT_STRIPE_TEST_SECRET_KEY : Arr::get($data, 'test_secret_key');
-            }
+        if ($mode === 'live') {
+            $sk = defined('FCT_STRIPE_LIVE_SECRET_KEY') ? FCT_STRIPE_LIVE_SECRET_KEY : Arr::get($data, 'live_secret_key');
+            $isEncrypted = Arr::get($data, 'live_is_encrypted') === 'yes';
         } else {
-            $sk = $mode === 'live' ? Arr::get($data, 'live_secret_key') : Arr::get($data, 'test_secret_key');
-            if (empty($sk)) {
-                $errorMessage = $mode === 'live' ? __('Stripe not connected in Live Mode!', 'fluent-cart') : __('Stripe not connected in Test Mode!!', 'fluent-cart');
-                return [
-                    'status'  => 'failed',
-                    'message' => $errorMessage
-                ];
-            } else {
-                return [
-                    'status'  => 'success',
-                    'message' => __('Stripe account already verified!', 'fluent-cart')
-                ];
-            }
+            $sk = defined('FCT_STRIPE_TEST_SECRET_KEY') ? FCT_STRIPE_TEST_SECRET_KEY : Arr::get($data, 'test_secret_key');
+            $isEncrypted = Arr::get($data, 'test_is_encrypted') === 'yes';
+        }
+
+        if ($isEncrypted && $sk) {
+            $sk = Helper::decryptKey($sk);
         }
 
         if (empty($sk)) {
@@ -253,24 +236,92 @@ class Stripe extends AbstractPaymentGateway
                         'type'   => 'tab',
                         'label'  => __('Live credentials', 'fluent-cart'),
                         'value'  => 'live',
-                        'schema' => []
+                        'schema' => [
+                            'live_publishable_key' => [
+                                'value'       => '',
+                                'label'       => __('Live Publishable Key', 'fluent-cart'),
+                                'type'        => 'text',
+                                'placeholder' => __('pk_live_****************', 'fluent-cart'),
+                                'dependency'  => [
+                                    'depends_on' => 'payment_mode',
+                                    'operator'   => '=',
+                                    'value'      => 'live'
+                                ]
+                            ],
+                            'live_secret_key'      => [
+                                'value'       => '',
+                                'label'       => __('Live Secret Key', 'fluent-cart'),
+                                'type'        => 'password',
+                                'placeholder' => __('sk_live_****************', 'fluent-cart'),
+                                'dependency'  => [
+                                    'depends_on' => 'payment_mode',
+                                    'operator'   => '=',
+                                    'value'      => 'live'
+                                ]
+                            ],
+                            'live_webhook_secret'  => [
+                                'value'       => '',
+                                'label'       => __('Live Webhook Signing Secret', 'fluent-cart'),
+                                'type'        => 'password',
+                                'placeholder' => __('whsec_****************', 'fluent-cart'),
+                                'dependency'  => [
+                                    'depends_on' => 'payment_mode',
+                                    'operator'   => '=',
+                                    'value'      => 'live'
+                                ]
+                            ]
+                        ]
                     ],
                     [
                         'type'   => 'tab',
                         'label'  => __('Test credentials', 'fluent-cart'),
                         'value'  => 'test',
-                        'schema' => [],
+                        'schema' => [
+                            'test_publishable_key' => [
+                                'value'       => '',
+                                'label'       => __('Test Publishable Key', 'fluent-cart'),
+                                'type'        => 'text',
+                                'placeholder' => __('pk_test_****************', 'fluent-cart'),
+                                'dependency'  => [
+                                    'depends_on' => 'payment_mode',
+                                    'operator'   => '=',
+                                    'value'      => 'test'
+                                ]
+                            ],
+                            'test_secret_key'      => [
+                                'value'       => '',
+                                'label'       => __('Test Secret Key', 'fluent-cart'),
+                                'type'        => 'password',
+                                'placeholder' => __('sk_test_****************', 'fluent-cart'),
+                                'dependency'  => [
+                                    'depends_on' => 'payment_mode',
+                                    'operator'   => '=',
+                                    'value'      => 'test'
+                                ]
+                            ],
+                            'test_webhook_secret'  => [
+                                'value'       => '',
+                                'label'       => __('Test Webhook Signing Secret', 'fluent-cart'),
+                                'type'        => 'password',
+                                'placeholder' => __('whsec_****************', 'fluent-cart'),
+                                'dependency'  => [
+                                    'depends_on' => 'payment_mode',
+                                    'operator'   => '=',
+                                    'value'      => 'test'
+                                ]
+                            ]
+                        ],
                     ]
                 ]
             ],
             'provider'            => array(
-                'value' => apply_filters('fluent_cart_form_disable_stripe_connect', false, []) ? 'api_keys' : 'connect',
+                'value' => 'api_keys',
                 'label' => __('Provider', 'fluent-cart'),
                 'type'  => 'provider'
             ),
             'setup_guide'         => array(
-                'value'   => '<h4>' . __('Or Setup keys manually.', 'fluent-cart') . '</h4><hr/>',
-                'label'   => __('Or Setup keys manually', 'fluent-cart'),
+                'value'   => '<h4>' . __('Enter your Stripe API keys to enable payments.', 'fluent-cart') . '</h4><hr/>',
+                'label'   => __('Manual API setup', 'fluent-cart'),
                 'type'    => 'html_attr',
                 'visible' => 'no'
             ),
