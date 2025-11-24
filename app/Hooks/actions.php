@@ -83,6 +83,7 @@ $registerShortcodeAlias('webmakerr_customer_profile', 'fluent_cart_customer_prof
 $registerShortcodeAlias('webmakerr_cart', 'fluent_cart_cart');
 $registerShortcodeAlias('webmakerr_receipt', 'fluent_cart_receipt');
 $registerShortcodeAlias('webmakerr_checkout', 'fluent_cart_checkout');
+$registerShortcodeAlias('webmakerr_toggle_button', 'fcart-cart-toggle-button');
 
 if (\FluentCart\Api\ModuleSettings::isActive('stock_management')) {
     \FluentCart\App\Hooks\Handlers\BlockEditors\StockBlock::register();
