@@ -533,6 +533,7 @@ class ProductRenderer
             if (!empty($section['description'])) {
                 echo '<p class="fct-product-section-description">' . wp_kses_post($section['description']) . '</p>';
             }
+            $this->renderCustomSectionAddToCart();
             echo '</div>';
 
             echo '</div>';
@@ -594,6 +595,28 @@ class ProductRenderer
         }
 
         echo '<a class="fct-product-section-video-link" href="' . esc_url($videoUrl) . '" target="_blank" rel="noopener">' . esc_html($videoUrl) . '</a>';
+    }
+
+    protected function renderCustomSectionAddToCart()
+    {
+        if ($this->isAddToCartOutOfStock()) {
+            $this->renderOutOfStockMessage();
+            return;
+        }
+
+        if (!$this->hasOnetime) {
+            return;
+        }
+
+        $config = $this->getAddToCartButtonConfig();
+
+        if (empty($config)) {
+            return;
+        }
+
+        echo '<div class="fct-product-section-actions">';
+        $this->renderAddToCartButton($config['cartAttributes'], $config['addToCartText']);
+        echo '</div>';
     }
 
     public function renderGallery($args = [])
@@ -998,34 +1021,31 @@ class ProductRenderer
         ]);
     }
 
-    public function renderPurchaseButtons($atts = [])
+    protected function isAddToCartOutOfStock(): bool
     {
-        if (ModuleSettings::isActive('stock_management')) {
-            if ($this->product->detail->variation_type === 'simple' && $this->defaultVariant) {
-                if ($this->product->detail->manage_stock && $this->defaultVariant->stock_status !== Helper::IN_STOCK) {
-                    echo '<span aria-disabled="true">' . esc_html__('Out of stock', 'fluent-cart') . '</span>';
-                    return;
-                }
-            }
+        if (!ModuleSettings::isActive('stock_management')) {
+            return false;
         }
 
+        if ($this->product->detail->variation_type === 'simple' && $this->defaultVariant) {
+            return $this->product->detail->manage_stock && $this->defaultVariant->stock_status !== Helper::IN_STOCK;
+        }
+
+        return false;
+    }
+
+    protected function renderOutOfStockMessage()
+    {
+        echo '<span aria-disabled="true">' . esc_html__('Out of stock', 'fluent-cart') . '</span>';
+    }
+
+    protected function getAddToCartButtonConfig($atts = []): array
+    {
         $defaults = [
-                'buy_now_text'     => __('Buy Now', 'fluent-cart'),
                 'add_to_cart_text' => __('Add To Cart', 'fluent-cart'),
         ];
 
         $atts = wp_parse_args($atts, $defaults);
-
-        $buyNowAttributes = [
-                'data-fluent-cart-direct-checkout-button' => '',
-                'data-variation-type'                     => $this->product->detail->variation_type,
-                'class'                                   => 'fluent-cart-direct-checkout-button',
-                'data-stock-availability'                 => 'in-stock',
-                'data-quantity'                           => '1',
-                'href'                                    => site_url('?fluent-cart=instant_checkout&item_id=') . ($this->defaultVariant ? $this->defaultVariant->id : '') . '&quantity=1',
-                'data-cart-id'                            => $this->defaultVariant ? $this->defaultVariant->id : '',
-                'data-url'                                => site_url('?fluent-cart=instant_checkout&item_id='),
-        ];
 
         $cartAttributes = [
                 'data-fluent-cart-add-to-cart-button' => '',
@@ -1041,18 +1061,19 @@ class ProductRenderer
             $cartAttributes['class'] .= ' is-hidden';
         }
 
-        $buyButtonText = apply_filters('fluent_cart/product/buy_now_button_text', $atts['buy_now_text'], [
-                'product' => $this->product
-        ]);
-
         $addToCartText = apply_filters('fluent_cart/product/add_to_cart_text', $atts['add_to_cart_text'], [
                 'product' => $this->product
         ]);
+
+        return [
+                'cartAttributes' => $cartAttributes,
+                'addToCartText'  => $addToCartText
+        ];
+    }
+
+    protected function renderAddToCartButton(array $cartAttributes, string $addToCartText)
+    {
         ?>
-        <a <?php $this->renderAttributes($buyNowAttributes); ?> aria-label="<?php echo esc_attr($buyButtonText); ?>">
-            <?php echo wp_kses_post($buyButtonText); ?>
-        </a>
-        <?php if ($this->hasOnetime): ?>
         <button <?php $this->renderAttributes($cartAttributes); ?> aria-label="<?php echo esc_attr($addToCartText); ?>">
             <span class="fct-add-to-cart-icon" aria-hidden="true">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1074,14 +1095,54 @@ class ProductRenderer
                                   d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
                                   fill="currentColor"/>
                           <path
-                                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.10071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
                                   fill="currentFill"/>
                     </svg>
                 </span>
         </button>
-    <?php endif;
+        <?php
     }
 
+
+    public function renderPurchaseButtons($atts = [])
+    {
+        if ($this->isAddToCartOutOfStock()) {
+            $this->renderOutOfStockMessage();
+            return;
+        }
+
+        $defaults = [
+                'buy_now_text'     => __('Buy Now', 'fluent-cart'),
+                'add_to_cart_text' => __('Add To Cart', 'fluent-cart'),
+        ];
+
+        $atts = wp_parse_args($atts, $defaults);
+
+        $buyNowAttributes = [
+                'data-fluent-cart-direct-checkout-button' => '',
+                'data-variation-type'                     => $this->product->detail->variation_type,
+                'class'                                   => 'fluent-cart-direct-checkout-button',
+                'data-stock-availability'                 => 'in-stock',
+                'data-quantity'                           => '1',
+                'href'                                    => site_url('?fluent-cart=instant_checkout&item_id=') . ($this->defaultVariant ? $this->defaultVariant->id : '') . '&quantity=1',
+                'data-cart-id'                            => $this->defaultVariant ? $this->defaultVariant->id : '',
+                'data-url'                                => site_url('?fluent-cart=instant_checkout&item_id='),
+        ];
+
+        $cartButtonConfig = $this->getAddToCartButtonConfig($atts);
+
+        $buyButtonText = apply_filters('fluent_cart/product/buy_now_button_text', $atts['buy_now_text'], [
+                'product' => $this->product
+        ]);
+        ?>
+        <a <?php $this->renderAttributes($buyNowAttributes); ?> aria-label="<?php echo esc_attr($buyButtonText); ?>">
+            <?php echo wp_kses_post($buyButtonText); ?>
+        </a>
+        <?php if ($this->hasOnetime): ?>
+            <?php $this->renderAddToCartButton($cartButtonConfig['cartAttributes'], $cartButtonConfig['addToCartText']); ?>
+        <?php endif; ?>
+        <?php
+    }
 
     public static function renderNoProductFound()
     {
