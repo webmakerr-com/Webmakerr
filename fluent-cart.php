@@ -4,7 +4,7 @@ defined('ABSPATH') or die;
 
 /*
 Plugin Name: Webmakerrr®
-Description: FluentCart WordPress Plugin
+Description: Webmakerr makes eCommerce, bookings, and service selling fast and effortless.
 Version: 1.3.1
 Author: FluentCart Team
 Author URI: https://fluentcart.com/about-us
