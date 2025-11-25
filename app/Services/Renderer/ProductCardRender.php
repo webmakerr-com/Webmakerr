@@ -234,6 +234,35 @@ class ProductCardRender
      */
     public function showBuyButton($atts = '')
     {
+        if (Arr::get($this->config, 'force_view_offer')) {
+            $buttonText = __('View Offer', 'fluent-cart');
+            $ariaLabel = sprintf(
+            /* translators: %s: product title */
+                    __('View offer for %s', 'fluent-cart'), $this->product->post_title);
+
+            $anchorAttributes = [
+                    'href'       => $this->viewUrl,
+                    'class'      => 'fct-product-view-button fct-product-view-offer-button',
+                    'aria-label' => $ariaLabel
+            ];
+
+            $customAttributes = $this->parseAttributes($atts);
+            if (isset($customAttributes['class']) && isset($anchorAttributes['class'])) {
+                $anchorAttributes['class'] .= ' ' . $customAttributes['class'];
+                unset($customAttributes['class']);
+            }
+
+            $anchorAttributes = array_merge($anchorAttributes, $customAttributes);
+            ?>
+            <a <?php $this->renderAttributes($anchorAttributes); ?>>
+                <span class="fct-button-text">
+                    <?php echo esc_html($buttonText); ?>
+                </span>
+            </a>
+            <?php
+            return;
+        }
+
         $isSimple = $this->product->detail->variation_type === 'simple';
         $firstVariant = null;
         $buttonHref = $this->viewUrl;

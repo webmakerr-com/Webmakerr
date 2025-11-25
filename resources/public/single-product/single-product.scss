@@ -238,11 +238,82 @@
   grid-area: summary;
 
   .fct-product-summary-card{
-    @apply bg-white rounded-xl border border-solid border-[var(--fct-single-product-border-color)] shadow-sm p-5 @[1024px]/product-page:p-7 space-y-5;
+    @apply bg-white rounded border border-solid border-[var(--fct-single-product-border-color)] shadow-sm p-5 @[1024px]/product-page:p-7 space-y-5;
   }
 
   .fct-product-summary-header{
-    @apply flex flex-col gap-2 pb-4 border-b border-solid border-[var(--fct-single-product-border-color)];
+    @apply flex flex-col gap-2 pb-3 mb-2 border-0;
+  }
+}
+
+.fct-single-product-page {
+  .fct-product-gallery-thumb,
+  .fct-gallery-thumb-control-button,
+  .fct-product-summary-card,
+  .fct-product-variant-item,
+  .fct-product-assurances,
+  .fct-product-assurance-icon,
+  .fct-product-quantity,
+  .fct-product-buttons-wrap button,
+  .fct-product-buttons-wrap a,
+  .fct-product-description {
+    @apply rounded;
+  }
+
+  .fct-product-gallery-thumb img,
+  .fct-gallery-thumb-control-button img {
+    @apply rounded;
+  }
+
+  .fct-product-quantity-container {
+    display: none;
+  }
+
+  .fluent-cart-direct-checkout-button {
+    display: none !important;
+  }
+
+  .fct-product-buttons-wrap {
+    @apply flex flex-col gap-3 mt-4;
+  }
+
+  .fct-dominant-add-to-cart {
+    @apply bg-black border border-solid border-black text-white text-base py-3.5 px-6 shadow-sm;
+    @apply hover:bg-[#111111] hover:border-[#111111] hover:shadow-md;
+    @apply focus:bg-black focus:border-black;
+    gap: 10px;
+  }
+
+  .fct-add-to-cart-icon {
+    @apply flex items-center;
+    svg {
+      @apply w-5 h-5;
+    }
+  }
+
+  .fct-product-title {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      @apply leading-tight;
+    }
+  }
+
+  .fct-product-description {
+    @apply bg-white border border-solid border-[var(--fct-single-product-border-color)] shadow-sm p-6 mt-10 mb-10 text-[15px] leading-7 text-[var(--fct-single-product-primary-text-color)];
+
+    p {
+      @apply mb-3 text-[var(--fct-secondary-text-color)];
+      &:last-child {
+        @apply mb-0;
+      }
+    }
+
+    ul {
+      @apply list-disc pl-5 text-[var(--fct-secondary-text-color)] space-y-2;
+    }
   }
 }
 
