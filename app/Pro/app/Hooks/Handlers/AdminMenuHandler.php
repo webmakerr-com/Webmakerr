@@ -15,7 +15,7 @@ class AdminMenuHandler
     public function add()
     {
         add_filter('fluent_cart/admin_menu_title', function ($title) {
-            return $title . ' Pro ';
+            return $title;
         }, 10, 2);
 
         [$app, $slug] = $this->resolveAppAndSlug();
