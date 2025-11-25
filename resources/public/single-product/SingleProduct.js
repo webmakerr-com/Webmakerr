@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             this.#decreaseButton = this.findOneInContainer('[data-fluent-cart-product-qty-decrease-button]');
             this.#quantity = this.findOneInContainer('[data-fluent-cart-single-product-page-product-quantity-input]');
             this.#quantityContainer = this.findOneInContainer('[data-fluent-cart-product-quantity-container]');
-            this.#addToCartButtons = this.findInContainer('[data-fluent-cart-add-to-cart-button]');
-            this.#buyNowButtons = this.findInContainer('[data-fluent-cart-direct-checkout-button]');
+            this.#addToCartButtons = document.querySelectorAll(`[data-fluent-cart-add-to-cart-button][data-product-id="${this.#productId}"]`);
+            this.#buyNowButtons = document.querySelectorAll(`[data-fluent-cart-direct-checkout-button][data-product-id="${this.#productId}"]`);
             this.#thumbnailControls = this.findInContainer('[data-fluent-cart-thumb-control-button]');
             this.#thumbnailControlsWrapper = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail-controls]');
             this.#itemPrice = this.findOneInContainer('[data-fluent-cart-product-item-price]');

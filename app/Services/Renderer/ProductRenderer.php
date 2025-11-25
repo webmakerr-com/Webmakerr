@@ -1134,6 +1134,7 @@ class ProductRenderer
 
         $buyNowAttributes = [
                 'data-fluent-cart-direct-checkout-button' => '',
+                'data-product-id'                        => $this->product->ID,
                 'data-variation-type'                     => $this->product->detail->variation_type,
                 'class'                                   => 'fluent-cart-direct-checkout-button',
                 'data-stock-availability'                 => 'in-stock',
