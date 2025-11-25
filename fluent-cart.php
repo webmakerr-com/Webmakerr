@@ -3,7 +3,7 @@
 defined('ABSPATH') or die;
 
 /*
-Plugin Name: FluentCart
+Plugin Name: Webmakerrr®
 Description: FluentCart WordPress Plugin
 Version: 1.3.1
 Author: FluentCart Team
@@ -13,7 +13,7 @@ License: GPLv2 or later
 Text Domain: fluent-cart
 Domain Path: /language
 */
- 
+
 if (!defined('FLUENTCART_PLUGIN_PATH')) {
     define('FLUENTCART_VERSION', '1.3.1');
     define('FLUENTCART_DB_VERSION', '1.0.31');

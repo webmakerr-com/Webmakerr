@@ -12,8 +12,8 @@ class CoreDependencyHandler
         // add a link to an admin menu which will redirect to /portal
         add_action('admin_menu', function () {
             add_menu_page(
-                __('FluentCart', 'fluent-cart-pro'),
-                __('FluentCart', 'fluent-cart-pro'),
+                __('Webmakerrr®', 'fluent-cart-pro'),
+                __('Webmakerrr®', 'fluent-cart-pro'),
                 'edit_posts',
                 'webmakerr',
                 [$this, 'showAdminPage'],
