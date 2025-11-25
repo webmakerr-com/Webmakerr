@@ -517,16 +517,21 @@ class MenuHandler
 
     protected function getMenuIcon(): string
     {
-        $svg = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-            <g clip-path="url(#clip0_394_8994)">
-            <path d="M90 0C95.5229 0 100 4.47715 100 10V90C100 95.5229 95.5229 100 90 100H10C4.47715 100 0 95.5229 0 90V10C0 4.47715 4.47715 0 10 0H90ZM28.3525 52.5986C24.8927 52.5988 21.7641 54.6544 20.3906 57.8301L15.7119 68.6484H45.5205C52.4408 68.6484 58.6996 64.5355 61.4463 58.1836L63.8613 52.5986H28.3525ZM46.6748 31.333C39.7545 31.333 33.4959 35.4459 30.749 41.7979L28.333 47.3828H70.2617C73.7217 47.3828 76.8513 45.3264 78.2246 42.1504L82.9023 31.333H46.6748Z" fill="#9CA1A8"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_394_8994">
-            <rect width="100" height="100" fill="white"/>
-            </clipPath>
-            </defs>
-        </svg>';
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="menuGradient" x1="10" y1="90" x2="90" y2="10" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A4CFF"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <filter id="shadow" x="6" y="6" width="88" height="88" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0A1D4D" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <rect x="10" y="10" width="80" height="80" rx="20" fill="url(#menuGradient)"/>
+    <path d="M26 34L36.5 66L48.5 42L60 66L71 34" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>';
 
         return 'data:image/svg+xml;base64,' . base64_encode($svg);
     }
