@@ -247,7 +247,7 @@ onMounted(() => {
       <!-- .fct-col -->
 
       <div class="fct-col" v-if="field.type === 'webhook_info' && settings?.payment_mode === field.mode">
-        <div v-if="route_name === 'paypal' && !checkProviderType">
+        <div v-if="route_name === 'paypal' && hasConnectProvider && !checkProviderType">
           <PayPalWebhookSetup
               :testConnect="test_account"
               :liveConnect="live_account"

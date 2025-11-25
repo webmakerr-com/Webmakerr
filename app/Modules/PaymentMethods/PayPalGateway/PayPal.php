@@ -272,18 +272,12 @@ class PayPal extends AbstractPaymentGateway
 
     public static function beforeSettingsUpdate($data, $oldSettings): array
     {
-        if (Arr::get($data, 'payment_mode') === 'live') {
-            $data['live_client_secret'] = Helper::encryptKey($data['live_client_secret']);
-        } else {
-            $data['test_client_secret'] = Helper::encryptKey($data['test_client_secret']);
-        }
+        $data['live_client_secret'] = Helper::encryptKey(Arr::get($data, 'live_client_secret'));
+        $data['test_client_secret'] = Helper::encryptKey(Arr::get($data, 'test_client_secret'));
 
-        if (isset($data['define_test_keys'])) {
-            unset($data['define_test_keys']);
-        }
-        if (isset($data['define_live_keys'])) {
-            unset($data['define_live_keys']);
-        }
+        $data['define_test_keys'] = !empty($data['test_client_id']) && !empty($data['test_client_secret']);
+        $data['define_live_keys'] = !empty($data['live_client_id']) && !empty($data['live_client_secret']);
+        $data['provider'] = 'api_keys';
         //clean existing access token if exist, fix for: api key change authentication error
         fluent_cart_update_option('_paypal_access_token_' . Arr::get($data, 'payment_mode'), []);
 
@@ -344,6 +338,30 @@ class PayPal extends AbstractPaymentGateway
     public function fields()
     {
         $testSchema = [
+            'test_client_id'      => [
+                'value'       => '',
+                'placeholder' => __('PayPal sandbox client ID', 'fluent-cart'),
+                'required'    => true,
+                'label'       => __('Test Client ID', 'fluent-cart'),
+                'type'        => 'text',
+                'dependency'  => [
+                    'depends_on' => 'payment_mode',
+                    'operator'   => '=',
+                    'value'      => 'test'
+                ]
+            ],
+            'test_client_secret'  => [
+                'value'       => '',
+                'placeholder' => __('PayPal sandbox client secret', 'fluent-cart'),
+                'required'    => true,
+                'label'       => __('Test Client Secret', 'fluent-cart'),
+                'type'        => 'password',
+                'dependency'  => [
+                    'depends_on' => 'payment_mode',
+                    'operator'   => '=',
+                    'value'      => 'test'
+                ]
+            ],
             'webhook_instruction' => [
                 'value' => Webhook::webhookInstruction(),
                 'label' => __('Webhook Setup', 'fluent-cart'),
@@ -351,14 +369,43 @@ class PayPal extends AbstractPaymentGateway
             ],
             'test_webhook_id'     => [
                 'value'       => '',
-                'placeholder' => 'Webhook ID',
+                'placeholder' => __('Sandbox webhook ID', 'fluent-cart'),
                 'required'    => true,
                 'label'       => __('Test Webhook ID (Copy the webhook id and paste bellow)', 'fluent-cart'),
-                'type'        => 'text'
+                'type'        => 'text',
+                'dependency'  => [
+                    'depends_on' => 'payment_mode',
+                    'operator'   => '=',
+                    'value'      => 'test'
+                ]
             ],
         ];
 
         $liveSchema = [
+            'live_client_id'      => [
+                'value'       => '',
+                'placeholder' => __('PayPal live client ID', 'fluent-cart'),
+                'required'    => true,
+                'label'       => __('Live Client ID', 'fluent-cart'),
+                'type'        => 'text',
+                'dependency'  => [
+                    'depends_on' => 'payment_mode',
+                    'operator'   => '=',
+                    'value'      => 'live'
+                ]
+            ],
+            'live_client_secret'  => [
+                'value'       => '',
+                'placeholder' => __('PayPal live client secret', 'fluent-cart'),
+                'required'    => true,
+                'label'       => __('Live Client Secret', 'fluent-cart'),
+                'type'        => 'password',
+                'dependency'  => [
+                    'depends_on' => 'payment_mode',
+                    'operator'   => '=',
+                    'value'      => 'live'
+                ]
+            ],
             'webhook_instruction' => [
                 'value' => Webhook::webhookInstruction(),
                 'label' => __('Webhook Setup', 'fluent-cart'),
@@ -366,10 +413,15 @@ class PayPal extends AbstractPaymentGateway
             ],
             'live_webhook_id'     => [
                 'value'       => '',
-                'placeholder' => 'Webhook ID',
+                'placeholder' => __('Live webhook ID', 'fluent-cart'),
                 'required'    => true,
                 'label'       => __('Live Webhook ID (Copy the webhook id and paste bellow)', 'fluent-cart'),
-                'type'        => 'text'
+                'type'        => 'text',
+                'dependency'  => [
+                    'depends_on' => 'payment_mode',
+                    'operator'   => '=',
+                    'value'      => 'live'
+                ]
             ],
         ];
 
