@@ -517,26 +517,26 @@ class MenuHandler
 
     protected function getMenuIcon(): string
     {
-        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Webmakerr icon">
   <defs>
-    <linearGradient id="wmBg" x1="64" y1="240" x2="192" y2="16" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F2F2F2"/>
-      <stop offset="1" stop-color="#E1E1E1"/>
+    <radialGradient id="wmBg" cx="50%" cy="45%" r="65%">
+      <stop offset="0" stop-color="#F4F4F4"/>
+      <stop offset="1" stop-color="#DBDBDB"/>
+    </radialGradient>
+    <linearGradient id="wmLeft" x1="32%" y1="22%" x2="48%" y2="92%">
+      <stop offset="0" stop-color="#7B7B7B"/>
+      <stop offset="1" stop-color="#565656"/>
     </linearGradient>
-    <linearGradient id="wmLeft" x1="72" y1="64" x2="150" y2="188" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#747474"/>
-      <stop offset="1" stop-color="#575757"/>
-    </linearGradient>
-    <linearGradient id="wmRight" x1="130" y1="128" x2="200" y2="64" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#5B5B5B"/>
+    <linearGradient id="wmRight" x1="55%" y1="28%" x2="78%" y2="86%">
+      <stop offset="0" stop-color="#5F5F5F"/>
       <stop offset="1" stop-color="#3F3F3F"/>
     </linearGradient>
   </defs>
-  <circle cx="128" cy="128" r="118" fill="url(#wmBg)"/>
-  <path d="M72 64L102 192L128 132L154 192L184 64L162 64L134 148L112 64Z" fill="#5E5E5E"/>
-  <path d="M72 64L102 192L128 132L134 148L112 64Z" fill="url(#wmLeft)"/>
-  <path d="M128 132L154 192L184 64L162 64L134 148Z" fill="url(#wmRight)"/>
-  <path d="M96 184C112 200 129 208 148 208C167 208 184 200 200 184" stroke="#B5B5B5" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="232" fill="url(#wmBg)" stroke="#D7D7D7" stroke-width="12"/>
+  <path d="M118 116L179 396L256 246L333 396L394 116H348L313 282L256 180L199 282L164 116Z" fill="#606060"/>
+  <path d="M118 116L179 396L256 246L256 180L199 282L164 116Z" fill="url(#wmLeft)"/>
+  <path d="M256 246L333 396L394 116H348L313 282L256 180Z" fill="url(#wmRight)"/>
+  <path d="M156 360C186 390 219 404 256 404C293 404 326 390 356 360" stroke="#B5B5B5" stroke-width="14" stroke-linecap="round"/>
 </svg>';
 
         return 'data:image/svg+xml;base64,' . base64_encode($svg);
