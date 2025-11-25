@@ -41,6 +41,8 @@ class MenuHandler
     {
         add_action('init', [$this, 'init']);
 
+        add_action('admin_enqueue_scripts', [$this, 'adjustMenuIconStyles']);
+
         add_action('admin_init', function () {
             $page = App::request()->get('page') ?? '';
             if ($page == 'webmakerr') {
@@ -72,6 +74,24 @@ class MenuHandler
         // Add a post display state for special WC pages.
         add_filter('display_post_states', array($this, 'addDisplayPostStates'), 10, 2);
 
+    }
+
+    public function adjustMenuIconStyles()
+    {
+        $menuIconCss = '#adminmenu .toplevel_page_webmakerr .wp-menu-image img {' .
+            'width: 20px;' .
+            'height: 20px;' .
+            'padding: 6px 0;' .
+            'opacity: 1;' .
+            'filter: none !important;' .
+            'border-radius: 50%;' .
+            'object-fit: contain;' .
+        '}' .
+        '#adminmenu .toplevel_page_webmakerr .wp-menu-image:before {' .
+            'content: none;' .
+        '}';
+
+        wp_add_inline_style('common', $menuIconCss);
     }
 
 
@@ -517,25 +537,7 @@ class MenuHandler
 
     protected function getMenuIcon(): string
     {
-        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Webmakerr icon">
-  <defs>
-    <linearGradient id="wmLeft" x1="32%" y1="22%" x2="48%" y2="92%">
-      <stop offset="0" stop-color="#7B7B7B"/>
-      <stop offset="1" stop-color="#565656"/>
-    </linearGradient>
-    <linearGradient id="wmRight" x1="55%" y1="28%" x2="78%" y2="86%">
-      <stop offset="0" stop-color="#5F5F5F"/>
-      <stop offset="1" stop-color="#3F3F3F"/>
-    </linearGradient>
-  </defs>
-  <circle cx="256" cy="256" r="226" fill="none" stroke="#D7D7D7" stroke-width="16"/>
-  <path d="M118 116L179 396L256 246L333 396L394 116H348L313 282L256 180L199 282L164 116Z" fill="#606060"/>
-  <path d="M118 116L179 396L256 246L256 180L199 282L164 116Z" fill="url(#wmLeft)"/>
-  <path d="M256 246L333 396L394 116H348L313 282L256 180Z" fill="url(#wmRight)"/>
-  <path d="M156 360C186 390 219 404 256 404C293 404 326 390 356 360" stroke="#B5B5B5" stroke-width="14" stroke-linecap="round"/>
-</svg>';
-
-        return 'data:image/svg+xml;base64,' . base64_encode($svg);
+        return Vite::getAssetUrl('images/logo/logo-white.svg');
     }
 
 }
