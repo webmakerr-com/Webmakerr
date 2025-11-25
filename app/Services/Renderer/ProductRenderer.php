@@ -193,7 +193,281 @@ class ProductRenderer
                     </div>
                 </div>
             </div>
+
+            <div class="fct-single-product-page-body">
+                <?php
+                $this->renderBenefitsSection();
+                $this->renderVideoSection();
+                $this->renderFullDescriptionSection();
+                $this->renderTestimonialsSection();
+                $this->renderFeaturesChecklistSection();
+                $this->renderGuaranteeSection();
+                $this->renderFaqSection();
+                $this->renderBottomCtaSection();
+                ?>
+            </div>
         </div>
+        <?php
+    }
+
+    protected function renderBenefitsSection()
+    {
+        $benefits = [
+                [
+                        'title'    => __('Fast results', 'fluent-cart'),
+                        'subtitle' => __('See value in days with streamlined setup', 'fluent-cart'),
+                ],
+                [
+                        'title'    => __('Trusted quality', 'fluent-cart'),
+                        'subtitle' => __('Built with secure, reliable components', 'fluent-cart'),
+                ],
+                [
+                        'title'    => __('Dedicated support', 'fluent-cart'),
+                        'subtitle' => __('Get answers quickly from our team', 'fluent-cart'),
+                ],
+        ];
+
+        ?>
+        <section class="fct-product-summary-card mb-12">
+            <div class="fct-product-summary-header mb-6">
+                <h3 class="m-0 text-xl leading-6"><?php esc_html_e('Why customers choose this', 'fluent-cart'); ?></h3>
+                <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php esc_html_e('Short, powerful benefits at a glance', 'fluent-cart'); ?></p>
+            </div>
+            <div class="fct-product-assurances grid gap-4 @[900px]/product-page:grid-cols-3">
+                <?php foreach ($benefits as $benefit) { ?>
+                    <div class="fct-product-assurance-item">
+                        <div class="fct-product-assurance-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.00008 12.0001L4.66675 8.66675" stroke="currentColor" stroke-width="1.5"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8.00008 12.0001L16.0001 4.00008" stroke="currentColor" stroke-width="1.5"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9.99997 18.3333C14.6023 18.3333 18.3333 14.6023 18.3333 9.99996C18.3333 5.39759 14.6023 1.66663 9.99997 1.66663C5.39759 1.66663 1.66663 5.39759 1.66663 9.99996C1.66663 14.6023 5.39759 18.3333 9.99997 18.3333Z"
+                                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="fct-product-assurance-copy">
+                            <p class="title"><?php echo esc_html(Arr::get($benefit, 'title', '')); ?></p>
+                            <p class="subtitle"><?php echo esc_html(Arr::get($benefit, 'subtitle', '')); ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </section>
+        <?php
+    }
+
+    protected function renderVideoSection()
+    {
+        ?>
+        <section class="fct-product-summary-card mb-12">
+            <div class="fct-product-summary-header mb-4">
+                <h3 class="m-0 text-xl leading-6"><?php esc_html_e('See it in action', 'fluent-cart'); ?></h3>
+                <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php esc_html_e('Watch a quick walkthrough of the product experience', 'fluent-cart'); ?></p>
+            </div>
+
+            <div class="rounded overflow-hidden border border-solid border-[var(--fct-single-product-border-color)]">
+                <?php if ($this->hasFeaturedVideo()) { ?>
+                    <?php echo $this->getVideoPlayerHtml(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                <?php } else { ?>
+                    <img src="<?php echo esc_url(Vite::getAssetUrl('images/placeholder.svg')); ?>" alt="<?php esc_attr_e('Product video placeholder', 'fluent-cart'); ?>"
+                         class="w-full h-full object-cover">
+                <?php } ?>
+            </div>
+        </section>
+        <?php
+    }
+
+    protected function renderFullDescriptionSection()
+    {
+        $content = $this->product->post_content;
+        ?>
+        <section class="fct-product-summary-card mb-12">
+            <div class="fct-product-summary-header mb-4">
+                <h3 class="m-0 text-xl leading-6"><?php esc_html_e('Product details', 'fluent-cart'); ?></h3>
+                <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php esc_html_e('Everything you need to know before purchasing', 'fluent-cart'); ?></p>
+            </div>
+            <div class="text-base leading-6 text-[var(--fct-primary-text-color)] space-y-4">
+                <?php if ($content) { ?>
+                    <?php echo apply_filters('the_content', $content); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                <?php } else { ?>
+                    <p class="m-0"><?php esc_html_e('Detailed description coming soon. Check back for more insights.', 'fluent-cart'); ?></p>
+                <?php } ?>
+            </div>
+        </section>
+        <?php
+    }
+
+    protected function renderTestimonialsSection()
+    {
+        $testimonials = [
+                [
+                        'quote'  => __('“This product transformed our workflow and paid for itself within weeks.”', 'fluent-cart'),
+                        'name'   => __('Alex M.', 'fluent-cart'),
+                        'title'  => __('Founder, Growth Studio', 'fluent-cart'),
+                ],
+                [
+                        'quote'  => __('“Effortless to set up, beautifully designed, and customers love it.”', 'fluent-cart'),
+                        'name'   => __('Priya D.', 'fluent-cart'),
+                        'title'  => __('Ecommerce Lead', 'fluent-cart'),
+                ],
+                [
+                        'quote'  => __('“Support is fantastic. We shipped faster and increased conversions.”', 'fluent-cart'),
+                        'name'   => __('Jordan R.', 'fluent-cart'),
+                        'title'  => __('Product Manager', 'fluent-cart'),
+                ],
+        ];
+        ?>
+        <section class="fct-product-summary-card mb-12">
+            <div class="fct-product-summary-header mb-6">
+                <h3 class="m-0 text-xl leading-6"><?php esc_html_e('Customer love', 'fluent-cart'); ?></h3>
+                <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php esc_html_e('Social proof that builds trust', 'fluent-cart'); ?></p>
+            </div>
+
+            <div class="grid gap-4 @[900px]/product-page:grid-cols-3">
+                <?php foreach ($testimonials as $testimonial) { ?>
+                    <div class="fct-product-summary-card">
+                        <p class="m-0 text-base leading-6"><?php echo esc_html(Arr::get($testimonial, 'quote', '')); ?></p>
+                        <div class="mt-4">
+                            <p class="m-0 font-semibold text-sm"><?php echo esc_html(Arr::get($testimonial, 'name', '')); ?></p>
+                            <p class="m-0 text-xs text-[var(--fct-secondary-text-color)]"><?php echo esc_html(Arr::get($testimonial, 'title', '')); ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </section>
+        <?php
+    }
+
+    protected function renderFeaturesChecklistSection()
+    {
+        $features = [
+                __('Streamlined onboarding with guided steps', 'fluent-cart'),
+                __('Responsive design tailored for every device', 'fluent-cart'),
+                __('Secure checkout with optimized payment flow', 'fluent-cart'),
+                __('Analytics-ready tracking for conversions', 'fluent-cart'),
+                __('Configurable variants and pricing options', 'fluent-cart'),
+                __('Ongoing updates backed by our team', 'fluent-cart'),
+        ];
+        ?>
+        <section class="fct-product-summary-card mb-12">
+            <div class="fct-product-summary-header mb-4">
+                <h3 class="m-0 text-xl leading-6"><?php esc_html_e('Feature checklist', 'fluent-cart'); ?></h3>
+                <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php esc_html_e('Everything included with your purchase', 'fluent-cart'); ?></p>
+            </div>
+
+            <div class="grid gap-3 @[768px]/product-page:grid-cols-2">
+                <?php foreach ($features as $feature) { ?>
+                    <div class="flex items-start gap-3">
+                        <span class="fct-product-assurance-icon" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.00008 12.0001L4.66675 8.66675" stroke="currentColor" stroke-width="1.5"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8.00008 12.0001L16.0001 4.00008" stroke="currentColor" stroke-width="1.5"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9.99997 18.3333C14.6023 18.3333 18.3333 14.6023 18.3333 9.99996C18.3333 5.39759 14.6023 1.66663 9.99997 1.66663C5.39759 1.66663 1.66663 5.39759 1.66663 9.99996C1.66663 14.6023 5.39759 18.3333 9.99997 18.3333Z"
+                                      stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <p class="m-0 text-sm leading-5 text-[var(--fct-primary-text-color)]"><?php echo esc_html($feature); ?></p>
+                    </div>
+                <?php } ?>
+            </div>
+        </section>
+        <?php
+    }
+
+    protected function renderGuaranteeSection()
+    {
+        ?>
+        <section class="fct-product-summary-card mb-12">
+            <div class="fct-product-summary-header mb-4">
+                <h3 class="m-0 text-xl leading-6"><?php esc_html_e('Our promise', 'fluent-cart'); ?></h3>
+                <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php esc_html_e('Purchase with confidence backed by our guarantee', 'fluent-cart'); ?></p>
+            </div>
+
+            <div class="fct-product-assurance-item">
+                <div class="fct-product-assurance-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.99996 1.66675L3.33329 4.16675V9.16675C3.33329 13.2084 6.23329 16.9417 9.99996 17.9167C13.7666 16.9417 16.6666 13.2084 16.6666 9.16675V4.16675L9.99996 1.66675Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.5 9.58325L9.16667 11.2499L12.9167 7.49992" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="fct-product-assurance-copy">
+                    <p class="title"><?php esc_html_e('30-day money-back guarantee', 'fluent-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Try it risk-free with full refund if it is not the perfect fit', 'fluent-cart'); ?></p>
+                </div>
+            </div>
+        </section>
+        <?php
+    }
+
+    protected function renderFaqSection()
+    {
+        $faqs = [
+                [
+                        'question' => __('How soon can I launch?', 'fluent-cart'),
+                        'answer'   => __('Most customers launch within a few days using the guided setup and templates.', 'fluent-cart'),
+                ],
+                [
+                        'question' => __('Does this work on mobile?', 'fluent-cart'),
+                        'answer'   => __('Yes, the layout is responsive and optimized for every screen size.', 'fluent-cart'),
+                ],
+                [
+                        'question' => __('Can I change the pricing later?', 'fluent-cart'),
+                        'answer'   => __('You can adjust variants, subscriptions, and one-time pricing anytime from the dashboard.', 'fluent-cart'),
+                ],
+                [
+                        'question' => __('What kind of support do you offer?', 'fluent-cart'),
+                        'answer'   => __('Our support team is available to help with setup questions, troubleshooting, and optimization tips.', 'fluent-cart'),
+                ],
+        ];
+        ?>
+        <section class="fct-product-summary-card mb-12">
+            <div class="fct-product-summary-header mb-4">
+                <h3 class="m-0 text-xl leading-6"><?php esc_html_e('Frequently asked questions', 'fluent-cart'); ?></h3>
+                <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php esc_html_e('Answers to the most common questions about this product', 'fluent-cart'); ?></p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <?php foreach ($faqs as $faq) { ?>
+                    <details class="fct-product-summary-card">
+                        <summary class="flex items-center justify-between cursor-pointer">
+                            <span class="font-semibold text-base"><?php echo esc_html(Arr::get($faq, 'question', '')); ?></span>
+                            <span aria-hidden="true" class="text-sm text-[var(--fct-secondary-text-color)]">+</span>
+                        </summary>
+                        <div class="mt-3 text-sm leading-6 text-[var(--fct-primary-text-color)]">
+                            <?php echo esc_html(Arr::get($faq, 'answer', '')); ?>
+                        </div>
+                    </details>
+                <?php } ?>
+            </div>
+        </section>
+        <?php
+    }
+
+    protected function renderBottomCtaSection()
+    {
+        ?>
+        <section class="fct-product-summary-card">
+            <div class="fct-product-summary-header mb-3">
+                <h3 class="m-0 text-xl leading-6"><?php echo esc_html($this->product->post_title); ?></h3>
+                <?php if ($this->product->post_excerpt) { ?>
+                    <p class="m-0 text-sm text-[var(--fct-secondary-text-color)]"><?php echo esc_html($this->product->post_excerpt); ?></p>
+                <?php } ?>
+            </div>
+
+            <?php $this->renderPrices(); ?>
+            <div class="mt-4">
+                <div class="fct-product-buttons-wrap grid grid-cols-1 @[480px]/product-page:grid-cols-2 gap-3">
+                    <?php $this->renderPurchaseButtons(); ?>
+                </div>
+            </div>
+            <div class="mt-4">
+                <?php $this->renderAssurances(); ?>
+            </div>
+        </section>
         <?php
     }
 
