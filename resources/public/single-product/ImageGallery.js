@@ -326,7 +326,7 @@ export default class ImageGallery {
                 this.#handleThumbnailChange(nextControl, {auto: true});
                 this.#scrollControlIntoView(nextControl);
             }
-        }, 2000);
+        }, 4000);
     }
 
     #stopAutoRotate() {
@@ -337,15 +337,33 @@ export default class ImageGallery {
     }
 
     #scrollControlIntoView(control) {
-        if (typeof control?.scrollIntoView !== 'function') {
+        const container = control?.closest('.fct-gallery-thumb-controls');
+
+        if (!container) {
             return;
         }
 
-        control.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'nearest'
-        });
+        const controlRect = control.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        const needsHorizontalScroll = controlRect.left < containerRect.left || controlRect.right > containerRect.right;
+        const needsVerticalScroll = controlRect.top < containerRect.top || controlRect.bottom > containerRect.bottom;
+
+        if (needsHorizontalScroll) {
+            const offsetLeft = control.offsetLeft - (container.clientWidth - control.clientWidth) / 2;
+            container.scrollTo({
+                left: Math.max(0, offsetLeft),
+                behavior: 'smooth'
+            });
+        }
+
+        if (needsVerticalScroll) {
+            const offsetTop = control.offsetTop - (container.clientHeight - control.clientHeight) / 2;
+            container.scrollTo({
+                top: Math.max(0, offsetTop),
+                behavior: 'smooth'
+            });
+        }
     }
 
 
@@ -445,6 +463,22 @@ export default class ImageGallery {
         if (!this.#zoomer) {
             this.#initImageZoom();
         }
+
+        const fadeClass = 'is-switching';
+        const currentSrc = productThumbnail.getAttribute('src');
+
+        if (currentSrc === thumbnailUrl && productThumbnail.complete) {
+            productThumbnail.classList.remove(fadeClass);
+            return;
+        }
+
+        productThumbnail.classList.add(fadeClass);
+
+        const handleImageLoad = () => {
+            productThumbnail.classList.remove(fadeClass);
+        };
+
+        productThumbnail.addEventListener('load', handleImageLoad, {once: true});
         productThumbnail.setAttribute('src', thumbnailUrl);
     }
 
