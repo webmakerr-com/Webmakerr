@@ -197,6 +197,19 @@ class ProductUpdateRequest extends RequestGuard
                 return $this->validateTaxClassId($attribute, $value);
             }],
             'detail.other_info.active_editor'     => 'nullable|sanitizeText',
+            'detail.other_info.custom_sections'   => 'nullable|array|max:4',
+            'detail.other_info.custom_sections.*.title' => 'nullable|sanitizeText|maxLength:200',
+            'detail.other_info.custom_sections.*.description' => 'nullable|sanitizeTextArea',
+            'detail.other_info.custom_sections.*.media_type' => 'nullable|sanitizeText|in:image,video',
+            'detail.other_info.custom_sections.*.image' => 'nullable|array',
+            'detail.other_info.custom_sections.*.image.id' => 'nullable|numeric',
+            'detail.other_info.custom_sections.*.image.url' => 'nullable|sanitizeText',
+            'detail.other_info.custom_sections.*.image.title' => 'nullable|sanitizeText',
+            'detail.other_info.custom_sections.*.video' => 'nullable|array',
+            'detail.other_info.custom_sections.*.video.id' => 'nullable|numeric',
+            'detail.other_info.custom_sections.*.video.url' => 'nullable|sanitizeText',
+            'detail.other_info.custom_sections.*.video.title' => 'nullable|sanitizeText',
+            'detail.other_info.custom_sections.*.video.type' => 'nullable|sanitizeText',
             'product_terms'                       => 'nullable|array',
             'product_terms.*'                     => 'nullable|array',
             'product_terms.*.*'                   => 'nullable|numeric',
@@ -378,6 +391,44 @@ class ProductUpdateRequest extends RequestGuard
             foreach ($detailFieldMap as $field => $sanitizer) {
                 if (Arr::has($data, $field)) {
                     $sanitizers[$field] = $sanitizer;
+                }
+            }
+
+            if (isset($data['detail']['other_info']['custom_sections']) && is_array($data['detail']['other_info']['custom_sections'])) {
+                $sanitizers['detail.other_info.custom_sections'] = function ($value) {
+                    return is_array($value) ? array_values($value) : [];
+                };
+
+                foreach ($data['detail']['other_info']['custom_sections'] as $index => $section) {
+                    $base = "detail.other_info.custom_sections.$index";
+                    $sanitizers["$base.title"] = 'sanitize_text_field';
+                    $sanitizers["$base.description"] = function ($value) {
+                        return wp_kses_post($value);
+                    };
+                    $sanitizers["$base.media_type"] = 'sanitize_text_field';
+                    $sanitizers["$base.image"] = function ($value) {
+                        return is_array($value) ? $value : [];
+                    };
+                    $sanitizers["$base.video"] = function ($value) {
+                        return is_array($value) ? $value : [];
+                    };
+
+                    if (isset($section['image']) && is_array($section['image'])) {
+                        $sanitizers["$base.image.id"] = 'intval';
+                        $sanitizers["$base.image.url"] = function ($value) {
+                            return empty($value) ? '' : sanitize_url($value);
+                        };
+                        $sanitizers["$base.image.title"] = 'sanitize_text_field';
+                    }
+
+                    if (isset($section['video']) && is_array($section['video'])) {
+                        $sanitizers["$base.video.id"] = 'intval';
+                        $sanitizers["$base.video.url"] = function ($value) {
+                            return empty($value) ? '' : sanitize_url($value);
+                        };
+                        $sanitizers["$base.video.title"] = 'sanitize_text_field';
+                        $sanitizers["$base.video.type"] = 'sanitize_text_field';
+                    }
                 }
             }
         }
