@@ -177,21 +177,20 @@ const getVideoAttachments = (section) => {
   }] : [];
 };
 
+const getVideoLabel = (section) => {
+  if (section.video?.title) {
+    return section.video.title;
+  }
+
+  if (section.title) {
+    return section.title;
+  }
+
+  return translate('Selected video');
+};
+
 const hasVideoUrl = (section) => !!section?.video?.url;
 
-const isVideoFile = (section) => {
-  const url = section?.video?.url;
-  if (!url) {
-    return false;
-  }
-
-  const type = section?.video?.type;
-  if (type === 'file') {
-    return true;
-  }
-
-  return /\.(mp4|mov|webm|ogg)(\?.*)?$/i.test(url);
-};
 </script>
 
 <template>
@@ -305,7 +304,7 @@ const isVideoFile = (section) => {
                             :attachments="getVideoAttachments(section)"
                             :library-type="'video'"
                             :multiple="false"
-                            @onMediaSelected="selected => onVideoSelected(index, selected)"
+                          @onMediaSelected="selected => onVideoSelected(index, selected)"
                         />
                         <el-button
                             v-if="hasVideoUrl(section)"
@@ -318,19 +317,9 @@ const isVideoFile = (section) => {
                       </div>
                     </div>
 
-                    <div v-if="hasVideoUrl(section)" class="fct-section-video-preview">
-                      <video
-                          v-if="isVideoFile(section)"
-                          :src="section.video.url"
-                          controls
-                          playsinline
-                      ></video>
-                      <iframe
-                          v-else
-                          :src="section.video.url"
-                          allowfullscreen
-                          loading="lazy"
-                      ></iframe>
+                    <div v-if="hasVideoUrl(section)" class="fct-section-video-attachment">
+                      <a :href="section.video.url" target="_blank" rel="noopener">{{ getVideoLabel(section) }}</a>
+                      <span class="fct-section-media-meta">{{ translate('Video attachment') }}</span>
                     </div>
                   </div>
                 </el-form-item>
@@ -388,8 +377,7 @@ const isVideoFile = (section) => {
   @apply flex items-center gap-2;
 }
 
-.fct-section-media-preview,
-.fct-section-video-preview {
+.fct-section-media-preview {
   @apply rounded overflow-hidden border border-solid border-gray-200 bg-gray-50;
 
   img, video, iframe {
@@ -399,6 +387,18 @@ const isVideoFile = (section) => {
 
   iframe {
     border: 0;
+  }
+}
+
+.fct-section-video-attachment {
+  @apply flex flex-col gap-1 border border-solid border-gray-200 rounded px-3 py-2 bg-gray-50 text-sm text-gray-700;
+
+  a {
+    @apply font-medium text-blue-600 break-all hover:underline;
+  }
+
+  .fct-section-media-meta {
+    @apply text-xs text-gray-500;
   }
 }
 

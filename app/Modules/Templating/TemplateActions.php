@@ -229,6 +229,8 @@ class TemplateActions
         $headerContent = ob_get_clean();
         $content = $headerContent . '<section class="fct-product-description">' . $content . '</section>';
 
+        $content .= $this->renderCustomSectionsContent($post->ID);
+
         $storeSettings = new StoreSettings();
 
         $showRelevant = $storeSettings->get('show_relevant_product_in_single_page') == 'yes';
@@ -267,8 +269,28 @@ class TemplateActions
         $storeSettings = new StoreSettings();
         (new ProductRenderer($product, [
             'view_type'   => $storeSettings->get('variation_view', 'both'),
-            'column_type' => $storeSettings->get('variation_columns', 'masonry')
+            'column_type' => $storeSettings->get('variation_columns', 'masonry'),
+            'render_custom_sections' => false
         ]))->render();
+    }
+
+    private function renderCustomSectionsContent($productId)
+    {
+        $product = ProductDataSetup::getProductModel($productId);
+        if (!$product || !$product->detail) {
+            return '';
+        }
+
+        $storeSettings = new StoreSettings();
+
+        ob_start();
+        (new ProductRenderer($product, [
+            'view_type'   => $storeSettings->get('variation_view', 'both'),
+            'column_type' => $storeSettings->get('variation_columns', 'masonry'),
+            'render_custom_sections' => true
+        ]))->renderCustomSectionsOnly();
+
+        return $this->tempFixShortcodeContent(ob_get_clean());
     }
 
     private function tempFixShortcodeContent($content)

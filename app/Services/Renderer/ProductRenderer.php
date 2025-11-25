@@ -45,6 +45,8 @@ class ProductRenderer
 
     protected $featuredVideo = [];
 
+    protected $renderCustomSections = true;
+
     public function __construct(Product $product, $config = [])
     {
         $this->product = $product;
@@ -52,6 +54,7 @@ class ProductRenderer
         $this->viewType = $config['view_type'] ?? 'both';
         $this->columnType = $config['column_type'] ?? 'masonry';
         $defaultVariationId = $config['default_variation_id'] ?? '';
+        $this->renderCustomSections = $config['render_custom_sections'] ?? true;
         $this->featuredVideo = ProductResource::formatFeaturedVideo(
             get_post_meta($product->ID, '_fct_featured_video', true)
         );
@@ -193,9 +196,18 @@ class ProductRenderer
                     </div>
                 </div>
             </div>
-            <?php $this->renderCustomSections(); ?>
+            <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
         </div>
         <?php
+    }
+
+    public function renderCustomSectionsOnly()
+    {
+        if (!$this->renderCustomSections) {
+            return;
+        }
+
+        $this->renderCustomSections();
     }
 
     public function renderBuySection($atts = [])
