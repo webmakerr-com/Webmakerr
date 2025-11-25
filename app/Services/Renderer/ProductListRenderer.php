@@ -35,17 +35,49 @@ class ProductListRenderer
 
     public function render()
     {
+        $isSimilarProductList = strpos((string)$this->wrapperClass, 'fct-similar-product-list-container') !== false;
+        $productCount = is_countable($this->products) ? count($this->products) : 0;
+        $enableSlider = $isSimilarProductList && $productCount > 4;
         ?>
         <section class="fct-product-list-container <?php echo esc_attr($this->wrapperClass); ?>" aria-label="<?php echo esc_attr($this->listTitle ?: __('Product List', 'fluent-cart')); ?>">
             <?php $this->renderTitle(); ?>
-            <div
-                class="fct-product-list"
-                role="list"
-                aria-live="polite"
-                aria-busy="false"
-            >
-                <?php $this->renderProductList(); ?>
-            </div>
+            <?php if ($isSimilarProductList): ?>
+                <div class="fct-product-list-slider-wrapper <?php echo $enableSlider ? 'has-slider' : ''; ?>" data-fct-similar-slider-wrapper>
+                    <?php if ($enableSlider): ?>
+                        <button type="button" class="fct-similar-nav-button prev" data-fct-similar-slider-prev aria-label="<?php esc_attr_e('View previous related products', 'fluent-cart'); ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    <?php endif; ?>
+
+                    <div
+                        class="fct-product-list"
+                        role="list"
+                        aria-live="polite"
+                        aria-busy="false"
+                    >
+                        <?php $this->renderProductList(); ?>
+                    </div>
+
+                    <?php if ($enableSlider): ?>
+                        <button type="button" class="fct-similar-nav-button next" data-fct-similar-slider-next aria-label="<?php esc_attr_e('View more related products', 'fluent-cart'); ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    <?php endif; ?>
+                </div>
+            <?php else: ?>
+                <div
+                    class="fct-product-list"
+                    role="list"
+                    aria-live="polite"
+                    aria-busy="false"
+                >
+                    <?php $this->renderProductList(); ?>
+                </div>
+            <?php endif; ?>
         </section>
         <?php
     }

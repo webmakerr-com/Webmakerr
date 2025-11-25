@@ -71,10 +71,33 @@
 }
 
 .fct-similar-product-list-container {
-  @apply mt-12;
+  @apply mt-12 bg-white border border-solid border-[var(--fct-single-product-border-color)] rounded shadow-sm p-6;
 
   .fct-product-list-heading {
-    @apply text-[24px] font-semibold mb-6;
+    @apply text-[24px] font-semibold mb-6 text-[var(--fct-single-product-primary-text-color)];
+  }
+
+  .fct-product-list-slider-wrapper {
+    @apply relative;
+
+    &.has-slider {
+      .fct-product-list {
+        @apply flex gap-5 overflow-x-auto pb-1;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      .fct-product-list-item {
+        scroll-snap-align: start;
+        flex: 0 0 calc(25% - 15px);
+        max-width: calc(25% - 15px);
+      }
+    }
   }
 
   .fct-product-list {
@@ -104,6 +127,55 @@
       border: 1px solid #e5e7eb;
       box-shadow: none;
       @apply rounded text-[15px] font-medium hover:bg-white hover:border-gray-300;
+    }
+  }
+
+  .fct-similar-nav-button {
+    @apply absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center bg-white text-[var(--fct-single-product-primary-text-color)] border border-solid border-[var(--fct-single-product-border-color)] shadow-sm transition;
+
+    &.prev {
+      @apply -left-3;
+    }
+
+    &.next {
+      @apply -right-3;
+    }
+
+    &:hover {
+      @apply shadow-md;
+    }
+
+    &:disabled {
+      @apply opacity-50 cursor-not-allowed shadow-none;
+    }
+
+    &.is-hidden {
+      @apply hidden;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .fct-product-list-slider-wrapper.has-slider .fct-product-list-item {
+      flex-basis: calc(33.333% - 14px);
+      max-width: calc(33.333% - 14px);
+    }
+  }
+
+  @media (max-width: 815px) {
+    .fct-product-list-slider-wrapper.has-slider .fct-product-list-item {
+      flex-basis: calc(50% - 12px);
+      max-width: calc(50% - 12px);
+    }
+
+    .fct-similar-nav-button {
+      @apply hidden;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .fct-product-list-slider-wrapper.has-slider .fct-product-list-item {
+      flex-basis: calc(80% - 10px);
+      max-width: calc(80% - 10px);
     }
   }
 }

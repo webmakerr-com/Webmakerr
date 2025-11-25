@@ -25,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
         #pricingSection;
         #productThumbnail;
         #videoContainer;
+        #mobileStickyBar;
+        #mobileStickyPrice;
+        #mobileStickyButton;
+        #mobileCartObserver;
+        #mainAddToCartVisibility = true;
 
         toTitleCase(str) {
             return str.replace(
@@ -81,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.#initTabOnDemand();
             this.#setMobileViewClass();
             this.#listenWindowResize();
+            this.#setupMobileStickyCart();
 
 
             FluentCartSingleProduct.#instance = this;
@@ -95,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         #setMobileViewClass() {
-            const productPage = document.querySelector('.fluent-cart-single-product-page');
+            const productPage = document.querySelector('[data-fluent-cart-single-product-page]');
             if (!productPage) return;
             if (productPage.offsetWidth <= 815) {
                 productPage.classList.add('is-mobile');
@@ -117,6 +123,103 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.#tab = new Tab(this.#container);
                 this.#tab.init();
             }
+        }
+
+        #updateStickyPrice() {
+            if (!this.#mobileStickyPrice) {
+                return;
+            }
+
+            const priceHtml = this.#getCurrentPriceHtml();
+            if (priceHtml) {
+                this.#mobileStickyPrice.innerHTML = priceHtml;
+            }
+        }
+
+        #setupMobileStickyCart() {
+            const productPage = document.querySelector('[data-fluent-cart-single-product-page]');
+            const mainAddToCart = this.findOneInContainer('.fct-dominant-add-to-cart');
+
+            if (!productPage || !mainAddToCart) {
+                return;
+            }
+
+            if (!this.#mobileStickyBar) {
+                this.#mobileStickyBar = document.querySelector('.fct-mobile-sticky-cart');
+            }
+
+            if (!this.#mobileStickyBar) {
+                this.#mobileStickyBar = document.createElement('div');
+                this.#mobileStickyBar.className = 'fct-mobile-sticky-cart';
+                this.#mobileStickyBar.innerHTML = `
+                    <div class="fct-mobile-sticky-content">
+                        <div class="fct-mobile-sticky-price" data-fluent-cart-sticky-price></div>
+                        <button type="button" class="fct-mobile-sticky-button" data-fluent-cart-sticky-button>
+                            <span class="text">${mainAddToCart.querySelector('.text')?.textContent || mainAddToCart.textContent?.trim() || ''}</span>
+                        </button>
+                    </div>
+                `;
+                productPage.appendChild(this.#mobileStickyBar);
+            }
+
+            this.#mobileStickyPrice = this.#mobileStickyBar.querySelector('[data-fluent-cart-sticky-price]');
+            this.#mobileStickyButton = this.#mobileStickyBar.querySelector('[data-fluent-cart-sticky-button]');
+
+            if (this.#mobileStickyButton) {
+                this.#mobileStickyButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    mainAddToCart.click();
+                });
+            }
+
+            const isMobileView = () => window.matchMedia('(max-width: 815px)').matches;
+
+            const updateStickyVisibility = () => {
+                if (!this.#mobileStickyBar) {
+                    return;
+                }
+
+                const shouldShow = isMobileView() && !this.#mainAddToCartVisibility;
+                this.#mobileStickyBar.classList.toggle('is-visible', shouldShow);
+            };
+
+            if (this.#mobileCartObserver) {
+                this.#mobileCartObserver.disconnect();
+            }
+
+            this.#mobileCartObserver = new IntersectionObserver(([entry]) => {
+                this.#mainAddToCartVisibility = entry.isIntersecting;
+                updateStickyVisibility();
+            }, {threshold: 0});
+
+            this.#mobileCartObserver.observe(mainAddToCart);
+
+            window.addEventListener('resize', updateStickyVisibility);
+            window.addEventListener('scroll', updateStickyVisibility, {passive: true});
+            window.addEventListener('fluentCartSingleProductVariationChanged', () => this.#updateStickyPrice());
+
+            this.#updateStickyPrice();
+            updateStickyVisibility();
+        }
+
+        #getCurrentPriceHtml() {
+            const activeVariationPrice = this.findOneInContainer('[data-fluent-cart-product-item-price]:not(.is-hidden)');
+            if (activeVariationPrice) {
+                return activeVariationPrice.innerHTML.trim();
+            }
+
+            const activePaymentPrice = this.findOneInContainer('[data-fluent-cart-product-payment-type]:not(.is-hidden)');
+            if (activePaymentPrice) {
+                return activePaymentPrice.innerHTML.trim();
+            }
+
+            const simplePrice = this.findOneInContainer('.fct-product-prices .fct-item-price');
+            if (simplePrice) {
+                return simplePrice.innerHTML.trim();
+            }
+
+            const fallbackPrice = this.findOneInContainer('.fct-product-prices');
+            return fallbackPrice ? fallbackPrice.textContent.trim() : '';
         }
 
 
@@ -667,7 +770,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const initSimilarProductSlider = () => {
+        document.querySelectorAll('.fct-similar-product-list-container').forEach(container => {
+            const wrapper = container.querySelector('[data-fct-similar-slider-wrapper]');
+            const list = container.querySelector('.fct-product-list');
+            const items = container.querySelectorAll('.fct-product-list-item');
+            const prevButton = container.querySelector('[data-fct-similar-slider-prev]');
+            const nextButton = container.querySelector('[data-fct-similar-slider-next]');
+
+            if (!wrapper || !list || items.length === 0) {
+                return;
+            }
+
+            if (items.length <= 4) {
+                wrapper.classList.remove('has-slider');
+                prevButton?.classList.add('is-hidden');
+                nextButton?.classList.add('is-hidden');
+                return;
+            }
+
+            wrapper.classList.add('has-slider');
+
+            const getGap = () => {
+                const styles = getComputedStyle(list);
+                const gapValue = parseFloat(styles.columnGap || styles.gap || '0');
+                return Number.isNaN(gapValue) ? 0 : gapValue;
+            };
+
+            const getScrollAmount = () => {
+                const firstItemWidth = items[0]?.getBoundingClientRect().width || 0;
+                const gap = getGap();
+
+                if (!firstItemWidth) {
+                    return list.clientWidth;
+                }
+
+                const visibleCount = Math.max(1, Math.floor((list.clientWidth + gap) / (firstItemWidth + gap)));
+                return (firstItemWidth + gap) * visibleCount;
+            };
+
+            const updateNavState = () => {
+                const maxScroll = list.scrollWidth - list.clientWidth - 1;
+                const disablePrev = list.scrollLeft <= 0;
+                const disableNext = list.scrollLeft >= maxScroll;
+
+                if (prevButton) {
+                    prevButton.disabled = disablePrev;
+                }
+
+                if (nextButton) {
+                    nextButton.disabled = disableNext;
+                }
+            };
+
+            const scrollByAmount = (direction) => {
+                list.scrollBy({
+                    left: direction * getScrollAmount(),
+                    behavior: 'smooth'
+                });
+            };
+
+            prevButton?.addEventListener('click', () => scrollByAmount(-1));
+            nextButton?.addEventListener('click', () => scrollByAmount(1));
+
+            list.addEventListener('scroll', updateNavState, {passive: true});
+            window.addEventListener('resize', updateNavState);
+
+            updateNavState();
+        });
+    };
+
     // Initialize all single product pages
+    initSimilarProductSlider();
     document.querySelectorAll('[data-fluent-cart-product-pricing-section]').forEach((container, index) => {
         new FluentCartSingleProduct().init(container, index);
     });
