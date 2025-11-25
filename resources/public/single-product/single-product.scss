@@ -70,6 +70,10 @@
         transform: scale(.985);
       }
     }
+
+    .fct-product-description {
+      @apply mt-6;
+    }
   }
 
   @container product-page (max-width: 767px) {
