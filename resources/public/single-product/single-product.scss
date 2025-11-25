@@ -670,17 +670,13 @@
   }
 }
 
-@media (max-width: 815px) {
+@media (max-width: 767px) {
   .fct-mobile-sticky-cart {
     @apply flex-col;
   }
-
-  .fct-single-product-page {
-    padding-bottom: 6rem;
-  }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 768px) {
   .fct-mobile-sticky-cart {
     @apply hidden !important;
   }

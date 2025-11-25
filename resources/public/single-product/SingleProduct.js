@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         #setMobileViewClass() {
             const productPage = document.querySelector('[data-fluent-cart-single-product-page]');
             if (!productPage) return;
-            if (productPage.offsetWidth <= 815) {
+            if (productPage.offsetWidth <= 767) {
                 productPage.classList.add('is-mobile');
             } else {
                 productPage.classList.remove('is-mobile');
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            const isMobileView = () => window.matchMedia('(max-width: 815px)').matches;
+            const isMobileView = () => window.matchMedia('(max-width: 767px)').matches;
 
             const updateStickyVisibility = () => {
                 if (!this.#mobileStickyBar) {
