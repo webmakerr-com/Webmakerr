@@ -411,7 +411,7 @@ class ProductRenderer
         }
 
         return sprintf(
-            '<video class="fct-product-featured-video__embed" controls preload="metadata" playsinline src="%1$s" title="%2$s" style="width:100%%;height:100%%;border-radius:8px;"></video>',
+            '<video class="fct-product-featured-video__embed" controls preload="metadata" playsinline src="%1$s" title="%2$s" style="width:100%%;height:100%%;border-radius:4px;"></video>',
             esc_url($videoUrl),
             esc_attr($title)
         );
