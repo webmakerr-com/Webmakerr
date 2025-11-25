@@ -31,6 +31,7 @@ export default class ImageGallery {
     #thumbnailMode = 'all'; // all or by-variants
     #autoRotateTimer = null;
     #autoRotateIndex = 0;
+    #autoRotateDelay = 4000;
 
     init(container, enableZoom = true) {
         this.container = container;
@@ -56,6 +57,17 @@ export default class ImageGallery {
         this.#setupThumbnailControls();
         this.#setupThumbnailScrolling();
         this.#setupAutoRotation();
+
+        window.addEventListener('resize', () => this.#setupAutoRotation());
+    }
+
+    #isMobileView() {
+        const productPage = document.querySelector('[data-fluent-cart-single-product-page]');
+        return productPage?.classList.contains('is-mobile') || window.matchMedia('(max-width: 815px)').matches;
+    }
+
+    #setAutoRotateDelay() {
+        this.#autoRotateDelay = this.#isMobileView() ? 5200 : 4000;
     }
 
     #listenForVariationChange() {
@@ -296,6 +308,7 @@ export default class ImageGallery {
 
     #setupAutoRotation() {
         this.#stopAutoRotate();
+        this.#setAutoRotateDelay();
 
         const rotatingThumbnails = this.#getRotatingThumbnails();
         if (rotatingThumbnails.length < 2) {
@@ -324,9 +337,11 @@ export default class ImageGallery {
 
             if (nextControl) {
                 this.#handleThumbnailChange(nextControl, {auto: true});
-                this.#scrollControlIntoView(nextControl);
+                if (!this.#isMobileView()) {
+                    this.#scrollControlIntoView(nextControl);
+                }
             }
-        }, 4000);
+        }, this.#autoRotateDelay);
     }
 
     #stopAutoRotate() {
@@ -440,7 +455,9 @@ export default class ImageGallery {
             this.#setupAutoRotation();
         }
 
-        this.#scrollControlIntoView(control);
+        if (!this.#isMobileView()) {
+            this.#scrollControlIntoView(control);
+        }
     }
 
     #setThumbImage(control) {
