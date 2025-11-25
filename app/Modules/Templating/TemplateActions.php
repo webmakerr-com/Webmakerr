@@ -219,7 +219,8 @@ class TemplateActions
         global $post;
         global $wp_query;
 
-        if (!$wp_query->is_main_query() && $post->post_type !== FluentProducts::CPT_NAME) {
+        // Bail out early if the main query is unavailable or this isn't a Fluent product post
+        if (!($wp_query && $wp_query->is_main_query()) || !$post || $post->post_type !== FluentProducts::CPT_NAME) {
             return $content;
         }
 
