@@ -519,29 +519,18 @@ class MenuHandler
     {
         $logoPath = FLUENTCART_PLUGIN_PATH . 'assets/images/logo/logo.svg';
 
-        $defaultIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-            <g clip-path="url(#clip0_394_8994)">
-            <path d="M90 0C95.5229 0 100 4.47715 100 10V90C100 95.5229 95.5229 100 90 100H10C4.47715 100 0 95.5229 0 90V10C0 4.47715 4.47715 0 10 0H90ZM28.3525 52.5986C24.8927 52.5988 21.7641 54.6544 20.3906 57.8301L15.7119 68.6484H45.5205C52.4408 68.6484 58.6996 64.5355 61.4463 58.1836L63.8613 52.5986H28.3525ZM46.6748 31.333C39.7545 31.333 33.4959 35.4459 30.749 41.7979L28.333 47.3828H70.2617C73.7217 47.3828 76.8513 45.3264 78.2246 42.1504L82.9023 31.333H46.6748Z" fill="#9CA1A8"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_394_8994">
-            <rect width="100" height="100" fill="white"/>
-            </clipPath>
-            </defs>
-        </svg>';
-
         if (file_exists($logoPath)) {
             $logoContent = file_get_contents($logoPath);
 
             if ($logoContent !== false) {
-                $logoContent = preg_replace('/width="[^"]*"/i', 'width="100"', $logoContent) ?? $logoContent;
-                $logoContent = preg_replace('/height="[^"]*"/i', 'height="100"', $logoContent) ?? $logoContent;
+                $logoContent = preg_replace('/width="[^"]*"/i', 'width="20"', $logoContent) ?? $logoContent;
+                $logoContent = preg_replace('/height="[^"]*"/i', 'height="20"', $logoContent) ?? $logoContent;
 
                 return 'data:image/svg+xml;base64,' . base64_encode($logoContent);
             }
         }
 
-        return 'data:image/svg+xml;base64,' . base64_encode($defaultIcon);
+        return '';
     }
 
 }
