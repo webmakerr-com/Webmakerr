@@ -18,8 +18,6 @@ use FluentCart\Framework\Support\Arr;
 
 class TemplateActions
 {
-    protected $productContent = '';
-
     public function register()
     {
         add_action('fluent_cart/template/main_content', [$this, 'renderMainContent']);
@@ -226,11 +224,10 @@ class TemplateActions
         }
 
         remove_filter('the_content', [$this, 'filterSingleProductContent']);
-        $this->productContent = $this->tempFixShortcodeContent($content);
         ob_start();
         do_action('fluent_cart/product/render_product_header', $post->ID);
         $headerContent = ob_get_clean();
-        $content = $headerContent;
+        $content = $headerContent . '<section class="fct-product-description">' . $content . '</section>';
 
         $storeSettings = new StoreSettings();
 
@@ -248,8 +245,6 @@ class TemplateActions
             $relevantProducts = ob_get_clean();
             $content .= $relevantProducts;
         }
-
-        $this->productContent = '';
 
         return $content;
     }
@@ -272,8 +267,7 @@ class TemplateActions
         $storeSettings = new StoreSettings();
         (new ProductRenderer($product, [
             'view_type'   => $storeSettings->get('variation_view', 'both'),
-            'column_type' => $storeSettings->get('variation_columns', 'masonry'),
-            'long_description' => $this->productContent
+            'column_type' => $storeSettings->get('variation_columns', 'masonry')
         ]))->render();
     }
 

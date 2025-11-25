@@ -45,15 +45,12 @@ class ProductRenderer
 
     protected $featuredVideo = [];
 
-    protected $longDescription = '';
-
     public function __construct(Product $product, $config = [])
     {
         $this->product = $product;
         $this->variants = $product->variants;
         $this->viewType = $config['view_type'] ?? 'both';
         $this->columnType = $config['column_type'] ?? 'masonry';
-        $this->longDescription = $config['long_description'] ?? '';
         $defaultVariationId = $config['default_variation_id'] ?? '';
         $this->featuredVideo = ProductResource::formatFeaturedVideo(
             get_post_meta($product->ID, '_fct_featured_video', true)
@@ -192,29 +189,9 @@ class ProductRenderer
                         $this->renderPrices();
                         $this->renderBuySection();
                         $this->renderAssurances();
-                        $this->renderLongDescription();
                         ?>
                     </div>
                 </div>
-            </div>
-        </div>
-        <?php
-    }
-
-    protected function renderLongDescription()
-    {
-        if (!$this->longDescription) {
-            return;
-        }
-
-        ?>
-        <div class="fct-product-description-card" id="fct-product-description" aria-label="<?php esc_attr_e('Product description', 'fluent-cart'); ?>">
-            <div class="fct-product-description-card__header">
-                <div class="fct-product-description-card__title"><?php esc_html_e('Product Description', 'fluent-cart'); ?></div>
-                <p class="fct-product-description-card__subtitle"><?php esc_html_e('Detailed overview and specifications', 'fluent-cart'); ?></p>
-            </div>
-            <div class="fct-product-description">
-                <?php echo wp_kses_post($this->longDescription); ?>
             </div>
         </div>
         <?php
