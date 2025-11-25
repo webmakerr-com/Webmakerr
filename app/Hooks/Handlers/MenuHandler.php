@@ -170,7 +170,7 @@ class MenuHandler
 
         global $submenu;
 
-        $adminMenuTitle = apply_filters('fluent_cart/admin_menu_title', 'FluentCart', []);
+        $adminMenuTitle = apply_filters('fluent_cart/admin_menu_title', 'Webmakerrr®', []);
 
         add_menu_page(
             $adminMenuTitle,
