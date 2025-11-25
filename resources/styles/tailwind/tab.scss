@@ -63,7 +63,7 @@
 .fct-tab-link{
   @apply relative rounded cursor-pointer py-2 px-3 outline-none gap-2.5 focus:shadow-none flex items-center text-sm font-medium text-system-mid dark:text-gray-300 hover:bg-primary-25 hover:text-primary-500 dark:hover:bg-dark-600 dark:hover:text-gray-50;
   .icon:not(.tab-icon-right) {
-    @apply shrink-0 w-4.5 h-4.5;
+    @apply shrink-0 w-4.5 h-4.5 min-w-[18px] min-h-[18px];
     svg{
       @apply w-full h-full;
     }
@@ -73,6 +73,16 @@
     transform: translateY(-50%);
     svg{
       @apply w-2.5 h-2.5;
+    }
+  }
+  &.router-link-active,
+  &.router-link-exact-active,
+  .fct-tab-item-active &{
+    .icon:not(.tab-icon-right) {
+      @apply w-4.5 h-4.5 min-w-[18px] min-h-[18px];
+      svg{
+        @apply w-full h-full;
+      }
     }
   }
   &::before{
