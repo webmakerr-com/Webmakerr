@@ -10,7 +10,7 @@ Author: Webmakerr Team
 Author URI: https://webmakerr.com/about-us
 Plugin URI: https://webmakerr.com
 License: GPLv2 or later
-Text Domain: fluent-cart
+Text Domain: webmakerr
 Domain Path: /language
 */
  
