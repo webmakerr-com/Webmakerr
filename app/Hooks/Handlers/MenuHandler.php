@@ -517,17 +517,26 @@ class MenuHandler
 
     protected function getMenuIcon(): string
     {
-        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
   <defs>
-    <linearGradient id="wmGradient" x1="20" y1="90" x2="80" y2="10" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0F5FB7"/>
-      <stop offset="1" stop-color="#1E8DDC"/>
+    <linearGradient id="wmBg" x1="64" y1="240" x2="192" y2="16" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2F2F2"/>
+      <stop offset="1" stop-color="#E1E1E1"/>
+    </linearGradient>
+    <linearGradient id="wmLeft" x1="72" y1="64" x2="150" y2="188" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#747474"/>
+      <stop offset="1" stop-color="#575757"/>
+    </linearGradient>
+    <linearGradient id="wmRight" x1="130" y1="128" x2="200" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5B5B5B"/>
+      <stop offset="1" stop-color="#3F3F3F"/>
     </linearGradient>
   </defs>
-  <circle cx="50" cy="50" r="45" fill="url(#wmGradient)"/>
-  <circle cx="50" cy="50" r="42" stroke="#F5F8FF" stroke-opacity="0.25" stroke-width="4"/>
-  <path d="M27 64.5L35.5 32.5L50 56.5L64.5 32.5L73 64.5" stroke="#F7FBFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M27 64.5C33.5 71.5 41 75 50 75C59 75 66.5 71.5 73 64.5" stroke="#C9E1FF" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="128" cy="128" r="118" fill="url(#wmBg)"/>
+  <path d="M72 64L102 192L128 132L154 192L184 64L162 64L134 148L112 64Z" fill="#5E5E5E"/>
+  <path d="M72 64L102 192L128 132L134 148L112 64Z" fill="url(#wmLeft)"/>
+  <path d="M128 132L154 192L184 64L162 64L134 148Z" fill="url(#wmRight)"/>
+  <path d="M96 184C112 200 129 208 148 208C167 208 184 200 200 184" stroke="#B5B5B5" stroke-width="10" stroke-linecap="round"/>
 </svg>';
 
         return 'data:image/svg+xml;base64,' . base64_encode($svg);
