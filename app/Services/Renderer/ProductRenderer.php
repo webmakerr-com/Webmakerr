@@ -176,18 +176,21 @@ class ProductRenderer
         <div class="fct-single-product-page" data-fluent-cart-single-product-page>
             <div class="fct-single-product-page-row">
                 <?php $this->renderGallery(); ?>
-                <div class="fct-product-summary">
+                <div class="fct-product-summary @[1024px]/product-page:sticky @[1024px]/product-page:top-7 @[1024px]/product-page:self-start">
                     <div class="fct-product-summary-card">
                         <div class="fct-product-summary-header">
-                            <?php $this->renderTitle(); ?>
+                            <div class="fct-product-title-group">
+                                <?php $this->renderTitle(); ?>
+                                <?php $this->renderExcerpt(); ?>
+                            </div>
                             <div class="fct-product-meta">
                                 <?php $this->renderStockAvailability(); ?>
                             </div>
                         </div>
                         <?php
-                        $this->renderExcerpt();
                         $this->renderPrices();
                         $this->renderBuySection();
+                        $this->renderDescriptionBlock();
                         $this->renderAssurances();
                         ?>
                     </div>
@@ -523,6 +526,29 @@ class ProductRenderer
         ?>
         <div class="fct-product-excerpt" aria-labelledby="fct-product-summary-title">
             <p><?php echo wp_kses_post($excerpt); ?></p>
+        </div>
+        <?php
+
+    }
+
+    public function renderDescriptionBlock()
+    {
+        $description = $this->product->post_content;
+
+        if (!$description) {
+            return;
+        }
+
+        ?>
+        <div class="fct-product-description" aria-labelledby="fct-product-description-title">
+            <div class="fct-product-description-header">
+                <p id="fct-product-description-title" class="fct-product-description-title">
+                    <?php esc_html_e('Product details', 'fluent-cart'); ?>
+                </p>
+            </div>
+            <div class="fct-product-description-body">
+                <?php echo wp_kses_post(wpautop($description)); ?>
+            </div>
         </div>
         <?php
 
