@@ -519,18 +519,15 @@ class MenuHandler
     {
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
   <defs>
-    <linearGradient id="menuGradient" x1="10" y1="90" x2="90" y2="10" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0A4CFF"/>
-      <stop offset="1" stop-color="#7C3AED"/>
+    <linearGradient id="wmGradient" x1="20" y1="90" x2="80" y2="10" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F5FB7"/>
+      <stop offset="1" stop-color="#1E8DDC"/>
     </linearGradient>
-    <filter id="shadow" x="6" y="6" width="88" height="88" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0A1D4D" flood-opacity="0.15"/>
-    </filter>
   </defs>
-  <g filter="url(#shadow)">
-    <rect x="10" y="10" width="80" height="80" rx="20" fill="url(#menuGradient)"/>
-    <path d="M26 34L36.5 66L48.5 42L60 66L71 34" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
+  <circle cx="50" cy="50" r="45" fill="url(#wmGradient)"/>
+  <circle cx="50" cy="50" r="42" stroke="#F5F8FF" stroke-opacity="0.25" stroke-width="4"/>
+  <path d="M27 64.5L35.5 32.5L50 56.5L64.5 32.5L73 64.5" stroke="#F7FBFF" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M27 64.5C33.5 71.5 41 75 50 75C59 75 66.5 71.5 73 64.5" stroke="#C9E1FF" stroke-width="4" stroke-linecap="round"/>
 </svg>';
 
         return 'data:image/svg+xml;base64,' . base64_encode($svg);
