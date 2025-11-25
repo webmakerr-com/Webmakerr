@@ -4,5 +4,6 @@ export default {
     '2sm': '28px',
     base: '16px',
     lg: '18px',
-    xl: '20px'
+    xl: '20px',
+    '3xl': '30px'
 }
