@@ -80,14 +80,22 @@ class MenuHandler
     {
         $menuIconCss = '#adminmenu .toplevel_page_webmakerr .wp-menu-image img,' .
             '#adminmenu .toplevel_page_webmakerr.wp-has-current-submenu .wp-menu-image img,' .
-            '#adminmenu .toplevel_page_webmakerr.wp-menu-open .wp-menu-image img {' .
+            '#adminmenu .toplevel_page_webmakerr.wp-menu-open .wp-menu-image img,' .
+            '#adminmenu .toplevel_page_webmakerr.current .wp-menu-image img {' .
             'width: 20px !important;' .
             'height: 20px !important;' .
+            'min-width: 20px !important;' .
+            'min-height: 20px !important;' .
             'padding: 6px 0 !important;' .
             'opacity: 1;' .
             'filter: none !important;' .
             'border-radius: 50%;' .
             'object-fit: contain;' .
+        '}' .
+        '#adminmenu .toplevel_page_webmakerr .wp-menu-image {' .
+            'display: flex;' .
+            'align-items: center;' .
+            'justify-content: center;' .
         '}' .
         '#adminmenu .toplevel_page_webmakerr .wp-menu-image:before {' .
             'content: none;' .
