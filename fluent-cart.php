@@ -3,7 +3,7 @@
 defined('ABSPATH') or die;
 
 /*
-Plugin Name: FluentCart
+Plugin Name: Webmakerr
 Description: FluentCart WordPress Plugin
 Version: 1.3.1
 Author: FluentCart Team
