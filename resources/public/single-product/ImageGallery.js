@@ -29,6 +29,8 @@ export default class ImageGallery {
     #thumbnailControlsWrapper;
     #productId;
     #thumbnailMode = 'all'; // all or by-variants
+    #autoRotateTimer = null;
+    #autoRotateIndex = 0;
 
     init(container, enableZoom = true) {
         this.container = container;
@@ -52,6 +54,8 @@ export default class ImageGallery {
 
         this.#prepareLightboxImages();
         this.#setupThumbnailControls();
+        this.#setupThumbnailScrolling();
+        this.#setupAutoRotation();
     }
 
     #listenForVariationChange() {
@@ -65,6 +69,8 @@ export default class ImageGallery {
 
             let controlButtons = this.#thumbnailControlsWrapper?.querySelectorAll(`[data-fluent-cart-thumb-control-button][data-variation-id="${this.#currentlySelectedVariationId}"]`);
             this.#setupControlWrapper(controlButtons);
+            this.#setupThumbnailScrolling();
+            this.#setupAutoRotation();
         });
     }
 
@@ -212,6 +218,8 @@ export default class ImageGallery {
         if (this.#thumbnailMode === 'all') {
             const allThumbnails = this.findInContainer('[data-fluent-cart-thumb-control-button]');
             allThumbnails.forEach(img => img.classList.remove('is-hidden'));
+            this.#setupThumbnailScrolling();
+            this.#setupAutoRotation();
             return; // Don't hide any thumbnails
         }
 
@@ -225,6 +233,9 @@ export default class ImageGallery {
 
         const defaultImages = this.findInContainer(`[data-fluent-cart-thumb-control-button][data-variation-id="0"]`);
         defaultImages.forEach(img => img.classList.remove('is-hidden'));
+
+        this.#setupThumbnailScrolling();
+        this.#setupAutoRotation();
     }
 
     #initImageZoom() {
@@ -261,6 +272,80 @@ export default class ImageGallery {
 
     findOneInContainer(selector) {
         return this.container.querySelector(selector);
+    }
+
+    // Thumbnail scrolling and rotation helpers
+    #getVisibleThumbnailControls() {
+        return Array.from(this.#thumbnailControls || []).filter(control => !control.classList.contains('is-hidden'));
+    }
+
+    #setupThumbnailScrolling() {
+        if (!this.#thumbnailControlsWrapper) {
+            return;
+        }
+
+        const visibleControls = this.#getVisibleThumbnailControls().filter(control => control.dataset.mediaType !== 'video');
+        const shouldEnableScroll = visibleControls.length > 6;
+
+        this.#thumbnailControlsWrapper.classList.toggle('is-scrollable', shouldEnableScroll);
+    }
+
+    #getRotatingThumbnails() {
+        return this.#getVisibleThumbnailControls().filter(control => control.dataset.mediaType !== 'video');
+    }
+
+    #setupAutoRotation() {
+        this.#stopAutoRotate();
+
+        const rotatingThumbnails = this.#getRotatingThumbnails();
+        if (rotatingThumbnails.length < 2) {
+            return;
+        }
+
+        const activeIndex = rotatingThumbnails.findIndex(control => control.classList.contains('active'));
+        this.#autoRotateIndex = activeIndex >= 0 ? activeIndex : -1;
+
+        this.#startAutoRotate();
+    }
+
+    #startAutoRotate() {
+        this.#stopAutoRotate();
+
+        this.#autoRotateTimer = setInterval(() => {
+            const rotatingThumbnails = this.#getRotatingThumbnails();
+
+            if (rotatingThumbnails.length < 2) {
+                this.#stopAutoRotate();
+                return;
+            }
+
+            this.#autoRotateIndex = (this.#autoRotateIndex + 1) % rotatingThumbnails.length;
+            const nextControl = rotatingThumbnails[this.#autoRotateIndex];
+
+            if (nextControl) {
+                this.#handleThumbnailChange(nextControl, {auto: true});
+                this.#scrollControlIntoView(nextControl);
+            }
+        }, 2000);
+    }
+
+    #stopAutoRotate() {
+        if (this.#autoRotateTimer) {
+            clearInterval(this.#autoRotateTimer);
+            this.#autoRotateTimer = null;
+        }
+    }
+
+    #scrollControlIntoView(control) {
+        if (typeof control?.scrollIntoView !== 'function') {
+            return;
+        }
+
+        control.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'nearest'
+        });
     }
 
 
@@ -319,7 +404,7 @@ export default class ImageGallery {
         });
     }
 
-    #handleThumbnailChange(control) {
+    #handleThumbnailChange(control, options = {auto: false}) {
         this.#thumbnailControls.forEach(ctrl => ctrl.classList.remove('active'));
         control.classList.add('active');
 
@@ -330,6 +415,14 @@ export default class ImageGallery {
         }
 
         this.#setThumbImage(control);
+
+        if (control.dataset.mediaType === 'video') {
+            this.#stopAutoRotate();
+        } else if (!options.auto) {
+            this.#setupAutoRotation();
+        }
+
+        this.#scrollControlIntoView(control);
     }
 
     #setThumbImage(control) {
