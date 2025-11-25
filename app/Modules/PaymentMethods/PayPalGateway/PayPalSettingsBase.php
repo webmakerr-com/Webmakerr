@@ -28,14 +28,12 @@ class PayPalSettingsBase extends BaseGatewaySettings
         }
         
         // if key defined
-        $isTestDefined = $this->hasManualTesKeys();
-        $isLiveDefined = $this->hasManualLiveKeys();
+        $isTestDefined = $this->hasManualTesKeys() || (!empty($settings['test_client_id']) && !empty($settings['test_client_secret']));
+        $isLiveDefined = $this->hasManualLiveKeys() || (!empty($settings['live_client_id']) && !empty($settings['live_client_secret']));
 
-        if ($isTestDefined || $isLiveDefined) {
-            $settings['define_test_keys'] = $isTestDefined;
-            $settings['define_live_keys'] = $isLiveDefined;
-            $settings['provider'] = 'api_keys';
-        }
+        $settings['define_test_keys'] = $isTestDefined;
+        $settings['define_live_keys'] = $isLiveDefined;
+        $settings['provider'] = 'api_keys';
 
         $this->settings = $settings;
 
@@ -59,7 +57,7 @@ class PayPalSettingsBase extends BaseGatewaySettings
 
         return [
             'is_active'           => 'no',
-            'provider'            => 'connect',
+            'provider'            => 'api_keys',
             //define keys
             'define_test_keys' => false,
             'define_live_keys' => false,
