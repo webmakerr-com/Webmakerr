@@ -227,7 +227,7 @@ class TemplateActions
         ob_start();
         do_action('fluent_cart/product/render_product_header', $post->ID);
         $headerContent = ob_get_clean();
-        $content = $headerContent . $content;
+        $content = $headerContent . '<section class="fct-product-description">' . $content . '</section>';
 
         $storeSettings = new StoreSettings();
 

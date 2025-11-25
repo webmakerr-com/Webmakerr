@@ -69,3 +69,41 @@
         }
     }
 }
+
+.fct-similar-product-list-container {
+  @apply mt-12;
+
+  .fct-product-list-heading {
+    @apply text-[24px] font-semibold mb-6;
+  }
+
+  .fct-product-list {
+    @apply gap-5;
+  }
+
+  .fct-product-card {
+    @apply border border-solid border-gray-200 rounded bg-white shadow-none transition-all duration-150;
+
+    &:hover {
+      @apply shadow-sm;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+      @apply px-3 pt-4;
+    }
+
+    img {
+      @apply rounded;
+    }
+
+    button,
+    .fct-product-view-button,
+    .fct-product-view-offer-button {
+      background: #f7f7f7;
+      color: #4b5563;
+      border: 1px solid #e5e7eb;
+      box-shadow: none;
+      @apply rounded text-[15px] font-medium hover:bg-white hover:border-gray-300;
+    }
+  }
+}

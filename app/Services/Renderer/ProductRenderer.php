@@ -873,7 +873,7 @@ class ProductRenderer
                 'data-fluent-cart-add-to-cart-button' => '',
                 'data-cart-id'                        => $this->defaultVariant ? $this->defaultVariant->id : '',
                 'data-product-id'                     => $this->product->ID,
-                'class'                               => 'fluent-cart-add-to-cart-button ',
+                'class'                               => 'fluent-cart-add-to-cart-button fct-dominant-add-to-cart',
                 'data-variation-type'                 => $this->product->detail->variation_type,
         ];
 
@@ -896,6 +896,13 @@ class ProductRenderer
         </a>
         <?php if ($this->hasOnetime): ?>
         <button <?php $this->renderAttributes($cartAttributes); ?> aria-label="<?php echo esc_attr($addToCartText); ?>">
+            <span class="fct-add-to-cart-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 6H21L19 14H9L7 4H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="10" cy="19" r="1.2" fill="currentColor" />
+                    <circle cx="18" cy="19" r="1.2" fill="currentColor" />
+                </svg>
+            </span>
             <span class="text">
                 <?php echo wp_kses_post($addToCartText); ?>
             </span>
