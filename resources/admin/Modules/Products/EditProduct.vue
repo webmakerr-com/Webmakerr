@@ -10,6 +10,7 @@ import ProductInventory from "@/Modules/Products/parts/ProductInventory.vue";
 import ProductDownload from "@/Modules/Products/parts/DownloadableFiles/ProductDownload.vue";
 import ProductStatus from "@/Modules/Products/parts/ProductStatus.vue";
 import ProductMedia from "@/Modules/Products/parts/ProductMedia.vue";
+import ProductCustomSections from "@/Modules/Products/parts/ProductCustomSections.vue";
 import ProductTermTaxonomy from "@/Modules/Products/parts/ProductTermTaxonomy.vue";
 import {useProductDownloadableModel} from "@/Models/Product/ProductDownloadableModel";
 import ShippingClass from "@/Modules/Products/parts/ShippingClass.vue";
@@ -48,6 +49,10 @@ const setupProduct = (product) => {
 
   editableProduct.gallery = editableProduct?.detail?.gallery_image?.meta_value ?? [];
   editableProduct.featured_video = editableProduct?.featured_video ?? null;
+
+  editableProduct.detail = editableProduct.detail || {};
+  editableProduct.detail.other_info = editableProduct.detail.other_info || {};
+  editableProduct.detail.other_info.custom_sections = editableProduct.detail.other_info.custom_sections || [];
 
   editableProduct.taxonomies = props.taxonomies;
   editableProduct.product_terms = {};
@@ -242,6 +247,11 @@ onBeforeRouteLeave(() => {
               :product="editableProduct"
               :productEditModel="productEditModel"
               :productDownloadableModel="productDownloadableModel"
+          />
+
+          <ProductCustomSections
+              :product="editableProduct"
+              :productEditModel="productEditModel"
           />
         </div>
         <div class="fct-product-aside">

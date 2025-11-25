@@ -193,6 +193,7 @@ class ProductRenderer
                     </div>
                 </div>
             </div>
+            <?php $this->renderCustomSections(); ?>
         </div>
         <?php
     }
@@ -436,6 +437,151 @@ class ProductRenderer
         }
 
         return $embedHtml;
+    }
+
+    protected function getCustomSections(): array
+    {
+        $otherInfo = (array)Arr::get($this->product->detail, 'other_info', []);
+        $sections = Arr::get($otherInfo, 'custom_sections', []);
+
+        if (!is_array($sections)) {
+            return [];
+        }
+
+        $normalized = [];
+
+        foreach ($sections as $section) {
+            if (!is_array($section)) {
+                continue;
+            }
+
+            $title = Arr::get($section, 'title', '');
+            $description = Arr::get($section, 'description', '');
+            $mediaType = Arr::get($section, 'media_type', 'image');
+            $image = Arr::get($section, 'image', []);
+            $video = Arr::get($section, 'video', []);
+
+            if (!$title && !$description && empty($image) && empty($video)) {
+                continue;
+            }
+
+            $normalized[] = [
+                'title'       => $title,
+                'description' => $description,
+                'media_type'  => $mediaType ?: 'image',
+                'image'       => $image,
+                'video'       => $video
+            ];
+
+            if (count($normalized) >= 4) {
+                break;
+            }
+        }
+
+        return $normalized;
+    }
+
+    protected function getSectionImageUrl($image): string
+    {
+        if (empty($image)) {
+            return '';
+        }
+
+        $url = Arr::get($image, 'url', '');
+
+        if (!$url && Arr::get($image, 'id')) {
+            $url = wp_get_attachment_image_url(Arr::get($image, 'id'), 'full');
+        }
+
+        return $url ?: '';
+    }
+
+    protected function renderCustomSections()
+    {
+        $sections = $this->getCustomSections();
+
+        if (empty($sections)) {
+            return;
+        }
+
+        echo '<div class="fct-product-custom-sections">';
+
+        foreach ($sections as $index => $section) {
+            $isReversed = $index % 2 === 1 ? 'is-reverse' : '';
+            echo '<div class="fct-product-custom-section ' . esc_attr($isReversed) . '">';
+
+            echo '<div class="fct-product-section-media">';
+            $this->renderSectionMedia($section);
+            echo '</div>';
+
+            echo '<div class="fct-product-section-copy">';
+            if (!empty($section['title'])) {
+                echo '<h3 class="fct-product-section-heading">' . esc_html($section['title']) . '</h3>';
+            }
+            if (!empty($section['description'])) {
+                echo '<p class="fct-product-section-description">' . wp_kses_post($section['description']) . '</p>';
+            }
+            echo '</div>';
+
+            echo '</div>';
+        }
+
+        echo '</div>';
+    }
+
+    protected function renderSectionMedia($section)
+    {
+        $mediaType = Arr::get($section, 'media_type', 'image');
+
+        if ($mediaType === 'video') {
+            echo '<div class="fct-product-section-video">';
+            $this->renderSectionVideo(Arr::get($section, 'video', []), Arr::get($section, 'title', ''));
+            echo '</div>';
+            return;
+        }
+
+        $image = Arr::get($section, 'image', []);
+        $imageUrl = $this->getSectionImageUrl($image);
+
+        if (!$imageUrl) {
+            return;
+        }
+
+        $alt = Arr::get($image, 'title', Arr::get($section, 'title', $this->product->post_title));
+
+        echo '<div class="fct-product-section-image">';
+        echo '<img src="' . esc_url($imageUrl) . '" alt="' . esc_attr($alt) . '" loading="lazy" />';
+        echo '</div>';
+    }
+
+    protected function renderSectionVideo($video, $title = '')
+    {
+        $videoUrl = Arr::get($video, 'url', '');
+
+        if (!$videoUrl) {
+            return;
+        }
+
+        $type = Arr::get($video, 'type');
+        $videoTitle = $title ?: Arr::get($video, 'title', $this->product->post_title);
+
+        if ($type === 'file' || preg_match('/\.(mp4|mov|webm|ogg)(\?.*)?$/i', $videoUrl)) {
+            echo sprintf(
+                '<video class="fct-product-section-video" controls preload="metadata" playsinline src="%1$s" title="%2$s"></video>',
+                esc_url($videoUrl),
+                esc_attr($videoTitle)
+            );
+            return;
+        }
+
+        $embedHtml = wp_oembed_get($videoUrl);
+
+        if ($embedHtml) {
+            echo $this->formatEmbedHtml($embedHtml); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            return;
+        }
+
+        echo '<a class="fct-product-section-video-link" href="' . esc_url($videoUrl) . '" target="_blank" rel="noopener">' . esc_html($videoUrl) . '</a>';
     }
 
     public function renderGallery($args = [])
