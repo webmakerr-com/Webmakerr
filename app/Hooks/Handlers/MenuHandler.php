@@ -519,10 +519,6 @@ class MenuHandler
     {
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Webmakerr icon">
   <defs>
-    <radialGradient id="wmBg" cx="50%" cy="45%" r="65%">
-      <stop offset="0" stop-color="#F4F4F4"/>
-      <stop offset="1" stop-color="#DBDBDB"/>
-    </radialGradient>
     <linearGradient id="wmLeft" x1="32%" y1="22%" x2="48%" y2="92%">
       <stop offset="0" stop-color="#7B7B7B"/>
       <stop offset="1" stop-color="#565656"/>
@@ -532,7 +528,7 @@ class MenuHandler
       <stop offset="1" stop-color="#3F3F3F"/>
     </linearGradient>
   </defs>
-  <circle cx="256" cy="256" r="232" fill="url(#wmBg)" stroke="#D7D7D7" stroke-width="12"/>
+  <circle cx="256" cy="256" r="226" fill="none" stroke="#D7D7D7" stroke-width="16"/>
   <path d="M118 116L179 396L256 246L333 396L394 116H348L313 282L256 180L199 282L164 116Z" fill="#606060"/>
   <path d="M118 116L179 396L256 246L256 180L199 282L164 116Z" fill="url(#wmLeft)"/>
   <path d="M256 246L333 396L394 116H348L313 282L256 180Z" fill="url(#wmRight)"/>
