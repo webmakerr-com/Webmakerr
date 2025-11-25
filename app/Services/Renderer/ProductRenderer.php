@@ -177,13 +177,20 @@ class ProductRenderer
             <div class="fct-single-product-page-row">
                 <?php $this->renderGallery(); ?>
                 <div class="fct-product-summary">
-                    <?php
-                    $this->renderTitle();
-                    $this->renderStockAvailability();
-                    $this->renderExcerpt();
-                    $this->renderPrices();
-                    $this->renderBuySection();
-                    ?>
+                    <div class="fct-product-summary-card">
+                        <div class="fct-product-summary-header">
+                            <?php $this->renderTitle(); ?>
+                            <div class="fct-product-meta">
+                                <?php $this->renderStockAvailability(); ?>
+                            </div>
+                        </div>
+                        <?php
+                        $this->renderExcerpt();
+                        $this->renderPrices();
+                        $this->renderBuySection();
+                        $this->renderAssurances();
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -923,6 +930,67 @@ class ProductRenderer
             <p class="has-text-align-center">
                 <?php echo esc_html__('You can try clearing any filters.', 'fluent-cart'); ?>
             </p>
+        </div>
+        <?php
+    }
+
+    protected function renderAssurances()
+    {
+        ?>
+        <div class="fct-product-assurances"
+             aria-label="<?php echo esc_attr__('Purchase assurances', 'fluent-cart'); ?>">
+            <div class="fct-product-assurance-item">
+                <div class="fct-product-assurance-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.00008 12.0001L4.66675 8.66675" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.00008 12.0001L16.0001 4.00008" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.99997 18.3333C14.6023 18.3333 18.3333 14.6023 18.3333 9.99996C18.3333 5.39759 14.6023 1.66663 9.99997 1.66663C5.39759 1.66663 1.66663 5.39759 1.66663 9.99996C1.66663 14.6023 5.39759 18.3333 9.99997 18.3333Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="fct-product-assurance-copy">
+                    <p class="title"><?php esc_html_e('Free worldwide shipping', 'fluent-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Fast, trackable delivery on every order', 'fluent-cart'); ?></p>
+                </div>
+            </div>
+
+            <div class="fct-product-assurance-item">
+                <div class="fct-product-assurance-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 3.33337C6.31811 3.33337 3.33331 6.31816 3.33331 10C3.33331 13.6819 6.31811 16.6667 10 16.6667C13.6819 16.6667 16.6666 13.6819 16.6666 10C16.6666 6.31816 13.6819 3.33337 10 3.33337Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 6.66663V10L12.5 11.6666" stroke="currentColor" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="fct-product-assurance-copy">
+                    <p class="title"><?php esc_html_e('30-day returns', 'fluent-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Hassle-free exchanges and refunds', 'fluent-cart'); ?></p>
+                </div>
+            </div>
+
+            <div class="fct-product-assurance-item">
+                <div class="fct-product-assurance-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.33331 9.16667H8.34165" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path d="M11.6667 9.16667H11.675" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path d="M7.5 11.6667C8.03544 12.2018 8.75347 12.5 9.5 12.5C10.2465 12.5 10.9646 12.2018 11.5 11.6667"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 1.66663C5.39764 1.66663 1.66669 5.39759 1.66669 9.99996C1.66669 14.6023 5.39764 18.3333 10 18.3333C14.6024 18.3333 18.3334 14.6023 18.3334 9.99996C18.3334 5.39759 14.6024 1.66663 10 1.66663Z"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 1.66663C8.15818 3.65538 7.15265 6.25526 7.22228 8.93027C7.29191 11.6053 8.43043 14.1412 10.4167 16.0416"
+                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="fct-product-assurance-copy">
+                    <p class="title"><?php esc_html_e('Secure checkout', 'fluent-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Encrypted payments and buyer protection', 'fluent-cart'); ?></p>
+                </div>
+            </div>
         </div>
         <?php
     }
