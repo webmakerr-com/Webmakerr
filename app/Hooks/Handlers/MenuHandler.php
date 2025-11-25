@@ -78,10 +78,12 @@ class MenuHandler
 
     public function adjustMenuIconStyles()
     {
-        $menuIconCss = '#adminmenu .toplevel_page_webmakerr .wp-menu-image img {' .
-            'width: 20px;' .
-            'height: 20px;' .
-            'padding: 6px 0;' .
+        $menuIconCss = '#adminmenu .toplevel_page_webmakerr .wp-menu-image img,' .
+            '#adminmenu .toplevel_page_webmakerr.wp-has-current-submenu .wp-menu-image img,' .
+            '#adminmenu .toplevel_page_webmakerr.wp-menu-open .wp-menu-image img {' .
+            'width: 20px !important;' .
+            'height: 20px !important;' .
+            'padding: 6px 0 !important;' .
             'opacity: 1;' .
             'filter: none !important;' .
             'border-radius: 50%;' .
