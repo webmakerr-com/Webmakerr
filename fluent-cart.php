@@ -6,11 +6,11 @@ defined('ABSPATH') or die;
 Plugin Name: Webmakerrr®
 Description: Webmakerr makes eCommerce, bookings, and service selling fast and effortless.
 Version: 1.3.1
-Author: FluentCart Team
-Author URI: https://fluentcart.com/about-us
-Plugin URI: https://fluentcart.com
+Author: Webmakerr Team
+Author URI: https://webmakerr.com/about-us
+Plugin URI: https://webmakerr.com
 License: GPLv2 or later
-Text Domain: fluent-cart
+Text Domain: webmakerr-cart
 Domain Path: /language
 */
 
