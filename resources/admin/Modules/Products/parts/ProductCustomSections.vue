@@ -83,9 +83,11 @@ const normalizeSections = (sections) => {
 };
 
 const sections = ref(normalizeSections(props.product?.detail?.other_info?.custom_sections));
+const activeSection = ref('section-0');
 
 watch(() => props.product?.detail?.other_info?.custom_sections, (value) => {
   sections.value = normalizeSections(value);
+  ensureActiveSection();
 }, {immediate: true});
 
 const hasReachedLimit = computed(() => sections.value.length >= maxSections);
@@ -110,6 +112,7 @@ const addSection = () => {
 
   sections.value = [...sections.value, getDefaultSection()];
   persistSections();
+  setActiveSection(sections.value.length - 1);
 };
 
 const removeSection = (index) => {
@@ -117,6 +120,7 @@ const removeSection = (index) => {
   updated.splice(index, 1);
   sections.value = normalizeSections(updated);
   persistSections();
+  ensureActiveSection();
 };
 
 const onImageSelected = (index, selected) => {
@@ -191,6 +195,23 @@ const getVideoLabel = (section) => {
 
 const hasVideoUrl = (section) => !!section?.video?.url;
 
+const setActiveSection = (index) => {
+  activeSection.value = `section-${index}`;
+};
+
+const ensureActiveSection = () => {
+  if (!sections.value.length) {
+    activeSection.value = '';
+    return;
+  }
+
+  const currentIndex = sections.value.findIndex((section, idx) => `section-${idx}` === activeSection.value);
+
+  if (currentIndex === -1) {
+    activeSection.value = 'section-0';
+  }
+};
+
 </script>
 
 <template>
@@ -202,131 +223,145 @@ const hasVideoUrl = (section) => !!section?.video?.url;
           border_bottom
       />
       <Card.Body>
-        <div class="fct-custom-sections">
-          <div
+        <el-collapse v-model="activeSection" accordion class="fct-custom-sections">
+          <el-collapse-item
               v-for="(section, index) in sections"
               :key="`section-${index}`"
+              :name="`section-${index}`"
               class="fct-custom-section"
           >
-            <div class="fct-custom-section__header">
-              <p class="fct-custom-section__title">
-                {{ translate('Section') }} {{ index + 1 }}
-              </p>
-              <el-button
-                  v-if="sections.length > 1"
-                  text
-                  type="danger"
-                  size="small"
-                  @click="removeSection(index)"
-              >
-                {{ translate('Remove') }}
-              </el-button>
-            </div>
-
-            <el-form label-position="top" require-asterisk-position="right">
-              <div class="fct-admin-input-wrapper">
-                <el-form-item :label="translate('Heading')">
-                  <el-input
-                      :placeholder="translate('Add heading')"
-                      :model-value="section.title"
-                      @input="value => updateSectionField(index, 'title', value)"
-                  />
-                </el-form-item>
+            <template #title>
+              <div class="fct-custom-section__header">
+                <p class="fct-custom-section__title">
+                  {{ translate('Section') }} {{ index + 1 }}
+                </p>
+                <el-button
+                    v-if="sections.length > 1"
+                    text
+                    type="danger"
+                    size="small"
+                    @click.stop="removeSection(index)"
+                >
+                  {{ translate('Remove') }}
+                </el-button>
               </div>
+            </template>
 
-              <div class="fct-admin-input-wrapper">
-                <el-form-item :label="translate('Short description')">
-                  <el-input
-                      type="textarea"
-                      :rows="2"
-                      :placeholder="translate('Add a concise description')"
-                      :model-value="section.description"
-                      @input="value => updateSectionField(index, 'description', value)"
-                  />
-                </el-form-item>
-              </div>
+            <div class="fct-custom-section__body">
+              <el-form label-position="top" require-asterisk-position="right">
+                <div class="fct-admin-input-wrapper">
+                  <el-form-item :label="translate('Heading')">
+                    <el-input
+                        :placeholder="translate('Add heading')"
+                        :model-value="section.title"
+                        @input="value => updateSectionField(index, 'title', value)"
+                    />
+                  </el-form-item>
+                </div>
 
-              <div class="fct-admin-input-wrapper">
-                <el-form-item :label="translate('Media type')">
-                  <el-radio-group
-                      :model-value="section.media_type"
-                      @change="value => updateSectionField(index, 'media_type', value)"
-                  >
-                    <el-radio-button label="image">{{ translate('Image') }}</el-radio-button>
-                    <el-radio-button label="video">{{ translate('Video') }}</el-radio-button>
-                  </el-radio-group>
-                </el-form-item>
-              </div>
+                <div class="fct-admin-input-wrapper">
+                  <el-form-item :label="translate('Short description')">
+                    <el-input
+                        type="textarea"
+                        :rows="2"
+                        :placeholder="translate('Add a concise description')"
+                        :model-value="section.description"
+                        @input="value => updateSectionField(index, 'description', value)"
+                    />
+                  </el-form-item>
+                </div>
 
-              <div v-if="section.media_type === 'image'" class="fct-admin-input-wrapper">
-                <el-form-item :label="translate('Section image')">
-                  <div class="fct-section-media-picker">
-                    <div v-if="section.image?.url" class="fct-section-media-preview">
-                      <img :src="section.image.url" :alt="section.image.title || section.title || translate('Section image')">
-                    </div>
+                <div class="fct-admin-input-wrapper">
+                  <el-form-item :label="translate('Media type')">
+                    <el-radio-group
+                        :model-value="section.media_type"
+                        @change="value => updateSectionField(index, 'media_type', value)"
+                    >
+                      <el-radio-button label="image">{{ translate('Image') }}</el-radio-button>
+                      <el-radio-button label="video">{{ translate('Video') }}</el-radio-button>
+                    </el-radio-group>
+                  </el-form-item>
+                </div>
 
-                    <div class="fct-section-media-actions">
-                      <MediaButton
-                          icon="Picture"
-                          :title="section.image ? translate('Change image') : translate('Select image')"
-                          :attachments="section.image ? [section.image] : []"
-                          :multiple="false"
-                          @onMediaSelected="selected => onImageSelected(index, selected)"
-                      />
+                <div v-if="section.media_type === 'image'" class="fct-admin-input-wrapper">
+                  <el-form-item :label="translate('Section image')">
+                    <div class="fct-section-media-picker">
+                      <div v-if="section.image?.url" class="fct-section-attachment">
+                        <div class="fct-section-attachment__thumb">
+                          <img :src="section.image.url" :alt="section.image.title || section.title || translate('Section image')">
+                        </div>
+                        <div class="fct-section-attachment__info">
+                          <p class="fct-section-attachment__title">{{ section.image.title || section.title || translate('Selected image') }}</p>
+                          <span class="fct-section-media-meta">{{ translate('Image attachment') }}</span>
+                        </div>
+                        <div class="fct-section-attachment__actions">
+                          <el-button
+                              text
+                              type="danger"
+                              size="small"
+                              @click="clearImage(index)"
+                          >
+                            {{ translate('Remove') }}
+                          </el-button>
+                        </div>
+                      </div>
 
-                      <el-button
-                          v-if="section.image"
-                          text
-                          type="danger"
-                          @click="clearImage(index)"
-                      >
-                        {{ translate('Remove') }}
-                      </el-button>
-                    </div>
-                  </div>
-                </el-form-item>
-              </div>
-
-              <div v-else class="fct-admin-input-wrapper">
-                <el-form-item :label="translate('Section video')">
-                  <div class="fct-section-media-picker">
-                    <div class="fct-section-media-actions">
-                      <el-input
-                          :model-value="section.video?.url"
-                          :placeholder="translate('YouTube, Vimeo or direct MP4 URL')"
-                          @input="value => updateVideoUrl(index, value)"
-                      />
-
-                      <div class="fct-section-video-actions">
+                      <div class="fct-section-media-actions">
                         <MediaButton
-                            icon="Video"
-                            :title="section.video?.url ? translate('Replace video') : translate('Upload video')"
-                            :attachments="getVideoAttachments(section)"
-                            :library-type="'video'"
+                            icon="Picture"
+                            :title="section.image ? translate('Change image') : translate('Select image')"
+                            :attachments="section.image ? [section.image] : []"
                             :multiple="false"
-                          @onMediaSelected="selected => onVideoSelected(index, selected)"
+                            @onMediaSelected="selected => onImageSelected(index, selected)"
                         />
-                        <el-button
-                            v-if="hasVideoUrl(section)"
-                            text
-                            type="danger"
-                            @click="clearVideo(index)"
-                        >
-                          {{ translate('Remove') }}
-                        </el-button>
                       </div>
                     </div>
+                  </el-form-item>
+                </div>
 
-                    <div v-if="hasVideoUrl(section)" class="fct-section-video-attachment">
-                      <a :href="section.video.url" target="_blank" rel="noopener">{{ getVideoLabel(section) }}</a>
-                      <span class="fct-section-media-meta">{{ translate('Video attachment') }}</span>
+                <div v-else class="fct-admin-input-wrapper">
+                  <el-form-item :label="translate('Section video')">
+                    <div class="fct-section-media-picker">
+                      <div class="fct-section-media-actions">
+                        <el-input
+                            :model-value="section.video?.url"
+                            :placeholder="translate('YouTube, Vimeo or direct MP4 URL')"
+                            @input="value => updateVideoUrl(index, value)"
+                        />
+
+                        <div class="fct-section-video-actions">
+                          <MediaButton
+                              icon="Video"
+                              :title="section.video?.url ? translate('Replace video') : translate('Upload video')"
+                              :attachments="getVideoAttachments(section)"
+                              :library-type="'video'"
+                              :multiple="false"
+                            @onMediaSelected="selected => onVideoSelected(index, selected)"
+                          />
+                          <el-button
+                              v-if="hasVideoUrl(section)"
+                              text
+                              type="danger"
+                              @click="clearVideo(index)"
+                          >
+                            {{ translate('Remove') }}
+                          </el-button>
+                        </div>
+                      </div>
+
+                      <div v-if="hasVideoUrl(section)" class="fct-section-attachment">
+                        <div class="fct-section-attachment__info">
+                          <a :href="section.video.url" target="_blank" rel="noopener" class="fct-section-attachment__title">{{ getVideoLabel(section) }}</a>
+                          <span class="fct-section-media-meta">{{ translate('Video attachment') }}</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </el-form-item>
-              </div>
-            </el-form>
-          </div>
-        </div>
+                  </el-form-item>
+                </div>
+              </el-form>
+            </div>
+          </el-collapse-item>
+        </el-collapse>
 
         <div class="fct-custom-section-footer">
           <el-button
@@ -350,19 +385,35 @@ const hasVideoUrl = (section) => !!section?.video?.url;
 }
 
 .fct-custom-sections {
-  @apply flex flex-col gap-4;
+  @apply flex flex-col gap-3;
 }
 
 .fct-custom-section {
-  @apply border border-solid border-gray-200 rounded p-4 bg-white;
+  @apply bg-white border border-solid border-gray-200 rounded overflow-hidden;
 
-  .fct-custom-section__header {
-    @apply flex items-center justify-between mb-3;
+  :deep(.el-collapse-item__header) {
+    @apply px-4 py-3 items-center;
   }
 
-  .fct-custom-section__title {
-    @apply text-base font-semibold text-gray-800 m-0;
+  :deep(.el-collapse-item__wrap) {
+    @apply border-t border-solid border-gray-200;
   }
+
+  :deep(.el-collapse-item__content) {
+    @apply p-0;
+  }
+}
+
+.fct-custom-section__header {
+  @apply flex items-center justify-between w-full;
+}
+
+.fct-custom-section__title {
+  @apply text-base font-semibold text-gray-800 m-0;
+}
+
+.fct-custom-section__body {
+  @apply p-4;
 }
 
 .fct-section-media-picker {
@@ -377,29 +428,32 @@ const hasVideoUrl = (section) => !!section?.video?.url;
   @apply flex items-center gap-2;
 }
 
-.fct-section-media-preview {
-  @apply rounded overflow-hidden border border-solid border-gray-200 bg-gray-50;
+.fct-section-attachment {
+  @apply flex items-center gap-3 flex-wrap border border-solid border-gray-200 rounded px-3 py-2 bg-gray-50;
+}
 
-  img, video, iframe {
+.fct-section-attachment__thumb {
+  @apply w-16 h-16 rounded overflow-hidden bg-white border border-solid border-gray-200 flex items-center justify-center;
+
+  img {
     @apply w-full h-full object-cover;
-    min-height: 200px;
-  }
-
-  iframe {
-    border: 0;
   }
 }
 
-.fct-section-video-attachment {
-  @apply flex flex-col gap-1 border border-solid border-gray-200 rounded px-3 py-2 bg-gray-50 text-sm text-gray-700;
+.fct-section-attachment__info {
+  @apply flex flex-col gap-1 text-sm text-gray-700;
+}
 
-  a {
-    @apply font-medium text-blue-600 break-all hover:underline;
-  }
+.fct-section-attachment__title {
+  @apply font-medium text-blue-600 break-all hover:underline;
+}
 
-  .fct-section-media-meta {
-    @apply text-xs text-gray-500;
-  }
+.fct-section-attachment__actions {
+  @apply ml-auto;
+}
+
+.fct-section-media-meta {
+  @apply text-xs text-gray-500;
 }
 
 .fct-custom-section-footer {
