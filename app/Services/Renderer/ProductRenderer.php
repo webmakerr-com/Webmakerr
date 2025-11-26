@@ -1349,7 +1349,27 @@ class ProductRenderer
         </a>
         <?php if ($this->hasOnetime): ?>
             <?php $this->renderAddToCartButton($cartButtonConfig['cartAttributes'], $cartButtonConfig['addToCartText']); ?>
+            <?php $this->renderPaymentIcons(); ?>
         <?php endif; ?>
+        <?php
+    }
+
+    protected function renderPaymentIcons()
+    {
+        $icons = ['f1.png', 'f2.png', 'f3.png', 'f4.png', 'f5.png'];
+        ?>
+        <div class="fct-payment-icons" aria-label="<?php esc_attr_e('Accepted payment methods', 'fluent-cart'); ?>">
+            <?php foreach ($icons as $icon): ?>
+                <span class="fct-payment-icon" aria-hidden="true">
+                    <img
+                        src="<?php echo esc_url(Vite::getAssetUrl('images/' . $icon)); ?>"
+                        alt="<?php esc_attr_e('Payment method', 'fluent-cart'); ?>"
+                        width="64.98"
+                        height="43.82"
+                    >
+                </span>
+            <?php endforeach; ?>
+        </div>
         <?php
     }
 
