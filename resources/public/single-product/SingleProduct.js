@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         #desktopStickyPrice;
         #desktopStickyButton;
         #stickyCartObserver;
+        #priceObserver;
         #mainAddToCartVisibility = true;
 
         toTitleCase(str) {
@@ -100,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.#setMobileViewClass();
             this.#listenWindowResize();
             this.#setupMobileStickyCart();
+            this.#observePriceChanges();
 
 
             FluentCartSingleProduct.#instance = this;
@@ -251,6 +253,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
             this.#updateStickyPrice();
             updateStickyVisibility();
+        }
+
+        #observePriceChanges() {
+            if (!this.#pricingSection) {
+                return;
+            }
+
+            if (this.#priceObserver) {
+                this.#priceObserver.disconnect();
+            }
+
+            this.#priceObserver = new MutationObserver(() => {
+                this.#updateStickyPrice();
+            });
+
+            this.#priceObserver.observe(this.#pricingSection, {
+                childList: true,
+                subtree: true,
+                characterData: true,
+                attributes: true
+            });
         }
 
         #getCurrentPriceHtml() {
