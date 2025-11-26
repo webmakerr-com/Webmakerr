@@ -7,6 +7,7 @@ use FluentCart\Api\StoreSettings;
 use FluentCart\App\Hooks\Handlers\ShortCodes\SingleProductShortCode;
 use FluentCart\App\Modules\Templating\BlockTemplates\ProductCategoryTemplate;
 use FluentCart\App\Modules\Templating\BlockTemplates\ProductPageTemplate;
+use FluentCart\App\Vite;
 
 class TemplateLoader
 {
@@ -109,16 +110,28 @@ class TemplateLoader
     {
         $isTaxPages = is_tax(get_object_taxonomies('fluent-products'));
 
+        $isSingleProduct = is_singular('fluent-products');
+
+        if (!$isTaxPages && !$isSingleProduct) {
+            return;
+        }
+
         if ($isTaxPages) {
             if (apply_filters('fluent_cart/template/disable_taxonomy_fallback', false)) {
                 return;
             }
 
-            add_filter('template_include', array(__CLASS__, 'loadGenericFallbackTemplate'), 9999);
-        } else if (is_singular('fluent-products')) {
+            $object = get_queried_object();
+            self::$currentRenderingPageType = $object->taxonomy;
+            self::$currentTaxonomy = $object;
+        }
+
+        if ($isSingleProduct) {
             (new TemplateActions())->initSingleProductHooks();
         }
 
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueStandaloneAssets']);
+        add_filter('template_include', array(__CLASS__, 'loadGenericFallbackTemplate'), 9999);
     }
 
     private static function simulateProductsArchive()
@@ -129,6 +142,18 @@ class TemplateLoader
     public static function loadGenericFallbackTemplate($template)
     {
         return __DIR__ . '/fallback-generic-template.php';
+    }
+
+    public static function enqueueStandaloneAssets()
+    {
+        static $loaded = false;
+
+        if ($loaded) {
+            return;
+        }
+
+        $loaded = true;
+        Vite::enqueueStyle('fluent-cart-standalone-template', 'public/template/style/standalone.scss');
     }
 
     public static function renderProductsArchive($args = [])
