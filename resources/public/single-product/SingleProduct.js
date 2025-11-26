@@ -56,6 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return this.#container.querySelector(selector);
         }
 
+        #getProductPageElement(selector = '') {
+            const productPage = document.querySelector('[data-fluent-cart-single-product-page]');
+
+            if (!productPage) {
+                return null;
+            }
+
+            return selector ? productPage.querySelector(selector) : productPage;
+        }
+
         init(container, index) {
             this.#index = index;
             this.#container = container;
@@ -146,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         #setupMobileStickyCart() {
             const productPage = document.querySelector('[data-fluent-cart-single-product-page]');
             const mainAddToCart = this.findOneInContainer('.fct-dominant-add-to-cart');
-            const productTitle = this.findOneInContainer('#fct-product-summary-title')?.textContent?.trim() || '';
+            const productTitle = this.#getProductPageElement('#fct-product-summary-title')?.textContent?.trim() || '';
             const ratingLabel = this.$t('Rated 4.9 out of 5');
 
             if (!productPage || !mainAddToCart) {
@@ -244,22 +254,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         #getCurrentPriceHtml() {
-            const activeVariationPrice = this.findOneInContainer('[data-fluent-cart-product-item-price]:not(.is-hidden)');
+            const scope = this.#getProductPageElement() || this.#container || document;
+
+            const activeVariationPrice = scope.querySelector('[data-fluent-cart-product-item-price]:not(.is-hidden)');
             if (activeVariationPrice) {
                 return activeVariationPrice.innerHTML.trim();
             }
 
-            const activePaymentPrice = this.findOneInContainer('[data-fluent-cart-product-payment-type]:not(.is-hidden)');
+            const activePaymentPrice = scope.querySelector('[data-fluent-cart-product-payment-type]:not(.is-hidden)');
             if (activePaymentPrice) {
                 return activePaymentPrice.innerHTML.trim();
             }
 
-            const simplePrice = this.findOneInContainer('.fct-product-prices .fct-item-price');
+            const simplePrice = scope.querySelector('.fct-product-prices .fct-item-price');
             if (simplePrice) {
                 return simplePrice.innerHTML.trim();
             }
 
-            const fallbackPrice = this.findOneInContainer('.fct-product-prices');
+            const fallbackPrice = scope.querySelector('.fct-product-prices');
             return fallbackPrice ? fallbackPrice.textContent.trim() : '';
         }
 
