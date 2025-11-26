@@ -225,6 +225,8 @@ export default defineConfig({
                 {src: "resources/images", dest: ""},
                 {src: "resources/public/lib", dest: "public/"},
                 {src: "resources/world.geo.json", dest: ""},
+                // Copy any raw assets that aren't processed by Vite
+                {src: "resources/static", dest: ""},
             ],
         }),
         // AutoImport({
@@ -238,7 +240,7 @@ export default defineConfig({
         manifest: true,
         outDir: "assets",
         //assetsDir: '',
-        publicDir: "assets",
+        publicDir: false,
         //root: '/',
         emptyOutDir: true, // delete the contents of the output directory before each build
 
