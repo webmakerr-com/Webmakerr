@@ -210,6 +210,12 @@ class ProductUpdateRequest extends RequestGuard
             'detail.other_info.custom_sections.*.video.url' => 'nullable|sanitizeText',
             'detail.other_info.custom_sections.*.video.title' => 'nullable|sanitizeText',
             'detail.other_info.custom_sections.*.video.type' => 'nullable|sanitizeText',
+            'detail.other_info.reviews'               => 'nullable|array|max:15',
+            'detail.other_info.reviews.*.name'        => 'nullable|sanitizeText|maxLength:120',
+            'detail.other_info.reviews.*.text'        => 'nullable|sanitizeTextArea',
+            'detail.other_info.reviews.*.rating'      => 'nullable|numeric|min:0|max:5',
+            'detail.other_info.reviews.*.country'     => 'nullable|sanitizeText|maxLength:3',
+            'detail.other_info.reviews.*.date'        => 'nullable|date_format:Y-m-d',
             'product_terms'                       => 'nullable|array',
             'product_terms.*'                     => 'nullable|array',
             'product_terms.*.*'                   => 'nullable|numeric',
@@ -429,6 +435,58 @@ class ProductUpdateRequest extends RequestGuard
                         $sanitizers["$base.video.title"] = 'sanitize_text_field';
                         $sanitizers["$base.video.type"] = 'sanitize_text_field';
                     }
+                }
+            }
+
+            if (isset($data['detail']['other_info']['reviews']) && is_array($data['detail']['other_info']['reviews'])) {
+                $sanitizers['detail.other_info.reviews'] = function ($value) {
+                    if (!is_array($value)) {
+                        return [];
+                    }
+
+                    $filtered = array_filter($value, function ($review) {
+                        if (!is_array($review)) {
+                            return false;
+                        }
+
+                        $name = trim((string)Arr::get($review, 'name', ''));
+                        $text = trim((string)Arr::get($review, 'text', ''));
+                        $rating = Arr::get($review, 'rating', null);
+
+                        return $name || $text || (float)$rating > 0;
+                    });
+
+                    return array_slice(array_values($filtered), 0, 15);
+                };
+
+                foreach ($data['detail']['other_info']['reviews'] as $index => $review) {
+                    $base = "detail.other_info.reviews.$index";
+
+                    $sanitizers["$base.name"] = 'sanitize_text_field';
+                    $sanitizers["$base.text"] = function ($value) {
+                        return wp_kses_post($value);
+                    };
+                    $sanitizers["$base.rating"] = function ($value) {
+                        $rating = floatval($value);
+
+                        if ($rating < 0) {
+                            $rating = 0;
+                        }
+
+                        if ($rating > 5) {
+                            $rating = 5;
+                        }
+
+                        return round($rating, 1);
+                    };
+                    $sanitizers["$base.country"] = function ($value) {
+                        $country = strtoupper(substr(sanitize_text_field($value), 0, 3));
+
+                        return $country;
+                    };
+                    $sanitizers["$base.date"] = function ($value) {
+                        return empty($value) ? '' : sanitize_text_field($value);
+                    };
                 }
             }
         }
