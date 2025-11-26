@@ -382,54 +382,6 @@ body {
   .fct-product-summary-header{
     @apply flex flex-col gap-2 pb-3 mb-2 border-0;
   }
-
-  .fct-product-hero-highlights {
-    @apply grid gap-3 mb-1 @[1024px]/product-page:grid-cols-3;
-
-    .fct-product-hero-pill {
-      @apply flex items-start gap-3 p-3 border border-solid border-[var(--fct-single-product-border-color)] bg-white shadow-[0_8px_24px_rgba(0,0,0,0.03)] rounded;
-
-      .fct-hero-icon {
-        @apply w-10 h-10 flex items-center justify-center rounded-full bg-[var(--fct-single-product-qty-bg)] text-[var(--fct-single-product-primary-text-color)];
-      }
-
-      .fct-hero-copy {
-        @apply space-y-0.5;
-
-        .title {
-          @apply text-sm font-semibold text-[var(--fct-single-product-primary-text-color)];
-        }
-
-        .subtitle {
-          @apply text-xs leading-5 text-[var(--fct-secondary-text-color)];
-        }
-      }
-    }
-  }
-
-  .fct-product-value-points {
-    @apply grid gap-3 mt-2 @[768px]/product-page:grid-cols-2;
-
-    .fct-product-value-point {
-      @apply flex items-start gap-3 p-3 border border-solid border-[var(--fct-single-product-border-color)] rounded bg-white;
-
-      .fct-value-icon {
-        @apply w-9 h-9 flex items-center justify-center rounded-full bg-[var(--fct-single-product-qty-bg)] text-[var(--fct-single-product-primary-text-color)];
-      }
-
-      .fct-value-copy {
-        @apply space-y-0.5;
-
-        .title {
-          @apply text-sm font-semibold text-[var(--fct-single-product-primary-text-color)];
-        }
-
-        .subtitle {
-          @apply text-xs leading-5 text-[var(--fct-secondary-text-color)];
-        }
-      }
-    }
-  }
 }
 
 .fct-single-product-page {
