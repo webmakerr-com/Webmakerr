@@ -225,12 +225,10 @@ class ProductRenderer
         }
 
         $this->renderItemPrice();
+        $this->renderQuantity();
         ?>
-        <div class="fct-product-action-row">
-            <?php $this->renderQuantity(); ?>
-            <div class="fct-product-buttons-wrap">
-                <?php $this->renderPurchaseButtons(Arr::get($atts, 'button_atts', [])); ?>
-            </div>
+        <div class="fct-product-buttons-wrap">
+            <?php $this->renderPurchaseButtons(Arr::get($atts, 'button_atts', [])); ?>
         </div>
         </div>
         <?php
@@ -825,7 +823,7 @@ class ProductRenderer
 
         $defaults = [
                 'thumbnail_mode' => 'all', // horizontal, vertical
-                'thumb_position' => 'left' // bottom, left, right, top
+                'thumb_position' => 'bottom' // bottom, left, right, top
         ];
 
         $atts = wp_parse_args($args, $defaults);
