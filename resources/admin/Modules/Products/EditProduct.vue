@@ -11,6 +11,7 @@ import ProductDownload from "@/Modules/Products/parts/DownloadableFiles/ProductD
 import ProductStatus from "@/Modules/Products/parts/ProductStatus.vue";
 import ProductMedia from "@/Modules/Products/parts/ProductMedia.vue";
 import ProductCustomSections from "@/Modules/Products/parts/ProductCustomSections.vue";
+import ProductReviews from "@/Modules/Products/parts/ProductReviews.vue";
 import ProductTermTaxonomy from "@/Modules/Products/parts/ProductTermTaxonomy.vue";
 import {useProductDownloadableModel} from "@/Models/Product/ProductDownloadableModel";
 import ShippingClass from "@/Modules/Products/parts/ShippingClass.vue";
@@ -53,6 +54,7 @@ const setupProduct = (product) => {
   editableProduct.detail = editableProduct.detail || {};
   editableProduct.detail.other_info = editableProduct.detail.other_info || {};
   editableProduct.detail.other_info.custom_sections = editableProduct.detail.other_info.custom_sections || [];
+  editableProduct.detail.other_info.reviews = editableProduct.detail.other_info.reviews || [];
 
   editableProduct.taxonomies = props.taxonomies;
   editableProduct.product_terms = {};
@@ -250,6 +252,11 @@ onBeforeRouteLeave(() => {
           />
 
           <ProductCustomSections
+              :product="editableProduct"
+              :productEditModel="productEditModel"
+          />
+
+          <ProductReviews
               :product="editableProduct"
               :productEditModel="productEditModel"
           />

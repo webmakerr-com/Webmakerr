@@ -197,6 +197,7 @@ class ProductRenderer
                 </div>
             </div>
             <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
+            <?php $this->renderReviewsSection(); ?>
         </div>
         <?php
     }
@@ -617,6 +618,171 @@ class ProductRenderer
         echo '<div class="fct-product-section-actions">';
         $this->renderAddToCartButton($config['cartAttributes'], $config['addToCartText']);
         echo '</div>';
+    }
+
+    protected function renderReviewsSection()
+    {
+        $reviews = $this->getReviews();
+
+        if (empty($reviews)) {
+            return;
+        }
+
+        echo '<div class="fct-product-reviews" id="fct-product-reviews">';
+        echo '<div class="fct-product-reviews__header">';
+        echo '<h2 class="fct-product-reviews__title">' . esc_html__('Reviews', 'fluent-cart') . '</h2>';
+        echo '<p class="fct-product-reviews__subtitle">' . esc_html__('What customers are saying', 'fluent-cart') . '</p>';
+        echo '</div>';
+        echo '<div class="fct-product-reviews__list">';
+
+        foreach ($reviews as $review) {
+            $initials = $this->getInitials(Arr::get($review, 'name', ''));
+            $rating = (float)Arr::get($review, 'rating', 0);
+            $ratingText = number_format($rating, 1);
+            $flag = $this->getFlagEmoji(Arr::get($review, 'country', ''));
+            $date = $this->formatReviewDate(Arr::get($review, 'date', ''));
+
+            echo '<div class="fct-product-review-card">';
+            echo '<div class="fct-product-review-card__header">';
+            echo '<div class="fct-reviewer">';
+            echo '<div class="fct-reviewer__avatar" aria-hidden="true">' . esc_html($initials ?: '–') . '</div>';
+            echo '<div class="fct-reviewer__meta">';
+            echo '<p class="fct-reviewer__name">' . esc_html(Arr::get($review, 'name', '')) . '</p>';
+            echo '<div class="fct-reviewer__detail">';
+
+            if ($flag) {
+                echo '<span class="fct-reviewer__flag" aria-hidden="true">' . esc_html($flag) . '</span>';
+            }
+
+            if (Arr::get($review, 'country')) {
+                echo '<span class="screen-reader-text">' . esc_html(Arr::get($review, 'country')) . '</span>';
+            }
+
+            if ($date) {
+                echo '<span class="fct-reviewer__date">' . esc_html($date) . '</span>';
+            }
+
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+
+            echo '<div class="fct-review-rating" aria-label="' . esc_attr(sprintf(__('Rated %s out of 5', 'fluent-cart'), $ratingText)) . '">';
+            echo '<span class="fct-review-rating__value">' . esc_html($ratingText) . '</span>';
+            echo '<span class="fct-review-rating__stars" aria-hidden="true">';
+            echo '<span class="fct-review-rating__stars-active" style="width:' . esc_attr($this->getStarFillWidth($rating)) . '%;">★★★★★</span>';
+            echo '<span class="fct-review-rating__stars-base">★★★★★</span>';
+            echo '</span>';
+            echo '</div>';
+            echo '</div>';
+
+            $text = Arr::get($review, 'text', '');
+            if ($text) {
+                echo '<div class="fct-product-review-card__body">' . wpautop(wp_kses_post($text)) . '</div>';
+            }
+
+            echo '</div>';
+        }
+
+        echo '</div>';
+        echo '</div>';
+    }
+
+    protected function getReviews(): array
+    {
+        $reviews = Arr::get($this->product->detail, 'other_info.reviews', []);
+
+        if (!is_array($reviews)) {
+            return [];
+        }
+
+        $normalized = [];
+
+        foreach ($reviews as $review) {
+            if (!is_array($review)) {
+                continue;
+            }
+
+            $name = trim((string)Arr::get($review, 'name', ''));
+            $text = trim((string)Arr::get($review, 'text', ''));
+            $rating = (float)Arr::get($review, 'rating', 0);
+
+            if (!$name && !$text && !$rating) {
+                continue;
+            }
+
+            $normalized[] = [
+                    'name'    => $name,
+                    'text'    => $text,
+                    'rating'  => max(0, min(5, round($rating, 1))),
+                    'country' => strtoupper(substr((string)Arr::get($review, 'country', ''), 0, 3)),
+                    'date'    => Arr::get($review, 'date', ''),
+            ];
+
+            if (count($normalized) >= 15) {
+                break;
+            }
+        }
+
+        return $normalized;
+    }
+
+    protected function getInitials(string $name): string
+    {
+        $parts = preg_split('/\s+/', trim($name));
+        $initials = '';
+
+        if (is_array($parts)) {
+            foreach ($parts as $part) {
+                if (!$part) {
+                    continue;
+                }
+
+                $initials .= mb_strtoupper(mb_substr($part, 0, 1));
+
+                if (mb_strlen($initials) >= 2) {
+                    break;
+                }
+            }
+        }
+
+        return $initials;
+    }
+
+    protected function getFlagEmoji(?string $country): string
+    {
+        if (!$country || strlen($country) < 2) {
+            return '';
+        }
+
+        $code = strtoupper(substr($country, 0, 2));
+        $offset = 127397;
+        $first = $offset + ord($code[0]);
+        $second = $offset + ord($code[1]);
+
+        return mb_convert_encoding('&#' . $first . ';', 'UTF-8', 'HTML-ENTITIES')
+            . mb_convert_encoding('&#' . $second . ';', 'UTF-8', 'HTML-ENTITIES');
+    }
+
+    protected function formatReviewDate($date): string
+    {
+        if (!$date) {
+            return '';
+        }
+
+        $timestamp = strtotime((string)$date);
+
+        if (!$timestamp) {
+            return sanitize_text_field((string)$date);
+        }
+
+        return date_i18n(get_option('date_format'), $timestamp);
+    }
+
+    protected function getStarFillWidth(float $rating): float
+    {
+        $clamped = max(0, min($rating, 5));
+
+        return ($clamped / 5) * 100;
     }
 
     public function renderGallery($args = [])

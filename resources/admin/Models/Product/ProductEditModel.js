@@ -641,7 +641,8 @@ class ProductEditModel extends ProductBaseModel {
             'use_pricing_table',
             'active_editor',
             'sold_individually',
-            'custom_sections'
+            'custom_sections',
+            'reviews'
         ].includes(name)) {
 
             this.ensureVariationIndex(0);
