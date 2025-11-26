@@ -175,29 +175,98 @@ class ProductRenderer
 
     public function render()
     {
+        $reviewSummary = $this->getReviewSummary();
+        $priceMeta = $this->getDefaultPriceMeta();
         ?>
-        <div class="fct-single-product-page" data-fluent-cart-single-product-page>
-            <div class="fct-single-product-page-row">
-                <?php $this->renderGallery(); ?>
-                <div class="fct-product-summary">
-                    <div class="fct-product-summary-card">
-                        <div class="fct-product-summary-header">
-                            <?php $this->renderTitle(); ?>
-                            <div class="fct-product-meta">
-                                <?php $this->renderStockAvailability(); ?>
+        <?php /* Legacy single product page design commented out in favor of refreshed layout. */ ?>
+        <div class="fct-single-product-page fct-single-product-page--modern" data-fluent-cart-single-product-page>
+            <div class="fct-single-product-page-body">
+                <div class="fct-single-product-container">
+                    <div class="fct-product-breadcrumb" aria-label="<?php esc_attr_e('Breadcrumb', 'fluent-cart'); ?>">
+                        <a class="fct-breadcrumb-link" href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'fluent-cart'); ?></a>
+                        <span class="fct-breadcrumb-separator" aria-hidden="true">/</span>
+                        <span class="fct-breadcrumb-current"><?php echo esc_html(get_the_title($this->product->post_parent) ?: __('Best Sellers', 'fluent-cart')); ?></span>
+                    </div>
+
+                    <div class="fct-single-product-grid">
+                        <div class="fct-single-product-gallery-column">
+                            <div class="fct-product-gallery-card">
+                                <?php $this->renderGallery([
+                                        'thumb_position' => 'left',
+                                        'thumbnail_mode' => 'all'
+                                ]); ?>
                             </div>
                         </div>
-                        <?php
-                        $this->renderExcerpt();
-                        $this->renderPrices();
-                        $this->renderBuySection();
-                        $this->renderAssurances();
-                        ?>
+                        <div class="fct-single-product-summary-column">
+                            <div class="fct-product-summary-card fct-product-summary-card--modern">
+                                <div class="fct-product-summary-header">
+                                    <?php $this->renderTitle(); ?>
+                                    <div class="fct-product-meta">
+                                        <div class="fct-product-rating-wrap" aria-label="<?php echo esc_attr(sprintf(__('Rated %s out of 5', 'fluent-cart'), number_format_i18n($reviewSummary['average'], 1))); ?>">
+                                            <span class="fct-product-rating-stars" aria-hidden="true">★★★★★</span>
+                                            <span class="fct-product-rating-value"><?php echo esc_html(number_format_i18n($reviewSummary['average'], 1)); ?></span>
+                                            <span class="fct-product-rating-count"><?php echo esc_html(sprintf(_n('%s Review', '%s Reviews', $reviewSummary['count'], 'fluent-cart'), number_format_i18n($reviewSummary['count']))); ?></span>
+                                        </div>
+                                        <?php $this->renderStockAvailability('class="fct-product-stock-inline"'); ?>
+                                    </div>
+                                </div>
+                                <?php $this->renderPrices(); ?>
+                                <?php if (Arr::get($priceMeta, 'savings_amount', 0) > 0): ?>
+                                    <div class="fct-product-savings-pill">
+                                        <span class="fct-product-savings-percent"><?php echo esc_html(Arr::get($priceMeta, 'savings_percent', 0)); ?>%</span>
+                                        <span class="fct-product-savings-text"><?php echo esc_html(sprintf(__('You save %s', 'fluent-cart'), Helper::toDecimal(Arr::get($priceMeta, 'savings_amount', 0)))); ?></span>
+                                    </div>
+                                <?php endif; ?>
+                                <?php $this->renderExcerpt(); ?>
+
+                                <div class="fct-product-purchase-area">
+                                    <?php $this->renderBuySection(); ?>
+                                </div>
+
+                                <div class="fct-product-shipping-row" aria-label="<?php esc_attr_e('Shipping and returns information', 'fluent-cart'); ?>">
+                                    <div class="fct-shipping-item">
+                                        <span class="fct-shipping-icon" aria-hidden="true">🚚</span>
+                                        <span class="fct-shipping-text"><?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?></span>
+                                    </div>
+                                    <div class="fct-shipping-item">
+                                        <span class="fct-shipping-icon" aria-hidden="true">↩️</span>
+                                        <span class="fct-shipping-text"><?php esc_html_e('60 day returns', 'fluent-cart'); ?></span>
+                                    </div>
+                                </div>
+
+                                <?php $this->renderAssurances(); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div class="fct-product-bottom-info">
+                    <div class="fct-bottom-info-item">
+                        <div class="fct-bottom-info-icon" aria-hidden="true">📦</div>
+                        <div class="fct-bottom-info-copy">
+                            <p class="title"><?php esc_html_e('Estimated delivery date: Thursday, 11 December', 'fluent-cart'); ?></p>
+                            <p class="subtitle"><?php esc_html_e('Due to high demand, please allow at least 2–4 weeks for delivery.', 'fluent-cart'); ?></p>
+                        </div>
+                    </div>
+                    <div class="fct-bottom-info-item">
+                        <div class="fct-bottom-info-icon" aria-hidden="true">🌍</div>
+                        <div class="fct-bottom-info-copy">
+                            <p class="title"><?php esc_html_e('Insured & trackable worldwide shipping', 'fluent-cart'); ?></p>
+                            <p class="subtitle"><?php esc_html_e('Your tracking number will be sent after 3–5 processing days.', 'fluent-cart'); ?></p>
+                        </div>
+                    </div>
+                    <div class="fct-bottom-info-item">
+                        <div class="fct-bottom-info-icon" aria-hidden="true">❤️</div>
+                        <div class="fct-bottom-info-copy">
+                            <p class="title"><?php esc_html_e('Love it or get a 100% refund!', 'fluent-cart'); ?></p>
+                            <p class="subtitle"><?php esc_html_e('If you don’t love it, return it for a full refund.', 'fluent-cart'); ?></p>
+                        </div>
+                    </div>
+                </div>
+
+                <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
+                <?php $this->renderReviewsSection(); ?>
             </div>
-            <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
-            <?php $this->renderReviewsSection(); ?>
         </div>
         <?php
     }
@@ -816,6 +885,63 @@ class ProductRenderer
         $clamped = max(0, min($rating, 5));
 
         return ($clamped / 5) * 100;
+    }
+
+    protected function getReviewSummary(): array
+    {
+        $reviews = $this->getReviews();
+
+        if (!$reviews) {
+            return [
+                    'count'   => 0,
+                    'average' => 0
+            ];
+        }
+
+        $sum = 0;
+
+        foreach ($reviews as $review) {
+            $sum += (float)Arr::get($review, 'rating', 0);
+        }
+
+        $count = count($reviews);
+        $average = $count ? round($sum / $count, 1) : 0;
+
+        return [
+                'count'   => $count,
+                'average' => $average
+        ];
+    }
+
+    protected function getDefaultPriceMeta(): array
+    {
+        $variant = $this->defaultVariant ?: $this->product->variants()->first();
+
+        if (!$variant) {
+            return [
+                    'item_price'      => 0,
+                    'compare_price'   => 0,
+                    'savings_amount'  => 0,
+                    'savings_percent' => 0
+            ];
+        }
+
+        $itemPrice = (float)$variant->item_price;
+        $comparePrice = (float)$variant->compare_price;
+        $savingsAmount = 0;
+        $savingsPercent = 0;
+
+        if ($comparePrice > $itemPrice && $comparePrice > 0) {
+            $savingsAmount = $comparePrice - $itemPrice;
+            $savingsPercent = $comparePrice ? round(($savingsAmount / $comparePrice) * 100) : 0;
+        }
+
+        return [
+                'item_price'      => $itemPrice,
+                'compare_price'   => $comparePrice,
+                'savings_amount'  => $savingsAmount,
+                'savings_percent' => $savingsPercent
+        ];
     }
 
     public function renderGallery($args = [])
