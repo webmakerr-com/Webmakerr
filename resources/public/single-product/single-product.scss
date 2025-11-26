@@ -499,7 +499,7 @@ body {
   .fct-compare-price{
     @apply text-lg font-medium text-system-mid;
     del{
-      @apply no-underline;
+      @apply line-through;
     }
   }
 }
@@ -793,6 +793,10 @@ body {
 
     .fct-compare-price {
       @apply text-sm font-medium text-system-mid mr-1;
+
+      del {
+        @apply line-through;
+      }
     }
   }
 
