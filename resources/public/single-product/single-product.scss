@@ -489,8 +489,12 @@ body {
   @apply flex flex-wrap items-center gap-3 text-sm text-[var(--fct-single-product-primary-text-color)];
 }
 
+.fct-product-pricing-display {
+  @apply flex flex-col gap-2 mb-5;
+}
+
 .fct-product-prices {
-  @apply flex flex-wrap items-end gap-3 mb-5 text-3xl font-semibold leading-[1.1] text-[var(--fct-single-product-primary-text-color)];
+  @apply flex flex-wrap items-end gap-2 text-[34px] font-bold leading-[1.05] text-[var(--fct-single-product-primary-text-color)];
 
   .fct-item-price{
     @apply text-[var(--fct-primary-bg-color,var(--fct-single-product-active-border-color))];
@@ -502,6 +506,15 @@ body {
       @apply no-underline;
     }
   }
+}
+
+.fct-product-primary-price {
+  @apply bg-white rounded-xl border border-solid border-[var(--fct-single-product-border-color)] shadow-sm px-4 py-3;
+}
+
+.fct-price-savings-note {
+  @apply inline-flex items-center text-xs font-medium text-[var(--fct-secondary-text-color)] bg-[var(--fct-single-product-qty-bg)] rounded-lg px-3 py-1 shadow-sm;
+  letter-spacing: 0.02em;
 }
 
 .fct-product-title {
@@ -794,6 +807,16 @@ body {
     .fct-compare-price {
       @apply text-sm font-medium text-system-mid mr-1;
     }
+  }
+
+  .fct-mobile-sticky-price .fct-product-prices,
+  .fct-desktop-sticky-cart .fct-product-prices {
+    @apply text-lg font-semibold leading-6 gap-1 m-0 p-0 border-0 shadow-none bg-transparent;
+  }
+
+  .fct-mobile-sticky-price .fct-product-primary-price,
+  .fct-desktop-sticky-cart .fct-product-primary-price {
+    @apply m-0 p-0 border-0 shadow-none bg-transparent;
   }
 
   .fct-mobile-sticky-button {

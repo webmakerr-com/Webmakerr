@@ -879,8 +879,6 @@ class ProductRenderer
     public function renderPrices()
     {
         if ($this->product->detail->variation_type === 'simple') {
-            // we have to render for the simple product
-
             $first_price = $this->product->variants()->first();
 
             $itemPrice = $first_price ? $first_price->item_price : 0;
@@ -893,8 +891,6 @@ class ProductRenderer
                     'current_price' => $itemPrice,
                     'scope'         => 'price_range'
             ]);
-            ?>
-            <?php
 
             if ($comparePrice) {
                 $aria_label = sprintf(
@@ -912,22 +908,29 @@ class ProductRenderer
             }
 
             ?>
-            <div class="fct-price-range fct-product-prices" role="term"
-                 aria-label="<?php echo esc_attr($aria_label); ?>">
+            <div class="fct-product-pricing-display">
+                <div class="fct-product-prices fct-product-primary-price" role="term"
+                     aria-label="<?php echo esc_attr($aria_label); ?>">
 
-                <?php if ($comparePrice): ?>
-                    <span class="fct-compare-price">
-                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    <?php if ($comparePrice): ?>
+                        <span class="fct-compare-price">
+                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>">
+                                <?php echo esc_html(Helper::toDecimal($comparePrice)); ?>
+                            </del>
+                        </span>
+                    <?php endif; ?>
+                    <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                        <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
+                        <?php do_action('fluent_cart/product/after_price', [
+                                'product'       => $this->product,
+                                'current_price' => $itemPrice,
+                                'scope'         => 'price_range'
+                        ]); ?>
                     </span>
-                <?php endif; ?>
-                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                    <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
-                    <?php do_action('fluent_cart/product/after_price', [
-                            'product'       => $this->product,
-                            'current_price' => $itemPrice,
-                            'scope'         => 'price_range'
-                    ]); ?>
-                </span>
+                </div>
+                <div class="fct-price-savings-note" role="note">
+                    <?php echo esc_html__('You save $5 today', 'fluent-cart'); ?>
+                </div>
             </div>
             <?php
             do_action('fluent_cart/product/single/after_price_block', [
@@ -937,44 +940,88 @@ class ProductRenderer
             ]);
             return;
         }
-        $min_price = $this->product->detail->min_price;
-        $max_price = $this->product->detail->max_price;
 
+        $variants = $this->product->variants;
+        if (!$variants || $variants->isEmpty()) {
+            return;
+        }
+
+        $defaultVariant = $this->defaultVariant ?: $variants->first();
+
+        do_action('fluent_cart/product/single/before_price_block', [
+                'product'       => $this->product,
+                'current_price' => $defaultVariant ? $defaultVariant->item_price : 0,
+                'scope'         => 'price_range'
+        ]);
         do_action('fluent_cart/product/single/before_price_range_block', [
                 'product'       => $this->product,
-                'current_price' => $min_price,
+                'current_price' => $defaultVariant ? $defaultVariant->item_price : 0,
                 'scope'         => 'price_range'
         ]);
         ?>
-        <?php
-        $aria_label = sprintf(
-        /* translators: 1: Minimum price, 2: Maximum price */
-                __('Price range: %1$s - %2$s', 'fluent-cart'),
-                Helper::toDecimal($min_price),
-                Helper::toDecimal($max_price)
-        );
-        ?>
-        <div class="fct-product-prices fct-price-range" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
+        <div class="fct-product-pricing-display">
+            <?php foreach ($variants as $variant):
+                $paymentType = Arr::get($variant->other_info, 'payment_type', 'onetime');
+                $comparePrice = ($variant->compare_price > $variant->item_price) ? $variant->compare_price : 0;
+                $priceText = $paymentType === 'subscription'
+                        ? $variant->getSubscriptionTermsText(true)
+                        : Helper::toDecimal($variant->item_price);
+                $priceForAria = $paymentType === 'subscription'
+                        ? $variant->getSubscriptionTermsText(false)
+                        : Helper::toDecimal($variant->item_price);
+                $aria_label = sprintf(
+                /* translators: 1: Current item price */
+                        __('Price: %1$s', 'fluent-cart'),
+                        $priceForAria
+                );
+                ?>
+                <div
+                        class="fct-product-prices fct-product-primary-price fluent-cart-product-variation-content <?php echo $defaultVariant && $defaultVariant->id != $variant->id ? ' is-hidden' : ''; ?>"
+                        role="term"
+                        data-fluent-cart-product-item-price
+                        data-variation-id="<?php echo esc_attr($variant->id); ?>"
+                        aria-label="<?php echo esc_attr($aria_label); ?>"
+                >
 
-            <?php if ($max_price && $max_price != $min_price && $max_price > $min_price): ?>
-                <span class="fct-min-price"><?php echo esc_html(Helper::toDecimal($min_price)); ?></span>
-                <span class="fct-price-separator" aria-hidden="true">-</span>
-            <?php endif; ?>
-            <span class="fct-max-price">
-                <?php echo esc_html(Helper::toDecimal($max_price)); ?>
-            </span>
+                    <?php if ($comparePrice): ?>
+                        <span class="fct-compare-price">
+                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>">
+                                <?php echo esc_html(Helper::toDecimal($comparePrice)); ?>
+                            </del>
+                        </span>
+                    <?php endif; ?>
 
-            <?php do_action('fluent_cart/product/after_price', [
-                    'product'       => $this->product,
-                    'current_price' => $min_price,
-                    'scope'         => 'price_range'
-            ]); ?>
+                    <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                        <?php
+                        echo wp_kses_post(apply_filters('fluent_cart/single_product/variation_price', esc_html($priceText), [
+                                'product' => $this->product,
+                                'variant' => $variant,
+                                'scope'   => 'price_range'
+                        ]));
 
+                        do_action('fluent_cart/product/after_price', [
+                                'product'       => $this->product,
+                                'current_price' => $variant->item_price,
+                                'scope'         => 'price_range'
+                        ]);
+                        ?>
+                    </span>
+                </div>
+            <?php endforeach; ?>
+
+            <div class="fct-price-savings-note" role="note">
+                <?php echo esc_html__('You save $5 today', 'fluent-cart'); ?>
+            </div>
         </div>
         <?php
         do_action('fluent_cart/product/single/after_price_range_block', [
                 'product'       => $this->product,
-                'current_price' => $min_price,
+                'current_price' => $defaultVariant ? $defaultVariant->item_price : 0,
+                'scope'         => 'price_range'
+        ]);
+        do_action('fluent_cart/product/single/after_price_block', [
+                'product'       => $this->product,
+                'current_price' => $defaultVariant ? $defaultVariant->item_price : 0,
                 'scope'         => 'price_range'
         ]);
     }
