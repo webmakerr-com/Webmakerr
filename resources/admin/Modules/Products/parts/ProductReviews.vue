@@ -252,7 +252,7 @@ const countryOptions = computed(() => countries.map(country => ({
 }
 
 .fct-review__grid {
-  @apply grid grid-cols-1 gap-3 @[768px]:grid-cols-2;
+  @apply grid grid-cols-1 gap-3 md:grid-cols-2;
 }
 
 .fct-admin-input-wrapper {
