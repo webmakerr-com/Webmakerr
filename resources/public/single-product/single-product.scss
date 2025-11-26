@@ -743,8 +743,9 @@ body {
   }
 }
 
-/*=== mobile sticky add to cart ===*/
-.fct-mobile-sticky-cart {
+/*=== mobile & desktop sticky add to cart ===*/
+.fct-mobile-sticky-cart,
+.fct-desktop-sticky-cart {
   @apply fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-solid border-[var(--fct-single-product-border-color)] shadow-[0_-8px_24px_rgba(47,52,72,0.08)] hidden;
 
   .fct-mobile-sticky-content {
@@ -775,6 +776,10 @@ body {
 @media (max-width: 767px) {
   .fct-mobile-sticky-cart {
     @apply flex-col;
+  }
+
+  .fct-desktop-sticky-cart {
+    @apply hidden !important;
   }
 }
 
