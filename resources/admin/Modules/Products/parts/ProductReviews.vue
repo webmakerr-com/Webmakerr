@@ -54,22 +54,23 @@ const normalizeReview = (review) => {
 
 const normalizeReviews = (list) => {
   if (!Array.isArray(list)) {
-    return [getDefaultReview()];
+    return [];
   }
 
-  const normalized = list
-      .map(normalizeReview)
-      .filter(review => review.name || review.text || review.rating > 0)
-      .slice(0, maxReviews);
-
-  return normalized.length ? normalized : [getDefaultReview()];
+  return list.slice(0, maxReviews).map(normalizeReview);
 };
 
 const reviews = ref(normalizeReviews(props.product?.detail?.other_info?.reviews));
+const expandedReviews = ref([]);
 
 watch(() => props.product?.detail?.other_info?.reviews, (value) => {
   reviews.value = normalizeReviews(value);
 }, {immediate: true});
+
+watch(reviews, (value) => {
+  expandedReviews.value = expandedReviews.value
+      .filter(index => index < value.length);
+});
 
 const hasReachedLimit = computed(() => reviews.value.length >= maxReviews);
 
@@ -77,12 +78,34 @@ const persistReviews = () => {
   props.productEditModel.onChangeInputField('reviews', reviews.value);
 };
 
+const expandReview = (index) => {
+  if (!expandedReviews.value.includes(index)) {
+    expandedReviews.value = [...expandedReviews.value, index];
+  }
+};
+
+const collapseReview = (index) => {
+  expandedReviews.value = expandedReviews.value.filter(item => item !== index);
+};
+
+const toggleReview = (index) => {
+  if (expandedReviews.value.includes(index)) {
+    collapseReview(index);
+    return;
+  }
+
+  expandReview(index);
+};
+
+const isExpanded = (index) => expandedReviews.value.includes(index);
+
 const addReview = () => {
   if (hasReachedLimit.value) {
     return;
   }
 
   reviews.value = [...reviews.value, getDefaultReview()];
+  expandReview(reviews.value.length - 1);
   persistReviews();
 };
 
@@ -90,6 +113,9 @@ const removeReview = (index) => {
   const updated = [...reviews.value];
   updated.splice(index, 1);
   reviews.value = normalizeReviews(updated);
+  expandedReviews.value = expandedReviews.value
+      .filter(item => item !== index)
+      .map(item => (item > index ? item - 1 : item));
   persistReviews();
 };
 
@@ -101,6 +127,24 @@ const updateReviewField = (index, key, value) => {
   });
   reviews.value = updated;
   persistReviews();
+};
+
+const getReviewSummary = (review) => {
+  const bits = [];
+
+  if (review.rating) {
+    bits.push(`${review.rating.toFixed(1)} / 5`);
+  }
+
+  if (review.name) {
+    bits.push(review.name);
+  }
+
+  if (review.country) {
+    bits.push(review.country);
+  }
+
+  return bits.join(' • ');
 };
 
 const countryOptions = computed(() => countries.map(country => ({
@@ -125,90 +169,109 @@ const countryOptions = computed(() => countries.map(country => ({
               :key="`review-${index}`"
           >
             <div class="fct-review__header">
-              <p class="fct-review__title">{{ translate('Review') }} {{ index + 1 }}</p>
-              <el-button
-                  v-if="reviews.length > 1"
-                  text
-                  type="danger"
-                  size="small"
-                  @click="removeReview(index)"
-              >
-                {{ translate('Remove') }}
-              </el-button>
+              <div class="fct-review__heading">
+                <p class="fct-review__title">{{ translate('Review') }} {{ index + 1 }}</p>
+                <p class="fct-review__summary" v-if="getReviewSummary(review)">{{ getReviewSummary(review) }}</p>
+              </div>
+              <div class="fct-review__actions">
+                <el-button
+                    text
+                    type="primary"
+                    size="small"
+                    @click="toggleReview(index)"
+                >
+                  {{ isExpanded(index) ? translate('Collapse') : translate('Expand') }}
+                </el-button>
+                <el-button
+                    v-if="reviews.length > 0"
+                    text
+                    type="danger"
+                    size="small"
+                    @click="removeReview(index)"
+                >
+                  {{ translate('Remove') }}
+                </el-button>
+              </div>
             </div>
 
-            <el-form label-position="top" require-asterisk-position="right" class="fct-review__form">
-              <div class="fct-review__grid">
-                <div class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Reviewer name')">
-                    <el-input
-                        :model-value="review.name"
-                        :placeholder="translate('Add reviewer name')"
-                        @input="value => updateReviewField(index, 'name', value)"
-                    />
-                  </el-form-item>
-                </div>
+            <el-collapse-transition>
+              <div v-show="isExpanded(index)" class="fct-review__content">
+                <el-form label-position="top" require-asterisk-position="right" class="fct-review__form">
+                  <div class="fct-review__grid">
+                    <div class="fct-admin-input-wrapper">
+                      <el-form-item :label="translate('Reviewer name')">
+                        <el-input
+                            :model-value="review.name"
+                            :placeholder="translate('Add reviewer name')"
+                            @input="value => updateReviewField(index, 'name', value)"
+                        />
+                      </el-form-item>
+                    </div>
 
-                <div class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Rating (0 - 5)')">
-                    <el-input-number
-                        :model-value="review.rating"
-                        :min="0"
-                        :max="5"
-                        :step="0.1"
-                        :precision="1"
-                        @update:model-value="value => updateReviewField(index, 'rating', value)"
-                    />
-                  </el-form-item>
-                </div>
+                    <div class="fct-admin-input-wrapper">
+                      <el-form-item :label="translate('Rating (0 - 5)')">
+                        <el-input-number
+                            :model-value="review.rating"
+                            :min="0"
+                            :max="5"
+                            :step="0.1"
+                            :precision="1"
+                            @update:model-value="value => updateReviewField(index, 'rating', value)"
+                        />
+                      </el-form-item>
+                    </div>
 
-                <div class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Country')">
-                    <el-select
-                        filterable
-                        clearable
-                        :model-value="review.country"
-                        :placeholder="translate('Choose a country')"
-                        @change="value => updateReviewField(index, 'country', value)"
-                    >
-                      <el-option
-                          v-for="country in countryOptions"
-                          :key="country.value"
-                          :label="country.label"
-                          :value="country.value"
+                    <div class="fct-admin-input-wrapper">
+                      <el-form-item :label="translate('Country')">
+                        <el-select
+                            filterable
+                            clearable
+                            :model-value="review.country"
+                            :placeholder="translate('Choose a country')"
+                            @change="value => updateReviewField(index, 'country', value)"
+                        >
+                          <el-option
+                              v-for="country in countryOptions"
+                              :key="country.value"
+                              :label="country.label"
+                              :value="country.value"
+                          />
+                        </el-select>
+                      </el-form-item>
+                    </div>
+
+                    <div class="fct-admin-input-wrapper">
+                      <el-form-item :label="translate('Date')">
+                        <el-date-picker
+                            type="date"
+                            format="YYYY-MM-DD"
+                            value-format="YYYY-MM-DD"
+                            :model-value="review.date"
+                            :placeholder="translate('YYYY-MM-DD')"
+                            @update:model-value="value => updateReviewField(index, 'date', value)"
+                        />
+                      </el-form-item>
+                    </div>
+                  </div>
+
+                  <div class="fct-admin-input-wrapper">
+                    <el-form-item :label="translate('Review text')">
+                      <el-input
+                          type="textarea"
+                          :rows="3"
+                          :model-value="review.text"
+                          :placeholder="translate('Add the review text')"
+                          @input="value => updateReviewField(index, 'text', value)"
                       />
-                    </el-select>
-                  </el-form-item>
-                </div>
-
-                <div class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Date')">
-                    <el-date-picker
-                        type="date"
-                        format="YYYY-MM-DD"
-                        value-format="YYYY-MM-DD"
-                        :model-value="review.date"
-                        :placeholder="translate('YYYY-MM-DD')"
-                        @update:model-value="value => updateReviewField(index, 'date', value)"
-                    />
-                  </el-form-item>
-                </div>
+                    </el-form-item>
+                  </div>
+                </el-form>
               </div>
-
-              <div class="fct-admin-input-wrapper">
-                <el-form-item :label="translate('Review text')">
-                  <el-input
-                      type="textarea"
-                      :rows="3"
-                      :model-value="review.text"
-                      :placeholder="translate('Add the review text')"
-                      @input="value => updateReviewField(index, 'text', value)"
-                  />
-                </el-form-item>
-              </div>
-            </el-form>
+            </el-collapse-transition>
           </div>
         </div>
+
+        <p class="fct-review-empty" v-else>{{ translate('No reviews added yet.') }}</p>
 
         <div class="fct-review-footer">
           <el-button
@@ -220,6 +283,7 @@ const countryOptions = computed(() => countries.map(country => ({
             {{ translate('Add review') }}
           </el-button>
           <p class="text-muted" v-if="hasReachedLimit">{{ translate('You can add up to fifteen reviews.') }}</p>
+          <p class="text-muted" v-else>{{ translate('You can add up to fifteen reviews.') }} ({{ reviews.length }} / {{ maxReviews }})</p>
         </div>
       </Card.Body>
     </Card.Container>
@@ -240,11 +304,27 @@ const countryOptions = computed(() => countries.map(country => ({
 }
 
 .fct-review__header {
-  @apply flex items-center justify-between mb-3;
+  @apply flex items-start justify-between gap-2 mb-1 flex-wrap;
+}
+
+.fct-review__heading {
+  @apply flex flex-col gap-1;
+}
+
+.fct-review__actions {
+  @apply flex items-center gap-2;
 }
 
 .fct-review__title {
   @apply text-base font-semibold text-gray-800 m-0;
+}
+
+.fct-review__summary {
+  @apply text-sm text-gray-500 m-0;
+}
+
+.fct-review__content {
+  @apply mt-3;
 }
 
 .fct-review__form {
@@ -260,10 +340,14 @@ const countryOptions = computed(() => countries.map(country => ({
 }
 
 .fct-review-footer {
-  @apply pt-2 flex items-center gap-3;
+  @apply pt-2 flex items-center gap-3 flex-wrap;
 
   .text-muted {
     @apply text-sm text-gray-500 m-0;
   }
+}
+
+.fct-review-empty {
+  @apply text-sm text-gray-500 mb-3;
 }
 </style>
