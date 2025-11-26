@@ -784,12 +784,13 @@ body {
   }
 }
 
+
 .fct-product-reviews {
-  @apply mt-12 rounded-2xl border border-solid border-[var(--fct-single-product-border-color)] bg-white shadow-sm;
+  @apply mt-12 rounded-2xl bg-white shadow-md overflow-hidden;
   @apply p-6 @[768px]:p-8 @[1024px]:p-10;
 
   &__header {
-    @apply mb-6 pb-4 flex flex-col gap-1 border-b border-solid border-[var(--fct-single-product-border-color)];
+    @apply mb-6 flex flex-col gap-1;
   }
 
   &__title {
@@ -806,7 +807,12 @@ body {
 }
 
 .fct-product-review-card {
-  @apply border border-solid border-[var(--fct-single-product-border-color)] rounded-[12px] bg-white p-6 flex flex-col gap-5 shadow-sm;
+  @apply border border-solid border-[var(--fct-single-product-border-color)] rounded-[16px] bg-white p-6 flex flex-col gap-5 shadow-sm;
+  @apply transition-shadow duration-300 h-full;
+
+  &:hover {
+    @apply shadow-md;
+  }
 }
 
 .fct-product-review-card__header {
@@ -881,18 +887,11 @@ body {
   }
 
   .fct-product-reviews__list {
-    @apply flex flex-nowrap overflow-x-auto gap-4 -mx-4 px-4 pb-2;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .fct-product-reviews__list::-webkit-scrollbar {
-    display: none;
+    @apply grid grid-cols-1 gap-4;
   }
 
   .fct-product-review-card {
-    @apply min-w-[85%];
-    scroll-snap-align: start;
+    @apply w-full shadow-sm;
   }
 }
 
