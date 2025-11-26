@@ -82,14 +82,14 @@ const dumpComposerAutoload = async () => {
     }
 
     await new Promise((resolve, reject) => {
-        let hadErrorOutput = false;
+        let stderrData = '';
 
         const composer = spawn('composer', ['dump-autoload', '--classmap-authoritative'], {
             stdio: ['inherit', 'inherit', 'pipe']
         });
 
         composer.stderr.on('data', (data) => {
-            hadErrorOutput = true;
+            stderrData += data.toString();
             process.stderr.write(data);
         });
 
@@ -98,8 +98,13 @@ const dumpComposerAutoload = async () => {
         });
 
         composer.on('close', (code) => {
-            if (code === 0 && !hadErrorOutput) {
-                console.log('✅ Composer autoload dump completed.');
+            if (code === 0) {
+                if (stderrData) {
+                    console.warn('⚠️ Composer autoload completed with warnings.');
+                } else {
+                    console.log('✅ Composer autoload dump completed.');
+                }
+
                 resolve();
                 return;
             }
