@@ -146,6 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
         #setupMobileStickyCart() {
             const productPage = document.querySelector('[data-fluent-cart-single-product-page]');
             const mainAddToCart = this.findOneInContainer('.fct-dominant-add-to-cart');
+            const productTitle = this.findOneInContainer('#fct-product-summary-title')?.textContent?.trim() || '';
+            const ratingLabel = this.$t('Rated 4.9 out of 5');
 
             if (!productPage || !mainAddToCart) {
                 return;
@@ -158,10 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     stickyBar.className = className;
                     stickyBar.innerHTML = `
                         <div class="fct-mobile-sticky-content">
-                            <div class="fct-mobile-sticky-price" data-fluent-cart-sticky-price></div>
-                            <button type="button" class="fct-mobile-sticky-button" data-fluent-cart-sticky-button>
-                                <span class="text">${mainAddToCart.querySelector('.text')?.textContent || mainAddToCart.textContent?.trim() || ''}</span>
-                            </button>
+                            <div class="fct-sticky-summary">
+                                <div class="fct-sticky-title" data-fluent-cart-sticky-title></div>
+                                <div class="fct-sticky-rating" aria-label="${ratingLabel}">
+                                    <span class="fct-sticky-stars" aria-hidden="true">
+                                        <span class="fct-sticky-stars-base">★★★★★</span>
+                                        <span class="fct-sticky-stars-active">★★★★★</span>
+                                    </span>
+                                    <span class="fct-sticky-rating-value">4.9</span>
+                                </div>
+                            </div>
+                            <div class="fct-sticky-actions">
+                                <div class="fct-mobile-sticky-price" data-fluent-cart-sticky-price></div>
+                                <button type="button" class="fct-mobile-sticky-button" data-fluent-cart-sticky-button>
+                                    <span class="text">${mainAddToCart.querySelector('.text')?.textContent || mainAddToCart.textContent?.trim() || ''}</span>
+                                </button>
+                            </div>
                         </div>
                     `;
                     productPage.appendChild(stickyBar);
@@ -169,6 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const stickyPrice = stickyBar.querySelector('[data-fluent-cart-sticky-price]');
                 const stickyButton = stickyBar.querySelector('[data-fluent-cart-sticky-button]');
+                const stickyTitle = stickyBar.querySelector('[data-fluent-cart-sticky-title]');
+
+                if (stickyTitle) {
+                    stickyTitle.textContent = productTitle;
+                }
 
                 if (stickyButton) {
                     stickyButton.addEventListener('click', (event) => {
