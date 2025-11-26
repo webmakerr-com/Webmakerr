@@ -28,7 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
         #mobileStickyBar;
         #mobileStickyPrice;
         #mobileStickyButton;
-        #mobileCartObserver;
+        #desktopStickyBar;
+        #desktopStickyPrice;
+        #desktopStickyButton;
+        #stickyCartObserver;
         #mainAddToCartVisibility = true;
 
         toTitleCase(str) {
@@ -126,13 +129,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         #updateStickyPrice() {
-            if (!this.#mobileStickyPrice) {
+            const priceHtml = this.#getCurrentPriceHtml();
+            if (!priceHtml) {
                 return;
             }
 
-            const priceHtml = this.#getCurrentPriceHtml();
-            if (priceHtml) {
+            if (this.#mobileStickyPrice) {
                 this.#mobileStickyPrice.innerHTML = priceHtml;
+            }
+
+            if (this.#desktopStickyPrice) {
+                this.#desktopStickyPrice.innerHTML = priceHtml;
             }
         }
 
@@ -144,55 +151,70 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            if (!this.#mobileStickyBar) {
-                this.#mobileStickyBar = document.querySelector('.fct-mobile-sticky-cart');
-            }
-
-            if (!this.#mobileStickyBar) {
-                this.#mobileStickyBar = document.createElement('div');
-                this.#mobileStickyBar.className = 'fct-mobile-sticky-cart';
-                this.#mobileStickyBar.innerHTML = `
-                    <div class="fct-mobile-sticky-content">
-                        <div class="fct-mobile-sticky-price" data-fluent-cart-sticky-price></div>
-                        <button type="button" class="fct-mobile-sticky-button" data-fluent-cart-sticky-button>
-                            <span class="text">${mainAddToCart.querySelector('.text')?.textContent || mainAddToCart.textContent?.trim() || ''}</span>
-                        </button>
-                    </div>
-                `;
-                productPage.appendChild(this.#mobileStickyBar);
-            }
-
-            this.#mobileStickyPrice = this.#mobileStickyBar.querySelector('[data-fluent-cart-sticky-price]');
-            this.#mobileStickyButton = this.#mobileStickyBar.querySelector('[data-fluent-cart-sticky-button]');
-
-            if (this.#mobileStickyButton) {
-                this.#mobileStickyButton.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    mainAddToCart.click();
-                });
-            }
-
-            const isMobileView = () => window.matchMedia('(max-width: 767px)').matches;
-
-            const updateStickyVisibility = () => {
-                if (!this.#mobileStickyBar) {
-                    return;
+            const createStickyBar = (className) => {
+                let stickyBar = productPage.querySelector(`.${className}`);
+                if (!stickyBar) {
+                    stickyBar = document.createElement('div');
+                    stickyBar.className = className;
+                    stickyBar.innerHTML = `
+                        <div class="fct-mobile-sticky-content">
+                            <div class="fct-mobile-sticky-price" data-fluent-cart-sticky-price></div>
+                            <button type="button" class="fct-mobile-sticky-button" data-fluent-cart-sticky-button>
+                                <span class="text">${mainAddToCart.querySelector('.text')?.textContent || mainAddToCart.textContent?.trim() || ''}</span>
+                            </button>
+                        </div>
+                    `;
+                    productPage.appendChild(stickyBar);
                 }
 
-                const shouldShow = isMobileView() && !this.#mainAddToCartVisibility;
-                this.#mobileStickyBar.classList.toggle('is-visible', shouldShow);
+                const stickyPrice = stickyBar.querySelector('[data-fluent-cart-sticky-price]');
+                const stickyButton = stickyBar.querySelector('[data-fluent-cart-sticky-button]');
+
+                if (stickyButton) {
+                    stickyButton.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        mainAddToCart.click();
+                    });
+                }
+
+                return {stickyBar, stickyPrice, stickyButton};
             };
 
-            if (this.#mobileCartObserver) {
-                this.#mobileCartObserver.disconnect();
+            const mobileSticky = createStickyBar('fct-mobile-sticky-cart');
+            this.#mobileStickyBar = mobileSticky.stickyBar;
+            this.#mobileStickyPrice = mobileSticky.stickyPrice;
+            this.#mobileStickyButton = mobileSticky.stickyButton;
+
+            const desktopSticky = createStickyBar('fct-desktop-sticky-cart');
+            this.#desktopStickyBar = desktopSticky.stickyBar;
+            this.#desktopStickyPrice = desktopSticky.stickyPrice;
+            this.#desktopStickyButton = desktopSticky.stickyButton;
+
+            const isMobileView = () => window.matchMedia('(max-width: 767px)').matches;
+            const isDesktopView = () => window.matchMedia('(min-width: 768px)').matches;
+
+            const updateStickyVisibility = () => {
+                if (this.#mobileStickyBar) {
+                    const shouldShowMobile = isMobileView() && !this.#mainAddToCartVisibility;
+                    this.#mobileStickyBar.classList.toggle('is-visible', shouldShowMobile);
+                }
+
+                if (this.#desktopStickyBar) {
+                    const shouldShowDesktop = isDesktopView() && !this.#mainAddToCartVisibility;
+                    this.#desktopStickyBar.classList.toggle('is-visible', shouldShowDesktop);
+                }
+            };
+
+            if (this.#stickyCartObserver) {
+                this.#stickyCartObserver.disconnect();
             }
 
-            this.#mobileCartObserver = new IntersectionObserver(([entry]) => {
+            this.#stickyCartObserver = new IntersectionObserver(([entry]) => {
                 this.#mainAddToCartVisibility = entry.isIntersecting;
                 updateStickyVisibility();
             }, {threshold: 0});
 
-            this.#mobileCartObserver.observe(mainAddToCart);
+            this.#stickyCartObserver.observe(mainAddToCart);
 
             window.addEventListener('resize', updateStickyVisibility);
             window.addEventListener('scroll', updateStickyVisibility, {passive: true});
