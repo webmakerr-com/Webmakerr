@@ -667,6 +667,7 @@ class ProductRenderer
             echo '</div>';
 
             echo '<div class="fct-review-rating" aria-label="' . esc_attr(sprintf(__('Rated %s out of 5', 'fluent-cart'), $ratingText)) . '">';
+            echo '<span class="fct-review-rating__label">' . esc_html__('Rating', 'fluent-cart') . '</span>';
             echo '<span class="fct-review-rating__value">' . esc_html($ratingText) . '</span>';
             echo '<span class="fct-review-rating__stars" aria-hidden="true">';
             echo '<span class="fct-review-rating__stars-active" style="width:' . esc_attr($this->getStarFillWidth($rating)) . '%;">★★★★★</span>';
