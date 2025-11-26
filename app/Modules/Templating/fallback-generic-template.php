@@ -25,22 +25,34 @@ $pageType = \FluentCart\App\Services\TemplateService::getCurrentFcPageType();
 <div class="fct-standalone-page__wrapper">
     <header class="fct-standalone-header">
         <div class="fct-standalone-container">
-            <div class="fct-standalone-brand">
-                <a class="fct-standalone-brand__link" href="<?php echo esc_url($homeUrl); ?>">
-                    <?php if ($storeLogo) : ?>
-                        <img class="fct-standalone-brand__logo" src="<?php echo esc_url($storeLogo); ?>" alt="<?php echo esc_attr($storeName); ?>">
-                    <?php else : ?>
-                        <span class="fct-standalone-brand__name"><?php echo esc_html($storeName); ?></span>
+            <div class="fct-standalone-header__grid">
+                <div class="fct-standalone-brand">
+                    <a class="fct-standalone-brand__link" href="<?php echo esc_url($homeUrl); ?>">
+                        <?php if ($storeLogo) : ?>
+                            <img class="fct-standalone-brand__logo" src="<?php echo esc_url($storeLogo); ?>" alt="<?php echo esc_attr($storeName); ?>">
+                        <?php else : ?>
+                            <span class="fct-standalone-brand__name"><?php echo esc_html($storeName); ?></span>
+                        <?php endif; ?>
+                    </a>
+                    <?php if ($storeTagline) : ?>
+                        <p class="fct-standalone-brand__tagline"><?php echo esc_html($storeTagline); ?></p>
                     <?php endif; ?>
-                </a>
-                <?php if ($storeTagline) : ?>
-                    <p class="fct-standalone-brand__tagline"><?php echo esc_html($storeTagline); ?></p>
-                <?php endif; ?>
-            </div>
-            <div class="fct-standalone-header__meta">
-                <span class="fct-standalone-header__badge"><?php esc_html_e('Secure Checkout', 'fluent-cart'); ?></span>
-                <span class="fct-standalone-header__badge"><?php esc_html_e('Fast Delivery', 'fluent-cart'); ?></span>
-                <span class="fct-standalone-header__badge"><?php esc_html_e('Quality Products', 'fluent-cart'); ?></span>
+                </div>
+                <div class="fct-standalone-header__support">
+                    <div class="fct-standalone-header__meta">
+                        <span class="fct-standalone-header__badge"><?php esc_html_e('Secure Checkout', 'fluent-cart'); ?></span>
+                        <span class="fct-standalone-header__badge"><?php esc_html_e('Fast Delivery', 'fluent-cart'); ?></span>
+                        <span class="fct-standalone-header__badge"><?php esc_html_e('Quality Products', 'fluent-cart'); ?></span>
+                    </div>
+                    <div class="fct-standalone-header__actions">
+                        <a class="fct-standalone-header__link" href="<?php echo esc_url($homeUrl); ?>"><?php esc_html_e('Back to Storefront', 'fluent-cart'); ?></a>
+                        <span class="fct-standalone-header__divider" aria-hidden="true"></span>
+                        <span class="fct-standalone-header__help">
+                            <span class="fct-standalone-header__help-label"><?php esc_html_e('Need help?', 'fluent-cart'); ?></span>
+                            <span class="fct-standalone-header__help-text"><?php esc_html_e('Our support team is ready to assist you', 'fluent-cart'); ?></span>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -68,15 +80,24 @@ $pageType = \FluentCart\App\Services\TemplateService::getCurrentFcPageType();
     <?php do_action('fluent_cart/generic_template/after_content'); ?>
     <footer class="fct-standalone-footer">
         <div class="fct-standalone-container">
-            <div class="fct-standalone-footer__brand">
-                <div class="fct-standalone-brand__name"><?php echo esc_html($storeName); ?></div>
-                <?php if ($storeTagline) : ?>
-                    <p class="fct-standalone-footer__tagline"><?php echo esc_html($storeTagline); ?></p>
-                <?php endif; ?>
-            </div>
-            <div class="fct-standalone-footer__meta">
-                <span class="fct-standalone-footer__note"><?php echo esc_html__('Powered by FluentCart', 'fluent-cart'); ?></span>
-                <span class="fct-standalone-footer__note">&copy; <?php echo esc_html(date_i18n('Y')); ?> <?php echo esc_html($storeName); ?></span>
+            <div class="fct-standalone-footer__grid">
+                <div class="fct-standalone-footer__brand">
+                    <div class="fct-standalone-brand__name"><?php echo esc_html($storeName); ?></div>
+                    <?php if ($storeTagline) : ?>
+                        <p class="fct-standalone-footer__tagline"><?php echo esc_html($storeTagline); ?></p>
+                    <?php endif; ?>
+                    <p class="fct-standalone-footer__note"><?php echo esc_html__('Powered by FluentCart', 'fluent-cart'); ?></p>
+                </div>
+                <div class="fct-standalone-footer__meta">
+                    <div class="fct-standalone-footer__links">
+                        <a class="fct-standalone-footer__link" href="<?php echo esc_url($homeUrl); ?>"><?php esc_html_e('Home', 'fluent-cart'); ?></a>
+                        <span class="fct-standalone-footer__separator" aria-hidden="true"></span>
+                        <span class="fct-standalone-footer__link"><?php esc_html_e('Customer Support', 'fluent-cart'); ?></span>
+                        <span class="fct-standalone-footer__separator" aria-hidden="true"></span>
+                        <span class="fct-standalone-footer__link"><?php esc_html_e('Shipping & Returns', 'fluent-cart'); ?></span>
+                    </div>
+                    <div class="fct-standalone-footer__note">&copy; <?php echo esc_html(date_i18n('Y')); ?> <?php echo esc_html($storeName); ?></div>
+                </div>
             </div>
         </div>
     </footer>

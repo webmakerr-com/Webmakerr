@@ -29,6 +29,8 @@ class TemplateLoader
 
         self::$supportedTheme = self::hasThemeSupport();
 
+        add_filter('template_include', [self::class, 'forceStandaloneSingleProductTemplate'], 1);
+
         if (self::$supportedTheme) {
             add_filter('template_include', [self::class, 'loadTemplate'], 10);
         } else {
@@ -106,6 +108,21 @@ class TemplateLoader
         return $template;
     }
 
+    public static function forceStandaloneSingleProductTemplate($template)
+    {
+        if (!is_singular('fluent-products')) {
+            return $template;
+        }
+
+        self::$currentRenderingPageType = 'single_product';
+
+        add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueStandaloneAssets']);
+
+        (new TemplateActions())->initSingleProductHooks();
+
+        return __DIR__ . '/fallback-generic-template.php';
+    }
+
     public static function initUnsupportedTheme()
     {
         $isTaxPages = is_tax(get_object_taxonomies('fluent-products'));
@@ -113,6 +130,10 @@ class TemplateLoader
         $isSingleProduct = is_singular('fluent-products');
 
         if (!$isTaxPages && !$isSingleProduct) {
+            return;
+        }
+
+        if ($isSingleProduct) {
             return;
         }
 
@@ -124,10 +145,6 @@ class TemplateLoader
             $object = get_queried_object();
             self::$currentRenderingPageType = $object->taxonomy;
             self::$currentTaxonomy = $object;
-        }
-
-        if ($isSingleProduct) {
-            (new TemplateActions())->initSingleProductHooks();
         }
 
         add_action('wp_enqueue_scripts', [__CLASS__, 'enqueueStandaloneAssets']);
