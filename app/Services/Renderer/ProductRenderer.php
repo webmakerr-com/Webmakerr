@@ -639,7 +639,10 @@ class ProductRenderer
             $initials = $this->getInitials(Arr::get($review, 'name', ''));
             $rating = (float)Arr::get($review, 'rating', 0);
             $ratingText = number_format($rating, 1);
-            $flag = $this->getFlagEmoji(Arr::get($review, 'country', ''));
+            $countryCode = Arr::get($review, 'country', '');
+            $countryName = Arr::get($review, 'country_name', '');
+            $flag = $this->getFlagEmoji($countryCode);
+            $flagIcon = $this->getFlagIconUrl($countryCode);
             $date = $this->formatReviewDate(Arr::get($review, 'date', ''));
 
             echo '<div class="fct-product-review-card">';
@@ -650,12 +653,16 @@ class ProductRenderer
             echo '<p class="fct-reviewer__name">' . esc_html(Arr::get($review, 'name', '')) . '</p>';
             echo '<div class="fct-reviewer__detail">';
 
-            if ($flag) {
+            if ($flagIcon) {
+                echo '<span class="fct-reviewer__flag" aria-hidden="true">';
+                echo '<img src="' . esc_url($flagIcon) . '" alt="" loading="lazy">';
+                echo '</span>';
+            } else if ($flag) {
                 echo '<span class="fct-reviewer__flag" aria-hidden="true">' . esc_html($flag) . '</span>';
             }
 
-            if (Arr::get($review, 'country')) {
-                echo '<span class="screen-reader-text">' . esc_html(Arr::get($review, 'country')) . '</span>';
+            if ($countryName) {
+                echo '<span class="screen-reader-text">' . esc_html($countryName) . '</span>';
             }
 
             if ($date) {
@@ -706,17 +713,20 @@ class ProductRenderer
             $name = trim((string)Arr::get($review, 'name', ''));
             $text = trim((string)Arr::get($review, 'text', ''));
             $rating = (float)Arr::get($review, 'rating', 0);
+            $rawCountry = trim((string)Arr::get($review, 'country', ''));
+            $countryCode = $this->normalizeCountryCode($rawCountry);
 
             if (!$name && !$text && !$rating) {
                 continue;
             }
 
             $normalized[] = [
-                    'name'    => $name,
-                    'text'    => $text,
-                    'rating'  => max(0, min(5, round($rating, 1))),
-                    'country' => strtoupper(substr((string)Arr::get($review, 'country', ''), 0, 3)),
-                    'date'    => Arr::get($review, 'date', ''),
+                    'name'         => $name,
+                    'text'         => $text,
+                    'rating'       => max(0, min(5, round($rating, 1))),
+                    'country'      => $countryCode,
+                    'country_name' => $rawCountry ?: $countryCode,
+                    'date'         => Arr::get($review, 'date', ''),
             ];
 
             if (count($normalized) >= 15) {
@@ -749,13 +759,35 @@ class ProductRenderer
         return $initials;
     }
 
-    protected function getFlagEmoji(?string $country): string
+    protected function normalizeCountryCode(?string $country): string
     {
-        if (!$country || strlen($country) < 2) {
+        $code = strtoupper(substr((string)$country, 0, 2));
+
+        if (!preg_match('/^[A-Z]{2}$/', $code)) {
             return '';
         }
 
-        $code = strtoupper(substr($country, 0, 2));
+        return $code;
+    }
+
+    protected function getFlagIconUrl(?string $country): string
+    {
+        $code = $this->normalizeCountryCode($country);
+
+        if (!$code) {
+            return '';
+        }
+
+        return 'https://flagcdn.com/24x18/' . strtolower($code) . '.png';
+    }
+
+    protected function getFlagEmoji(?string $country): string
+    {
+        $code = $this->normalizeCountryCode($country);
+
+        if (!$code) {
+            return '';
+        }
         $offset = 127397;
         $first = $offset + ord($code[0]);
         $second = $offset + ord($code[1]);
@@ -937,44 +969,54 @@ class ProductRenderer
             ]);
             return;
         }
-        $min_price = $this->product->detail->min_price;
-        $max_price = $this->product->detail->max_price;
+        $defaultPrice = $this->defaultVariant ? $this->defaultVariant->item_price : $this->product->detail->min_price;
+        $comparePrice = $this->defaultVariant ? $this->defaultVariant->compare_price : 0;
+
+        if ($comparePrice <= $defaultPrice) {
+            $comparePrice = 0;
+        }
 
         do_action('fluent_cart/product/single/before_price_range_block', [
                 'product'       => $this->product,
-                'current_price' => $min_price,
+                'current_price' => $defaultPrice,
                 'scope'         => 'price_range'
         ]);
         ?>
         <?php
-        $aria_label = sprintf(
-        /* translators: 1: Minimum price, 2: Maximum price */
-                __('Price range: %1$s - %2$s', 'fluent-cart'),
-                Helper::toDecimal($min_price),
-                Helper::toDecimal($max_price)
-        );
+        if ($comparePrice) {
+            $aria_label = sprintf(
+            /* translators: 1: Original price, 2: Current item price */
+                    __('Original Price: %1$s, Price: %2$s', 'fluent-cart'),
+                    Helper::toDecimal($comparePrice),
+                    Helper::toDecimal($defaultPrice)
+            );
+        } else {
+            $aria_label = sprintf(
+            /* translators: 1: Current item price */
+                    __('Price: %1$s', 'fluent-cart'),
+                    Helper::toDecimal($defaultPrice)
+            );
+        }
         ?>
-        <div class="fct-product-prices fct-price-range" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
-
-            <?php if ($max_price && $max_price != $min_price && $max_price > $min_price): ?>
-                <span class="fct-min-price"><?php echo esc_html(Helper::toDecimal($min_price)); ?></span>
-                <span class="fct-price-separator" aria-hidden="true">-</span>
+        <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
+            <?php if ($comparePrice): ?>
+                <span class="fct-compare-price">
+                    <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                </span>
             <?php endif; ?>
-            <span class="fct-max-price">
-                <?php echo esc_html(Helper::toDecimal($max_price)); ?>
+            <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
+                <?php do_action('fluent_cart/product/after_price', [
+                        'product'       => $this->product,
+                        'current_price' => $defaultPrice,
+                        'scope'         => 'price_range'
+                ]); ?>
             </span>
-
-            <?php do_action('fluent_cart/product/after_price', [
-                    'product'       => $this->product,
-                    'current_price' => $min_price,
-                    'scope'         => 'price_range'
-            ]); ?>
-
         </div>
         <?php
         do_action('fluent_cart/product/single/after_price_range_block', [
                 'product'       => $this->product,
-                'current_price' => $min_price,
+                'current_price' => $defaultPrice,
                 'scope'         => 'price_range'
         ]);
     }
