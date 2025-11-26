@@ -1349,30 +1349,6 @@ class ProductRenderer
         </a>
         <?php if ($this->hasOnetime): ?>
             <?php $this->renderAddToCartButton($cartButtonConfig['cartAttributes'], $cartButtonConfig['addToCartText']); ?>
-            <div class="fct-payment-icons" aria-label="<?php echo esc_attr__('Accepted payment methods', 'fluent-cart'); ?>">
-                <span class="fct-payment-icon" role="img" aria-label="<?php esc_attr_e('Credit cards', 'fluent-cart'); ?>">
-                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="1.5" y="3.5" width="37" height="17" rx="3" stroke="currentColor" stroke-width="1.5" />
-                        <rect x="4" y="7" width="32" height="3" rx="1" fill="currentColor" />
-                        <rect x="4" y="13" width="10" height="3" rx="1.5" fill="currentColor" />
-                        <rect x="16" y="13" width="7" height="3" rx="1.5" fill="currentColor" />
-                    </svg>
-                </span>
-
-                <span class="fct-payment-icon" role="img" aria-label="<?php esc_attr_e('PayPal', 'fluent-cart'); ?>">
-                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.5 18H15L16.2 12.8C16.5 11.5 17.6 10.6 18.9 10.6H22.8C24.7 10.6 26.2 9 26.2 7C26.2 5.3 24.8 4 23 4H15.3C14.1 4 13 4.9 12.7 6.1L10.5 16.2C10.3 17 10.8 18 11.6 18H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M18 18H21.6C23.5 18 25 16.4 25 14.4C25 12.7 23.7 11.4 22 11.4H17.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </span>
-
-                <span class="fct-payment-icon" role="img" aria-label="<?php esc_attr_e('Google Pay', 'fluent-cart'); ?>">
-                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.5 12C8.5 8.1 11.6 5 15.5 5C17.6 5 19.4 5.9 20.6 7.3L18.7 9.1C18 8.2 16.9 7.7 15.7 7.7C13.5 7.7 11.7 9.5 11.7 11.7C11.7 13.9 13.5 15.7 15.7 15.7C17.8 15.7 19.4 14.5 19.8 12.9H15.7V10.6H22.2C22.3 11.1 22.4 11.5 22.4 12C22.4 15.9 19.7 19 15.7 19C11.6 19 8.5 15.9 8.5 12Z" fill="currentColor" />
-                        <path d="M26.5 6H29.5L31.4 11.6H31.5L33.4 6H36.4L32.8 17H29.8L27.9 11.3H27.8L25.9 17H22.9L26.5 6Z" fill="currentColor" />
-                    </svg>
-                </span>
-            </div>
         <?php endif; ?>
         <?php
     }
