@@ -44,7 +44,7 @@ const normalizeReview = (review) => {
   }
 
   return {
-    name: review.name?.toString().trim() || '',
+    name: review.name?.toString() || '',
     text: review.text?.toString() || '',
     rating: clampRating(review.rating ?? 0),
     country: review.country?.toString().slice(0, 3).toUpperCase() || '',
