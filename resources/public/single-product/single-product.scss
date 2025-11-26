@@ -202,11 +202,15 @@
 .fct-product-custom-sections {
   @apply flex flex-col gap-10 mt-12;
 
-    .fct-product-custom-section {
-      @apply grid grid-cols-1 gap-8 items-center bg-white border border-solid border-[var(--fct-single-product-border-color)] rounded-xl shadow-sm p-6 @[1024px]/product-page:p-8;
+  .fct-product-custom-section {
+    @apply grid grid-cols-1 gap-8 items-center bg-white border border-solid border-[var(--fct-single-product-border-color)] rounded-xl shadow-sm p-6 @[1024px]/product-page:p-9 transition-all duration-200;
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
+    }
+
+    &:hover {
+      @apply shadow-md border-[var(--fct-single-product-active-border-color)];
     }
 
     &.is-reverse {
@@ -244,18 +248,42 @@
     }
 
     .fct-product-section-copy {
-      @apply flex flex-col gap-3;
+      @apply flex flex-col gap-4 max-w-[720px];
 
       .fct-product-section-heading {
-        @apply text-2xl font-semibold text-[var(--fct-single-product-primary-text-color)];
+        @apply text-[26px] leading-[1.35] font-semibold text-[var(--fct-single-product-primary-text-color)];
       }
 
       .fct-product-section-description {
-        @apply text-base text-gray-600 leading-7;
+        @apply text-[15px] leading-7 text-[var(--fct-secondary-text-color)] space-y-3;
+
+        p {
+          @apply m-0 text-[var(--fct-secondary-text-color)];
+
+          &:last-child {
+            @apply mb-0;
+          }
+        }
+
+        ul {
+          @apply list-disc pl-5 text-[var(--fct-secondary-text-color)] space-y-2;
+        }
+
+        ol {
+          @apply list-decimal pl-5 text-[var(--fct-secondary-text-color)] space-y-2;
+        }
+
+        a {
+          @apply font-semibold underline underline-offset-4 text-[var(--fct-single-product-active-border-color)];
+        }
+
+        strong {
+          @apply text-[var(--fct-single-product-primary-text-color)];
+        }
       }
 
       .fct-product-section-actions {
-        @apply mt-2;
+        @apply mt-3 flex flex-wrap items-center gap-3;
       }
     }
   }
