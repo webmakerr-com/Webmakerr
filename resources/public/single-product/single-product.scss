@@ -749,11 +749,11 @@ body {
   @apply fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-solid border-[var(--fct-single-product-border-color)] shadow-[0_-8px_24px_rgba(47,52,72,0.08)] hidden;
 
   .fct-mobile-sticky-content {
-    @apply flex items-center justify-between gap-4 px-4 py-3 w-full;
+    @apply flex items-center justify-between gap-4 px-4 py-3 w-full max-w-[1200px] mx-auto;
   }
 
   .fct-mobile-sticky-price {
-    @apply text-base font-semibold leading-6 text-[var(--fct-single-product-primary-text-color)];
+    @apply flex items-center gap-1 text-base font-semibold leading-6 text-[var(--fct-single-product-primary-text-color)];
 
     .fct-compare-price {
       @apply text-sm font-medium text-system-mid mr-1;
@@ -761,7 +761,7 @@ body {
   }
 
   .fct-mobile-sticky-button {
-    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-solid border-[var(--fct-single-product-active-border-color)] bg-white text-sm font-semibold text-[var(--fct-single-product-primary-text-color)] shadow-sm transition;
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-[4px] border border-solid border-black bg-black text-sm font-semibold text-white shadow-sm transition;
 
     &:hover {
       @apply shadow-md;
