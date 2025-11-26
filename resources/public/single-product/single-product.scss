@@ -416,10 +416,26 @@ body {
   }
 
   .fct-dominant-add-to-cart {
-    @apply bg-black border border-solid border-black text-white text-base py-3.5 px-6 shadow-sm;
+    @apply bg-black border border-solid border-black text-white text-base py-3.5 px-6 shadow-sm font-semibold;
     @apply hover:bg-[#111111] hover:border-[#111111] hover:shadow-md;
     @apply focus:bg-black focus:border-black;
     gap: 10px;
+  }
+
+  .fct-payment-icons {
+    @apply flex items-center gap-2 text-[var(--fct-secondary-text-color)] text-sm mt-1.5;
+  }
+
+  .fct-payment-icon {
+    @apply bg-white border border-solid border-[var(--fct-single-product-border-color)] shadow-sm rounded-lg px-2.5 py-1.5;
+    @apply flex items-center justify-center;
+    line-height: 1;
+    min-width: 48px;
+
+    svg {
+      @apply h-5 w-auto;
+      display: block;
+    }
   }
 
   .fct-add-to-cart-icon {
