@@ -3,11 +3,9 @@ import {viteStaticCopy} from "vite-plugin-static-copy";
 import vue from "@vitejs/plugin-vue";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import {fileURLToPath} from "url";
 //import AutoImport from "unplugin-auto-import/vite";
 import fs from "fs"; // Add this dependency for file operations
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const serverConfig = require('./config/vite.json');
 
 
