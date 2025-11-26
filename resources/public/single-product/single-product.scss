@@ -749,7 +749,43 @@ body {
   @apply fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-solid border-[var(--fct-single-product-border-color)] shadow-[0_-8px_24px_rgba(47,52,72,0.08)] hidden;
 
   .fct-mobile-sticky-content {
-    @apply flex items-center justify-between gap-4 px-4 py-3 w-full max-w-[1200px] mx-auto;
+    @apply flex items-center justify-between gap-3 px-4 py-3 w-full max-w-[1200px] mx-auto min-w-0;
+  }
+
+  .fct-sticky-summary{
+    @apply flex flex-col gap-1 min-w-0;
+  }
+
+  .fct-sticky-title{
+    @apply text-sm font-semibold leading-5 text-[var(--fct-single-product-primary-text-color)] truncate;
+  }
+
+  .fct-sticky-rating{
+    @apply inline-flex items-center gap-2 text-xs text-[var(--fct-single-product-primary-text-color)];
+  }
+
+  .fct-sticky-stars{
+    position: relative;
+    display: inline-flex;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .fct-sticky-stars-base{
+    @apply text-gray-300;
+  }
+
+  .fct-sticky-stars-active{
+    @apply text-amber-500 absolute left-0 top-0 overflow-hidden whitespace-nowrap;
+    width: 98%;
+  }
+
+  .fct-sticky-rating-value{
+    @apply font-semibold;
+  }
+
+  .fct-sticky-actions{
+    @apply flex items-center gap-3 shrink-0;
   }
 
   .fct-mobile-sticky-price {
