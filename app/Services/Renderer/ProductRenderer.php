@@ -46,7 +46,7 @@ class ProductRenderer
             get_post_meta($product->ID, '_fct_featured_video', true)
         );
         $this->viewersCount = random_int(3, 21);
-        $this->addedToCartCount = random_int(16, 36);
+        $this->addedToCartCount = random_int(15, 29);
 
         if (!$defaultVariationId) {
             $variationIds = $product->variants->pluck('id')->toArray();
