@@ -31,6 +31,8 @@ class ProductRenderer
     protected $defaultImageAlt = null;
     protected $featuredVideo = [];
     protected $renderCustomSections = true;
+    protected $viewersCount = 0;
+    protected $addedToCartCount = 0;
 
     public function __construct(Product $product, $config = [])
     {
@@ -43,6 +45,8 @@ class ProductRenderer
         $this->featuredVideo = ProductResource::formatFeaturedVideo(
             get_post_meta($product->ID, '_fct_featured_video', true)
         );
+        $this->viewersCount = random_int(3, 21);
+        $this->addedToCartCount = random_int(21, 87);
 
         if (!$defaultVariationId) {
             $variationIds = $product->variants->pluck('id')->toArray();
@@ -164,6 +168,11 @@ class ProductRenderer
             .fct-product-gallery-thumb img{
                 display:block;width:100%;height:auto;object-fit:contain;
             }
+
+            .fct-product-trust-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:8px;z-index:3;align-items:flex-start;}
+            .fct-product-trust-badge{display:flex;align-items:center;gap:8px;background:#f9fafb;border:1px solid #e5e7eb;color:#111827;font-weight:500;padding:8px 12px;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.03);}
+            .fct-product-trust-badge__icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;color:#111827;}
+            .fct-product-trust-badge__text{font-size:14px;line-height:1.4;}
 
             /* Thumbs default */
             .fct-gallery-thumb-controls{display:flex;flex-wrap:wrap;gap:10px;}
@@ -338,6 +347,7 @@ class ProductRenderer
         ?>
         <div class="fct-product-gallery-thumb" role="region"
              aria-label="<?php echo esc_attr($this->product->post_title . ' gallery'); ?>">
+            <?php $this->renderTrustBadges(); ?>
             <?php if ($this->hasFeaturedVideo()) { ?>
                 <div
                     class="fct-product-featured-video"
@@ -373,6 +383,38 @@ class ProductRenderer
                     <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
+        </div>
+        <?php
+    }
+
+    protected function renderTrustBadges()
+    {
+        ?>
+        <div class="fct-product-trust-badges" aria-label="<?php echo esc_attr__('Product activity info', 'fluent-cart'); ?>">
+            <span class="fct-product-trust-badge">
+                <span class="fct-product-trust-badge__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.66699 10C1.66699 10 4.58366 3.33331 10.0003 3.33331C15.417 3.33331 18.3337 10 18.3337 10C18.3337 10 15.417 16.6666 10.0003 16.6666C4.58366 16.6666 1.66699 10 1.66699 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </span>
+                <span class="fct-product-trust-badge__text">
+                    <?php printf(esc_html__('%d people are viewing this item', 'fluent-cart'), intval($this->viewersCount)); ?>
+                </span>
+            </span>
+            <span class="fct-product-trust-badge">
+                <span class="fct-product-trust-badge__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.33301 4.16669H4.69134C5.09032 4.16669 5.28981 4.16669 5.45423 4.23867C5.59839 4.30136 5.72435 4.40347 5.81707 4.533C5.92026 4.67737 5.96967 4.87425 6.06849 5.26802L6.33301 6.33335" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M6.33301 6.33331H16.1507C16.5933 6.33331 16.8147 6.33331 16.9602 6.44766C17.0889 6.54897 17.1635 6.70102 17.1626 6.86186C17.1616 7.04343 17.0182 7.24645 16.7312 7.6525L14.7273 10.502C14.5935 10.6946 14.5265 10.7913 14.4336 10.8619C14.3505 10.9243 14.2556 10.9709 14.1534 11C14.0387 11.0333 13.9167 11.0333 13.6727 11.0333H8.03065C7.31715 11.0333 6.96039 11.0333 6.71908 10.8655C6.50664 10.7188 6.37766 10.4872 6.36336 10.2342C6.34765 9.94647 6.54356 9.62563 6.93539 8.98395L7.77823 7.59274C7.92343 7.35309 7.99601 7.23327 8.096 7.15246C8.18501 7.0808 8.28915 7.02783 8.40009 6.99757C8.52423 6.96352 8.66039 6.96352 8.93273 6.96352" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M8.33301 14.1667C8.33301 14.6269 7.95993 15 7.49967 15C7.03942 15 6.66634 14.6269 6.66634 14.1667C6.66634 13.7064 7.03942 13.3333 7.49967 13.3333C7.95993 13.3333 8.33301 13.7064 8.33301 14.1667Z" fill="currentColor" />
+                        <path d="M15 14.1667C15 14.6269 14.6269 15 14.1667 15C13.7064 15 13.3333 14.6269 13.3333 14.1667C13.3333 13.7064 13.7064 13.3333 14.1667 13.3333C14.6269 13.3333 15 13.7064 15 14.1667Z" fill="currentColor" />
+                    </svg>
+                </span>
+                <span class="fct-product-trust-badge__text">
+                    <?php printf(esc_html__('%d people have added this item to cart (24H)', 'fluent-cart'), intval($this->addedToCartCount)); ?>
+                </span>
+            </span>
         </div>
         <?php
     }
