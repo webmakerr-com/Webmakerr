@@ -32,8 +32,6 @@ export default class ImageGallery {
     #autoRotateTimer = null;
     #autoRotateIndex = 0;
     #autoRotateDelay = 4000;
-    #prevButton;
-    #nextButton;
 
     init(container, enableZoom = true) {
         this.container = container;
@@ -47,8 +45,6 @@ export default class ImageGallery {
         this.#thumbnailControlsWrapper = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail-controls]');
         this.#imgContainer = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail]');
         this.#videoContainer = this.findOneInContainer('[data-fluent-cart-product-video]');
-        this.#prevButton = this.findOneInContainer('[data-fluent-cart-gallery-prev]');
-        this.#nextButton = this.findOneInContainer('[data-fluent-cart-gallery-next]');
 
         this.#listenForVariationChange();
 
@@ -61,8 +57,6 @@ export default class ImageGallery {
         this.#setupThumbnailControls();
         this.#setupThumbnailScrolling();
         this.#setupAutoRotation();
-        this.#setupNavigation();
-        this.#setupSwipeGestures();
 
         window.addEventListener('resize', () => this.#setupAutoRotation());
     }
@@ -89,7 +83,6 @@ export default class ImageGallery {
             this.#setupControlWrapper(controlButtons);
             this.#setupThumbnailScrolling();
             this.#setupAutoRotation();
-            this.#updateNavigationState();
         });
     }
 
@@ -107,7 +100,6 @@ export default class ImageGallery {
             this.#currentlySelectedVariationId = controlButtons?.[0]?.dataset?.variationId || 0;
         }
         this.updateGalleryByVariation(this.#currentlySelectedVariationId);
-        this.#updateNavigationState();
     }
 
 
@@ -308,7 +300,6 @@ export default class ImageGallery {
         const shouldEnableScroll = visibleControls.length > 6;
 
         this.#thumbnailControlsWrapper.classList.toggle('is-scrollable', shouldEnableScroll);
-        this.#updateNavigationState();
     }
 
     #getRotatingThumbnails() {
@@ -321,7 +312,6 @@ export default class ImageGallery {
 
         const rotatingThumbnails = this.#getRotatingThumbnails();
         if (rotatingThumbnails.length < 2) {
-            this.#updateNavigationState();
             return;
         }
 
@@ -329,62 +319,6 @@ export default class ImageGallery {
         this.#autoRotateIndex = activeIndex >= 0 ? activeIndex : -1;
 
         this.#startAutoRotate();
-        this.#updateNavigationState();
-    }
-
-    #setupNavigation() {
-        if (this.#prevButton) {
-            this.#prevButton.addEventListener('click', () => this.#handleNavigation('prev'));
-        }
-
-        if (this.#nextButton) {
-            this.#nextButton.addEventListener('click', () => this.#handleNavigation('next'));
-        }
-
-        this.#updateNavigationState();
-    }
-
-    #handleNavigation(direction = 'next') {
-        const visibleControls = this.#getVisibleThumbnailControls();
-
-        if (!visibleControls.length) {
-            return;
-        }
-
-        let activeIndex = visibleControls.findIndex(control => control.classList.contains('active'));
-        if (activeIndex < 0) {
-            activeIndex = 0;
-        }
-
-        const offset = direction === 'prev' ? -1 : 1;
-        const nextIndex = (activeIndex + offset + visibleControls.length) % visibleControls.length;
-        const targetControl = visibleControls[nextIndex];
-
-        if (!targetControl) {
-            return;
-        }
-
-        this.#handleThumbnailChange(targetControl);
-
-        if (!this.#isMobileView()) {
-            this.#scrollControlIntoView(targetControl);
-        }
-
-        this.#updateNavigationState();
-    }
-
-    #updateNavigationState() {
-        const visibleControls = this.#getVisibleThumbnailControls();
-        const isDisabled = visibleControls.length <= 1;
-
-        [this.#prevButton, this.#nextButton].forEach(button => {
-            if (!button) {
-                return;
-            }
-
-            button.disabled = isDisabled;
-            button.setAttribute('aria-disabled', isDisabled ? 'true' : 'false');
-        });
     }
 
     #startAutoRotate() {
@@ -524,62 +458,6 @@ export default class ImageGallery {
         if (!this.#isMobileView()) {
             this.#scrollControlIntoView(control);
         }
-    }
-
-    #setupSwipeGestures() {
-        if (!this.#imgContainer) {
-            return;
-        }
-        const swipeTarget = this.#imgContainer.closest('.fct-product-gallery-stage') || this.#imgContainer;
-
-        if (!swipeTarget) {
-            return;
-        }
-
-        let startX = 0;
-        let startY = 0;
-        let isSwiping = false;
-
-        swipeTarget.addEventListener('touchstart', (event) => {
-            const touch = event.touches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
-            isSwiping = false;
-        }, {passive: true});
-
-        swipeTarget.addEventListener('touchmove', (event) => {
-            if (event.touches.length > 1) {
-                return;
-            }
-
-            const touch = event.touches[0];
-            const deltaX = touch.clientX - startX;
-            const deltaY = touch.clientY - startY;
-
-            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-                isSwiping = true;
-                event.preventDefault();
-            }
-        }, {passive: false});
-
-        swipeTarget.addEventListener('touchend', (event) => {
-            if (!isSwiping) {
-                return;
-            }
-
-            const touch = event.changedTouches[0];
-            const deltaX = touch.clientX - startX;
-
-            if (Math.abs(deltaX) < 30) {
-                return;
-            }
-
-            if (deltaX < 0) {
-                this.#handleNavigation('next');
-            } else {
-                this.#handleNavigation('prev');
-            }
-        });
     }
 
     #setThumbImage(control) {
