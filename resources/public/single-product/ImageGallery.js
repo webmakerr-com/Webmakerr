@@ -32,6 +32,7 @@ export default class ImageGallery {
     #autoRotateTimer = null;
     #autoRotateIndex = 0;
     #autoRotateDelay = 4000;
+    #videoPreviewButton;
 
     init(container, enableZoom = true) {
         this.container = container;
@@ -45,6 +46,7 @@ export default class ImageGallery {
         this.#thumbnailControlsWrapper = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail-controls]');
         this.#imgContainer = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail]');
         this.#videoContainer = this.findOneInContainer('[data-fluent-cart-product-video]');
+        this.#videoPreviewButton = this.findOneInContainer('[data-fluent-cart-product-video-preview]');
 
         this.#listenForVariationChange();
 
@@ -463,7 +465,7 @@ export default class ImageGallery {
     #setThumbImage(control) {
         const productThumbnail = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail]');
         if (control.dataset.mediaType === 'video') {
-            this.#showVideo(document.readyState === 'complete');
+            this.#showVideo();
             return;
         }
 
@@ -504,17 +506,20 @@ export default class ImageGallery {
             return;
         }
 
-        this.#showVideoContainerOnly();
+        this.#showVideoPreview();
 
-        const loadVideo = () => {
-            this.#loadFeaturedVideo(true);
-            this.#resetInlineVideoTime();
+        const playOnPreview = (event) => {
+            if (event.type === 'keyup' && event.key !== 'Enter' && event.key !== ' ') {
+                return;
+            }
+
+            event.preventDefault();
+            this.#playVideoFromPreview();
         };
 
-        if (document.readyState === 'complete') {
-            loadVideo();
-        } else {
-            window.addEventListener('load', loadVideo, {once: true});
+        if (this.#videoPreviewButton) {
+            this.#videoPreviewButton.addEventListener('click', playOnPreview);
+            this.#videoPreviewButton.addEventListener('keyup', playOnPreview);
         }
     }
 
@@ -524,8 +529,19 @@ export default class ImageGallery {
         }
 
         this.#showVideoContainerOnly();
-        this.#loadFeaturedVideo(showWithContent);
-        this.#resetInlineVideoTime();
+
+        if (this.#videoContainer.dataset.videoLoaded === 'yes') {
+            this.#hideVideoPreview();
+            this.#resetInlineVideoTime();
+            return;
+        }
+
+        if (showWithContent) {
+            this.#playVideoFromPreview();
+            return;
+        }
+
+        this.#showVideoPreview();
     }
 
     #showVideoContainerOnly() {
@@ -542,6 +558,8 @@ export default class ImageGallery {
         if (this.#videoContainer) {
             this.#videoContainer.classList.add('is-hidden');
         }
+
+        this.#pauseInlineVideo();
     }
 
     #resetInlineVideoTime() {
@@ -551,7 +569,102 @@ export default class ImageGallery {
         }
     }
 
-    #loadFeaturedVideo(force = false) {
+    #showVideoPreview() {
+        if (this.#imgContainer) {
+            this.#imgContainer.classList.add('is-hidden');
+        }
+
+        if (this.#videoContainer) {
+            this.#videoContainer.classList.remove('is-hidden');
+        }
+
+        if (this.#videoPreviewButton) {
+            this.#videoPreviewButton.classList.remove('is-hidden');
+        }
+    }
+
+    #hideVideoPreview() {
+        if (this.#videoPreviewButton) {
+            this.#videoPreviewButton.classList.add('is-hidden');
+        }
+    }
+
+    #playVideoFromPreview() {
+        this.#showVideoContainerOnly();
+        this.#hideVideoPreview();
+        this.#loadFeaturedVideo(true, true);
+        this.#resetInlineVideoTime();
+        this.#autoplayInlineVideo();
+    }
+
+    #autoplayInlineVideo() {
+        const inlineVideo = this.#videoContainer?.querySelector('video');
+        if (!inlineVideo) {
+            return;
+        }
+
+        inlineVideo.muted = true;
+        inlineVideo.autoplay = true;
+        inlineVideo.playsInline = true;
+
+        inlineVideo.play?.().catch(() => {
+            // Ignore autoplay errors
+        });
+    }
+
+    #pauseInlineVideo() {
+        const inlineVideo = this.#videoContainer?.querySelector('video');
+        if (inlineVideo) {
+            inlineVideo.pause?.();
+        }
+    }
+
+    #appendAutoplayParam(url) {
+        try {
+            const parsedUrl = new URL(url, window.location.origin);
+            parsedUrl.searchParams.set('autoplay', '1');
+            return parsedUrl.toString();
+        } catch (error) {
+            return url.includes('?') ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+        }
+    }
+
+    #enableAutoplayInEmbed(videoHtml) {
+        if (!videoHtml) {
+            return videoHtml;
+        }
+
+        if (videoHtml.includes('<iframe')) {
+            return videoHtml.replace(/(<iframe[^>]*src=")([^"]+)("[^>]*>)/i, (match, prefix, src, suffix) => {
+                const autoplaySrc = this.#appendAutoplayParam(src);
+                return `${prefix}${autoplaySrc}${suffix}`;
+            });
+        }
+
+        if (videoHtml.includes('<video')) {
+            return videoHtml.replace(/<video(.*?)>/i, (match, attrs) => {
+                let newAttrs = attrs;
+
+                if (!/\sautoplay/i.test(newAttrs)) {
+                    newAttrs += ' autoplay';
+                }
+
+                if (!/\smuted/i.test(newAttrs)) {
+                    newAttrs += ' muted';
+                }
+
+                if (!/playsinline/i.test(newAttrs)) {
+                    newAttrs += ' playsinline';
+                }
+
+                return `<video${newAttrs}>`;
+            });
+        }
+
+        return videoHtml;
+    }
+
+    #loadFeaturedVideo(force = false, autoplay = false) {
         if (!this.#videoContainer) {
             return;
         }
@@ -561,6 +674,10 @@ export default class ImageGallery {
         }
 
         if (this.#videoContainer.dataset.videoLoaded === 'yes') {
+            if (autoplay) {
+                this.#autoplayInlineVideo();
+            }
+
             return;
         }
 
@@ -570,9 +687,18 @@ export default class ImageGallery {
         }
 
         try {
-            const videoHtml = atob(embedData);
+            let videoHtml = atob(embedData);
+
+            if (autoplay) {
+                videoHtml = this.#enableAutoplayInEmbed(videoHtml);
+            }
+
             this.#videoContainer.innerHTML = videoHtml;
             this.#videoContainer.dataset.videoLoaded = 'yes';
+
+            if (autoplay) {
+                this.#autoplayInlineVideo();
+            }
         } catch (error) {
             console.error('Failed to decode product video', error);
         }

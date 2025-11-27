@@ -343,6 +343,10 @@ class ProductRenderer
         }
 
         $videoPlayerHtml = '';
+        $featuredVideoUrl = Arr::get($this->featuredVideo, 'url', '');
+        $featuredVideoType = Arr::get($this->featuredVideo, 'type', '');
+        $featuredVideoTitle = Arr::get($this->featuredVideo, 'title', $this->product->post_title);
+        $previewImage = $this->defaultImageUrl ?: $featuredMedia;
         if ($this->hasFeaturedVideo()) {
             $videoPlayerHtml = base64_encode($this->getVideoPlayerHtml());
         }
@@ -357,7 +361,29 @@ class ProductRenderer
                     data-fluent-cart-product-video
                     data-video-embed="<?php echo esc_attr($videoPlayerHtml); ?>"
                     data-video-loaded="false"
-                ></div>
+                    data-video-url="<?php echo esc_url($featuredVideoUrl); ?>"
+                    data-video-type="<?php echo esc_attr($featuredVideoType); ?>"
+                    data-video-title="<?php echo esc_attr($featuredVideoTitle); ?>"
+                >
+                    <button
+                        type="button"
+                        class="fct-product-featured-video__preview"
+                        data-fluent-cart-product-video-preview
+                        aria-label="<?php esc_attr_e('Play featured video preview', 'fluent-cart'); ?>"
+                    >
+                        <img
+                            src="<?php echo esc_url($previewImage); ?>"
+                            alt="<?php echo esc_attr($featuredVideoTitle); ?>"
+                            class="fct-product-featured-video__preview-image"
+                            loading="lazy"
+                        />
+                        <span class="fct-product-featured-video__play" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 7L17 12L9 17V7Z" fill="currentColor"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
             <?php } ?>
             <img
                 src="<?php echo esc_url($this->defaultImageUrl ?? '') ?>"
