@@ -181,7 +181,7 @@ class ProductRenderer
                 <div class="fct-product-hero-grid">
                     <div class="fct-product-visual">
                         <div class="fct-product-visual-card">
-                            <?php $this->renderGallery(['thumb_position' => 'bottom']); ?>
+                            <?php $this->renderGallery(['thumb_position' => 'left']); ?>
                         </div>
                     </div>
                     <div class="fct-product-summary">
