@@ -33,6 +33,12 @@ export default class ImageGallery {
     #autoRotateIndex = 0;
     #autoRotateDelay = 4000;
 
+    #galleryDots;
+    #prevButton;
+    #nextButton;
+    #galleryStage;
+    #touchStartX = 0;
+
     init(container, enableZoom = true) {
         this.container = container;
         this.#productId = this.container.getAttribute('data-product-id');
@@ -45,6 +51,10 @@ export default class ImageGallery {
         this.#thumbnailControlsWrapper = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail-controls]');
         this.#imgContainer = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail]');
         this.#videoContainer = this.findOneInContainer('[data-fluent-cart-product-video]');
+        this.#galleryDots = this.findInContainer('[data-fluent-cart-gallery-dot]');
+        this.#prevButton = this.findOneInContainer('[data-fluent-cart-gallery-nav="prev"]');
+        this.#nextButton = this.findOneInContainer('[data-fluent-cart-gallery-nav="next"]');
+        this.#galleryStage = this.findOneInContainer('.fct-product-gallery-stage');
 
         this.#listenForVariationChange();
 
@@ -56,9 +66,16 @@ export default class ImageGallery {
         this.#prepareLightboxImages();
         this.#setupThumbnailControls();
         this.#setupThumbnailScrolling();
+        this.#setupNavigation();
+        this.#setupTouchNavigation();
         this.#setupAutoRotation();
+        this.#syncDotsWithControls();
+        this.#updateNavState();
 
-        window.addEventListener('resize', () => this.#setupAutoRotation());
+        window.addEventListener('resize', () => {
+            this.#setupAutoRotation();
+            this.#updateNavState();
+        });
     }
 
     #isMobileView() {
@@ -100,6 +117,9 @@ export default class ImageGallery {
             this.#currentlySelectedVariationId = controlButtons?.[0]?.dataset?.variationId || 0;
         }
         this.updateGalleryByVariation(this.#currentlySelectedVariationId);
+        this.#syncDotsWithActive(activeControl || controlButtons?.[0]);
+        this.#syncDotsWithControls();
+        this.#updateNavState();
     }
 
 
@@ -248,6 +268,8 @@ export default class ImageGallery {
 
         this.#setupThumbnailScrolling();
         this.#setupAutoRotation();
+        this.#syncDotsWithControls();
+        this.#updateNavState();
     }
 
     #initImageZoom() {
@@ -289,6 +311,14 @@ export default class ImageGallery {
     // Thumbnail scrolling and rotation helpers
     #getVisibleThumbnailControls() {
         return Array.from(this.#thumbnailControls || []).filter(control => !control.classList.contains('is-hidden'));
+    }
+
+    #getOrderedVisibleControls() {
+        return this.#getVisibleThumbnailControls().sort((a, b) => {
+            const aIndex = parseInt(a.dataset.thumbIndex || '0', 10);
+            const bIndex = parseInt(b.dataset.thumbIndex || '0', 10);
+            return aIndex - bIndex;
+        });
     }
 
     #setupThumbnailScrolling() {
@@ -348,6 +378,112 @@ export default class ImageGallery {
         if (this.#autoRotateTimer) {
             clearInterval(this.#autoRotateTimer);
             this.#autoRotateTimer = null;
+        }
+    }
+
+    #setupNavigation() {
+        if (this.#prevButton) {
+            this.#prevButton.addEventListener('click', () => this.#goToAdjacentSlide(-1));
+        }
+
+        if (this.#nextButton) {
+            this.#nextButton.addEventListener('click', () => this.#goToAdjacentSlide(1));
+        }
+
+        this.#galleryDots?.forEach(dot => {
+            dot.addEventListener('click', () => this.#handleDotClick(dot));
+        });
+    }
+
+    #setupTouchNavigation() {
+        const target = this.#galleryStage || this.#imgContainer?.parentElement;
+        if (!target) {
+            return;
+        }
+
+        target.addEventListener('touchstart', (event) => {
+            this.#touchStartX = event.touches[0]?.clientX || 0;
+        }, {passive: true});
+
+        target.addEventListener('touchend', (event) => {
+            this.#touchEndX = event.changedTouches[0]?.clientX || 0;
+            const deltaX = this.#touchEndX - this.#touchStartX;
+            if (Math.abs(deltaX) < 40) {
+                return;
+            }
+
+            this.#goToAdjacentSlide(deltaX < 0 ? 1 : -1);
+        }, {passive: true});
+    }
+
+    #updateNavState() {
+        const controls = this.#getOrderedVisibleControls();
+        const hasMultiple = controls.length > 1;
+
+        [this.#prevButton, this.#nextButton].forEach(button => {
+            if (!button) {
+                return;
+            }
+
+            button.disabled = !hasMultiple;
+            button.classList.toggle('is-disabled', !hasMultiple);
+        });
+    }
+
+    #handleDotClick(dot) {
+        const targetIndex = dot?.dataset.thumbIndex;
+
+        if (targetIndex === undefined) {
+            return;
+        }
+
+        const control = this.findOneInContainer(`[data-fluent-cart-thumb-control-button][data-thumb-index="${targetIndex}"]:not(.is-hidden)`);
+        if (control) {
+            this.#handleThumbnailChange(control);
+            this.#scrollControlIntoView(control);
+        }
+    }
+
+    #syncDotsWithControls() {
+        if (!this.#galleryDots || this.#galleryDots.length === 0) {
+            return;
+        }
+
+        const visibleIndexes = new Set(this.#getVisibleThumbnailControls().map(ctrl => ctrl.dataset.thumbIndex));
+        this.#galleryDots.forEach(dot => {
+            const isVisible = visibleIndexes.has(dot.dataset.thumbIndex);
+            dot.classList.toggle('is-hidden', !isVisible);
+        });
+    }
+
+    #syncDotsWithActive(control = null) {
+        if (!this.#galleryDots || this.#galleryDots.length === 0) {
+            return;
+        }
+
+        const activeIndex = control?.dataset.thumbIndex || this.#thumbnailControlsWrapper?.querySelector('.active[data-thumb-index]')?.dataset.thumbIndex;
+        this.#galleryDots.forEach(dot => {
+            const isActive = dot.dataset.thumbIndex === activeIndex;
+            dot.classList.toggle('active', isActive);
+            dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    }
+
+    #goToAdjacentSlide(direction = 1) {
+        const controls = this.#getOrderedVisibleControls();
+
+        if (controls.length === 0) {
+            return;
+        }
+
+        const activeControl = controls.find(control => control.classList.contains('active')) || controls[0];
+        const currentIndex = controls.indexOf(activeControl);
+        const nextIndex = (currentIndex + direction + controls.length) % controls.length;
+        const nextControl = controls[nextIndex];
+
+        if (nextControl) {
+            this.#handleThumbnailChange(nextControl);
+            this.#scrollControlIntoView(nextControl);
         }
     }
 
@@ -426,7 +562,10 @@ export default class ImageGallery {
             const control = controlButtons[0];
             control.classList.add('active');
             this.#setThumbImage(control);
+            this.#syncDotsWithActive(control);
         }
+
+        this.#updateNavState();
     }
 
     #setupThumbnailControls() {
@@ -454,6 +593,9 @@ export default class ImageGallery {
         } else if (!options.auto) {
             this.#setupAutoRotation();
         }
+
+        this.#syncDotsWithActive(control);
+        this.#updateNavState();
 
         if (!this.#isMobileView()) {
             this.#scrollControlIntoView(control);
