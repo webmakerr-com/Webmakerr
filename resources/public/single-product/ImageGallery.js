@@ -32,6 +32,8 @@ export default class ImageGallery {
     #autoRotateTimer = null;
     #autoRotateIndex = 0;
     #autoRotateDelay = 4000;
+    #prevButton;
+    #nextButton;
 
     init(container, enableZoom = true) {
         this.container = container;
@@ -45,6 +47,8 @@ export default class ImageGallery {
         this.#thumbnailControlsWrapper = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail-controls]');
         this.#imgContainer = this.findOneInContainer('[data-fluent-cart-single-product-page-product-thumbnail]');
         this.#videoContainer = this.findOneInContainer('[data-fluent-cart-product-video]');
+        this.#prevButton = this.findOneInContainer('[data-gallery-nav="prev"]');
+        this.#nextButton = this.findOneInContainer('[data-gallery-nav="next"]');
 
         this.#listenForVariationChange();
 
@@ -56,6 +60,7 @@ export default class ImageGallery {
         this.#prepareLightboxImages();
         this.#setupThumbnailControls();
         this.#setupThumbnailScrolling();
+        this.#setupNavigation();
         this.#setupAutoRotation();
 
         window.addEventListener('resize', () => this.#setupAutoRotation());
@@ -435,6 +440,28 @@ export default class ImageGallery {
                 this.#handleThumbnailChange(control);
             });
         });
+    }
+
+    #setupNavigation() {
+        const getVisibleControls = () => {
+            return Array.from(this.#thumbnailControlsWrapper?.querySelectorAll('[data-fluent-cart-thumb-control-button]:not(.is-hidden)') || []);
+        };
+
+        const goToSibling = (step) => {
+            const controls = getVisibleControls();
+            if (!controls.length) {
+                return;
+            }
+
+            const active = this.#thumbnailControlsWrapper?.querySelector('.active[data-fluent-cart-thumb-control-button]:not(.is-hidden)') || controls[0];
+            const currentIndex = controls.indexOf(active);
+            const nextIndex = (currentIndex + step + controls.length) % controls.length;
+
+            this.#handleThumbnailChange(controls[nextIndex]);
+        };
+
+        this.#prevButton?.addEventListener('click', () => goToSibling(-1));
+        this.#nextButton?.addEventListener('click', () => goToSibling(1));
     }
 
     #handleThumbnailChange(control, options = {auto: false}) {

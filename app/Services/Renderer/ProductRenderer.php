@@ -187,14 +187,13 @@ class ProductRenderer
                         <div class="fct-product-summary-card">
                             <div class="fct-product-summary-header">
                                 <?php $this->renderTitle(); ?>
-                                <div class="fct-product-meta">
-                                    <?php $this->renderStockAvailability(); ?>
-                                </div>
+                                <?php $this->renderRatingSummary(); ?>
                             </div>
                             <?php
                             $this->renderExcerpt();
                             $this->renderPrices();
                             $this->renderBuySection();
+                            $this->renderPaymentSecurity();
                             ?>
                         </div>
                     </div>
@@ -205,6 +204,55 @@ class ProductRenderer
             </div>
             <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
             <?php $this->renderReviewsSection(); ?>
+        </div>
+        <?php
+    }
+
+    protected function getRatingSummary(): array
+    {
+        $reviews = $this->getReviews();
+
+        if (empty($reviews)) {
+            return [
+                    'average' => 0,
+                    'count'   => 0,
+            ];
+        }
+
+        $count = count($reviews);
+        $total = 0;
+
+        foreach ($reviews as $review) {
+            $total += (float)Arr::get($review, 'rating', 0);
+        }
+
+        $average = $count ? round($total / $count, 1) : 0;
+
+        return [
+                'average' => $average,
+                'count'   => $count,
+        ];
+    }
+
+    protected function renderRatingSummary()
+    {
+        $summary = $this->getRatingSummary();
+        $average = $summary['average'];
+        $count = $summary['count'];
+
+        if (!$count) {
+            return;
+        }
+
+        $fillWidth = $this->getStarFillWidth((float)$average);
+        ?>
+        <div class="fct-rating-summary" aria-label="<?php echo esc_attr(sprintf(__('Rated %s out of 5', 'fluent-cart'), $average)); ?>">
+            <span class="fct-rating-stars" aria-hidden="true">
+                <span class="fct-rating-stars-base">★★★★★</span>
+                <span class="fct-rating-stars-active" style="width: <?php echo esc_attr($fillWidth); ?>%;">★★★★★</span>
+            </span>
+            <span class="fct-rating-score"><?php echo esc_html(number_format($average, 1)); ?></span>
+            <a class="fct-rating-link" href="#fct-product-reviews"><?php echo esc_html(sprintf(_n('%s Review', '%s Reviews', $count, 'fluent-cart'), number_format_i18n($count))); ?></a>
         </div>
         <?php
     }
@@ -255,6 +303,7 @@ class ProductRenderer
 
         $this->renderItemPrice();
         $this->renderQuantity();
+        $this->renderPerksRow();
         ?>
         <p class="fct-product-shipping-note">
             <?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?>
@@ -335,6 +384,26 @@ class ProductRenderer
                     data-default-image-url="<?php echo esc_url($featuredMedia) ?>"
                     class="<?php echo $this->hasFeaturedVideo() ? 'is-hidden' : ''; ?>"
             />
+            <button
+                    type="button"
+                    class="fct-gallery-nav fct-gallery-nav-prev"
+                    data-gallery-nav="prev"
+                    aria-label="<?php esc_attr_e('Previous image', 'fluent-cart'); ?>"
+            >
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button
+                    type="button"
+                    class="fct-gallery-nav fct-gallery-nav-next"
+                    data-gallery-nav="next"
+                    aria-label="<?php esc_attr_e('Next image', 'fluent-cart'); ?>"
+            >
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </div>
         <?php
     }
@@ -954,6 +1023,8 @@ class ProductRenderer
             if ($comparePrice <= $itemPrice) {
                 $comparePrice = 0;
             }
+            $savingsPercent = $comparePrice ? round((($comparePrice - $itemPrice) / $comparePrice) * 100) : 0;
+            $savedAmount = $comparePrice ? $comparePrice - $itemPrice : 0;
             do_action('fluent_cart/product/single/before_price_block', [
                     'product'       => $this->product,
                     'current_price' => $itemPrice,
@@ -978,22 +1049,27 @@ class ProductRenderer
             }
 
             ?>
-            <div class="fct-price-range fct-product-prices" role="term"
-                 aria-label="<?php echo esc_attr($aria_label); ?>">
+            <div class="fct-price-display">
+                <div class="fct-price-range fct-product-prices" role="term"
+                     aria-label="<?php echo esc_attr($aria_label); ?>">
 
-                <?php if ($comparePrice): ?>
-                    <span class="fct-compare-price">
-                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    <?php if ($comparePrice): ?>
+                        <span class="fct-compare-price">
+                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                        </span>
+                    <?php endif; ?>
+                    <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                        <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
+                        <?php do_action('fluent_cart/product/after_price', [
+                                'product'       => $this->product,
+                                'current_price' => $itemPrice,
+                                'scope'         => 'price_range'
+                        ]); ?>
                     </span>
+                </div>
+                <?php if ($savingsPercent): ?>
+                    <span class="fct-price-badge"><?php echo esc_html($savingsPercent . '% OFF · ' . Helper::toDecimal($savedAmount)); ?></span>
                 <?php endif; ?>
-                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                    <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
-                    <?php do_action('fluent_cart/product/after_price', [
-                            'product'       => $this->product,
-                            'current_price' => $itemPrice,
-                            'scope'         => 'price_range'
-                    ]); ?>
-                </span>
             </div>
             <?php
             do_action('fluent_cart/product/single/after_price_block', [
@@ -1009,6 +1085,8 @@ class ProductRenderer
         if ($comparePrice <= $defaultPrice) {
             $comparePrice = 0;
         }
+        $savingsPercent = $comparePrice ? round((($comparePrice - $defaultPrice) / $comparePrice) * 100) : 0;
+        $savedAmount = $comparePrice ? $comparePrice - $defaultPrice : 0;
 
         do_action('fluent_cart/product/single/before_price_range_block', [
                 'product'       => $this->product,
@@ -1032,20 +1110,25 @@ class ProductRenderer
             );
         }
         ?>
-        <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
-            <?php if ($comparePrice): ?>
-                <span class="fct-compare-price">
-                    <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+        <div class="fct-price-display">
+            <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
+                <?php if ($comparePrice): ?>
+                    <span class="fct-compare-price">
+                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    </span>
+                <?php endif; ?>
+                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                    <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
+                    <?php do_action('fluent_cart/product/after_price', [
+                            'product'       => $this->product,
+                            'current_price' => $defaultPrice,
+                            'scope'         => 'price_range'
+                    ]); ?>
                 </span>
+            </div>
+            <?php if ($savingsPercent): ?>
+                <span class="fct-price-badge"><?php echo esc_html($savingsPercent . '% OFF · ' . Helper::toDecimal($savedAmount)); ?></span>
             <?php endif; ?>
-            <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
-                <?php do_action('fluent_cart/product/after_price', [
-                        'product'       => $this->product,
-                        'current_price' => $defaultPrice,
-                        'scope'         => 'price_range'
-                ]); ?>
-            </span>
         </div>
         <?php
         do_action('fluent_cart/product/single/after_price_range_block', [
@@ -1256,6 +1339,9 @@ class ProductRenderer
                     </svg>
                 </button>
             </div>
+            <div class="fct-qty-inline-stock">
+                <?php $this->renderStockAvailability('class="fct-inline-stock"'); ?>
+            </div>
         </div>
         <?php
         do_action('fluent_cart/product/single/after_quantity_block', [
@@ -1403,6 +1489,61 @@ class ProductRenderer
                     >
                 </span>
             <?php endforeach; ?>
+        </div>
+        <?php
+    }
+
+    protected function renderPaymentSecurity()
+    {
+        ?>
+        <div class="fct-payment-security">
+            <p class="fct-payment-security__label"><?php esc_html_e('Guaranteed Safe Checkout', 'fluent-cart'); ?></p>
+            <div class="fct-payment-security__box">
+                <?php $this->renderPaymentIcons(); ?>
+            </div>
+        </div>
+        <?php
+    }
+
+    protected function renderPerksRow()
+    {
+        ?>
+        <div class="fct-product-perks" role="list">
+            <div class="fct-product-perk" role="listitem">
+                <span class="fct-product-perk__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 7.5H15.5V16.5H3V7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.5 10H19L21 12V16.5H15.5V10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.5 16.5V19C7.5 19.8284 6.82843 20.5 6 20.5C5.17157 20.5 4.5 19.8284 4.5 19V16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17.5 16.5V19C17.5 19.8284 16.8284 20.5 16 20.5C15.1716 20.5 14.5 19.8284 14.5 19V16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <div class="fct-product-perk__copy">
+                    <p class="title"><?php esc_html_e('Free shipping', 'fluent-cart'); ?></p>
+                </div>
+            </div>
+            <div class="fct-product-perk" role="listitem">
+                <span class="fct-product-perk__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.75 7.5H6.5C5.11929 7.5 4 8.61929 4 10V18.5C4 19.8807 5.11929 21 6.5 21H17.5C18.8807 21 20 19.8807 20 18.5V10C20 8.61929 18.8807 7.5 17.5 7.5H17.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9V8Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </span>
+                <div class="fct-product-perk__copy">
+                    <p class="title"><?php esc_html_e('60-day returns', 'fluent-cart'); ?></p>
+                </div>
+            </div>
+            <div class="fct-product-perk" role="listitem">
+                <span class="fct-product-perk__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3L4 7V17L12 21L20 17V7L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <div class="fct-product-perk__copy">
+                    <p class="title"><?php esc_html_e('Secure checkout', 'fluent-cart'); ?></p>
+                </div>
+            </div>
         </div>
         <?php
     }
