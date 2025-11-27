@@ -71,6 +71,8 @@ class TemplateActions
                 return __('Product not found', 'fluent-cart');
             }
 
+            $disclaimer = $product->product_disclaimer ?? '';
+
 
             $products = ShopResource::getSimilarProducts($productId, false);
             if (empty($products['products'])) {
@@ -85,6 +87,16 @@ class TemplateActions
             ))->render();
 
             $content = ob_get_clean();
+
+            if (!empty($disclaimer)) {
+                ob_start();
+                ?>
+                <div class="product-disclaimer">
+                    <?php echo wpautop(wp_kses_post($disclaimer)); ?>
+                </div>
+                <?php
+                $content .= ob_get_clean();
+            }
 
             return $this->tempFixShortcodeContent($content);
         });

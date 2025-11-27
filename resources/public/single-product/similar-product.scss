@@ -179,3 +179,16 @@
     }
   }
 }
+
+.product-disclaimer {
+  @apply mt-12 bg-white border border-solid border-[var(--fct-single-product-border-color)] rounded shadow-sm p-6 max-w-[1200px] mx-auto text-[var(--fct-single-product-primary-text-color)];
+  line-height: 1.7;
+
+  p {
+    @apply mb-3;
+
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+}

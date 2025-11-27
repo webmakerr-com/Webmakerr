@@ -10,6 +10,7 @@ use FluentCart\App\Helpers\ProductAdminHelper;
 use FluentCart\App\Helpers\Status;
 use FluentCart\App\Models\Product;
 use FluentCart\App\Models\ProductDetail;
+use FluentCart\App\Models\ProductMeta;
 use FluentCart\App\Models\ProductVariation;
 use FluentCart\App\Services\DateTime\DateTime;
 use FluentCart\Framework\Database\Orm\Builder;
@@ -279,6 +280,22 @@ class ProductResource extends BaseResourceApi
             }
         }
 
+        if (Arr::has($product, 'product_disclaimer')) {
+            $disclaimer = wp_kses_post(Arr::get($product, 'product_disclaimer', ''));
+
+            $productModel = Product::query()->find($postId);
+            if ($productModel) {
+                if ($disclaimer === '') {
+                    ProductMeta::query()
+                        ->where('object_id', $postId)
+                        ->where('meta_key', 'product_disclaimer')
+                        ->delete();
+                } else {
+                    $productModel->updateProductMeta('product_disclaimer', $disclaimer);
+                }
+            }
+        }
+
 
         if (isset($gallery[0])) {
             set_post_thumbnail($postId, Arr::get($gallery, '0.id'));
@@ -293,7 +310,8 @@ class ProductResource extends BaseResourceApi
         }
 
         $product = static::getQuery()->with('variants')->addAppends([
-            'viewUrl'
+            'viewUrl',
+            'product_disclaimer'
         ])->find($postId);
 
         if ($product) {
