@@ -177,29 +177,150 @@ class ProductRenderer
     {
         ?>
         <div class="fct-single-product-page" data-fluent-cart-single-product-page>
-            <div class="fct-single-product-page-row">
-                <?php $this->renderGallery(); ?>
-                <div class="fct-product-summary">
-                    <div class="fct-product-summary-card">
-                        <div class="fct-product-summary-header">
-                            <?php $this->renderTitle(); ?>
-                            <div class="fct-product-meta">
-                                <?php $this->renderStockAvailability(); ?>
+            <!-- UI overrides for requested layout -->
+            <style>
+                /* Gallery layout: thumbnails under main on mobile, left on desktop */
+                .fct-product-hero .fct-gallery-grid{
+                    display:flex;
+                    gap:16px;
+                    align-items:flex-start;
+                    flex-direction:column;
+                }
+                @media (min-width: 768px){
+                    .fct-product-hero .fct-gallery-grid{ flex-direction:row; }
+                    .fct-product-hero .fct-gallery-thumbs{ width:110px; flex:0 0 110px; }
+                    .fct-product-hero .fct-gallery-main{ flex:1 1 auto; }
+                }
+                /* Do not crop main image + remove letterboxing/padding */
+                .fct-product-gallery-thumb.no-crop{ padding:0; background:#fff; position:relative; }
+                .fct-product-gallery-thumb.no-crop img{
+                    display:block; width:100%; height:auto; object-fit:contain;
+                }
+                /* Center gallery arrows even with variable height */
+                .fct-product-gallery-thumb .fct-gallery-nav{
+                    position:absolute; top:50%; transform:translateY(-50%);
+                }
+                .fct-product-gallery-thumb .fct-gallery-nav-prev{ left:8px; }
+                .fct-product-gallery-thumb .fct-gallery-nav-next{ right:8px; }
+
+                /* Price + savings badge in one line; badge right-aligned */
+                .fct-single-product-page .fct-price-display{
+                    display:flex; align-items:baseline; gap:.75rem; flex-wrap:nowrap;
+                }
+                .fct-single-product-page .fct-price-display .fct-price-badge{
+                    margin-left:auto; white-space:nowrap;
+                }
+
+                /* Perks row: single line (side-by-side), scroll if too narrow */
+                .fct-single-product-page .fct-product-perks{
+                    display:flex; gap:24px; align-items:center; flex-wrap:nowrap;
+                    white-space:nowrap; overflow-x:auto;
+                }
+                .fct-single-product-page .fct-product-perk{
+                    display:flex; align-items:center; gap:8px;
+                }
+            </style>
+
+            <?php $this->renderBreadcrumbs(); ?>
+            <section class="fct-product-hero">
+                <div class="fct-single-product-page-row fct-product-hero-grid">
+                    <div class="fct-product-hero-gallery">
+                        <?php $this->renderGallery(); ?>
+                    </div>
+                    <div class="fct-product-summary fct-product-hero-summary">
+                        <div class="fct-product-summary-card">
+                            <div class="fct-product-summary-header">
+                                <?php $this->renderTitle(); ?>
+                                <?php $this->renderRatingSummary(); ?>
                             </div>
+                            <?php
+                            $this->renderExcerpt();
+                            $this->renderPrices();
+                            $this->renderBuySection();
+                            $this->renderPaymentSecurity();
+                            ?>
                         </div>
-                        <?php
-                        $this->renderExcerpt();
-                        $this->renderPrices();
-                        $this->renderBuySection();
-                        $this->renderAssurances();
-                        ?>
                     </div>
                 </div>
+            </section>
+            <div class="fct-product-assurances-section">
+                <?php $this->renderAssurances(); ?>
             </div>
             <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
             <?php $this->renderReviewsSection(); ?>
         </div>
         <?php
+    }
+
+    protected function getRatingSummary(): array
+    {
+        $reviews = $this->getReviews();
+
+        if (empty($reviews)) {
+            return [
+                    'average' => 0,
+                    'count'   => 0,
+            ];
+        }
+
+        $count = count($reviews);
+        $total = 0;
+
+        foreach ($reviews as $review) {
+            $total += (float)Arr::get($review, 'rating', 0);
+        }
+
+        $average = $count ? round($total / $count, 1) : 0;
+
+        return [
+                'average' => $average,
+                'count'   => $count,
+        ];
+    }
+
+    protected function renderRatingSummary()
+    {
+        $summary = $this->getRatingSummary();
+        $average = $summary['average'];
+        $count = $summary['count'];
+
+        if (!$count) {
+            return;
+        }
+
+        $fillWidth = $this->getStarFillWidth((float)$average);
+        ?>
+        <div class="fct-rating-summary" aria-label="<?php echo esc_attr(sprintf(__('Rated %s out of 5', 'fluent-cart'), $average)); ?>">
+            <span class="fct-rating-stars" aria-hidden="true">
+                <span class="fct-rating-stars-base">★★★★★</span>
+                <span class="fct-rating-stars-active" style="width: <?php echo esc_attr($fillWidth); ?>%;">★★★★★</span>
+            </span>
+            <span class="fct-rating-score"><?php echo esc_html(number_format($average, 1)); ?></span>
+            <a class="fct-rating-link" href="#fct-product-reviews"><?php echo esc_html(sprintf(_n('%s Review', '%s Reviews', $count, 'fluent-cart'), number_format_i18n($count))); ?></a>
+        </div>
+        <?php
+    }
+
+    protected function renderBreadcrumbs(): void
+    {
+        $terms = get_the_terms($this->product->ID, 'product_category');
+        $primaryTerm = (is_array($terms) && !is_wp_error($terms)) ? array_shift($terms) : null;
+
+        $homeUrl = home_url('/');
+        $homeLabel = esc_html__('Home', 'fluent-cart');
+
+        echo '<nav class="fct-breadcrumb" aria-label="' . esc_attr__('Breadcrumb', 'fluent-cart') . '">';
+        echo '<a class="fct-breadcrumb__link" href="' . esc_url($homeUrl) . '">' . $homeLabel . '</a>';
+
+        if ($primaryTerm) {
+            $termLink = get_term_link($primaryTerm);
+            if (!is_wp_error($termLink)) {
+                echo '<span class="fct-breadcrumb__separator" aria-hidden="true">/</span>';
+                echo '<a class="fct-breadcrumb__link" href="' . esc_url($termLink) . '">' . esc_html($primaryTerm->name) . '</a>';
+            }
+        }
+
+        echo '</nav>';
     }
 
     public function renderCustomSectionsOnly()
@@ -226,6 +347,14 @@ class ProductRenderer
 
         $this->renderItemPrice();
         $this->renderQuantity();
+
+        // perks row as single line with two items
+        $this->renderPerksRow();
+        ?>
+        <p class="fct-product-shipping-note">
+            <?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?>
+        </p>
+        <?php
         ?>
         <div class="fct-product-buttons-wrap">
             <?php $this->renderPurchaseButtons(Arr::get($atts, 'button_atts', [])); ?>
@@ -284,7 +413,7 @@ class ProductRenderer
         }
 
         ?>
-        <div class="fct-product-gallery-thumb" role="region"
+        <div class="fct-product-gallery-thumb no-crop" role="region"
              aria-label="<?php echo esc_attr($this->product->post_title . ' gallery'); ?>">
             <?php if ($this->hasFeaturedVideo()) { ?>
                 <div
@@ -299,8 +428,27 @@ class ProductRenderer
                     alt="<?php echo esc_attr($this->defaultImageAlt) ?>"
                     data-fluent-cart-single-product-page-product-thumbnail
                     data-default-image-url="<?php echo esc_url($featuredMedia) ?>"
-                    class="<?php echo $this->hasFeaturedVideo() ? 'is-hidden' : ''; ?>"
             />
+            <button
+                    type="button"
+                    class="fct-gallery-nav fct-gallery-nav-prev"
+                    data-gallery-nav="prev"
+                    aria-label="<?php esc_attr_e('Previous image', 'fluent-cart'); ?>"
+            >
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button
+                    type="button"
+                    class="fct-gallery-nav fct-gallery-nav-next"
+                    data-gallery-nav="next"
+                    aria-label="<?php esc_attr_e('Next image', 'fluent-cart'); ?>"
+            >
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </div>
         <?php
     }
@@ -823,7 +971,7 @@ class ProductRenderer
 
         $defaults = [
                 'thumbnail_mode' => 'all', // horizontal, vertical
-                'thumb_position' => 'bottom' // bottom, left, right, top
+                'thumb_position' => 'left' // bottom, left, right, top
         ];
 
         $atts = wp_parse_args($args, $defaults);
@@ -841,8 +989,14 @@ class ProductRenderer
         ?>
 
         <div <?php RenderHelper::renderAtts($wrapperAtts); ?>>
-            <?php $this->renderGalleryThumb(); ?>
-            <?php $this->renderGalleryThumbControls(); ?>
+            <div class="fct-gallery-grid">
+                <div class="fct-gallery-thumbs">
+                    <?php $this->renderGalleryThumbControls(); ?>
+                </div>
+                <div class="fct-gallery-main">
+                    <?php $this->renderGalleryThumb(); ?>
+                </div>
+            </div>
         </div>
 
         <?php
@@ -920,6 +1074,8 @@ class ProductRenderer
             if ($comparePrice <= $itemPrice) {
                 $comparePrice = 0;
             }
+            $savingsPercent = $comparePrice ? round((($comparePrice - $itemPrice) / $comparePrice) * 100) : 0;
+            $savedAmount = $comparePrice ? $comparePrice - $itemPrice : 0;
             do_action('fluent_cart/product/single/before_price_block', [
                     'product'       => $this->product,
                     'current_price' => $itemPrice,
@@ -944,22 +1100,27 @@ class ProductRenderer
             }
 
             ?>
-            <div class="fct-price-range fct-product-prices" role="term"
-                 aria-label="<?php echo esc_attr($aria_label); ?>">
+            <div class="fct-price-display">
+                <div class="fct-price-range fct-product-prices" role="term"
+                     aria-label="<?php echo esc_attr($aria_label); ?>">
 
-                <?php if ($comparePrice): ?>
-                    <span class="fct-compare-price">
-                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    <?php if ($comparePrice): ?>
+                        <span class="fct-compare-price">
+                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                        </span>
+                    <?php endif; ?>
+                    <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                        <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
+                        <?php do_action('fluent_cart/product/after_price', [
+                                'product'       => $this->product,
+                                'current_price' => $itemPrice,
+                                'scope'         => 'price_range'
+                        ]); ?>
                     </span>
+                </div>
+                <?php if ($savingsPercent): ?>
+                    <span class="fct-price-badge"><?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?></span>
                 <?php endif; ?>
-                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                    <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
-                    <?php do_action('fluent_cart/product/after_price', [
-                            'product'       => $this->product,
-                            'current_price' => $itemPrice,
-                            'scope'         => 'price_range'
-                    ]); ?>
-                </span>
             </div>
             <?php
             do_action('fluent_cart/product/single/after_price_block', [
@@ -975,6 +1136,8 @@ class ProductRenderer
         if ($comparePrice <= $defaultPrice) {
             $comparePrice = 0;
         }
+        $savingsPercent = $comparePrice ? round((($comparePrice - $defaultPrice) / $comparePrice) * 100) : 0;
+        $savedAmount = $comparePrice ? $comparePrice - $defaultPrice : 0;
 
         do_action('fluent_cart/product/single/before_price_range_block', [
                 'product'       => $this->product,
@@ -998,20 +1161,25 @@ class ProductRenderer
             );
         }
         ?>
-        <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
-            <?php if ($comparePrice): ?>
-                <span class="fct-compare-price">
-                    <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+        <div class="fct-price-display">
+            <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
+                <?php if ($comparePrice): ?>
+                    <span class="fct-compare-price">
+                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    </span>
+                <?php endif; ?>
+                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                    <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
+                    <?php do_action('fluent_cart/product/after_price', [
+                            'product'       => $this->product,
+                            'current_price' => $defaultPrice,
+                            'scope'         => 'price_range'
+                    ]); ?>
                 </span>
+            </div>
+            <?php if ($savingsPercent): ?>
+                <span class="fct-price-badge"><?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?></span>
             <?php endif; ?>
-            <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
-                <?php do_action('fluent_cart/product/after_price', [
-                        'product'       => $this->product,
-                        'current_price' => $defaultPrice,
-                        'scope'         => 'price_range'
-                ]); ?>
-            </span>
         </div>
         <?php
         do_action('fluent_cart/product/single/after_price_range_block', [
@@ -1222,6 +1390,9 @@ class ProductRenderer
                     </svg>
                 </button>
             </div>
+            <div class="fct-qty-inline-stock">
+                <?php $this->renderStockAvailability('class="fct-inline-stock"'); ?>
+            </div>
         </div>
         <?php
         do_action('fluent_cart/product/single/after_quantity_block', [
@@ -1369,6 +1540,54 @@ class ProductRenderer
                     >
                 </span>
             <?php endforeach; ?>
+        </div>
+        <?php
+    }
+
+    protected function renderPaymentSecurity()
+    {
+        ?>
+        <div class="fct-payment-security">
+            <p class="fct-payment-security__label"><?php esc_html_e('Guaranteed Safe Checkout', 'fluent-cart'); ?></p>
+            <div class="fct-payment-security__box">
+                <?php $this->renderPaymentIcons(); ?>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Modified: show only "Free shipping worldwide" and "60 Day Returns"
+     * in a single-line row (CSS above enforces one-line behavior).
+     */
+    protected function renderPerksRow()
+    {
+        ?>
+        <div class="fct-product-perks" role="list">
+            <div class="fct-product-perk" role="listitem">
+                <span class="fct-product-perk__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 7.5H15.5V16.5H3V7.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.5 10H19L21 12V16.5H15.5V10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.5 16.5V19C7.5 19.8284 6.82843 20.5 6 20.5C5.17157 20.5 4.5 19.8284 4.5 19V16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17.5 16.5V19C17.5 19.8284 16.8284 20.5 16 20.5C15.1716 20.5 14.5 19.8284 14.5 19V16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <div class="fct-product-perk__copy">
+                    <p class="title"><?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?></p>
+                </div>
+            </div>
+            <div class="fct-product-perk" role="listitem">
+                <span class="fct-product-perk__icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.75 7.5H6.5C5.11929 7.5 4 8.61929 4 10V18.5C4 19.8807 5.11929 21 6.5 21H17.5C18.8807 21 20 19.8807 20 18.5V10C20 8.61929 18.8807 7.5 17.5 7.5H17.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8V9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9V8Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </span>
+                <div class="fct-product-perk__copy">
+                    <p class="title"><?php esc_html_e('60 Day Returns', 'fluent-cart'); ?></p>
+                </div>
+            </div>
         </div>
         <?php
     }
