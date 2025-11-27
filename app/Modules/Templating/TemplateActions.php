@@ -272,7 +272,16 @@ class TemplateActions
         ob_start();
         ?>
         <div class="fct-product-disclaimer">
-            <h3 class="fct-product-disclaimer__title"><?php esc_html_e('Disclaimer', 'fluent-cart'); ?></h3>
+            <h3 class="fct-product-disclaimer__title">
+                <span class="fct-product-disclaimer__icon" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 2.5C6.41015 2.5 3.5 5.41015 3.5 9C3.5 12.5899 6.41015 15.5 10 15.5C13.5899 15.5 16.5 12.5899 16.5 9C16.5 5.41015 13.5899 2.5 10 2.5Z" stroke="currentColor" stroke-width="1.4" />
+                        <path d="M10 6.25V10.25" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+                        <circle cx="10" cy="12.5" r="0.75" fill="currentColor" />
+                    </svg>
+                </span>
+                <span class="fct-product-disclaimer__heading-text"><?php esc_html_e('Disclaimer', 'fluent-cart'); ?></span>
+            </h3>
             <div class="fct-product-disclaimer__text"><?php echo $formattedDisclaimer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
         </div>
         <?php
