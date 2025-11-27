@@ -170,9 +170,9 @@ class ProductRenderer
             }
 
             .fct-product-trust-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:8px;z-index:3;align-items:flex-start;}
-            .fct-product-trust-badge{display:flex;align-items:center;gap:8px;background:#f9fafb;border:1px solid #e5e7eb;color:#111827;font-weight:500;padding:8px 12px;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.03);}
+            .fct-product-trust-badge{display:flex;align-items:center;gap:8px;background:#f8f9e5;border:1px solid #000;color:#111827;font-weight:500;padding:2px 12px;border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0.03);}
             .fct-product-trust-badge__icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;color:#111827;}
-            .fct-product-trust-badge__text{font-size:14px;line-height:1.4;}
+            .fct-product-trust-badge__text{font-size:12px;line-height:1.4;}
 
             /* Thumbs default */
             .fct-gallery-thumb-controls{display:flex;flex-wrap:wrap;gap:10px;}
@@ -1023,14 +1023,12 @@ class ProductRenderer
                 : sprintf(__('Price: %1$s', 'fluent-cart'), Helper::toDecimal($itemPrice));
 
             ?>
-            <div class="fct-price-display">
+            <div class="fct-price-display" data-fluent-cart-price-display>
                 <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
-                    <?php if ($comparePrice): ?>
-                        <span class="fct-compare-price">
-                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
-                        </span>
-                    <?php endif; ?>
-                    <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                    <span class="fct-compare-price <?php echo $comparePrice ? '' : 'is-hidden'; ?>" data-fluent-cart-compare-price>
+                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    </span>
+                    <span class="fct-item-price" data-fluent-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
                         <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
                         <?php do_action('fluent_cart/product/after_price', [
                             'product'       => $this->product,
@@ -1039,11 +1037,9 @@ class ProductRenderer
                         ]); ?>
                     </span>
                 </div>
-                <?php if ($savingsPercent): ?>
-                    <span class="fct-price-badge">
-                        <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
-                    </span>
-                <?php endif; ?>
+                <span class="fct-price-badge <?php echo $savingsPercent ? '' : 'is-hidden'; ?>" data-fluent-cart-savings-badge>
+                    <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
+                </span>
             </div>
             <?php
             do_action('fluent_cart/product/single/after_price_block', [
@@ -1074,14 +1070,12 @@ class ProductRenderer
             : sprintf(__('Price: %1$s', 'fluent-cart'), Helper::toDecimal($defaultPrice));
 
         ?>
-        <div class="fct-price-display">
+        <div class="fct-price-display" data-fluent-cart-price-display>
             <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
-                <?php if ($comparePrice): ?>
-                    <span class="fct-compare-price">
-                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
-                    </span>
-                <?php endif; ?>
-                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                <span class="fct-compare-price <?php echo $comparePrice ? '' : 'is-hidden'; ?>" data-fluent-cart-compare-price>
+                    <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                </span>
+                <span class="fct-item-price" data-fluent-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
                     <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
                     <?php do_action('fluent_cart/product/after_price', [
                         'product'       => $this->product,
@@ -1090,11 +1084,9 @@ class ProductRenderer
                     ]); ?>
                 </span>
             </div>
-            <?php if ($savingsPercent): ?>
-                <span class="fct-price-badge">
-                    <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
-                </span>
-            <?php endif; ?>
+            <span class="fct-price-badge <?php echo $savingsPercent ? '' : 'is-hidden'; ?>" data-fluent-cart-savings-badge>
+                <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
+            </span>
         </div>
         <?php
         do_action('fluent_cart/product/single/after_price_range_block', [
@@ -1553,14 +1545,20 @@ class ProductRenderer
             $availableStocks = 'unlimited';
         }
 
-        $comparePrice = $variant->compare_price;
-        if ($comparePrice <= $variant->item_price) {
-            $comparePrice = '';
+        $rawItemPrice      = $variant->item_price;
+        $rawComparePrice   = $variant->compare_price;
+        $formattedItemPrice = Helper::toDecimal($rawItemPrice);
+
+        if ($rawComparePrice <= $rawItemPrice) {
+            $rawComparePrice = 0;
         }
 
-        if ($comparePrice) {
-            $comparePrice = Helper::toDecimal($comparePrice);
-        }
+        $formattedComparePrice = $rawComparePrice ? Helper::toDecimal($rawComparePrice) : '';
+        $savedAmount           = $rawComparePrice ? $rawComparePrice - $rawItemPrice : 0;
+        $savingsPercent        = $rawComparePrice ? round((($rawComparePrice - $rawItemPrice) / $rawComparePrice) * 100) : 0;
+        $savingsText           = $savingsPercent
+            ? sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))
+            : '';
 
         $paymentType = Arr::get($variant->other_info, 'payment_type');
 
@@ -1591,9 +1589,14 @@ class ProductRenderer
             'data-default-variation-id'        => $defaultId,
             'data-payment-type'                => $paymentType,
             'data-available-stock'             => $availableStocks,
-            'data-item-price'                  => Helper::toDecimal($variant->item_price),
-            'data-compare-price'               => $comparePrice,
+            'data-item-price'                  => $formattedItemPrice,
+            'data-item-price-raw'              => $rawItemPrice,
+            'data-compare-price'               => $formattedComparePrice,
+            'data-compare-price-raw'           => $rawComparePrice,
             'data-price-suffix'                => $priceSuffix,
+            'data-savings-percent'             => $savingsPercent,
+            'data-saved-amount'                => $savedAmount ? Helper::toDecimal($savedAmount) : '',
+            'data-savings-text'                => $savingsText,
             'data-stock-management'            => ModuleSettings::isActive('stock_management') ? 'yes' : 'no',
         ];
 
@@ -1615,11 +1618,8 @@ class ProductRenderer
         $itemClasses = array_filter($itemClasses);
         $renderingAttributes['class'] = implode(' ', $itemClasses);
 
-        $itemPrice = $variant->item_price;
-        $comparePrice = $variant->compare_price;
-        if (!$comparePrice || $comparePrice <= $itemPrice) {
-            $comparePrice = 0;
-        }
+        $itemPrice = $rawItemPrice;
+        $comparePrice = $rawComparePrice;
 
         ?>
         <div

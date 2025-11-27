@@ -395,6 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             this.#updateProductStatus(stockStatus);
+            this.#updateDisplayedPrice(activeVariationButton);
         }
 
         #setupBuyNowButton(cartId, status) {
@@ -517,6 +518,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.#updateProductStatus(status);
             }
 
+            this.#updateDisplayedPrice(button);
+
 
             button.classList.add('selected');
 
@@ -543,6 +546,59 @@ document.addEventListener('DOMContentLoaded', () => {
                     variationId: variationId
                 }
             }));
+        }
+
+        #updateDisplayedPrice(button) {
+            if (!button) {
+                return;
+            }
+
+            const priceDisplay = this.#getProductPageElement('[data-fluent-cart-price-display]')
+                || this.#getProductPageElement('.fct-price-display');
+
+            if (!priceDisplay) {
+                return;
+            }
+
+            const itemPriceEl = priceDisplay.querySelector('[data-fluent-cart-item-price]');
+            const comparePriceEl = priceDisplay.querySelector('[data-fluent-cart-compare-price]');
+            const savingsBadgeEl = priceDisplay.querySelector('[data-fluent-cart-savings-badge]');
+
+            const itemPrice = button.dataset.itemPrice || '';
+            const priceSuffix = button.dataset.priceSuffix || '';
+            const comparePrice = button.dataset.comparePrice || '';
+            const savingsText = button.dataset.savingsText || '';
+            const hasSavings = (parseInt(button.dataset.savingsPercent || '0', 10) || 0) > 0 && savingsText;
+
+            if (itemPriceEl && itemPrice) {
+                itemPriceEl.innerHTML = priceSuffix
+                    ? `${itemPrice} <span class="fct_price_suffix">${priceSuffix}</span>`
+                    : itemPrice;
+            }
+
+            if (comparePriceEl) {
+                const delElement = comparePriceEl.querySelector('del');
+
+                if (comparePrice) {
+                    comparePriceEl.classList.remove('is-hidden');
+                    if (delElement) {
+                        delElement.textContent = comparePrice;
+                    } else {
+                        comparePriceEl.textContent = comparePrice;
+                    }
+                } else {
+                    comparePriceEl.classList.add('is-hidden');
+                }
+            }
+
+            if (savingsBadgeEl) {
+                if (hasSavings) {
+                    savingsBadgeEl.textContent = savingsText;
+                    savingsBadgeEl.classList.remove('is-hidden');
+                } else {
+                    savingsBadgeEl.classList.add('is-hidden');
+                }
+            }
         }
 
         updateGalleryByVariation(variationId = 0) {
