@@ -2,12 +2,56 @@
 import * as Card from '@/Bits/Components/Card/Card.js';
 import Gallery from '@/Bits/Components/Attachment/Gallery.vue';
 import MediaButton from '@/Bits/Components/Buttons/MediaButton.vue';
-import {computed} from 'vue';
+import Asset from '@/utils/support/Asset';
+import {computed, ref, watch} from 'vue';
 
 const props = defineProps({
   product: Object,
   productEditModel: Object,
 })
+
+const isVideoActive = ref(false);
+
+const getFirstImageUrl = (images) => {
+  if (!Array.isArray(images)) {
+    return '';
+  }
+
+  const firstImage = images.find((image) => image?.url);
+  return firstImage?.url ?? '';
+};
+
+const previewImage = computed(() => {
+  const galleryPreview = getFirstImageUrl(props.product?.gallery);
+  if (galleryPreview) {
+    return galleryPreview;
+  }
+
+  const detailGalleryPreview = getFirstImageUrl(props.product?.detail?.gallery_image?.meta_value);
+  if (detailGalleryPreview) {
+    return detailGalleryPreview;
+  }
+
+  const featuredMedia = props.product?.detail?.featured_media?.url
+    ?? props.product?.featured_media
+    ?? '';
+
+  if (featuredMedia) {
+    return featuredMedia;
+  }
+
+  return Asset.getUrl('images/placeholder.svg');
+});
+
+const withAutoplayParam = (url) => {
+  try {
+    const parsedUrl = new URL(url, window.location.origin);
+    parsedUrl.searchParams.set('autoplay', '1');
+    return parsedUrl.toString();
+  } catch (error) {
+    return url.includes('?') ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+  }
+};
 
 const normalizeFeaturedVideo = (video) => {
   const normalized = video && typeof video === 'object' ? {...video} : {};
@@ -69,6 +113,7 @@ const updateVideoUrl = (value) => {
 }
 
 const clearVideo = () => {
+  isVideoActive.value = false;
   updateFeaturedVideo({});
 }
 
@@ -84,6 +129,26 @@ const isFileSource = computed(() => {
   }
 
   return /\.(mp4|mov|webm|ogg)(\?.*)?$/i.test(videoUrl.value);
+});
+
+const iframeSrc = computed(() => {
+  if (!videoUrl.value) {
+    return '';
+  }
+
+  if (!isFileSource.value && isVideoActive.value) {
+    return withAutoplayParam(videoUrl.value);
+  }
+
+  return videoUrl.value;
+});
+
+const activateVideo = () => {
+  isVideoActive.value = true;
+};
+
+watch(videoUrl, () => {
+  isVideoActive.value = false;
 });
 
 const videoAttachments = computed(() => {
@@ -164,16 +229,45 @@ const videoAttachments = computed(() => {
           </div>
 
           <div class="mt-3" v-if="videoUrl">
+            <div
+                v-if="!isVideoActive"
+                class="relative overflow-hidden rounded-lg border border-dashed border-gray-200 dark:border-dark-400 cursor-pointer"
+                role="button"
+                tabindex="0"
+                @click="activateVideo"
+                @keyup.enter.prevent="activateVideo"
+                @keyup.space.prevent="activateVideo"
+                :aria-label="$t('Play featured video preview')"
+            >
+              <img
+                  :src="previewImage"
+                  :alt="product.post_title || $t('Product media preview')"
+                  class="w-full object-cover"
+                  style="max-height: 340px;"
+              />
+              <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                <span class="flex items-center justify-center w-16 h-16 rounded-full bg-white bg-opacity-90 shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 7L17 12L9 17V7Z" fill="#1F2937"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
             <video
-                v-if="isFileSource"
+                v-else-if="isFileSource"
                 :src="videoUrl"
+                :poster="previewImage"
+                :autoplay="isVideoActive"
+                :muted="isVideoActive"
                 controls
+                playsinline
                 style="width: 100%; border-radius: 8px; max-height: 340px;"
             ></video>
             <iframe
                 v-else
-                :src="videoUrl"
+                :src="iframeSrc"
                 allowfullscreen
+                allow="autoplay; encrypted-media"
                 style="width: 100%; min-height: 260px; border: 0; border-radius: 8px;"
             ></iframe>
           </div>
