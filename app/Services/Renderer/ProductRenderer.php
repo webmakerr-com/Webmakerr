@@ -393,6 +393,8 @@ class ProductRenderer
     {
         $addedToCartCount = intval($this->addedToCartCount);
         $addedToCartTemplate = __('%d people have added this item to cart (24H)', 'fluent-cart');
+        $viewersCount = intval($this->viewersCount);
+        $viewersTemplate = __('%d people are viewing this item', 'fluent-cart');
 
         ?>
         <div class="fct-product-trust-badges" aria-label="<?php echo esc_attr__('Product activity info', 'fluent-cart'); ?>">
@@ -403,8 +405,13 @@ class ProductRenderer
                         <path d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </span>
-                <span class="fct-product-trust-badge__text">
-                    <?php printf(esc_html__('%d people are viewing this item', 'fluent-cart'), intval($this->viewersCount)); ?>
+                <span
+                    class="fct-product-trust-badge__text"
+                    data-fluent-cart-viewers-text
+                    data-template="<?php echo esc_attr($viewersTemplate); ?>"
+                    data-count="<?php echo esc_attr($viewersCount); ?>"
+                >
+                    <?php printf(esc_html__('%d people are viewing this item', 'fluent-cart'), $viewersCount); ?>
                 </span>
             </span>
             <span class="fct-product-trust-badge fct-product-trust-badge--added-to-cart" data-fluent-cart-added-to-cart-badge>
@@ -427,32 +434,24 @@ class ProductRenderer
             </span>
             <script>
                 (function() {
-                    var badge = document.querySelector('[data-fluent-cart-added-to-cart-badge]');
-                    if (!badge) {
-                        return;
+                    var viewerElement = document.querySelector('[data-fluent-cart-viewers-text]');
+
+                    if (viewerElement) {
+                        var viewerTemplate = viewerElement.getAttribute('data-template');
+                        var viewerInitialCount = parseInt(viewerElement.getAttribute('data-count'), 10);
+
+                        if (viewerTemplate && !isNaN(viewerInitialCount)) {
+                            var viewerMinimum = Math.max(0, viewerInitialCount - 5);
+                            var viewerMaximum = viewerInitialCount + 5;
+
+                            var updateViewerCount = function() {
+                                var nextViewerCount = Math.floor(Math.random() * (viewerMaximum - viewerMinimum + 1)) + viewerMinimum;
+                                viewerElement.textContent = viewerTemplate.replace('%d', nextViewerCount);
+                            };
+
+                            setInterval(updateViewerCount, 3000);
+                        }
                     }
-
-                    var textElement = badge.querySelector('[data-fluent-cart-added-to-cart-text]');
-                    if (!textElement) {
-                        return;
-                    }
-
-                    var template = textElement.getAttribute('data-template');
-                    var initialCount = parseInt(textElement.getAttribute('data-count'), 10);
-
-                    if (!template || isNaN(initialCount)) {
-                        return;
-                    }
-
-                    var minimum = Math.max(0, initialCount - 5);
-                    var maximum = initialCount + 5;
-
-                    var updateCount = function() {
-                        var next = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-                        textElement.textContent = template.replace('%d', next);
-                    };
-
-                    setInterval(updateCount, 3000);
                 })();
             </script>
         </div>
