@@ -823,7 +823,7 @@ class ProductRenderer
 
         $defaults = [
                 'thumbnail_mode' => 'all', // horizontal, vertical
-                'thumb_position' => 'bottom' // bottom, left, right, top
+                'thumb_position' => 'left' // bottom, left, right, top
         ];
 
         $atts = wp_parse_args($args, $defaults);

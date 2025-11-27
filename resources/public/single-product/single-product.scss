@@ -7,6 +7,7 @@ body {
   color: #545454;
   font-family: "Inter", sans-serif !important;
   font-size: 15px;
+  background: #f7f7f7;
 }
 
 //.entry-content > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator) {
@@ -29,6 +30,9 @@ body {
   width: 100%;
   display: block;
   margin-bottom: 30px;
+  padding: 32px 20px 12px;
+  max-width: 1240px;
+  margin-inline: auto;
 
   @apply @container/product-page;
 
@@ -37,7 +41,7 @@ body {
   }
 
   &-body {
-    @apply pt-7;
+    @apply pt-4;
   }
   &.is-mobile {
     .fluent-cart-single-product-page {
@@ -53,6 +57,8 @@ body {
 
     .fct-product-gallery-wrapper {
       @apply relative;
+      flex-direction: column-reverse;
+      gap: 12px;
     }
 
     .fct-product-gallery-thumb {
@@ -76,6 +82,17 @@ body {
         transform: scale(.985);
       }
     }
+
+    .fct-gallery-thumb-control-button {
+      @apply w-14 h-14 rounded;
+    }
+
+    .fct-product-gallery-wrapper.thumb-pos-left {
+      @apply flex-col;
+      .fct-gallery-thumb-controls {
+        @apply flex-row gap-2;
+      }
+    }
   }
 
   @container product-page (max-width: 767px) {
@@ -92,7 +109,7 @@ body {
 }
 
 .fct-single-product-page-row {
-  @apply relative grid grid-cols-1 gap-8 mb-12.5 items-start @[768px]/product-page:grid-cols-[1.1fr_0.9fr];
+  @apply relative grid grid-cols-1 gap-8 mb-12.5 items-start @[768px]/product-page:grid-cols-[1.05fr_0.95fr];
   .fluent-cart-single-product-page-product-out-of-stock{
     @apply shadow-none;
   }
@@ -105,6 +122,11 @@ body {
 .fct-product-gallery-wrapper {
   grid-area: thumbnail;
   @apply flex flex-col gap-4;
+
+  .fct-product-gallery-thumb {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
+    background: #f9f9f9;
+  }
 
   &.thumb-pos-top {
     display: flex;
@@ -123,19 +145,24 @@ body {
   }
 
   &.thumb-pos-left {
+    @apply items-start;
     display: flex;
     flex-direction: row-reverse;
-    column-gap: 10px;
+    column-gap: 18px;
     aspect-ratio: auto;
+
     .fct-gallery-thumb-controls {
       @apply mt-0 mb-0;
       display: flex;
       flex-direction: column;
       flex-wrap: nowrap;
       overflow: clip;
+      gap: 12px;
     }
     .fct-product-gallery-thumb {
       height: 100%;
+      max-height: 520px;
+      min-width: clamp(280px, 54vw, 520px);
     }
   }
 
@@ -164,16 +191,17 @@ body {
   }
 
 .fct-product-gallery-thumb {
-  @apply h-auto max-h-[600px] w-full border border-solid border-[var(--fct-single-product-border-color)] text-center rounded-[4px];
+  @apply h-auto max-h-[600px] w-full border border-solid border-[var(--fct-single-product-border-color)] text-center rounded-[8px];
+  padding: 16px;
 
   .containerZoom {
-    @apply rounded-[4px];
+    @apply rounded-[8px];
   }
 
   aspect-ratio: 1/1;
 
   img {
-    @apply rounded-[4px] object-cover w-full h-full;
+    @apply rounded-[8px] object-cover w-full h-full;
     transition: opacity 250ms ease, transform 250ms ease;
 
     &.is-switching {
@@ -323,7 +351,7 @@ body {
 }
 
 .fct-gallery-thumb-control-button {
-  @apply w-[46px] h-[46px] rounded-[4px] border border-solid border-[var(--fct-single-product-border-color)] transition-all duration-100 flex-shrink-0 hover:border-[var(--fct-single-product-border-color)] first:ml-0 overflow-hidden flex-none bg-transparent hover:bg-transparent focus:bg-transparent hover:shadow-none p-0;
+  @apply w-[64px] h-[64px] rounded-[6px] border border-solid border-[var(--fct-single-product-border-color)] transition-all duration-100 flex-shrink-0 hover:border-[var(--fct-single-product-border-color)] first:ml-0 overflow-hidden flex-none bg-transparent hover:bg-transparent focus:bg-transparent hover:shadow-none p-0;
   &.is-hidden{
     @apply hidden;
   }
@@ -333,7 +361,7 @@ body {
   }
 
   &.active {
-    @apply border-[var(--fct-single-product-active-border-color)];
+    @apply border-[var(--fct-single-product-active-border-color)] shadow-[0_6px_18px_rgba(0,0,0,0.08)];
   }
 
   &:hover {
@@ -376,11 +404,12 @@ body {
   grid-area: summary;
 
   .fct-product-summary-card{
-    @apply bg-white rounded border border-solid border-[var(--fct-single-product-border-color)] shadow-sm p-5 @[1024px]/product-page:p-7 space-y-5;
+    @apply bg-white rounded-xl border border-solid border-[var(--fct-single-product-border-color)] shadow-sm p-6 @[1024px]/product-page:p-8 space-y-5;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
   }
 
   .fct-product-summary-header{
-    @apply flex flex-col gap-2 pb-3 mb-2 border-0;
+    @apply flex flex-col gap-3 pb-4 mb-2 border-0;
   }
 }
 
@@ -407,19 +436,20 @@ body {
     display: none;
   }
 
-  .fluent-cart-direct-checkout-button {
-    display: none !important;
-  }
-
   .fct-product-buttons-wrap {
     @apply flex flex-col gap-3 mt-4;
   }
 
   .fct-dominant-add-to-cart {
-    @apply bg-black border border-solid border-black text-white text-[17px] font-semibold py-3.5 px-6 shadow-sm;
-    @apply hover:bg-[#111111] hover:border-[#111111] hover:shadow-md;
-    @apply focus:bg-black focus:border-black;
+    @apply bg-[#2bb24c] border border-solid border-[#2bb24c] text-white text-[17px] font-semibold py-3.5 px-6 shadow-sm;
+    @apply hover:bg-[#25a045] hover:border-[#25a045] hover:shadow-md;
+    @apply focus:bg-[#2bb24c] focus:border-[#2bb24c];
     gap: 10px;
+    }
+
+  .fluent-cart-direct-checkout-button {
+    @apply bg-white border border-solid border-[var(--fct-single-product-border-color)] text-[var(--fct-single-product-primary-text-color)] text-[16px] font-semibold py-3.5 px-6 shadow-sm;
+    @apply hover:border-[var(--fct-single-product-active-border-color)] hover:shadow-md;
   }
 
   .fct-payment-icons {
@@ -501,7 +531,7 @@ body {
 }
 
 .fct-product-prices {
-  @apply flex flex-wrap items-end gap-3 mb-5 text-3xl font-semibold leading-[1.1] text-[var(--fct-single-product-primary-text-color)];
+  @apply flex flex-wrap items-end gap-3 mb-5 text-[34px] font-semibold leading-[1.1] text-[var(--fct-single-product-primary-text-color)];
 
   .fct-item-price{
     @apply text-[var(--fct-primary-bg-color,var(--fct-single-product-active-border-color))];
@@ -522,7 +552,7 @@ body {
   h3,
   h4,
   h5 {
-    @apply text-[var(--fct-single-product-primary-text-color)] font-semibold m-0 text-[30px] leading-[38px];
+    @apply text-[var(--fct-single-product-primary-text-color)] font-semibold m-0 text-[28px] leading-[36px];
   }
 }
 
@@ -727,7 +757,7 @@ body {
 
 /*=== buttons ===*/
 .fct-product-buttons-wrap {
-  @apply grid grid-cols-1 gap-3 mt-7.5 @[640px]/product-page:grid-cols-2;
+  @apply grid grid-cols-1 gap-3 mt-7.5 @[640px]/product-page:grid-cols-[1fr_1fr];
 }
 
 .fct-product-assurances{
