@@ -203,6 +203,7 @@ class ProductRenderer
                 background:#E6F6FF;color:#0B6BCB;border:1px solid #B6E1FF;
                 font-weight:600;padding:.25rem .5rem;border-radius:.375rem;font-size:.875rem;
             }
+            .fct-product-item-price.fluent-cart-product-variation-content{display:none !important;}
 
             /* PERKS (inline, two items) */
             .fct-product-perks{display:flex;align-items:center;gap:16px;flex-wrap:nowrap;overflow-x:auto;margin-top:10px;}
@@ -1012,14 +1013,13 @@ class ProductRenderer
             return;
         }
 
-        $defaultPrice = $this->defaultVariant ? $this->defaultVariant->item_price : $this->product->detail->min_price;
-        $comparePrice = $this->defaultVariant ? $this->defaultVariant->compare_price : 0;
-
-        if ($comparePrice <= $defaultPrice) {
-            $comparePrice = 0;
+        $variants = $this->product->variants;
+        if (!$variants || $variants->isEmpty()) {
+            return;
         }
-        $savingsPercent = $comparePrice ? round((($comparePrice - $defaultPrice) / $comparePrice) * 100) : 0;
-        $savedAmount    = $comparePrice ? $comparePrice - $defaultPrice : 0;
+
+        $defaultVariant = $this->defaultVariant ?: $variants->first();
+        $defaultPrice   = $defaultVariant ? $defaultVariant->item_price : $this->product->detail->min_price;
 
         do_action('fluent_cart/product/single/before_price_range_block', [
             'product'       => $this->product,
@@ -1027,34 +1027,57 @@ class ProductRenderer
             'scope'         => 'price_range'
         ]);
 
-        $aria_label = $comparePrice
-            ? sprintf(__('Original Price: %1$s, Price: %2$s', 'fluent-cart'), Helper::toDecimal($comparePrice), Helper::toDecimal($defaultPrice))
-            : sprintf(__('Price: %1$s', 'fluent-cart'), Helper::toDecimal($defaultPrice));
+        foreach ($variants as $variant) {
+            $itemPrice    = $variant->item_price;
+            $comparePrice = $variant->compare_price;
 
-        ?>
-        <div class="fct-price-display">
-            <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
-                <?php if ($comparePrice): ?>
-                    <span class="fct-compare-price">
-                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+            if ($comparePrice <= $itemPrice) {
+                $comparePrice = 0;
+            }
+
+            $savingsPercent = $comparePrice ? round((($comparePrice - $itemPrice) / $comparePrice) * 100) : 0;
+            $savedAmount    = $comparePrice ? $comparePrice - $itemPrice : 0;
+            $classes        = [
+                'fct-price-display',
+                'fluent-cart-product-variation-content'
+            ];
+
+            $isDefaultVariant = $defaultVariant && $defaultVariant->id == $variant->id;
+
+            if (!$isDefaultVariant) {
+                $classes[] = 'is-hidden';
+            }
+
+            $aria_label = $comparePrice
+                ? sprintf(__('Original Price: %1$s, Price: %2$s', 'fluent-cart'), Helper::toDecimal($comparePrice), Helper::toDecimal($itemPrice))
+                : sprintf(__('Price: %1$s', 'fluent-cart'), Helper::toDecimal($itemPrice));
+
+            ?>
+            <div class="<?php echo esc_attr(implode(' ', $classes)); ?>" data-variation-id="<?php echo esc_attr($variant->id); ?>">
+                <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
+                    <?php if ($comparePrice): ?>
+                        <span class="fct-compare-price">
+                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                        </span>
+                    <?php endif; ?>
+                    <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                        <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
+                        <?php do_action('fluent_cart/product/after_price', [
+                            'product'       => $this->product,
+                            'current_price' => $itemPrice,
+                            'scope'         => 'price_range'
+                        ]); ?>
+                    </span>
+                </div>
+                <?php if ($savingsPercent): ?>
+                    <span class="fct-price-badge">
+                        <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
                     </span>
                 <?php endif; ?>
-                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                    <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
-                    <?php do_action('fluent_cart/product/after_price', [
-                        'product'       => $this->product,
-                        'current_price' => $defaultPrice,
-                        'scope'         => 'price_range'
-                    ]); ?>
-                </span>
             </div>
-            <?php if ($savingsPercent): ?>
-                <span class="fct-price-badge">
-                    <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
-                </span>
-            <?php endif; ?>
-        </div>
-        <?php
+            <?php
+        }
+
         do_action('fluent_cart/product/single/after_price_range_block', [
             'product'       => $this->product,
             'current_price' => $defaultPrice,
