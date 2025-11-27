@@ -416,7 +416,7 @@ body {
   }
 
   .fct-dominant-add-to-cart {
-    @apply bg-black border border-solid border-black text-white text-[18px] font-semibold py-3.5 px-6 shadow-sm;
+    @apply bg-black border border-solid border-black text-white text-[17px] font-semibold py-3.5 px-6 shadow-sm;
     @apply hover:bg-[#111111] hover:border-[#111111] hover:shadow-md;
     @apply focus:bg-black focus:border-black;
     gap: 10px;
@@ -436,7 +436,7 @@ body {
   .fct-add-to-cart-icon {
     @apply flex items-center;
     svg {
-      @apply w-[21px] h-[21px];
+      @apply w-5 h-5;
     }
   }
 
@@ -492,26 +492,6 @@ body {
 
     blockquote {
       @apply border-l-4 border-[var(--fct-single-product-border-color)] pl-4 text-[var(--fct-secondary-text-color)] italic rounded-sm bg-gray-50;
-    }
-  }
-
-  .fct-product-disclaimer {
-    @apply mt-12 mb-12 pt-5 pb-5 border-t border-b border-solid border-[var(--fct-single-product-border-color)];
-
-    &__title {
-      @apply m-0 flex items-center gap-2 text-[12px] font-semibold leading-[1.5] text-[var(--fct-single-product-primary-text-color)];
-    }
-
-    &__icon {
-      @apply inline-flex items-center justify-center w-4 h-4 text-[var(--fct-single-product-active-border-color)];
-    }
-
-    &__heading-text {
-      @apply leading-[1.5];
-    }
-
-    &__text {
-      @apply mt-2 text-[12px] leading-[1.6] text-[var(--fct-secondary-text-color)];
     }
   }
 }
