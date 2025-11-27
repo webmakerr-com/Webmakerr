@@ -24,6 +24,7 @@ class ProductListRenderer
 
         if (strpos((string)$wrapperClass, 'fct-similar-product-list-container') !== false) {
             $this->cardConfig['force_view_offer'] = true;
+            $this->cardConfig['show_excerpt'] = false;
         }
 
         if($products instanceof \FluentCart\Framework\Pagination\CursorPaginator){

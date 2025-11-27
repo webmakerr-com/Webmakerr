@@ -46,6 +46,8 @@ class ProductCardRender
             $cardWidth = 'style="width: ' . esc_attr(Arr::get($this->config, 'card_width') . 'px') . ';"';
         }
 
+        $showExcerpt = Arr::get($this->config, 'show_excerpt', true);
+
         ?>
         <article data-fluent-cart-shop-app-single-product data-fct-product-card=""
                  class="fct-product-card"
@@ -57,7 +59,7 @@ class ProductCardRender
                  ?>">
             <?php $this->renderProductImage(); ?>
             <?php $this->renderTitle(); ?>
-            <?php $this->renderExcerpt(); ?>
+            <?php if ($showExcerpt) { $this->renderExcerpt(); } ?>
             <?php $this->renderPrices(); ?>
             <?php $this->showBuyButton(); ?>
         </article>
