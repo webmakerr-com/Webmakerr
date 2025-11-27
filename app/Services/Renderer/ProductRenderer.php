@@ -191,10 +191,12 @@ class ProductRenderer
                         $this->renderExcerpt();
                         $this->renderPrices();
                         $this->renderBuySection();
-                        $this->renderAssurances();
                         ?>
                     </div>
                 </div>
+            </div>
+            <div class="fct-product-assurances-section">
+                <?php $this->renderAssurances(); ?>
             </div>
             <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
             <?php $this->renderReviewsSection(); ?>
@@ -226,6 +228,11 @@ class ProductRenderer
 
         $this->renderItemPrice();
         $this->renderQuantity();
+        ?>
+        <p class="fct-product-shipping-note">
+            <?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?>
+        </p>
+        <?php
         ?>
         <div class="fct-product-buttons-wrap">
             <?php $this->renderPurchaseButtons(Arr::get($atts, 'button_atts', [])); ?>
