@@ -203,6 +203,7 @@ class ProductRenderer
                 background:#E6F6FF;color:#0B6BCB;border:1px solid #B6E1FF;
                 font-weight:600;padding:.25rem .5rem;border-radius:.375rem;font-size:.875rem;
             }
+            .fluent-cart-product-variation-content.is-hidden{display:none !important;}
             .fct-product-item-price.fluent-cart-product-variation-content{display:none !important;}
 
             /* PERKS (inline, two items) */
