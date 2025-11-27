@@ -30,10 +30,12 @@ body {
   width: 100%;
   display: block;
   margin-bottom: 30px;
-  padding: 32px 20px 12px;
-  max-width: 1240px;
+  padding: 24px 16px 12px;
+  max-width: 1280px;
   margin-inline: auto;
   background: #ffffff;
+
+  @apply lg:px-6;
 
   @apply @container/product-page;
 
@@ -109,8 +111,33 @@ body {
   }
 }
 
+.fct-breadcrumb {
+  @apply py-5 text-sm text-gray-500 flex items-center gap-2;
+
+  a {
+    @apply hover:text-gray-700;
+  }
+}
+
+.fct-product-hero {
+  @apply pb-14;
+}
+
+.fct-product-hero-grid {
+  @apply grid grid-cols-12 gap-8 lg:gap-10;
+}
+
+.fct-product-hero-gallery {
+  @apply col-span-12 md:col-span-7;
+}
+
+.fct-product-hero-summary {
+  @apply col-span-12 md:col-span-5;
+}
+
 .fct-single-product-page-row {
-  @apply relative grid grid-cols-1 gap-10 mb-10 items-start @[768px]/product-page:grid-cols-[1.05fr_0.95fr];
+  @apply relative grid grid-cols-12 gap-8 lg:gap-10 mb-10 items-start;
+  @apply @[768px]/product-page:grid-cols-12;
   .fluent-cart-single-product-page-product-out-of-stock{
     @apply shadow-none;
   }
@@ -124,11 +151,11 @@ body {
   grid-area: thumbnail;
   @apply flex flex-col gap-4;
 
-  .fct-product-gallery-thumb {
-    box-shadow: none;
-    background: #ffffff;
-    border: 1px solid #e7ebf0;
-  }
+    .fct-product-gallery-thumb {
+      box-shadow: var(--tw-ring-shadow), var(--tw-shadow, 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06));
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+    }
 
   &.thumb-pos-top {
     display: flex;
@@ -193,17 +220,17 @@ body {
   }
 
 .fct-product-gallery-thumb {
-  @apply h-auto max-h-[600px] w-full border border-solid border-[var(--fct-single-product-border-color)] text-center rounded-[8px];
-  padding: 16px;
+  @apply h-auto w-full border border-solid border-gray-200 text-center rounded-xl bg-white shadow-card;
+  padding: 0;
 
   .containerZoom {
-    @apply rounded-[8px];
+    @apply rounded-xl;
   }
 
-  aspect-ratio: 1/1;
+  aspect-ratio: auto;
 
   img {
-    @apply rounded-[8px] object-cover w-full h-full;
+    @apply rounded-xl object-contain w-full h-auto;
     transition: opacity 250ms ease, transform 250ms ease;
 
     &.is-switching {
@@ -406,12 +433,15 @@ body {
   grid-area: summary;
 
   .fct-product-summary-card{
-    @apply bg-white rounded-xl border border-solid border-[var(--fct-single-product-border-color)] p-6 @[1024px]/product-page:p-8 space-y-5;
-    box-shadow: none;
+    @apply bg-white rounded-xl border border-solid border-gray-200 p-0 sm:p-0 space-y-6 shadow-card pb-6 lg:pb-8;
+  }
+
+  .fct-product-summary-card > *:not(.fct-product-summary-header) {
+    @apply px-6 lg:px-8;
   }
 
   .fct-product-summary-header{
-    @apply flex flex-col gap-3 pb-4 mb-2 border-0;
+    @apply flex flex-col gap-3 pb-1 px-6 pt-6 lg:px-8;
   }
 }
 
@@ -443,9 +473,9 @@ body {
   }
 
   .fct-dominant-add-to-cart {
-    @apply bg-[#2bb24c] border border-solid border-[#2bb24c] text-white text-[17px] font-semibold py-3.5 px-6 shadow-sm;
-    @apply hover:bg-[#25a045] hover:border-[#25a045] hover:shadow-md;
-    @apply focus:bg-[#2bb24c] focus:border-[#2bb24c];
+    @apply bg-[#1dbf47] border border-solid border-[#1dbf47] text-white text-[17px] font-semibold py-3.5 px-6 shadow-sm;
+    @apply hover:bg-[#169a39] hover:border-[#169a39] hover:shadow-md;
+    @apply focus:bg-[#1dbf47] focus:border-[#1dbf47];
     gap: 10px;
     }
 
@@ -532,15 +562,15 @@ body {
   @apply flex flex-wrap items-center gap-3 text-sm text-[var(--fct-single-product-primary-text-color)];
 }
 
-  .fct-product-prices {
-  @apply flex flex-wrap items-end gap-3 mb-4 text-[34px] font-semibold leading-[1.1] text-[var(--fct-single-product-primary-text-color)];
+.fct-product-prices {
+  @apply flex flex-wrap items-center gap-3 mb-4 text-2xl md:text-[28px] font-semibold leading-snug text-[var(--fct-single-product-primary-text-color)];
 
   .fct-item-price{
     @apply text-[var(--fct-primary-bg-color,var(--fct-single-product-active-border-color))];
   }
 
   .fct-compare-price{
-    @apply text-lg font-medium text-system-mid;
+    @apply text-base md:text-lg font-medium text-gray-400;
     del{
       @apply line-through;
     }
@@ -554,12 +584,12 @@ body {
   h3,
   h4,
   h5 {
-    @apply text-[var(--fct-single-product-primary-text-color)] font-semibold m-0 text-[26px] leading-[34px];
+    @apply text-[var(--fct-single-product-primary-text-color)] font-semibold m-0 text-2xl md:text-3xl leading-snug;
   }
 }
 
 .fct-product-excerpt {
-  @apply mb-4 text-[15px] leading-[24px];
+  @apply mb-2 text-[15px] leading-[24px];
   p {
     @apply m-0 text-[var(--fct-secondary-text-color)];
   }
@@ -759,18 +789,30 @@ body {
 
 /*=== buttons ===*/
 .fct-product-buttons-wrap {
-  @apply grid grid-cols-1 gap-3 mt-7.5 @[640px]/product-page:grid-cols-[1fr_1fr];
+  @apply grid grid-cols-1 gap-3 mt-6 @[640px]/product-page:grid-cols-[1fr_1fr];
 }
 
 .fct-product-assurances{
-  @apply grid grid-cols-1 gap-4 p-4 rounded-xl border border-solid border-[var(--fct-single-product-border-color)] bg-white @[768px]/product-page:grid-cols-3 @[1024px]/product-page:gap-6;
+  @apply grid grid-cols-1 gap-4 p-0 rounded-xl border border-solid border-transparent bg-white @[768px]/product-page:grid-cols-3 @[1024px]/product-page:gap-6;
 }
 
 .fct-product-assurance-item{
-  @apply flex items-center gap-3;
+  @apply flex items-start gap-4;
 
   .fct-product-assurance-icon{
-    @apply w-11 h-11 flex items-center justify-center rounded-full bg-white border border-solid border-[var(--fct-single-product-border-color)] text-[var(--fct-single-product-active-border-color)];
+    @apply w-12 h-12 flex items-center justify-center rounded-full border border-solid border-gray-200 text-[var(--fct-single-product-active-border-color)];
+  }
+
+  &:nth-child(1) .fct-product-assurance-icon {
+    @apply bg-orange-100 text-orange-500 border-orange-100;
+  }
+
+  &:nth-child(2) .fct-product-assurance-icon {
+    @apply bg-emerald-100 text-emerald-600 border-emerald-100;
+  }
+
+  &:nth-child(3) .fct-product-assurance-icon {
+    @apply bg-sky-100 text-sky-600 border-sky-100;
   }
 
   .fct-product-assurance-copy{
@@ -787,11 +829,10 @@ body {
 }
 
 .fct-product-assurances-section {
-  @apply w-full mt-6;
+  @apply w-full mt-8 border-t border-solid border-gray-200 pt-10;
 
   .fct-product-assurances {
-    @apply max-w-[1240px] mx-auto shadow-sm;
-    background: #f6f8fb;
+    @apply max-w-[1280px] mx-auto shadow-none px-0;
   }
 }
 
