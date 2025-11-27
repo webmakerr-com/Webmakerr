@@ -33,7 +33,6 @@ class ProductRenderer
     protected $renderCustomSections = true;
     protected $viewersCount = 0;
     protected $addedToCartCount = 0;
-    protected $productDisclaimer = '';
 
     public function __construct(Product $product, $config = [])
     {
@@ -46,7 +45,6 @@ class ProductRenderer
         $this->featuredVideo = ProductResource::formatFeaturedVideo(
             get_post_meta($product->ID, '_fct_featured_video', true)
         );
-        $this->productDisclaimer = Arr::get($product, 'product_disclaimer', '');
         $this->viewersCount = random_int(3, 21);
         $this->addedToCartCount = random_int(15, 29);
 
@@ -1840,11 +1838,6 @@ class ProductRenderer
         <?php endforeach; ?>
 
         <?php
-    }
-
-    public function getProductDisclaimer()
-    {
-        return $this->productDisclaimer;
     }
 
     protected function getDefaultVariantData()

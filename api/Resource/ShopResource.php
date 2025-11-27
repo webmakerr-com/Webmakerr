@@ -237,11 +237,6 @@ class ShopResource extends BaseResourceApi
             return null;
         }
 
-        $product->setAppends(array_values(array_unique(array_merge(
-            $product->getAppends(),
-            ['product_disclaimer']
-        ))));
-
         //Below lines are required
         $product->view_url = $product->view_url;
         $product->edit_url = $product->edit_url;

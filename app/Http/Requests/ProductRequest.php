@@ -173,7 +173,6 @@ class ProductRequest extends RequestGuard
                     return null;
                 }
             ],
-            'product_disclaimer'                  => 'nullable|sanitizeTextArea',
             'post_status'                         => ['required', 'string'],
             'post_date'                           => function ($attribute, $value) {
                 return $this->validatePostDate($attribute, $value);
@@ -329,7 +328,6 @@ class ProductRequest extends RequestGuard
             'post_date'      => 'sanitize_text_field',
             'post_excerpt'   => 'wp_strip_all_tags',
             'post_content'   => 'wp_kses_post',
-            'product_disclaimer' => 'wp_kses_post',
 
             'detail.id'                           => 'intval',
             'detail.post_id'                      => 'intval',

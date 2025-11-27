@@ -311,10 +311,7 @@ class ProductController extends Controller
 
 
         if (!empty($product)) {
-            $product->setAppends(array_values(array_unique(array_merge(
-                $product->getAppends(),
-                ['view_url', 'edit_url', 'product_disclaimer']
-            ))));
+            $product->setAppends(['view_url', 'edit_url']);
             $taxonomies = Taxonomy::getTaxonomies();
             $taxonomies = Collection::make($taxonomies)
                 ->map(function ($taxonomy) use (&$product) {
