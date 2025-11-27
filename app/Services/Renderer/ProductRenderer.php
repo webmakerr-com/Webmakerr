@@ -183,24 +183,21 @@ class ProductRenderer
                     <div class="fct-product-summary-card">
                         <div class="fct-product-summary-header">
                             <?php $this->renderTitle(); ?>
-                            <div class="fct-product-meta">
-                                <?php $this->renderStockAvailability(); ?>
-                            </div>
+                            <?php $this->renderRatingSummary(); ?>
                         </div>
                         <?php
-                        $this->renderExcerpt();
                         $this->renderPrices();
                         $this->renderBuySection();
                         ?>
                     </div>
                 </div>
             </div>
-            <div class="fct-product-assurances-section">
-                <?php $this->renderAssurances(); ?>
-            </div>
-            <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
-            <?php $this->renderReviewsSection(); ?>
         </div>
+        <div class="fct-product-assurances-section">
+            <?php $this->renderAssurances(); ?>
+        </div>
+        <?php if ($this->renderCustomSections) { $this->renderCustomSections(); } ?>
+        <?php $this->renderReviewsSection(); ?>
         <?php
     }
 
@@ -220,23 +217,59 @@ class ProductRenderer
 
         echo '<div aria-labelledby="fct-product-summary-title" data-fluent-cart-product-pricing-section data-product-id="' . esc_attr($this->product->ID) . '" class="fct_buy_section">';
 
+        echo '<div class="fct-product-variant-block">';
+        echo '<p class="fct-product-field-label">' . esc_html__('Color:', 'fluent-cart') . '</p>';
         if (count($this->paymentTypes) === 1 || $groupBy === 'none') {
             $this->renderVariants(Arr::get($atts, 'variation_atts', []));
         } else {
             $this->renderTab(Arr::get($atts, 'variation_atts', []));
         }
+        echo '</div>';
 
         $this->renderItemPrice();
+
+        $stockInline = $this->renderStockAvailability('class="fct-inline-stock"', false);
+
+        echo '<div class="fct-product-quantity-row">';
+        echo '<div class="fct-product-quantity-shell">';
         $this->renderQuantity();
+        echo '</div>';
+        if ($stockInline) {
+            echo '<div class="fct-product-stock-inline">' . $stockInline . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        }
+        echo '</div>';
         ?>
-        <p class="fct-product-shipping-note">
-            <?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?>
-        </p>
-        <?php
-        ?>
+        <div class="fct-product-shipping-row">
+            <div class="fct-product-shipping-item">
+                <span class="fct-product-shipping-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 7.5C3 6.67157 3.67157 6 4.5 6H15.5C16.3284 6 17 6.67157 17 7.5V15.5C17 16.3284 16.3284 17 15.5 17H6.5C5.67157 17 5 16.3284 5 15.5V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 10H19.6569C20.404 10 21.1213 10.2964 21.6517 10.8214L22.4142 11.5858C22.7893 11.9609 23 12.4706 23 13V15.5C23 16.3284 22.3284 17 21.5 17H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 20C7.10457 20 8 19.1046 8 18C8 16.8954 7.10457 16 6 16C4.89543 16 4 16.8954 4 18C4 19.1046 4.89543 20 6 20Z" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M19 20C20.1046 20 21 19.1046 21 18C21 16.8954 20.1046 16 19 16C17.8954 16 17 16.8954 17 18C17 19.1046 17.8954 20 19 20Z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </span>
+                <span class="fct-product-shipping-text"><?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?></span>
+            </div>
+            <div class="fct-product-shipping-item">
+                <span class="fct-product-shipping-icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C10.3934 22 8.88689 21.6083 7.57443 20.9142L6 22V19.5C4.11438 17.9334 3 15.5979 3 13C3 7.47715 7.47715 3 13 3H12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 12H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 8H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 16H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="fct-product-shipping-text"><?php esc_html_e('60-day returns', 'fluent-cart'); ?></span>
+            </div>
+        </div>
         <div class="fct-product-buttons-wrap">
             <?php $this->renderPurchaseButtons(Arr::get($atts, 'button_atts', [])); ?>
         </div>
+        <div class="fct-view-cart-link">
+            <a href="<?php echo esc_url(site_url('?fluent-cart=cart')); ?>" class="fct-view-cart-anchor"><?php esc_html_e('View Cart', 'fluent-cart'); ?></a>
+        </div>
+        <?php $this->renderPaymentIcons(); ?>
         </div>
         <?php
     }
@@ -308,6 +341,16 @@ class ProductRenderer
                     data-default-image-url="<?php echo esc_url($featuredMedia) ?>"
                     class="<?php echo $this->hasFeaturedVideo() ? 'is-hidden' : ''; ?>"
             />
+            <button class="fct-gallery-nav fct-gallery-nav--prev" type="button" data-fluent-cart-gallery-prev aria-label="<?php esc_attr_e('Previous image', 'fluent-cart'); ?>">
+                <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 18L2 10L10 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="fct-gallery-nav fct-gallery-nav--next" type="button" data-fluent-cart-gallery-next aria-label="<?php esc_attr_e('Next image', 'fluent-cart'); ?>">
+                <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 2L10 10L2 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
         </div>
         <?php
     }
@@ -702,6 +745,41 @@ class ProductRenderer
         echo '</div>';
     }
 
+    protected function getRatingSummary(): array
+    {
+        $reviews = $this->getReviews();
+
+        if (empty($reviews)) {
+            return [
+                    'average' => 0,
+                    'count'   => 0,
+            ];
+        }
+
+        $ratings = array_values(array_filter(array_map(function ($review) {
+            $rating = Arr::get($review, 'rating', 0);
+
+            return is_numeric($rating) ? (float)$rating : null;
+        }, $reviews), static function ($value) {
+            return $value !== null;
+        }));
+
+        if (empty($ratings)) {
+            return [
+                    'average' => 0,
+                    'count'   => 0,
+            ];
+        }
+
+        $count = count($ratings);
+        $average = array_sum($ratings) / max(1, $count);
+
+        return [
+                'average' => $average,
+                'count'   => $count,
+        ];
+    }
+
     protected function getReviews(): array
     {
         $reviews = Arr::get($this->product->detail, 'other_info.reviews', []);
@@ -864,7 +942,7 @@ class ProductRenderer
         <?php
     }
 
-    public function renderStockAvailability($wrapper_attributes = '')
+    public function renderStockAvailability($wrapper_attributes = '', $echo = true)
     {
         if (!ModuleSettings::isActive('stock_management')) {
             return '';
@@ -887,7 +965,7 @@ class ProductRenderer
 
         $statusClass = $stockAvailability['class'] ?? '';
 
-        echo sprintf(
+        $output = sprintf(
                 '<div class="fct-product-stock %1$s" role="status" aria-live="polite">
                     <div %2$s>
                         <span class="fct-stock-status fct_status_badge_%1$s" data-fluent-cart-product-stock>
@@ -899,6 +977,14 @@ class ProductRenderer
                 $wrapper_attributes, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 esc_html($stockLabel)
         );
+
+        if ($echo) {
+            echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+            return '';
+        }
+
+        return $output;
     }
 
     public function renderExcerpt()
@@ -913,6 +999,32 @@ class ProductRenderer
         </div>
         <?php
 
+    }
+
+    protected function renderRatingSummary()
+    {
+        $summary = $this->getRatingSummary();
+
+        if (!$summary['count']) {
+            return;
+        }
+
+        $ratingLabel = sprintf(
+                /* translators: 1: average rating value */
+                __('Rated %s out of 5', 'fluent-cart'),
+                number_format($summary['average'], 1)
+        );
+
+        ?>
+        <div class="fct-product-rating" aria-label="<?php echo esc_attr($ratingLabel); ?>">
+            <span class="fct-product-rating-stars" aria-hidden="true">
+                <span class="fct-product-rating-stars-base">★★★★★</span>
+                <span class="fct-product-rating-stars-active" style="width: <?php echo esc_attr($this->getStarFillWidth($summary['average'])); ?>%">★★★★★</span>
+            </span>
+            <span class="fct-product-rating-value"><?php echo esc_html(number_format($summary['average'], 1)); ?></span>
+            <span class="fct-product-rating-count"><?php echo esc_html(sprintf(_n('%s review', '%s reviews', $summary['count'], 'fluent-cart'), $summary['count'])); ?></span>
+        </div>
+        <?php
     }
 
     public function renderPrices()
@@ -935,6 +1047,8 @@ class ProductRenderer
             ?>
             <?php
 
+            $savingAmount = $comparePrice ? $comparePrice - $itemPrice : 0;
+
             if ($comparePrice) {
                 $aria_label = sprintf(
                 /* translators: 1: Original price, 2: Current item price */
@@ -953,20 +1067,30 @@ class ProductRenderer
             ?>
             <div class="fct-price-range fct-product-prices" role="term"
                  aria-label="<?php echo esc_attr($aria_label); ?>">
-
-                <?php if ($comparePrice): ?>
-                    <span class="fct-compare-price">
-                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                <div class="fct-price-line">
+                    <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                        <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
+                        <?php do_action('fluent_cart/product/after_price', [
+                                'product'       => $this->product,
+                                'current_price' => $itemPrice,
+                                'scope'         => 'price_range'
+                        ]); ?>
                     </span>
+                    <?php if ($comparePrice): ?>
+                        <span class="fct-compare-price">
+                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                        </span>
+                        <span class="fct-price-discount" aria-label="<?php esc_attr_e('Discount amount', 'fluent-cart'); ?>">
+                            -<?php echo esc_html(Helper::toDecimal($savingAmount)); ?>
+                        </span>
+                    <?php endif; ?>
+                </div>
+                <?php if ($comparePrice && $savingAmount): ?>
+                    <div class="fct-price-savings">
+                        <?php esc_html_e('You save:', 'fluent-cart'); ?>
+                        <span><?php echo esc_html(Helper::toDecimal($savingAmount)); ?></span>
+                    </div>
                 <?php endif; ?>
-                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                    <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
-                    <?php do_action('fluent_cart/product/after_price', [
-                            'product'       => $this->product,
-                            'current_price' => $itemPrice,
-                            'scope'         => 'price_range'
-                    ]); ?>
-                </span>
             </div>
             <?php
             do_action('fluent_cart/product/single/after_price_block', [
@@ -990,6 +1114,8 @@ class ProductRenderer
         ]);
         ?>
         <?php
+        $savingAmount = $comparePrice ? $comparePrice - $defaultPrice : 0;
+
         if ($comparePrice) {
             $aria_label = sprintf(
             /* translators: 1: Original price, 2: Current item price */
@@ -1006,19 +1132,30 @@ class ProductRenderer
         }
         ?>
         <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
-            <?php if ($comparePrice): ?>
-                <span class="fct-compare-price">
-                    <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+            <div class="fct-price-line">
+                <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                    <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
+                    <?php do_action('fluent_cart/product/after_price', [
+                            'product'       => $this->product,
+                            'current_price' => $defaultPrice,
+                            'scope'         => 'price_range'
+                    ]); ?>
                 </span>
+                <?php if ($comparePrice): ?>
+                    <span class="fct-compare-price">
+                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    </span>
+                    <span class="fct-price-discount" aria-label="<?php esc_attr_e('Discount amount', 'fluent-cart'); ?>">
+                        -<?php echo esc_html(Helper::toDecimal($savingAmount)); ?>
+                    </span>
+                <?php endif; ?>
+            </div>
+            <?php if ($comparePrice && $savingAmount): ?>
+                <div class="fct-price-savings">
+                    <?php esc_html_e('You save:', 'fluent-cart'); ?>
+                    <span><?php echo esc_html(Helper::toDecimal($savingAmount)); ?></span>
+                </div>
             <?php endif; ?>
-            <span class="fct-item-price" aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
-                <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
-                <?php do_action('fluent_cart/product/after_price', [
-                        'product'       => $this->product,
-                        'current_price' => $defaultPrice,
-                        'scope'         => 'price_range'
-                ]); ?>
-            </span>
         </div>
         <?php
         do_action('fluent_cart/product/single/after_price_range_block', [

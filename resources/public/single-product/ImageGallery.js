@@ -55,6 +55,7 @@ export default class ImageGallery {
 
         this.#prepareLightboxImages();
         this.#setupThumbnailControls();
+        this.#setupNavButtons();
         this.#setupThumbnailScrolling();
         this.#setupAutoRotation();
 
@@ -435,6 +436,47 @@ export default class ImageGallery {
                 this.#handleThumbnailChange(control);
             });
         });
+    }
+
+    #setupNavButtons() {
+        const prevButton = this.findOneInContainer('[data-fluent-cart-gallery-prev]');
+        const nextButton = this.findOneInContainer('[data-fluent-cart-gallery-next]');
+
+        if (prevButton) {
+            prevButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                this.#navigateGallery(-1);
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                this.#navigateGallery(1);
+            });
+        }
+    }
+
+    #navigateGallery(step = 1) {
+        const controls = Array.from(this.#thumbnailControls || []).filter(ctrl => !ctrl.classList.contains('is-hidden'));
+
+        if (!controls.length) {
+            return;
+        }
+
+        let activeIndex = controls.findIndex(ctrl => ctrl.classList.contains('active'));
+
+        if (activeIndex === -1) {
+            activeIndex = 0;
+        }
+
+        let nextIndex = (activeIndex + step) % controls.length;
+
+        if (nextIndex < 0) {
+            nextIndex = controls.length - 1;
+        }
+
+        this.#handleThumbnailChange(controls[nextIndex]);
     }
 
     #handleThumbnailChange(control, options = {auto: false}) {
