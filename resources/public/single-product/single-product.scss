@@ -220,7 +220,7 @@ body {
   }
 
 .fct-product-gallery-thumb {
-  @apply h-auto w-full border border-solid border-gray-200 text-center rounded-xl bg-white shadow-card;
+  @apply h-auto w-full border border-solid border-gray-200 text-center rounded-xl bg-white shadow-lg;
   padding: 0;
 
   .containerZoom {
@@ -433,7 +433,7 @@ body {
   grid-area: summary;
 
   .fct-product-summary-card{
-    @apply bg-white rounded-xl border border-solid border-gray-200 p-0 sm:p-0 space-y-6 shadow-card pb-6 lg:pb-8;
+    @apply bg-white rounded-xl border border-solid border-gray-200 p-0 sm:p-0 space-y-6 shadow-lg pb-6 lg:pb-8;
   }
 
   .fct-product-summary-card > *:not(.fct-product-summary-header) {
