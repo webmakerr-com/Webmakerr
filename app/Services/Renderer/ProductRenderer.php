@@ -46,7 +46,7 @@ class ProductRenderer
             get_post_meta($product->ID, '_fct_featured_video', true)
         );
         $this->viewersCount = random_int(3, 21);
-        $this->addedToCartCount = random_int(21, 87);
+        $this->addedToCartCount = random_int(16, 36);
 
         if (!$defaultVariationId) {
             $variationIds = $product->variants->pluck('id')->toArray();
@@ -232,10 +232,11 @@ class ProductRenderer
             .fct-payment-security{display:none !important;}
 
             /* PAYMENT ICONS — no gaps, single line; smaller on mobile */
-            .fct-payment-icons{display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;margin-top:10px;}
+            .fct-payment-icons{display:flex;align-items:center;gap:1px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;margin-top:10px;}
             .fct-payment-icon{display:inline-flex;margin:0;line-height:0;}
             .fct-payment-icons img{display:block;height:28px;width:auto;}
             @media (max-width:767px){
+                .fct-payment-icons{flex-wrap:nowrap;overflow-x:auto;}
                 .fct-payment-icons img{height:22px;}
             }
         </style>
