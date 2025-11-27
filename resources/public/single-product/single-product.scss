@@ -136,9 +136,9 @@ body {
   @apply flex flex-col gap-3;
 }
 
-.fct-gallery-dot-controls {
-  @apply flex items-center justify-start gap-3 pl-4;
-}
+  .fct-gallery-dot-controls {
+    @apply flex items-center justify-start gap-3 pl-4;
+  }
 
 .fct-gallery-dot {
   @apply w-2.5 h-2.5 rounded-full border border-solid border-[var(--fct-single-product-border-color)] bg-white transition;
@@ -347,19 +347,17 @@ body {
     &.active {
       @apply border-[var(--fct-single-product-active-border-color)] shadow-sm;
     }
-  }
-  }
 
-  &:hover {
-    img {
-      @apply opacity-100;
+    &:hover {
+      img {
+        @apply opacity-100;
+      }
     }
   }
 
   .thumbnail-active img {
     @apply opacity-100;
   }
-}
 
 
 /*======== TAB =========*/
