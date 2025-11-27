@@ -223,6 +223,8 @@ class TemplateActions
             return $content;
         }
 
+        $product = ProductDataSetup::getProductModel($post->ID);
+
         remove_filter('the_content', [$this, 'filterSingleProductContent']);
         ob_start();
         do_action('fluent_cart/product/render_product_header', $post->ID);
@@ -248,7 +250,33 @@ class TemplateActions
             $content .= $relevantProducts;
         }
 
+        $content .= $this->renderProductDisclaimer($product);
+
         return $content;
+    }
+
+    protected function renderProductDisclaimer($product)
+    {
+        if (!$product || empty($product->detail)) {
+            return '';
+        }
+
+        $disclaimer = trim((string)Arr::get($product->detail->other_info, 'disclaimer', ''));
+
+        if ($disclaimer === '') {
+            return '';
+        }
+
+        $formattedDisclaimer = nl2br(esc_html($disclaimer));
+
+        ob_start();
+        ?>
+        <div class="fct-product-disclaimer">
+            <h3 class="fct-product-disclaimer__title"><?php esc_html_e('Disclaimer', 'fluent-cart'); ?></h3>
+            <div class="fct-product-disclaimer__text"><?php echo $formattedDisclaimer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+        </div>
+        <?php
+        return ob_get_clean();
     }
 
     public function renderProductHeader($productId = false)

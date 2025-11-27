@@ -16,6 +16,7 @@ import ProductTermTaxonomy from "@/Modules/Products/parts/ProductTermTaxonomy.vu
 import {useProductDownloadableModel} from "@/Models/Product/ProductDownloadableModel";
 import ShippingClass from "@/Modules/Products/parts/ShippingClass.vue";
 import TaxClass from "@/Modules/Products/parts/TaxClass.vue";
+import ProductDisclaimer from "@/Modules/Products/parts/ProductDisclaimer.vue";
 import DynamicTemplates from "@/Bits/Components/DynamicTemplates/DynamicTemplates.vue";
 import translate from "@/utils/translator/Translator";
 import DynamicIcon from "@/Bits/Components/Icons/DynamicIcon.vue";
@@ -55,6 +56,7 @@ const setupProduct = (product) => {
   editableProduct.detail.other_info = editableProduct.detail.other_info || {};
   editableProduct.detail.other_info.custom_sections = editableProduct.detail.other_info.custom_sections || [];
   editableProduct.detail.other_info.reviews = editableProduct.detail.other_info.reviews || [];
+  editableProduct.detail.other_info.disclaimer = editableProduct.detail.other_info.disclaimer || '';
 
   editableProduct.taxonomies = props.taxonomies;
   editableProduct.product_terms = {};
@@ -252,6 +254,11 @@ onBeforeRouteLeave(() => {
           />
 
           <ProductCustomSections
+              :product="editableProduct"
+              :productEditModel="productEditModel"
+          />
+
+          <ProductDisclaimer
               :product="editableProduct"
               :productEditModel="productEditModel"
           />

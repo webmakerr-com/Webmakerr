@@ -197,6 +197,7 @@ class ProductUpdateRequest extends RequestGuard
                 return $this->validateTaxClassId($attribute, $value);
             }],
             'detail.other_info.active_editor'     => 'nullable|sanitizeText',
+            'detail.other_info.disclaimer'        => 'nullable|sanitizeTextArea',
             'detail.other_info.custom_sections'   => 'nullable|array|max:4',
             'detail.other_info.custom_sections.*.title' => 'nullable|sanitizeText|maxLength:200',
             'detail.other_info.custom_sections.*.description' => 'nullable|sanitizeTextArea',
@@ -392,6 +393,9 @@ class ProductUpdateRequest extends RequestGuard
                 'detail.other_info.shipping_class'    => 'intval',
                 'detail.other_info.tax_class'         => 'intval',
                 'detail.other_info.active_editor'     => 'sanitize_text_field',
+                'detail.other_info.disclaimer'        => function ($value) {
+                    return sanitize_textarea_field((string)$value);
+                },
             ];
 
             foreach ($detailFieldMap as $field => $sanitizer) {
