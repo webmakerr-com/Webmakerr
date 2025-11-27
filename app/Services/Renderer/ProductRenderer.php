@@ -171,7 +171,9 @@ class ProductRenderer
 
             .fct-product-trust-badges{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:8px;z-index:3;align-items:flex-start;}
             .fct-product-trust-badge{display:flex;align-items:center;gap:8px;background:#f8f9e5;border:1px solid #000;color:#111827;font-weight:500;padding:2px 12px;border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,0.03);}
+            .fct-product-trust-badge--added-to-cart{background:#d50b0b;border:2px solid #fff;color:#fff;}
             .fct-product-trust-badge__icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;color:#111827;}
+            .fct-product-trust-badge--added-to-cart .fct-product-trust-badge__icon{color:#fff;}
             .fct-product-trust-badge__text{font-size:12px;line-height:1.4;}
 
             /* Thumbs default */
@@ -389,6 +391,9 @@ class ProductRenderer
 
     protected function renderTrustBadges()
     {
+        $addedToCartCount = intval($this->addedToCartCount);
+        $addedToCartTemplate = __('%d people have added this item to cart (24H)', 'fluent-cart');
+
         ?>
         <div class="fct-product-trust-badges" aria-label="<?php echo esc_attr__('Product activity info', 'fluent-cart'); ?>">
             <span class="fct-product-trust-badge">
@@ -402,7 +407,7 @@ class ProductRenderer
                     <?php printf(esc_html__('%d people are viewing this item', 'fluent-cart'), intval($this->viewersCount)); ?>
                 </span>
             </span>
-            <span class="fct-product-trust-badge">
+            <span class="fct-product-trust-badge fct-product-trust-badge--added-to-cart" data-fluent-cart-added-to-cart-badge>
                 <span class="fct-product-trust-badge__icon" aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.33301 4.16669H4.69134C5.09032 4.16669 5.28981 4.16669 5.45423 4.23867C5.59839 4.30136 5.72435 4.40347 5.81707 4.533C5.92026 4.67737 5.96967 4.87425 6.06849 5.26802L6.33301 6.33335" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -411,10 +416,45 @@ class ProductRenderer
                         <path d="M15 14.1667C15 14.6269 14.6269 15 14.1667 15C13.7064 15 13.3333 14.6269 13.3333 14.1667C13.3333 13.7064 13.7064 13.3333 14.1667 13.3333C14.6269 13.3333 15 13.7064 15 14.1667Z" fill="currentColor" />
                     </svg>
                 </span>
-                <span class="fct-product-trust-badge__text">
-                    <?php printf(esc_html__('%d people have added this item to cart (24H)', 'fluent-cart'), intval($this->addedToCartCount)); ?>
+                <span
+                    class="fct-product-trust-badge__text"
+                    data-fluent-cart-added-to-cart-text
+                    data-template="<?php echo esc_attr($addedToCartTemplate); ?>"
+                    data-count="<?php echo esc_attr($addedToCartCount); ?>"
+                >
+                    <?php echo esc_html(sprintf($addedToCartTemplate, $addedToCartCount)); ?>
                 </span>
             </span>
+            <script>
+                (function() {
+                    var badge = document.querySelector('[data-fluent-cart-added-to-cart-badge]');
+                    if (!badge) {
+                        return;
+                    }
+
+                    var textElement = badge.querySelector('[data-fluent-cart-added-to-cart-text]');
+                    if (!textElement) {
+                        return;
+                    }
+
+                    var template = textElement.getAttribute('data-template');
+                    var initialCount = parseInt(textElement.getAttribute('data-count'), 10);
+
+                    if (!template || isNaN(initialCount)) {
+                        return;
+                    }
+
+                    var minimum = Math.max(0, initialCount - 5);
+                    var maximum = initialCount + 5;
+
+                    var updateCount = function() {
+                        var next = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+                        textElement.textContent = template.replace('%d', next);
+                    };
+
+                    setInterval(updateCount, 3000);
+                })();
+            </script>
         </div>
         <?php
     }
