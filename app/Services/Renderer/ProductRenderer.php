@@ -1508,8 +1508,8 @@ class ProductRenderer
                     </svg>
                 </div>
                 <div class="fct-product-assurance-copy">
-                    <p class="title"><?php esc_html_e('Free worldwide shipping', 'fluent-cart'); ?></p>
-                    <p class="subtitle"><?php esc_html_e('Fast, trackable delivery on every order', 'fluent-cart'); ?></p>
+                    <p class="title"><?php esc_html_e('Fast & Reliable Delivery', 'fluent-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Your service or assets are delivered quickly', 'fluent-cart'); ?></p>
                 </div>
             </div>
 
@@ -1523,8 +1523,8 @@ class ProductRenderer
                     </svg>
                 </div>
                 <div class="fct-product-assurance-copy">
-                    <p class="title"><?php esc_html_e('30-day returns', 'fluent-cart'); ?></p>
-                    <p class="subtitle"><?php esc_html_e('Hassle-free exchanges and refunds', 'fluent-cart'); ?></p>
+                    <p class="title"><?php esc_html_e('Hassle-Free Revisions', 'fluent-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Need adjustments? We fix it without extra complexity', 'fluent-cart'); ?></p>
                 </div>
             </div>
 
@@ -1544,8 +1544,8 @@ class ProductRenderer
                     </svg>
                 </div>
                 <div class="fct-product-assurance-copy">
-                    <p class="title"><?php esc_html_e('Secure checkout', 'fluent-cart'); ?></p>
-                    <p class="subtitle"><?php esc_html_e('Encrypted payments and buyer protection', 'fluent-cart'); ?></p>
+                    <p class="title"><?php esc_html_e('Buyer Protection', 'fluent-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('You’re fully protected from order to delivery — guaranteed.', 'fluent-cart'); ?></p>
                 </div>
             </div>
         </div>
@@ -1563,7 +1563,7 @@ class ProductRenderer
                         <path d="M15.5 10H19L21 12V16.5H15.5V10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
-                <span class="title"><?php esc_html_e('Free shipping worldwide', 'fluent-cart'); ?></span>
+                <span class="title"><?php esc_html_e('Instant Delivery', 'fluent-cart'); ?></span>
             </div>
             <div class="fct-product-perk" role="listitem">
                 <span class="fct-product-perk__icon" aria-hidden="true">
@@ -1572,7 +1572,7 @@ class ProductRenderer
                         <path d="M8 8C8 5.791 9.791 4 12 4C14.209 4 16 5.791 16 8V9C16 11.209 14.209 13 12 13C9.791 13 8 11.209 8 9V8Z" stroke="currentColor" stroke-width="1.5"/>
                     </svg>
                 </span>
-                <span class="title"><?php esc_html_e('60 Day Returns', 'fluent-cart'); ?></span>
+                <span class="title"><?php esc_html_e('100% Money-Back Guarantee', 'fluent-cart'); ?></span>
             </div>
         </div>
         <?php
