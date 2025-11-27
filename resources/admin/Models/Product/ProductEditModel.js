@@ -642,6 +642,7 @@ class ProductEditModel extends ProductBaseModel {
             'active_editor',
             'sold_individually',
             'custom_sections',
+            'disclaimer',
             'reviews'
         ].includes(name)) {
 
