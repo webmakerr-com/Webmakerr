@@ -177,24 +177,29 @@ class ProductRenderer
     {
         ?>
         <div class="fct-single-product-page" data-fluent-cart-single-product-page>
-            <div class="fct-single-product-page-row">
-                <?php $this->renderGallery(); ?>
-                <div class="fct-product-summary">
-                    <div class="fct-product-summary-card">
-                        <div class="fct-product-summary-header">
-                            <?php $this->renderTitle(); ?>
-                            <div class="fct-product-meta">
-                                <?php $this->renderStockAvailability(); ?>
+            <?php $this->renderBreadcrumbs(); ?>
+            <section class="fct-product-hero">
+                <div class="fct-single-product-page-row fct-product-hero-grid">
+                    <div class="fct-product-hero-gallery">
+                        <?php $this->renderGallery(); ?>
+                    </div>
+                    <div class="fct-product-summary fct-product-hero-summary">
+                        <div class="fct-product-summary-card">
+                            <div class="fct-product-summary-header">
+                                <?php $this->renderTitle(); ?>
+                                <div class="fct-product-meta">
+                                    <?php $this->renderStockAvailability(); ?>
+                                </div>
                             </div>
+                            <?php
+                            $this->renderExcerpt();
+                            $this->renderPrices();
+                            $this->renderBuySection();
+                            ?>
                         </div>
-                        <?php
-                        $this->renderExcerpt();
-                        $this->renderPrices();
-                        $this->renderBuySection();
-                        ?>
                     </div>
                 </div>
-            </div>
+            </section>
             <div class="fct-product-assurances-section">
                 <?php $this->renderAssurances(); ?>
             </div>
@@ -202,6 +207,28 @@ class ProductRenderer
             <?php $this->renderReviewsSection(); ?>
         </div>
         <?php
+    }
+
+    protected function renderBreadcrumbs(): void
+    {
+        $terms = get_the_terms($this->product->ID, 'product_category');
+        $primaryTerm = (is_array($terms) && !is_wp_error($terms)) ? array_shift($terms) : null;
+
+        $homeUrl = home_url('/');
+        $homeLabel = esc_html__('Home', 'fluent-cart');
+
+        echo '<nav class="fct-breadcrumb" aria-label="' . esc_attr__('Breadcrumb', 'fluent-cart') . '">';
+        echo '<a class="fct-breadcrumb__link" href="' . esc_url($homeUrl) . '">' . $homeLabel . '</a>';
+
+        if ($primaryTerm) {
+            $termLink = get_term_link($primaryTerm);
+            if (!is_wp_error($termLink)) {
+                echo '<span class="fct-breadcrumb__separator" aria-hidden="true">/</span>';
+                echo '<a class="fct-breadcrumb__link" href="' . esc_url($termLink) . '">' . esc_html($primaryTerm->name) . '</a>';
+            }
+        }
+
+        echo '</nav>';
     }
 
     public function renderCustomSectionsOnly()
