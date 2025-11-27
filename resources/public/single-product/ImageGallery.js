@@ -57,6 +57,7 @@ export default class ImageGallery {
         this.#setupThumbnailControls();
         this.#setupThumbnailScrolling();
         this.#setupAutoRotation();
+        this.#setupNavigationButtons();
 
         window.addEventListener('resize', () => this.#setupAutoRotation());
     }
@@ -83,6 +84,11 @@ export default class ImageGallery {
             this.#setupControlWrapper(controlButtons);
             this.#setupThumbnailScrolling();
             this.#setupAutoRotation();
+            this.#updateNavButtonsState(
+                this.findOneInContainer('[data-fluent-cart-gallery-prev]'),
+                this.findOneInContainer('[data-fluent-cart-gallery-next]'),
+                this.#getVisibleThumbControls()
+            );
         });
     }
 
@@ -384,6 +390,58 @@ export default class ImageGallery {
 
     #supportsHoverAndFinePointer() {
         return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    }
+
+    #getVisibleThumbControls() {
+        return Array.from(this.#thumbnailControlsWrapper?.querySelectorAll('[data-fluent-cart-thumb-control-button]:not(.is-hidden)')) || [];
+    }
+
+    #setupNavigationButtons() {
+        const prevButton = this.findOneInContainer('[data-fluent-cart-gallery-prev]');
+        const nextButton = this.findOneInContainer('[data-fluent-cart-gallery-next]');
+
+        if (!prevButton && !nextButton) {
+            return;
+        }
+
+        const handleMove = (direction) => {
+            const controls = this.#getVisibleThumbControls();
+            if (!controls.length) {
+                return;
+            }
+
+            const activeControl = this.#thumbnailControlsWrapper?.querySelector('[data-fluent-cart-thumb-control-button].active:not(.is-hidden)') || controls[0];
+            const activeIndex = controls.indexOf(activeControl);
+            const nextIndex = (activeIndex + direction + controls.length) % controls.length;
+
+            this.#stopAutoRotate();
+            this.#handleThumbnailChange(controls[nextIndex]);
+            this.#updateNavButtonsState(prevButton, nextButton, controls);
+        };
+
+        prevButton?.addEventListener('click', (event) => {
+            event.preventDefault();
+            handleMove(-1);
+        });
+
+        nextButton?.addEventListener('click', (event) => {
+            event.preventDefault();
+            handleMove(1);
+        });
+
+        this.#updateNavButtonsState(prevButton, nextButton, this.#getVisibleThumbControls());
+    }
+
+    #updateNavButtonsState(prevButton, nextButton, controls) {
+        const shouldDisable = !controls || controls.length <= 1;
+        if (prevButton) {
+            prevButton.disabled = shouldDisable;
+            prevButton.setAttribute('aria-disabled', shouldDisable ? 'true' : 'false');
+        }
+        if (nextButton) {
+            nextButton.disabled = shouldDisable;
+            nextButton.setAttribute('aria-disabled', shouldDisable ? 'true' : 'false');
+        }
     }
 
     #prepareLightboxImages() {
