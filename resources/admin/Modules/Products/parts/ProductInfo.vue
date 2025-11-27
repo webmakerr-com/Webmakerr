@@ -94,28 +94,6 @@ onMounted(() => {
             </el-form-item>
           </div>
 
-          <div class="fct-admin-input-wrapper">
-            <el-form-item :label="translate('Product Disclaimer')">
-              <el-input
-                  @input="value => {productEditModel.onChangeInputField('product_disclaimer', value)}"
-                  v-model="product.product_disclaimer"
-                  :rows="3"
-                  type="textarea"
-                  :placeholder="translate('Add any compliance or usage disclaimers for this product')"
-                  @focus="productEditModel.clearValidationError('product_disclaimer')"
-              />
-
-              <div class="form-note">
-                <p class="mt-[7px]">
-                  {{ translate('Shown after the related products on the product page.') }}
-                </p>
-              </div>
-
-              <ValidationError :validation-errors="productEditModel.validationErrors"
-                               field-key="product_disclaimer"/>
-            </el-form-item>
-          </div>
-
 
           <!-- <el-button text type="primary" class="mt-2" @click="showIframe = true">
             <DynamicIcon name="Edit"/>

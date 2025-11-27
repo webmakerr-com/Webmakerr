@@ -225,12 +225,6 @@ class Product extends Model
     }
 
 
-    public function getProductDisclaimerAttribute()
-    {
-        return $this->getProductMeta('product_disclaimer', null, '');
-    }
-
-
     public function wpTerms()
     {
         return $this->hasManyThrough(
