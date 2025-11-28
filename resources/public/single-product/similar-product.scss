@@ -173,9 +173,25 @@
   }
 
   @media (max-width: 540px) {
-    .fct-product-list-slider-wrapper.has-slider .fct-product-list-item {
-      flex-basis: calc(80% - 10px);
-      max-width: calc(80% - 10px);
+    .fct-product-list {
+      @apply flex gap-5 overflow-x-auto pb-1;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .fct-product-list-item {
+      scroll-snap-align: start;
+      flex: 0 0 calc(66.666% - 10px);
+      max-width: calc(66.666% - 10px);
+    }
+
+    .fct-similar-nav-button {
+      @apply hidden;
     }
   }
 }
