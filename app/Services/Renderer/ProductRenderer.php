@@ -1072,6 +1072,7 @@ class ProductRenderer
             $first_price  = $this->product->variants()->first();
             $itemPrice    = $first_price ? $first_price->item_price : 0;
             $comparePrice = $first_price ? $first_price->compare_price : 0;
+            $priceSuffix  = $this->getPriceSuffix($first_price, 'price_display');
             if ($comparePrice <= $itemPrice) {
                 $comparePrice = 0;
             }
@@ -1096,6 +1097,9 @@ class ProductRenderer
                     </span>
                     <span class="fct-item-price" data-fluent-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
                         <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
+                        <?php if ($priceSuffix): ?>
+                            <span class="fct_price_suffix"><?php echo esc_html($priceSuffix); ?></span>
+                        <?php endif; ?>
                         <?php do_action('fluent_cart/product/after_price', [
                             'product'       => $this->product,
                             'current_price' => $itemPrice,
@@ -1118,6 +1122,7 @@ class ProductRenderer
 
         $defaultPrice = $this->defaultVariant ? $this->defaultVariant->item_price : $this->product->detail->min_price;
         $comparePrice = $this->defaultVariant ? $this->defaultVariant->compare_price : 0;
+        $priceSuffix  = $this->getPriceSuffix($this->defaultVariant, 'price_display');
 
         if ($comparePrice <= $defaultPrice) {
             $comparePrice = 0;
@@ -1143,6 +1148,9 @@ class ProductRenderer
                 </span>
                 <span class="fct-item-price" data-fluent-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
                     <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
+                    <?php if ($priceSuffix): ?>
+                        <span class="fct_price_suffix"><?php echo esc_html($priceSuffix); ?></span>
+                    <?php endif; ?>
                     <?php do_action('fluent_cart/product/after_price', [
                         'product'       => $this->product,
                         'current_price' => $defaultPrice,
@@ -1160,6 +1168,43 @@ class ProductRenderer
             'current_price' => $defaultPrice,
             'scope'         => 'price_range'
         ]);
+    }
+
+    protected function getPriceSuffix(?ProductVariation $variant, $scope = '')
+    {
+        $priceSuffix = apply_filters('fluent_cart/product/price_suffix_atts', '', [
+            'product' => $this->product,
+            'variant' => $variant,
+            'scope'   => $scope
+        ]);
+
+        return $this->getSubscriptionPriceSuffix($variant, $priceSuffix);
+    }
+
+    protected function getSubscriptionPriceSuffix(?ProductVariation $variant, $existingSuffix = '')
+    {
+        if (!$variant || Arr::get($variant->other_info, 'payment_type') !== 'subscription') {
+            return $existingSuffix;
+        }
+
+        $intervalCount = max(1, (int)Arr::get($variant->other_info, 'interval_count', 1));
+        $repeatInterval = Arr::get($variant->other_info, 'repeat_interval', 'yearly');
+        $standardInterval = Helper::translateIntervalToStandardFormat($repeatInterval);
+
+        $intervalLabel = str_replace('_', ' ', $standardInterval);
+        $intervalLabel = _n($intervalLabel, $intervalLabel . 's', $intervalCount, 'fluent-cart');
+
+        if ($intervalCount > 1) {
+            $intervalLabel = sprintf(__('%1$d %2$s', 'fluent-cart'), $intervalCount, $intervalLabel);
+        }
+
+        $subscriptionSuffix = '/' . $intervalLabel;
+
+        if ($existingSuffix) {
+            return trim($subscriptionSuffix . ' ' . $existingSuffix);
+        }
+
+        return $subscriptionSuffix;
     }
 
     public function renderVariants($atts = [])
@@ -1636,11 +1681,7 @@ class ProductRenderer
             $itemClasses[] = 'selected';
         }
 
-        $priceSuffix = apply_filters('fluent_cart/product/price_suffix_atts', '', [
-            'product' => $this->product,
-            'variant' => $variant,
-            'scope'   => 'variant_item'
-        ]);
+        $priceSuffix = $this->getPriceSuffix($variant, 'variant_item');
 
         $renderingAttributes = [
             'data-fluent-cart-product-variant' => '',
