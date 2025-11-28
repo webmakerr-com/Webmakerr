@@ -1396,7 +1396,7 @@ class ProductRenderer
         $defaultVariantData = $this->getDefaultVariantData();
 
         if ($this->hasSubscription && Arr::get($defaultVariantData, 'payment_type') !== 'onetime') {
-            $cartAttributes['class'] += ' is-hidden';
+            $cartAttributes['class'] .= ' is-hidden';
         }
 
         $addToCartText = apply_filters('fluent_cart/product/add_to_cart_text', $atts['add_to_cart_text'], [
