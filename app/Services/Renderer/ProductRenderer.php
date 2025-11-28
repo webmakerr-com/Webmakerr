@@ -1393,12 +1393,6 @@ class ProductRenderer
             'data-variation-type'                 => $this->product->detail->variation_type,
         ];
 
-        $defaultVariantData = $this->getDefaultVariantData();
-
-        if ($this->hasSubscription && Arr::get($defaultVariantData, 'payment_type') !== 'onetime') {
-            $cartAttributes['class'] .= ' is-hidden';
-        }
-
         $addToCartText = apply_filters('fluent_cart/product/add_to_cart_text', $atts['add_to_cart_text'], [
             'product' => $this->product
         ]);
@@ -1475,7 +1469,7 @@ class ProductRenderer
         <a <?php $this->renderAttributes($buyNowAttributes); ?> aria-label="<?php echo esc_attr($buyButtonText); ?>">
             <?php echo wp_kses_post($buyButtonText); ?>
         </a>
-        <?php if ($this->hasOnetime): ?>
+        <?php if ($this->hasOnetime || $this->hasSubscription): ?>
             <?php $this->renderAddToCartButton($cartButtonConfig['cartAttributes'], $cartButtonConfig['addToCartText']); ?>
             <?php $this->renderPaymentIcons(); ?>
         <?php endif; ?>

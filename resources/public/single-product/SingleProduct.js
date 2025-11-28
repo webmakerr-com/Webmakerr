@@ -503,14 +503,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 this.#setupBuyNowButton(variationId, status);
 
-                if (button.dataset.paymentType === 'subscription') {
-                    this.#addToCartButtons.forEach(button => button.classList.add('is-hidden'));
-                } else {
-                    this.#addToCartButtons.forEach(button => {
-                        button.classList.remove('is-hidden');
-                        button.setAttribute('data-cart-id', variationId);
-                    });
-                }
+                this.#addToCartButtons.forEach(button => {
+                    button.classList.remove('is-hidden');
+                    button.setAttribute('data-cart-id', variationId);
+                });
             }
 
 
@@ -762,12 +758,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         #initiallyHideAddToCartButton() {
-            let paymentType = this.#variationButtons[0]?.dataset.paymentType;
-            if (paymentType === 'subscription') {
-                this.#addToCartButtons.forEach(button => {
-                    button.setAttribute('data-cart-id', '');
-                });
+            const defaultCartId = this.#variationButtons[0]?.dataset.cartId;
+
+            if (!defaultCartId) {
+                return;
             }
+
+            this.#addToCartButtons.forEach(button => {
+                button.setAttribute('data-cart-id', defaultCartId);
+                button.classList.remove('is-hidden');
+            });
         }
 
         #initiallyHideOutOfStockButton() {
