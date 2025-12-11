@@ -79,7 +79,7 @@ class PayPalPartnerRenderer
 
         }
 
-        $logo = Vite::getAssetUrl('images/logo/logo-full-dark.svg');
+        $logo = Vite::getAssetUrl('images/logo/webmakerr-logo-full-dark.svg');
         $baseUrl = admin_url('admin.php?page=webmakerr#/');
 
 

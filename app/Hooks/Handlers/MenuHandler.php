@@ -328,7 +328,7 @@ class MenuHandler
             'name'    => $name,
             'slug'    => $slug,
             'baseUrl' => $baseUrl,
-            'logo'    => $assets . 'images/logo.svg',
+            'logo'    => $assets . 'images/webmakerr-logo.svg',
         ]);
     }
 
@@ -407,8 +407,8 @@ class MenuHandler
         $appConfig['isProActive'] = App::isProActive();
 
         $appConfig['logos'] = [
-            'dark'  => Vite::getAssetUrl('images/logo/logo-full-dark.svg'),
-            'light' => Vite::getAssetUrl('images/logo/logo-full.svg'),
+            'dark'  => Vite::getAssetUrl('images/logo/webmakerr-logo-full-dark.svg'),
+            'light' => Vite::getAssetUrl('images/logo/webmakerr-logo-full.svg'),
         ];
         $appConfig['isModuleTabEnabled'] = $settings->isModuleTabEnabled();
 
