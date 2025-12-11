@@ -1,17 +1,19 @@
 {
-  "name": "wpfluent/wpfluent",
-  "type": "project",
-  "description": "The WPGlue Framework for WordPress.",
+  "name": "webmakerr/webmakerr-cart",
+  "type": "wordpress-plugin",
+  "description": "Webmakerr Cart \u2013 performance-first WordPress eCommerce plugin.",
   "keywords": [
     "WordPress",
-    "framework",
-    "WPFluent"
+    "ecommerce",
+    "webmakerr-cart",
+    "cart"
   ],
   "license": "MIT",
   "authors": [
     {
-      "name": "Sheikh Heera",
-      "email": "heera.sheikh77@gmail.com"
+      "name": "Webmakerr Team",
+      "email": "support@webmakerr.com",
+      "homepage": "https://webmakerr.com"
     }
   ],
   "repositories": [

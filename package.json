@@ -1,15 +1,15 @@
 {
   "name": "webmakerr-cart",
   "version": "1.0.0",
-  "author": "Webmakerr",
-  "license": "ISC",
+  "author": "Webmakerr Team",
+  "license": "GPL-3.0-or-later",
   "engines": {
     "node": ">=20.0.0"
   },
   "bugs": {
-    "url": "https://webmakerr.com/support"
+    "url": "https://github.com/webmakerr/webmakerr-cart/issues"
   },
-  "homepage": "https://webmakerr.com",
+  "homepage": "https://webmakerr.com/webmakerr-cart",
   "scripts": {
     "dev": "node resources/dev/vite.js && npm run remove_ds && vite | grep -v 'warn - The `content` option'",
     "watch": "npm run dev",
@@ -82,5 +82,6 @@
     "vite-plugin-live-reload": "^3.0.5",
     "vite-plugin-static-copy": "^2.3.0",
     "vue-loader": "^17.4.2"
-  }
+  },
+  "description": "Build tooling for the Webmakerr Cart WordPress eCommerce plugin."
 }

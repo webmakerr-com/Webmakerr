@@ -1,4 +1,4 @@
-=== Webmakerr Cart – Webmakerr makes eCommerce, bookings, and service selling fast and effortless. ===
+=== Webmakerr Cart – Webmakerr Cart makes eCommerce, bookings, and service selling fast and effortless. ===
 Contributors: wpmanageninja, techjewel
 Tags: ecommerce, cart, checkout, subscriptions, payments
 Requires at least: 6.7
@@ -11,23 +11,23 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Sell Subscriptions, Physical Products, Digital Downloads easier than ever. Built for performance, scalability, and flexibility.
 
 == Description ==
-Meet Webmakerr. It’s a performance-first, self-hosted eCommerce platform for WordPress. Build your ideal store, whether you sell physical products, subscriptions, downloads, licenses, or all of them. No third-party dependencies, no platform lock-in, and no transaction fees. Just a powerful store on your terms.
+Meet Webmakerr Cart. It’s a performance-first, self-hosted eCommerce platform for WordPress. Build your ideal store, whether you sell physical products, subscriptions, downloads, licenses, or all of them. No third-party dependencies, no platform lock-in, and no transaction fees. Just a powerful store on your terms.
 
 [youtube https://www.youtube.com/watch?v=meMM6Nq6laE]
 
 👉 Official Website Link: [Official Website](https://webmakerr.com/)
 👉 Join Our Community: [Webmakerr Community](https://community.webmakerr.com/)
 👉 Official 5 Minutes Guide: [Getting started with Webmakerr](https://webmakerr.com/webmakerr-101/)
-👉 Contribute: [GitHub Repository](https://github.com/webmakerr/webmakerr)
+👉 Contribute: [GitHub Repository](https://github.com/webmakerr/webmakerr-cart)
 
 Built from the ground up with flexibility, performance, and long-term scalability in mind, this isn’t a fork of existing plugins. This is a fresh take on what a WordPress store should be: lean, powerful, and completely under your control. Webmakerr adapts to your model without adding bloat or cutting you into a SaaS fee structure.
 
-Webmakerr is ideal for solo creators, growing businesses, and developers building client stores. If you're tired of overcomplicated dashboards and bloated add-ons this is your answer. Forget about transaction fees, because Webmakerr charges exactly 0 transaction fees on both Free and Pro isntallations.  
+Webmakerr Cart is ideal for solo creators, growing businesses, and developers building client stores. If you're tired of overcomplicated dashboards and bloated add-ons this is your answer. Forget about transaction fees, because Webmakerr charges exactly 0 transaction fees on both Free and Pro isntallations.  
 
-Webmakerr is for you if you're looking to free yourself from rigid checkout flows, or vendor lock-ins. Run your store with clarity and confidence, whether you sell ebooks, handmade goods, software licenses, or monthly product bundles.
+Webmakerr Cart is for you if you're looking to free yourself from rigid checkout flows, or vendor lock-ins. Run your store with clarity and confidence, whether you sell ebooks, handmade goods, software licenses, or monthly product bundles.
 
 == Sales Models ==
-Webmakerr supports a variety of sales models, all in the same store. Offer one-time products or digital downloads, manage subscriptions with flexible billing intervals, add setup fees or installment plans, and issue time-limited licenses. You can mix and match hybrid product types without relying on third-party add-ons.
+Webmakerr Cart supports a variety of sales models, all in the same store. Offer one-time products or digital downloads, manage subscriptions with flexible billing intervals, add setup fees or installment plans, and issue time-limited licenses. You can mix and match hybrid product types without relying on third-party add-ons.
 
 ==== Best for ====
 * Subscription goods
@@ -238,7 +238,7 @@ OR
 
 = Can I sell physical and digital products together? =
 
-Absolutely. Webmakerr supports hybrid product models with inventory, downloads, licenses, and even installment billing.
+Absolutely. Webmakerr Cart supports hybrid product models with inventory, downloads, licenses, and even installment billing.
 
 = How easy is it to set up and use? =
 
@@ -261,7 +261,7 @@ Absolutely. Webmakerr includes customizable Gutenberg blocks and supports custom
 Yes. Webmakerr is built using standard WordPress best practices and is compatible with any properly coded theme. It will automatically inherit your theme’s styles unless you choose to override them.
 
 = What payment methods are supported? =
-Webmakerr supports major global payment options, including Stripe, PayPal, and credit cards. You can also integrate custom payment gateways using webhooks and extend functionality as needed.
+Webmakerr Cart supports major global payment options, including Stripe, PayPal, and credit cards. You can also integrate custom payment gateways using webhooks and extend functionality as needed.
 
 = Will Webmakerr Charge Fees? =
 
