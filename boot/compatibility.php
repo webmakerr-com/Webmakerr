@@ -48,9 +48,11 @@ spl_autoload_register(static function ($class) {
         $targetClass = $replacement . substr($class, strlen($legacy));
 
         if (
-            class_exists($targetClass) ||
-            interface_exists($targetClass) ||
-            trait_exists($targetClass)
+            (
+                class_exists($targetClass) ||
+                interface_exists($targetClass) ||
+                trait_exists($targetClass)
+            ) && !class_exists($class, false) && !interface_exists($class, false) && !trait_exists($class, false)
         ) {
             class_alias($targetClass, $class);
         }
@@ -71,9 +73,11 @@ spl_autoload_register(static function ($class) {
     $legacyClass = $legacyPrefix . substr($class, strlen($newPrefix));
 
     if (
-        class_exists($legacyClass) ||
-        interface_exists($legacyClass) ||
-        trait_exists($legacyClass)
+        (
+            class_exists($legacyClass) ||
+            interface_exists($legacyClass) ||
+            trait_exists($legacyClass)
+        ) && !class_exists($class, false) && !interface_exists($class, false) && !trait_exists($class, false)
     ) {
         class_alias($legacyClass, $class);
     }
