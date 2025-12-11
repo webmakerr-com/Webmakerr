@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\Framework\Database\Orm\Relations\MorphTo;
-use FluentCart\Framework\Database\Orm\Relations\hasOne;
-use FluentCart\App\Models\Concerns\CanSearch;
+use Webmakerr\Framework\Database\Orm\Relations\MorphTo;
+use Webmakerr\Framework\Database\Orm\Relations\hasOne;
+use Webmakerr\App\Models\Concerns\CanSearch;
 
 class Activity extends Model
 {

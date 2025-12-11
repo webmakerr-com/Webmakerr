@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Listeners\Order;
+namespace Webmakerr\App\Listeners\Order;
 
-use FluentCart\App\Models\Customer;
+use Webmakerr\App\Models\Customer;
 
 class OrderDeleted
 {
-    public static function handle(\FluentCart\App\Events\Order\OrderDeleted $event)
+    public static function handle(\Webmakerr\App\Events\Order\OrderDeleted $event)
     {
         if ($event->order->customer_id) {
             $customer = Customer::query()->where('id', $event->order->customer_id)->first();

@@ -14,7 +14,7 @@ class AdminMenuHandler
      */
     public function add()
     {
-        add_filter('fluent_cart/admin_menu_title', function ($title) {
+        webmakerr_add_filter('webmakerr_cart/admin_menu_title', function ($title) {
             return $title;
         }, 10, 2);
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Models\WpModels;
+namespace Webmakerr\App\Models\WpModels;
 
-use FluentCart\App\Models\Model;
+use Webmakerr\App\Models\Model;
 
 class PostMeta extends Model
 {

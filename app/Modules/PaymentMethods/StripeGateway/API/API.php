@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway\API;
 
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\StripeSettingsBase;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\StripeSettingsBase;
+use Webmakerr\Framework\Support\Arr;
 
 class API
 {
@@ -154,7 +154,7 @@ class API
             $clientId = 'ca_TDs9NGCHtEcklwK4EFKHe72TAxC2kQap';
         }
 
-        $stripeGateways = (new \FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API)->makeRequest('payment_method_configurations', [
+        $stripeGateways = (new \Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API)->makeRequest('payment_method_configurations', [
             'application' => $clientId,
         ], $apiKey);
 

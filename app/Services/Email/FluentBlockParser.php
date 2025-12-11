@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Email;
+namespace Webmakerr\App\Services\Email;
 
-use FluentCart\App\App;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  * Gutenberg Block Parser for Email
@@ -1226,7 +1226,7 @@ class FluentBlockParser
              * @since 2.6.51
              *
              */
-            $pref = apply_filters('fluent_cart/theme_pref', [
+            $pref = webmakerr_apply_filters('webmakerr_cart/theme_pref', [
                 'colors'     => (array)$color_palette,
                 'font_sizes' => (array)$font_sizes
             ]);

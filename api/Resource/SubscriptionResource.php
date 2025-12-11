@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Query\QueryParser;
-use FluentCart\App\Models\Query\Sort;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Helpers\Status;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Query\QueryParser;
+use Webmakerr\App\Models\Query\Sort;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class SubscriptionResource extends BaseResourceApi
 {

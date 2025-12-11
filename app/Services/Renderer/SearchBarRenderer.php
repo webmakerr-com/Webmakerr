@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Vite;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Api\Resource\ShopResource;
+namespace Webmakerr\App\Services\Renderer;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Vite;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Api\Resource\ShopResource;
 
 class SearchBarRenderer
 {

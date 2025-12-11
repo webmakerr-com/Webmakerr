@@ -9,7 +9,7 @@ class LicenseSchedulerHandler
 {
     public function register()
     {
-        add_action('fluent_cart/scheduler/hourly_tasks', function () {
+        webmakerr_add_action('webmakerr_cart/scheduler/hourly_tasks', function () {
             $startedAt = time();
             while (true) {
                 $processed = $this->expireOldLicenses();
@@ -43,7 +43,7 @@ class LicenseSchedulerHandler
             $prevStatus = $license->status;
             $license->status = 'expired';
             $license->save();
-            do_action('fluent_cart/licensing/license_expired', [
+            webmakerr_do_action('webmakerr_cart/licensing/license_expired', [
                 'license'      => $license,
                 'subscription' => $license->subscription,
                 'prev_status'  => $prevStatus,

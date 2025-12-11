@@ -24,8 +24,8 @@ class Vite extends Enqueuer
 
     private $manifestData = null;
 
-    private static string $pluginUrl = FLUENTCART_PRO_PLUGIN_URL;
-    private static string $pluginDir = FLUENTCART_PRO_PLUGIN_DIR;
+    private static string $pluginUrl = WEBMAKERR_PRO_PLUGIN_URL;
+    private static string $pluginDir = WEBMAKERR_PRO_PLUGIN_DIR;
 
     private static $config = null;
 
@@ -136,7 +136,7 @@ class Vite extends Enqueuer
                     $file['file'] . '_' . $key . '_css',
                     $assetPath . $path,
                     [],
-                    FLUENTCART_PRO_PLUGIN_VERSION
+                    WEBMAKERR_PRO_PLUGIN_VERSION
                 );
             }
         }
@@ -225,7 +225,7 @@ class Vite extends Enqueuer
     private function get_asset_url($path = ''): string
     {
         if (!static::isOnDevMode()) {
-            return FLUENTCART_PRO_PLUGIN_URL . 'assets' . DIRECTORY_SEPARATOR . $path;
+            return WEBMAKERR_PRO_PLUGIN_URL . 'assets' . DIRECTORY_SEPARATOR . $path;
         } else {
             return $this->getVitePath() . $path;
         }

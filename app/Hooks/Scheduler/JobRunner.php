@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Hooks\Scheduler;
+namespace Webmakerr\App\Hooks\Scheduler;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Models\ScheduledAction;
-use FluentCart\App\Modules\Integrations\GlobalNotificationHandler;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Models\ScheduledAction;
+use Webmakerr\App\Modules\Integrations\GlobalNotificationHandler;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 
 class JobRunner
 {

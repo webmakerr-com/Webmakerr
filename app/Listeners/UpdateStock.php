@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Listeners;
+namespace Webmakerr\App\Listeners;
 
-use FluentCart\App\Events\Order\OrderCreated as OrderCreatedEvent;
-use FluentCart\App\Events\Order\OrderDeleted as OrderDeletedEvent;
-use FluentCart\App\Events\Order\OrderUpdated as OrderUpdatedEvent;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Events\Order\OrderCreated as OrderCreatedEvent;
+use Webmakerr\App\Events\Order\OrderDeleted as OrderDeletedEvent;
+use Webmakerr\App\Events\Order\OrderUpdated as OrderUpdatedEvent;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Support\Arr;
 
 class UpdateStock
 {

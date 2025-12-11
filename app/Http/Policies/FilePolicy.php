@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Http\Policies;
+namespace Webmakerr\App\Http\Policies;
 
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Foundation\Policy;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Foundation\Policy;
 
 class FilePolicy extends Policy
 {

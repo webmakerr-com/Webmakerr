@@ -1,35 +1,35 @@
 <?php
 
-namespace FluentCart\App\Hooks\Cart;
+namespace Webmakerr\App\Hooks\Cart;
 
-use FluentCart\Api\Checkout\CheckoutApi;
-use FluentCart\Api\PaymentMethods;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\FrontendResource\CustomerAddressResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\UtmHelper;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\Renderer\AddressSelectRenderer;
-use FluentCart\App\Services\Renderer\CartDrawerRenderer;
-use FluentCart\App\Services\Renderer\CartRenderer;
-use FluentCart\App\Services\Renderer\CartSummaryRender;
-use FluentCart\App\Services\Renderer\CheckoutFieldsSchema;
-use FluentCart\App\Services\Renderer\CheckoutRenderer;
-use FluentCart\App\Services\Renderer\ProductModalRenderer;
-use FluentCart\App\Services\Renderer\ShippingMethodsRender;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Checkout\CheckoutApi;
+use Webmakerr\Api\PaymentMethods;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\FrontendResource\CustomerAddressResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\UtmHelper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\Renderer\AddressSelectRenderer;
+use Webmakerr\App\Services\Renderer\CartDrawerRenderer;
+use Webmakerr\App\Services\Renderer\CartRenderer;
+use Webmakerr\App\Services\Renderer\CartSummaryRender;
+use Webmakerr\App\Services\Renderer\CheckoutFieldsSchema;
+use Webmakerr\App\Services\Renderer\CheckoutRenderer;
+use Webmakerr\App\Services\Renderer\ProductModalRenderer;
+use Webmakerr\App\Services\Renderer\ShippingMethodsRender;
+use Webmakerr\Framework\Support\Arr;
 
 class WebCheckoutHandler
 {
@@ -41,7 +41,7 @@ class WebCheckoutHandler
         add_action('wp_ajax_fluent_cart_checkout_routes', [$this, 'globalCheckoutRouteHandler']);
         add_action('wp_ajax_nopriv_fluent_cart_checkout_routes', [$this, 'globalCheckoutRouteHandler']);
 
-        add_action('fluent_cart/order_bump_succeed', function ($data) {
+        webmakerr_add_action('webmakerr_cart/order_bump_succeed', function ($data) {
             $cart = Arr::get($data, 'cart', null);
             $order = Arr::get($data, 'order', null);
 
@@ -299,13 +299,13 @@ class WebCheckoutHandler
 
         // shipping charge changed
         if ($shippingCharge !== $oldShippingCharge) {
-            do_action('fluent_cart/checkout/shipping_data_changed', [
+            webmakerr_do_action('webmakerr_cart/checkout/shipping_data_changed', [
                 'cart' => $cart
             ]);
         }
 
 
-        $totalPrice = apply_filters('fluent_cart/cart/estimated_total', $totalPrice, [
+        $totalPrice = webmakerr_apply_filters('webmakerr_cart/cart/estimated_total', $totalPrice, [
             'cart' => $cart
         ]);
 
@@ -368,7 +368,7 @@ class WebCheckoutHandler
 
         $customerId = Arr::get($address, 'address.customer_id');
 
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return [
                 'message' => __('You are not authorized to view this address', 'fluent-cart')
@@ -397,7 +397,7 @@ class WebCheckoutHandler
         // Join parts with comma and space
 
 
-        do_action('fluent_cart/checkout/form_data_changed', [
+        webmakerr_do_action('webmakerr_cart/checkout/form_data_changed', [
             'cart' => $cart
         ]);
 
@@ -421,7 +421,7 @@ class WebCheckoutHandler
             'shipping_charge_changes' => $oldShippingCharge != $newShippingCharge
         ];
 
-        return apply_filters('fluent_cart/checkout/checkout_data_changed', $checkoutData, ['cart' => $cart]);
+        return webmakerr_apply_filters('webmakerr_cart/checkout/checkout_data_changed', $checkoutData, ['cart' => $cart]);
 
     }
 
@@ -529,7 +529,7 @@ class WebCheckoutHandler
             return $cart;
         }
 
-        do_action('fluent_cart/checkout/cart_amount_updated', [
+        webmakerr_do_action('webmakerr_cart/checkout/cart_amount_updated', [
             'cart' => $cart
         ]);
 
@@ -608,7 +608,7 @@ class WebCheckoutHandler
 
         return [
             'message'   => __('Cart updated successfully', 'fluent-cart'),
-            'data'      => apply_filters('fluent_cart/checkout/cart_updated', [
+            'data'      => webmakerr_apply_filters('webmakerr_cart/checkout/cart_updated', [
                 'cart' => $cart,
             ]),
             'fragments' => $fragments
@@ -710,7 +710,7 @@ class WebCheckoutHandler
         ];
 
 
-        $fillData = apply_filters('fluent_cart/checkout/before_patch_checkout_data', $fillData, [
+        $fillData = webmakerr_apply_filters('webmakerr_cart/checkout/before_patch_checkout_data', $fillData, [
             'cart'      => $cart,
             'prev_data' => $prevFlatData,
             'changes'   => $normalizeData,
@@ -802,7 +802,7 @@ class WebCheckoutHandler
             ];
         }
 
-        $fragments = apply_filters('fluent_cart/checkout/after_patch_checkout_data_fragments', $fragments, [
+        $fragments = webmakerr_apply_filters('webmakerr_cart/checkout/after_patch_checkout_data_fragments', $fragments, [
             'cart'    => $cart,
             'changes' => $normalizeData
         ]);
@@ -868,7 +868,7 @@ class WebCheckoutHandler
         $oldCheckoutData = $checkoutData;
         Arr::set($checkoutData, $validKeys[$key], $value);
 
-        $fillData = apply_filters('fluent_cart/checkout/before_patch_checkout_data', [
+        $fillData = webmakerr_apply_filters('webmakerr_cart/checkout/before_patch_checkout_data', [
             'checkout_data' => $checkoutData,
             'cart_data'     => $cart->cart_data,
             'hook_changes'  => [
@@ -924,14 +924,14 @@ class WebCheckoutHandler
 
         // Shipping Module
 
-        add_action('fluent_cart/checkout/customer_data_saved', function ($data) {
+        webmakerr_add_action('webmakerr_cart/checkout/customer_data_saved', function ($data) {
             // Recalculate tax if needed
 
-            do_action('fluent_cart/checkout/tax_data_changed', $data);
+            webmakerr_do_action('webmakerr_cart/checkout/tax_data_changed', $data);
 
         });
 
-        do_action('fluent_cart/checkout/customer_data_saved', [
+        webmakerr_do_action('webmakerr_cart/checkout/customer_data_saved', [
             'cart'      => $cart,
             'key'       => $key,
             'value'     => $value,
@@ -995,7 +995,7 @@ class WebCheckoutHandler
                 $cart->save();
             }
 
-            do_action('fluent_cart/checkout/form_data_changed', [
+            webmakerr_do_action('webmakerr_cart/checkout/form_data_changed', [
                 'cart' => $cart
             ]);
 
@@ -1016,7 +1016,7 @@ class WebCheckoutHandler
                 'notify'                  => false
             ];
 
-            return apply_filters('fluent_cart/checkout/checkout_data_changed', $checkoutData, ['cart' => $cart]);
+            return webmakerr_apply_filters('webmakerr_cart/checkout/checkout_data_changed', $checkoutData, ['cart' => $cart]);
         }
 
         return [
@@ -1045,7 +1045,7 @@ class WebCheckoutHandler
 
         if ($bumpId) {
             $response = new \WP_Error('invalid_bump', __('Could not apply item at this time.', 'fluent-cart'));
-            return apply_filters('fluent_cart/apply_order_bump', $response, [
+            return webmakerr_apply_filters('webmakerr_cart/apply_order_bump', $response, [
                 'bump_id'      => $bumpId,
                 'cart'         => $cart,
                 'request_data' => $requestData
@@ -1108,7 +1108,7 @@ class WebCheckoutHandler
         $cart->checkout_data = $checkoutData;
         $cart->save();
 
-        do_action('fluent_cart/checkout/cart_amount_updated', [
+        webmakerr_do_action('webmakerr_cart/checkout/cart_amount_updated', [
             'cart' => $cart
         ]);
 

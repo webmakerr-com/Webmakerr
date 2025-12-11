@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\FileSystem\Drivers\S3;
+namespace Webmakerr\App\Services\FileSystem\Drivers\S3;
 
 class S3ConnectionVerify
 {

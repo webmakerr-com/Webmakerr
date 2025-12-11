@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\CPT\Pages;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\CurrenciesHelper;
-use FluentCart\App\Services\OrderService;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\ArrayableInterface;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\CPT\Pages;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\CurrenciesHelper;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\ArrayableInterface;
+use Webmakerr\Framework\Support\Str;
 
 class StoreSettings implements ArrayableInterface
 {
@@ -82,14 +82,14 @@ class StoreSettings implements ArrayableInterface
             'inv_prefix'                           => 'INV-'
         ];
 
-        return apply_filters('fluent_cart/store_settings/values', $defaultSettings, []);
+        return webmakerr_apply_filters('webmakerr_cart/store_settings/values', $defaultSettings, []);
     }
 
     /**
      * @return array
      *
      * Get all store settings fields
-     * @hook to use apply_filters("fluent_cart/store_setting_fields", $fields)
+     * @hook to use webmakerr_apply_filters("webmakerr_cart/store_setting_fields", $fields)
      */
     public function fields($params = []): array
     {
@@ -517,7 +517,7 @@ class StoreSettings implements ArrayableInterface
                                         'options'      => $pages,
                                         'hide_note'    => true,
                                         'value'        => '',
-                                        'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
+                                        'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_products]',
                                             __('Products', 'fluent-cart')
                                         ),
@@ -554,7 +554,7 @@ class StoreSettings implements ArrayableInterface
                                         'hide_note'    => true,
                                         'options'      => $pages,
                                         'value'        => '',
-                                        'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
+                                        'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_customer_profile]',
                                             __('Account', 'fluent-cart')
                                         ),
@@ -591,7 +591,7 @@ class StoreSettings implements ArrayableInterface
                                         'hide_note'    => true,
                                         'options'      => $pages,
                                         'value'        => '',
-                                        'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
+                                        'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_cart]',
                                             __('Cart', 'fluent-cart')
                                         ),
@@ -628,7 +628,7 @@ class StoreSettings implements ArrayableInterface
                                         'hide_note'    => true,
                                         'options'      => $pages,
                                         'value'        => '',
-                                        'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
+                                        'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_receipt]',
                                             __('Receipt', 'fluent-cart')
                                         ),
@@ -665,7 +665,7 @@ class StoreSettings implements ArrayableInterface
                                         'hide_note'    => true,
                                         'options'      => $pages,
                                         'value'        => '',
-                                        'note'         => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString(
+                                        'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_checkout]',
                                             __('Checkout', 'fluent-cart')
                                         ),
@@ -1043,7 +1043,7 @@ class StoreSettings implements ArrayableInterface
         ];
 
 
-        return apply_filters("fluent_cart/store_settings/fields", $fields, []);
+        return webmakerr_apply_filters("webmakerr_cart/store_settings/fields", $fields, []);
     }
 
     public function isModuleTabEnabled(): bool

@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\IntegrationActions;
+namespace Webmakerr\App\Modules\IntegrationActions;
 
 
 abstract class BaseIntegrationAction
@@ -15,7 +15,7 @@ abstract class BaseIntegrationAction
 
     public function init()
     {
-        add_filter('fluent_cart/integration/get_global_integration_actions', function () {
+        webmakerr_add_filter('webmakerr_cart/integration/get_global_integration_actions', function () {
             return $this->register();
         }, 10, 1);
 

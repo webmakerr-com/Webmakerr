@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Listeners\Order;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\OrderTransaction;
+namespace Webmakerr\App\Listeners\Order;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\OrderTransaction;
 
 class OrderUpdated
 {
-    public static function handle(\FluentCart\App\Events\Order\OrderUpdated $event)
+    public static function handle(\Webmakerr\App\Events\Order\OrderUpdated $event)
     {
         static::updateTransaction($event->oldOrder, $event->order);
     }

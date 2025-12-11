@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductListRenderer
 {
@@ -27,7 +27,7 @@ class ProductListRenderer
             $this->cardConfig['show_excerpt'] = false;
         }
 
-        if($products instanceof \FluentCart\Framework\Pagination\CursorPaginator){
+        if($products instanceof \Webmakerr\Framework\Pagination\CursorPaginator){
             $this->cursor = wp_parse_args(wp_parse_url($products->nextPageUrl(), PHP_URL_QUERY));
             $this->cursor = Arr::get($this->cursor, 'cursor', '');
         }

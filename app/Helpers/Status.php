@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
 class Status
 {
@@ -102,7 +102,7 @@ class Status
 
     public static function getProductStatuses($withLabel = true)
     {
-        return apply_filters('fluent_cart/product_statuses', [
+        return webmakerr_apply_filters('webmakerr_cart/product_statuses', [
             self::PRODUCT_PUBLISH => __('Publish', 'fluent-cart'),
             self::PRODUCT_DRAFT   => __('Draft', 'fluent-cart'),
             self::PRODUCT_PRIVATE => __('Private', 'fluent-cart'),
@@ -151,7 +151,7 @@ class Status
     // Order statuses
     public static function getOrderStatuses()
     {
-        return apply_filters('fluent_cart/order_statuses', [
+        return webmakerr_apply_filters('webmakerr_cart/order_statuses', [
             self::ORDER_PROCESSING => __('Processing', 'fluent-cart'),
             self::ORDER_COMPLETED  => __('Completed', 'fluent-cart'),
             self::ORDER_ON_HOLD    => __('On Hold', 'fluent-cart'),
@@ -175,7 +175,7 @@ class Status
     // Payment statuses
     public static function getPaymentStatuses()
     {
-        return apply_filters('fluent_cart/payment_statuses', [
+        return webmakerr_apply_filters('webmakerr_cart/payment_statuses', [
             self::PAYMENT_PENDING            => __('Pending', 'fluent-cart'),
             self::PAYMENT_PAID               => __('Paid', 'fluent-cart'),
             self::PAYMENT_PARTIALLY_PAID     => __('Partially Paid', 'fluent-cart'),
@@ -189,7 +189,7 @@ class Status
     // Transaction statuses
     public static function getTransactionStatuses($withLabel = true)
     {
-        return apply_filters('fluent_cart/transaction_statuses', [
+        return webmakerr_apply_filters('webmakerr_cart/transaction_statuses', [
             self::TRANSACTION_PENDING   => __('Pending', 'fluent-cart'),
             self::TRANSACTION_SUCCEEDED => __('Succeeded', 'fluent-cart'),
             self::TRANSACTION_AUTHORIZED => __('Authorized', 'fluent-cart'),
@@ -224,7 +224,7 @@ class Status
     // Shipping statuses
     public static function getShippingStatuses()
     {
-        return apply_filters('fluent_cart/shipping_statuses', [
+        return webmakerr_apply_filters('webmakerr_cart/shipping_statuses', [
             self::SHIPPING_UNSHIPPED   => __('Unshipped', 'fluent-cart'),
             self::SHIPPING_SHIPPED     => __('Shipped', 'fluent-cart'),
             self::SHIPPING_DELIVERED   => __('Delivered', 'fluent-cart'),
@@ -245,7 +245,7 @@ class Status
     // Subscription statuses
     public static function getSubscriptionStatuses()
     {
-        return apply_filters('fluent_cart/subscription_statuses', [
+        return webmakerr_apply_filters('webmakerr_cart/subscription_statuses', [
             self::SUBSCRIPTION_PENDING  => __('Pending', 'fluent-cart'),
             self::SUBSCRIPTION_ACTIVE   => __('Active', 'fluent-cart'),
             self::SUBSCRIPTION_FAILING  => __('Failing', 'fluent-cart'),
@@ -263,7 +263,7 @@ class Status
     // Get Validable Subscription Statuses
     public static function getValidableSubscriptionStatuses()
     {
-        return apply_filters('fluent_cart/validable_subscription_statuses', [
+        return webmakerr_apply_filters('webmakerr_cart/validable_subscription_statuses', [
             self::SUBSCRIPTION_ACTIVE,
             self::SUBSCRIPTION_TRIALING,
         ], []);
@@ -323,7 +323,7 @@ class Status
 
     public static function getTransactionSuccessStatuses()
     {
-        return apply_filters('fluent_cart/transaction_success_statuses', [self::TRANSACTION_SUCCEEDED, self::TRANSACTION_AUTHORIZED], []);
+        return webmakerr_apply_filters('webmakerr_cart/transaction_success_statuses', [self::TRANSACTION_SUCCEEDED, self::TRANSACTION_AUTHORIZED], []);
     }
 
     // Get all statuses (optional utility)

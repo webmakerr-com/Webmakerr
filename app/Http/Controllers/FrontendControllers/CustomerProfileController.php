@@ -1,36 +1,36 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\FrontendControllers;
+namespace Webmakerr\App\Http\Controllers\FrontendControllers;
 
-//use FluentCart\Api\Resource\FrontendResource\CustomerResource;
-use FluentCart\Api\Resource\CustomerAddressResource;
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\FrontendResource\OrderResource;
-use FluentCart\Api\Resource\OrderDownloadPermissionResource;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Http\Requests\FrontendRequests\CustomerRequests\CustomerProfileAccountDetailsRequest;
-use FluentCart\App\Http\Requests\FrontendRequests\CustomerRequests\CustomerProfileRequest;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\ProductDownload;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\FileSystem\FileManager;
-use FluentCart\App\Services\FrontendView;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\PlanUpgradeService;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Orm\Relations\HasMany;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+//use Webmakerr\Api\Resource\FrontendResource\CustomerResource;
+use Webmakerr\Api\Resource\CustomerAddressResource;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\FrontendResource\OrderResource;
+use Webmakerr\Api\Resource\OrderDownloadPermissionResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Http\Requests\FrontendRequests\CustomerRequests\CustomerProfileAccountDetailsRequest;
+use Webmakerr\App\Http\Requests\FrontendRequests\CustomerRequests\CustomerProfileRequest;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\ProductDownload;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\FileSystem\FileManager;
+use Webmakerr\App\Services\FrontendView;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\PlanUpgradeService;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Relations\HasMany;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 
 class CustomerProfileController extends BaseFrontendController
@@ -51,7 +51,7 @@ class CustomerProfileController extends BaseFrontendController
 
 
         if (!$customer) {
-            return apply_filters('fluent_cart/customer_dashboard_data', [
+            return webmakerr_apply_filters('webmakerr_cart/customer_dashboard_data', [
                 'message'        => __('Success', 'fluent-cart'),
                 'dashboard_data' => [
                     'orders' => []
@@ -103,7 +103,7 @@ class CustomerProfileController extends BaseFrontendController
             ];
         });
 
-        return apply_filters('fluent_cart/customer_dashboard_data', [
+        return webmakerr_apply_filters('webmakerr_cart/customer_dashboard_data', [
             'message'        => __('Success', 'fluent-cart'),
             'dashboard_data' => [
                 'orders' => $orders

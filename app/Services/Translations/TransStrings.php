@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Services\Translations;
+namespace Webmakerr\App\Services\Translations;
 class TransStrings
 {
     public static function getStrings(): array
     {
         $translations = require 'admin-translation.php';
-        return apply_filters("fluent_cart/admin_translations", $translations, []);
+        return webmakerr_apply_filters("webmakerr_cart/admin_translations", $translations, []);
     }
 
     public static function blockStrings(): array
     {
         $translations = require 'block-editor-translation.php';
-        return apply_filters("fluent_cart/blocks_translations", $translations, []);
+        return webmakerr_apply_filters("webmakerr_cart/blocks_translations", $translations, []);
     }
 
 
@@ -84,7 +84,7 @@ class TransStrings
     public static function getCustomerProfileString(): array
     {
         $translations = require 'customer-profile-translation.php';
-        return apply_filters("fluent_cart/customer_profile_translations", $translations, []);
+        return webmakerr_apply_filters("webmakerr_cart/customer_profile_translations", $translations, []);
     }
 
     public static function singleProductPageString(): array
@@ -98,13 +98,13 @@ class TransStrings
     public static function checkoutPageString()
     {
         $translations = require 'checkout-translation.php';
-        return apply_filters("fluent_cart/checkout_translations", $translations, []);
+        return webmakerr_apply_filters("webmakerr_cart/checkout_translations", $translations, []);
     }
 
     public static function paymentsString()
     {
         $translations = require 'payments-translation.php';
-        return apply_filters("fluent_cart/payments_translations", $translations, []);
+        return webmakerr_apply_filters("webmakerr_cart/payments_translations", $translations, []);
     }
 
     public static function elStrings(): array

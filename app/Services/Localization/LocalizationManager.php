@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\Localization;
+namespace Webmakerr\App\Services\Localization;
 
 /*
  * Use cases for LocalizationManager
@@ -29,9 +29,9 @@ namespace FluentCart\App\Services\Localization;
 *
 */
 
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 class LocalizationManager
 {
@@ -422,7 +422,7 @@ class LocalizationManager
                 'name'  => $state,
             ];
         }
-        return apply_filters("fluent_cart/country_state_options", $options, [
+        return webmakerr_apply_filters("webmakerr_cart/country_state_options", $options, [
             'countryCode' => $countryCode,
         ]);
     }

@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\ProductIntegration;
+namespace Webmakerr\App\Modules\ProductIntegration;
 
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Modules\Integrations\GlobalIntegrationSettings;
-use FluentCart\App\Modules\Integrations\GlobalNotificationHandler;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Modules\Integrations\GlobalIntegrationSettings;
+use Webmakerr\App\Modules\Integrations\GlobalNotificationHandler;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductIntegrationHandler
 {

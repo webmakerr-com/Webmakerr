@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Cod;
+namespace Webmakerr\App\Modules\PaymentMethods\Cod;
 
-use FluentCart\Api\Resource\OrderResource;
-use FluentCart\App\Events\Order\OrderStatusUpdated;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\OrderResource;
+use Webmakerr\App\Events\Order\OrderStatusUpdated;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 
 class Cod extends AbstractPaymentGateway
@@ -22,8 +22,8 @@ class Cod extends AbstractPaymentGateway
 
     public function boot()
     {
-        add_action('fluent_cart/payment_paid', [$this, 'handlePaymentPaid'], 10, 1);
-        add_filter('fluent_cart_payment_method_list_class', [$this, 'getPaymentMethodClass'], 10, 2);
+        webmakerr_add_action('webmakerr_cart/payment_paid', [$this, 'handlePaymentPaid'], 10, 1);
+        webmakerr_add_filter('webmakerr_cart_payment_method_list_class', [$this, 'getPaymentMethodClass'], 10, 2);
     }
 
     public function getPaymentMethodClass($class, $data): string

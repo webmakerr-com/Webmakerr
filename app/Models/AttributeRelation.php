@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
 /**
  *  Attributes Relations Model - DB Model for Attributes Terms to Specific Variations
@@ -8,7 +8,7 @@ namespace FluentCart\App\Models;
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

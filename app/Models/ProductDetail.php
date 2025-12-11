@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Concerns\CanUpdateBatch;
-use FluentCart\Framework\Database\Orm\Relations\BelongsTo;
-use FluentCart\Framework\Database\Orm\Relations\HasMany;
-use FluentCart\Framework\Database\Orm\Relations\hasOne;
-use FluentCart\App\Models\WpModels\PostMeta;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanUpdateBatch;
+use Webmakerr\Framework\Database\Orm\Relations\BelongsTo;
+use Webmakerr\Framework\Database\Orm\Relations\HasMany;
+use Webmakerr\Framework\Database\Orm\Relations\hasOne;
+use Webmakerr\App\Models\WpModels\PostMeta;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  *  Product Details Model - DB Model for Product Details
@@ -17,7 +17,7 @@ use FluentCart\Framework\Support\Arr;
  *  Database Model
  *
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -180,7 +180,7 @@ class ProductDetail extends Model
             ];
         }
 
-        return apply_filters('fluent_cart/product_stock_availability', $availability, [
+        return webmakerr_apply_filters('webmakerr_cart/product_stock_availability', $availability, [
             'detail'       => $this,
             'variation_id' => $variationId
         ]);

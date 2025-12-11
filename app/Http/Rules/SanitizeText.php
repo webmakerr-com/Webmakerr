@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Http\Rules;
+namespace Webmakerr\App\Http\Rules;
 
 class SanitizeText
 {

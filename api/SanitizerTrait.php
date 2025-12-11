@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
 trait SanitizerTrait
 {

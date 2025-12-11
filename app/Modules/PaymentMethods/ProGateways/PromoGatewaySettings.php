@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\ProGateways;
+namespace Webmakerr\App\Modules\PaymentMethods\ProGateways;
 
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
 
 class PromoGatewaySettings extends BaseGatewaySettings
 {

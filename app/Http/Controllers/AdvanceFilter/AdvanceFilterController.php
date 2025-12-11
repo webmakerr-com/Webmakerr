@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\AdvanceFilter;
+namespace Webmakerr\App\Http\Controllers\AdvanceFilter;
 
-use FluentCart\Api\Helper;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Models\Label;
-use FluentCart\App\Services\Filter\LabelFilter;
-use FluentCart\App\Services\Filter\OrderFilter;
-use FluentCart\App\Services\Filter\ProductFilter;
-use FluentCart\App\Services\Filter\VariationFilter;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Helper;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Models\Label;
+use Webmakerr\App\Services\Filter\LabelFilter;
+use Webmakerr\App\Services\Filter\OrderFilter;
+use Webmakerr\App\Services\Filter\ProductFilter;
+use Webmakerr\App\Services\Filter\VariationFilter;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class AdvanceFilterController extends Controller
 {
@@ -43,7 +43,7 @@ class AdvanceFilterController extends Controller
         } else if ($dataKey == 'labels') {
             $options = LabelFilter::getSelectFilterOptions($args);
         } else {
-            $options = apply_filters('fluent_cart/advanced_filter_options_' . $dataKey, $options, $args);
+            $options = webmakerr_apply_filters('webmakerr_cart/advanced_filter_options_' . $dataKey, $options, $args);
         }
 
         return $this->sendSuccess([

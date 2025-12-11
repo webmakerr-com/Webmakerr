@@ -1,49 +1,49 @@
 <?php
 
-namespace FluentCart\Database;
+namespace Webmakerr\Database;
 
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Models\Product;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Models\Product;
 
 require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-use FluentCart\App\Models\Subscription;
-use FluentCart\Database\Migrations\AttributeGroupsMigrator;
-use FluentCart\Database\Migrations\AttributeObjectRelationsMigrator;
-use FluentCart\Database\Migrations\AttributeTermsMigrator;
-use FluentCart\Database\Migrations\CartMigrator;
-use FluentCart\Database\Migrations\CustomersMigrator;
-use FluentCart\Database\Migrations\MetaMigrator;
-use FluentCart\Database\Migrations\Migrator;
-use FluentCart\Database\Migrations\OrderMetaMigrator;
-use FluentCart\Database\Migrations\OrdersMigrator;
-use FluentCart\Database\Migrations\OrdersItemsMigrator;
-use FluentCart\Database\Migrations\OrderTransactionsMigrator;
-use FluentCart\Database\Migrations\ProductDetailsMigrator;
-use FluentCart\Database\Migrations\ProductDownloadsMigrator;
-use FluentCart\Database\Migrations\ProductMetaMigrator;
-use FluentCart\Database\Migrations\ProductVariationMigrator;
-use FluentCart\Database\Migrations\ScheduledActionsMigrator;
-use FluentCart\Database\Migrations\ShippingClassesMigrator;
-use FluentCart\Database\Migrations\SubscriptionMetaMigrator;
-use FluentCart\Database\Migrations\SubscriptionsMigrator;
-use FluentCart\Database\Migrations\TaxClassesMigrator;
-use FluentCart\Database\Migrations\TaxRatesMigrator;
-use FluentCart\Database\Migrations\OrderTaxRateMigrator;
-use FluentCart\Database\Migrations\CouponsMigrator;
-use FluentCart\Database\Migrations\CustomerAddressesMigrator;
-use FluentCart\Database\Migrations\CustomerMetaMigrator;
-use FluentCart\Database\Migrations\OrderAddressesMigrator;
-use FluentCart\Database\Migrations\OrderDownloadPermissionsMigrator;
-use FluentCart\Database\Migrations\OrderOperationsMigrator;
-use FluentCart\Database\Migrations\AppliedCouponsMigrator;
-use FluentCart\Database\Migrations\LabelMigrator;
-use FluentCart\Database\Migrations\LabelRelationshipsMigrator;
-use FluentCart\Database\Migrations\ActivityMigrator;
-use FluentCart\Database\Migrations\WebhookLogger;
-use FluentCart\Framework\Database\Schema;
-use FluentCart\Database\Migrations\ShippingZonesMigrator;
-use FluentCart\Database\Migrations\ShippingMethodsMigrator;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Database\Migrations\AttributeGroupsMigrator;
+use Webmakerr\Database\Migrations\AttributeObjectRelationsMigrator;
+use Webmakerr\Database\Migrations\AttributeTermsMigrator;
+use Webmakerr\Database\Migrations\CartMigrator;
+use Webmakerr\Database\Migrations\CustomersMigrator;
+use Webmakerr\Database\Migrations\MetaMigrator;
+use Webmakerr\Database\Migrations\Migrator;
+use Webmakerr\Database\Migrations\OrderMetaMigrator;
+use Webmakerr\Database\Migrations\OrdersMigrator;
+use Webmakerr\Database\Migrations\OrdersItemsMigrator;
+use Webmakerr\Database\Migrations\OrderTransactionsMigrator;
+use Webmakerr\Database\Migrations\ProductDetailsMigrator;
+use Webmakerr\Database\Migrations\ProductDownloadsMigrator;
+use Webmakerr\Database\Migrations\ProductMetaMigrator;
+use Webmakerr\Database\Migrations\ProductVariationMigrator;
+use Webmakerr\Database\Migrations\ScheduledActionsMigrator;
+use Webmakerr\Database\Migrations\ShippingClassesMigrator;
+use Webmakerr\Database\Migrations\SubscriptionMetaMigrator;
+use Webmakerr\Database\Migrations\SubscriptionsMigrator;
+use Webmakerr\Database\Migrations\TaxClassesMigrator;
+use Webmakerr\Database\Migrations\TaxRatesMigrator;
+use Webmakerr\Database\Migrations\OrderTaxRateMigrator;
+use Webmakerr\Database\Migrations\CouponsMigrator;
+use Webmakerr\Database\Migrations\CustomerAddressesMigrator;
+use Webmakerr\Database\Migrations\CustomerMetaMigrator;
+use Webmakerr\Database\Migrations\OrderAddressesMigrator;
+use Webmakerr\Database\Migrations\OrderDownloadPermissionsMigrator;
+use Webmakerr\Database\Migrations\OrderOperationsMigrator;
+use Webmakerr\Database\Migrations\AppliedCouponsMigrator;
+use Webmakerr\Database\Migrations\LabelMigrator;
+use Webmakerr\Database\Migrations\LabelRelationshipsMigrator;
+use Webmakerr\Database\Migrations\ActivityMigrator;
+use Webmakerr\Database\Migrations\WebhookLogger;
+use Webmakerr\Framework\Database\Schema;
+use Webmakerr\Database\Migrations\ShippingZonesMigrator;
+use Webmakerr\Database\Migrations\ShippingMethodsMigrator;
 
 class DBMigrator
 {
@@ -110,7 +110,7 @@ class DBMigrator
     {
         self::migrate();
         self::maybeMigrateDBChanges();
-        update_option('_fluent_cart_db_version', FLUENTCART_DB_VERSION, 'no');
+        update_option('_fluent_cart_db_version', WEBMAKERR_DB_VERSION, 'no');
     }
 
     public static function migrate()
@@ -131,9 +131,9 @@ class DBMigrator
          */
         $currentDBVersion = get_option('_fluent_cart_db_version');
 
-        if (!$currentDBVersion || version_compare($currentDBVersion, FLUENTCART_DB_VERSION, '<')) {
+        if (!$currentDBVersion || version_compare($currentDBVersion, WEBMAKERR_DB_VERSION, '<')) {
 
-            update_option('_fluent_cart_db_version', FLUENTCART_DB_VERSION, 'no');
+            update_option('_fluent_cart_db_version', WEBMAKERR_DB_VERSION, 'no');
 
             // let's check the orders table sequence number
             global $wpdb;

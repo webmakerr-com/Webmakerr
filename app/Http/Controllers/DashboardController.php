@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\CPT\Pages;
-use FluentCart\App\Hooks\Handlers\GlobalPaymentHandler;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\Widgets\DashboardWidget;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\CPT\Pages;
+use Webmakerr\App\Hooks\Handlers\GlobalPaymentHandler;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\Widgets\DashboardWidget;
+use Webmakerr\Framework\Support\Arr;
 
 class DashboardController extends Controller
 {
     public function getOnboardingData()
     {
         $completed = 0;
-        $baseUrl = apply_filters('fluent_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
+        $baseUrl = webmakerr_apply_filters('webmakerr_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
         $steps = [
             'page_setup'   => [
                 'title'     => __('Setup Pages', 'fluent-cart'),

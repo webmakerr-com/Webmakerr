@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\Helpers\CurrenciesHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\CurrenciesHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class CurrencySettings
 {
@@ -48,7 +48,7 @@ class CurrencySettings
             return Arr::get($settings, $key);
         }
 
-        return apply_filters('fluent_cart/global_currency_setting', $settings, []);
+        return webmakerr_apply_filters('webmakerr_cart/global_currency_setting', $settings, []);
     }
 
     public function getCurrency($settings = [])

@@ -3,21 +3,21 @@
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway;
 
 
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\Webhook\IPN;
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\API\API;
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Hooks\Cart\WebCheckoutHandler;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Payments\PaymentInstance;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Hooks\Cart\WebCheckoutHandler;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Payments\PaymentInstance;
 use FluentCartPro\App\Utils\Enqueuer\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 
 class Paddle extends AbstractPaymentGateway
@@ -39,7 +39,7 @@ class Paddle extends AbstractPaymentGateway
             new PaddleSubscriptions()
         );
 
-      add_filter('fluent_cart/payment_methods_with_custom_checkout_buttons', function ($methods) {
+      webmakerr_add_filter('webmakerr_cart/payment_methods_with_custom_checkout_buttons', function ($methods) {
           $methods[] = 'paddle';
           return $methods;
       });

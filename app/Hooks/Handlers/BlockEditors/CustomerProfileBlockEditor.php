@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
-use FluentCart\App\Hooks\Handlers\ShortCodes\CustomerProfileHandler;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\CustomerProfileHandler;
+use Webmakerr\Framework\Support\Arr;
 
 
 

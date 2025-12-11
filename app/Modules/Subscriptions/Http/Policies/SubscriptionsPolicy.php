@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Modules\Subscriptions\Http\Policies;
+namespace Webmakerr\App\Modules\Subscriptions\Http\Policies;
 
-use FluentCart\Framework\Foundation\Policy;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\Framework\Foundation\Policy;
+use Webmakerr\Framework\Http\Request\Request;
 
 class SubscriptionsPolicy extends Policy
 {
     /**
      * Check user permission for any method
-     * @param \FluentCart\Framework\Http\Request\Request $request
+     * @param \Webmakerr\Framework\Http\Request\Request $request
      * @return Boolean
      */
     public function verifyRequest(Request $request)
@@ -20,7 +20,7 @@ class SubscriptionsPolicy extends Policy
 
     /**
      * Check user permission for any method
-     * @param \FluentCart\Framework\Http\Request\Request $request
+     * @param \Webmakerr\Framework\Http\Request\Request $request
      * @return Boolean
      */
     public function create(Request $request)

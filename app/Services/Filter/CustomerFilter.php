@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Models\Activity;
-use FluentCart\App\Models\Customer;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Models\Activity;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class CustomerFilter extends BaseFilter
 {

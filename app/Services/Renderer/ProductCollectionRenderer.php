@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
 class ProductCollectionRenderer
 {

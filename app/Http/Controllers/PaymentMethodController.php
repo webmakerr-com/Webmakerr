@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\API;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\Webhook;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\PayPalSettingsBase;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Hooks\Handlers\GlobalPaymentHandler;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\PluginInstaller\PaymentAddonManager;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\API;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\Webhook;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\PayPalSettingsBase;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Hooks\Handlers\GlobalPaymentHandler;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\PluginInstaller\PaymentAddonManager;
 
 
 class PaymentMethodController extends Controller

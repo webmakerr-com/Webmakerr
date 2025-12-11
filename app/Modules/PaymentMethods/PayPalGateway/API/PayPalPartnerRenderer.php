@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Services\FrontendView;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Foundation\App;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Services\FrontendView;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Foundation\App;
+use Webmakerr\Framework\Support\Arr;
 
 class PayPalPartnerRenderer
 {

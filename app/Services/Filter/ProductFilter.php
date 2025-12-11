@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductFilter extends BaseFilter
 {

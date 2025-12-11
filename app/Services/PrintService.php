@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\Api\Resource\OrderResource;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Resource\OrderResource;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class PrintService
 {

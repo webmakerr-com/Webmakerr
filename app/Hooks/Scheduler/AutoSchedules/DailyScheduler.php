@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Hooks\Scheduler\AutoSchedules;
+namespace Webmakerr\App\Hooks\Scheduler\AutoSchedules;
 
-use FluentCart\App\Hooks\Scheduler\JobRunner;
+use Webmakerr\App\Hooks\Scheduler\JobRunner;
 
 class DailyScheduler
 {
     public function register(): void
     {
-        add_action('fluent_cart/scheduler/daily_tasks', [$this, 'handle']);
+        webmakerr_add_action('webmakerr_cart/scheduler/daily_tasks', [$this, 'handle']);
     }
 
     public function handle()

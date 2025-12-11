@@ -2,10 +2,10 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
 
 class PaddleSettings extends BaseGatewaySettings
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
-use FluentCart\App\Hooks\Handlers\ShortCodes\SearchBarShortCode;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\SearchBarShortCode;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class SearchBarBlockEditor extends BlockEditor
 {

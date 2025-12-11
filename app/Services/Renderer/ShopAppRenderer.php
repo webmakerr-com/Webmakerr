@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Api\Resource\ShopResource;
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\Framework\Pagination\CursorPaginator;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\ShopResource;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\Framework\Pagination\CursorPaginator;
+use Webmakerr\Framework\Support\Arr;
 
 class ShopAppRenderer
 {
@@ -167,7 +167,7 @@ class ShopAppRenderer
     {
         AssetLoader::loadProductArchiveAssets();
         $isFullWidth = !$this->isFilterEnabled ? ' fct-full-container-width ' : '';
-        $renderer = new \FluentCart\App\Services\Renderer\ProductFilterRender($this->filters);
+        $renderer = new \Webmakerr\App\Services\Renderer\ProductFilterRender($this->filters);
 
         $wrapperAttributes = [
             'class'                                  => 'fct-products-wrapper-inner mode-' . $this->viewMode . $isFullWidth,
@@ -457,7 +457,7 @@ class ShopAppRenderer
             $cursorAttr = Arr::get($cursor, 'cursor', '');
         }
 
-        (new \FluentCart\App\Services\Renderer\ProductCardRender($product, ['cursor' => $cursorAttr]))->render();
+        (new \Webmakerr\App\Services\Renderer\ProductCardRender($product, ['cursor' => $cursorAttr]))->render();
         ?>
     <?php } ?>
         <?php
@@ -469,7 +469,7 @@ class ShopAppRenderer
             return '';
         }
 
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         ob_start();
         $render->renderTitle('class="fct-product-card-title"');
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -482,7 +482,7 @@ class ShopAppRenderer
             return '';
         }
 
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         ob_start();
         $render->renderProductImage();
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -495,7 +495,7 @@ class ShopAppRenderer
             return '';
         }
 
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         ob_start();
         $render->renderPrices('class="fct-product-card-prices"');
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -508,7 +508,7 @@ class ShopAppRenderer
             return '';
         }
 
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         ob_start();
         $render->showBuyButton();
         // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

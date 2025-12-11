@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\FileSystem\Drivers\S3;
+namespace Webmakerr\App\Services\FileSystem\Drivers\S3;
 
 use Exception;
-use FluentCart\App\Modules\StorageDrivers\S3\S3;
+use Webmakerr\App\Modules\StorageDrivers\S3\S3;
 
 class S3FileDeleter
 {

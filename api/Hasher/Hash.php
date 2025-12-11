@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Api\Hasher;
+namespace Webmakerr\Api\Hasher;
 
 class Hash
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\Email\Editor;
+namespace Webmakerr\App\Services\Email\Editor;
 
 class Blocks
 {

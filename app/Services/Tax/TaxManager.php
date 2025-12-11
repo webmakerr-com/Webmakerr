@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Services\Tax;
+namespace Webmakerr\App\Services\Tax;
 
 
-use FluentCart\App\App;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Models\TaxRate;
-use FluentCart\App\Models\TaxClass;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\App;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Models\TaxRate;
+use Webmakerr\App\Models\TaxClass;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\App\Services\DateTime\DateTime;
 
 class TaxManager
 {
@@ -384,7 +384,7 @@ class TaxManager
 
     public function calculateTotalCartTax()
     {
-        $getCart = \FluentCart\App\Helpers\CartHelper::getCart();
+        $getCart = \Webmakerr\App\Helpers\CartHelper::getCart();
 
         $taxSettings = (new TaxModule())->getSettings();
 

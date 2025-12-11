@@ -1,6 +1,6 @@
 <?php
 
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 use FluentCartPro\App\Modules\Licensing\Http\Controllers\LicenseController;
 use FluentCartPro\App\Modules\Licensing\Http\Controllers\ProductLicenseController;
 
@@ -9,7 +9,7 @@ use FluentCartPro\App\Modules\Licensing\Http\Controllers\ProductLicenseControlle
  * @var $router Router
  */
 
-$router->prefix('licensing')->withPolicy('FluentCart\App\Http\Policies\LicensePolicy')->group(function ($router) {
+$router->prefix('licensing')->withPolicy('Webmakerr\App\Http\Policies\LicensePolicy')->group(function ($router) {
     $router->get('/licenses', [LicenseController::class, 'index'])->meta([
         'permissions' => 'licenses/view'
     ]);
@@ -55,7 +55,7 @@ $router->prefix('licensing')->withPolicy('FluentCart\App\Http\Policies\LicensePo
 });
 
 
-$router->prefix('customer-profile/licenses')->withPolicy('FluentCart\App\Http\Policies\CustomerFrontendPolicy')->group(function ($router) {
+$router->prefix('customer-profile/licenses')->withPolicy('Webmakerr\App\Http\Policies\CustomerFrontendPolicy')->group(function ($router) {
     $router->get('/', [\FluentCartPro\App\Modules\Licensing\Http\Controllers\CustomerProfileController::class, 'getLicenses']);
     $router->get('/{license_key}', [\FluentCartPro\App\Modules\Licensing\Http\Controllers\CustomerProfileController::class, 'getLicenseDetails'])->alphaNumDash('license_key');
     $router->get('/{license_key}/activations', [\FluentCartPro\App\Modules\Licensing\Http\Controllers\CustomerProfileController::class, 'getActivations'])->alphaNumDash('license_key');

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\AirwallexGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\AirwallexGateway;
 
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
 
 class AirwallexSettingsBase extends BaseGatewaySettings
 {

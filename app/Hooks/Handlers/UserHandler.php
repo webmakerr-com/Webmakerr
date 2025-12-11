@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Models\CustomerMeta;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderDownloadPermission;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Models\CustomerMeta;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderDownloadPermission;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 
 class UserHandler
 {
@@ -21,7 +21,7 @@ class UserHandler
         add_action('user_register', [$this, 'userRegistrationHandler'], 10, 1);
 
         // Let's handle auto user registration!
-        add_action('fluent_cart/cart_completed', [$this, 'maybeCreateUser'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/cart_completed', [$this, 'maybeCreateUser'], 10, 1);
 
         add_action('profile_update', [$this, 'handleWpUserProfileUpdated'], 10, 3);
 
@@ -46,7 +46,7 @@ class UserHandler
         if (empty($attachToCustomer)) {
             $oldCustomer = Customer::query()->where('email', $oldEmail)->first();
             Customer::query()->where('email', $oldEmail)->update(['email' => $newEmail]);
-            do_action('fluent_cart/customer_email_changed', [
+            webmakerr_do_action('webmakerr_cart/customer_email_changed', [
                 'old_customer' => $oldCustomer,
                 'new_customer' => $oldCustomer,
                 'old_email'    => $oldEmail,
@@ -161,7 +161,7 @@ class UserHandler
         CustomerAddresses::query()->where('customer_id', $fromCustomerId)->update(['customer_id' => $toCustomerId]);
         Subscription::query()->where('customer_id', $fromCustomerId)->update(['customer_id' => $toCustomerId]);
 
-        do_action('fluent_cart/customer_resources_moved', [
+        webmakerr_do_action('webmakerr_cart/customer_resources_moved', [
             'from_customer_id' => $fromCustomerId,
             'to_customer_id'   => $toCustomerId
         ]);

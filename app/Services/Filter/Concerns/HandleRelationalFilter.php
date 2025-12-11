@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\Filter\Concerns;
+namespace Webmakerr\App\Services\Filter\Concerns;
 
-use FluentCart\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Builder;
 
 trait HandleRelationalFilter
 {

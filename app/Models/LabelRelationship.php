@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\Framework\Database\Orm\Relations\MorphTo;
+use Webmakerr\Framework\Database\Orm\Relations\MorphTo;
 
 /**
  *  Label Relationship Model - DB Model for Label Relationship table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

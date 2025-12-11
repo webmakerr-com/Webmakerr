@@ -2,10 +2,10 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Http\Controllers;
 
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\Framework\Http\Controller;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\Framework\Http\Controller;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Services\LicenseHelper;
 
 class ProductLicenseController extends Controller

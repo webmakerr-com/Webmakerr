@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\App;
-use FluentCart\App\Http\Controllers\ProductController;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\Filter\OrderFilter;
-use FluentCart\App\Services\URL;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Http\Controllers\ProductController;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\Filter\OrderFilter;
+use Webmakerr\App\Services\URL;
 
 class AdminHelper
 {
@@ -19,9 +19,9 @@ class AdminHelper
 
         $productId = $product->ID;
 
-        $baseUrl = apply_filters('fluent_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
+        $baseUrl = webmakerr_apply_filters('webmakerr_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
 
-        $menuItems = apply_filters('fluent_cart/product_admin_items', [
+        $menuItems = webmakerr_apply_filters('webmakerr_cart/product_admin_items', [
             'product_edit'          => [
                 'label' => __('Edit Product', 'fluent-cart'),
                 'link'  => $baseUrl . 'products/' . $productId
@@ -76,8 +76,8 @@ class AdminHelper
 
     public static function getAdminMenu($echo = false, $activeNav = '')
     {
-        $baseUrl = apply_filters('fluent_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
-        $menuItems = apply_filters('fluent_cart/global_admin_menu_items', [
+        $baseUrl = webmakerr_apply_filters('webmakerr_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
+        $menuItems = webmakerr_apply_filters('webmakerr_cart/global_admin_menu_items', [
             'dashboard'    => [
                 'label' => __('Dashboard', 'fluent-cart'),
                 'link'  => $baseUrl
@@ -166,7 +166,7 @@ class AdminHelper
         wp_enqueue_style(
             $slug . '_global_admin_app', $assets . 'admin/global_admin.css',
             [],
-            FLUENTCART_VERSION,
+            WEBMAKERR_VERSION,
         );
     }
 

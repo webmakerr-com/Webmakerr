@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Api\Validator;
+namespace Webmakerr\Api\Validator;
 
-use FluentCart\Framework\Response\Response;
-use FluentCart\Framework\Validator\Validator;
+use Webmakerr\Framework\Response\Response;
+use Webmakerr\Framework\Validator\Validator;
 
 abstract class Validation
 {

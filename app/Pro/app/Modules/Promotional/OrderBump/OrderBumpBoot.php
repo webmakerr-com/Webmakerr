@@ -2,9 +2,9 @@
 
 namespace FluentCartPro\App\Modules\Promotional\OrderBump;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Promotional\Models\OrderPromotion;
 
 
@@ -12,11 +12,11 @@ class OrderBumpBoot
 {
     public function register()
     {
-        add_action('fluent_cart/after_order_notes', [$this, 'maybeShowBumps']);
+        webmakerr_add_action('webmakerr_cart/after_order_notes', [$this, 'maybeShowBumps']);
 
-        add_filter('fluent_cart/apply_order_bump', [$this, 'applyOrderBump'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/apply_order_bump', [$this, 'applyOrderBump'], 10, 2);
 
-        add_action('fluent_cart/loading_app', function () {
+        webmakerr_add_action('webmakerr_cart/loading_app', function () {
             Vite::enqueueScript('fluent_cart_order_bump_scripts', 'order-bump/order-bump.js');
         });
     }

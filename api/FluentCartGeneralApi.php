@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\Framework\Support\Arr;
 
 class FluentCartGeneralApi
 {
@@ -48,7 +48,7 @@ class FluentCartGeneralApi
             throw new \Exception(esc_html__('You must provide either a render callback or a page ID for the endpoint.', 'fluent-cart'));
         }
 
-        add_filter('fluent_cart/global_customer_menu_items', function ($items) use ($slug, $args) {
+        webmakerr_add_filter('webmakerr_cart/global_customer_menu_items', function ($items) use ($slug, $args) {
             // Add this new item just before the 'profile' item
             $profileKey = array_search('profile', array_keys($items));
             if ($profileKey !== false) {
@@ -56,7 +56,7 @@ class FluentCartGeneralApi
                     [$slug => [
                         'label'     => Arr::get($args, 'title'),
                         'css_class' => 'fct-menu-item-' . $slug,
-                        'link'      => \FluentCart\App\Services\URL::getCustomerDashboardUrl($slug)
+                        'link'      => \Webmakerr\App\Services\URL::getCustomerDashboardUrl($slug)
                     ]] +
                     array_slice($items, $profileKey, null, true);
             } else {
@@ -65,7 +65,7 @@ class FluentCartGeneralApi
                     $items[$slug] = [
                         'label'     => Arr::get($args, 'title'),
                         'css_class' => 'fct-menu-item-' . $slug,
-                        'link'      => \FluentCart\App\Services\URL::getCustomerDashboardUrl($slug)
+                        'link'      => \Webmakerr\App\Services\URL::getCustomerDashboardUrl($slug)
                     ];
                 }
             }
@@ -73,7 +73,7 @@ class FluentCartGeneralApi
             return $items;
         });
 
-        add_filter('fluent_cart/customer_portal/custom_endpoints', function ($endPoints) use ($slug, $args) {
+        webmakerr_add_filter('webmakerr_cart/customer_portal/custom_endpoints', function ($endPoints) use ($slug, $args) {
 
             if (isset($args['render_callback'])) {
                 $endPoints[$slug] = [

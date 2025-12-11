@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Payments;
+namespace Webmakerr\App\Services\Payments;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 
 class SubscriptionHelper
 {

@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors\ShopApp\InnerBlocks;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors\ShopApp\InnerBlocks;
 
-use FluentCart\Api\Contracts\CanEnqueue;
-use FluentCart\Api\Resource\ShopResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Modules\Data\ProductDataSetup;
-use FluentCart\App\Modules\Templating\TemplateLoader;
-use FluentCart\App\Services\Renderer\ShopAppRenderer;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\Framework\Pagination\CursorPaginator;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Vite;
+use Webmakerr\Api\Contracts\CanEnqueue;
+use Webmakerr\Api\Resource\ShopResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Modules\Data\ProductDataSetup;
+use Webmakerr\App\Modules\Templating\TemplateLoader;
+use Webmakerr\App\Services\Renderer\ShopAppRenderer;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\Framework\Pagination\CursorPaginator;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Vite;
 
 class InnerBlocks
 {
@@ -517,7 +517,7 @@ class InnerBlocks
             return '';
         }
 
-        $renderer = new \FluentCart\App\Services\Renderer\ProductFilterRender($filters);
+        $renderer = new \Webmakerr\App\Services\Renderer\ProductFilterRender($filters);
         $innerBlocksContent = '';
         if ($block instanceof \WP_Block && !empty($block->inner_blocks)) {
 
@@ -727,7 +727,7 @@ class InnerBlocks
                 ]
         );
 
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         ob_start();
         $render->renderTitle($wrapper_attributes, [
             'isLink' => $isLink,
@@ -753,7 +753,7 @@ class InnerBlocks
                 ]
         );
 
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product, [
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product, [
             'price_format' => $priceFormat,
         ]);
         ob_start();
@@ -767,7 +767,7 @@ class InnerBlocks
         if (empty($product)) {
             return '';
         }
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         $renderedImage = '';
 
 
@@ -810,7 +810,7 @@ class InnerBlocks
             return '';
         }
         $wrapper_attributes = get_block_wrapper_attributes();
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         ob_start();
         $render->showBuyButton($wrapper_attributes);
         return ob_get_clean();
@@ -827,7 +827,7 @@ class InnerBlocks
                 'class' => 'fct-product-card-excerpt',
             ]
         );
-        $render = new \FluentCart\App\Services\Renderer\ProductCardRender($product);
+        $render = new \Webmakerr\App\Services\Renderer\ProductCardRender($product);
         ob_start();
         $render->renderExcerpt($wrapper_attributes);
         return ob_get_clean();
@@ -990,7 +990,7 @@ class InnerBlocks
         )->with([
                 'fluentcart_single_product_vars' => [
                         'trans'                      => TransStrings::singleProductPageString(),
-                        'cart_button_text'           => apply_filters('fluent_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
+                        'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
                         // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
                         'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
                         'in_stock_status'            => Helper::IN_STOCK,
@@ -1068,7 +1068,7 @@ class InnerBlocks
                 ],
                 'fluentcart_single_product_vars' => [
                         'trans'                      => TransStrings::singleProductPageString(),
-                        'cart_button_text'           => apply_filters('fluent_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
+                        'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
                         // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
                         'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
                         'in_stock_status'            => Helper::IN_STOCK,
@@ -1382,7 +1382,7 @@ class InnerBlocks
         $defaultTerms = Helper::parseTermIdsForFilter($defaultFilters);
         $mergedTerms = Helper::mergeTermIdsForFilter($defaultTerms, $urlTerms);
 
-        $mergedTerms = apply_filters('fluent_cart/shop_app_product_query_taxonomy_filters', $mergedTerms, [
+        $mergedTerms = webmakerr_apply_filters('webmakerr_cart/shop_app_product_query_taxonomy_filters', $mergedTerms, [
                 'default_terms'   => $defaultTerms,
                 'url_terms'       => $urlTerms,
                 'url_filters'     => $urlFilters,

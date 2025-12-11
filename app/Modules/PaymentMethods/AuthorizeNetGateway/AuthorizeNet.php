@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\AuthorizeNetGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\AuthorizeNetGateway;
 
-use FluentCart\App\App;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Vite;
+use Webmakerr\App\App;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Vite;
 
 class AuthorizeNet extends AbstractPaymentGateway
 {
@@ -37,7 +37,7 @@ class AuthorizeNet extends AbstractPaymentGateway
     public function boot()
     {
         // init IPN related class/actions here
-        add_filter('fluent_cart/payment_methods/authorize_net_settings', [$this, 'getSettings'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/payment_methods/authorize_net_settings', [$this, 'getSettings'], 10, 2);
     }
 
     public function makePaymentFromPaymentInstance(PaymentInstance $paymentInstance)
@@ -392,7 +392,7 @@ class AuthorizeNet extends AbstractPaymentGateway
         $order->vendor_charge_id = $transaction['id'];
         $order->save();
 
-        do_action('fluent_cart/payment_success', [
+        webmakerr_do_action('webmakerr_cart/payment_success', [
             'order' => $order,
             'payment_intent' => $transaction
         ]);

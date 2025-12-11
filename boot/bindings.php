@@ -4,15 +4,15 @@
 /**
  * Add only the plugin specific bindings here.
  *
- * @var $app \FluentCart\Framework\Foundation\Application
+ * @var $app \Webmakerr\Framework\Foundation\Application
  */
 
-use FluentCart\App\App;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use \FluentCart\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\App;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use \Webmakerr\App\Services\Localization\LocalizationManager;
 
-$app->singleton(\FluentCart\Api\StoreSettings::class);
-$app->alias(\FluentCart\Api\StoreSettings::class, 'store_settings');
+$app->singleton(\Webmakerr\Api\StoreSettings::class);
+$app->alias(\Webmakerr\Api\StoreSettings::class, 'store_settings');
 
 // Payment Gateway Manager binding
 $app->singleton(GatewayManager::class, function($app) {

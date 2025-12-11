@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Async;
+namespace Webmakerr\App\Services\Async;
 
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Models\DynamicModel;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Models\DynamicModel;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Support\Str;
 
 class ImageAttachService
 {

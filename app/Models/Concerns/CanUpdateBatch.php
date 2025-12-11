@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Models\Concerns;
+namespace Webmakerr\App\Models\Concerns;
 
-use FluentCart\App\Models\BatchQuery\Batch;
-use FluentCart\Framework\Database\Orm\Builder;
+use Webmakerr\App\Models\BatchQuery\Batch;
+use Webmakerr\Framework\Database\Orm\Builder;
 
 trait CanUpdateBatch
 {

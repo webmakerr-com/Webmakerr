@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Listeners\Order;
+namespace Webmakerr\App\Listeners\Order;
 
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\Subscriptions\Services\SubscriptionService;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\Subscriptions\Services\SubscriptionService;
 
 class RenewalOrderDeleted
 {
-    public static function handle(\FluentCart\App\Events\Order\RenewalOrderDeleted $event)
+    public static function handle(\Webmakerr\App\Events\Order\RenewalOrderDeleted $event)
     {
         if ($event->order->customer_id) {
             $customer = Customer::query()->where('id', $event->order->customer_id)->first();

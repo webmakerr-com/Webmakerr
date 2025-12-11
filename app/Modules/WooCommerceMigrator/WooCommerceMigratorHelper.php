@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\WooCommerceMigrator;
+namespace Webmakerr\App\Modules\WooCommerceMigrator;
 
 class WooCommerceMigratorHelper
 {

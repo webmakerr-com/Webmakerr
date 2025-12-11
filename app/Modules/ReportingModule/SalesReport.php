@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\ReportingModule;
+namespace Webmakerr\App\Modules\ReportingModule;
 
-use FluentCart\App\Services\Report\OrderReportService;
+use Webmakerr\App\Services\Report\OrderReportService;
 
 class SalesReport
 {

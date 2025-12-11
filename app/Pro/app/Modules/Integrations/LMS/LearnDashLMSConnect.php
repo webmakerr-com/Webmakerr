@@ -2,10 +2,10 @@
 
 namespace FluentCartPro\App\Modules\Integrations\LMS;
 
-use FluentCart\App\Modules\Integrations\BaseIntegrationManager;
-use FluentCart\App\Services\AuthService;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\Integrations\BaseIntegrationManager;
+use Webmakerr\App\Services\AuthService;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class LearnDashLMSConnect extends BaseIntegrationManager
 {

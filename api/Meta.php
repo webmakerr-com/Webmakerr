@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\Models\ProductMeta;
+use Webmakerr\App\Models\ProductMeta;
 
 class Meta
 {

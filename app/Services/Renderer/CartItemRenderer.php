@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Cart;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\Framework\Support\Arr;
 
 class CartItemRenderer
 {
@@ -57,12 +57,12 @@ class CartItemRenderer
                 <?php $this->renderImage(); ?>
                 <div class="fct_item_content">
                     <?php $this->renderTitle(); ?>
-                    <?php do_action('fluent_cart/cart/line_item/line_meta', $this->getEventInfo()); ?>
+                    <?php webmakerr_do_action('webmakerr_cart/cart/line_item/line_meta', $this->getEventInfo()); ?>
                 </div>
             </div><!-- .fct_line_item_info -->
 
             <div class="fct_line_item_price" aria-label="<?php esc_attr_e('Price information', 'fluent-cart'); ?>">
-                <?php do_action('fluent_cart/cart/line_item/before_total', $this->getEventInfo()); ?>
+                <?php webmakerr_do_action('webmakerr_cart/cart/line_item/before_total', $this->getEventInfo()); ?>
                 <?php if($promoPriceOriginal) : ?>
                 <div style="text-decoration: line-through;" class="fct_line_item_total fct_promo_price" aria-label="<?php esc_attr_e('Original price', 'fluent-cart'); ?>">
                     <?php echo esc_html(Helper::toDecimal($promoPriceOriginal)); ?>
@@ -71,7 +71,7 @@ class CartItemRenderer
                 <span class="fct_line_item_total" aria-label="<?php esc_attr_e('Total price', 'fluent-cart'); ?>">
                     <?php echo esc_html(Helper::toDecimal(Arr::get($this->item, 'subtotal', 0))); ?>
                 </span>
-                <?php do_action('fluent_cart/cart/line_item/after_total', $this->getEventInfo()); ?>
+                <?php webmakerr_do_action('webmakerr_cart/cart/line_item/after_total', $this->getEventInfo()); ?>
             </div><!-- .fct_line_item_price -->
         </div>
         <?php
@@ -88,7 +88,7 @@ class CartItemRenderer
 
         ?>
         <div class="fct_item_title">
-            <?php do_action('fluent_cart/cart/line_item/before_main_title', $this->getEventInfo()); ?>
+            <?php webmakerr_do_action('webmakerr_cart/cart/line_item/before_main_title', $this->getEventInfo()); ?>
             <?php if ($quantity > 1): ?>
                 <span class="fct_item_quantity" aria-label="<?php echo esc_attr(sprintf(
                         /* translators: %d: quantity */
@@ -116,7 +116,7 @@ class CartItemRenderer
             <?php endif; ?>
             <?php $this->maybeRenderPaymentTypeInfo(); ?>
 
-            <?php do_action('fluent_cart/cart/line_item/after_main_title', $this->getEventInfo()); ?>
+            <?php webmakerr_do_action('webmakerr_cart/cart/line_item/after_main_title', $this->getEventInfo()); ?>
         </div>
         <?php
     }

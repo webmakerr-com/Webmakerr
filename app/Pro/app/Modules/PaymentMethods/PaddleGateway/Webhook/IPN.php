@@ -2,16 +2,16 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\Webhook;
 
-use FluentCart\App\App;
-use FluentCart\App\Events\Order\OrderRefund;
+use Webmakerr\App\App;
+use Webmakerr\App\Events\Order\OrderRefund;
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\Confirmations;
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\PaddleHelper;
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\PaddleSettings;
-use FluentCart\App\Events\Subscription\SubscriptionActivated;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Events\Subscription\SubscriptionActivated;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 
 class IPN
 {
@@ -25,21 +25,21 @@ class IPN
     public function init(): void
     {
         // Register webhook event handlers
-        add_action('fluent_cart/payments/paddle/webhook_transaction_paid', [$this, 'handleTransactionPaid'], 10, 1); //done
-        add_action('fluent_cart/payments/paddle/webhook_transaction_completed', [$this, 'handleTransactionCompleted'], 10, 1); //done
-        add_action('fluent_cart/payments/paddle/webhook_subscription_payment_received', [$this, 'handleSubscriptionPaymentReceived'], 10, 1); // done
-        add_action('fluent_cart/payments/paddle/webhook_transaction_payment_failed', [$this, 'handleTransactionPaymentFailed'], 10, 1);
-        add_action('fluent_cart/payments/paddle/webhook_subscription_created', [$this, 'handleSubscriptionActivated'], 10, 1); //done
-        add_action('fluent_cart/payments/paddle/webhook_subscription_activated', [$this, 'handleSubscriptionActivated'], 10, 1); // done
-        add_action('fluent_cart/payments/paddle/webhook_subscription_past_due', [$this, 'handleSubscriptionUpdated'], 10, 1); // done
-        add_action('fluent_cart/payments/paddle/webhook_subscription_updated', [$this, 'handleSubscriptionUpdated'], 10, 1); // done
-        add_action('fluent_cart/payments/paddle/webhook_subscription_canceled', [$this, 'handleSubscriptionCanceled'], 10, 1); //done
-        add_action('fluent_cart/payments/paddle/webhook_subscription_paused', [$this, 'handleSubscriptionUpdated'], 10, 1); //done
-        add_action('fluent_cart/payments/paddle/webhook_subscription_resumed', [$this, 'handleSubscriptionUpdated'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_transaction_paid', [$this, 'handleTransactionPaid'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_transaction_completed', [$this, 'handleTransactionCompleted'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_payment_received', [$this, 'handleSubscriptionPaymentReceived'], 10, 1); // done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_transaction_payment_failed', [$this, 'handleTransactionPaymentFailed'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_created', [$this, 'handleSubscriptionActivated'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_activated', [$this, 'handleSubscriptionActivated'], 10, 1); // done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_past_due', [$this, 'handleSubscriptionUpdated'], 10, 1); // done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_updated', [$this, 'handleSubscriptionUpdated'], 10, 1); // done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_canceled', [$this, 'handleSubscriptionCanceled'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_paused', [$this, 'handleSubscriptionUpdated'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_subscription_resumed', [$this, 'handleSubscriptionUpdated'], 10, 1); //done
 
         // adjustments/ refunds
-        add_action('fluent_cart/payments/paddle/webhook_adjustment_created', [$this, 'handleAdjustmentCreated'], 10, 1); //done
-        add_action('fluent_cart/payments/paddle/webhook_adjustment_updated', [$this, 'handleAdjustmentUpdated'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_adjustment_created', [$this, 'handleAdjustmentCreated'], 10, 1); //done
+        webmakerr_add_action('webmakerr_cart/payments/paddle/webhook_adjustment_updated', [$this, 'handleAdjustmentUpdated'], 10, 1); //done
     }
 
     /**
@@ -108,7 +108,7 @@ class IPN
         }
 
         // Log webhook for debugging
-        do_action('fluent_cart/paddle_webhook_received', [
+        webmakerr_do_action('webmakerr_cart/paddle_webhook_received', [
             'event_type' => $eventType,
             'data' => $payload,
             'raw' => $rawPayload,
@@ -128,7 +128,7 @@ class IPN
         }
         
         if (has_action('fluent_cart/payments/paddle/webhook_' . $eventTypeFormatted)) {
-            do_action('fluent_cart/payments/paddle/webhook_' . $eventTypeFormatted, [
+            webmakerr_do_action('webmakerr_cart/payments/paddle/webhook_' . $eventTypeFormatted, [
                 'event_type' => $eventType,
                 'data' => $payload,
                 'raw' => $rawPayload,
@@ -215,7 +215,7 @@ class IPN
 
         $status = self::transformAdjustmentStatus(Arr::get($paddleAdjustment, 'status'));
 
-        return \FluentCart\App\Services\Payments\Refund::createOrRecordRefund([
+        return \Webmakerr\App\Services\Payments\Refund::createOrRecordRefund([
             'vendor_charge_id' => $paddleAdjustmentId,
             'payment_method'   => 'paddle',
             'status'           => $status,

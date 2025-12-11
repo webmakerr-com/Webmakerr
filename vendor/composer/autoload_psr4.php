@@ -6,6 +6,11 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Webmakerr\\OpenSpout\\' => array($vendorDir . '/openspout/openspout/src'),
+    'Webmakerr\\Framework\\' => array($vendorDir . '/wpfluent/framework/src/WPFluent'),
+    'Webmakerr\\Dev\\' => array($baseDir . '/dev'),
+    'Webmakerr\\App\\' => array($baseDir . '/app'),
+    'Webmakerr\\Api\\' => array($baseDir . '/api'),
     'FluentCart\\Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'FluentCart\\OpenSpout\\' => array($vendorDir . '/openspout/openspout/src', $vendorDir . '/openspout/openspout/src'),
     'FluentCart\\Framework\\' => array($vendorDir . '/wpfluent/framework/src/WPFluent', $vendorDir . '/wpfluent/framework/src/WPFluent'),
@@ -27,7 +32,4 @@ return array(
     'FluentCart\\FluentCart\\FluentCart\\Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
     'FluentCart\\FluentCart\\Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
     'FluentCart\\Faker\\' => array($vendorDir . '/fakerphp/faker/src/Faker'),
-    'FluentCart\\Dev\\' => array($baseDir . '/dev'),
-    'FluentCart\\App\\' => array($baseDir . '/app'),
-    'FluentCart\\Api\\' => array($baseDir . '/api'),
 );

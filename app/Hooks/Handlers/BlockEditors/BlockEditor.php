@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
-use FluentCart\Api\Contracts\CanEnqueue;
-use FluentCart\App\App;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Contracts\CanEnqueue;
+use Webmakerr\App\App;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 abstract class BlockEditor
 {

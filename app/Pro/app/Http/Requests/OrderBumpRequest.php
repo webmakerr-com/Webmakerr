@@ -3,7 +3,7 @@
 namespace FluentCartPro\App\Http\Requests;
 
 
-use FluentCart\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Foundation\RequestGuard;
 
 class OrderBumpRequest extends RequestGuard
 {

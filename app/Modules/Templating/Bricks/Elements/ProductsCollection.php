@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\Bricks\Elements;
+namespace Webmakerr\App\Modules\Templating\Bricks\Elements;
 
 use Bricks\Custom_Render_Element;
 use Bricks\Helpers;
 use Bricks\Query;
-use FluentCart\App\Modules\Data\ProductDataSetup;
-use FluentCart\App\Modules\Data\ProductQuery;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Modules\Templating\Bricks\BricksHelper;
-use FluentCart\App\Services\Renderer\RenderHelper;
-use FluentCart\App\Services\Renderer\ShopAppRenderer;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\Data\ProductDataSetup;
+use Webmakerr\App\Modules\Data\ProductQuery;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Modules\Templating\Bricks\BricksHelper;
+use Webmakerr\App\Services\Renderer\RenderHelper;
+use Webmakerr\App\Services\Renderer\ShopAppRenderer;
+use Webmakerr\Framework\Support\Arr;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 

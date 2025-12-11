@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Listeners;
+namespace Webmakerr\App\Listeners;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 use ReflectionClass;
 
 class Activity

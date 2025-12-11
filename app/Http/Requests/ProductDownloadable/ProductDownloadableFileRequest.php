@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Http\Requests\ProductDownloadable;
+namespace Webmakerr\App\Http\Requests\ProductDownloadable;
 
-use FluentCart\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Foundation\RequestGuard;
 
 class ProductDownloadableFileRequest extends RequestGuard
 {

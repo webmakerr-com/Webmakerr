@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Services\DateTime\DateTime;
 
 class CouponSeeder
 {

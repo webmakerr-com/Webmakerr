@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\Libs\Emogrifier;
+namespace Webmakerr\App\Services\Libs\Emogrifier;
 
 class Emogrifier
 {

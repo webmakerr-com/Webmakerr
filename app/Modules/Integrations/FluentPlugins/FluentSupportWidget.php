@@ -1,10 +1,10 @@
 <?php
-namespace FluentCart\App\Modules\Integrations\FluentPlugins;
+namespace Webmakerr\App\Modules\Integrations\FluentPlugins;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\URL;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\URL;
 
 class FluentSupportWidget
 {

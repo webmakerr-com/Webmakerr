@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\PluginInstaller;
+namespace Webmakerr\App\Services\PluginInstaller;
 
 class PaymentAddonManager
 {
@@ -33,7 +33,7 @@ class PaymentAddonManager
             return new \WP_Error('permission_denied', __('You do not have permission to install plugins.', 'fluent-cart'));
         }
 
-        $allowedAddons = apply_filters('fluent_cart/payment_addons', [
+        $allowedAddons = webmakerr_apply_filters('webmakerr_cart/payment_addons', [
             'paystack-for-fluent-cart',
             'sslcommerz-for-fluent-cart'
         ]);
@@ -159,7 +159,7 @@ class PaymentAddonManager
             'timeout' => 30,
             'headers' => [
                 'Accept' => 'application/vnd.github.v3+json',
-                'User-Agent' => 'FluentCart/' . FLUENTCART_VERSION
+                'User-Agent' => 'FluentCart/' . WEBMAKERR_VERSION
             ]
         ]);
 

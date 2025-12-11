@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\Services\URL;
-use FluentCart\App\Vite;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Services\URL;
+use Webmakerr\App\Vite;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Services\Permission\PermissionManager;
 
 class AdminMenuBarHandler
 {

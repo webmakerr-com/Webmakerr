@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
-use FluentCart\App\Services\Renderer\PricingTableRenderer;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\App\Services\Renderer\PricingTableRenderer;
 
 class PricingTableShortCode extends ShortCode
 {

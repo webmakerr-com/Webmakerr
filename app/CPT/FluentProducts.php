@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\CPT;
+namespace Webmakerr\App\CPT;
 
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Services\URL;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Services\URL;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class FluentProducts
 {
@@ -34,7 +34,7 @@ class FluentProducts
 
         add_action('init', function () {
 
-            $this->showStandaloneMenu = apply_filters('fluent_cart/show_standalone_product_menu', false);
+            $this->showStandaloneMenu = webmakerr_apply_filters('webmakerr_cart/show_standalone_product_menu', false);
 
             $this->registerPostType();
             $this->registerProductTaxonomies();
@@ -74,7 +74,7 @@ class FluentProducts
 
             wp_add_inline_style('wp-admin', $custom_css);
 
-            wp_register_script('fluent-products-inline-js', '', [], FLUENTCART_VERSION, true);
+            wp_register_script('fluent-products-inline-js', '', [], WEBMAKERR_VERSION, true);
             wp_enqueue_script('fluent-products-inline-js');
 
             $custom_js = "window.addEventListener('click', function (event) {
@@ -178,7 +178,7 @@ class FluentProducts
     public function registerPostType()
     {
         $productSlug = (new StoreSettings())->get('product_slug') ?? 'item';
-        $urlSlug = apply_filters('fluent_cart/front_url_slug', $productSlug, []);
+        $urlSlug = webmakerr_apply_filters('webmakerr_cart/front_url_slug', $productSlug, []);
 
         $singularName = __('Product', 'fluent-cart');
 
@@ -330,7 +330,7 @@ class FluentProducts
         add_action('in_admin_header', function () {
             ?>
             <div style="margin-left: -20px;" class="fc_taxonomy_menu" id="fct_admin_menu_holder">
-                <?php do_action('fluent_cart/admin_menu'); ?>
+                <?php webmakerr_do_action('webmakerr_cart/admin_menu'); ?>
             </div>
             <?php
         });

@@ -1,8 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
 ?>
 
 <h2 style='margin-bottom: 20px;'>Order Summary</h2>

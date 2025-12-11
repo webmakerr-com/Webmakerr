@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\Services\FileSystem\Drivers\S3\S3FileList;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Services\FileSystem\Drivers\S3\S3FileList;
+use Webmakerr\Framework\Support\Arr;
 
 class StorageDrivers
 {
@@ -15,7 +15,7 @@ class StorageDrivers
      */
     public function getSettings($driver)
     {
-        return apply_filters('fluent_cart/storage/get_global_storage_settings_' . $driver, [], []);
+        return webmakerr_apply_filters('webmakerr_cart/storage/get_global_storage_settings_' . $driver, [], []);
     }
 
     /**
@@ -25,7 +25,7 @@ class StorageDrivers
      */
     public function getAll()
     {
-        return apply_filters('fluent_cart/storage/get_global_storage_drivers', [], []);
+        return webmakerr_apply_filters('webmakerr_cart/storage/get_global_storage_drivers', [], []);
     }
 
     /**
@@ -62,7 +62,7 @@ class StorageDrivers
      */
     public function getStatus($driver)
     {
-        return apply_filters('fluent_cart/storage/get_global_storage_driver_status_' . $driver, [], []);
+        return webmakerr_apply_filters('webmakerr_cart/storage/get_global_storage_driver_status_' . $driver, [], []);
     }
 
     /**
@@ -76,6 +76,6 @@ class StorageDrivers
         $driver = Arr::get($data, 'driver');
         $settings = Arr::get($data, 'settings');
 
-        return apply_filters('fluent_cart/verify_driver_connect_info_' . sanitize_text_field($driver), $settings, []);
+        return webmakerr_apply_filters('webmakerr_cart/verify_driver_connect_info_' . sanitize_text_field($driver), $settings, []);
     }
 }

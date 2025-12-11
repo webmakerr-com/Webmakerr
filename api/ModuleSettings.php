@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class ModuleSettings
 {
@@ -18,7 +18,7 @@ class ModuleSettings
 
     public static function fileds()
     {
-        return apply_filters('fluent_cart/module_setting/fields', [], []);
+        return webmakerr_apply_filters('webmakerr_cart/module_setting/fields', [], []);
     }
 
     public static function saveSettings(array $data)
@@ -39,7 +39,7 @@ class ModuleSettings
             $savedSettings = [];
         }
 
-        $defaults = apply_filters('fluent_cart/module_setting/default_values', [], []);
+        $defaults = webmakerr_apply_filters('webmakerr_cart/module_setting/default_values', [], []);
 
         foreach ($defaults as $key => $value) {
             if (!isset($savedSettings[$key])) {

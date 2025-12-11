@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Database\Overrides;
+namespace Webmakerr\Database\Overrides;
 
 
-use FluentCart\Framework\Database\Query\WPDBConnection;
+use Webmakerr\Framework\Database\Query\WPDBConnection;
 
 class DbConnection extends WPDBConnection
 {

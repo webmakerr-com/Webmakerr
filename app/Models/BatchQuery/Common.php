@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Models\BatchQuery;
+namespace Webmakerr\App\Models\BatchQuery;
 
 class Common
 {

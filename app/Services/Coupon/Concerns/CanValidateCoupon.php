@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Coupon\Concerns;
+namespace Webmakerr\App\Services\Coupon\Concerns;
 
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\OrderService;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 use WP_Error;
 
 trait CanValidateCoupon
@@ -18,7 +18,7 @@ trait CanValidateCoupon
      */
     public function validate($couponCode)
     {
-        $couponCode = apply_filters('fluent_cart/coupon/validating_coupon', $couponCode,
+        $couponCode = webmakerr_apply_filters('webmakerr_cart/coupon/validating_coupon', $couponCode,
             [
                 'coupon_code'   => $couponCode,
                 'line_items'    => $this->lineItems,

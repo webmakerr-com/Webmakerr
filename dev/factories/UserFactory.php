@@ -3,7 +3,7 @@
 namespace Dev\Factories;
 
 use Dev\Factories\Core\Factory;
-use FluentCart\App\Models\User;
+use Webmakerr\App\Models\User;
 
 class UserFactory extends Factory
 {

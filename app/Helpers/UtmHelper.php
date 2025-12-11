@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\OrderOperation;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\OrderOperation;
+use Webmakerr\Framework\Support\Arr;
 
 class UtmHelper
 {
@@ -23,7 +23,7 @@ class UtmHelper
             'gclid'
         ];
 
-        return apply_filters('fluent_cart/utm/allowed_keys', $keys, []);
+        return webmakerr_apply_filters('webmakerr_cart/utm/allowed_keys', $keys, []);
     }
 
     public static function addUtmToOrder($orderId, $data = [])

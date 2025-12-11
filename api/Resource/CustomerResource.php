@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Customer;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Orm\Collection;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Collection;
+use Webmakerr\Framework\Support\Arr;
 
 class CustomerResource extends BaseResourceApi
 {
@@ -141,7 +141,7 @@ class CustomerResource extends BaseResourceApi
         }
 
         if (Arr::get($data, 'wp_user') === 'yes' && !$isUserAttached) {
-            $isUserCreated = \FluentCart\App\Services\AuthService::createUserFromCustomer($customer);
+            $isUserCreated = \Webmakerr\App\Services\AuthService::createUserFromCustomer($customer);
             if (is_wp_error($isUserCreated)) {
                 return static::makeErrorResponse([
                     ['code' => 423, 'message' => __('Failed to create user.', 'fluent-cart')]

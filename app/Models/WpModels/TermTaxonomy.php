@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Models\WpModels;
+namespace Webmakerr\App\Models\WpModels;
 
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Model;
-use FluentCart\App\Models\Product;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Model;
+use Webmakerr\App\Models\Product;
 
 class TermTaxonomy extends Model
 {

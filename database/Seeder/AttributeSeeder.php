@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\App\Models\AttributeGroup;
-use FluentCart\App\Models\AttributeTerm;
+use Webmakerr\App\Models\AttributeGroup;
+use Webmakerr\App\Models\AttributeTerm;
 
 class AttributeSeeder
 {

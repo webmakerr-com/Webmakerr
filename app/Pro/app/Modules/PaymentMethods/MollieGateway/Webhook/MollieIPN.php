@@ -2,13 +2,13 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\MollieGateway\Webhook;
 
-use FluentCart\Api\Confirmation;
-use FluentCart\App\Events\Order\OrderRefund;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Confirmation;
+use Webmakerr\App\Events\Order\OrderRefund;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\API\MollieAPI;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\Confirmations;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\MollieSettingsBase;
@@ -19,15 +19,15 @@ class MollieIPN
     public function init(): void
     {
         // Primary payment webhook handlers
-        add_action('fluent_cart/payments/mollie/webhook_payment_authorized', [$this, 'handlePaymentAuthorized'], 10, 1);
-        add_action('fluent_cart/payments/mollie/webhook_payment_paid', [$this, 'handlePaymentPaid'], 10, 1);
-        add_action('fluent_cart/payments/mollie/webhook_payment_failed', [$this, 'handlePaymentFailed'], 10, 1);
-        add_action('fluent_cart/payments/mollie/webhook_payment_canceled', [$this, 'handlePaymentCanceled'], 10, 1);
-        add_action('fluent_cart/payments/mollie/webhook_payment_expired', [$this, 'handlePaymentExpired'], 10, 1);
-        add_action('fluent_cart/payments/mollie/webhook_payment_refunded', [$this, 'handlePaymentRefunded'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/mollie/webhook_payment_authorized', [$this, 'handlePaymentAuthorized'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/mollie/webhook_payment_paid', [$this, 'handlePaymentPaid'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/mollie/webhook_payment_failed', [$this, 'handlePaymentFailed'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/mollie/webhook_payment_canceled', [$this, 'handlePaymentCanceled'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/mollie/webhook_payment_expired', [$this, 'handlePaymentExpired'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/mollie/webhook_payment_refunded', [$this, 'handlePaymentRefunded'], 10, 1);
 
         // Subscription related webhook handlers
-        add_action('fluent_cart/payments/mollie/webhook_subscription_payment_paid', [$this, 'handleSubscriptionPaymentPaid'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/mollie/webhook_subscription_payment_paid', [$this, 'handleSubscriptionPaymentPaid'], 10, 1);
         
     }
 
@@ -82,7 +82,7 @@ class MollieIPN
         if ($subscriptionId) {
             $eventName = 'webhook_subscription_payment_' . $status;
             if (has_action('fluent_cart/payments/mollie/' . $eventName)) {
-                do_action('fluent_cart/payments/mollie/' . $eventName, [
+                webmakerr_do_action('webmakerr_cart/payments/mollie/' . $eventName, [
                     'payment' => $payment,
                     'order'   => $order,
                 ]);
@@ -95,7 +95,7 @@ class MollieIPN
         $eventName = 'webhook_payment_' . $status;
         
         if (has_action('fluent_cart/payments/mollie/' . $eventName)) {
-            do_action('fluent_cart/payments/mollie/' . $eventName, [
+            webmakerr_do_action('webmakerr_cart/payments/mollie/' . $eventName, [
                 'payment' => $payment,
                 'order'   => $order,
             ]);
@@ -299,7 +299,7 @@ class MollieIPN
          );
 
 
-         do_action('fluent_cart/payment_failed', [
+         webmakerr_do_action('webmakerr_cart/payment_failed', [
              'order'   => $order,
              'transaction' => $transaction,
              'old_payment_status' => $oldStatus,
@@ -380,7 +380,7 @@ class MollieIPN
         }
 
         // Find FluentCart subscription by Mollie subscription ID
-        $fcSubscription = \FluentCart\App\Models\Subscription::query()
+        $fcSubscription = \Webmakerr\App\Models\Subscription::query()
             ->where('vendor_subscription_id', $mollieSubscriptionId)
             ->first();
 

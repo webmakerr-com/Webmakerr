@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Coupon;
+namespace Webmakerr\App\Services\Coupon;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Customer;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Framework\Support\Arr;
 
 class DiscountService
 {
@@ -194,7 +194,7 @@ class DiscountService
         $cartItems = $this->cartItems;
         $conditions = $coupon->conditions;
 
-        $canUse = apply_filters('fluent_cart/coupon/can_use_coupon', true, [
+        $canUse = webmakerr_apply_filters('webmakerr_cart/coupon/can_use_coupon', true, [
             'coupon'     => $coupon,
             'cart'       => $this->cart,
             'cart_items' => $cartItems,
@@ -209,7 +209,7 @@ class DiscountService
         }
 
         $preValidatedItems = array_filter($cartItems, function ($item) use ($coupon, $conditions) {
-            $willPreSkip = apply_filters('fluent_cart/coupon/will_skip_item', false, [
+            $willPreSkip = webmakerr_apply_filters('webmakerr_cart/coupon/will_skip_item', false, [
                 'item'   => $item,
                 'coupon' => $coupon,
                 'cart'   => $this->cart

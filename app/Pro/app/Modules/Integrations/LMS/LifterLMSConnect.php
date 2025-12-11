@@ -2,10 +2,10 @@
 
 namespace FluentCartPro\App\Modules\Integrations\LMS;
 
-use FluentCart\App\Modules\Integrations\BaseIntegrationManager;
-use FluentCart\App\Services\AuthService;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\Integrations\BaseIntegrationManager;
+use Webmakerr\App\Services\AuthService;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class LifterLMSConnect extends BaseIntegrationManager
 {
@@ -22,8 +22,8 @@ class LifterLMSConnect extends BaseIntegrationManager
         $this->description = __('Manage Course accesses with FluentCart + LifterLMS', 'fluent-cart-pro');
         $this->logo = Vite::getAssetUrl('images/integrations/lifterlms.svg');
 
-        add_filter('fluent_cart/integration/integration_options_lifter_courses', [$this, 'getCourseOptions'], 10, 2);
-        add_filter('fluent_cart/integration/integration_options_lifter_memberships', [$this, 'getMembershipOptions'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/integration/integration_options_lifter_courses', [$this, 'getCourseOptions'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/integration/integration_options_lifter_memberships', [$this, 'getMembershipOptions'], 10, 2);
     }
 
     public function isConfigured()

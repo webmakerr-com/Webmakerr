@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Http\Requests;
+namespace Webmakerr\App\Http\Requests;
 
-use FluentCart\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Foundation\RequestGuard;
 
 class CartRequest extends RequestGuard
 {

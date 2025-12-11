@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\WooCommerceMigrator\Contracts;
+namespace Webmakerr\App\Modules\WooCommerceMigrator\Contracts;
 
 interface MigrationServiceInterface
 {

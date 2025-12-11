@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\Shipping\Http\Requests;
+namespace Webmakerr\App\Modules\Shipping\Http\Requests;
 
-use FluentCart\Framework\Foundation\RequestGuard;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Support\Arr;
 
 class ShippingMethodRequest extends RequestGuard
 {

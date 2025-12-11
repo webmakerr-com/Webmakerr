@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
 
 if (!defined('ABSPATH')) {
     exit;

@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
 
 class PayPalSettingsBase extends BaseGatewaySettings
 {

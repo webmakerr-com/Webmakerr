@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Database\Migrations;
+namespace Webmakerr\Database\Migrations;
 
 
-use FluentCart\Framework\Database\Schema;
+use Webmakerr\Framework\Database\Schema;
 
 class MetaMigrator extends Migrator
 {
@@ -27,7 +27,7 @@ class MetaMigrator extends Migrator
     public static function dropTable()
     {
 
-        if(defined('FLUENTCART_PRESERVER_DEV_META')) {
+        if(defined('WEBMAKERR_PRESERVER_DEV_META')) {
             return;
         }
 

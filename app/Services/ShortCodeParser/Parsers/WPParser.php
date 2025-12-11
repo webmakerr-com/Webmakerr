@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser\Parsers;
+namespace Webmakerr\App\Services\ShortCodeParser\Parsers;
 
 class WPParser extends BaseParser
 {

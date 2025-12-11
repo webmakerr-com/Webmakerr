@@ -1,21 +1,21 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\Modules\PaymentMethods\ProGateways\PaddlePromo;
-use FluentCart\App\Modules\PaymentMethods\ProGateways\MolliePromo;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Modules\PaymentMethods\ProGateways\PaddlePromo;
+use Webmakerr\App\Modules\PaymentMethods\ProGateways\MolliePromo;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
 
 class PromoGatewaysHandler
 {
     public function register()
     {
-        add_action('fluent_cart/register_payment_methods', [$this, 'registerPromoGateways'], 20);
+        webmakerr_add_action('webmakerr_cart/register_payment_methods', [$this, 'registerPromoGateways'], 20);
     }
     
     public function registerPromoGateways()
     {
-        $isProActive = defined('FLUENTCART_PRO_PLUGIN_VERSION');   
+        $isProActive = defined('WEBMAKERR_PRO_PLUGIN_VERSION');   
 
         foreach ([
             'paddle' => PaddlePromo::class,

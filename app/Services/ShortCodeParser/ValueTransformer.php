@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser;
+namespace Webmakerr\App\Services\ShortCodeParser;
 
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 trait ValueTransformer
 {

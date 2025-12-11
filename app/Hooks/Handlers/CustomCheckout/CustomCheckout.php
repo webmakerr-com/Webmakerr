@@ -1,22 +1,22 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\CustomCheckout;
+namespace Webmakerr\App\Hooks\Handlers\CustomCheckout;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class CustomCheckout
 {
     public function register()
     {
-        add_action('fluent_cart_action_custom_checkout', [$this, 'handleCustomCheckoutRedirect'], 10, 1);
+        webmakerr_add_action('webmakerr_cart_action_custom_checkout', [$this, 'handleCustomCheckoutRedirect'], 10, 1);
     }
 
     /*

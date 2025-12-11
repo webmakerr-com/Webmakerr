@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductVariationResource extends BaseResourceApi
 {

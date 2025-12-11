@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser\Parsers;
+namespace Webmakerr\App\Services\ShortCodeParser\Parsers;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class UserParser extends BaseParser
 {

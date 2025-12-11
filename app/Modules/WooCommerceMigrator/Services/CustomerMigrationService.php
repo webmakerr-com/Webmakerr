@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\WooCommerceMigrator\Services;
+namespace Webmakerr\App\Modules\WooCommerceMigrator\Services;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class CustomerMigrationService extends BaseMigrationService
 {

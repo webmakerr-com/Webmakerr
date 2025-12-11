@@ -2,15 +2,15 @@
 
 namespace FluentCartPro\App\Hooks\Handlers;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 
 class SubscriptionRenewalHandler
 {
@@ -18,9 +18,9 @@ class SubscriptionRenewalHandler
     {
 
         // url: /?fluent-cart=reactivate-subscription&subscription_hash=2e326b7585e71ee7e71ce92f08ab5f0d
-        add_action('fluent_cart_action_reactivate-subscription', [$this, 'handleSubscriptionReactivationRedirect'], 10, 1);
-        add_action('fluent_cart/subscription_reactivation_order_created', [$this, 'handleSubscriptionReactivationOrderCreated'], 10, 1);
-        add_action('fluent_cart/subscription_renewal_cart_completed', [$this, 'handleSubscriptionRenewalCartCompleted'], 10, 1);
+        webmakerr_add_action('webmakerr_cart_action_reactivate-subscription', [$this, 'handleSubscriptionReactivationRedirect'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/subscription_reactivation_order_created', [$this, 'handleSubscriptionReactivationOrderCreated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/subscription_renewal_cart_completed', [$this, 'handleSubscriptionRenewalCartCompleted'], 10, 1);
 
     }
 
@@ -203,7 +203,7 @@ class SubscriptionRenewalHandler
                 // we should let the users to reactivate their subscription if within 60 days of the expiration
                 $expirationDays = (int)((time() - strtotime($nextBillingDate)) / 86400);
 
-                $samePriceDaysLimit = apply_filters('fluent_cart/subscription/reactivation_same_price_days_limit', 60, [
+                $samePriceDaysLimit = webmakerr_apply_filters('webmakerr_cart/subscription/reactivation_same_price_days_limit', 60, [
                     'subscription' => $subscription
                 ]);
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Models;
-use FluentCart\App\Models\Concerns\CanUpdateBatch;
+namespace Webmakerr\App\Models;
+use Webmakerr\App\Models\Concerns\CanUpdateBatch;
 
 /**
  * AppliedCoupon Model - DB Model for Applied Coupons table
  *
  * Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

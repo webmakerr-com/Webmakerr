@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Api\Validator;
+namespace Webmakerr\Api\Validator;
 
 class FluentMetaValidator extends Validation
 {

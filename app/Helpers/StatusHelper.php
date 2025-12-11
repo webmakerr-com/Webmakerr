@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\App\Events\Order\OrderPaid;
-use FluentCart\App\Events\Order\OrderStatusUpdated;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Events\Order\OrderPaid;
+use Webmakerr\App\Events\Order\OrderStatusUpdated;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 
 
 class StatusHelper
@@ -154,7 +154,7 @@ class StatusHelper
                 $relatedCart->completed_at = DateTime::now()->format('Y-m-d H:i:s');
                 $relatedCart->save();
 
-                do_action('fluent_cart/cart_completed', [
+                webmakerr_do_action('webmakerr_cart/cart_completed', [
                     'cart'  => $relatedCart,
                     'order' => $this->order,
                 ]);

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services\Report;
+namespace Webmakerr\App\Services\Report;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Services\Report\Concerns\Subscription\FutureRenewals;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Services\Report\Concerns\Subscription\FutureRenewals;
 
 class SubscriptionReportService extends ReportService
 {

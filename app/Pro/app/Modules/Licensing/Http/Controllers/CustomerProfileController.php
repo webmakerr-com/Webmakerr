@@ -2,10 +2,10 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Http\Controllers;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Framework\Http\Controller;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Framework\Http\Controller;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseSite;
@@ -94,7 +94,7 @@ class CustomerProfileController extends Controller
             ]
         ];
 
-        $hooksContents = apply_filters('fluent_cart/customer/license_details_section_parts', [
+        $hooksContents = webmakerr_apply_filters('webmakerr_cart/customer/license_details_section_parts', [
             'before_summary'     => '',
             'after_summary'      => '',
             'end_of_details'     => '',
@@ -189,7 +189,7 @@ class CustomerProfileController extends Controller
                 $activation->delete();
                 $license->recountActivations();
 
-                do_action('fluent_cart_sl/site_license_deactivated', [
+                webmakerr_do_action('webmakerr_cart_sl/site_license_deactivated', [
                     'site'    => $site,
                     'license' => $license
                 ]);

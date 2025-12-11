@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\Services\Renderer\CheckoutFieldsSchema;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Services\Renderer\CheckoutFieldsSchema;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class CheckoutFieldsController extends Controller
 {

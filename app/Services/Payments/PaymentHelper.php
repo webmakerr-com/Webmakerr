@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Services\Payments;
+namespace Webmakerr\App\Services\Payments;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Support\Arr;
 
 class PaymentHelper
 {
@@ -21,7 +21,7 @@ class PaymentHelper
     public function listenerUrl($args = [])
     {
         $listener = '?fct_payment_listener=1&method=' . $this->slug;
-        return apply_filters('fluent_cart_ipn_url_' . $this->slug, [
+        return webmakerr_apply_filters('webmakerr_cart_ipn_url_' . $this->slug, [
             'listener_url' => site_url($listener)
         ]);
     }
@@ -57,7 +57,7 @@ class PaymentHelper
         $paymentMethod = Arr::get($orderData, 'others._fct_pay_method');
         $isZeroPayment = $cartCheckoutHelper->getItemsAmountTotal(false, false) + $extraCharge <= 0;
         if ($isZeroPayment && $cartCheckoutHelper->hasSubscription() !== 'yes') {
-            $paymentMethod = apply_filters('fluent_cart/default_payment_method_for_zero_payment', 'offline_payment', []);
+            $paymentMethod = webmakerr_apply_filters('webmakerr_cart/default_payment_method_for_zero_payment', 'offline_payment', []);
         }
 
         if (!GatewayManager::has($paymentMethod)) {

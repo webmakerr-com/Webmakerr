@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\Framework\Database\Orm\Relations\HasOne;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\Framework\Database\Orm\Relations\HasOne;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  *  OrderTransaction Model - DB Model for Transactions
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -108,7 +108,7 @@ class OrderTransaction extends Model
     public function getUrlAttribute($value)
     {
 
-        return apply_filters('fluent_cart/transaction/url_' . $this->getAttribute('payment_method'), '', [
+        return webmakerr_apply_filters('webmakerr_cart/transaction/url_' . $this->getAttribute('payment_method'), '', [
             'transaction'      => $this,
             'payment_mode'     => $this->payment_mode,
             'vendor_charge_id' => $this->vendor_charge_id,
@@ -180,7 +180,7 @@ class OrderTransaction extends Model
         ], (new StoreSettings())->getReceiptPage());
 
         if ($filtered) {
-            $url = apply_filters('fluentcart/transaction/receipt_page_url', $url, [
+            $url = webmakerr_apply_filters('webmakerr/transaction/receipt_page_url', $url, [
                 'transaction' => $this,
                 'order'       => $this->order,
             ]);

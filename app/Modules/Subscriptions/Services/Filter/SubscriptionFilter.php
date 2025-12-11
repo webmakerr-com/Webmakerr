@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Modules\Subscriptions\Services\Filter;
+namespace Webmakerr\App\Modules\Subscriptions\Services\Filter;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\Api\PaymentMethods;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\Filter\BaseFilter;
-use FluentCart\App\Services\Filter\LabelFilter;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\Api\PaymentMethods;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\Filter\BaseFilter;
+use Webmakerr\App\Services\Filter\LabelFilter;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Support\Str;
 
 class SubscriptionFilter extends BaseFilter
 {

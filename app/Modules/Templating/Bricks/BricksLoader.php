@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\Bricks;
+namespace Webmakerr\App\Modules\Templating\Bricks;
 
 use Bricks\Elements;
 use Bricks\Query;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class BricksLoader
 {
@@ -18,7 +18,7 @@ class BricksLoader
 
         (new DynamicData())->register();
 
-        add_filter('fluent_cart/template/disable_taxonomy_fallback', function ($result) {
+        webmakerr_add_filter('webmakerr_cart/template/disable_taxonomy_fallback', function ($result) {
             $bricks_data = \Bricks\Database::get_template_data('archive');
 
             if ($bricks_data) {
@@ -28,7 +28,7 @@ class BricksLoader
             return $result;
         });
 
-        add_filter('fluent_cart/products_views/preload_collection_bricks', [$this, 'preloadProductCollectionsAjax'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/products_views/preload_collection_bricks', [$this, 'preloadProductCollectionsAjax'], 10, 2);
 
     }
 
@@ -46,8 +46,8 @@ class BricksLoader
         ];
 
         foreach ($elements as $elementKey => $elementName) {
-            $elementFile = FLUENTCART_PLUGIN_PATH . "app/Modules/Templating/Bricks/Elements/$elementKey.php";
-            $className = "\\FluentCart\\App\\Modules\\Templating\\Bricks\\Elements\\$elementKey";
+            $elementFile = WEBMAKERR_PLUGIN_PATH . "app/Modules/Templating/Bricks/Elements/$elementKey.php";
+            $className = "\\Webmakerr\\App\\Modules\\Templating\\Bricks\\Elements\\$elementKey";
             Elements::register_element($elementFile, $elementName, $className);
         }
 

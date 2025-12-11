@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Listeners\Order;
+namespace Webmakerr\App\Listeners\Order;
 
 class OrderRefunded
 {
-    public static function handle(\FluentCart\App\Events\Order\OrderRefund $event)
+    public static function handle(\Webmakerr\App\Events\Order\OrderRefund $event)
     {
         if ($event->order) {
             $event->order->syncOrderAfterRefund($event->type, $event->refundedAmount);

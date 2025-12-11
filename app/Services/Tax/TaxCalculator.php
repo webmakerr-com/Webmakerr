@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Services\Tax;
+namespace Webmakerr\App\Services\Tax;
 
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\TaxRate;
-use FluentCart\App\Models\TaxClass;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Modules\Tax\TaxModule;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\TaxRate;
+use Webmakerr\App\Models\TaxClass;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Modules\Tax\TaxModule;
 
 class TaxCalculator
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\App\Services\Localization\LocalizationManager;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\App\Services\Localization\LocalizationManager;
 
 class EUVatRenderer
 {

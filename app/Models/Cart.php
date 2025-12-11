@@ -1,25 +1,25 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\Api\Cookie\Cookie;
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Hasher\Hash;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Services\CheckoutService;
-use FluentCart\App\Services\OrderService;
-use FluentCart\Framework\Database\Orm\Relations\BelongsTo;
-use FluentCart\Framework\Database\Orm\SoftDeletes;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Cookie\Cookie;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Hasher\Hash;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Services\CheckoutService;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\Framework\Database\Orm\Relations\BelongsTo;
+use Webmakerr\Framework\Database\Orm\SoftDeletes;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  *  Cart Session Model - DB Model for Carts
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -190,12 +190,12 @@ class Cart extends Model
 
         $this->reValidateCoupons();
 
-        do_action('fluent_cart/cart/item_added', [
+        webmakerr_do_action('webmakerr_cart/cart/item_added', [
             'cart' => $this,
             'item' => $item
         ]);
 
-        do_action('fluent_cart/cart/cart_data_items_updated', [
+        webmakerr_do_action('webmakerr_cart/cart/cart_data_items_updated', [
             'cart'       => $this,
             'scope'      => 'item_added',
             'scope_data' => $item
@@ -230,19 +230,19 @@ class Cart extends Model
 
         if ($triggerEvent) {
             $this->reValidateCoupons();
-            do_action('fluent_cart/cart/item_removed', [
+            webmakerr_do_action('webmakerr_cart/cart/item_removed', [
                 'cart'         => $this,
                 'variation_id' => $variationId,
                 'extra_args'   => $extraArgs,
                 'removed_item' => $removingItem
             ]);
         } else {
-            do_action('fluent_cart/checkout/cart_amount_updated', [
+            webmakerr_do_action('webmakerr_cart/checkout/cart_amount_updated', [
                 'cart' => $this
             ]);
         }
 
-        do_action('fluent_cart/cart/cart_data_items_updated', [
+        webmakerr_do_action('webmakerr_cart/cart/cart_data_items_updated', [
             'cart'       => $this,
             'scope'      => 'item_removed',
             'scope_data' => $variationId
@@ -297,7 +297,7 @@ class Cart extends Model
 
         if ($validate) {
             $canPurchase = $variation->canPurchase($quantity);
-            $canPurchase = apply_filters('fluent_cart/cart/can_purchase', $canPurchase, [
+            $canPurchase = webmakerr_apply_filters('webmakerr_cart/cart/can_purchase', $canPurchase, [
                 'cart'      => $this,
                 'variation' => $variation,
                 'quantity'  => $quantity
@@ -357,7 +357,7 @@ class Cart extends Model
             return (int)Arr::get($item, 'discount_total', 0);
         }, $this->cart_data ?? []));
 
-        $discountService = new \FluentCart\App\Services\Coupon\DiscountService($this);
+        $discountService = new \Webmakerr\App\Services\Coupon\DiscountService($this);
         $discountService->resetIndividualItemsDiscounts();
         $discountService->applyCouponCodes($this->coupons);
 
@@ -378,12 +378,12 @@ class Cart extends Model
             return (int)Arr::get($item, 'discount_total', 0);
         }, $this->cart_data ?? []));
 
-        do_action('fluent_cart/checkout/cart_amount_updated', [
+        webmakerr_do_action('webmakerr_cart/checkout/cart_amount_updated', [
             'cart' => $this
         ]);
 
         if ($newDiscountTotal != $prevDiscountTotal) {
-            do_action('fluent_cart/cart/cart_data_items_updated', [
+            webmakerr_do_action('webmakerr_cart/cart/cart_data_items_updated', [
                 'cart'       => $this,
                 'scope'      => 'discounts_recalculated',
                 'scope_data' => $this->coupons
@@ -408,7 +408,7 @@ class Cart extends Model
             return !in_array($code, $removeCodes);
         });
 
-        $discountService = new \FluentCart\App\Services\Coupon\DiscountService($this);
+        $discountService = new \Webmakerr\App\Services\Coupon\DiscountService($this);
 
         $discountService->resetIndividualItemsDiscounts();
         $discountService->revalidateCoupons();
@@ -426,12 +426,12 @@ class Cart extends Model
 
         $this->save();
 
-        do_action('fluent_cart/checkout/cart_amount_updated', [
+        webmakerr_do_action('webmakerr_cart/checkout/cart_amount_updated', [
             'cart' => $this
         ]);
 
 
-        do_action('fluent_cart/cart/cart_data_items_updated', [
+        webmakerr_do_action('webmakerr_cart/cart/cart_data_items_updated', [
             'cart'       => $this,
             'scope'      => 'remove_coupon',
             'scope_data' => $removeCodes
@@ -446,7 +446,7 @@ class Cart extends Model
             return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'fluent-cart'));
         }
 
-        $discountService = new \FluentCart\App\Services\Coupon\DiscountService($this);
+        $discountService = new \Webmakerr\App\Services\Coupon\DiscountService($this);
         $result = $discountService->applyCouponCodes($codes);
         if (is_wp_error($result)) {
             return $result;
@@ -466,11 +466,11 @@ class Cart extends Model
 
         $this->save();
 
-        do_action('fluent_cart/checkout/cart_amount_updated', [
+        webmakerr_do_action('webmakerr_cart/checkout/cart_amount_updated', [
             'cart' => $this
         ]);
 
-        do_action('fluent_cart/cart/cart_data_items_updated', [
+        webmakerr_do_action('webmakerr_cart/cart/cart_data_items_updated', [
             'cart'       => $this,
             'scope'      => 'apply_coupons',
             'scope_data' => $codes
@@ -616,7 +616,7 @@ class Cart extends Model
             $total = 0;
         }
 
-        return apply_filters('fluent_cart/cart/estimated_total', $total, [
+        return webmakerr_apply_filters('webmakerr_cart/cart/estimated_total', $total, [
             'cart' => $this
         ]);
     }

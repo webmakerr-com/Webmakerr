@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer\Receipt;
+namespace Webmakerr\App\Services\Renderer\Receipt;
 
-use FluentCart\App\Models\OrderMeta;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\OrderMeta;
+use Webmakerr\Framework\Support\Arr;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\App\Services\DateTime\DateTime;
 
 class ReceiptRenderer
 {
@@ -144,7 +144,7 @@ class ReceiptRenderer
 
 
         <?php if ($this->is_first_time) {
-        do_action('fluent_cart/order/receipt_viewed', [
+        webmakerr_do_action('webmakerr_cart/order/receipt_viewed', [
                 'order'           => $order,
                 'order_operation' => $this->order_operation
         ]);
@@ -496,7 +496,7 @@ class ReceiptRenderer
                             <?php echo esc_html($item['quantity']); ?>
                         </td>
                         <td style="padding: 12px 8px;border: none;border-bottom: 1px solid #dee2e6;text-align: right">
-                            <?php echo esc_html(\FluentCart\Api\CurrencySettings::getFormattedPrice($item['unit_price'])); ?>
+                            <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($item['unit_price'])); ?>
                         </td>
                         <td style="padding: 12px 8px;border: none;border-bottom: 1px solid #dee2e6;text-align: right">
                             <?php echo esc_html($item['formatted_total']); ?>
@@ -542,7 +542,7 @@ class ReceiptRenderer
                     <?php echo esc_html__('Subtotal', 'fluent-cart'); ?>
                 </td>
                 <td style="font-weight:700;padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
-                    <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->subtotal));
+                    <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->subtotal));
                     ?>
                 </td>
             </tr>
@@ -558,7 +558,7 @@ class ReceiptRenderer
                     <?php echo esc_html__('Discount', 'fluent-cart'); ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
-                    - <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->manual_discount_total + $order->coupon_discount_total)); ?>
+                    - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->manual_discount_total + $order->coupon_discount_total)); ?>
                 </td>
             </tr>
         <?php endif;
@@ -573,7 +573,7 @@ class ReceiptRenderer
                     <?php echo esc_html__('Shipping', 'fluent-cart'); ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
-                    <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->shipping_total)); ?>
+                    <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->shipping_total)); ?>
                 </td>
             </tr>
         <?php endif;
@@ -590,7 +590,7 @@ class ReceiptRenderer
                     ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
-                    <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->tax_total)); ?>
+                    <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->tax_total)); ?>
                 </td>
             </tr>
         <?php endif;
@@ -607,7 +607,7 @@ class ReceiptRenderer
                     ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
-                    <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->shipping_tax)); ?>
+                    <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->shipping_tax)); ?>
                 </td>
             </tr>
         <?php endif;
@@ -622,7 +622,7 @@ class ReceiptRenderer
                     <?php echo esc_html__('Refund', 'fluent-cart'); ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
-                    - <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
+                    - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
                 </td>
             </tr>
         <?php endif;
@@ -637,7 +637,7 @@ class ReceiptRenderer
                 <?php echo esc_html__('Total', 'fluent-cart'); ?>
             </td>
             <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
-                <?php echo esc_html(\FluentCart\Api\CurrencySettings::getFormattedPrice($order->total_amount - $order->total_refund)); ?>
+                <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($order->total_amount - $order->total_refund)); ?>
             </td>
         </tr>
         <?php
@@ -652,7 +652,7 @@ class ReceiptRenderer
                 <?php echo esc_html__('Amount Paid', 'fluent-cart'); ?>
             </td>
             <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
-                <?php echo esc_html(\FluentCart\Api\CurrencySettings::getFormattedPrice($order->total_paid - $order->total_refund)); ?>
+                <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($order->total_paid - $order->total_refund)); ?>
             </td>
         </tr>
         <?php
@@ -722,7 +722,7 @@ class ReceiptRenderer
                                 ?>
                             </td>
                             <td style="padding: 10px;border:none;border-bottom: 1px solid #dee2e6;text-align: right;">
-                                <?php echo esc_html(\FluentCart\Api\CurrencySettings::getFormattedPrice($transaction->total)); ?>
+                                <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($transaction->total)); ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

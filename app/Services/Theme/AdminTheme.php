@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\Theme;
+namespace Webmakerr\App\Services\Theme;
 
-use FluentCart\App\App;
+use Webmakerr\App\App;
 
 class AdminTheme
 {

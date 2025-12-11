@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\Models\Product;
-use FluentCart\Framework\Database\Orm\Builder;
+use Webmakerr\App\Models\Product;
+use Webmakerr\Framework\Database\Orm\Builder;
 
 class VariationFilter extends BaseFilter
 {

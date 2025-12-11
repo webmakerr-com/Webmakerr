@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
 /**
  *  Meta Model - DB Model for Meta table

@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\Bricks\Elements;
+namespace Webmakerr\App\Modules\Templating\Bricks\Elements;
 
 use Bricks\Element;
-use FluentCart\App\Modules\Data\ProductDataSetup;
-use FluentCart\App\Services\Renderer\ProductRenderer;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\Data\ProductDataSetup;
+use Webmakerr\App\Services\Renderer\ProductRenderer;
+use Webmakerr\Framework\Support\Arr;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
@@ -164,7 +164,7 @@ class ProductStock extends Element
             );
         }
 
-        add_filter('fluent_cart/product_stock_availability', [$this, 'simulateAvailability'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/product_stock_availability', [$this, 'simulateAvailability'], 10, 2);
 
         $productRender = new ProductRenderer($product);
 

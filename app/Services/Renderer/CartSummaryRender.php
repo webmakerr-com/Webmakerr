@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Services\Tax\TaxManager;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Services\Tax\TaxManager;
+use Webmakerr\Framework\Support\Arr;
 
 class CartSummaryRender
 {
@@ -124,7 +124,7 @@ class CartSummaryRender
 
                 <?php $this->showManualDiscount(); ?>
 
-                <?php do_action('fluent_cart/checkout/before_summary_total', [ 'cart' => $this->cart ]); ?>
+                <?php webmakerr_do_action('webmakerr_cart/checkout/before_summary_total', [ 'cart' => $this->cart ]); ?>
 
                 <?php if (!$hideCouponField): ?>
                     <li>

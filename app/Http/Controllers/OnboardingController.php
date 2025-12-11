@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Invokable\DummyProduct;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\CPT\Pages;
-use FluentCart\App\Helpers\Helper as HelperService;
-use FluentCart\App\Http\Requests\CreatePageRequest;
-use FluentCart\Framework\Foundation\Async;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Invokable\DummyProduct;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\CPT\Pages;
+use Webmakerr\App\Helpers\Helper as HelperService;
+use Webmakerr\App\Http\Requests\CreatePageRequest;
+use Webmakerr\Framework\Foundation\Async;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class OnboardingController extends Controller
 {

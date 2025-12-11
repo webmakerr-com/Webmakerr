@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 class CheckoutService
 {

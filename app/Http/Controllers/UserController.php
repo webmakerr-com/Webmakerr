@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\UserResource;
-use FluentCart\App\Http\Requests\UserRequest;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\Api\Resource\UserResource;
+use Webmakerr\App\Http\Requests\UserRequest;
+use Webmakerr\Framework\Http\Request\Request;
 
 class UserController
 {

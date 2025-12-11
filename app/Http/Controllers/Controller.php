@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\User;
-use FluentCart\App\Services\RoleManager;
-use FluentCart\Framework\Http\Controller as BaseController;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\User;
+use Webmakerr\App\Services\RoleManager;
+use Webmakerr\Framework\Http\Controller as BaseController;
 
 abstract class Controller extends BaseController
 {

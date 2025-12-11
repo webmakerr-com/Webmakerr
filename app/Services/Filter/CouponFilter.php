@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Str;
 
 class CouponFilter extends BaseFilter
 {

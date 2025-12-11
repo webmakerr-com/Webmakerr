@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Models;
 
-use FluentCart\App\Models\Model as BaseModel;
+use Webmakerr\App\Models\Model as BaseModel;
 
 class Model extends BaseModel
 {

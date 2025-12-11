@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\App;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\App;
 
 class EditorShortCodeHelper
 {
@@ -196,7 +196,7 @@ class EditorShortCodeHelper
             static::getSettingsShortCodes(),
         ];
 
-        $groups = apply_filters('fluent_cart/confirmation_shortcodes', $groups, []);
+        $groups = webmakerr_apply_filters('webmakerr_cart/confirmation_shortcodes', $groups, []);
 
         $data = [
             'data' => $groups
@@ -255,7 +255,7 @@ class EditorShortCodeHelper
             'transaction' => static::getTransactionShortCodes(),
             'settings'    => static::getSettingsShortCodes()
         ];
-        return apply_filters('fluent_cart/editor_shortcodes', $shortCodes);
+        return webmakerr_apply_filters('webmakerr_cart/editor_shortcodes', $shortCodes);
     }
 
 

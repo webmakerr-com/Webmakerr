@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\Resource\ShopResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\Renderer\ProductRenderer;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\DirectCheckoutShortcode;
+use Webmakerr\Api\Resource\ShopResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\Renderer\ProductRenderer;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\DirectCheckoutShortcode;
 
 class SingleProductShortCode extends ShortCode
 {
@@ -78,7 +78,7 @@ class SingleProductShortCode extends ShortCode
         return [
             'fluentcart_single_product_vars' => [
                 'trans'                      => TransStrings::singleProductPageString(),
-                'cart_button_text'           => apply_filters('fluent_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
+                'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
                 // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
                 'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
                 'in_stock_status'            => Helper::IN_STOCK,

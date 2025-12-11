@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\StorageDrivers;
-use FluentCart\App\Services\FileSystem\FileManager;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Hooks\Handlers\GlobalStorageHandler;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StorageDrivers;
+use Webmakerr\App\Services\FileSystem\FileManager;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Hooks\Handlers\GlobalStorageHandler;
+use Webmakerr\Framework\Support\Arr;
 
 class StorageController extends Controller
 {

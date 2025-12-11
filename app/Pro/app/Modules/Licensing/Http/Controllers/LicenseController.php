@@ -2,15 +2,15 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Http\Controllers;
 
-use FluentCart\Framework\Http\Controller;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Http\Controller;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Services\LicenseHelper;
 use FluentCartPro\App\Modules\Licensing\Services\LicenseManager;
 use FluentCartPro\App\Services\PluginManager\FluentLicensing;
-use FluentCart\App\Services\Filter\LicenseFilter;
+use Webmakerr\App\Services\Filter\LicenseFilter;
 
 class LicenseController extends Controller
 {
@@ -225,7 +225,7 @@ class LicenseController extends Controller
 
         $license->delete();
 
-        do_action('fluent_cart_sl/license_deleted', [
+        webmakerr_do_action('webmakerr_cart_sl/license_deleted', [
             'license' => $license
         ]);
 

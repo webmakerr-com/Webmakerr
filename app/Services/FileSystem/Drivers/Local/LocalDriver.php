@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\FileSystem\Drivers\Local;
+namespace Webmakerr\App\Services\FileSystem\Drivers\Local;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Modules\StorageDrivers\BaseStorageDriver;
-use FluentCart\App\Modules\StorageDrivers\Local\Local as LocalStorageDriver;
-use FluentCart\App\Services\FileSystem\Drivers\BaseDriver;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Modules\StorageDrivers\BaseStorageDriver;
+use Webmakerr\App\Modules\StorageDrivers\Local\Local as LocalStorageDriver;
+use Webmakerr\App\Services\FileSystem\Drivers\BaseDriver;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class LocalDriver extends BaseDriver
 {
@@ -126,7 +126,7 @@ class LocalDriver extends BaseDriver
 
         $blockedExts = ['php','phtml','html','htm','svg','exe','sh','bat','cmd','dll'];
 
-        $blockedExts = apply_filters('fluent_cart/local_file_blocked_extensions',$blockedExts,[
+        $blockedExts = webmakerr_apply_filters('webmakerr_cart/local_file_blocked_extensions',$blockedExts,[
             'localFilePath' => $localFilePath,
             'uploadToFilePath' => $uploadToFilePath,
             'fileInfo' => $fileInfo,

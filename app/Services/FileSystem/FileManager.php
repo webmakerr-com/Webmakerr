@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\FileSystem;
+namespace Webmakerr\App\Services\FileSystem;
 
-use FluentCart\Api\StorageDrivers;
-use FluentCart\App\Services\FileSystem\Drivers\BaseDriver;
-use FluentCart\App\Services\FileSystem\Drivers\Local\LocalDriver;
-use FluentCart\App\Services\FileSystem\Drivers\S3\S3Driver;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StorageDrivers;
+use Webmakerr\App\Services\FileSystem\Drivers\BaseDriver;
+use Webmakerr\App\Services\FileSystem\Drivers\Local\LocalDriver;
+use Webmakerr\App\Services\FileSystem\Drivers\S3\S3Driver;
+use Webmakerr\Framework\Support\Arr;
 
 class FileManager
 {

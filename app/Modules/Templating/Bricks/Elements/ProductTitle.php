@@ -1,5 +1,5 @@
 <?php
-namespace FluentCart\App\Modules\Templating\Bricks\Elements;
+namespace Webmakerr\App\Modules\Templating\Bricks\Elements;
 
 use Bricks\Element;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Vite;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Vite;
 
 class FrontendView
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\FrontendControllers;
+namespace Webmakerr\App\Http\Controllers\FrontendControllers;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\OrderService;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 
 class CustomerSubscriptionController extends BaseFrontendController
@@ -148,7 +148,7 @@ class CustomerSubscriptionController extends BaseFrontendController
             return OrderService::transformTransaction($transaction);
         });
 
-        $formattedData = apply_filters('fluent_cart/customer_portal/subscription_data', $formattedData, [
+        $formattedData = webmakerr_apply_filters('webmakerr_cart/customer_portal/subscription_data', $formattedData, [
             'subscription' => $subscription,
             'customer'     => $customer
         ]);

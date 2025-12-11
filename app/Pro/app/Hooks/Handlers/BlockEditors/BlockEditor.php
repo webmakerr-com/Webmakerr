@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Hooks\Handlers\BlockEditors;
 
-use FluentCart\App\Hooks\Handlers\BlockEditors\BlockEditor as BaseBlockEditor;
+use Webmakerr\App\Hooks\Handlers\BlockEditors\BlockEditor as BaseBlockEditor;
 use FluentCartPro\App\Utils\Enqueuer\Enqueue;
 use FluentCartPro\App\Utils\Enqueuer\Vite;
 

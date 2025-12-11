@@ -1,8 +1,8 @@
 <?php
 
 namespace FluentCartPro\App\Http\Policies;
-use FluentCart\App\Http\Policies\Policy;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\App\Http\Policies\Policy;
+use Webmakerr\Framework\Http\Request\Request;
 
 
 class OrderBumpPolicy extends Policy

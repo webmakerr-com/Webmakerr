@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\App;
-use FluentCart\Framework\Support\Str;
-use FluentCart\App\Helpers\CurrenciesHelper;
-use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
-use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\DirectCheckoutShortcode;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\App\Helpers\CurrenciesHelper;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\DirectCheckoutShortcode;
 
 class PricingTableRenderer
 {

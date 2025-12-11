@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Models;
-use FluentCart\Framework\Support\Str;
+namespace Webmakerr\App\Models;
+use Webmakerr\Framework\Support\Str;
 
 /**
  *  Meta Model - DB Model for Meta table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

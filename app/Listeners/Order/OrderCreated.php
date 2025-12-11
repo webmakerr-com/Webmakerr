@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Listeners\Order;
+namespace Webmakerr\App\Listeners\Order;
 
-use FluentCart\App\Models\Customer;
+use Webmakerr\App\Models\Customer;
 
 class OrderCreated
 {
-    public static function handle(\FluentCart\App\Events\Order\OrderCreated $event)
+    public static function handle(\Webmakerr\App\Events\Order\OrderCreated $event)
     {
         if ($event->order->customer_id) {
             $customer = Customer::query()->where('id', $event->order->customer_id)->first();

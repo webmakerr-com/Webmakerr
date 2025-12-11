@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanSearch;
 
 /**
  *  Order Meta Model - DB Model for Order Meta table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -49,7 +49,7 @@ class OrderMeta extends Model
 	/**
 	 * One2One: OrderTransaction belongs to one Order
 	 *
-	 * @return \FluentCart\Framework\Database\Orm\Relations\BelongsTo
+	 * @return \Webmakerr\Framework\Database\Orm\Relations\BelongsTo
 	 */
 	public function order() {
 		return $this->belongsTo( Order::class, 'order_id', 'id' );

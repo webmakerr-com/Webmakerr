@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use FluentCart\App\Services\ShortCodeParser\Parsers;
+use Webmakerr\App\Services\ShortCodeParser\Parsers;
 
 return [
     'parser_separator'    => '.',

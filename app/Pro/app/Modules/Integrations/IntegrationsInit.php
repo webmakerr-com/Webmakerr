@@ -9,7 +9,7 @@ class IntegrationsInit
 {
     public function register()
     {
-        add_action('fluent_cart/init', function () {
+        webmakerr_add_action('webmakerr_cart/init', function () {
             (new WebhookConnect())->register();
             (new LifterLMSConnect())->register();
             (new LearnDashLMSConnect())->register();

@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\CustomPayment;
+namespace Webmakerr\App\Services\CustomPayment;
 
 use ReflectionClass;
 use ReflectionProperty;

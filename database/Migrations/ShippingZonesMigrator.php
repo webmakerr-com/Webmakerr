@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Database\Migrations;
+namespace Webmakerr\Database\Migrations;
 
 
 class ShippingZonesMigrator extends Migrator

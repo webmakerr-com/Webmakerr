@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Http\Requests;
+namespace Webmakerr\App\Http\Requests;
 
-use FluentCart\Framework\Foundation\RequestGuard;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Support\Arr;
 
 class FluentMetaRequest extends RequestGuard
 {
@@ -31,7 +31,7 @@ class FluentMetaRequest extends RequestGuard
 //            'store_name'  => 'required|sanitizeText|max:200',
 //            'store_country' => 'required|sanitizeText|max:200',
 //        ];
-        return apply_filters('fluent_cart/store_settings/rules', $rules);
+        return webmakerr_apply_filters('webmakerr_cart/store_settings/rules', $rules);
     }
 
 
@@ -130,6 +130,6 @@ class FluentMetaRequest extends RequestGuard
 
         ];
 
-        return apply_filters('fluent_cart/store_settings/sanitizer', $sanitizer);
+        return webmakerr_apply_filters('webmakerr_cart/store_settings/sanitizer', $sanitizer);
     }
 }

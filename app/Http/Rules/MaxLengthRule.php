@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Http\Rules;
+namespace Webmakerr\App\Http\Rules;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class MaxLengthRule
 {

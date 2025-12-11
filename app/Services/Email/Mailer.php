@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Email;
+namespace Webmakerr\App\Services\Email;
 
-use FluentCart\App\App;
-use FluentCart\App\Services\Libs\Emogrifier\Emogrifier;
-use FluentCart\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Services\Libs\Emogrifier\Emogrifier;
+use Webmakerr\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
+use Webmakerr\Framework\Support\Arr;
 
 class Mailer
 {

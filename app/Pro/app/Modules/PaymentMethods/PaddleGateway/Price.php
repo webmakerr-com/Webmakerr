@@ -3,10 +3,10 @@
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway;
 
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\API\API;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Support\Arr;
 
 class Price
 {
@@ -27,7 +27,7 @@ class Price
         ;
 
         if ($product && $type === 'standard') {
-            $priceId = apply_filters('fluent_cart/paddle_onetime_price_id', $priceId, [
+            $priceId = webmakerr_apply_filters('webmakerr_cart/paddle_onetime_price_id', $priceId, [
                 'variation' => $variation,
                 'product'   => $product
             ]);
@@ -111,7 +111,7 @@ class Price
             . $taxMode
         ;
 
-        $priceId = apply_filters('fluent_cart/paddle_recurring_price_id', $priceId, [
+        $priceId = webmakerr_apply_filters('webmakerr_cart/paddle_recurring_price_id', $priceId, [
             'plan_data' => $data,
             'variation' => $variation,
             'product'   => $product
@@ -181,7 +181,7 @@ class Price
             'interval_frequency' => $frequency
         ];
 
-        $billingPeriod = apply_filters('fluent_cart/subscription_billing_period', $billingPeriod, [
+        $billingPeriod = webmakerr_apply_filters('webmakerr_cart/subscription_billing_period', $billingPeriod, [
             'subscription_interval' => $data['billing_interval'],
             'payment_method' => 'paddle',
         ]);
@@ -219,7 +219,7 @@ class Price
     public static function createPaddleDiscount($order, $discountAmount, $discountMode)
     {
         $discountId = 'fct_paddle_discount_' . $order->mode . '_' . $discountAmount . '_' . $order->currency;
-        $discountId = apply_filters('fluent_cart/paddle_discount_id', $discountId, [
+        $discountId = webmakerr_apply_filters('webmakerr_cart/paddle_discount_id', $discountId, [
             'order' => $order,
             'discount_amount' => $discountAmount
         ]);

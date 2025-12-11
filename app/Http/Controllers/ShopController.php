@@ -1,22 +1,22 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\ShopResource;
-use FluentCart\Api\Sanitizer\Sanitizer;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\Renderer\ProductListRenderer;
-use FluentCart\App\Services\Renderer\ProductModalRenderer;
-use FluentCart\App\Services\Renderer\ProductRenderer;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Pagination\CursorPaginator;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\Services\Renderer\SearchBarRenderer;
+use Webmakerr\Api\Resource\ShopResource;
+use Webmakerr\Api\Sanitizer\Sanitizer;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\Renderer\ProductListRenderer;
+use Webmakerr\App\Services\Renderer\ProductModalRenderer;
+use Webmakerr\App\Services\Renderer\ProductRenderer;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Pagination\CursorPaginator;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\Services\Renderer\SearchBarRenderer;
 
 class ShopController extends Controller
 {
@@ -80,7 +80,7 @@ class ShopController extends Controller
         $templateProvider = $request->get('template_provider', '');
         $clientId = $request->get('client_id', '');
         if ($templateProvider) {
-            $preLoadedView = apply_filters('fluent_cart/products_views/preload_collection_' . $templateProvider, '', [
+            $preLoadedView = webmakerr_apply_filters('webmakerr_cart/products_views/preload_collection_' . $templateProvider, '', [
                 'client_id'   => $clientId,
                 'products'    => Arr::get($products, 'products.products', []),
                 'total'       => $total,

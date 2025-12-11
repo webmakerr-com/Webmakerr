@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\AppControllers;
+namespace Webmakerr\App\Http\Controllers\AppControllers;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Http\Request\File;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Http\Request\File;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class AppController extends Controller
 {

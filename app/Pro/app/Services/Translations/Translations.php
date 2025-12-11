@@ -21,6 +21,6 @@ class Translations
             'Are you sure to delete this?' => __('Are you sure to delete this?', 'fluent-cart-pro'),
         ];
 
-        return apply_filters("fluent_cart_pro/admin_translations", $translations);
+        return webmakerr_apply_filters("webmakerr_cart_pro/admin_translations", $translations);
     }
 }

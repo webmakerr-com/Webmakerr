@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\API\API;
 
 class Product
@@ -13,7 +13,7 @@ class Product
     public static function createOrGetPaddleProduct($data = [])
     {
         $fctProductId = Arr::get($data, 'fct_product_id');
-        $fctProduct   = \FluentCart\App\Models\Product::find($fctProductId);
+        $fctProduct   = \Webmakerr\App\Models\Product::find($fctProductId);
 
         $productId = Arr::get($data, 'product_id');
         $mode = Arr::get($data, 'mode', 'live');
@@ -37,7 +37,7 @@ class Product
         $productData = [
             'name' => Arr::get($data, 'name'),
             'type' => Arr::get($data, 'type'),
-            'tax_category' => apply_filters('fluent_cart/paddle_product_tax_category', 'standard', [
+            'tax_category' => webmakerr_apply_filters('webmakerr_cart/paddle_product_tax_category', 'standard', [
                 'product' => $fctProduct,
                 'variation_id' => Arr::get($data, 'variation_id')
             ])

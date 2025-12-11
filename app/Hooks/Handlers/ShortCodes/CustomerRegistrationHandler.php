@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Helpers\Helper;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Helpers\Helper;
 
 class CustomerRegistrationHandler extends ShortCode
 {
@@ -76,7 +76,7 @@ class CustomerRegistrationHandler extends ShortCode
     public function render(?array $viewData = null)
     {
         ob_start();
-        do_action('fluent_cart/views/checkout_page_registration_form', $viewData);
+        webmakerr_do_action('webmakerr_cart/views/checkout_page_registration_form', $viewData);
         return ob_get_clean();
     }
 

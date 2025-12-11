@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\App\App;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\ShippingClass;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Services\CheckoutService;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\ShippingClass;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Services\CheckoutService;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Support\Arr;
 
 class CartHelper
 {
@@ -307,7 +307,7 @@ class CartHelper
             $cart->cart_data = $items;
             $cart->save();
 
-            do_action('fluent_cart/checkout/shipping_data_changed', [
+            webmakerr_do_action('webmakerr_cart/checkout/shipping_data_changed', [
                 'cart' => $cart
             ]);
         }
@@ -341,7 +341,7 @@ class CartHelper
 
         $cart->save();
 
-        do_action('fluent_cart/checkout/shipping_data_changed', [
+        webmakerr_do_action('webmakerr_cart/checkout/shipping_data_changed', [
             'cart' => $cart
         ]);
     }

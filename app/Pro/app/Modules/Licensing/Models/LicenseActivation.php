@@ -2,14 +2,14 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Models;
 
-use FluentCart\App\Models\Model;
+use Webmakerr\App\Models\Model;
 
 /**
  *  Meta Model - DB Model for Meta table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -49,12 +49,12 @@ class LicenseActivation extends Model
         $this->status = $newStatus;
         $this->save();
 
-        do_action('fluent_cart_sl/license_activation_status_updated', [
+        webmakerr_do_action('webmakerr_cart_sl/license_activation_status_updated', [
                 'license' => $this,
                 'old_status' => $oldStatus,
                 'new_status' => $newStatus
         ]);
-        do_action('fluent_cart_sl/license_activation_status_updated_to_'.$newStatus, [
+        webmakerr_do_action('webmakerr_cart_sl/license_activation_status_updated_to_'.$newStatus, [
                 'license' => $this,
                 'old_status' => $oldStatus,
                 'new_status' => $newStatus

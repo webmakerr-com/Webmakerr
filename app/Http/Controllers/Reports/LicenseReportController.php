@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\Reports;
+namespace Webmakerr\App\Http\Controllers\Reports;
 
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Services\Report\LicenseReportService;
-use FluentCart\App\Services\Report\ReportHelper;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Services\Report\LicenseReportService;
+use Webmakerr\App\Services\Report\ReportHelper;
+use Webmakerr\Framework\Http\Request\Request;
 
 class LicenseReportController extends Controller
 {

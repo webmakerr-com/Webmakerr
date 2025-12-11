@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Vite;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Models\Product;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Vite;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Models\Product;
 
 class CartRenderer
 {

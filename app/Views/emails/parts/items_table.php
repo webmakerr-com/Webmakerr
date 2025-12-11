@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * @var  \FluentCart\App\Models\Order $order
+ * @var  \Webmakerr\App\Models\Order $order
  * @var $cart_image
  * @var $item_count
  */
@@ -14,7 +14,7 @@
 
 <?php
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
     $orderItems = $order->order_items->toArray();
     $transaction = $order->getLatestTransaction();
     $isRefund = $is_refund ?? false;
@@ -85,7 +85,7 @@ use FluentCart\Framework\Support\Arr;
                         </td>
                         <td style="width:30%;text-align:right">
                             <p style="font-size:14px;color:rgb(55,65,81);margin:0;line-height:24px;">
-                                <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->subtotal)); ?>
+                                <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->subtotal)); ?>
                             </p>
                         </td>
                     </tr>
@@ -100,7 +100,7 @@ use FluentCart\Framework\Support\Arr;
                         </td>
                         <td style="width:30%;text-align:right">
                             <p style="font-size:14px;color:rgb(55,65,81);margin:0;line-height:24px;">
-                                <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->shipping_total)); ?>
+                                <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->shipping_total)); ?>
                             </p>
                         </td>
                     </tr>
@@ -115,7 +115,7 @@ use FluentCart\Framework\Support\Arr;
                         </td>
                         <td style="width:30%;text-align:right">
                             <p style="font-size:14px;color:rgb(55,65,81);margin:0;line-height:24px;">
-                                <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->shipping_tax)); ?>
+                                <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->shipping_tax)); ?>
                             </p>
                         </td>
                     </tr>
@@ -129,7 +129,7 @@ use FluentCart\Framework\Support\Arr;
                         </td>
                         <td style="width:30%;text-align:right">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                - <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->manual_discount_total + $order->coupon_discount_total)); ?>
+                                - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->manual_discount_total + $order->coupon_discount_total)); ?>
                             </p>
                         </td>
                     </tr>
@@ -144,7 +144,7 @@ use FluentCart\Framework\Support\Arr;
                         </td>
                         <td style="width:30%;text-align:right">
                             <p style="font-size:14px;color=rgb(55,65,81);margin:0;line-height:24px;">
-                                <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->tax_total)); ?>
+                                <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->tax_total)); ?>
                             </p>
                         </td>
                     </tr>
@@ -159,7 +159,7 @@ use FluentCart\Framework\Support\Arr;
                         </td>
                         <td style="width:30%;text-align:right">
                             <p style="font-size:14px;color:rgb(55,65,81);margin:0;line-height:24px;">
-                                - <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
+                                - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
                             </p>
                         </td>
                     </tr>
@@ -173,7 +173,7 @@ use FluentCart\Framework\Support\Arr;
                     </td>
                     <td style="width:30%;text-align:right">
                         <p style="font-size:14px;font-weight:700;color:rgb(17,24,39);line-height:24px;margin: 0;">
-                            <?php echo esc_html(\FluentCart\Api\CurrencySettings::getFormattedPrice($order->total_amount - $order->total_refund)); ?>
+                            <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($order->total_amount - $order->total_refund)); ?>
                         </p>
                     </td>
                 </tr>
@@ -187,7 +187,7 @@ use FluentCart\Framework\Support\Arr;
                         </td>
                         <td style="width:30%;text-align:right">
                             <p style="font-size:14px;color:rgb(55,65,81);margin:0;line-height:24px;">
-                                - <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
+                                - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
                             </p>
                         </td>
                     </tr>

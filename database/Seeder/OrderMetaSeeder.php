@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\App\Models\OrderMeta;
-use FluentCart\Faker\Factory;
+use Webmakerr\App\Models\OrderMeta;
+use Webmakerr\Faker\Factory;
 
 class OrderMetaSeeder
 {

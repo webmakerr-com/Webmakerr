@@ -4,8 +4,8 @@ namespace FluentCartPro\App\Core;
 
 use ArrayAccess;
 use InvalidArgumentException;
-use FluentCart\Framework\Support\Facade;
-use FluentCart\Framework\Foundation\Config;
+use Webmakerr\Framework\Support\Facade;
+use Webmakerr\Framework\Foundation\Config;
 
 class Application implements ArrayAccess
 {

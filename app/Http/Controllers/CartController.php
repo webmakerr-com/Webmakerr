@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Http\Requests\CartRequest;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Http\Requests\CartRequest;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class CartController extends Controller
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\Data;
+namespace Webmakerr\App\Modules\Data;
 
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Models\Product;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Models\Product;
 
 class ProductDataSetup
 {

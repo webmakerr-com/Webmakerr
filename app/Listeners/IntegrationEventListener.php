@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Listeners;
+namespace Webmakerr\App\Listeners;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Models\ScheduledAction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Models\ScheduledAction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 
 class IntegrationEventListener
 {
@@ -31,13 +31,13 @@ class IntegrationEventListener
         ];
 
         foreach ($hooks as $hook) {
-            add_action('fluent_cart/' . $hook, function ($data) use ($hook) {
+            webmakerr_add_action('webmakerr_cart/' . $hook, function ($data) use ($hook) {
                 $this->mapAllIntegrationActions($data, $hook);
             }, 11, 1);
         }
 
-        add_action('fluent_cart/init_order_async_runner', [$this, 'initOrderAsyncRunner'], 10, 1);
-        add_action('fluent_cart/after_receipt_first_time', [$this, 'addJsToReceipt'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/init_order_async_runner', [$this, 'initOrderAsyncRunner'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/after_receipt_first_time', [$this, 'addJsToReceipt'], 10, 1);
 
         add_action('wp_ajax_fluent_cart_run_order_actions', [$this, 'runOrderActionsAjax'], 10, 1);
         add_action('wp_ajax_nopriv_fluent_cart_run_order_actions', [$this, 'runOrderActionsAjax'], 10, 1);
@@ -51,7 +51,7 @@ class IntegrationEventListener
             return;
         }
 
-        $addOns = apply_filters('fluent_cart/integration/order_integrations', []);
+        $addOns = webmakerr_apply_filters('webmakerr_cart/integration/order_integrations', []);
 
         $addOns = array_filter($addOns, function ($addon) {
             return Arr::get($addon, 'enabled', false);
@@ -142,7 +142,7 @@ class IntegrationEventListener
         if ($hook == 'order_paid_done') {
             $realTimeActions = $validFeeds;
             $backgroundActions = [];
-        } else if (apply_filters('fluent_cart/integration/run_all_actions_on_async', false, ['order' => $order, 'hook' => $order])) {
+        } else if (webmakerr_apply_filters('webmakerr_cart/integration/run_all_actions_on_async', false, ['order' => $order, 'hook' => $order])) {
             $backgroundActions = $validFeeds;
             $realTimeActions = [];
         } else {
@@ -205,7 +205,7 @@ class IntegrationEventListener
             $integrationArray['event_data'] = $data;
 
             try {
-                do_action('fluent_cart/integration/run/' . $integrationArray['provider'], $integrationArray);
+                webmakerr_do_action('webmakerr_cart/integration/run/' . $integrationArray['provider'], $integrationArray);
             } catch (\Exception $e) {
                 $order->addLog('Integration Error: ' . $integrationArray['provider'], $e->getMessage(), 'error');
             }
@@ -244,7 +244,7 @@ class IntegrationEventListener
         }, $integrationActions);
 
         $formattedIntegrationActions = [];
-        $addOns = apply_filters('fluent_cart/integration/order_integrations', []);
+        $addOns = webmakerr_apply_filters('webmakerr_cart/integration/order_integrations', []);
         $addOns = array_filter($addOns, function ($addon) {
             return Arr::get($addon, 'enabled', false);
         });
@@ -301,7 +301,7 @@ class IntegrationEventListener
             $integrationArray['order'] = $order;
             $integrationArray['event_data'] = $eventData;
             try {
-                do_action('fluent_cart/integration/run/' . $integrationArray['provider'], $integrationArray);
+                webmakerr_do_action('webmakerr_cart/integration/run/' . $integrationArray['provider'], $integrationArray);
             } catch (\Exception $e) {
                 $order->addLog('Integration Error: ' . $integrationArray['provider'], $e->getMessage(), 'error');
             }
@@ -357,7 +357,7 @@ class IntegrationEventListener
         }
 
         if ($order->type != 'renewal') {
-            do_action('fluent_cart/order_paid_ansyc_private_handle', [
+            webmakerr_do_action('webmakerr_cart/order_paid_ansyc_private_handle', [
                 'order_id' => $order->id
             ]);
         }
@@ -383,7 +383,7 @@ class IntegrationEventListener
     private function formatIntegrationFeed($feed, $hook, $addOns = null, $scope = 'product', $orderId = null)
     {
         if (!$addOns) {
-            $addOns = apply_filters('fluent_cart/integration/order_integrations', []);
+            $addOns = webmakerr_apply_filters('webmakerr_cart/integration/order_integrations', []);
         }
 
         $revokedHooks = [

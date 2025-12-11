@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Helpers\StatusHelper;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\App\Modules\Subscriptions\Services\SubscriptionService;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Helpers\StatusHelper;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\App\Modules\Subscriptions\Services\SubscriptionService;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class Confirmations
 {
@@ -23,7 +23,7 @@ class Confirmations
         add_action('wp_ajax_nopriv_fluent_cart_confirm_stripe_payment', [$this, 'confirmStripePayment']);
         add_action('wp_ajax_fluent_cart_confirm_stripe_payment', [$this, 'confirmStripePayment']);
 
-        add_filter('fluent_cart_form_disable_stripe_connect', function ($value, $args) {
+        webmakerr_add_filter('webmakerr_cart_form_disable_stripe_connect', function ($value, $args) {
             if (defined('FCT_STRIPE_LIVE_PUBLIC_KEY') || defined('FCT_STRIPE_TEST_PUBLIC_KEY')) {
                 return true;
             }

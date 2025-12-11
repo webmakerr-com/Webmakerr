@@ -1,23 +1,23 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Modules\PaymentMethods\AirwallexGateway\Airwallex;
-use FluentCart\App\Modules\PaymentMethods\AuthorizeNetGateway\AuthorizeNet;
-use FluentCart\App\Modules\PaymentMethods\Cod\Cod;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Modules\PaymentMethods\PaddleGateway\Paddle;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\PayPal;
-use FluentCart\App\Modules\PaymentMethods\RazorpayGateway\Razorpay;
-use FluentCart\App\Modules\PaymentMethods\SquareGateway\Square;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Stripe;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Connect\ConnectConfig;
-use FluentCart\Framework\Container\Contracts\BindingResolutionException;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Api\PaymentMethods;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Modules\PaymentMethods\AirwallexGateway\Airwallex;
+use Webmakerr\App\Modules\PaymentMethods\AuthorizeNetGateway\AuthorizeNet;
+use Webmakerr\App\Modules\PaymentMethods\Cod\Cod;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Modules\PaymentMethods\PaddleGateway\Paddle;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\PayPal;
+use Webmakerr\App\Modules\PaymentMethods\RazorpayGateway\Razorpay;
+use Webmakerr\App\Modules\PaymentMethods\SquareGateway\Square;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Stripe;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Connect\ConnectConfig;
+use Webmakerr\Framework\Container\Contracts\BindingResolutionException;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Api\PaymentMethods;
+use Webmakerr\Framework\Support\Collection;
 
 class GlobalPaymentHandler
 {
@@ -42,12 +42,12 @@ class GlobalPaymentHandler
 
             $this->appAuthenticator();
             //This hook will allow others to register their payment method with ours
-            do_action('fluent_cart/register_payment_methods', [
+            webmakerr_do_action('webmakerr_cart/register_payment_methods', [
                 'gatewayManager' => $gateway
             ]);
         });
 
-        add_action('fluent_cart_action_fct_payment_listener_ipn', function () {
+        webmakerr_add_action('webmakerr_cart_action_fct_payment_listener_ipn', function () {
             $this->initIpnListener();
         });
     }

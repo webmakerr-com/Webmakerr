@@ -1,25 +1,25 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Concerns\CanUpdateBatch;
-use FluentCart\App\Models\Concerns\HasActivity;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\OrderService;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Orm\Relations\BelongsTo;
-use FluentCart\Framework\Database\Orm\Relations\HasMany;
-use FluentCart\Framework\Database\Orm\Relations\HasManyThrough;
-use FluentCart\Framework\Database\Orm\Relations\HasOne;
-use FluentCart\Framework\Database\Orm\Relations\MorphMany;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanUpdateBatch;
+use Webmakerr\App\Models\Concerns\HasActivity;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Relations\BelongsTo;
+use Webmakerr\Framework\Database\Orm\Relations\HasMany;
+use Webmakerr\Framework\Database\Orm\Relations\HasManyThrough;
+use Webmakerr\Framework\Database\Orm\Relations\HasOne;
+use Webmakerr\Framework\Database\Orm\Relations\MorphMany;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 
 /**
@@ -27,7 +27,7 @@ use FluentCartPro\App\Modules\Licensing\Models\License;
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -49,7 +49,7 @@ class Order extends Model
                 $model->config = [];
             }
 
-            if ($model->payment_status === 'paid' || apply_filters('fluent_cart/create_receipt_number_on_order_create', false)) {
+            if ($model->payment_status === 'paid' || webmakerr_apply_filters('webmakerr_cart/create_receipt_number_on_order_create', false)) {
                 $model->receipt_number = OrderService::getNextReceiptNumber();
                 $model->invoice_no = OrderService::getInvoicePrefix() . $model->receipt_number;
             }
@@ -57,7 +57,7 @@ class Order extends Model
 
         static::created(function ($model) {
             if ($model->invoice_no) {
-                do_action('fluent_cart/order/invoice_number_added', [
+                webmakerr_do_action('webmakerr_cart/order/invoice_number_added', [
                     'order' => $model
                 ]);
             }
@@ -366,12 +366,12 @@ class Order extends Model
         $this->payment_status = $newStatus;
         $this->save();
 
-//        do_action('fluent_cart/order_status_to_' . $newStatus, [
+//        webmakerr_do_action('webmakerr_cart/order_status_to_' . $newStatus, [
 //            'order' => $this,
 //            'new_status' => $newStatus,
 //            'old_status' => $oldStatus
 //        ]);
-//        do_action('fluent_cart/order_status_updated', [
+//        webmakerr_do_action('webmakerr_cart/order_status_updated', [
 //            'order' => $this,
 //            'new_status' => $newStatus,
 //            'old_status' => $oldStatus
@@ -653,7 +653,7 @@ class Order extends Model
         }
 
 
-        return apply_filters('fluent_cart/single_order_downloads', $downloadData, [
+        return webmakerr_apply_filters('webmakerr_cart/single_order_downloads', $downloadData, [
             'order' => $order,
             'scope' => $scope
         ]);
@@ -702,7 +702,7 @@ class Order extends Model
             $description,
             $type,
             [
-                'module_type' => 'FluentCart\App\Models\Order',
+                'module_type' => 'Webmakerr\App\Models\Order',
                 'module_id'   => $this->id,
                 'module_name' => 'Order',
                 'created_by'  => $by
@@ -730,7 +730,7 @@ class Order extends Model
         $this->invoice_no = OrderService::getInvoicePrefix() . $this->receipt_number;
         $this->save();
 
-        do_action('fluent_cart/order/invoice_number_added', [
+        webmakerr_do_action('webmakerr_cart/order/invoice_number_added', [
             'order' => $this
         ]);
 
@@ -803,7 +803,7 @@ class Order extends Model
         }
 
 
-        return apply_filters('fluent_cart/order_can_be_deleted', $canBeDeleted, [
+        return webmakerr_apply_filters('webmakerr_cart/order_can_be_deleted', $canBeDeleted, [
             'order' => $this
         ]);
     }

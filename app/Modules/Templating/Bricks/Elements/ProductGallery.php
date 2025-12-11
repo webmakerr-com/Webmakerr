@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\Bricks\Elements;
+namespace Webmakerr\App\Modules\Templating\Bricks\Elements;
 
 use Bricks\Database;
 use Bricks\Element;
 use Bricks\Setup;
-//use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
-use FluentCart\App\Hooks\Handlers\ShortCodes\SingleProductShortCode;
-use FluentCart\App\Modules\Data\ProductDataSetup;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Services\Renderer\ProductRenderer;
-use FluentCart\App\Vite;
+//use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\SingleProductShortCode;
+use Webmakerr\App\Modules\Data\ProductDataSetup;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Services\Renderer\ProductRenderer;
+use Webmakerr\App\Vite;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 

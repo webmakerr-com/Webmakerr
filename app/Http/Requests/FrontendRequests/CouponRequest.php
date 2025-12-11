@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Http\Requests\FrontendRequests;
+namespace Webmakerr\App\Http\Requests\FrontendRequests;
 
-use FluentCart\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Foundation\RequestGuard;
 
 class CouponRequest extends RequestGuard
 {

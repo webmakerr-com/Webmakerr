@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\App;
+use Webmakerr\App\App;
 
-use FluentCart\App\CPT\FluentProducts;
+use Webmakerr\App\CPT\FluentProducts;
 
 class CPTHandler
 {

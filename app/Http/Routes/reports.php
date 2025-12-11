@@ -1,18 +1,18 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use FluentCart\Framework\Http\Router;
-use FluentCart\App\Http\Controllers\Reports\ReportingController;
-use FluentCart\App\Http\Controllers\Reports\OrderReportController;
-use FluentCart\App\Http\Controllers\Reports\SourceReportController;
-use FluentCart\App\Http\Controllers\Reports\RefundReportController;
-use FluentCart\App\Http\Controllers\Reports\DefaultReportController;
-use FluentCart\App\Http\Controllers\Reports\LicenseReportController;
-use FluentCart\App\Http\Controllers\Reports\ProductReportController;
-use FluentCart\App\Http\Controllers\Reports\RevenueReportController;
-use FluentCart\App\Http\Controllers\Reports\CustomerReportController;
-use FluentCart\App\Http\Controllers\Reports\OverviewReportController;
-use FluentCart\App\Http\Controllers\Reports\SubscriptionReportController;
+use Webmakerr\Framework\Http\Router;
+use Webmakerr\App\Http\Controllers\Reports\ReportingController;
+use Webmakerr\App\Http\Controllers\Reports\OrderReportController;
+use Webmakerr\App\Http\Controllers\Reports\SourceReportController;
+use Webmakerr\App\Http\Controllers\Reports\RefundReportController;
+use Webmakerr\App\Http\Controllers\Reports\DefaultReportController;
+use Webmakerr\App\Http\Controllers\Reports\LicenseReportController;
+use Webmakerr\App\Http\Controllers\Reports\ProductReportController;
+use Webmakerr\App\Http\Controllers\Reports\RevenueReportController;
+use Webmakerr\App\Http\Controllers\Reports\CustomerReportController;
+use Webmakerr\App\Http\Controllers\Reports\OverviewReportController;
+use Webmakerr\App\Http\Controllers\Reports\SubscriptionReportController;
 
 /**
  * @var $router Router

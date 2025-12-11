@@ -1,23 +1,23 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\FrontendControllers;
+namespace Webmakerr\App\Http\Controllers\FrontendControllers;
 
-use FluentCart\Api\Resource\FrontendResource\CustomerAddressResource;
-use FluentCart\Api\Resource\FrontendResource\CustomerResource;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Hooks\Cart\WebCheckoutHandler;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Http\Requests\CustomerRequest;
-use FluentCart\App\Http\Requests\FrontendRequests\CustomerAddressRequest;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\Renderer\AddressSelectRenderer;
-use FluentCart\App\Services\Renderer\CheckoutFieldsSchema;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Resource\FrontendResource\CustomerAddressResource;
+use Webmakerr\Api\Resource\FrontendResource\CustomerResource;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Hooks\Cart\WebCheckoutHandler;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Http\Requests\CustomerRequest;
+use Webmakerr\App\Http\Requests\FrontendRequests\CustomerAddressRequest;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\Renderer\AddressSelectRenderer;
+use Webmakerr\App\Services\Renderer\CheckoutFieldsSchema;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\Framework\Support\Str;
 
 class CustomerController extends Controller
 {
@@ -39,7 +39,7 @@ class CustomerController extends Controller
 
     public function updateDetails(CustomerRequest $request, $customerId)
     {
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
                 'message' => __('You are not authorized to update this customer', 'fluent-cart')
@@ -55,7 +55,7 @@ class CustomerController extends Controller
 
     public function getDetails(Request $request, $customerId)
     {
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
                 'message' => __('You are not authorized to view this customer', 'fluent-cart')
@@ -105,7 +105,7 @@ class CustomerController extends Controller
 
         $customerId = Arr::get($address, 'address.customer_id');
 
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
                 'message' => __('You are not authorized to view this address', 'fluent-cart')
@@ -134,7 +134,7 @@ class CustomerController extends Controller
         // Join parts with comma and space
         $addressString = implode(', ', $addressParts);
 
-        do_action('fluent_cart/views/checkout_page_form_address_info_wrapper', [
+        webmakerr_do_action('webmakerr_cart/views/checkout_page_form_address_info_wrapper', [
             'name'    => Arr::get($address, 'address.name'),
             'phone'   => Arr::get($address, 'address.phone'),
             'label'   => Arr::get($address, 'address.label'),
@@ -154,7 +154,7 @@ class CustomerController extends Controller
 
     public function createAddress(Request $request) //CustomerAddressRequest
     {
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
 
         if (empty($customer)) {
             return $this->sendError([
@@ -225,7 +225,7 @@ class CustomerController extends Controller
             'with_shipping' => $requiredShipping
         ];
 
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         $addresses = AddressHelper::getCustomerValidatedAddresses($config, $customer);
         $address = AddressHelper::getPrimaryAddress($addresses, $config, $customer, $type);
         $requirementsFields = CheckoutFieldsSchema::getCheckoutFieldsRequirements(
@@ -381,7 +381,7 @@ class CustomerController extends Controller
 
         $address = CustomerAddresses::query()->findOrFail($id);
 
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $address->customer_id) {
             $this->sendError([
                 'message' => __('You are not authorized to update this address', 'fluent-cart')
@@ -406,7 +406,7 @@ class CustomerController extends Controller
 
         $address = CustomerAddresses::query()->findOrFail($id);
 
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $address->customer_id) {
             $this->sendError([
                 'message' => __('You are not authorized to delete this address', 'fluent-cart')
@@ -426,7 +426,7 @@ class CustomerController extends Controller
 
     public function setAddressPrimary(Request $request, $customerId)
     {
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
                 'message' => __('You are not authorized to update this address', 'fluent-cart')
@@ -444,7 +444,7 @@ class CustomerController extends Controller
     public function getCustomerOrders(Request $request, $customerId): array
     {
 
-        $customer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return [
                 'orders' => []

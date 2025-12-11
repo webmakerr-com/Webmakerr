@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Modules\Subscriptions\Http\Controllers;
+namespace Webmakerr\App\Modules\Subscriptions\Http\Controllers;
 
-use FluentCart\App\App;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Modules\Subscriptions\Services\Filter\SubscriptionFilter;
+use Webmakerr\App\App;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Modules\Subscriptions\Services\Filter\SubscriptionFilter;
 
 class SubscriptionController extends Controller
 {
@@ -50,7 +50,7 @@ class SubscriptionController extends Controller
             ->get();
 
 
-        $subscription = apply_filters('fluent_cart/subscription/view', $subscription, []);
+        $subscription = webmakerr_apply_filters('webmakerr_cart/subscription/view', $subscription, []);
 
         return $this->sendSuccess([
             'subscription'    => $subscription,

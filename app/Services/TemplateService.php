@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class TemplateService
 {
@@ -111,7 +111,7 @@ class TemplateService
 
     public static function getCelebration($type = 'order')
     {
-        if (apply_filters('fluent_cart/disable_email_celebration_messages', false, ['type' => $type])) {
+        if (webmakerr_apply_filters('webmakerr_cart/disable_email_celebration_messages', false, ['type' => $type])) {
             return '';
         }
 

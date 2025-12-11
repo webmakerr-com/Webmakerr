@@ -106,7 +106,7 @@ class Enqueue
             }
 
             if (!$version) {
-                $version = FLUENTCART_VERSION;
+                $version = WEBMAKERR_VERSION;
             }
 
             if ($loopCount < 1) {

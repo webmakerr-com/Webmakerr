@@ -3,15 +3,15 @@
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway;
 
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\API\API;
-use FluentCart\Api\CurrencySettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Services\Payments\SubscriptionHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Services\Payments\SubscriptionHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class Processor
 {
@@ -134,7 +134,7 @@ class Processor
 
             $productName = $subscriptionItem->post_title;
             $productDescription = $subscriptionItem->post_title . ' - ' . $subscriptionItem->title;
-            $subscriptionProductType = apply_filters('fluent_cart/paddle_subscription_product_type', 'standard', [
+            $subscriptionProductType = webmakerr_apply_filters('webmakerr_cart/paddle_subscription_product_type', 'standard', [
                 'subscription' => $subscription
             ]);
 
@@ -150,7 +150,7 @@ class Processor
 
 
             $priceName = $subscriptionItem->title;
-            $subscriptionPriceType = apply_filters('fluent_cart/paddle_subscription_price_type', 'standard', [
+            $subscriptionPriceType = webmakerr_apply_filters('webmakerr_cart/paddle_subscription_price_type', 'standard', [
                 'subscription' => $subscription
             ]);
 
@@ -216,7 +216,7 @@ class Processor
                     $initialPriceName = __('Initial Payment', 'fluent-cart-pro');
                 }
 
-                $signupFeePriceType = apply_filters('fluent_cart/paddle_signup_fee_price_type', 'custom', [
+                $signupFeePriceType = webmakerr_apply_filters('webmakerr_cart/paddle_signup_fee_price_type', 'custom', [
                     'subscription' => $subscription
                 ]);
                 $addonPrice = Price::getOrCreatePaddleSinglePrice([
@@ -306,11 +306,11 @@ class Processor
                 $variation->payment_type . '_' .
                 $order->mode;
 
-            $productId = apply_filters('fluent_cart/paddle_product_id', $productId, [
+            $productId = webmakerr_apply_filters('webmakerr_cart/paddle_product_id', $productId, [
                 'variation' => $variation
             ]);
 
-            $onetimeProductType = apply_filters('fluent_cart/paddle_onetime_product_type', 'standard', [
+            $onetimeProductType = webmakerr_apply_filters('webmakerr_cart/paddle_onetime_product_type', 'standard', [
                 'variation' => $variation
             ]);
             $paddleProduct = Product::createOrGetPaddleProduct([
@@ -331,7 +331,7 @@ class Processor
             $paddleProductId = Arr::get($paddleProduct, 'data.id');
             $priceName = $orderItem->title;
             $priceDescription = $orderItem->title . ' - ' . $orderItem->post_title;
-            $onetimePriceType = apply_filters('fluent_cart/paddle_onetime_price_type', 'custom', [
+            $onetimePriceType = webmakerr_apply_filters('webmakerr_cart/paddle_onetime_price_type', 'custom', [
                 'variation' => $variation
             ]);
             // Create price for the product
@@ -361,7 +361,7 @@ class Processor
 
 
         if ($order->shipping_total > 0) {
-            $addonProductType = apply_filters('fluent_cart/paddle_addon_product_type', 'custom', [
+            $addonProductType = webmakerr_apply_filters('webmakerr_cart/paddle_addon_product_type', 'custom', [
                 'order' => $order
             ]);
              $shippingProduct = Product::getOrCreateAddOnProduct([
@@ -418,7 +418,7 @@ class Processor
         $discountId = null;
         if ($totalDiscount > 0) {
             // discount mode (type) 'custom/standard'
-            $discountMode = apply_filters('fluent_cart/paddle_discount_mode', 'custom', [
+            $discountMode = webmakerr_apply_filters('webmakerr_cart/paddle_discount_mode', 'custom', [
                 'order' => $order,
                 'discount_amount' => $totalDiscount
             ]);

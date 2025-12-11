@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
 
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\Renderer\ProductRenderer;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\Renderer\ProductRenderer;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class StockBlock extends BlockEditor
 {

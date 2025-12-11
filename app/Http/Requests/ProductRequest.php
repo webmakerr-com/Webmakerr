@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Http\Requests;
+namespace Webmakerr\App\Http\Requests;
 
-use FluentCart\App\Models\ShippingClass;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Foundation\RequestGuard;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\ShippingClass;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductRequest extends RequestGuard
 {
@@ -116,7 +116,7 @@ class ProductRequest extends RequestGuard
             return $checked[$value];
         }
 
-        if (empty(\FluentCart\App\Models\TaxClass::query()->find($value))) {
+        if (empty(\Webmakerr\App\Models\TaxClass::query()->find($value))) {
             $checked[$value] = __("Invalid Tax Class.", 'fluent-cart');
             return $checked[$value];
         }

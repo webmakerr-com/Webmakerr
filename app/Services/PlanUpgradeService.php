@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 
 class PlanUpgradeService
 {

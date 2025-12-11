@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\Database\Overrides;
+namespace Webmakerr\Database\Overrides;
 
 use DateTimeInterface;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Database\Query\Builder;
-use FluentCart\Framework\Database\Query\Expression;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Database\Query\Builder;
+use Webmakerr\Framework\Database\Query\Expression;
 
 
 class QueryBuilder extends Builder

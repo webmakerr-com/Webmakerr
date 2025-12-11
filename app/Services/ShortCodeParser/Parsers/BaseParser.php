@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser\Parsers;
+namespace Webmakerr\App\Services\ShortCodeParser\Parsers;
 
-use FluentCart\App\Services\ShortCodeParser\Contracts\ParserContract;
-use FluentCart\App\Services\ShortCodeParser\ValueTransformer;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Services\ShortCodeParser\Contracts\ParserContract;
+use Webmakerr\App\Services\ShortCodeParser\ValueTransformer;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 abstract class BaseParser implements ParserContract
 {

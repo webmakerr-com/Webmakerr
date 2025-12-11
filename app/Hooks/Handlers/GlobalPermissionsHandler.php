@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
 class GlobalPermissionsHandler
 {
@@ -8,7 +8,7 @@ class GlobalPermissionsHandler
 
     public function register()
     {
-        add_filter('fluent_cart_register_permission', function ($moduleName, $permissions) {
+        webmakerr_add_filter('webmakerr_cart_register_permission', function ($moduleName, $permissions) {
             $customPermissions = array();
             foreach ($permissions as $permission) {
                 $capability = 'fluent_cart/permissions/' . $moduleName . '/' . $permission;

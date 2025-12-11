@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\App\Models\Order;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Order;
+use Webmakerr\Framework\Support\Arr;
 
 class OrdersQuery
 {
@@ -58,7 +58,7 @@ class OrdersQuery
 
                     $queryGroup->{$method}(function ($q) use ($group) {
                         foreach ($group as $providerName => $items) {
-                            do_action_ref_array('fluentcart/orders_filter_' . $providerName, [&$q, $items]);
+                            webmakerr_do_action_ref_array('webmakerr/orders_filter_' . $providerName, [&$q, $items]);
                         }
                     });
                 }

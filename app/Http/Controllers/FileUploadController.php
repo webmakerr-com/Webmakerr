@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\UserResource;
-use FluentCart\App\Hooks\Handlers\GlobalStorageHandler;
-use FluentCart\App\Http\Requests\UserRequest;
-use FluentCart\App\Services\FileSystem\FileManager;
-use FluentCart\Framework\Http\Request\File;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Resource\UserResource;
+use Webmakerr\App\Hooks\Handlers\GlobalStorageHandler;
+use Webmakerr\App\Http\Requests\UserRequest;
+use Webmakerr\App\Services\FileSystem\FileManager;
+use Webmakerr\Framework\Http\Request\File;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class FileUploadController extends Controller
 {

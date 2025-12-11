@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\Api\Validator\CustomerValidator;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Customer;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Validator\ValidationException;
+use Webmakerr\Api\Validator\CustomerValidator;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Validator\ValidationException;
 
 class Customers
 {

@@ -1,28 +1,28 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating;
+namespace Webmakerr\App\Modules\Templating;
 
-use FluentCart\Api\Resource\ShopResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\CPT\FluentProducts;
-//use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
-use FluentCart\App\Hooks\Handlers\ShortCodes\SingleProductShortCode;
-use FluentCart\App\Modules\Data\ProductDataSetup;
-use FluentCart\App\Modules\Data\ProductQuery;
-use FluentCart\App\Services\Renderer\ProductListRenderer;
-use FluentCart\App\Services\Renderer\ProductRenderer;
-use FluentCart\App\Services\Renderer\ShopAppRenderer;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\ShopResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\CPT\FluentProducts;
+//use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\SingleProductShortCode;
+use Webmakerr\App\Modules\Data\ProductDataSetup;
+use Webmakerr\App\Modules\Data\ProductQuery;
+use Webmakerr\App\Services\Renderer\ProductListRenderer;
+use Webmakerr\App\Services\Renderer\ProductRenderer;
+use Webmakerr\App\Services\Renderer\ShopAppRenderer;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\Framework\Support\Arr;
 
 class TemplateActions
 {
     public function register()
     {
-        add_action('fluent_cart/template/main_content', [$this, 'renderMainContent']);
-        add_action('fluent_cart/template/product_archive', [$this, 'renderProductArchive']);
-        add_action('fluent_cart/product/render_product_header', [$this, 'renderProductHeader']);
+        webmakerr_add_action('webmakerr_cart/template/main_content', [$this, 'renderMainContent']);
+        webmakerr_add_action('webmakerr_cart/template/product_archive', [$this, 'renderProductArchive']);
+        webmakerr_add_action('webmakerr_cart/product/render_product_header', [$this, 'renderProductHeader']);
 
         add_shortcode('fluent_cart_product_header', function ($atts = []) {
             $atts = shortcode_atts([
@@ -89,7 +89,7 @@ class TemplateActions
             return $this->tempFixShortcodeContent($content);
         });
 
-        add_action('fluent_cart/template/before_content', [$this, 'renderArchiveHeader']);
+        webmakerr_add_action('webmakerr_cart/template/before_content', [$this, 'renderArchiveHeader']);
 
     }
 
@@ -97,7 +97,7 @@ class TemplateActions
     {
         $isTaxPages = is_tax(get_object_taxonomies('fluent-products'));
         if ($isTaxPages) {
-            do_action('fluent_cart/template/product_archive');
+            webmakerr_do_action('webmakerr_cart/template/product_archive');
         }
     }
 
@@ -188,7 +188,7 @@ class TemplateActions
     public function initSingleProductHooks()
     {
         add_filter('the_title', function ($title, int $post_id) {
-            if (apply_filters('fluent_cart/disable_auto_single_product_page', false)) {
+            if (webmakerr_apply_filters('webmakerr_cart/disable_auto_single_product_page', false)) {
                 return $title;
             }
 
@@ -212,7 +212,7 @@ class TemplateActions
 
     public function filterSingleProductContent($content)
     {
-        if (apply_filters('fluent_cart/disable_auto_single_product_page', false)) {
+        if (webmakerr_apply_filters('webmakerr_cart/disable_auto_single_product_page', false)) {
             return $content;
         }
 
@@ -227,7 +227,7 @@ class TemplateActions
 
         remove_filter('the_content', [$this, 'filterSingleProductContent']);
         ob_start();
-        do_action('fluent_cart/product/render_product_header', $post->ID);
+        webmakerr_do_action('webmakerr_cart/product/render_product_header', $post->ID);
         $headerContent = ob_get_clean();
         $content = $headerContent . '<section class="fct-product-description">' . $content . '</section>';
 
@@ -236,7 +236,7 @@ class TemplateActions
         $storeSettings = new StoreSettings();
 
         $showRelevant = $storeSettings->get('show_relevant_product_in_single_page') == 'yes';
-        $showRelevant = apply_filters('fluent_cart/single_product_page/show_relevant_products', $showRelevant, $post->ID);
+        $showRelevant = webmakerr_apply_filters('webmakerr_cart/single_product_page/show_relevant_products', $showRelevant, $post->ID);
         if ($showRelevant) {
             $products = ShopResource::getSimilarProducts($post->ID, false);
             ob_start();

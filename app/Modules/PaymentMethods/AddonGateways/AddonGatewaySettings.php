@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\AddonGateways;
+namespace Webmakerr\App\Modules\PaymentMethods\AddonGateways;
 
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
 
 class AddonGatewaySettings extends BaseGatewaySettings
 {

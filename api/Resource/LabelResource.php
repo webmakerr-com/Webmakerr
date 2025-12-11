@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Models\Label;
-use FluentCart\App\Models\LabelRelationship;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Models\Label;
+use Webmakerr\App\Models\LabelRelationship;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 class LabelResource extends BaseResourceApi
 {
@@ -88,10 +88,10 @@ class LabelResource extends BaseResourceApi
         if ($isCreated) {
 
             if (!empty($data['bind_to_type']) && !empty($data['bind_to_id'])) {
-                if (class_exists('FluentCart\App\Models\\' . $data['bind_to_type'])) {
+                if (class_exists('Webmakerr\App\Models\\' . $data['bind_to_type'])) {
                     LabelRelationship::query()->create([
                         'labelable_id'   => $data['bind_to_id'],
-                        'labelable_type' => 'FluentCart\App\Models\\' . $data['bind_to_type'],
+                        'labelable_type' => 'Webmakerr\App\Models\\' . $data['bind_to_type'],
                         'label_id'       => $isCreated->id
                     ]);
                 }

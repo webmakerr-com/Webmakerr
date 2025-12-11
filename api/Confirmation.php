@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\App;
-use FluentCart\App\CPT\Pages;
-use FluentCart\App\Helpers\Helper as HelperService;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\CPT\Pages;
+use Webmakerr\App\Helpers\Helper as HelperService;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class Confirmation
 {
@@ -57,7 +57,7 @@ class Confirmation
      * @return array
      * 
      * Get all confirmation settings fields
-     * @hook to use apply_filters("fluent_cart/confirmation_setting_fields", $fields)
+     * @hook to use webmakerr_apply_filters("webmakerr_cart/confirmation_setting_fields", $fields)
      */
     public static function fields()
     {
@@ -69,11 +69,11 @@ class Confirmation
                 "type" => "select",
                 "options" => $pages,
                 "value" => "",
-                "note" => \FluentCart\App\Helpers\Helper::getShortcodeInstructionString('[fluent_cart_receipt]')
+                "note" => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString('[fluent_cart_receipt]')
             ],
         ];
 
-        return apply_filters("fluent_cart/confirmation_setting_fields", $fields, []);
+        return webmakerr_apply_filters("webmakerr_cart/confirmation_setting_fields", $fields, []);
     }
 
     /**

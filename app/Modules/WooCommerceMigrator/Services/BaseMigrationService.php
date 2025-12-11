@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\WooCommerceMigrator\Services;
+namespace Webmakerr\App\Modules\WooCommerceMigrator\Services;
 
-use FluentCart\App\Modules\WooCommerceMigrator\Contracts\MigrationServiceInterface;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\WooCommerceMigrator\Contracts\MigrationServiceInterface;
+use Webmakerr\Framework\Support\Arr;
 
 abstract class BaseMigrationService implements MigrationServiceInterface
 {

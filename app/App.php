@@ -1,25 +1,25 @@
 <?php
 
-namespace FluentCart\App;
+namespace Webmakerr\App;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Services\Pro\ProFeatureManager;
-use FluentCart\Framework\Support\Once;
-use FluentCart\Framework\Foundation\App as AppFacade;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Services\Pro\ProFeatureManager;
+use Webmakerr\Framework\Support\Once;
+use Webmakerr\Framework\Foundation\App as AppFacade;
 
 /**
  * Class App
  *
- * @method static \FluentCart\Framework\Http\Request\Request request() Get the current request instance.
- * @method static \FluentCart\Framework\Database\DBManager db()
- * @method static \FluentCart\Framework\Http\Response\Response response()
- * @method static \FluentCart\Framework\View\View view()
- * @method static \FluentCart\Framework\Foundation\Config config()
+ * @method static \Webmakerr\Framework\Http\Request\Request request() Get the current request instance.
+ * @method static \Webmakerr\Framework\Database\DBManager db()
+ * @method static \Webmakerr\Framework\Http\Response\Response response()
+ * @method static \Webmakerr\Framework\View\View view()
+ * @method static \Webmakerr\Framework\Foundation\Config config()
  */
 
 
 /**
- * @method static \FluentCart\Framework\Database\Query\WPDBConnection db()
+ * @method static \Webmakerr\Framework\Database\Query\WPDBConnection db()
  */
 
 class App extends AppFacade
@@ -53,7 +53,7 @@ class App extends AppFacade
      * Get the payment gateway manager or a specific gateway
      *
      * @param string|null $gatewayName Optional gateway name to retrieve directly
-     * @return \FluentCart\App\Modules\PaymentMethods\Core\GatewayManager|\FluentCart\App\Modules\PaymentMethods\Core\PaymentGatewayInterface|null
+     * @return \Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager|\Webmakerr\App\Modules\PaymentMethods\Core\PaymentGatewayInterface|null
      */
     public static function gateway(?string $gatewayName = null)
     {

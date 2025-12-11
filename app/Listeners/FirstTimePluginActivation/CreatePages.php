@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Listeners\FirstTimePluginActivation;
+namespace Webmakerr\App\Listeners\FirstTimePluginActivation;
 
-use FluentCart\App\CPT\Pages;
-use FluentCart\App\Events\FirstTimePluginActivation;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\CPT\Pages;
+use Webmakerr\App\Events\FirstTimePluginActivation;
+use Webmakerr\Framework\Support\Str;
 
 class CreatePages
 {

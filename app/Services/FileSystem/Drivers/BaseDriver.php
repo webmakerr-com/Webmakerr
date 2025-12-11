@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\FileSystem\Drivers;
+namespace Webmakerr\App\Services\FileSystem\Drivers;
 
-use FluentCart\App\Modules\StorageDrivers\BaseStorageDriver;
+use Webmakerr\App\Modules\StorageDrivers\BaseStorageDriver;
 
 abstract class BaseDriver
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\Libs\Emogrifier;
+namespace Webmakerr\App\Services\Libs\Emogrifier;
 /**
  * This class provides functions for converting CSS styles into inline style attributes in your HTML code.
  *

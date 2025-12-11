@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Listeners\Order;
+namespace Webmakerr\App\Listeners\Order;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\AuthService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\AuthService;
+use Webmakerr\Framework\Support\Arr;
 
 class OrderPaid
 {
-    public static function handle(\FluentCart\App\Events\Order\OrderPaid $event)
+    public static function handle(\Webmakerr\App\Events\Order\OrderPaid $event)
     {
         if ($event->order) {
             $event->order->recountTotalPaid();
@@ -34,7 +34,7 @@ class OrderPaid
             return;
         }
 
-        $createdUserId = \FluentCart\App\Services\AuthService::createUserFromCustomer($customer, true);
+        $createdUserId = \Webmakerr\App\Services\AuthService::createUserFromCustomer($customer, true);
         if (is_wp_error($createdUserId)) {
             $order->addLog(__('User creation failed: ', 'fluent-cart') . $createdUserId->get_error_message(), 'error');
             return;

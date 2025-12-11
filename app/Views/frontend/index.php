@@ -1,7 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-use FluentCart\App\Vite;
+use Webmakerr\App\Vite;
 
 $wp_head = !((isset($wp_head) && $wp_head === false));
 $wp_footer = !((isset($wp_footer) && $wp_footer == false));
@@ -16,7 +16,7 @@ $wp_footer = !((isset($wp_footer) && $wp_footer == false));
 <?php
 
 
-if (!is_page() && \FluentCart\App\App::request()->get('action') !== 'elementor' && $wp_head) {
+if (!is_page() && \Webmakerr\App\App::request()->get('action') !== 'elementor' && $wp_head) {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('wp_print_styles', 'print_emoji_styles');
     wp_head();
@@ -39,7 +39,7 @@ if (function_exists('wp_enqueue_block_template_skip_link')) {
     wp_enqueue_block_template_skip_link();
 }
 
-if (!is_page() && \FluentCart\App\App::request()->get('action') !== 'elementor' && $wp_footer) {
+if (!is_page() && \Webmakerr\App\App::request()->get('action') !== 'elementor' && $wp_footer) {
     wp_footer();
 }
 

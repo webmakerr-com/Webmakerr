@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\App\Models\DynamicModel;
-use FluentCart\Faker\Factory;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Models\DynamicModel;
+use Webmakerr\Faker\Factory;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class ProductSeeder
 {
@@ -17,7 +17,7 @@ class ProductSeeder
     {
         $productTypes = Arr::get($assoc_args, 'product_types', []);
         $faker = Factory::create();
-        $faker->addProvider(new \FluentCart\Database\Seeder\ProductNameProvide($faker));
+        $faker->addProvider(new \Webmakerr\Database\Seeder\ProductNameProvide($faker));
 
         if (defined('WP_CLI') && WP_CLI) {
             $progress = \WP_CLI\Utils\make_progress_bar('%CSeeding Products', $count);
@@ -241,7 +241,7 @@ class ProductSeeder
     public static function seedProductWithoutDetails($count)
     {
         $faker = Factory::create();
-        $faker->addProvider(new \FluentCart\Database\Seeder\ProductNameProvide($faker));
+        $faker->addProvider(new \Webmakerr\Database\Seeder\ProductNameProvide($faker));
 
         $productsArray = [];
         for ($i = 0; $i <= $count; $i++) {

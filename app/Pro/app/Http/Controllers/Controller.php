@@ -3,7 +3,7 @@
 namespace FluentCartPro\App\Http\Controllers;
 
 use FluentCartPro\App\Core\App;
-use FluentCart\App\Http\Controllers\Controller as BaseController;
+use Webmakerr\App\Http\Controllers\Controller as BaseController;
 
 abstract class Controller extends BaseController
 {

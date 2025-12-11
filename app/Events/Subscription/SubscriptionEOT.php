@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Events\Subscription;
+namespace Webmakerr\App\Events\Subscription;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Subscription;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Subscription;
 
 class SubscriptionEOT extends EventDispatcher
 {

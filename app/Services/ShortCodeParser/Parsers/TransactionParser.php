@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser\Parsers;
+namespace Webmakerr\App\Services\ShortCodeParser\Parsers;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Payments\PaymentReceipt;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Payments\PaymentReceipt;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class TransactionParser extends BaseParser
 {

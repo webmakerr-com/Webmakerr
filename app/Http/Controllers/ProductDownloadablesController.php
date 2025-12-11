@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\ProductDownloadResource;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Http\Requests\ProductDownloadable\ProductDownloadableBulkFileRequest;
-use FluentCart\App\Http\Requests\ProductDownloadable\ProductDownloadableFileRequest;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductDownload;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Http\URL as BaseUrl;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
-use FluentCart\Framework\Validator\Validator;
+use Webmakerr\Api\Resource\ProductDownloadResource;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Http\Requests\ProductDownloadable\ProductDownloadableBulkFileRequest;
+use Webmakerr\App\Http\Requests\ProductDownloadable\ProductDownloadableFileRequest;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductDownload;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Http\URL as BaseUrl;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\Framework\Validator\Validator;
 
 class ProductDownloadablesController extends Controller
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 
 /**
@@ -162,7 +162,7 @@ class Helper
     {
         $key = Arr::get($data, 'search_for', '');
         $searchBy = Arr::get($data, 'search_by', '');
-        return apply_filters('fluent_cart/get_dynamic_search_' . $key, [], [
+        return webmakerr_apply_filters('webmakerr_cart/get_dynamic_search_' . $key, [], [
             'searchBy' => $searchBy
         ]);
     }

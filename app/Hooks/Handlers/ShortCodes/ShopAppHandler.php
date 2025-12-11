@@ -1,21 +1,21 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Resource\ShopResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-//use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Services\Renderer\ShopAppRenderer;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Resource\ShopResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+//use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Services\Renderer\ShopAppRenderer;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class ShopAppHandler
 {

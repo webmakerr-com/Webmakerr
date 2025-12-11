@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Listeners\Subscription;
+namespace Webmakerr\App\Listeners\Subscription;
 
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\AuthService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\AuthService;
+use Webmakerr\Framework\Support\Arr;
 
 class SubscriptionRenewed
 {
-    public static function handle(\FluentCart\App\Events\Subscription\SubscriptionRenewed $event)
+    public static function handle(\Webmakerr\App\Events\Subscription\SubscriptionRenewed $event)
     {
         if ($event->customer) {
             $event->customer->recountStat();

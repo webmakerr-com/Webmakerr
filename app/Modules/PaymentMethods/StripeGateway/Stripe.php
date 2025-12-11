@@ -1,25 +1,25 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Orders;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Hooks\Cart\WebCheckoutHandler;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Connect\ConnectConfig;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Webhook\IPN;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Webhook\Webhook;
-use FluentCart\App\Services\CustomPayment\PaymentIntent;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Orders;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Hooks\Cart\WebCheckoutHandler;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Connect\ConnectConfig;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Webhook\IPN;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Webhook\Webhook;
+use Webmakerr\App\Services\CustomPayment\PaymentIntent;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class Stripe extends AbstractPaymentGateway
 {
@@ -37,7 +37,7 @@ class Stripe extends AbstractPaymentGateway
             new StripeSubscriptions()
         );
 
-        add_action('fluent_cart_action_stripe_connect', function ($data) {
+        webmakerr_add_action('webmakerr_cart_action_stripe_connect', function ($data) {
             ConnectConfig::handleConnect($data);
         });
 
@@ -47,7 +47,7 @@ class Stripe extends AbstractPaymentGateway
     {
         (new IPN)->init();
         (new Confirmations)->init();
-        add_filter('fluent_cart/payment_methods/stripe_pub_key', [$this, 'getPublicKey'], 10);
+        webmakerr_add_filter('webmakerr_cart/payment_methods/stripe_pub_key', [$this, 'getPublicKey'], 10);
     }
 
     public function meta(): array
@@ -100,7 +100,7 @@ class Stripe extends AbstractPaymentGateway
             );
         }
 
-        return \FluentCart\App\Modules\PaymentMethods\StripeGateway\StripeHelper::processRemoteRefund($transaction, $amount, $args);
+        return \Webmakerr\App\Modules\PaymentMethods\StripeGateway\StripeHelper::processRemoteRefund($transaction, $amount, $args);
     }
 
     public function webHookPaymentMethodName()

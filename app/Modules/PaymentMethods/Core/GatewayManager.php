@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Core;
+namespace Webmakerr\App\Modules\PaymentMethods\Core;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 /**
  * Payment Gateway Manager

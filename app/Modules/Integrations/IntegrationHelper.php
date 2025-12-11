@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\Integrations;
+namespace Webmakerr\App\Modules\Integrations;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class IntegrationHelper
 {
@@ -24,7 +24,7 @@ class IntegrationHelper
             );
         }
 
-        $settingsFields = apply_filters('fluent_cart/integration/get_integration_settings_fields_' . $args['provider'], [], $args);
+        $settingsFields = webmakerr_apply_filters('webmakerr_cart/integration/get_integration_settings_fields_' . $args['provider'], [], $args);
 
         $fields = Arr::get($settingsFields, 'fields');
 
@@ -59,7 +59,7 @@ class IntegrationHelper
 
         $validatedData = Arr::only($integration, $validKeys);
 
-        return apply_filters('fluent_cart/integration/integration_saving_data_' . $args['provider'], $validatedData, [
+        return webmakerr_apply_filters('webmakerr_cart/integration/integration_saving_data_' . $args['provider'], $validatedData, [
             'provider'       => $args['provider'],
             'scope'          => $args['scope'],
             'product_id'     => $args['product_id'],
@@ -77,7 +77,7 @@ class IntegrationHelper
 
         $args['feed'] = $meta;
 
-        $data = apply_filters('fluent_cart/integration/editing_integration_' . $meta->meta_key, $data, $args);
+        $data = webmakerr_apply_filters('webmakerr_cart/integration/editing_integration_' . $meta->meta_key, $data, $args);
 
         $feedData = [
             'id'       => $meta->id,

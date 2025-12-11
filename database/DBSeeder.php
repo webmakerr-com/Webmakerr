@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\Database;
+namespace Webmakerr\Database;
 
-use FluentCart\App\App;
-use FluentCart\Database\Seeder\AttributeSeeder;
-use FluentCart\Database\Seeder\CouponSeeder;
-use FluentCart\Database\Seeder\CustomerAddressSeeder;
-use FluentCart\Database\Seeder\OrderAddressSeeder;
-use FluentCart\Database\Seeder\OrderOperationSeeder;
-use FluentCart\Database\Seeder\ProductSeeder;
-use FluentCart\Database\Seeder\CustomerSeeder;
-use FluentCart\Database\Seeder\OrderSeeder;
-use FluentCart\Database\Seeder\AppliedCouponsSeeder;
-use FluentCart\Database\Seeder\OrderMetaSeeder;
-use FluentCart\Database\Seeder\SubscriptionSeeder;
-use FluentCart\Database\Seeder\TaxSeeder;
+use Webmakerr\App\App;
+use Webmakerr\Database\Seeder\AttributeSeeder;
+use Webmakerr\Database\Seeder\CouponSeeder;
+use Webmakerr\Database\Seeder\CustomerAddressSeeder;
+use Webmakerr\Database\Seeder\OrderAddressSeeder;
+use Webmakerr\Database\Seeder\OrderOperationSeeder;
+use Webmakerr\Database\Seeder\ProductSeeder;
+use Webmakerr\Database\Seeder\CustomerSeeder;
+use Webmakerr\Database\Seeder\OrderSeeder;
+use Webmakerr\Database\Seeder\AppliedCouponsSeeder;
+use Webmakerr\Database\Seeder\OrderMetaSeeder;
+use Webmakerr\Database\Seeder\SubscriptionSeeder;
+use Webmakerr\Database\Seeder\TaxSeeder;
 
 class DBSeeder
 {

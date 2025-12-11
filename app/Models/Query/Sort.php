@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Models\Query;
+namespace Webmakerr\App\Models\Query;
 
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class Sort
 {

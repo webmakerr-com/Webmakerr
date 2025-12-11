@@ -1,22 +1,22 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Orders;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Hooks\Cart\WebCheckoutHandler;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\API;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\Webhook;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Orders;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Hooks\Cart\WebCheckoutHandler;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\API;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\Webhook;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class PayPal extends AbstractPaymentGateway
 {
@@ -33,7 +33,7 @@ class PayPal extends AbstractPaymentGateway
             new PayPalSubscriptions()
         );
 
-        add_filter('fluent_cart/payment_methods_with_custom_checkout_buttons', function ($methods) {
+        webmakerr_add_filter('webmakerr_cart/payment_methods_with_custom_checkout_buttons', function ($methods) {
             $methods[] = 'paypal';
             return $methods;
         });
@@ -66,14 +66,14 @@ class PayPal extends AbstractPaymentGateway
         add_action('wp_ajax_nopriv_fluent_cart_confirm_paypal_subscription', [$this, 'confirmPayPalSubscription']);
         add_action('wp_ajax_fluent_cart_confirm_paypal_subscription', [$this, 'confirmPayPalSubscription']);
 
-        add_filter('fluent_cart/payment_methods/paypal_client_id', [$this, 'getClientId'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/payment_methods/paypal_client_id', [$this, 'getClientId'], 10, 2);
 
         // add PayPal partner tags
         add_filter('script_loader_tag', function ($tag, $handle) {
             if ($handle === 'fluent-cart-checkout-sdk-paypal') {
                 $tag = str_replace(
                     '<script ',
-                    '<script data-partner-attribution-id="FLUENTCART_SP_PPCP" ', $tag
+                    '<script data-partner-attribution-id="WEBMAKERR_SP_PPCP" ', $tag
                 );
             }
             return $tag;
@@ -565,7 +565,7 @@ class PayPal extends AbstractPaymentGateway
         } else {
             $sdkSrc = add_query_arg(array('currency' => strtoupper(CurrencySettings::get('currency')), 'intent' => 'capture'), $sdkSrc);
         }
-        $sdkSrc = apply_filters('fluent_cart/payments/paypal_sdk_src', $sdkSrc, []);
+        $sdkSrc = webmakerr_apply_filters('webmakerr_cart/payments/paypal_sdk_src', $sdkSrc, []);
 
         return [
             [

@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Events;
+namespace Webmakerr\App\Events;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Listeners;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\ProductVariation;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Listeners;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\ProductVariation;
 
 class PlanChanged extends EventDispatcher
 {

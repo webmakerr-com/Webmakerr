@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Events;
+namespace Webmakerr\App\Events;
 
 
 class UserCreated extends EventDispatcher

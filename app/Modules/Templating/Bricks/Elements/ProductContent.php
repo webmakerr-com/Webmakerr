@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\Bricks\Elements;
+namespace Webmakerr\App\Modules\Templating\Bricks\Elements;
 
 use Bricks\Element;
 use Bricks\Helpers;
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Services\URL;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Services\URL;
 
 class ProductContent extends Element
 {

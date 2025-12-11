@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductCardRender
 {
@@ -171,7 +171,7 @@ class ProductCardRender
         $formattedMaxPrice = Helper::toDecimal($maxPrice);
         $formattedComparePrice = Helper::toDecimal($comparePrice);
 
-        do_action('fluent_cart/product/group/before_price_block', [
+        webmakerr_do_action('webmakerr_cart/product/group/before_price_block', [
                 'product'       => $this->product,
                 'current_price' => $minPrice,
                 'scope'         => 'product_card'
@@ -217,14 +217,14 @@ class ProductCardRender
                 </span>
             <?php endif; ?>
 
-            <?php do_action('fluent_cart/product/after_price', [
+            <?php webmakerr_do_action('webmakerr_cart/product/after_price', [
                     'product'       => $this->product,
                     'current_price' => $minPrice,
                     'scope'         => 'product_card'
             ]); ?>
         </div>
         <?php
-        do_action('fluent_cart/product/group/after_price_block', [
+        webmakerr_do_action('webmakerr_cart/product/group/after_price_block', [
                 'product'       => $this->product,
                 'current_price' => $minPrice,
                 'scope'         => 'product_card'

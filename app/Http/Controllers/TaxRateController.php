@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Http\Requests\TaxClassRequest;
-use FluentCart\App\Http\Requests\TaxRateRequest;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\TaxClass;
-use FluentCart\App\Models\TaxRate;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\Tax\TaxManager;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Http\Requests\TaxClassRequest;
+use Webmakerr\App\Http\Requests\TaxRateRequest;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\TaxClass;
+use Webmakerr\App\Models\TaxRate;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\Tax\TaxManager;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class TaxRateController extends Controller
 {

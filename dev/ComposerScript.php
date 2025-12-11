@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Dev;
+namespace Webmakerr\Dev;
 
 use Exception;
 use Composer\Script\Event;

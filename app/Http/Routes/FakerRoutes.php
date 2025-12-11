@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Http\Routes;
+namespace Webmakerr\App\Http\Routes;
 
-use FluentCart\App\App;
-use FluentCart\App\Hooks\CLI\Commands;
+use Webmakerr\App\App;
+use Webmakerr\App\Hooks\CLI\Commands;
 
 class FakerRoutes
 {

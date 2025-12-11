@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\WebController;
+namespace Webmakerr\App\Http\Controllers\WebController;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\ProductDownload;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\FrontendView;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Http\URL;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\ProductDownload;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\FrontendView;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Http\URL;
+use Webmakerr\Framework\Support\Arr;
 
 class FileDownloader extends Controller
 {
@@ -91,7 +91,7 @@ class FileDownloader extends Controller
                 $canBeDownloaded = true;
             }
 
-            $canBeDownloaded = apply_filters('fluent_cart/product_download/can_be_downloaded', $canBeDownloaded, [
+            $canBeDownloaded = webmakerr_apply_filters('webmakerr_cart/product_download/can_be_downloaded', $canBeDownloaded, [
                 'orders'   => $orders,
                 'download' => $download
             ]);
@@ -103,7 +103,7 @@ class FileDownloader extends Controller
 
 
         if (is_array($validated) && !empty($validated['download_identifier'])) {
-            $downloaded = \FluentCart\App\Services\FileSystem\DownloadService::downloadFileFromId($validated['download_identifier']);
+            $downloaded = \Webmakerr\App\Services\FileSystem\DownloadService::downloadFileFromId($validated['download_identifier']);
             if(is_wp_error($downloaded)){
 
                 if(is_user_logged_in() && current_user_can('manage_options')){

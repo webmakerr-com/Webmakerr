@@ -3,14 +3,14 @@
 namespace FluentCartPro\App\Modules\Promotional;
 
 
-use FluentCart\Api\ModuleSettings;
+use Webmakerr\Api\ModuleSettings;
 use FluentCartPro\App\Modules\Promotional\OrderBump\OrderBumpBoot;
 
 class PromotionalInit
 {
     public function register($app)
     {
-        add_filter('fluent_cart/module_setting/fields', function ($fields, $args) {
+        webmakerr_add_filter('webmakerr_cart/module_setting/fields', function ($fields, $args) {
             $fields['order_bump'] = [
                 'title'       => __('Order Bump', 'fluent-cart-pro'),
                 'description' => __('Offer Bump Products in checkout and make more revenue per order', 'fluent-cart-pro'),
@@ -20,7 +20,7 @@ class PromotionalInit
             return $fields;
         }, 10, 2);
 
-        add_filter('fluent_cart/module_setting/default_values', function ($values, $args) {
+        webmakerr_add_filter('webmakerr_cart/module_setting/default_values', function ($values, $args) {
             if (empty($values['order_bump']['active'])) {
                 $values['order_bump']['active'] = 'no';
             }
@@ -28,7 +28,7 @@ class PromotionalInit
             return $values;
         }, 10, 2);
 
-        add_action('fluent_cart/module/activated/order_bump', [$this, 'maybeMigrateDB']);
+        webmakerr_add_action('webmakerr_cart/module/activated/order_bump', [$this, 'maybeMigrateDB']);
 
         if (ModuleSettings::isActive('order_bump')) {
             (new OrderBumpBoot())->register();

@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Core;
+namespace Webmakerr\App\Modules\PaymentMethods\Core;
 
-use FluentCart\App\Models\Subscription;
+use Webmakerr\App\Models\Subscription;
 
 abstract class AbstractSubscriptionModule
 {

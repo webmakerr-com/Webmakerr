@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractSubscriptionModule;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\API;
-use FluentCart\App\Modules\Subscriptions\Services\SubscriptionService;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractSubscriptionModule;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\API;
+use Webmakerr\App\Modules\Subscriptions\Services\SubscriptionService;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 
 class PayPalSubscriptions extends AbstractSubscriptionModule
 {

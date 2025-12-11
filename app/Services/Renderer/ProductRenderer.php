@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\Api\Resource\ProductResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\App;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\Api\Resource\ProductResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Support\Collection;
 
 class ProductRenderer
 {
@@ -1079,7 +1079,7 @@ class ProductRenderer
             $savingsPercent = $comparePrice ? round((($comparePrice - $itemPrice) / $comparePrice) * 100) : 0;
             $savedAmount    = $comparePrice ? $comparePrice - $itemPrice : 0;
 
-            do_action('fluent_cart/product/single/before_price_block', [
+            webmakerr_do_action('webmakerr_cart/product/single/before_price_block', [
                 'product'       => $this->product,
                 'current_price' => $itemPrice,
                 'scope'         => 'price_range'
@@ -1100,7 +1100,7 @@ class ProductRenderer
                         <?php if ($priceSuffix): ?>
                             <span class="fct_price_suffix"><?php echo esc_html($priceSuffix); ?></span>
                         <?php endif; ?>
-                        <?php do_action('fluent_cart/product/after_price', [
+                        <?php webmakerr_do_action('webmakerr_cart/product/after_price', [
                             'product'       => $this->product,
                             'current_price' => $itemPrice,
                             'scope'         => 'price_range'
@@ -1112,7 +1112,7 @@ class ProductRenderer
                 </span>
             </div>
             <?php
-            do_action('fluent_cart/product/single/after_price_block', [
+            webmakerr_do_action('webmakerr_cart/product/single/after_price_block', [
                 'product'       => $this->product,
                 'current_price' => $itemPrice,
                 'scope'         => 'price_range'
@@ -1130,7 +1130,7 @@ class ProductRenderer
         $savingsPercent = $comparePrice ? round((($comparePrice - $defaultPrice) / $comparePrice) * 100) : 0;
         $savedAmount    = $comparePrice ? $comparePrice - $defaultPrice : 0;
 
-        do_action('fluent_cart/product/single/before_price_range_block', [
+        webmakerr_do_action('webmakerr_cart/product/single/before_price_range_block', [
             'product'       => $this->product,
             'current_price' => $defaultPrice,
             'scope'         => 'price_range'
@@ -1151,7 +1151,7 @@ class ProductRenderer
                     <?php if ($priceSuffix): ?>
                         <span class="fct_price_suffix"><?php echo esc_html($priceSuffix); ?></span>
                     <?php endif; ?>
-                    <?php do_action('fluent_cart/product/after_price', [
+                    <?php webmakerr_do_action('webmakerr_cart/product/after_price', [
                         'product'       => $this->product,
                         'current_price' => $defaultPrice,
                         'scope'         => 'price_range'
@@ -1163,7 +1163,7 @@ class ProductRenderer
             </span>
         </div>
         <?php
-        do_action('fluent_cart/product/single/after_price_range_block', [
+        webmakerr_do_action('webmakerr_cart/product/single/after_price_range_block', [
             'product'       => $this->product,
             'current_price' => $defaultPrice,
             'scope'         => 'price_range'
@@ -1172,7 +1172,7 @@ class ProductRenderer
 
     protected function getPriceSuffix(?ProductVariation $variant, $scope = '')
     {
-        $priceSuffix = apply_filters('fluent_cart/product/price_suffix_atts', '', [
+        $priceSuffix = webmakerr_apply_filters('webmakerr_cart/product/price_suffix_atts', '', [
             'product' => $this->product,
             'variant' => $variant,
             'scope'   => $scope
@@ -1230,13 +1230,13 @@ class ProductRenderer
         <div class="<?php echo esc_attr(implode(' ', $classes)); ?>" role="radiogroup"
              aria-label="<?php esc_attr_e('Product Variants', 'fluent-cart'); ?>">
             <?php foreach ($variants as $variant) {
-                do_action('fluent_cart/product/single/before_variant_item', [
+                webmakerr_do_action('webmakerr_cart/product/single/before_variant_item', [
                     'product' => $this->product,
                     'variant' => $variant,
                     'scope'   => 'product_variant_item'
                 ]);
                 $this->renderVariationItem($variant, $this->defaultVariationId);
-                do_action('fluent_cart/product/single/after_variant_item', [
+                webmakerr_do_action('webmakerr_cart/product/single/after_variant_item', [
                     'product' => $this->product,
                     'variant' => $variant,
                     'scope'   => 'product_variant_item'
@@ -1252,7 +1252,7 @@ class ProductRenderer
             return;
         }
 
-        do_action('fluent_cart/product/single/before_price_block', [
+        webmakerr_do_action('webmakerr_cart/product/single/before_price_block', [
             'product'       => $this->product,
             'current_price' => $this->defaultVariant ? $this->defaultVariant->item_price : 0,
             'scope'         => 'product_variant_price'
@@ -1272,12 +1272,12 @@ class ProductRenderer
                             </span>
                         <?php endif;
 
-                        echo wp_kses_post(apply_filters('fluent_cart/single_product/variation_price', esc_html(Helper::toDecimal($variant->item_price)), [
+                        echo wp_kses_post(webmakerr_apply_filters('webmakerr_cart/single_product/variation_price', esc_html(Helper::toDecimal($variant->item_price)), [
                             'product' => $this->product,
                             'variant' => $variant,
                             'scope'   => 'product_variant_price'
                         ]));
-                        do_action('fluent_cart/product/after_price', [
+                        webmakerr_do_action('webmakerr_cart/product/after_price', [
                             'product'       => $this->product,
                             'current_price' => $variant->item_price,
                             'scope'         => 'product_variant_price'
@@ -1308,7 +1308,7 @@ class ProductRenderer
                     if ($paymentType === 'onetime') {
                         echo esc_html(Helper::toDecimal($variant->item_price));
                     } else {
-                        echo wp_kses_post(apply_filters('fluent_cart/single_product/variation_price', esc_html($variant->getSubscriptionTermsText(true)), [
+                        echo wp_kses_post(webmakerr_apply_filters('webmakerr_cart/single_product/variation_price', esc_html($variant->getSubscriptionTermsText(true)), [
                             'product' => $this->product,
                             'variant' => $variant,
                             'scope'   => 'product_variant_price'
@@ -1319,7 +1319,7 @@ class ProductRenderer
             <?php endforeach; ?>
         <?php endif;
 
-        do_action('fluent_cart/product/single/after_price_block', [
+        webmakerr_do_action('webmakerr_cart/product/single/after_price_block', [
             'product'       => $this->product,
             'current_price' => $this->defaultVariant ? $this->defaultVariant->item_price : 0,
             'scope'         => 'product_variant_price'
@@ -1348,7 +1348,7 @@ class ProductRenderer
             $attributes['class'] .= ' is-hidden';
         }
 
-        do_action('fluent_cart/product/single/before_quantity_block', [
+        webmakerr_do_action('webmakerr_cart/product/single/before_quantity_block', [
             'product' => $this->product,
             'scope'   => 'product_quantity_block'
         ]);
@@ -1398,7 +1398,7 @@ class ProductRenderer
             </div>
         </div>
         <?php
-        do_action('fluent_cart/product/single/after_quantity_block', [
+        webmakerr_do_action('webmakerr_cart/product/single/after_quantity_block', [
             'product' => $this->product,
             'scope'   => 'product_quantity_block'
         ]);
@@ -1438,7 +1438,7 @@ class ProductRenderer
             'data-variation-type'                 => $this->product->detail->variation_type,
         ];
 
-        $addToCartText = apply_filters('fluent_cart/product/add_to_cart_text', $atts['add_to_cart_text'], [
+        $addToCartText = webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', $atts['add_to_cart_text'], [
             'product' => $this->product
         ]);
 
@@ -1507,7 +1507,7 @@ class ProductRenderer
 
         $cartButtonConfig = $this->getAddToCartButtonConfig($atts);
 
-        $buyButtonText = apply_filters('fluent_cart/product/buy_now_button_text', $atts['buy_now_text'], [
+        $buyButtonText = webmakerr_apply_filters('webmakerr_cart/product/buy_now_button_text', $atts['buy_now_text'], [
             'product' => $this->product
         ]);
         ?>
@@ -1878,7 +1878,7 @@ class ProductRenderer
                     $variants = (new Collection($variants))->sortBy('serial_index')->values();
 
                     foreach ($variants as $variant) {
-                        do_action('fluent_cart/product/single/before_variant_item', [
+                        webmakerr_do_action('webmakerr_cart/product/single/before_variant_item', [
                             'product' => $this->product,
                             'variant' => $variant,
                             'scope'   => 'product_variant_item'
@@ -1886,7 +1886,7 @@ class ProductRenderer
 
                         $this->renderVariationItem($variant, $this->defaultVariationId);
 
-                        do_action('fluent_cart/product/single/after_variant_item', [
+                        webmakerr_do_action('webmakerr_cart/product/single/after_variant_item', [
                             'product' => $this->product,
                             'variant' => $variant,
                             'scope'   => 'product_variant_item'

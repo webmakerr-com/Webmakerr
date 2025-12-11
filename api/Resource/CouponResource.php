@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Services\Coupon\CouponServiceAdmin;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Services\Coupon\CouponServiceAdmin;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 use WP_Error;
 
 /**
  * Class CouponResource
  *
- * @package FluentCart\Api\Resource
+ * @package Webmakerr\Api\Resource
  */
 class CouponResource extends BaseResourceApi
 {

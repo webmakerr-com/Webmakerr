@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\Bricks;
+namespace Webmakerr\App\Modules\Templating\Bricks;
 
 
-use FluentCart\App\Hooks\Handlers\CPTHandler;
-use FluentCart\App\Modules\Data\ProductDataSetup;
-use FluentCart\App\Services\Renderer\ProductCardRender;
+use Webmakerr\App\Hooks\Handlers\CPTHandler;
+use Webmakerr\App\Modules\Data\ProductDataSetup;
+use Webmakerr\App\Services\Renderer\ProductCardRender;
 
 class DynamicData
 {

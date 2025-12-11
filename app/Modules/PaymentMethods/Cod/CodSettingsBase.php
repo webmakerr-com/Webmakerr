@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Cod;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+namespace Webmakerr\App\Modules\PaymentMethods\Cod;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
 
 class CodSettingsBase extends BaseGatewaySettings
 {

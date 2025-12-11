@@ -33,9 +33,11 @@
   },
   "autoload": {
     "psr-4": {
-      "FluentCart\\App\\": "app/",
-      "FluentCart\\Dev\\": "dev/",
-      "FluentCart\\Api\\": "api/",
+      "Webmakerr\\App\\": "app/",
+      "Webmakerr\\Dev\\": "dev/",
+      "Webmakerr\\Api\\": "api/",
+      "Webmakerr\\Framework\\": "vendor/wpfluent/framework/src/WPFluent/",
+      "Webmakerr\\OpenSpout\\": "vendor/openspout/openspout/src/",
       "FluentCart\\Framework\\": "vendor/wpfluent/framework/src/WPFluent/",
       "FluentCart\\OpenSpout\\": "vendor/openspout/openspout/src/"
     },
@@ -43,7 +45,8 @@
       "database/"
     ],
     "files": [
-      "boot/globals.php"
+      "boot/globals.php",
+      "boot/compatibility.php"
     ],
     "exclude-from-classmap": [
       "/dev/",
@@ -58,7 +61,7 @@
     },
     "wpfluent": {
       "namespace": {
-        "current": "FluentCart"
+        "current": "Webmakerr"
       },
       "excludes": [
         "*"
@@ -67,10 +70,10 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "FluentCart\\Dev\\ComposerScript::run"
+      "Webmakerr\\Dev\\ComposerScript::run"
     ],
     "post-update-cmd": [
-      "FluentCart\\Dev\\ComposerScript::run"
+      "Webmakerr\\Dev\\ComposerScript::run"
     ]
   },
   "minimum-stability": "dev",

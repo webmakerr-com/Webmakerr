@@ -39,7 +39,7 @@ class CoreDependencyHandler
             wp_send_json(['message' => 'Invalid nonce'], 403);
         }
 
-        if (defined('FLUENTCART_VERSION')) {
+        if (defined('WEBMAKERR_VERSION')) {
             wp_send_json(['message' => 'Already installed'], 200);
         }
 
@@ -72,7 +72,7 @@ class CoreDependencyHandler
 
     public function showAdminPage()
     {
-        vite::enqueueScript('fluent-cart-pro-onboard', 'admin/onboarding/onboarding-app.js', ['jquery'], FLUENTCART_PRO_PLUGIN_VERSION, true);
+        vite::enqueueScript('fluent-cart-pro-onboard', 'admin/onboarding/onboarding-app.js', ['jquery'], WEBMAKERR_PRO_PLUGIN_VERSION, true);
 
         $text = __('Install Plugin', 'fluent-cart-pro');
 
@@ -88,7 +88,7 @@ class CoreDependencyHandler
             'translations' => Translations::getTranslations()
         ]);
 
-        Vite::enqueueStyle('fluent-cart-pro-onboard', 'admin/onboarding/onboarding-app.scss', [], FLUENTCART_PRO_PLUGIN_VERSION);
+        Vite::enqueueStyle('fluent-cart-pro-onboard', 'admin/onboarding/onboarding-app.scss', [], WEBMAKERR_PRO_PLUGIN_VERSION);
         echo '<div id="fluent_cart_onboarding_app"></div>';
     }
 

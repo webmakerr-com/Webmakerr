@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Events\Order;
+namespace Webmakerr\App\Events\Order;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Listeners;
-use FluentCart\App\Models\Order;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Listeners;
+use Webmakerr\App\Models\Order;
 
 class OrderUpdated extends EventDispatcher
 {

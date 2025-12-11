@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Concerns\CanUpdateBatch;
-use FluentCart\App\Services\PlanUpgradeService;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanUpdateBatch;
+use Webmakerr\App\Services\PlanUpgradeService;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  *  Product Details Model - DB Model for Product Details
@@ -19,7 +19,7 @@ use FluentCart\Framework\Support\Arr;
  *  Database Model
  *
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -116,14 +116,14 @@ class ProductVariation extends Model
     /**
      * One2One: Product Variation belongs to one Product
      *
-     * @return \FluentCart\Framework\Database\Orm\Relations\BelongsTo
+     * @return \Webmakerr\Framework\Database\Orm\Relations\BelongsTo
      */
-    public function product(): \FluentCart\Framework\Database\Orm\Relations\BelongsTo
+    public function product(): \Webmakerr\Framework\Database\Orm\Relations\BelongsTo
     {
         return $this->belongsTo(Product::class, 'post_id', 'ID');
     }
 
-    public function shippingClass(): \FluentCart\Framework\Database\Orm\Relations\BelongsTo
+    public function shippingClass(): \Webmakerr\Framework\Database\Orm\Relations\BelongsTo
     {
         return $this->belongsTo(ShippingClass::class, 'shipping_class', 'id');
     }
@@ -131,7 +131,7 @@ class ProductVariation extends Model
     /**
      * One2One: Product Variation belongs to one Product detail
      *
-     * @return \FluentCart\Framework\Database\Orm\Relations\BelongsTo
+     * @return \Webmakerr\Framework\Database\Orm\Relations\BelongsTo
      */
     public function product_detail()
     {
@@ -143,7 +143,7 @@ class ProductVariation extends Model
         return $this->hasOne(ProductMeta::class, 'object_id', 'id')->select('id', 'object_id', 'meta_value')->where('meta_key', 'product_thumbnail');
     }
 
-    public function product_downloads(): \FluentCart\Framework\Database\Orm\Relations\HasMany
+    public function product_downloads(): \Webmakerr\Framework\Database\Orm\Relations\HasMany
     {
         return $this
             ->hasMany(ProductDownload::class, 'post_id', 'post_id')
@@ -163,7 +163,7 @@ class ProductVariation extends Model
         return $this->hasMany(ProductDownload::class, 'product_variation_id', 'id');
     }
 
-    public function upgrade_paths(): \FluentCart\Framework\Database\Orm\Relations\HasMany
+    public function upgrade_paths(): \Webmakerr\Framework\Database\Orm\Relations\HasMany
     {
         return $this->hasMany(Meta::class, 'object_id', 'id')
             ->where('object_type', PlanUpgradeService::$metaType)
@@ -222,7 +222,7 @@ class ProductVariation extends Model
     {
         parent::boot();
         static::deleting(function ($model) {
-            \FluentCart\Api\Meta::deleteVariationMedia($model->id);
+            \Webmakerr\Api\Meta::deleteVariationMedia($model->id);
             $model->attrMap()->delete();
         });
     }

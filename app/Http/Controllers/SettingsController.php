@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\App;
-use FluentCart\Api\Helper;
-use FluentCart\Api\Confirmation;
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Helpers\EditorShortCodeHelper;
-use FluentCart\App\Http\Requests\FluentMetaRequest;
+use Webmakerr\App\App;
+use Webmakerr\Api\Helper;
+use Webmakerr\Api\Confirmation;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Helpers\EditorShortCodeHelper;
+use Webmakerr\App\Http\Requests\FluentMetaRequest;
 
 class SettingsController extends Controller
 {

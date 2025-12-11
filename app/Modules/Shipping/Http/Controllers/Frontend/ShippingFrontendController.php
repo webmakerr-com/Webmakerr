@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\Shipping\Http\Controllers\Frontend;
+namespace Webmakerr\App\Modules\Shipping\Http\Controllers\Frontend;
 
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class ShippingFrontendController extends Controller
 {
@@ -72,7 +72,7 @@ class ShippingFrontendController extends Controller
         }
 
         ob_start();
-        do_action('fluent_cart/views/checkout_page_shipping_method_list', [
+        webmakerr_do_action('webmakerr_cart/views/checkout_page_shipping_method_list', [
             'shipping_methods' => $shippingMethods
         ]);
         $content = ob_get_clean();

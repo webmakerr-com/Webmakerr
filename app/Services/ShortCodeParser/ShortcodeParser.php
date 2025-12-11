@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser;
+namespace Webmakerr\App\Services\ShortCodeParser;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Services\Payments\PaymentReceipt;
-use FluentCart\App\Services\WpMetaHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Services\Payments\PaymentReceipt;
+use Webmakerr\App\Services\WpMetaHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class ShortcodeParser
 {
@@ -14,7 +14,7 @@ class ShortcodeParser
     /*
      *
      *  @param $content string|array
-     *  @param $order object with customer FluentCart\Api\Orders; getOrderWithCustomer;
+     *  @param $order object with customer Webmakerr\Api\Orders; getOrderWithCustomer;
      *  @return string|array
      */
     public static function parse($content, $parsable)
@@ -245,7 +245,7 @@ class ShortcodeParser
     {
         $paymentReceipt = new PaymentReceipt($order);
         ob_start();
-        do_action('fluent_cart/views/checkout_order_summary', compact('order', 'paymentReceipt'));
+        webmakerr_do_action('webmakerr_cart/views/checkout_order_summary', compact('order', 'paymentReceipt'));
         return ob_get_clean();
     }
 
@@ -253,7 +253,7 @@ class ShortcodeParser
     {
         $paymentReceipt = new PaymentReceipt($order);
         ob_start();
-        do_action('fluent_cart/views/checkout_order_receipt', compact('order', 'paymentReceipt'));
+        webmakerr_do_action('webmakerr_cart/views/checkout_order_receipt', compact('order', 'paymentReceipt'));
         return ob_get_clean();
     }
 

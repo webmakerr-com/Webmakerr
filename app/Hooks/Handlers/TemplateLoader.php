@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Models\ProductDetail;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Models\ProductDetail;
 
 class TemplateLoader
 {
     public function init()
     {
-        add_action('fluent_cart/single_product_summary', [$this, 'showTitle'], 10);
-        add_action('fluent_cart/single_product_summary', [$this, 'showExcerpt'], 20);
-        add_action('fluent_cart/single_product_summary', [$this, 'showBuy'], 25);
+        webmakerr_add_action('webmakerr_cart/single_product_summary', [$this, 'showTitle'], 10);
+        webmakerr_add_action('webmakerr_cart/single_product_summary', [$this, 'showExcerpt'], 20);
+        webmakerr_add_action('webmakerr_cart/single_product_summary', [$this, 'showBuy'], 25);
     }
 
     public function showTitle()
@@ -23,7 +23,7 @@ class TemplateLoader
     public function showExcerpt()
     {
         global $post;
-        $short_description = apply_filters('fluent_cart/product_short_description', $post->post_excerpt, []);
+        $short_description = webmakerr_apply_filters('webmakerr_cart/product_short_description', $post->post_excerpt, []);
         ?>
         <div class="fct_product-details_short_description">
             <?php echo wp_kses_post($short_description); // WPCS: XSS ok.
@@ -37,7 +37,7 @@ class TemplateLoader
         global $product_detail;
 
         ?>
-        <p class="<?php echo esc_attr(apply_filters('fluent_cart/price_class', 'price')); ?>"><?php echo wp_kses_post($product_detail->getPriceHtml()); ?></p>
+        <p class="<?php echo esc_attr(webmakerr_apply_filters('webmakerr_cart/price_class', 'price')); ?>"><?php echo wp_kses_post($product_detail->getPriceHtml()); ?></p>
         <button type="submit" name="add-to-cart" value="<?php echo esc_attr($product_detail->id); ?>"
                 class="single_add_to_cart_button button alt">Buy Now
         </button>
@@ -53,7 +53,7 @@ class TemplateLoader
 
     //         $GLOBALS['product_detail'] = $product;
 
-    //         return FLUENTCART_PLUGIN_PATH . 'templates/single-product.php';
+    //         return WEBMAKERR_PLUGIN_PATH . 'templates/single-product.php';
     //     }
 
     //     return $template;

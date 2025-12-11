@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\DateTime;
+namespace Webmakerr\App\Services\DateTime;
 
 trait CanExtractTimeZone{
     public static function extractTimezone($datetime = null): \DateTimeZone

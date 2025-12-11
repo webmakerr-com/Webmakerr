@@ -1,5 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
-<?php use FluentCart\App\Helpers\Helper;
+<?php use Webmakerr\App\Helpers\Helper;
 $showNotice = $show_notice ?? true;
 
 

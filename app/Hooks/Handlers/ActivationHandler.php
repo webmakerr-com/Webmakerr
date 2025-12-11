@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\Database\DBMigrator;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Database\DBMigrator;
 
 class ActivationHandler
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Events;
+namespace Webmakerr\App\Events;
 
-use FluentCart\App\Listeners\UpdateDefaultVariation;
+use Webmakerr\App\Listeners\UpdateDefaultVariation;
 
 class StockChanged extends EventDispatcher
 {

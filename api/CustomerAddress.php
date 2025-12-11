@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
 use Exception;
-use FluentCart\Api\Validator\CustomerAddressValidator;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Validator\ValidationException;
+use Webmakerr\Api\Validator\CustomerAddressValidator;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Validator\ValidationException;
 
 class CustomerAddress
 {

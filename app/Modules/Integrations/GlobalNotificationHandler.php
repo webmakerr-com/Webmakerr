@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Modules\Integrations;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Hooks\Scheduler\JobRunner;
-use FluentCart\App\Hooks\Scheduler\Scheduler;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Models\ScheduledAction;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+namespace Webmakerr\App\Modules\Integrations;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Hooks\Scheduler\JobRunner;
+use Webmakerr\App\Hooks\Scheduler\Scheduler;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Models\ScheduledAction;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 
 class GlobalNotificationHandler
 {
@@ -101,13 +101,12 @@ class GlobalNotificationHandler
                         ])
                     ];
 
-                    if (apply_filters('fluent_cart/integration/notifying_async_' . $feedKey, true)) {
+                    if (webmakerr_apply_filters('webmakerr_cart/integration/notifying_async_' . $feedKey, true)) {
                         $asyncFeeds[] = $scheduleActionData;
                         $hook = 'fluent_cart/integration/schedule_feed';
                         (new JobRunner())->async($hook, $scheduleActionData);
                     } else {
-                        do_action(
-                            'fluent_cart/integration/integration_notify_' . $feedKey,
+                        webmakerr_do_action('webmakerr_cart/integration/integration_notify_' . $feedKey,
                             $feed,
                             $order,
                             $customer
@@ -118,7 +117,7 @@ class GlobalNotificationHandler
         }
 
         if (!$asyncFeeds) {
-            do_action('fluent_cart/integrations/global_notify_completed', $order, $feeds);
+            webmakerr_do_action('webmakerr_cart/integrations/global_notify_completed', $order, $feeds);
         }
     }
 

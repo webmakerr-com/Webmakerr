@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Core;
+namespace Webmakerr\App\Modules\PaymentMethods\Core;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\Meta;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\Framework\Support\Arr;
 
 abstract class BaseGatewaySettings
 {

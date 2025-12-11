@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating;
+namespace Webmakerr\App\Modules\Templating;
 
-use FluentCart\Api\StoreSettings;
-//use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
-use FluentCart\App\Hooks\Handlers\ShortCodes\SingleProductShortCode;
-use FluentCart\App\Modules\Templating\BlockTemplates\ProductCategoryTemplate;
-use FluentCart\App\Modules\Templating\BlockTemplates\ProductPageTemplate;
+use Webmakerr\Api\StoreSettings;
+//use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\SingleProductShortCode;
+use Webmakerr\App\Modules\Templating\BlockTemplates\ProductCategoryTemplate;
+use Webmakerr\App\Modules\Templating\BlockTemplates\ProductPageTemplate;
 
 class TemplateLoader
 {
@@ -50,9 +50,9 @@ class TemplateLoader
             }
         }, 1);
 
-        add_action('fluent_cart/render_products_archive', [__CLASS__, 'renderProductsArchive']);
+        webmakerr_add_action('webmakerr_cart/render_products_archive', [__CLASS__, 'renderProductsArchive']);
 
-        add_filter('fluent_cart/shop_app_product_query_taxonomy_filters', function ($taxFilters, $args) {
+        webmakerr_add_filter('webmakerr_cart/shop_app_product_query_taxonomy_filters', function ($taxFilters, $args) {
 
             return $taxFilters;
 
@@ -110,7 +110,7 @@ class TemplateLoader
         $isTaxPages = is_tax(get_object_taxonomies('fluent-products'));
 
         if ($isTaxPages) {
-            if (apply_filters('fluent_cart/template/disable_taxonomy_fallback', false)) {
+            if (webmakerr_apply_filters('webmakerr_cart/template/disable_taxonomy_fallback', false)) {
                 return;
             }
 
@@ -190,7 +190,7 @@ class TemplateLoader
             }
         }
 
-        return (bool)apply_filters('fluent_cart/has_block_template', $has_template, [
+        return (bool)webmakerr_apply_filters('webmakerr_cart/has_block_template', $has_template, [
             'template_name' => $template_name
         ]);
     }
@@ -203,7 +203,7 @@ class TemplateLoader
 
     private static function getTemplateLoaderFiles($defaultFile)
     {
-        $templates = apply_filters('fluent_cart/template_loader_files', array(), [
+        $templates = webmakerr_apply_filters('webmakerr_cart/template_loader_files', array(), [
             'default_file' => $defaultFile,
         ]);
 
@@ -245,7 +245,7 @@ class TemplateLoader
 
     public static function templatePath()
     {
-        return apply_filters('fluent_cart/template_path', 'fluent-cart/');
+        return webmakerr_apply_filters('webmakerr_cart/template_path', 'fluent-cart/');
     }
 
     public static function supportsBlockTemplates($templateType = 'wp_template')

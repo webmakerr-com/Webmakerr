@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Report;
+namespace Webmakerr\App\Services\Report;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Query\Builder as Query;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Query\Builder as Query;
 
 abstract class ReportService
 {
@@ -128,7 +128,7 @@ abstract class ReportService
 
     /**
      * Begin a fluent query against a database table.
-     * @return \FluentCart\Framework\Database\Query\Builder
+     * @return \Webmakerr\Framework\Database\Query\Builder
      */
     public function addFiltersToQuery($query, $filters, $table = null): Query
     {

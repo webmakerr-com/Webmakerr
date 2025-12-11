@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\Services\PluginInstaller\BackgroundInstaller;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\App\Services\PluginInstaller\BackgroundInstaller;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Http\Request\Request;
 
 class AddonsController extends Controller
 {
@@ -81,7 +81,7 @@ class AddonsController extends Controller
             ]
         ];
 
-        $addons = apply_filters('fluent_cart/integration/addons', $addons);
+        $addons = webmakerr_apply_filters('webmakerr_cart/integration/addons', $addons);
 
         return [
             'addons' => $addons
@@ -92,7 +92,7 @@ class AddonsController extends Controller
     {
         $addon = $request->getSafe('addon', 'sanitize_text_field');
 
-        $listedPlugins = apply_filters('fluent_cart/installable_repo_plugins', [
+        $listedPlugins = webmakerr_apply_filters('webmakerr_cart/installable_repo_plugins', [
             'fluent-crm',
             'fluent-smtp',
             'fluent-community',

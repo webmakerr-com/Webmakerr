@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\Contracts\CanEnqueue;
-use FluentCart\App\App;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Contracts\CanEnqueue;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 abstract class ShortCode
 {

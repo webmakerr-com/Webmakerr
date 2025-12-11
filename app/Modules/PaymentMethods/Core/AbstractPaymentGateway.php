@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Core;
+namespace Webmakerr\App\Modules\PaymentMethods\Core;
 
-use FluentCart\Api\Helper;
-use FluentCart\Api\Orders;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Helpers\StatusHelper;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\Api\Resource\ActivityResource;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Renderer\Receipt\ReceiptRenderer;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Helper;
+use Webmakerr\Api\Orders;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Helpers\StatusHelper;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\Api\Resource\ActivityResource;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Renderer\Receipt\ReceiptRenderer;
+use Webmakerr\Framework\Support\Arr;
 
 abstract class AbstractPaymentGateway implements PaymentGatewayInterface
 {
@@ -45,8 +45,8 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
 
     public function init(): void
     {
-        add_filter('fluent_cart/transaction/url_' . $this->methodSlug, [$this, 'getTransactionUrl'], 10, 2);
-        add_filter('fluent_cart/subscription/url_' . $this->methodSlug, [$this, 'getSubscriptionUrl'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/transaction/url_' . $this->methodSlug, [$this, 'getTransactionUrl'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/subscription/url_' . $this->methodSlug, [$this, 'getSubscriptionUrl'], 10, 2);
     }
 
     public function has(string $feature): bool
@@ -288,7 +288,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
             $statusHelper->changeOrderStatus(Status::ORDER_COMPLETED, $paymentStatus, $this->getMeta('title'), $this->getMeta('slug'));
         }
 
-        do_action('fluent_cart/payments/after_payment_' . $paymentStatus, [
+        webmakerr_do_action('webmakerr_cart/payments/after_payment_' . $paymentStatus, [
             'order' => $order
         ]);
     }
@@ -318,7 +318,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
 
     public function getEnqueueVersion()
     {
-        return FLUENTCART_VERSION;
+        return WEBMAKERR_VERSION;
     }
 
     public function getEnqueueScriptSrc($hasSubscription): array

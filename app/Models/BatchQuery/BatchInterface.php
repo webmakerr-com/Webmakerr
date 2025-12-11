@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Models\BatchQuery;
+namespace Webmakerr\App\Models\BatchQuery;
 
-use FluentCart\Framework\Database\Orm\Model;
+use Webmakerr\Framework\Database\Orm\Model;
 
 interface BatchInterface
 {

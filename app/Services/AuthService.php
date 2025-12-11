@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\App\Models\Customer;
+use Webmakerr\App\Models\Customer;
 
 class AuthService
 {
@@ -114,11 +114,11 @@ class AuthService
             update_user_meta($user_id, 'default_password_nag', true); // Set up the password change nag.
         }
 
-        do_action('fluent_cart/user/after_register', $user_id, [
+        webmakerr_do_action('webmakerr_cart/user/after_register', $user_id, [
             'user_id' => $user_id
         ]);
 
-        if (apply_filters('fluent_cart/user/after_register/skip_hooks', false, $user_id)) {
+        if (webmakerr_apply_filters('webmakerr_cart/user/after_register/skip_hooks', false, $user_id)) {
             return $user_id;
         }
 

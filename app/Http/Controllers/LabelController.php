@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\LabelResource;
-use FluentCart\App\Http\Requests\LabelRequest;
-use FluentCart\App\Models\Label;
-use FluentCart\App\Models\Model;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Product;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Resource\LabelResource;
+use Webmakerr\App\Http\Requests\LabelRequest;
+use Webmakerr\App\Models\Label;
+use Webmakerr\App\Models\Model;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Product;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Support\Str;
 
 class LabelController extends Controller
 {
@@ -58,7 +58,7 @@ class LabelController extends Controller
         if (!empty($data['bind_to_type']) && !empty($data['bind_to_id'])) {
 
             if (!Str::contains($data['bind_to_type'], '\\')) {
-                $modelClass = 'FluentCart\App\Models\\' . $data['bind_to_type'];
+                $modelClass = 'Webmakerr\App\Models\\' . $data['bind_to_type'];
             } else {
                 $modelClass = $data['bind_to_type'];
             }

@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\Shipping\Services\Filter;
+namespace Webmakerr\App\Modules\Shipping\Services\Filter;
 
-use FluentCart\App\Models\ShippingZone;
-use FluentCart\App\Services\Filter\BaseFilter;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\ShippingZone;
+use Webmakerr\App\Services\Filter\BaseFilter;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class ShippingZoneFilter extends BaseFilter
 {

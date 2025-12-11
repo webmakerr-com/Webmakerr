@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\Api\User;
-use FluentCart\Framework\Database\Orm\Builder;
+use Webmakerr\Api\User;
+use Webmakerr\Framework\Database\Orm\Builder;
 
 class UserResource extends BaseResourceApi
 {
     public static function getQuery(): Builder
     {
-        return \FluentCart\App\Models\User::query();
+        return \Webmakerr\App\Models\User::query();
     }
     
     public static function get(array $params = [])

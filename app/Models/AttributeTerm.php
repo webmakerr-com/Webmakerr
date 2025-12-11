@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Models;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\Framework\Support\Arr;
+namespace Webmakerr\App\Models;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  *  Attributes Terms Model - DB Model for Attributes Terms eg for Size: Small, Medium, Large
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

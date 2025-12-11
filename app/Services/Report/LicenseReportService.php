@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Report;
+namespace Webmakerr\App\Services\Report;
 
 use DateInterval;
 use DatePeriod;
-use FluentCart\App\App;
-use FluentCart\App\Services\Report\Concerns\CanParseAddressField;
-use FluentCart\App\Services\Report\Concerns\HasRange;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\DateTime;
+use Webmakerr\App\App;
+use Webmakerr\App\Services\Report\Concerns\CanParseAddressField;
+use Webmakerr\App\Services\Report\Concerns\HasRange;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\DateTime;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 
 class LicenseReportService extends ReportService

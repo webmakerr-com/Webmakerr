@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Listeners\FirstTimePluginActivation;
+namespace Webmakerr\App\Listeners\FirstTimePluginActivation;
 
-use FluentCart\App\Events\FirstTimePluginActivation;
+use Webmakerr\App\Events\FirstTimePluginActivation;
 
 class SetupStore
 {

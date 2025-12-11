@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Customer;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Framework\Support\Arr;
 
 class OrderEventHandler
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\ProductVariationResource;
-use FluentCart\App\Http\Requests\ProductVariationRequest;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\ProductVariationResource;
+use Webmakerr\App\Http\Requests\ProductVariationRequest;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductVariationController extends Controller
 {

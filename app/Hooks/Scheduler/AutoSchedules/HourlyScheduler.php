@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Hooks\Scheduler\AutoSchedules;
+namespace Webmakerr\App\Hooks\Scheduler\AutoSchedules;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\ScheduledAction;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\ScheduledAction;
 
 class HourlyScheduler
 {
     public function register(): void
     {
-        add_action('fluent_cart/scheduler/hourly_tasks', [$this, 'handle'], 10);
+        webmakerr_add_action('webmakerr_cart/scheduler/hourly_tasks', [$this, 'handle'], 10);
     }
 
     public function handle()

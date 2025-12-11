@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Model;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\OrderMeta;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Model;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\OrderMeta;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 
 class OrderService
 {
@@ -559,7 +559,7 @@ class OrderService
         $nextOrderNumber = $lastOrder + 1;
 
         $min_receipt_number = (new StoreSettings())->get('min_receipt_number') ?? 1;
-        $minReceiptNumber = apply_filters('fluent_cart/min_receipt_number', $min_receipt_number);
+        $minReceiptNumber = webmakerr_apply_filters('webmakerr_cart/min_receipt_number', $min_receipt_number);
 
         if ($nextOrderNumber < $minReceiptNumber) {
             $nextOrderNumber = $minReceiptNumber;
@@ -571,7 +571,7 @@ class OrderService
     public static function getInvoicePrefix()
     {
         $prefix = (new StoreSettings())->get('inv_prefix') ?? 'INV-';
-        return apply_filters('fluent_cart/invoice_prefix', $prefix);
+        return webmakerr_apply_filters('webmakerr_cart/invoice_prefix', $prefix);
     }
 
 

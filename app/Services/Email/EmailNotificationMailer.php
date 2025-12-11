@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Services\Email;
+namespace Webmakerr\App\Services\Email;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Model;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Model;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
+use Webmakerr\Framework\Support\Arr;
 
 class EmailNotificationMailer
 {
@@ -17,7 +17,7 @@ class EmailNotificationMailer
     {
         // $this->registerAsyncMails();
         // To Customer
-        add_action('fluent_cart/order_paid', function ($data) {
+        webmakerr_add_action('webmakerr_cart/order_paid', function ($data) {
             $this->mailEmailsOfEvent(
                 'order_paid',
                 $data
@@ -25,7 +25,7 @@ class EmailNotificationMailer
 
         }, 999, 1);
         // To Admin
-        add_action('fluent_cart/order_paid_done', function ($data) {
+        webmakerr_add_action('webmakerr_cart/order_paid_done', function ($data) {
             $this->mailEmailsOfEvent(
                 'order_paid_done',
                 $data
@@ -33,22 +33,22 @@ class EmailNotificationMailer
         }, 10, 1);
 
         // to customer and admin
-        add_action('fluent_cart/subscription_renewed', function ($data) {
+        webmakerr_add_action('webmakerr_cart/subscription_renewed', function ($data) {
             $this->mailEmailsOfEvent(
                 'subscription_renewed',
                 $data
             );
         }, 999, 1);
 
-        add_action('fluent_cart/order_refunded', function ($data) {
+        webmakerr_add_action('webmakerr_cart/order_refunded', function ($data) {
             $this->mailEmailsOfEvent('order_refunded', $data);
         }, 999, 1);
 
-        add_action('fluent_cart/shipping_status_changed_to_shipped', function ($data) {
+        webmakerr_add_action('webmakerr_cart/shipping_status_changed_to_shipped', function ($data) {
             $this->mailEmailsOfEvent('shipping_status_changed_to_shipped', $data);
         }, 999, 1);
 
-        add_action('fluent_cart/shipping_status_changed_to_delivered', function ($data) {
+        webmakerr_add_action('webmakerr_cart/shipping_status_changed_to_delivered', function ($data) {
             $this->mailEmailsOfEvent('shipping_status_changed_to_delivered', $data);
         }, 999, 1);
 
@@ -57,39 +57,39 @@ class EmailNotificationMailer
     public function registerAsyncMails()
     {
         //For Async Actions
-        add_action('fluent_cart/async_mail/order_created', function ($orderId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/order_created', function ($orderId, $mailName = '') {
             (new static())->sendAsyncOrderMail($mailName, $orderId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/order_paid', function ($orderId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/order_paid', function ($orderId, $mailName = '') {
             (new static())->sendAsyncOrderMail($mailName, $orderId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/order_updated', function ($orderId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/order_updated', function ($orderId, $mailName = '') {
             (new static())->sendAsyncOrderMail($mailName, $orderId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/order_refunded', function ($orderId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/order_refunded', function ($orderId, $mailName = '') {
             (new static())->sendAsyncOrderMail($mailName, $orderId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/subscription_activated', function ($subscriptionId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/subscription_activated', function ($subscriptionId, $mailName = '') {
             (new static())->sendAsyncSubscriptionMail($mailName, $subscriptionId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/subscription_renewed', function ($subscriptionId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/subscription_renewed', function ($subscriptionId, $mailName = '') {
             (new static())->sendAsyncSubscriptionMail($mailName, $subscriptionId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/subscription_eot', function ($subscriptionId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/subscription_eot', function ($subscriptionId, $mailName = '') {
             (new static())->sendAsyncSubscriptionMail($mailName, $subscriptionId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/subscription_canceled', function ($subscriptionId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/subscription_canceled', function ($subscriptionId, $mailName = '') {
             (new static())->sendAsyncSubscriptionMail($mailName, $subscriptionId);
         }, 10, 2);
 
-        add_action('fluent_cart/async_mail/subscription_expired', function ($subscriptionId, $mailName = '') {
+        webmakerr_add_action('webmakerr_cart/async_mail/subscription_expired', function ($subscriptionId, $mailName = '') {
             (new static())->sendAsyncSubscriptionMail($mailName, $subscriptionId);
         }, 10, 2);
 

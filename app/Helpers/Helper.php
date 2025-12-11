@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\Confirmation;
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\App;
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\User;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Http\URL as BaseUrl;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Confirmation;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\App;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\User;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Http\URL as BaseUrl;
+use Webmakerr\Framework\Support\Arr;
 
 class Helper
 {
@@ -250,7 +250,7 @@ class Helper
             return $loaded;
         }
 
-        require_once FLUENTCART_PLUGIN_PATH . 'app/Services/Libs/Spout/Autoloader/autoload.php';
+        require_once WEBMAKERR_PLUGIN_PATH . 'app/Services/Libs/Spout/Autoloader/autoload.php';
 
         return true;
     }
@@ -300,7 +300,7 @@ class Helper
      * you need to set $formatted to true and $thousand_separator to false.
      *
      * @hook fluent_cart/hide_unnecessary_decimals - Filter to control whether unnecessary decimals (like .00) should be hidden.
-     * Usage: add_filter('fluent_cart/hide_unnecessary_decimals', '__return_true'); // This will show 10 instead of 10.00
+     * Usage: webmakerr_add_filter('webmakerr_cart/hide_unnecessary_decimals', '__return_true'); // This will show 10 instead of 10.00
      */
     public static function toDecimal($amount, $withCurrency = true, $currencyCode = null, $formatted = true, $showDecimals = true, $thousand_separator = true)
     {
@@ -341,7 +341,7 @@ class Helper
             $thousand_separator = $decimal_separator === ',' ? '.' : ',';
 
             // Check if we should hide unnecessary decimal places (e.g., 10.00 -> 10)
-            $hideUnnecessaryDecimals = apply_filters('fluent_cart/hide_unnecessary_decimals', false, [
+            $hideUnnecessaryDecimals = webmakerr_apply_filters('webmakerr_cart/hide_unnecessary_decimals', false, [
                 'amount'  => $amount,
                 'decimal' => $decimal
             ]);
@@ -449,14 +449,14 @@ class Helper
     {
         $uploads = wp_upload_dir();
 
-        return $uploads['baseurl'] . '/' . FLUENTCART_UPLOAD_DIR . '/product_image/';
+        return $uploads['baseurl'] . '/' . WEBMAKERR_UPLOAD_DIR . '/product_image/';
     }
 
     public static function getProductImageBaseDir()
     {
         $uploads = wp_upload_dir();
 
-        return $uploads['basedir'] . '/' . FLUENTCART_UPLOAD_DIR . '/product_image/';
+        return $uploads['basedir'] . '/' . WEBMAKERR_UPLOAD_DIR . '/product_image/';
     }
 
     public static function getAvailableCurrencyList()
@@ -631,8 +631,8 @@ class Helper
         $iv = substr($decoded, 0, $ivlen);
         $ciphertext = substr($decoded, $ivlen);
 
-        $key = (defined('FLUENT_CART_ENCRYPTION_KEY'))
-            ? FLUENT_CART_ENCRYPTION_KEY
+        $key = (defined('WEBMAKERR_ENCRYPTION_KEY'))
+            ? WEBMAKERR_ENCRYPTION_KEY
             : ((defined('LOGGED_IN_KEY') && '' !== LOGGED_IN_KEY)
                 ? LOGGED_IN_KEY
                 : 'this-is-a-fallback-key-but-not-secure');
@@ -665,8 +665,8 @@ class Helper
 
         $salt = (defined('LOGGED_IN_SALT') && '' !== LOGGED_IN_SALT) ? LOGGED_IN_SALT : 'this-is-a-fallback-salt-but-not-secure';
 
-        if (defined('FLUENT_CART_ENCRYPTION_KEY')) {
-            $key = FLUENT_CART_ENCRYPTION_KEY;
+        if (defined('WEBMAKERR_ENCRYPTION_KEY')) {
+            $key = WEBMAKERR_ENCRYPTION_KEY;
         } else {
             $key = (defined('LOGGED_IN_KEY') && '' !== LOGGED_IN_KEY) ? LOGGED_IN_KEY : 'this-is-a-fallback-key-but-not-secure';
         }
@@ -702,8 +702,8 @@ class Helper
 
         $raw_value = substr($raw_value, $ivlen);
 
-        if (defined('FLUENT_CART_ENCRYPTION_KEY')) {
-            $key = FLUENT_CART_ENCRYPTION_KEY;
+        if (defined('WEBMAKERR_ENCRYPTION_KEY')) {
+            $key = WEBMAKERR_ENCRYPTION_KEY;
         } else {
             $key = (defined('LOGGED_IN_KEY') && '' !== LOGGED_IN_KEY) ? LOGGED_IN_KEY : 'this-is-a-fallback-key-but-not-secure';
         }
@@ -1088,7 +1088,7 @@ class Helper
             );
         }
 
-        return apply_filters('fluent_cart/trial_info', $trialInfo, $otherInfo);
+        return webmakerr_apply_filters('webmakerr_cart/trial_info', $trialInfo, $otherInfo);
     }
 
 
@@ -1340,7 +1340,7 @@ class Helper
 
     /**
      * Get the current user Model.
-     * @return User|\FluentCart\Framework\Database\Orm\Builder|\FluentCart\Framework\Database\Orm\Builder[]|\FluentCart\Framework\Database\Orm\Collection|\FluentCart\Framework\Database\Orm\Model|null
+     * @return User|\Webmakerr\Framework\Database\Orm\Builder|\Webmakerr\Framework\Database\Orm\Builder[]|\Webmakerr\Framework\Database\Orm\Collection|\Webmakerr\Framework\Database\Orm\Model|null
      */
     public static function getCurrentUser()
     {
@@ -1385,7 +1385,7 @@ class Helper
     {
         $identifier = Arr::get($productDownload, 'download_identifier', '');
 
-        $validityInMinutes = apply_filters('fluent_cart/download_link_validity_in_minutes', $validityInMinutes, [
+        $validityInMinutes = webmakerr_apply_filters('webmakerr_cart/download_link_validity_in_minutes', $validityInMinutes, [
             'product_download' => $productDownload,
             'order_id'         => $orderId,
             'is_admin'         => $isAdmin,
@@ -1433,7 +1433,7 @@ class Helper
         $siteUrl = preg_replace('#^https?://#', '', $siteUrl);
         $sitePrefix = str_replace(['/', '.'], '_', $siteUrl);
 
-        return apply_filters('fluent_cart/site_prefix', $sitePrefix, []);
+        return webmakerr_apply_filters('webmakerr_cart/site_prefix', $sitePrefix, []);
     }
 
     public static function humanIntervalMaps($interval = '')
@@ -1486,7 +1486,7 @@ class Helper
             ]
         ];
 
-        return apply_filters('fluent_cart/available_subscription_interval_options', $intervals);
+        return webmakerr_apply_filters('webmakerr_cart/available_subscription_interval_options', $intervals);
     }
 
     public static function translateIntervalToStandardFormat($repeatInterval)
@@ -1521,7 +1521,7 @@ class Helper
     {
         $intervalInDays = static::subscriptionIntervalInDays($repeatInterval);
 
-        $maxTrialDaysAllowed = apply_filters('fluent_cart/max_trial_days_allowed', 365, [
+        $maxTrialDaysAllowed = webmakerr_apply_filters('webmakerr_cart/max_trial_days_allowed', 365, [
             'existing_trial_days' => $trialDays,
             'repeat_interval' => $repeatInterval,
             'interval_in_days' => $intervalInDays,
@@ -1547,7 +1547,7 @@ class Helper
             case 'yearly':
                 return 365;
             default:
-                return apply_filters('fluent_cart/subscription_interval_in_days', 0, [
+                return webmakerr_apply_filters('webmakerr_cart/subscription_interval_in_days', 0, [
                     'interval' => $interval,
                 ]);
         }

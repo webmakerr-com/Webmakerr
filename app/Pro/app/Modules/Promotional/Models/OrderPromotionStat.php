@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Modules\Promotional\Models;
 
-use FluentCart\App\Models\Model;
+use Webmakerr\App\Models\Model;
 
 /**
  *
@@ -35,7 +35,7 @@ class OrderPromotionStat extends Model
 
     public function order()
     {
-        return $this->belongsTo(\FluentCart\App\Models\Order::class, 'order_id', 'id');
+        return $this->belongsTo(\Webmakerr\App\Models\Order::class, 'order_id', 'id');
     }
 
     public function promotion()

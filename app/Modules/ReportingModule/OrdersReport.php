@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\ReportingModule;
+namespace Webmakerr\App\Modules\ReportingModule;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Order;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Order;
+use Webmakerr\Framework\Support\Arr;
 
 class OrdersReport
 {

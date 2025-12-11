@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Services;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseSite;
 
@@ -29,7 +29,7 @@ class UUID
 
         $key = Arr::get($lisenseSettings, 'prefix', '') . md5(Arr::get($data, 'product_id') . '_' . Arr::get($data, 'variation_id') . Arr::get($data, 'order_id') . '_' . Arr::get($data, 'customer_id') . '_' . wp_generate_uuid4());
 
-        return apply_filters('fluent_cart_sl/generate_license_key', $key, [
+        return webmakerr_apply_filters('webmakerr_cart_sl/generate_license_key', $key, [
             'data' => $data
         ]);
     }

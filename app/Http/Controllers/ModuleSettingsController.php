@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\Api\Sanitizer\Sanitizer;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\Api\Sanitizer\Sanitizer;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class ModuleSettingsController extends Controller
 {
@@ -53,10 +53,10 @@ class ModuleSettingsController extends Controller
 
             if ($prevStatus === 'yes' && $newStatus === 'no') {
                 // Module deactivated
-                do_action('fluent_cart/module/deactivated/' . $moduleKey, $moduleData, $prevSettings[$moduleKey]);
+                webmakerr_do_action('webmakerr_cart/module/deactivated/' . $moduleKey, $moduleData, $prevSettings[$moduleKey]);
             } elseif ($prevStatus === 'no' && $newStatus === 'yes') {
                 // Module activated
-                do_action('fluent_cart/module/activated/' . $moduleKey, $moduleData, $prevSettings[$moduleKey]);
+                webmakerr_do_action('webmakerr_cart/module/activated/' . $moduleKey, $moduleData, $prevSettings[$moduleKey]);
             }
         }
 

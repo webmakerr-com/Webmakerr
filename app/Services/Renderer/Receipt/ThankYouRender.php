@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer\Receipt;
+namespace Webmakerr\App\Services\Renderer\Receipt;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class ThankYouRender
 {
@@ -63,13 +63,13 @@ class ThankYouRender
         <?php if (!$hide_wrapper) {
         $this->renderWrapperStart();
     } ?>
-        <?php do_action('fluent_cart/receipt/thank_you/before_header', $this->config); ?>
+        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/before_header', $this->config); ?>
         <?php $this->renderHeader(); ?>
-        <?php do_action('fluent_cart/receipt/thank_you/after_header', $this->config); ?>
+        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/after_header', $this->config); ?>
 
-        <?php do_action('fluent_cart/receipt/thank_you/before_body', $this->config); ?>
+        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/before_body', $this->config); ?>
         <?php $this->renderBody(); ?>
-        <?php do_action('fluent_cart/receipt/thank_you/after_body', $this->config); ?>
+        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/after_body', $this->config); ?>
         <?php if (!$hide_wrapper) {
         $this->renderWrapperEnd();
     } ?>
@@ -78,14 +78,14 @@ class ThankYouRender
 
         $this->renderFooter();
 
-        do_action('fluent_cart/after_receipt', [
+        webmakerr_do_action('webmakerr_cart/after_receipt', [
             'order'           => $order,
             'is_first_time'   => $this->is_first_time ?? false,
             'order_operation' => $this->order_operation ?? null
         ]);
 
         if (!empty($this->is_first_time)) {
-            do_action('fluent_cart/after_receipt_first_time', [
+            webmakerr_do_action('webmakerr_cart/after_receipt_first_time', [
                 'order'           => $order,
                 'order_operation' => $this->order_operation ?? null
             ]);
@@ -131,7 +131,7 @@ class ThankYouRender
                 </h1>
             <?php endif; ?>
 
-            <?php do_action('fluent_cart/receipt/thank_you/after_header_title', $this->config); ?>
+            <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/after_header_title', $this->config); ?>
 
         </div>
 
@@ -150,15 +150,15 @@ class ThankYouRender
             <div class="fct-thank-you-page-body-inner">
                 <div class="fct-thank-you-page-body-content">
                     <div class="fct-thank-you-page-body-content-inner">
-                        <?php do_action('fluent_cart/receipt/thank_you/before_order_header', $this->config); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/before_order_header', $this->config); ?>
                         <?php $this->renderOrderHeader(); ?>
-                        <?php do_action('fluent_cart/receipt/thank_you/after_order_header', $this->config); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/after_order_header', $this->config); ?>
 
                         <?php $this->renderStoreTaxInformation(); ?>
 
-                        <?php do_action('fluent_cart/receipt/thank_you/before_order_items', $this->config); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/before_order_items', $this->config); ?>
                         <?php $this->renderOrderItems(); ?>
-                        <?php do_action('fluent_cart/receipt/thank_you/after_order_items', $this->config); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/after_order_items', $this->config); ?>
 
                         <?php $this->renderSubscriptionItems(); ?>
 
@@ -212,7 +212,7 @@ class ThankYouRender
                         esc_url($profilePage . 'order/' . $order->uuid),
                         esc_html__('Your order', 'fluent-cart'),
                         esc_html__('has payment due. You can pay from', 'fluent-cart'),
-                        esc_url(\FluentCart\App\Services\Payments\PaymentHelper::getCustomPaymentLink($order->uuid)),
+                        esc_url(\Webmakerr\App\Services\Payments\PaymentHelper::getCustomPaymentLink($order->uuid)),
                         esc_html__('here', 'fluent-cart')
                     );
                     ?>
@@ -511,7 +511,7 @@ class ThankYouRender
                                             /* translators: 1: Next billing date */
                                                 esc_html__('- Auto renews on %1$s', 'fluent-cart'),
                                                 esc_html(
-                                                        \FluentCart\App\Services\DateTime\DateTime::anyTimeToGmt($subs->next_billing_date)->format('M d, Y h:i A')
+                                                        \Webmakerr\App\Services\DateTime\DateTime::anyTimeToGmt($subs->next_billing_date)->format('M d, Y h:i A')
                                                 )
                                         );
                                         ?>
@@ -795,10 +795,10 @@ class ThankYouRender
     {
         ?>
         <div class="fct-thank-you-page-footer">
-            <?php do_action('fluent_cart/receipt/thank_you/before_footer_buttons', $this->config); ?>
+            <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/before_footer_buttons', $this->config); ?>
             <?php $this->renderViewOrderButton(); ?>
             <?php $this->renderDownloadReceiptButton(); ?>
-            <?php do_action('fluent_cart/receipt/thank_you/after_footer_buttons', $this->config); ?>
+            <?php webmakerr_do_action('webmakerr_cart/receipt/thank_you/after_footer_buttons', $this->config); ?>
         </div>
         <?php
     }
@@ -823,7 +823,7 @@ class ThankYouRender
         ?>
         <a
             class="fct-thank-you-page-download-receipt-button"
-            href="<?php echo esc_url(\FluentCart\App\Services\URL::appendQueryParams(
+            href="<?php echo esc_url(\Webmakerr\App\Services\URL::appendQueryParams(
                 home_url(),
                 [
                     'fluent-cart' => 'receipt',

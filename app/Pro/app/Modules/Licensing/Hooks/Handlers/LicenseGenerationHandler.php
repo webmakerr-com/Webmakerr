@@ -2,12 +2,12 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Hooks\Handlers;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Services\LicenseHelper;
 
@@ -17,29 +17,29 @@ class LicenseGenerationHandler
     public function register()
     {
         // fluent_cart/order_paid -> generate
-        add_action('fluent_cart/order_paid', [$this, 'maybeGenerateLicensesOnPurchaseSuccess'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/order_paid', [$this, 'maybeGenerateLicensesOnPurchaseSuccess'], 10, 1);
 
         // fluent_cart/order_fully_refunded -> revoke
-        add_action('fluent_cart/order_fully_refunded', [$this, 'maybeRevokeLicensesOnFullRefund'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/order_fully_refunded', [$this, 'maybeRevokeLicensesOnFullRefund'], 10, 1);
 
         // fluent_cart/subscription_renewed -> extend validity
-        add_action('fluent_cart/subscription_renewed', [$this, 'maybeExtendOnRenewal'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/subscription_renewed', [$this, 'maybeExtendOnRenewal'], 10, 1);
 
         // fluent_cart/payments/subscription_expired -> expire the license
-        add_action('fluent_cart/payments/subscription_expired', [$this, 'maybeExpireLicenseOnSubscriptionExpired'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/subscription_expired', [$this, 'maybeExpireLicenseOnSubscriptionExpired'], 10, 1);
 
         // fluent_cart/payments/subscription_completed
-        add_action('fluent_cart/payments/subscription_completed', [$this, 'maybeExtendLicenseToLifeTimeOnEot'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/subscription_completed', [$this, 'maybeExtendLicenseToLifeTimeOnEot'], 10, 1);
 
         // Handle Order Upgraded here
-        add_action('fluent_cart/order/upgraded', [$this, 'handleUpgradedOrderCompleted'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/order/upgraded', [$this, 'handleUpgradedOrderCompleted'], 10, 1);
 
-        add_action('fluent_cart/subscription/data_updated', [$this, 'maybeExtendOnRenewal'], 10, 1);
-        add_action('fluent_cart/subscription/subscription_canceled', [$this, 'maybeExtendOnRenewal'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/subscription/data_updated', [$this, 'maybeExtendOnRenewal'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/subscription/subscription_canceled', [$this, 'maybeExtendOnRenewal'], 10, 1);
 
-        add_filter('fluent_cart/order/expected_license_count', [$this, 'expectedLicenseCount'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/order/expected_license_count', [$this, 'expectedLicenseCount'], 10, 2);
 
-        add_action('fluent_cart/order/generateMissingLicenses', [$this, 'generateMissingLicenses'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/order/generateMissingLicenses', [$this, 'generateMissingLicenses'], 10, 1);
 
     }
 
@@ -140,7 +140,7 @@ class LicenseGenerationHandler
 
             $license->save();
 
-            do_action('fluent_cart/licensing/license_disabled', [
+            webmakerr_do_action('webmakerr_cart/licensing/license_disabled', [
                 'license' => $license,
                 'order'   => $orderModel,
             ]);
@@ -175,7 +175,7 @@ class LicenseGenerationHandler
 
             $license->save();
             if ($oldExpirationDate !== $license->expiration_date) {
-                do_action('fluent_cart/licensing/license_renewed', [
+                webmakerr_do_action('webmakerr_cart/licensing/license_renewed', [
                     'license'      => $license,
                     'subscription' => $subscription,
                     'prev_status'  => $prevStatus,
@@ -211,7 +211,7 @@ class LicenseGenerationHandler
             $license->status = 'expired';
             $license->save();
 
-            do_action('fluent_cart/licensing/license_expired', [
+            webmakerr_do_action('webmakerr_cart/licensing/license_expired', [
                 'license'      => $license,
                 'subscription' => $subscription,
                 'prev_status'  => $prevStatus,
@@ -246,7 +246,7 @@ class LicenseGenerationHandler
             $license->expiration_date = null; // Set expiration date to null for lifetime license
             $license->save();
 
-            do_action('fluent_cart/licensing/extended_to_lifetime', [
+            webmakerr_do_action('webmakerr_cart/licensing/extended_to_lifetime', [
                 'license'      => $license,
                 'subscription' => $subscription,
                 'prev_status'  => $prevStatus,
@@ -319,7 +319,7 @@ class LicenseGenerationHandler
                 $updates = $existingLicense->getDirty();
                 $existingLicense->save();
 
-                do_action('fluent_cart/licensing/license_upgraded', [
+                webmakerr_do_action('webmakerr_cart/licensing/license_upgraded', [
                     'license'      => $existingLicense,
                     'order'        => $newOrderModel,
                     'subscription' => $subscription,
@@ -454,7 +454,7 @@ class LicenseGenerationHandler
             $data['expiration_date'] = $subscription->next_billing_date;
         }
 
-        $data = apply_filters('fluent_cart/licensing/license_create_data', $data, [
+        $data = webmakerr_apply_filters('webmakerr_cart/licensing/license_create_data', $data, [
             'order'        => $orderModel,
             'variation'    => $licenseData['variation'],
             'subscription' => $subscription,
@@ -465,7 +465,7 @@ class LicenseGenerationHandler
         }
 
         $license = License::query()->create($data);
-        do_action('fluent_cart/licensing/license_issued', [
+        webmakerr_do_action('webmakerr_cart/licensing/license_issued', [
             'license'      => $license,
             'data'         => $data,
             'order'        => $orderModel,

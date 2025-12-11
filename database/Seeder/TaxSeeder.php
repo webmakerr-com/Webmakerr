@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\App\Models\Order;
-use FluentCart\Faker\Factory;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Order;
+use Webmakerr\Faker\Factory;
+use Webmakerr\Framework\Support\Arr;
 
 class TaxSeeder
 {
     public static function seed($count = null, $assoc_args = [])
     {
-        $db = \FluentCart\App\App::getInstance('db');
+        $db = \Webmakerr\App\App::getInstance('db');
         $faker = Factory::create();
 
         if (defined('WP_CLI') && WP_CLI) {

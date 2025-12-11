@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Report;
+namespace Webmakerr\App\Services\Report;
 
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Services\Report\Concerns\HasRange;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\DateTime;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Services\Report\Concerns\HasRange;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\DateTime;
 
 class CartReportService extends ReportService
 {

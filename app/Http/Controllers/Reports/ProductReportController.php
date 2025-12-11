@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\Reports;
+namespace Webmakerr\App\Http\Controllers\Reports;
 
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Services\Report\ReportHelper;
-use FluentCart\App\Services\Report\ProductReportService;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Services\Report\ReportHelper;
+use Webmakerr\App\Services\Report\ProductReportService;
 
 class ProductReportController extends Controller
 {

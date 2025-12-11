@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Services\Renderer\ProductCardRender;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Services\Renderer\ProductCardRender;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductCardShortCode extends ShortCode
 {

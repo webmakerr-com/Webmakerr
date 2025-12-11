@@ -2,22 +2,22 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\MollieGateway;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Helpers\StatusHelper;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Events\Subscription\SubscriptionActivated;
-use FluentCart\App\Modules\Subscriptions\Services\SubscriptionService;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Helpers\StatusHelper;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Events\Subscription\SubscriptionActivated;
+use Webmakerr\App\Modules\Subscriptions\Services\SubscriptionService;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Services\DateTime\DateTime;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\API\MollieAPI;
 
 class Confirmations
 {
     public function init(){
         
-        add_action('fluent_cart/before_render_redirect_page', [$this, 'maybeConfirmPayment'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/before_render_redirect_page', [$this, 'maybeConfirmPayment'], 10, 1);
 
     }
 
@@ -241,7 +241,7 @@ class Confirmations
                 $relatedCart->completed_at = DateTime::now()->format('Y-m-d H:i:s');
                 $relatedCart->save();
 
-                do_action('fluent_cart/cart_completed', [
+                webmakerr_do_action('webmakerr_cart/cart_completed', [
                     'cart'  => $relatedCart,
                     'order' => $order,
                 ]);
@@ -300,7 +300,7 @@ class Confirmations
             'interval_unit' => Arr::get($intervalMap, $subscriptionModel->billing_interval, '1 month')
         ];
 
-        $billingPeriod = apply_filters('fluent_cart/subscription_billing_period', $billingPeriod, [
+        $billingPeriod = webmakerr_apply_filters('webmakerr_cart/subscription_billing_period', $billingPeriod, [
             'subscription_interval' => $subscriptionModel->billing_interval,
             'payment_method' => 'mollie',
         ]);

@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API;
 
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\PayPalSettingsBase;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\PayPalSettingsBase;
+use Webmakerr\Framework\Support\Arr;
 
 class API
 {
@@ -99,7 +99,7 @@ class API
 
             $headers = array(
                 'Authorization'         => 'Bearer ' . $accessToken,
-                'PayPal-Partner-Attribution-ID: FLUENTCART_SP_PPCP',
+                'PayPal-Partner-Attribution-ID: WEBMAKERR_SP_PPCP',
                 'Content-Type'          => 'application/json',
                 'Accept'                => 'application/json',
                 'PayPal-Auth-Assertion' => $authAssertion
@@ -217,7 +217,7 @@ class API
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type'  => 'application/json',
             'Accept'        => 'application/json',
-            'PayPal-Partner-Attribution-ID: FLUENTCART_SP_PPCP'
+            'PayPal-Partner-Attribution-ID: WEBMAKERR_SP_PPCP'
         );
 
         $response = wp_safe_remote_get($url, [
@@ -317,7 +317,7 @@ class API
         $headers = [
             'Accept'                        => 'application/json',
             'Accept-Language'               => 'en_US',
-            'PayPal-Partner-Attribution-ID' => 'FLUENTCART_SP_PPCP'
+            'PayPal-Partner-Attribution-ID' => 'WEBMAKERR_SP_PPCP'
         ];
 
         // Prepare body

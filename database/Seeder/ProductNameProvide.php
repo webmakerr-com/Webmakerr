@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\Faker\Provider\Base;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Faker\Provider\Base;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductNameProvide extends Base
 {

@@ -1,40 +1,40 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\App;
-use FluentCart\App\Vite;
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\Services\URL;
-use FluentCart\Api\StoreSettings;
-use FluentCart\Api\PaymentMethods;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\Customer;
-use FluentCart\Database\DBMigrator;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Helpers\AdminHelper;
-use FluentCart\App\Models\AttributeTerm;
-use FluentCart\App\Models\AttributeGroup;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\App\Helpers\CurrenciesHelper;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\App\Services\Filter\TaxFilter;
-use FluentCart\App\Services\Theme\AdminTheme;
-use FluentCart\App\Services\Filter\OrderFilter;
-use FluentCart\App\Services\Filter\LicenseFilter;
-use FluentCart\App\Services\Filter\ProductFilter;
-use FluentCart\App\Services\Filter\CustomerFilter;
-use FluentCart\App\Modules\Integrations\AddOnModule;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Services\Permission\PermissionManager;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Services\Pro\ProFeatureManager;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Vite;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Api\PaymentMethods;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Database\DBMigrator;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Helpers\AdminHelper;
+use Webmakerr\App\Models\AttributeTerm;
+use Webmakerr\App\Models\AttributeGroup;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\App\Helpers\CurrenciesHelper;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\App\Services\Filter\TaxFilter;
+use Webmakerr\App\Services\Theme\AdminTheme;
+use Webmakerr\App\Services\Filter\OrderFilter;
+use Webmakerr\App\Services\Filter\LicenseFilter;
+use Webmakerr\App\Services\Filter\ProductFilter;
+use Webmakerr\App\Services\Filter\CustomerFilter;
+use Webmakerr\App\Modules\Integrations\AddOnModule;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Services\Pro\ProFeatureManager;
 
 class MenuHandler
 {
@@ -45,7 +45,7 @@ class MenuHandler
         add_action('admin_init', function () {
             $page = App::request()->get('page') ?? '';
             if ($page == 'webmakerr') {
-                \FluentCart\App\Events\FirstTimePluginActivation::handle();
+                \Webmakerr\App\Events\FirstTimePluginActivation::handle();
 
                 add_action('admin_enqueue_scripts', function () {
                     Vite::enqueueStyle('fluent_cart_admin_app_css',
@@ -149,7 +149,7 @@ class MenuHandler
             return $parent_file;
         });
 
-        add_action('fluent_cart/admin_menu', array($this, 'renderAdminMenu'));
+        webmakerr_add_action('webmakerr_cart/admin_menu', array($this, 'renderAdminMenu'));
         // add_action('in_admin_header', array($this, 'maybeRenderAdminMenu'));
 
         add_action('edit_form_top', array($this, 'pushProductNav'));
@@ -171,7 +171,7 @@ class MenuHandler
 
         global $submenu;
 
-        $adminMenuTitle = apply_filters('fluent_cart/admin_menu_title', 'Webmakerrr®', []);
+        $adminMenuTitle = webmakerr_apply_filters('webmakerr_cart/admin_menu_title', 'Webmakerrr®', []);
 
         add_menu_page(
             $adminMenuTitle,
@@ -180,7 +180,7 @@ class MenuHandler
             'webmakerr',
             [$this, 'renderAdmin'],
             $this->getMenuIcon(),
-            apply_filters('fluent_cart/admin_menu_position', 3)
+            webmakerr_apply_filters('webmakerr_cart/admin_menu_position', 3)
         );
 
         $submenu['webmakerr']['dashboard'] = array(
@@ -290,7 +290,7 @@ class MenuHandler
             }
         }
 
-        do_action('fluent_cart/admin_submenu_added', $submenu);
+        webmakerr_do_action('webmakerr_cart/admin_submenu_added', $submenu);
     }
 
     public function renderAdmin()
@@ -362,19 +362,19 @@ class MenuHandler
 
         $slug = $app->config->get('app.slug');
 
-        do_action('fluent_cart/loading_app', $app);
+        webmakerr_do_action('webmakerr_cart/loading_app', $app);
 
         //This should be done before enqueueing the global script.
         Vite::enqueueScript($slug . '_admin_app_start', 'admin/bootstrap/app.js', [$slug . '_global_admin_hooks']);
 
         //Don't register this script using vite.
-        wp_enqueue_script($slug . '_global_admin_hooks', Vite::getEnqueuePath('admin/admin_hooks.js'), [],FLUENTCART_VERSION,true);
+        wp_enqueue_script($slug . '_global_admin_hooks', Vite::getEnqueuePath('admin/admin_hooks.js'), [],WEBMAKERR_VERSION,true);
 
         $manager = GatewayManager::getInstance();
         $payment_routes = $manager->getRoutes();
-//        $payment_routes = apply_filters('fluent_cart/payments/payment_method_settings_routes', []);
+//        $payment_routes = webmakerr_apply_filters('webmakerr_cart/payments/payment_method_settings_routes', []);
 
-        $storage_driver_routes = apply_filters('fluent_cart/storage/storage_driver_settings_routes', [], []);
+        $storage_driver_routes = webmakerr_apply_filters('webmakerr_cart/storage/storage_driver_settings_routes', [], []);
 
         $settings = new StoreSettings();
         $checkoutUrl = add_query_arg(Helper::INSTANT_CHECKOUT_URL_PARAM, '=', $settings->getCheckoutPage());
@@ -396,13 +396,13 @@ class MenuHandler
                 'message' => ProFeatureManager::instance()->getLockedMessage(__('License filters', 'fluent-cart')),
             ];
         }
-        $filterOptions = apply_filters('fluent_cart/admin_filter_options', $filterOptions, []);
+        $filterOptions = webmakerr_apply_filters('webmakerr_cart/admin_filter_options', $filterOptions, []);
 
         $currentUser = get_user_by('ID', get_current_user_id());
 
         // Get app config and merge additional properties into it
         $appConfig = $app->config->get('app');
-        $appConfig['version'] = FLUENTCART_VERSION;
+        $appConfig['version'] = WEBMAKERR_VERSION;
         $appConfig['permissions'] = PermissionManager::getUserPermissions();
         $appConfig['isProActive'] = App::isProActive();
 
@@ -413,7 +413,7 @@ class MenuHandler
         $appConfig['isModuleTabEnabled'] = $settings->isModuleTabEnabled();
 
         $max_upload_size = wp_max_upload_size(); // Returns size in bytes
-        $adminLocalizeData = apply_filters('fluent_cart/admin_app_data', [
+        $adminLocalizeData = webmakerr_apply_filters('webmakerr_cart/admin_app_data', [
             'app_config'                       => $appConfig,
             'slug'                             => $app->config->get('app.slug'),
             'admin_url'                        => admin_url('admin.php?page=webmakerr#/'),
@@ -450,7 +450,7 @@ class MenuHandler
             'trans'                            => TransStrings::getStrings(),
             'dashboard_url'                    => admin_url('admin.php?page=webmakerr#'),
             'checkout_url'                     => $checkoutUrl,
-            'dummy_product_info'               => apply_filters('fluent_cart/dummy_product_info', []) ?: [],
+            'dummy_product_info'               => webmakerr_apply_filters('webmakerr_cart/dummy_product_info', []) ?: [],
             'currency_signs'                   => CurrenciesHelper::getCurrencySigns(),
             'filter_options'                   => $filterOptions,
             'receipt_page_url'                 => $settings->getReceiptPage(),
@@ -464,7 +464,7 @@ class MenuHandler
             'site_url'                         => site_url(),
             'modules_settings'                 => ModuleSettings::getAllSettings(),
             'purchase_fluent_cart_link'        => 'https://fluentcart.com/',
-            'admin_notices'                    => apply_filters('fluent_cart/admin_notices', []),
+            'admin_notices'                    => webmakerr_apply_filters('webmakerr_cart/admin_notices', []),
             'subscription_intervals'           => Helper::getAvailableSubscriptionIntervalOptions(),
 
             'datei18'    => TransStrings::dateTimeStrings(),
@@ -478,7 +478,7 @@ class MenuHandler
             'rest' => $restVars,
         ]);
 
-        do_action('fluent_cart/admin_js_loaded', $app);
+        webmakerr_do_action('webmakerr_cart/admin_js_loaded', $app);
     }
 
     public function globalEnqueueAssets($adminBar)
@@ -492,9 +492,9 @@ class MenuHandler
         $app = App::getInstance();
 
         $slug = $app->config->get('app.slug');
-        wp_enqueue_script($slug . '_edit_wp_user_admin_global_js', Vite::getEnqueuePath('admin/utils/edit-wp-user-global.js'), ['jquery'], FLUENTCART_VERSION, true);
+        wp_enqueue_script($slug . '_edit_wp_user_admin_global_js', Vite::getEnqueuePath('admin/utils/edit-wp-user-global.js'), ['jquery'], WEBMAKERR_VERSION, true);
 
-        $baseUrl = apply_filters('fluent_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
+        $baseUrl = webmakerr_apply_filters('webmakerr_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
 
         $editingUserVars = null;
 

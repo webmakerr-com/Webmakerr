@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Http\Requests;
+namespace Webmakerr\App\Http\Requests;
 
-use FluentCart\App\App;
-use FluentCart\Framework\Foundation\RequestGuard;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Support\Arr;
 
 class CustomerAddressRequest extends RequestGuard
 {

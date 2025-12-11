@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Email;
+namespace Webmakerr\App\Services\Email;
 
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Services\Cache;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Services\Cache;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\Framework\Support\Arr;
 
 class EmailNotifications
 {
@@ -21,7 +21,7 @@ class EmailNotifications
     public static function getNotifications(): array
     {
         $settings = static::getDefaultNotifications();
-        $settings = apply_filters('fluent_cart/email_notifications', $settings);
+        $settings = webmakerr_apply_filters('webmakerr_cart/email_notifications', $settings);
         $config = Arr::get(static::cachedSettings(), 'notification_config', []);
         foreach ($settings as $key => &$setting) {
             $setting['name'] = $key;

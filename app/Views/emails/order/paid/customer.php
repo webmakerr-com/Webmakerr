@@ -1,7 +1,7 @@
 <?php if (!defined('ABSPATH')) exit; ?>
 <?php
 /**
- * @var $order \FluentCart\App\Models\Order
+ * @var $order \Webmakerr\App\Models\Order
  */
 ?>
 
@@ -18,7 +18,7 @@
 
 <?php
 
-\FluentCart\App\App::make('view')->render('emails.parts.items_table', [
+\Webmakerr\App\App::make('view')->render('emails.parts.items_table', [
     'order'          => $order,
     'formattedItems' => $order->order_items,
     'heading'        => __('Order Summary', 'fluent-cart'),
@@ -26,7 +26,7 @@
 
 
 if ($order->subscriptions && $order->subscriptions->count() > 0) {
-    \FluentCart\App\App::make('view')->render('invoice.parts.subscription_items', [
+    \Webmakerr\App\App::make('view')->render('invoice.parts.subscription_items', [
         'subscriptions' => $order->subscriptions,
         'order'         => $order
     ]);
@@ -34,7 +34,7 @@ if ($order->subscriptions && $order->subscriptions->count() > 0) {
 
 $licenses = $order->getLicenses();
 if ($licenses && $licenses->count() > 0) {
-    \FluentCart\App\App::make('view')->render('emails.parts.licenses', [
+    \Webmakerr\App\App::make('view')->render('emails.parts.licenses', [
         'licenses'    => $licenses,
         'heading'     => __('Licenses', 'fluent-cart'),
         'show_notice' => false
@@ -44,7 +44,7 @@ if ($licenses && $licenses->count() > 0) {
 $downloads = $order->getDownloads();
 
 if ($downloads) {
-    \FluentCart\App\App::make('view')->render('emails.parts.downloads', [
+    \Webmakerr\App\App::make('view')->render('emails.parts.downloads', [
         'order'         => $order,
         'heading'       => __('Downloads', 'fluent-cart'),
         'downloadItems' => $downloads,
@@ -53,11 +53,11 @@ if ($downloads) {
 
 echo '<hr />';
 
-\FluentCart\App\App::make('view')->render('emails.parts.addresses', [
+\Webmakerr\App\App::make('view')->render('emails.parts.addresses', [
     'order' => $order,
 ]);
 
-\FluentCart\App\App::make('view')->render('emails.parts.call_to_action_box', [
+\Webmakerr\App\App::make('view')->render('emails.parts.call_to_action_box', [
     'content'     => __('To download receipt and view your order details, please visit the order details page.', 'fluent-cart'),
     'link'        => $order->getViewUrl('customer'),
     'button_text' => 'View Details'

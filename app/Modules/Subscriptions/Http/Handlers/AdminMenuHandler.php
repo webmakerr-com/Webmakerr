@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Modules\Subscriptions\Http\Handlers;
+namespace Webmakerr\App\Modules\Subscriptions\Http\Handlers;
 
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class AdminMenuHandler
 {
     public function register()
     {
-        add_action('fluent_cart/loading_app', function () {
+        webmakerr_add_action('webmakerr_cart/loading_app', function () {
             Vite::enqueueScript('fluent_cart_subscriptions', 'admin/Modules/Subscriptions/subscription.js');
         });
 
-        add_filter('fluent_cart/global_admin_menu_items', [$this, 'addSubscriptionAdminMenu'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/global_admin_menu_items', [$this, 'addSubscriptionAdminMenu'], 10, 2);
     }
 
     public function addSubscriptionAdminMenu ($items, $args)

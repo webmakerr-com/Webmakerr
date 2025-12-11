@@ -2,14 +2,14 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Models;
 
-use FluentCart\App\Models\Model;
+use Webmakerr\App\Models\Model;
 
 /**
  *  Meta Model - DB Model for Meta table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

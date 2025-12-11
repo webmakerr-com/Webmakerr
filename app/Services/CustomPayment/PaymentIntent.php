@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\CustomPayment;
+namespace Webmakerr\App\Services\CustomPayment;
 
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Framework\Support\Collection;
 
 class PaymentIntent
 {

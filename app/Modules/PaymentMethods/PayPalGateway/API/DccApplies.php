@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API;
 
 class DccApplies
 {

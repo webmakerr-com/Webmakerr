@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\Resource\FrontendResource\OrderDownloadPermissionResource;
-use FluentCart\Api\Resource\OrderResource;
-use FluentCart\Api\Resource\ProductDownloadResource;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\OrderDownloadPermission;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\DateTime;
+use Webmakerr\Api\Resource\FrontendResource\OrderDownloadPermissionResource;
+use Webmakerr\Api\Resource\OrderResource;
+use Webmakerr\Api\Resource\ProductDownloadResource;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\OrderDownloadPermission;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\DateTime;
 
 class CustomerHelper
 {

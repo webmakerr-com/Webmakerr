@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Http\Routes;
+namespace Webmakerr\App\Http\Routes;
 
-use FluentCart\App\App;
-use FluentCart\App\Modules\Coupon\CouponHandler;
-use FluentCart\App\Http\Controllers\CheckoutController;
-use FluentCart\App\Modules\Shipping\Http\Controllers\Frontend\ShippingFrontendController;
-use FluentCart\App\Http\Controllers\CartController;
-use FluentCart\App\Http\Controllers\FrontendControllers\CustomerController;
-use FluentCart\App\Http\Controllers\UserController;
+use Webmakerr\App\App;
+use Webmakerr\App\Modules\Coupon\CouponHandler;
+use Webmakerr\App\Http\Controllers\CheckoutController;
+use Webmakerr\App\Modules\Shipping\Http\Controllers\Frontend\ShippingFrontendController;
+use Webmakerr\App\Http\Controllers\CartController;
+use Webmakerr\App\Http\Controllers\FrontendControllers\CustomerController;
+use Webmakerr\App\Http\Controllers\UserController;
 
 class AjaxRoute
 {

@@ -2,9 +2,9 @@
 
 namespace FluentCartPro\App\Http\Controllers;
 
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Http\Request\Request;
 use FluentCartPro\App\Models\User;
 
 class ProductController extends Controller

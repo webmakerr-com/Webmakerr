@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class StripeHelper
 {

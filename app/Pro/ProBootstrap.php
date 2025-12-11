@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Pro;
+namespace Webmakerr\App\Pro;
 
-use FluentCart\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Services\Permission\PermissionManager;
 use FluentCartPro\App\Hooks\Handlers\AdminMenuHandler;
 use FluentCartPro\App\Hooks\Handlers\SubscriptionRenewalHandler;
 use FluentCartPro\App\Hooks\Handlers\UpgradeHandler;
@@ -29,8 +29,8 @@ class ProBootstrap
         $fluentLicensing = new FluentLicensing();
         $fluentLicensing->register([
             'item_id'      => 21480,
-            'basename'     => plugin_basename(FLUENTCART_PRO_PLUGIN_FILE_PATH),
-            'version'      => FLUENTCART_PRO_PLUGIN_VERSION,
+            'basename'     => plugin_basename(WEBMAKERR_PRO_PLUGIN_FILE_PATH),
+            'version'      => WEBMAKERR_PRO_PLUGIN_VERSION,
             'api_url'      => 'https://fluentcart.com/',
             'activate_url' => admin_url('admin.php?page=webmakerr#/settings/licensing'),
             'plugin_title' => 'Webmakerr',
@@ -45,7 +45,7 @@ class ProBootstrap
                 printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), wp_kses_post($message));
             });
 
-            add_filter('fluent_cart/admin_notices', function ($notices) use ($licenseNotice) {
+            webmakerr_add_filter('webmakerr_cart/admin_notices', function ($notices) use ($licenseNotice) {
                 if (!$licenseNotice || !PermissionManager::userCan('is_super_admin')) {
                     return $notices;
                 }
@@ -58,7 +58,7 @@ class ProBootstrap
             });
         }
 
-        add_action('fluent_cart/init', function ($app) {
+        webmakerr_add_action('webmakerr_cart/init', function ($app) {
             Paddle::register();
             Mollie::register();
         });

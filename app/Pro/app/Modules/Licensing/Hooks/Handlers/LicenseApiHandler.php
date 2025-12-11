@@ -2,9 +2,9 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Hooks\Handlers;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseSite;
@@ -15,11 +15,11 @@ class LicenseApiHandler
 
     public function register()
     {
-        add_action('fluent_cart_action_check_license', [$this, 'checkLicense']);
-        add_action('fluent_cart_action_activate_license', [$this, 'activateLicense']);
-        add_action('fluent_cart_action_deactivate_license', [$this, 'deActivateLicense']);
-        add_action('fluent_cart_action_get_license_version', [$this, 'getVersion']);
-        add_action('fluent_cart_action_download_license_package', [$this, 'downloadLicensePackage']);
+        webmakerr_add_action('webmakerr_cart_action_check_license', [$this, 'checkLicense']);
+        webmakerr_add_action('webmakerr_cart_action_activate_license', [$this, 'activateLicense']);
+        webmakerr_add_action('webmakerr_cart_action_deactivate_license', [$this, 'deActivateLicense']);
+        webmakerr_add_action('webmakerr_cart_action_get_license_version', [$this, 'getVersion']);
+        webmakerr_add_action('webmakerr_cart_action_download_license_package', [$this, 'downloadLicensePackage']);
     }
 
     public function checkLicense($data = [])
@@ -42,7 +42,7 @@ class LicenseApiHandler
         [$license, $activation] = LicenseHelper::getLicenseByKeyHashData($formattedData);
 
         if (is_wp_error($license)) {
-            $errorResponse = apply_filters('fluent_cart/license/checking_error', [
+            $errorResponse = webmakerr_apply_filters('webmakerr_cart/license/checking_error', [
                 'status'     => 'invalid',
                 'error_type' => $license->get_error_code(),
                 'message'    => $license->get_error_message()
@@ -51,9 +51,9 @@ class LicenseApiHandler
             return $this->sendSuccessResponse($errorResponse);
         }
 
-        if (($formattedData['item_id'] != $license->product_id) && apply_filters('fluent_cart/license/check_item_id', true, $license, $activation, $formattedData)) {
+        if (($formattedData['item_id'] != $license->product_id) && webmakerr_apply_filters('webmakerr_cart/license/check_item_id', true, $license, $activation, $formattedData)) {
 
-            $errorResponse = apply_filters('fluent_cart/license/checking_error', [
+            $errorResponse = webmakerr_apply_filters('webmakerr_cart/license/checking_error', [
                 'status'     => 'invalid',
                 'error_type' => 'key_mismatch',
                 'message'    => 'This license key is not valid for this product. Did you provide the valid license key?'
@@ -80,7 +80,7 @@ class LicenseApiHandler
             'updated_at'        => $license->updated_at
         ];
 
-        $returnData = apply_filters('fluent_cart/license/check_license_response', $returnData, $license, $activation, $data);
+        $returnData = webmakerr_apply_filters('webmakerr_cart/license/check_license_response', $returnData, $license, $activation, $data);
 
         if (is_wp_error($returnData)) {
             return $this->sendSuccessResponse([
@@ -167,7 +167,7 @@ class LicenseApiHandler
                     'updated_at'        => $license->updated_at
                 ];
 
-                $returnData = apply_filters('fluent_cart/license/activate_license_response', $returnData, $license, $activation, $data);
+                $returnData = webmakerr_apply_filters('webmakerr_cart/license/activate_license_response', $returnData, $license, $activation, $data);
 
                 if (is_wp_error($returnData)) {
                     return $this->sendErrorResponse([
@@ -252,7 +252,7 @@ class LicenseApiHandler
 
         // Let's recount the activations count
         $license->recountActivations();
-        do_action('fluent_cart/license/site_activated', $site, $activation, $license, $data);
+        webmakerr_do_action('webmakerr_cart/license/site_activated', $site, $activation, $license, $data);
 
         $product = $license->product;
 
@@ -271,7 +271,7 @@ class LicenseApiHandler
             'updated_at'        => $license->updated_at
         ];
 
-        $returnData = apply_filters('fluent_cart/license/activate_license_response', $returnData, $license, $activation, $data);
+        $returnData = webmakerr_apply_filters('webmakerr_cart/license/activate_license_response', $returnData, $license, $activation, $data);
 
         if (is_wp_error($returnData)) {
             return $this->sendErrorResponse([
@@ -292,7 +292,7 @@ class LicenseApiHandler
         ];
 
         if (!$formattedData['site_url'] || !$formattedData['license_key'] || !$formattedData['item_id']) {
-            do_action('fluent_cart/license/site_deactivated_failed', $formattedData);
+            webmakerr_do_action('webmakerr_cart/license/site_deactivated_failed', $formattedData);
 
             return $this->sendErrorResponse([
                 'message'    => __('license_key, site_url and item_id is required', 'fluent-cart-pro'),
@@ -306,7 +306,7 @@ class LicenseApiHandler
             ->first();
 
         if (!$license || $license->product_id != $formattedData['item_id']) {
-            do_action('fluent_cart/license/site_deactivated_failed', $formattedData);
+            webmakerr_do_action('webmakerr_cart/license/site_deactivated_failed', $formattedData);
             return $this->sendErrorResponse([
                 'message'    => __('License not found or does not match with the item_id', 'fluent-cart-pro'),
                 'error_type' => 'license_not_found'
@@ -318,7 +318,7 @@ class LicenseApiHandler
             ->first();
 
         if (!$site) {
-            do_action('fluent_cart/license/site_deactivated_failed', $formattedData);
+            webmakerr_do_action('webmakerr_cart/license/site_deactivated_failed', $formattedData);
             return $this->sendErrorResponse([
                 'message'    => __('Site not found', 'fluent-cart-pro'),
                 'error_type' => 'site_not_found'
@@ -337,7 +337,7 @@ class LicenseApiHandler
         $license->recountActivations();
 
         if ($site) {
-            do_action('fluent_cart/license/site_deactivated', $site, $activation, $license, $data);
+            webmakerr_do_action('webmakerr_cart/license/site_deactivated', $site, $activation, $license, $data);
         }
 
         $returnData = [
@@ -353,7 +353,7 @@ class LicenseApiHandler
             'updated_at'        => $license->updated_at
         ];
 
-        $returnData = apply_filters('fluent_cart/license/deactivate_license_response', $returnData, $license, $activation, $data);
+        $returnData = webmakerr_apply_filters('webmakerr_cart/license/deactivate_license_response', $returnData, $license, $activation, $data);
 
         if (is_wp_error($returnData)) {
             return $this->sendErrorResponse([
@@ -460,7 +460,7 @@ class LicenseApiHandler
             $changeLogData['trunk'] = $packageUrl;
         }
 
-        $returnData = apply_filters('fluent_cart/license/get_version_response', $changeLogData, $product, $data);
+        $returnData = webmakerr_apply_filters('webmakerr_cart/license/get_version_response', $changeLogData, $product, $data);
 
         if (is_wp_error($returnData)) {
             return $this->sendErrorResponse([

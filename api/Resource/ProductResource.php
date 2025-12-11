@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Events\StockChanged;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\ProductAdminHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Events\StockChanged;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\ProductAdminHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 class ProductResource extends BaseResourceApi
 {

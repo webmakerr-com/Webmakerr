@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Helpers\Helper;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
 
 class AdminOrderProcessor
 {
@@ -220,7 +220,7 @@ class AdminOrderProcessor
 
         $orderData = $this->orderData;
         $orderData['customer_id'] = $customerId;
-        $this->orderModel = \FluentCart\App\Models\Order::query()->create($orderData);
+        $this->orderModel = \Webmakerr\App\Models\Order::query()->create($orderData);
 
         if (!$this->orderModel) {
             return new \WP_Error('order_creation_failed', __('Failed to create order.', 'fluent-cart'));
@@ -280,7 +280,7 @@ class AdminOrderProcessor
             'meta'                => [],
         ];
 
-        $this->transactionModel = \FluentCart\App\Models\OrderTransaction::query()->create($transactionData);
+        $this->transactionModel = \Webmakerr\App\Models\OrderTransaction::query()->create($transactionData);
 
         // insert the applied coupons
         $this->insertAppliedCoupons(Arr::get($this->args, 'applied_coupons', []));

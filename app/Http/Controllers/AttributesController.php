@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\AttrGroupResource;
-use FluentCart\Api\Resource\AttrTermResource;
-use FluentCart\App\Http\Requests\AttrGroupRequest;
-use FluentCart\App\Http\Requests\AttrTermRequest;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\AttrGroupResource;
+use Webmakerr\Api\Resource\AttrTermResource;
+use Webmakerr\App\Http\Requests\AttrGroupRequest;
+use Webmakerr\App\Http\Requests\AttrTermRequest;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class AttributesController extends Controller
 {
