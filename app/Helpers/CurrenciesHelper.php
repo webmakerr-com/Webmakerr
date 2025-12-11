@@ -3,7 +3,7 @@
 namespace Webmakerr\App\Helpers;
 
 use Webmakerr\Api\CurrencySettings;
-use FLuentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 if (!defined('ABSPATH')) {
     exit;
