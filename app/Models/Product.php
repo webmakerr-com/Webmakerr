@@ -90,7 +90,9 @@ class Product extends Model
             $model->post_type = FluentProducts::CPT_NAME;
         });
 
-        static::addGlobalScope('post_type', function (Builder $builder) {
+        static::addGlobalScope('post_type', function ($builder) {
+            // The builder may be resolved under the legacy FluentCart namespace, so keep the type flexible
+            // to ensure both Webmakerr and FluentCart builders are accepted without type errors.
             $builder->where('post_type', '=', FluentProducts::CPT_NAME)->whereNot('post_status', 'auto-draft');
         });
     }
