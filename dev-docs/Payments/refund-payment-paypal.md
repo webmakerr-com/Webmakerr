@@ -4,7 +4,7 @@ This document covers the PayPal refund process and what happens when refunds are
 
 ### Refund Flow Overview
 
-1. **Admin-Initiated Refund**: Admin processes refund through FluentCart admin panel
+1. **Admin-Initiated Refund**: Admin processes refund through Webmakerr admin panel
 2. **Vendor-Initiated Refund**: Refund initiated directly from PayPal dashboard
 3. **Refund Processing**: PayPal API processes the refund request
 4. **Webhook Notification**: PayPal sends webhook notification for vendor-initiated refunds
@@ -337,7 +337,7 @@ public function handleRemoteRefund($refundInfo, $orderData, $transaction, $data,
     // 4. Log refund processing
     fluent_cart_add_log('PayPal ' . $src . ' refund processed', $data, 'info', [
         'log_type' => $src,
-        'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+        'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
         'module_name' => 'PayPal',
         'module_id' => $orderData->id ?: null,
     ]);
@@ -445,7 +445,7 @@ public function processWebhook()
         } else {
             fluent_cart_add_log('PayPal webhook verification failed', $data, 'error', [
                 'log_type' => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal',
             ]);
             exit(400);
@@ -606,7 +606,7 @@ The system logs refund events for monitoring:
 ```php
 fluent_cart_add_log('PayPal ' . $src . ' refund processed', $data, 'info', [
     'log_type' => $src,
-    'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+    'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
     'module_name' => 'PayPal',
     'module_id' => $orderData->id ?: null,
 ]);

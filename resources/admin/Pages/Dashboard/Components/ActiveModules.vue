@@ -53,7 +53,7 @@ export default {
         {
           id: 2,
           status: 'disables',
-          title: 'FluentCart License module',
+          title: 'Webmakerr License module',
           created_by: 'Admin',
           content: 'License module is active'
         }

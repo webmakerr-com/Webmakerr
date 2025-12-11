@@ -1,6 +1,6 @@
 # Custom Subscription Intervals
 
-Extend FluentCart's default subscription intervals with custom billing cycles.
+Extend Webmakerr's default subscription intervals with custom billing cycles.
 
 ## 1. Add Interval Option (Required)
 
@@ -75,7 +75,7 @@ add_filter('fluent_cart/max_trial_days_allowed', function($days, $args) {
 
 ## 4. Configure Gateway Billing Period
 
-**Note:** Only use this hook if you're using FluentCart's built-in gateways or third-party gateway addons. If you own the payment gateway code, handle the billing period directly in your gateway processor instead.
+**Note:** Only use this hook if you're using Webmakerr's built-in gateways or third-party gateway addons. If you own the payment gateway code, handle the billing period directly in your gateway processor instead.
 
 ```php
 /**

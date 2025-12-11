@@ -1,4 +1,4 @@
-# FluentCart 🚀 - The New Era of WordPress eCommerce
+# Webmakerr 🚀 - The New Era of WordPress eCommerce
 
 **Faster, Lighter, Simpler, and 100% Open Source**
 
@@ -6,15 +6,15 @@
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/fluent-cat/fluent-cart/issues)
 
-Welcome to the official GitHub repository of **FluentCart** – the performance-first, fully open-source eCommerce solution built exclusively for modern WordPress.
+Welcome to the official GitHub repository of **Webmakerr** – the performance-first, fully open-source eCommerce solution built exclusively for modern WordPress.
 
 We're reimagining what WordPress eCommerce can be: blazing-fast checkouts, zero bloat, no transaction fees, and a clean, scalable foundation that grows with your business.
 
-Legacy solutions slow down as you scale. FluentCart was built from scratch with a custom database schema, efficient queries, and modern architecture so your store stays lightning-fast – even with thousands of orders.
+Legacy solutions slow down as you scale. Webmakerr was built from scratch with a custom database schema, efficient queries, and modern architecture so your store stays lightning-fast – even with thousands of orders.
 
 And now? **The entire codebase is open source under GPL** – because the future of WordPress eCommerce belongs to the community ❤️
 
-### ✨ Why FluentCart?
+### ✨ Why Webmakerr?
 
 - **Performance First** – 3× faster order processing, separate shop tables, dynamic asset loading
 - **Zero Bloat** – Everything you need in one lightweight plugin
@@ -32,8 +32,8 @@ https://wordpress.org/plugins/fluent-cart/
 
 ```bash
 # Clone the repository
-git clone https://github.com/fluent-cart/fluent-cart.git
-cd fluent-cart
+git clone https://github.com/webmakerr/webmakerr.git
+cd webmakerr
 
 # Install dependencies
 npm i
@@ -63,7 +63,7 @@ npm run translate:all
 
 ### 🤝 Contributing
 
-FluentCart is now **100% community-driven**! We welcome contributions of all sizes – from typo fixes to entire new payment gateways.
+Webmakerr is now **100% community-driven**! We welcome contributions of all sizes – from typo fixes to entire new payment gateways.
 
 We especially love help with:
 - Writing Tests
@@ -85,20 +85,20 @@ New to open source? No problem – we’re super friendly and happy to guide you
 
 ### 📚 Resources
 
-- **Dev Documentation** – https://dev.fluentcart.com
-- **User Documentation** – https://docs.fluentcart.com/
-- **Issues** – https://github.com/fluent-cart/fluen-tcart/issues
-- **Discussions** – https://community.wpmanageninja.com/portal/space/fluent-cart/home
-- **Website** – https://fluentcart.com
+- **Dev Documentation** – https://dev.webmakerr.com
+- **User Documentation** – https://docs.webmakerr.com/
+- **Issues** – https://github.com/webmakerr/webmakerr/issues
+- **Discussions** – https://community.webmakerr.com/
+- **Website** – https://webmakerr.com
 
 ### Community
 
-- Follow us on X/Twitter: [@FluentCart](https://twitter.com/fluentcart)
-- Use hashtag `#FluentCart` to show off your store!
+- Follow us on X/Twitter: [@Webmakerr](https://twitter.com/webmakerr)
+- Use hashtag `#Webmakerr` to show off your store!
 
 ### License
 
-FluentCart is proudly licensed under **GNU GPLv3** – just like WordPress itself.
+Webmakerr is proudly licensed under **GNU GPLv3** – just like WordPress itself.
 
 ---
 

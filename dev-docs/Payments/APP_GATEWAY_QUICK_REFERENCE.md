@@ -2,7 +2,7 @@
 
 ## Overview
 
-FluentCart provides multiple ways to access payment gateways through the `App::gateway()` facade and `GatewayManager`. This guide covers all available patterns and usage examples.
+Webmakerr provides multiple ways to access payment gateways through the `App::gateway()` facade and `GatewayManager`. This guide covers all available patterns and usage examples.
 
 ## Access Patterns
 
@@ -382,4 +382,4 @@ function processGatewayPayment($gatewayName, $orderHelper) {
 }
 ```
 
-This quick reference covers all the essential patterns for using `App::gateway()` and `GatewayManager` in FluentCart. Use these examples as templates for your payment gateway integrations.
+This quick reference covers all the essential patterns for using `App::gateway()` and `GatewayManager` in Webmakerr. Use these examples as templates for your payment gateway integrations.

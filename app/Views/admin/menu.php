@@ -19,11 +19,11 @@
     </ul>
     <div class="fct-logo-wrap">
         <a
-                aria-label="<?php __('FluentCart Logo', 'webmakerr-cart'); ?>"
-                title="<?php __('FluentCart Logo', 'webmakerr-cart'); ?>"
+                aria-label="<?php __('Webmakerr Logo', 'webmakerr-cart'); ?>"
+                title="<?php __('Webmakerr Logo', 'webmakerr-cart'); ?>"
                 href="<?php echo esc_url(admin_url('admin.php?page=webmakerr#/')); ?>">
             <img src="<?php echo esc_url($logo); ?>"
-                 alt="<?php __('FluentCart Logo', 'webmakerr-cart'); ?>"/>
+                 alt="<?php __('Webmakerr Logo', 'webmakerr-cart'); ?>"/>
         </a>
     </div>
 </div>
