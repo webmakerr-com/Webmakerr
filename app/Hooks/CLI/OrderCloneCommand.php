@@ -40,9 +40,10 @@ class OrderCloneCommand
      *
      * ## EXAMPLES
      *
-     *     wp fluent_cart clone_orders --count=50
-     *     wp fluent_cart clone_orders --count=25 --start-date=2024-01-01 --end-date=2024-12-31
-     *     wp fluent_cart clone_orders --source-order-id=123 --count=5
+     *     wp webmakerr clone_orders --count=50
+     *     wp webmakerr clone_orders --count=25 --start-date=2024-01-01 --end-date=2024-12-31
+     *     wp webmakerr clone_orders --source-order-id=123 --count=5
+     *     wp fluent_cart clone_orders --source-order-id=123 --count=5 (legacy alias)
      */
     public function clone_orders($args, $assoc_args)
     {

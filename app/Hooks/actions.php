@@ -160,6 +160,7 @@ webmakerr_add_action('webmakerr_cart/order_paid_ansyc_private_handle', function 
 // require the CLI
 if (defined('WP_CLI') && WP_CLI) {
     \WP_CLI::add_command('fluent_cart', '\Webmakerr\App\Hooks\CLI\Commands');
+    \WP_CLI::add_command('webmakerr', '\Webmakerr\App\Hooks\CLI\Commands');
 
 }
 

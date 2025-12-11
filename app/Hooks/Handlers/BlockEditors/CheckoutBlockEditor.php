@@ -35,7 +35,7 @@ class CheckoutBlockEditor extends BlockEditor
                 'slug'        => $this->slugPrefix,
                 'name'        => static::getEditorName(),
                 'title'       => __('Checkout Page', 'webmakerr-cart'),
-                'description' => __('This block will display the checkout page.', 'webmakerr-cart')
+                'description' => __('Render the Webmakerr checkout experience within the block editor.', 'webmakerr-cart')
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings()
         ];

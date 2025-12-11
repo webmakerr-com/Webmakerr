@@ -40,7 +40,7 @@ class BuySectionBlockEditor extends BlockEditor
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
                 'title'             => __('Buy Section', 'webmakerr-cart'),
-                'description'       => __('This block will display the buy section.', 'webmakerr-cart'),
+                'description'       => __('Present the Webmakerr buy section so customers can purchase fast.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings(),
