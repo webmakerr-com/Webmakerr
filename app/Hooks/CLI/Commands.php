@@ -7,11 +7,10 @@ use FluentCart\App\Models\AppliedCoupon;
 use FluentCart\App\Models\Customer;
 use FluentCart\App\Models\Order;
 use FluentCart\App\Models\Subscription;
+use FluentCart\App\Services\Pro\ProFeatureManager;
 use FluentCart\Database\DBMigrator;
 use FluentCart\Database\DBSeeder;
 use FluentCart\Framework\Support\Arr;
-use FluentCartPro\App\Modules\Licensing\Models\License;
-use FluentCartPro\App\Modules\Licensing\Models\LicenseSite;
 
 class Commands
 {
@@ -169,13 +168,21 @@ class Commands
         \WP_CLI::line('Anonymized ' . $total . ' Customers');
 
         // let's annonymize the license keys as well
+        $proManager = ProFeatureManager::instance();
+        $licenseClass = '\\FluentCartPro\\App\\Modules\\Licensing\\Models\\License';
+
+        if (!$proManager->isProActive() || !$proManager->ensureClassAvailable($licenseClass)) {
+            \WP_CLI::warning($proManager->getLockedMessage(__('License anonymization', 'fluent-cart')));
+            return;
+        }
+
         $total = fluentCart('db')->table('fct_licenses')->count();
         $progress = \WP_CLI\Utils\make_progress_bar('Anonymize License keys: (' . number_format($total) . ')', $total);
 
         $page = 1;
         $completed = false;
         while (!$completed) {
-            $licesnses = License::orderBy('id', 'ASC')
+            $licesnses = $licenseClass::orderBy('id', 'ASC')
                 ->limit(500)
                 ->offset(($page - 1) * 500)
                 ->get();
@@ -194,9 +201,6 @@ class Commands
 
         $progress->finish();
         \WP_CLI::line('Anonymized ' . $total . ' License Keys');
-
-        $progress->finish();
-        \WP_CLI::line('Anonymized ' . $total . ' Sites');
 
     }
 

@@ -31,9 +31,6 @@ use FluentCart\Framework\Http\Request\Request;
 use FluentCart\Framework\Support\Arr;
 use FluentCart\Framework\Support\Collection;
 use FluentCart\Framework\Validator\Validator;
-use FluentCartPro\App\Modules\Licensing\Models\License;
-use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
-use FluentCartPro\App\Modules\Licensing\Services\LicenseHelper;
 
 
 class CustomerOrderController extends BaseFrontendController

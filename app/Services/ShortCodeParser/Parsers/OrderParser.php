@@ -13,7 +13,6 @@ use FluentCart\App\Services\Payments\PaymentReceipt;
 use FluentCart\App\Services\TemplateService;
 use FluentCart\Framework\Support\Arr;
 use FluentCart\Framework\Support\Str;
-use FluentCartPro\App\Modules\Licensing\Models\License;
 
 class OrderParser extends BaseParser
 {

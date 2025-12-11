@@ -31,10 +31,6 @@ use FluentCart\Framework\Database\Orm\Relations\HasMany;
 use FluentCart\Framework\Http\Request\Request;
 use FluentCart\Framework\Support\Arr;
 use FluentCart\Framework\Support\Collection;
-use FluentCartPro\App\Hooks\Handlers\UpgradeHandler;
-use FluentCartPro\App\Modules\Licensing\Models\License;
-use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
-use FluentCartPro\App\Modules\Licensing\Services\LicenseHelper;
 
 
 class CustomerProfileController extends BaseFrontendController

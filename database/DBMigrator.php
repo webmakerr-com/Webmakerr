@@ -42,10 +42,6 @@ use FluentCart\Database\Migrations\LabelRelationshipsMigrator;
 use FluentCart\Database\Migrations\ActivityMigrator;
 use FluentCart\Database\Migrations\WebhookLogger;
 use FluentCart\Framework\Database\Schema;
-use FluentCartPro\App\Modules\Licensing\Models\License;
-use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
-use FluentCartPro\App\Modules\Licensing\Models\LicenseMeta;
-use FluentCartPro\App\Modules\Licensing\Models\LicenseSite;
 use FluentCart\Database\Migrations\ShippingZonesMigrator;
 use FluentCart\Database\Migrations\ShippingMethodsMigrator;
 
@@ -454,11 +450,17 @@ class DBMigrator
         Product::query()->where('post_type', '=', FluentProducts::CPT_NAME)->delete();
 
         //Migrate Down The Licenses
-        if (class_exists(License::class)) {
-            License::query()->truncate();
-            LicenseActivation::query()->truncate();
-            LicenseSite::query()->truncate();
-            LicenseMeta::query()->truncate();
+        $licenseModels = [
+            '\\FluentCartPro\\App\\Modules\\Licensing\\Models\\License',
+            '\\FluentCartPro\\App\\Modules\\Licensing\\Models\\LicenseActivation',
+            '\\FluentCartPro\\App\\Modules\\Licensing\\Models\\LicenseSite',
+            '\\FluentCartPro\\App\\Modules\\Licensing\\Models\\LicenseMeta'
+        ];
+
+        foreach ($licenseModels as $licenseModel) {
+            if (class_exists($licenseModel)) {
+                $licenseModel::query()->truncate();
+            }
         }
     }
 

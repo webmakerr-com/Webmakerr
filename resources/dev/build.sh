@@ -61,6 +61,7 @@ IGNORE_PATTERNS=(
     "pnpm-lock.yaml"
     "postcss.config.js"
     "tailwind.config.js",
+    "app/Pro/*"
     "globals_dev.php"
 )
 

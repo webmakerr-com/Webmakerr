@@ -10,7 +10,6 @@ use FluentCart\App\Services\DateTime\DateTime;
 use FluentCart\App\Services\Payments\PaymentReceipt;
 use FluentCart\Framework\Support\Arr;
 use FluentCart\Framework\Support\Str;
-use FluentCartPro\App\Modules\Licensing\Models\License;
 
 class TransactionParser extends BaseParser
 {

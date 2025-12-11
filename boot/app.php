@@ -4,8 +4,7 @@
 use FluentCart\Framework\Foundation\Application;
 use FluentCart\App\Hooks\Handlers\ActivationHandler;
 use FluentCart\App\Hooks\Handlers\DeactivationHandler;
-use FluentCart\App\Pro\ProBootstrap;
-use FluentCart\App\Services\Permission\PermissionManager;
+use FluentCart\App\Services\Pro\ProFeatureManager;
 
 return function ($file) {
 
@@ -16,6 +15,8 @@ return function ($file) {
     // }
 
     $app = new Application($file);
+    $proFeatures = ProFeatureManager::instance();
+    $proFeatures->boot($app);
 
     register_activation_hook($file, function ($networkwide = false) use ($app) {
         ($app->make(ActivationHandler::class))->handle($networkwide);
@@ -27,10 +28,8 @@ return function ($file) {
 
     require_once(FLUENTCART_PLUGIN_PATH . 'boot/action_scheduler_loader.php');
 
-    add_action('plugins_loaded', function () use ($app) {
+    add_action('plugins_loaded', function () use ($app, $proFeatures) {
         do_action('fluentcart_loaded', $app);
-
-        ProBootstrap::register($app);
 
         (new FluentCart\App\Modules\Data\ProductDataSetup())->boot();
 
@@ -48,20 +47,6 @@ return function ($file) {
             }
         });
 
-        if (defined('FLUENTCART_PRO_PLUGIN_VERSION')) {
-            add_filter('fluent_cart/admin_notices', function ($notices) {
-                if (FLUENTCART_MIN_PRO_VERSION !== FLUENTCART_PRO_PLUGIN_VERSION && version_compare(FLUENTCART_MIN_PRO_VERSION, FLUENTCART_PRO_PLUGIN_VERSION, '>')) {
-                    if(!PermissionManager::userCan('is_super_admin')) {
-                        return $notices;
-                    }
-
-                    $updateUrl = admin_url('plugins.php?s=fluent-cart&plugin_status=all&fluent-cart-pro-check-update=' . time());
-
-                    $notices[] = '<div>Webmakerr plugin needs to be updated to the latest version. <a href="' . esc_url($updateUrl) . '">Click here to update</a></div>';
-                }
-                return $notices;
-            });
-        }
     });
 
 
