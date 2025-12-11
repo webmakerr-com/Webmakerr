@@ -257,7 +257,7 @@ class OrderController extends Controller
         $responseData = [
             'fluent_cart_refund' => [
                 'status'  => 'success',
-                'message' => 'Refund processed on FluentCart.'
+                'message' => 'Refund processed on Webmakerr.'
             ],
             'gateway_refund'     => [
                 'status'  => is_wp_error($vendorRefundId) ? 'failed' : 'success',

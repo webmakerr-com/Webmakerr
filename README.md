@@ -2,9 +2,9 @@
 
 **Faster, Lighter, Simpler, and 100% Open Source**
 
-[![WordPress Plugin](https://img.shields.io/wordpress/plugin/v/fluent-cart?label=WP.org%20Version)](https://wordpress.org/plugins/fluent-cart/)
+[![WordPress Plugin](https://img.shields.io/wordpress/plugin/v/webmakerr-cart?label=WP.org%20Version)](https://wordpress.org/plugins/webmakerr-cart/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/fluent-cat/fluent-cart/issues)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/webmakerr/webmakerr/issues)
 
 Welcome to the official GitHub repository of **Webmakerr** – the performance-first, fully open-source eCommerce solution built exclusively for modern WordPress.
 
@@ -26,7 +26,7 @@ And now? **The entire codebase is open source under GPL** – because the future
 ### 🚀 Quick Start
 
 #### Install from WordPress.org (recommended for production)
-https://wordpress.org/plugins/fluent-cart/
+https://wordpress.org/plugins/webmakerr-cart/
 
 #### Development Setup
 

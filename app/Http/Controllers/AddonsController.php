@@ -22,7 +22,7 @@ class AddonsController extends Controller
                     'core',
                     'marketing',
                 ],
-                'description' => __('The most powerful and user-friendly email marketing automation plugin for WordPress. Send newsletters, marketing emails, customer onboard emails, Automations with FluentCart + FluentCRM integration.', 'webmakerr-cart' ),
+                'description' => __('The most powerful and user-friendly email marketing automation plugin for WordPress. Send newsletters, marketing emails, customer onboard emails, Automations with Webmakerr + FluentCRM integration.', 'webmakerr-cart' ),
             ],
             'fluent-smtp'      => [
                 'installable' => 'fluent-smtp',
@@ -33,7 +33,7 @@ class AddonsController extends Controller
                     'core',
                     'marketing',
                 ],
-                'description' => __('A free and open-source WordPress SMTP plugin to send emails via multiple SMTP providers. Ensure email deliverability for your WooCommerce and FluentCart emails with FluentSMTP.', 'webmakerr-cart'),
+                'description' => __('A free and open-source WordPress SMTP plugin to send emails via multiple SMTP providers. Ensure email deliverability for your WooCommerce and Webmakerr emails with FluentSMTP.', 'webmakerr-cart'),
             ],
             'fluent-community' => [
                 'installable' => 'fluent-community',
@@ -45,7 +45,7 @@ class AddonsController extends Controller
                     'community',
                     'lms'
                 ],
-                'description' => __('Build a community, membership site, or online forum with FluentCart + FluentCommunity integration. Engage your customers and users right from your WordPress dashboard.', 'webmakerr-cart'),
+                'description' => __('Build a community, membership site, or online forum with Webmakerr + FluentCommunity integration. Engage your customers and users right from your WordPress dashboard.', 'webmakerr-cart'),
             ],
             'fluent-security'  => [
                 'installable' => 'fluent-security',
@@ -55,7 +55,7 @@ class AddonsController extends Controller
                 'categories'   => [
                     'core'
                 ],
-                'description' => __('Customize WordPress emails, customized login & signup forms with enhanced security and social logins. Enhance your site security with FluentCart + FluentSecurity integration.', 'webmakerr-cart'),
+                'description' => __('Customize WordPress emails, customized login & signup forms with enhanced security and social logins. Enhance your site security with Webmakerr + FluentSecurity integration.', 'webmakerr-cart'),
             ],
             'fluentform'       => [
                 'installable' => 'fluentform',
@@ -77,7 +77,7 @@ class AddonsController extends Controller
                     'core',
                     'marketing'
                 ],
-                'description' => __('A powerful helpdesk and customer support plugin for WordPress. Manage customer support tickets directly from your WordPress dashboard with FluentCart + FluentSupport integration.', 'webmakerr-cart'),
+                'description' => __('A powerful helpdesk and customer support plugin for WordPress. Manage customer support tickets directly from your WordPress dashboard with Webmakerr + FluentSupport integration.', 'webmakerr-cart'),
             ]
         ];
 

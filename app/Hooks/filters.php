@@ -25,12 +25,12 @@ use Webmakerr\Framework\Support\Arr;
 add_filter('block_categories_all', function ($categories) {
     $categories[] = array(
         'slug'  => 'fluent-cart',
-        'title' => __('FluentCart', 'webmakerr-cart'),
+        'title' => __('Webmakerr', 'webmakerr-cart'),
     );
 
     $categories[] = array(
         'slug'  => 'fluent-cart-buttons',
-        'title' => __('FluentCart Buttons', 'webmakerr-cart'),
+        'title' => __('Webmakerr Buttons', 'webmakerr-cart'),
     );
 
     return $categories;

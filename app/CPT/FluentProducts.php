@@ -183,7 +183,7 @@ class FluentProducts
         $singularName = __('Product', 'webmakerr-cart');
 
         if (defined('WC_PLUGIN_FILE')) {
-            $singularName = __('Product (FluentCart)', 'webmakerr-cart');
+            $singularName = __('Product (Webmakerr)', 'webmakerr-cart');
         }
 
         register_post_type(self::CPT_NAME, [
@@ -209,7 +209,7 @@ class FluentProducts
                         'search_items'  => __('Search products', 'webmakerr-cart'),
                 ],
             //'_edit_link' => 'admin.php?page=webmakerr#/products/%d/pricing',
-                'description'           => __('FluentCart products post type', 'webmakerr-cart'),
+                'description'           => __('Webmakerr products post type', 'webmakerr-cart'),
                 'public'                => true,
                 'hierarchical'          => false,
                 'exclude_from_search'   => false,

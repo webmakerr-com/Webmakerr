@@ -41,7 +41,7 @@ class AddOnModule
         return [
             'fluent-crm' => [
                 'title'        => __('Fluent CRM', 'webmakerr-cart'),
-                'description'  => __('Connect FluentCRM with FluentCart and subscribe a contact when a form is submitted', 'webmakerr-cart'),
+                'description'  => __('Connect FluentCRM with Webmakerr and subscribe a contact when a form is submitted', 'webmakerr-cart'),
                 'logo'         => Vite::getAssetUrl('images/integrations/fluentcrm.svg'),
                 'enabled'      => 'yes',
                 'purchase_url' => 'https://wordpress.org/plugins/fluent-crm/',

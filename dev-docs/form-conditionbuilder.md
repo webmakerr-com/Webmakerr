@@ -6,8 +6,8 @@ let conditions = ConditionBuilder.make()
     // Add individual conditions
     // A condition can also have nested conditions for complex matching
     .addCondition(
-        // Match the value of `store_name` exactly with the string "Fluent Cart"
-        ConditionBuilder.make('store_name', 'Fluent Cart', '===')
+        // Match the value of `store_name` exactly with the string "Webmakerr"
+        ConditionBuilder.make('store_name', 'Webmakerr', '===')
     )
     .addCondition(
         // Match the value of `store_name` with the value of input field `store_address_1`

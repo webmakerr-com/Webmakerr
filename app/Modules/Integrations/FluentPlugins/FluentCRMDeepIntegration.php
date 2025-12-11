@@ -197,7 +197,7 @@ class FluentCRMDeepIntegration
         }
 
         $groups['fluent_cart'] = [
-            'label'    => __('FluentCart', 'webmakerr-cart'),
+            'label'    => __('Webmakerr', 'webmakerr-cart'),
             'value'    => 'fluent_cart',
             'children' => $conditionItems
         ];

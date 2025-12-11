@@ -710,7 +710,7 @@ class Commands
 
 
     /**
-     * Migrate WooCommerce customers to FluentCart
+     * Migrate WooCommerce customers to Webmakerr
      *
      * ## OPTIONS
      *
@@ -728,7 +728,7 @@ class Commands
      */
     public function migrate_customers($args, $assoc_args)
     {
-        \WP_CLI::line('Starting WooCommerce to FluentCart customer migration...');
+        \WP_CLI::line('Starting WooCommerce to Webmakerr customer migration...');
 
         // Debug mode to check what customers are found
         if (isset($assoc_args['debug'])) {
@@ -772,10 +772,10 @@ class Commands
                     $customer->ID, $customer->user_email, $customer->user_registered));
             }
 
-            // Check existing FluentCart customers
+            // Check existing Webmakerr customers
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $fluentCustomers = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}fct_customers");
-            \WP_CLI::line(sprintf('Existing FluentCart customers: %d', $fluentCustomers));
+            \WP_CLI::line(sprintf('Existing Webmakerr customers: %d', $fluentCustomers));
 
             return;
         }
@@ -798,7 +798,7 @@ class Commands
 
 
     /**
-     * Migrate WooCommerce orders to FluentCart
+     * Migrate WooCommerce orders to Webmakerr
      *
      * ## OPTIONS
      *
@@ -826,7 +826,7 @@ class Commands
      */
     public function migrate_orders($args, $assoc_args)
     {
-        \WP_CLI::line('Starting WooCommerce to FluentCart order migration...');
+        \WP_CLI::line('Starting WooCommerce to Webmakerr order migration...');
 
         $service = new \Webmakerr\App\Modules\WooCommerceMigrator\Services\OrderMigrationService();
 
@@ -952,7 +952,7 @@ class Commands
      */
     public function migrate_all($args, $assoc_args)
     {
-        \WP_CLI::line('Starting complete WooCommerce to FluentCart migration...');
+        \WP_CLI::line('Starting complete WooCommerce to Webmakerr migration...');
         \WP_CLI::line('Migration order: Products → Customers → Orders (dependencies respected)');
 
         $totalStats = [
