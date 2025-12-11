@@ -63,7 +63,7 @@ if (require.main === module) {
         const srcPaths = getPackageSrcFolders(pkg, projectRoot);
         console.log('Detected src folders:');
         srcPaths.forEach(p => console.log(' - ' + p));
-        const newNamespace = 'FluentCart';
+        const newNamespace = 'Webmakerr';
 
         writeScoperFile(srcPaths, 'dev/scoper.inc.php', newNamespace);
 
@@ -91,7 +91,7 @@ if (require.main === module) {
  *
  * @param file
  * @param {string} packageName e.g. "fakerphp/faker"
- * @param {string} newNamespace e.g. "FluentCart\\Faker\\"
+ * @param {string} newNamespace e.g. "Webmakerr\\Faker\\"
  * @param {string} newPath e.g. "vendor/fakerphp/faker"
  * @param {string} projectRoot
  */

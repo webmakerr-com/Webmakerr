@@ -192,7 +192,7 @@ class PayPalPartner
             ],
             'partner_config_override' => [
                 'return_url'             => $return_url,
-                'return_url_description' => 'Return to FluentCart',
+                'return_url_description' => 'Return to Webmakerr',
                 'show_add_credit_card'   => true
             ],
             "products"                => $products,

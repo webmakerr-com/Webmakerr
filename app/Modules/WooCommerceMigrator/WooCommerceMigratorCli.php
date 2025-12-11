@@ -45,9 +45,9 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Migrate all WooCommerce attachments (media files) to FluentCart.
+     * Migrate all WooCommerce attachments (media files) to Webmakerr.
      *
-     * This method finds all WooCommerce attachments and copies them to the FluentCart media library if needed.
+     * This method finds all WooCommerce attachments and copies them to the Webmakerr media library if needed.
      * It also copies attachment meta and ensures images are available for migrated products and variations.
      */
     public function migrateAttachments()
@@ -145,12 +145,12 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Migrate all WooCommerce products to FluentCart.
+     * Migrate all WooCommerce products to Webmakerr.
      *
      * This is the main entry point for product migration. It migrates categories first, then all products.
      * For each product, it handles variations, images, downloadable files, stock, and meta mapping.
      *
-     * @param bool $willUpdate Whether to update existing FluentCart products
+     * @param bool $willUpdate Whether to update existing Webmakerr products
      * @return array|\WP_Error Migration results or error
      */
     public function migrate_products($willUpdate = false)
@@ -197,10 +197,10 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Migrate all WooCommerce product categories to FluentCart.
+     * Migrate all WooCommerce product categories to Webmakerr.
      *
-     * Ensures all categories and their hierarchy are recreated in FluentCart, including meta and thumbnails.
-     * Maintains a mapping between WooCommerce and FluentCart category IDs for later use.
+     * Ensures all categories and their hierarchy are recreated in Webmakerr, including meta and thumbnails.
+     * Maintains a mapping between WooCommerce and Webmakerr category IDs for later use.
      *
      * Fix: Two-pass migration to ensure parent-child relationships are set correctly.
      */
@@ -290,7 +290,7 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Migrate all WooCommerce brands to FluentCart brands taxonomy.
+     * Migrate all WooCommerce brands to Webmakerr brands taxonomy.
      *
      * Ensures all brands are created and mapped, and mapping is available for product assignment.
      */
@@ -300,14 +300,14 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Migrate a single WooCommerce product (and its variations, images, downloads) to FluentCart.
+     * Migrate a single WooCommerce product (and its variations, images, downloads) to Webmakerr.
      *
      * Handles mapping of product type, fulfillment type, stock, downloadable/virtual flags, images, gallery, and meta.
      * For variable products, processes each variation and ensures correct mapping of downloadable files and stock.
      *
      * @param object $wooProduct The WooCommerce product post object
-     * @param bool $willUpdate Whether to update existing FluentCart product
-     * @return int|\WP_Error The new FluentCart product ID or error
+     * @param bool $willUpdate Whether to update existing Webmakerr product
+     * @return int|\WP_Error The new Webmakerr product ID or error
      */
     private function migrateProduct($wooProduct, $willUpdate = false)
     {
@@ -378,7 +378,7 @@ class WooCommerceMigratorCli
                 set_post_thumbnail($createdPostId, $thumbnailId);
             }
 
-            // Prepare gallery array for FluentCart - include featured image FIRST, then gallery images
+            // Prepare gallery array for Webmakerr - include featured image FIRST, then gallery images
             $galleryArr = [];
             
             // Add featured image first (will be the main product image)
@@ -656,14 +656,14 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Create or update a FluentCart product variation.
+     * Create or update a Webmakerr product variation.
      *
      * Ensures the variation is created or updated with the correct price, stock, fulfillment type, downloadable flag, and meta.
      * Also creates product meta for variation images if present.
      *
-     * @param int $productId The FluentCart product ID
+     * @param int $productId The Webmakerr product ID
      * @param array $data The variation data
-     * @return int The FluentCart variation ID
+     * @return int The Webmakerr variation ID
      */
     private function createOrUpdateProductVariations($productId, $data)
     {
@@ -713,7 +713,7 @@ class WooCommerceMigratorCli
     /**
      * Create or update product meta for a variation image.
      *
-     * Links a media attachment to a variation for use as its thumbnail in FluentCart.
+     * Links a media attachment to a variation for use as its thumbnail in Webmakerr.
      *
      * @param int $variationId The variation ID
      * @param int $mediaId The media/attachment ID
@@ -785,13 +785,13 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Update or insert product details for a FluentCart product.
+     * Update or insert product details for a Webmakerr product.
      *
      * Handles the main product details row, including fulfillment type, stock, downloadable flag, and meta.
      *
-     * @param int $createdPostId The FluentCart product ID
+     * @param int $createdPostId The Webmakerr product ID
      * @param array $detail The product details data
-     * @return int The FluentCart product details ID
+     * @return int The Webmakerr product details ID
      */
     private function updateProductDetails($createdPostId, $detail)
     {
@@ -826,7 +826,7 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Convert a price to cents (integer) for FluentCart storage.
+     * Convert a price to cents (integer) for Webmakerr storage.
      *
      * Ensures all prices are stored as integer cents, not floats.
      *
@@ -843,12 +843,12 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Migrate downloadable files from WooCommerce to FluentCart.
+     * Migrate downloadable files from WooCommerce to Webmakerr.
      *
-     * For each downloadable file, copies it to the FluentCart uploads directory, creates a download entry,
+     * For each downloadable file, copies it to the Webmakerr uploads directory, creates a download entry,
      * and links it to the correct product variations. Handles file path resolution for WooCommerce's storage format.
      *
-     * @param int $productId The FluentCart product ID
+     * @param int $productId The Webmakerr product ID
      * @param array $variationDownloadMap Array mapping variation IDs to their downloadable files
      * @return bool True on success
      */
@@ -898,7 +898,7 @@ class WooCommerceMigratorCli
             $fileSize = $this->getFileSize($file['file']);
             $fileType = $this->getFileType($fileName);
 
-            // Copy file to FluentCart uploads directory if not already present
+            // Copy file to Webmakerr uploads directory if not already present
             $uploadDir = wp_upload_dir();
             $sourceFile = $file['file'];
 
@@ -971,7 +971,7 @@ class WooCommerceMigratorCli
     /**
      * Get file size in bytes for a given file path or URL.
      *
-     * Used for populating the file_size field in FluentCart's downloads table.
+     * Used for populating the file_size field in Webmakerr's downloads table.
      *
      * @param string $filePath File path or URL
      * @return string File size
@@ -998,7 +998,7 @@ class WooCommerceMigratorCli
     /**
      * Get file type based on file extension.
      *
-     * Used for populating the type field in FluentCart's downloads table.
+     * Used for populating the type field in Webmakerr's downloads table.
      *
      * @param string $fileName File name
      * @return string File type
@@ -1026,10 +1026,10 @@ class WooCommerceMigratorCli
     }
 
     /**
-     * Generalized taxonomy migration from WooCommerce to FluentCart.
+     * Generalized taxonomy migration from WooCommerce to Webmakerr.
      *
      * @param string $sourceTaxonomy WooCommerce taxonomy (e.g., 'product_cat', 'product_brand')
-     * @param string $destTaxonomy FluentCart taxonomy (e.g., 'product-categories', 'product-brands')
+     * @param string $destTaxonomy Webmakerr taxonomy (e.g., 'product-categories', 'product-brands')
      * @param string $optionMapKey Option key for storing the term ID map
      * @return array Term ID map
      */

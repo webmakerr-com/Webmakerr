@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * Generic Fallback Template for FluentCart Archives mainly for product archives
+ * Generic Fallback Template for Webmakerr Archives mainly for product archives
  *
  */
 webmakerr_do_action('webmakerr_cart/generic_template/rendering');

@@ -49,7 +49,7 @@ class CoreDependencyHandler
 
         if ($otherSource) {
             OutsideInstaller::backgroundInstallerDirect([
-                'name'      => 'FluentCart',
+                'name'      => 'Webmakerr',
                 'repo-slug' => 'fluent-cart',
                 'file'      => 'fluent-cart.php'
             ], 'fluent-cart', $otherSource);
@@ -137,7 +137,7 @@ class CoreDependencyHandler
         $UrlMaps = [
             'fluent-cart' => [
                 'admin_url' => admin_url('admin.php?page=webmakerr'),
-                'title'     => __('Go to FluentCart Dashboard', 'webmakerr-cart-pro'),
+                'title'     => __('Go to Webmakerr Dashboard', 'webmakerr-cart-pro'),
             ],
         ];
         if (!isset($UrlMaps[$pluginSlug]) || (defined('DISALLOW_FILE_MODS') && DISALLOW_FILE_MODS)) {

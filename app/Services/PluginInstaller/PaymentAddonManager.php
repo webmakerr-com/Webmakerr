@@ -159,7 +159,7 @@ class PaymentAddonManager
             'timeout' => 30,
             'headers' => [
                 'Accept' => 'application/vnd.github.v3+json',
-                'User-Agent' => 'FluentCart/' . WEBMAKERR_VERSION
+                'User-Agent' => 'Webmakerr/' . WEBMAKERR_VERSION
             ]
         ]);
 

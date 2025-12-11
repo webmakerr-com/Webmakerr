@@ -55,7 +55,7 @@ class EmailNotifications
                 'smartcode_groups' => [],
                 'template_path'    => 'order.paid.admin',
                 'is_async'         => false,
-                'pre_header'       => 'You got a new order on your shop. Congratulations! Checkout all the details in this email. You can also go to FluentCart Dashboard to view the order details and manage it. Thank you for using FluentCart.',
+                'pre_header'       => 'You got a new order on your shop. Congratulations! Checkout all the details in this email. You can also go to Webmakerr Dashboard to view the order details and manage it. Thank you for using Webmakerr.',
                 'settings'         => [
                     'active'          => 'yes',
                     'subject'         => __('New Sales On {{settings.store_name}}', 'webmakerr-cart'),
@@ -100,7 +100,7 @@ class EmailNotifications
                 'recipient'        => 'admin',
                 'smartcode_groups' => [],
                 'template_path'    => 'subscription.renewal.admin',
-                'pre_header'       => 'You got a new Renewal on your shop. Congratulations! Checkout all the details in this email. You can also go to FluentCart Dashboard to view the order details and manage it. Thank you for using FluentCart.',
+                'pre_header'       => 'You got a new Renewal on your shop. Congratulations! Checkout all the details in this email. You can also go to Webmakerr Dashboard to view the order details and manage it. Thank you for using Webmakerr.',
                 'is_async'         => false,
                 'settings'         => [
                     'active'          => 'yes',

@@ -12,7 +12,7 @@ class ProductTitle extends Element {
     public $tag      = 'h1';
 
     public function get_label() {
-        return esc_html__( 'Product title (FluentCart)', 'webmakerr-cart' );
+        return esc_html__( 'Product title (Webmakerr)', 'webmakerr-cart' );
     }
 
     public function set_controls() {

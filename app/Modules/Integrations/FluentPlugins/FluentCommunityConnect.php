@@ -25,7 +25,7 @@ class FluentCommunityConnect extends BaseIntegrationManager
     {
         parent::__construct('FluentCommunity', 'fluent_community', 12);
 
-        $this->description = __('Create a fast and responsive community and LMS without slowing down your server – no bloat, just performance. Sale your course or memberships with FluentCart + FluentCommunity Integration.', 'webmakerr-cart');
+        $this->description = __('Create a fast and responsive community and LMS without slowing down your server – no bloat, just performance. Sale your course or memberships with Webmakerr + FluentCommunity Integration.', 'webmakerr-cart');
         $this->logo = Vite::getAssetUrl('images/integrations/fluent-community.svg');
         $this->disableGlobalSettings = true;
         $this->installable = 'fluent-community/fluent-community.php';
