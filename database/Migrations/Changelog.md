@@ -9,6 +9,10 @@ Release docs version: 1.9.2
 - Adds 'fct_shipping_classes' table
 - Altered shipping_class BIGINT(20) NULL,
 
+## Table prefix policy
+
+- Database tables continue to use the existing `fct_` prefix for backward compatibility with FluentCart data. No automated renames are planned to avoid data loss during upgrades.
+
 ## 1.9.2, 28th May 2025
 
 - Altered all amount/price type as `bigint`
