@@ -180,7 +180,7 @@
                         <a
                             target="_blank"
                             rel="noopener"
-                            href="https://docs.fluentcart.com">
+                            href="https://docs.webmakerr.com">
                             {{ $t("View Documentations") }}
                         </a>
                     </div>

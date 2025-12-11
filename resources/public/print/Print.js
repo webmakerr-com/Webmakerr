@@ -1,5 +1,5 @@
 document.getElementById('print-button').addEventListener('click', () => {
-    let invoiceNo = "FluentCart Receipt";
+    let invoiceNo = "Webmakerr Receipt";
     if (invoiceNo) {
         if (document.getElementById('fct-order-invoice-no')) {
             invoiceNo = "Receipt Number: " + document.getElementById('fct-order-invoice-no').innerText

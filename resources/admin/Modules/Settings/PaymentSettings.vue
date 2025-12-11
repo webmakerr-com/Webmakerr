@@ -134,7 +134,7 @@ const getPaymentMethods = () => {
 };
 
 const routeToUpgrade = () => {
-  window.open('https://fluentcart.com/discount-deal', '_blank');
+  window.open('https://webmakerr.com/discount-deal', '_blank');
 }
 
 const getUpcoming = () => {

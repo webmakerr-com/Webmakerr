@@ -4,7 +4,7 @@ This document covers the Stripe refund process and what happens when refunds are
 
 ### Refund Flow Overview
 
-1. **Admin-Initiated Refund**: Admin processes refund through FluentCart admin panel
+1. **Admin-Initiated Refund**: Admin processes refund through Webmakerr admin panel
 2. **Vendor-Initiated Refund**: Refund initiated directly from Stripe dashboard
 3. **Refund Processing**: Stripe API processes the refund request
 4. **Webhook Notification**: Stripe sends webhook notification for vendor-initiated refunds
@@ -258,7 +258,7 @@ public function handleChargeRefunded($event, $order)
     // Log the event
     fluent_cart_add_log('Stripe webhook ' . $event->type . ' processed', $event, 'info', [
         'log_type' => 'webhook',
-        'module_type' => 'FluentCart\App\Modules\PaymentMethods\Stripe',
+        'module_type' => 'Webmakerr\App\Modules\PaymentMethods\Stripe',
         'module_name' => 'Stripe',
         'module_id' => $event->id ?: null,
     ]);
@@ -340,7 +340,7 @@ class OrderRefunded extends EventDispatcher
 The `OrderRefunded` listener updates order totals:
 
 ```php
-public static function handle(\FluentCart\App\Events\Order\OrderRefunded $event)
+public static function handle(\Webmakerr\App\Events\Order\OrderRefunded $event)
 {
     // Recalculate order paid and refund totals
     if ($event->order) {
@@ -491,7 +491,7 @@ The system logs refund events for monitoring:
 ```php
 fluent_cart_add_log('Stripe webhook ' . $event->type . ' processed', $event, 'info', [
     'log_type' => 'webhook',
-    'module_type' => 'FluentCart\App\Modules\PaymentMethods\Stripe',
+    'module_type' => 'Webmakerr\App\Modules\PaymentMethods\Stripe',
     'module_name' => 'Stripe',
     'module_id' => $event->id ?: null,
 ]);

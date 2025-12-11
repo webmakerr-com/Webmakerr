@@ -11,23 +11,23 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Sell Subscriptions, Physical Products, Digital Downloads easier than ever. Built for performance, scalability, and flexibility.
 
 == Description ==
-Meet FluentCart. It’s a performance-first, self-hosted eCommerce platform for WordPress. Build your ideal store, whether you sell physical products, subscriptions, downloads, licenses, or all of them. No third-party dependencies, no platform lock-in, and no transaction fees. Just a powerful store on your terms.
+Meet Webmakerr. It’s a performance-first, self-hosted eCommerce platform for WordPress. Build your ideal store, whether you sell physical products, subscriptions, downloads, licenses, or all of them. No third-party dependencies, no platform lock-in, and no transaction fees. Just a powerful store on your terms.
 
 [youtube https://www.youtube.com/watch?v=meMM6Nq6laE]
 
-👉 Official Website Link: [Official Website](https://fluentcart.com/)
-👉 Join Our Community: [FluentCart Community](https://community.wpmanageninja.com/portal)
-👉 Official 5 Minutes Guide: [Getting started with FluentCart](https://fluentcart.com/fluentcart-101/)
-👉 Contribute: [GitHub Repository](https://github.com/fluent-cart/fluent-cart)
+👉 Official Website Link: [Official Website](https://webmakerr.com/)
+👉 Join Our Community: [Webmakerr Community](https://community.webmakerr.com/)
+👉 Official 5 Minutes Guide: [Getting started with Webmakerr](https://webmakerr.com/webmakerr-101/)
+👉 Contribute: [GitHub Repository](https://github.com/webmakerr/webmakerr)
 
-Built from the ground up with flexibility, performance, and long-term scalability in mind, this isn’t a fork of existing plugins. This is a fresh take on what a WordPress store should be: lean, powerful, and completely under your control. FluentCart adapts to your model without adding bloat or cutting you into a SaaS fee structure.
+Built from the ground up with flexibility, performance, and long-term scalability in mind, this isn’t a fork of existing plugins. This is a fresh take on what a WordPress store should be: lean, powerful, and completely under your control. Webmakerr adapts to your model without adding bloat or cutting you into a SaaS fee structure.
 
-FluentCart is ideal for solo creators, growing businesses, and developers building client stores. If you're tired of overcomplicated dashboards and bloated add-ons this is your answer. Forget about transaction fees, because FluentCart charges exactly 0 transaction fees on both Free and Pro isntallations.  
+Webmakerr is ideal for solo creators, growing businesses, and developers building client stores. If you're tired of overcomplicated dashboards and bloated add-ons this is your answer. Forget about transaction fees, because Webmakerr charges exactly 0 transaction fees on both Free and Pro isntallations.  
 
-FluentCart is for you if you're looking to free yourself from rigid checkout flows, or vendor lock-ins. Run your store with clarity and confidence, whether you sell ebooks, handmade goods, software licenses, or monthly product bundles.
+Webmakerr is for you if you're looking to free yourself from rigid checkout flows, or vendor lock-ins. Run your store with clarity and confidence, whether you sell ebooks, handmade goods, software licenses, or monthly product bundles.
 
 == Sales Models ==
-FluentCart supports a variety of sales models, all in the same store. Offer one-time products or digital downloads, manage subscriptions with flexible billing intervals, add setup fees or installment plans, and issue time-limited licenses. You can mix and match hybrid product types without relying on third-party add-ons.
+Webmakerr supports a variety of sales models, all in the same store. Offer one-time products or digital downloads, manage subscriptions with flexible billing intervals, add setup fees or installment plans, and issue time-limited licenses. You can mix and match hybrid product types without relying on third-party add-ons.
 
 ==== Best for ====
 * Subscription goods
@@ -76,7 +76,7 @@ FluentCart supports a variety of sales models, all in the same store. Offer one-
 * Subscription Dashboard – Let users manage billing, pause/cancel subscriptions
 * Support Dashboard Integration – Pull customer history into Fluent Support
 * Automated Notifications – Send email alerts for purchase, renewal, failures with FluentCRM
-* User Roles – Control access to FluentCart admin tools by role
+* User Roles – Control access to Webmakerr admin tools by role
 
 === Analytics, Marketing & Growth ===
 * Reports Overview – Track order volume, Revenue by Quarter, Revenue by Country  
@@ -110,20 +110,20 @@ FluentCart supports a variety of sales models, all in the same store. Offer one-
 * Custom Email Templates – Send branded emails for purchase events
 
 == eCommerce for Developers ==
-FluentCart was built by developers who understand the pain of working with rigid eCommerce systems. Its architecture is entirely action and filter-driven, letting you override, extend, or customize anything without hacks or fragile workarounds.
+Webmakerr was built by developers who understand the pain of working with rigid eCommerce systems. Its architecture is entirely action and filter-driven, letting you override, extend, or customize anything without hacks or fragile workarounds.
 
 All data is stored in dedicated database tables for performance and portability. We’ve optimized the queries so Orders can be processed 3X faster compared to the market leader.
 
-On top of that we’ve built FluentCart for complete programmatic control. REST API endpoints are available for all key resources. Due to this the frontend can be completely decoupled with technology like Vue and Alpine.
+On top of that we’ve built Webmakerr for complete programmatic control. REST API endpoints are available for all key resources. Due to this the frontend can be completely decoupled with technology like Vue and Alpine.
 
-Whether you're building custom apps on top of FluentCart or creating complex checkout flows, this plugin is built to stay out of your way and give you the keys.
+Whether you're building custom apps on top of Webmakerr or creating complex checkout flows, this plugin is built to stay out of your way and give you the keys.
 
 == Customization and Design ==
 No more fighting layouts. Style your cart, checkout, and product pages exactly how you want using your theme, no forced stylesheets or layout overrides. 
 
-Customize every part of the experience: product card components, variation pickers, quantity selectors, checkout forms, and thank-you pages. All templates are overrideable. Whether you’re designing high-converting sales funnels or frictionless repeat purchase flows, FluentCart is built for modern storefront aesthetics.
+Customize every part of the experience: product card components, variation pickers, quantity selectors, checkout forms, and thank-you pages. All templates are overrideable. Whether you’re designing high-converting sales funnels or frictionless repeat purchase flows, Webmakerr is built for modern storefront aesthetics.
 
-You can set store branding with global customizations as soon as you setup FluentCart. The responsive blocks act as standard Gutenberg blocks so your store doesn’t break under any circumstances, even on mobile. Moreover, you get direct compatibility with popular store themes along with page builders like Elementor and Bricks Builder. 
+You can set store branding with global customizations as soon as you setup Webmakerr. The responsive blocks act as standard Gutenberg blocks so your store doesn’t break under any circumstances, even on mobile. Moreover, you get direct compatibility with popular store themes along with page builders like Elementor and Bricks Builder. 
 
 If you need even more customizability, the option to use advanced CSS is also available to give you complete design control. 
 
@@ -139,13 +139,13 @@ If you need even more customizability, the option to use advanced CSS is also av
 * Available Stock
 
 == Business Growth ==
-FluentCart includes tools that help you operate at scale. From revenue analysis to team coordination, it comes with every operational tool pre-integrated, so you don’t need workarounds or extra plugins to manage growth. 
+Webmakerr includes tools that help you operate at scale. From revenue analysis to team coordination, it comes with every operational tool pre-integrated, so you don’t need workarounds or extra plugins to manage growth. 
 
 = Reports =
 You get detailed breakdowns of subscriptions, refunds, and subscriber churn rates. Filter performance by product, category, date range, to evaluate the ROI of every sale.
 
 = Payments =
-Payments are at the heart of eCommerce. FluentCart handles automatic retry logic on failed subscription renewals, supports prorated charges for mid-cycle upgrades or plan changes, and lets you offer installment payments—all without custom coding or third-party checkout tools. You can switch gateways, track payment history, and automate invoicing with ease.
+Payments are at the heart of eCommerce. Webmakerr handles automatic retry logic on failed subscription renewals, supports prorated charges for mid-cycle upgrades or plan changes, and lets you offer installment payments—all without custom coding or third-party checkout tools. You can switch gateways, track payment history, and automate invoicing with ease.
 
 = Access Control =
 User Role management means you can safely scale your internal team too. Grant access to team members based on function. Everything is role-based, compartmentalized, and securely accessible from the backend.
@@ -155,25 +155,25 @@ Every feature is tightly integrated, so your operational data flows through one 
 == Reinventing eCommerce ==
 Building stores on WordPress has been riddled with slow queries, bloated schemas, bloated add-ons, and unscalable databases that make your store feel sluggish as it grows. SaaS platforms offload those problems by locking you into hosted environments, but charge you platform fees, gateway markups, and provide exactly zero control over your backend.
 
-At its core, FluentCart runs on a custom database schema purpose-built for digital and subscription commerce. No legacy baggage. It uses fast, indexed tables that prioritize the read/write operations that matter most for modern stores such as, orders, customers, products, subscriptions, licenses, and transactions. This keeps your store snappy even under load, without relying on caching hacks or third-party optimizers. All data is structured for scalability. 
+At its core, Webmakerr runs on a custom database schema purpose-built for digital and subscription commerce. No legacy baggage. It uses fast, indexed tables that prioritize the read/write operations that matter most for modern stores such as, orders, customers, products, subscriptions, licenses, and transactions. This keeps your store snappy even under load, without relying on caching hacks or third-party optimizers. All data is structured for scalability. 
 
-Whether you’re haqndling 50 or 50,000 orders, FluentCart maintains consistent performance with predictable query logic. No degrading response times as tables balloon, no complex migration paths when scaling up, and no reliance on external APIs to run day-to-day operations. 
+Whether you’re haqndling 50 or 50,000 orders, Webmakerr maintains consistent performance with predictable query logic. No degrading response times as tables balloon, no complex migration paths when scaling up, and no reliance on external APIs to run day-to-day operations. 
 
-And while most platforms make you pay for scale, whether through add-on upsells, platform commissions, or percentage-based transaction fees, FluentCart is truly self-hosted and pro-ownership. You pay once. You own it. There are zero transaction fees, no enforced usage tiers, and no hidden charges from payment providers. You can integrate Stripe, PayPal, local gateways, or your own custom processor using native hooks without ever sharing a cut.
+And while most platforms make you pay for scale, whether through add-on upsells, platform commissions, or percentage-based transaction fees, Webmakerr is truly self-hosted and pro-ownership. You pay once. You own it. There are zero transaction fees, no enforced usage tiers, and no hidden charges from payment providers. You can integrate Stripe, PayPal, local gateways, or your own custom processor using native hooks without ever sharing a cut.
 
 == Data Privacy ==
-Your data stays where it belongs, on your server. FluentCart does not phone home, track your customers, share checkout data or payment details. There's no reliance on cookies or third-party scripts for core functionality. 
+Your data stays where it belongs, on your server. Webmakerr does not phone home, track your customers, share checkout data or payment details. There's no reliance on cookies or third-party scripts for core functionality. 
 
-For businesses under strict data policies or privacy regulations, like GDPR and EU DPA, FluentCart is the safest possible eCommerce option. You keep complete control of your stores data. Period.
+For businesses under strict data policies or privacy regulations, like GDPR and EU DPA, Webmakerr is the safest possible eCommerce option. You keep complete control of your stores data. Period.
 
 == Integrations ==
-FluentCart works out of the box with major Fluent plugins including: 
+Webmakerr works out of the box with major Fluent plugins including: 
 
 * FluentCRM: Run marketing automations triggered by store actions and segment customers with lists and tags.
 * FluentCommunity: Managing your gated community and course sales.
 * FluentAffiliate: Handle all your payouts and affiliate sales from a unified dashboard that syncs in real-time.
 
-More native integrations *coming soon* in FluentCart,
+More native integrations *coming soon* in Webmakerr,
 
 * Fluent Forms: Build custom forms for check out and build product surveys that engage your customers.
 * FluentSupport: Bring your support portal right inside your store and sync purchase history across tickets and customers.
@@ -207,7 +207,7 @@ We prioritize developer-level responsiveness and clarity in support tickets. Tha
 
 Whether you’re debugging a gateway integration or extending a checkout flow with hooks, our team is here to assist with clear, actionable guidance. But support doesn’t stop at tickets.
 
-You also get access to a 10,000+ member strong community of Fluent product users across our ecosystem including store owners, developers, marketers, and SaaS builders who use FluentCRM, Fluent Support, FluentBooking, and now FluentCart. 
+You also get access to a 10,000+ member strong community of Fluent product users across our ecosystem including store owners, developers, marketers, and SaaS builders who use FluentCRM, Fluent Support, FluentBooking, and now Webmakerr. 
 
 It's a collaborative environment where people share real-world workflows, custom code snippets, integration tips, and even performance benchmarks.
 
@@ -225,56 +225,56 @@ It's a collaborative environment where people share real-world workflows, custom
 == Installation ==
 This section describes how to install the plugin and get it working.
 
-0. Just search for FluentCart in WordPress Plugins and click install and activate.
+0. Just search for Webmakerr in WordPress Plugins and click install and activate.
 
 OR
 
 1. Upload the plugin files to the `/wp-content/plugins/fluent-cart` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the \'Plugins\' screen in WordPress
-3. Use the `FluentCart` -> `Settings` screen to configure the plugin
+3. Use the `Webmakerr` -> `Settings` screen to configure the plugin
 4. (Make your instructions match the desired user flow for activating and installing your plugin. Include any steps that might be needed for explanatory purposes)
 
 == Frequently Asked Questions ==
 
 = Can I sell physical and digital products together? =
 
-Absolutely. FluentCart supports hybrid product models with inventory, downloads, licenses, and even installment billing.
+Absolutely. Webmakerr supports hybrid product models with inventory, downloads, licenses, and even installment billing.
 
 = How easy is it to set up and use? =
 
-Very easy. Installation is just like any other WordPress plugin. FluentCart comes with an intuitive interface so you can quickly configure your store settings, add products, and connect payment gateways—all without needing technical expertise.
+Very easy. Installation is just like any other WordPress plugin. Webmakerr comes with an intuitive interface so you can quickly configure your store settings, add products, and connect payment gateways—all without needing technical expertise.
 
 = Can I sell unlimited products, and how well does it scale? =
 
-There are no limitations on the number of products or orders. FluentCart is built for scalability—how well it performs depends on your hosting infrastructure. With a good hosting setup, your store can scale comfortably.
+There are no limitations on the number of products or orders. Webmakerr is built for scalability—how well it performs depends on your hosting infrastructure. With a good hosting setup, your store can scale comfortably.
 
-= Does FluentCart support subscriptions and recurring billing? =
+= Does Webmakerr support subscriptions and recurring billing? =
 
-Yes. FluentCart handles subscriptions natively with support for upgrades, downgrades, billing cycles, and trial periods. No transaction fees on Free or Pro.
+Yes. Webmakerr handles subscriptions natively with support for upgrades, downgrades, billing cycles, and trial periods. No transaction fees on Free or Pro.
 
-= Can I customize FluentCart to match my brand? =
+= Can I customize Webmakerr to match my brand? =
 
-Absolutely. FluentCart includes customizable Gutenberg blocks and supports custom CSS for advanced styling. You can even add action buttons to custom WordPress patterns, making it easy to align the cart with your brand’s visual identity.
+Absolutely. Webmakerr includes customizable Gutenberg blocks and supports custom CSS for advanced styling. You can even add action buttons to custom WordPress patterns, making it easy to align the cart with your brand’s visual identity.
 
-= Is FluentCart compatible with my current WordPress theme? =
+= Is Webmakerr compatible with my current WordPress theme? =
 
-Yes. FluentCart is built using standard WordPress best practices and is compatible with any properly coded theme. It will automatically inherit your theme’s styles unless you choose to override them.
+Yes. Webmakerr is built using standard WordPress best practices and is compatible with any properly coded theme. It will automatically inherit your theme’s styles unless you choose to override them.
 
 = What payment methods are supported? =
-FluentCart supports major global payment options, including Stripe, PayPal, and credit cards. You can also integrate custom payment gateways using webhooks and extend functionality as needed.
+Webmakerr supports major global payment options, including Stripe, PayPal, and credit cards. You can also integrate custom payment gateways using webhooks and extend functionality as needed.
 
-= Will FluentCart Charge Fees? =
+= Will Webmakerr Charge Fees? =
 
 Never. Even in the free version, simple subscriptions are free and there’s no transaction fee on our end.
 
-= Do I need any paid services to use FluentCart? =
-No. FluentCart is fully self-hosted. You connect directly to Stripe or PayPal without middleman services or extra transaction fees.
+= Do I need any paid services to use Webmakerr? =
+No. Webmakerr is fully self-hosted. You connect directly to Stripe or PayPal without middleman services or extra transaction fees.
 
 = Can I customize the checkout and product layouts? =
 
-Yes. FluentCart templates are overrideable, and it supports full visual editing in Gutenberg and Bricks Builder.
+Yes. Webmakerr templates are overrideable, and it supports full visual editing in Gutenberg and Bricks Builder.
 
-= Will store development be expensive with FluentCart? =
+= Will store development be expensive with Webmakerr? =
 
 Absolutely not. Everything is already built and ready to be placed on your site with minimal coding knowledge needed.
 
@@ -313,7 +313,7 @@ This service is provided by PayPal: [Terms of Service](https://www.paypal.com/le
 - Introducing Paystack Payment Gateway
 - Added Quarterly and Half-Yearly subscription billing intervals
 - Coupons now supports email based restrictions
-- Introducing REST API Doc: https://dev.fluentcart.com/restapi/
+- Introducing REST API Doc: https://dev.webmakerr.com/restapi/
 - Security: Performed a paid third-party security audit (Patchstack) as part of ongoing hardening efforts.
 - Improved Translation support for multiple languages
 - Imroved Reporting performance and data accuracy
