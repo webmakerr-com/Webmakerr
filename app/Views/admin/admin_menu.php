@@ -4,21 +4,21 @@
 use Webmakerr\App\Services\Permission\PermissionManager;
 use Webmakerr\App\Vite;
 
-$darkLogo = Vite::getAssetUrl('images/logo/logo-full.svg');
-$lightLogo = Vite::getAssetUrl('images/logo/logo-full-dark.svg');
+$darkLogo = Vite::getAssetUrl('images/logo/webmakerr-logo-full.svg');
+$lightLogo = Vite::getAssetUrl('images/logo/webmakerr-logo-full-dark.svg');
 
 
 ?>
 <div class="fct_admin_menu_wrap fct_global_menu_wrap">
     <div class="fct_admin_menu_row">
         <div class="fct_admin_logo_wrap">
-            <a aria-label="<?php echo esc_html__('FluentCart Logo', 'webmakerr-cart'); ?>"
-               title="<?php echo esc_html__('FluentCart Logo', 'webmakerr-cart'); ?>"
+            <a aria-label="<?php echo esc_html__('Webmakerr Logo', 'webmakerr-cart'); ?>"
+               title="<?php echo esc_html__('Webmakerr Logo', 'webmakerr-cart'); ?>"
                href="<?php echo esc_url(admin_url('admin.php?page=webmakerr#/')); ?>">
                 <img class="block dark:hidden" src="<?php echo esc_url($lightLogo); ?>"
-                     alt="<?php echo esc_html__('FluentCart Logo', 'webmakerr-cart'); ?>"/>
+                     alt="<?php echo esc_html__('Webmakerr Logo', 'webmakerr-cart'); ?>"/>
                 <img class="hidden dark:block" src="<?php echo esc_url($darkLogo); ?>"
-                     alt="<?php echo esc_html__('FluentCart Logo', 'webmakerr-cart'); ?>"/>
+                     alt="<?php echo esc_html__('Webmakerr Logo', 'webmakerr-cart'); ?>"/>
             </a>
         </div><!-- .fct_admin_logo_wrap -->
 

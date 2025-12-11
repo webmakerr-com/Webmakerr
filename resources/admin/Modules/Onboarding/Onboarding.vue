@@ -28,9 +28,9 @@ const saving = ref(false);
 const generatePageType = ref('auto-generate-pages');
 const activeCollapse = ref([1])
 const headerTitle = ref('Welcome aboard! Let’s create your online store.');
-const darkLogo = Asset.getUrl('images/logo/logo-full-dark.svg');
-const lightLogo = Asset.getUrl('images/logo/logo-full.svg');
-const logo = ref(AppConfig.get('asset_url') + '/images/logo/logo-full-dark.svg');
+const darkLogo = Asset.getUrl('images/logo/webmakerr-logo-full-dark.svg');
+const lightLogo = Asset.getUrl('images/logo/webmakerr-logo-full.svg');
+const logo = ref(AppConfig.get('asset_url') + '/images/logo/webmakerr-logo-full-dark.svg');
 const savingSettings = ref(false);
 const pageSetupTitle = ref('Select Pages');
 const pageSetupDescription = ref('Select the pages you\'d like from your website');
@@ -323,7 +323,7 @@ const setStep = (step) => {
         <div class="fct-onboarding-content-box">
           <div class="fct-onboarding-card-head">
             <div class="fct-onboarding-card-head-top">
-              <img :src="logo" :alt="translate('Fluent Cart')">
+              <img :src="logo" :alt="translate('Webmakerr')">
               <div class="fct-onboarding-steps-count">
                 {{
                   /* translators: %s - current step */

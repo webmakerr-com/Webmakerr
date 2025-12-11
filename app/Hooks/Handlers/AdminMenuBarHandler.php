@@ -34,7 +34,7 @@ class AdminMenuBarHandler
         }
 
 
-        $logo = Vite::getAssetUrl('images/logo/logo-white.svg');
+        $logo = Vite::getAssetUrl('images/logo/webmakerr-logo-white.svg');
         $title = '<div style="display: inline-flex;align-items: center;' . esc_attr($color) . '"><img src="' . esc_url($logo ?? '') . '" alt="Logo" style="width:20px; height:16px; vertical-align:middle; margin-right:6px;">' . $menuTitle . '</div>';
 
 
