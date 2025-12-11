@@ -1,6 +1,6 @@
 <?php
 
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 use FluentCartPro\App\Modules\Licensing\Http\Controllers\LicenseController;
 use FluentCartPro\App\Modules\Licensing\Http\Controllers\ProductLicenseController;
 

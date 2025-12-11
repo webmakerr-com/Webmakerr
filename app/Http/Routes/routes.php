@@ -4,7 +4,7 @@
  * @var $router Router
  */
 
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 
 $router->namespace('')
     ->group(function ($router) {

@@ -4,7 +4,7 @@
 
 use Webmakerr\App\Modules\Subscriptions\Http\Controllers\SubscriptionController;
 
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 use Webmakerr\App\Modules\Subscriptions\Http\Policies\SubscriptionsPolicy;
 
 $router->prefix('subscriptions')->withPolicy('OrderPolicy')->group(function (Router $router) {

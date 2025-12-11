@@ -7,7 +7,7 @@
 
 use Webmakerr\App\Http\Controllers\AdvanceFilter\AdvanceFilterController;
 use Webmakerr\App\Http\Controllers\VariantController;
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 
 $router->prefix('advance_filter')
     ->group(function (Router $router) {
