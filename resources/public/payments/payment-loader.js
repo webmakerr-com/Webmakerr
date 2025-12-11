@@ -323,9 +323,9 @@ export default class PaymentLoader {
                     initialInstructions.style.display = 'block';
                 }
 
-                //console.log('FluentCart: Loading first payment method in order:', paymentMethod);
+                //console.log('Webmakerr: Loading first payment method in order:', paymentMethod);
             } else {
-                //console.warn('FluentCart: No payment methods found');
+                //console.warn('Webmakerr: No payment methods found');
                 return;
             }
         }

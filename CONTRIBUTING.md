@@ -1,7 +1,7 @@
-# 🚀 Contributing to FluentCart
+# 🚀 Contributing to Webmakerr
 
 First off — **thank you**! ❤️  
-Every single contribution, no matter how small, helps shape the future of open-source WordPress eCommerce. Whether you're fixing a typo, optimizing a query, adding a new payment gateway, or just opening an issue — you’re making FluentCart better for everyone.
+Every single contribution, no matter how small, helps shape the future of open-source WordPress eCommerce. Whether you're fixing a typo, optimizing a query, adding a new payment gateway, or just opening an issue — you’re making Webmakerr better for everyone.
 
 We’re thrilled you’re here!
 
@@ -14,12 +14,12 @@ This project follows the WordPress Community Code of Conduct. Be respectful, inc
 ## How to Contribute
 
 ### 1. Found a Bug?
-- Check the [Issues](https://github.com/fluent-cart/fluent-cart/issues) first to avoid duplicates.
+- Check the [Issues](https://github.com/webmakerr/webmakerr/issues) first to avoid duplicates.
 - Can’t find it? Open a new issue using the **Bug Report** template.
 - Include steps to reproduce, expected vs actual behavior, screenshots, and environment details (WP version, PHP version, etc.).
 
 ### 2. Have a Feature Idea?
-- Open a [Discussion](https://github.com/fluent-cart/fluent-cart/discussions) first for big ideas — let’s align before writing code!
+- Open a [Discussion](https://github.com/webmakerr/webmakerr/discussions) first for big ideas — let’s align before writing code!
 - Small improvements? Jump straight to a Pull Request.
 
 ### 3. Want to Code? (You’re our favorite kind of person 🤩)
@@ -28,8 +28,8 @@ This project follows the WordPress Community Code of Conduct. Be respectful, inc
 
 ```bash
 # 1. Fork & clone the repo
-git clone https://github.com/fluent-cart/fluent-cart.git
-cd fluent-cart
+git clone https://github.com/webmakerr/webmakerr.git
+cd webmakerr
 
 # 2. Install dependencies
 npm i
@@ -42,7 +42,7 @@ npm run build
 ```
 
 - Develop inside a standard WordPress installation.
-- Activate FluentCart like any other plugin.
+- Activate Webmakerr like any other plugin.
 - Use tools like **Query Monitor** and **Log Viewer** to catch performance regressions.
 
 
@@ -93,13 +93,13 @@ We’ll personally guide you through your first PR. Promise.
 ### Questions?
 - Open a GitHub Discussion
 - Ask in an issue
-- Ping us on Twitter/X: [@FluentCart](https://twitter.com/fluentcart)
+- Ping us on Twitter/X: [@Webmakerr](https://twitter.com/webmakerr)
 
 ---
 
 **Every contribution gets a shoutout** in release notes (unless you opt out).  
 You’re not just writing code — you’re helping thousands of store owners succeed.
 
-Welcome to the FluentCart family! Let’s build the future of WordPress eCommerce — together. 🚀
+Welcome to the Webmakerr family! Let’s build the future of WordPress eCommerce — together. 🚀
 
-Made with endless gratitude by the FluentCart team and **you**.
+Made with endless gratitude by the Webmakerr team and **you**.
