@@ -4,7 +4,7 @@ defined('ABSPATH') or die;
 
 /*
 Plugin Name: Webmakerr Cart
-Description: Webmakerr Cart makes eCommerce, bookings, and service selling fast and effortless.
+Description: Webmakerr makes eCommerce, bookings, and service selling fast and effortless.
 Version: 1.3.1
 Author: Webmakerr
 Author URI: https://webmakerr.com
@@ -26,7 +26,7 @@ if (!defined('WEBMAKERR_PLUGIN_PATH')) {
     define('WEBMAKERR_LEGACY_UPLOAD_DIR', $legacyUploadDir);
     define('WEBMAKERR_DIR_FILE', defined('FLUENT_CART_DIR_FILE') ? FLUENT_CART_DIR_FILE : __FILE__);
     define('WEBMAKERR_MIN_PRO_VERSION', defined('FLUENTCART_MIN_PRO_VERSION') ? FLUENTCART_MIN_PRO_VERSION : '1.3.1');
-    define('WEBMAKERR_PRO_PLUGIN_BASENAME', defined('FLUENTCART_PRO_PLUGIN_BASENAME') ? FLUENTCART_PRO_PLUGIN_BASENAME : 'webmakerr-cart-pro/webmakerr-cart-pro.php');
+    define('WEBMAKERR_PRO_PLUGIN_BASENAME', defined('FLUENTCART_PRO_PLUGIN_BASENAME') ? FLUENTCART_PRO_PLUGIN_BASENAME : 'fluentcart-pro/fluentcart-pro.php');
 }
 
 // Provide legacy constants for backwards compatibility with FluentCart extensions.
@@ -44,9 +44,10 @@ register_activation_hook(__FILE__, function () {
     update_option('fluent_cart_do_activation_redirect', true);
 });
 
-$bootstrap = require __DIR__ . '/boot/app.php';
-
-require __DIR__ . '/vendor/autoload.php';
-// require __DIR__ . '/dev/build-scoped/vendor/scoper-autoload.php'
-
-return $bootstrap(__FILE__);
+return (function ($_) {
+    return $_(__FILE__);
+})(
+    require __DIR__ . '/boot/app.php',
+    require __DIR__ . '/vendor/autoload.php',
+    //require __DIR__ . '/dev/build-scoped/vendor/scoper-autoload.php'
+);
