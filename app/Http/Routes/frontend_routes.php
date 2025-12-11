@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * @var $router \FluentCart\Framework\Http\Router
+ * @var $router \Webmakerr\Framework\Http\Router
  */
 
 use Webmakerr\App\Http\Controllers\CartController;
@@ -13,7 +13,7 @@ use Webmakerr\App\Http\Controllers\FrontendControllers\CustomerSubscriptionContr
 use Webmakerr\App\Http\Controllers\ShopController;
 use Webmakerr\App\Http\Controllers\UserController;
 use Webmakerr\App\Modules\Shipping\Http\Controllers\Frontend\ShippingFrontendController;
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 
 $router->prefix('public')
     ->withPolicy('PublicPolicy')->group(function (Router $router) {

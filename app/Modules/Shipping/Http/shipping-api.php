@@ -6,7 +6,7 @@
 use Webmakerr\App\Modules\Shipping\Http\Controllers\ShippingZoneController;
 use Webmakerr\App\Modules\Shipping\Http\Controllers\ShippingClassController;
 use Webmakerr\App\Modules\Shipping\Http\Controllers\ShippingMethodController;
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 
 $router->prefix('shipping')->withPolicy('StoreSensitivePolicy')->group(function (Router $router) {
     $router->get('/zones', [ShippingZoneController::class, 'index']);

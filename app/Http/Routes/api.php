@@ -34,7 +34,7 @@ use Webmakerr\App\Http\Controllers\TemplateController;
 use Webmakerr\App\Http\Controllers\VariantController;
 use Webmakerr\App\Http\Controllers\WidgetsController;
 use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\ConnectConfig;
-use FluentCart\Framework\Http\Router;
+use Webmakerr\Framework\Http\Router;
 use \Webmakerr\App\Http\Controllers\PaymentMethodController;
 use \Webmakerr\App\Http\Controllers\ActivityController;
 use \Webmakerr\App\Http\Controllers\TaxController;
