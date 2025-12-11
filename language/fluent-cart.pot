@@ -205,7 +205,7 @@ msgstr ""
 msgid "%s rates"
 msgstr ""
 
-msgid "%s requires FluentCart Pro"
+msgid "%s requires Webmakerr Pro"
 msgstr ""
 
 msgid "%s requires Webmakerr"
@@ -4806,7 +4806,7 @@ msgstr ""
 msgid "Display the cart icon in the body of the website"
 msgstr ""
 
-msgid "Displays Single FluentCart Product."
+msgid "Displays Single Webmakerr Product."
 msgstr ""
 
 msgid "Displays products filtered by a category."
@@ -5126,7 +5126,7 @@ msgstr ""
 msgid "Edit discount"
 msgstr ""
 
-msgid "Edit product content in FluentCart."
+msgid "Edit product content in Webmakerr."
 msgstr ""
 
 msgid "Edit product short description in WordPress."
@@ -5354,7 +5354,7 @@ msgstr ""
 msgid "Enable local driver"
 msgstr ""
 
-msgid "Enable powered by FluentCart in the email footer"
+msgid "Enable powered by Webmakerr in the email footer"
 msgstr ""
 
 msgid "Enable powered by Webmakerr in the email footer"
@@ -6268,25 +6268,25 @@ msgstr ""
 msgid "FluentCRM – The Ultimate CRM, Marketing, & Automation Solution for WordPress"
 msgstr ""
 
-msgid "FluentCart"
+msgid "Webmakerr"
 msgstr ""
 
-msgid "FluentCart Buttons"
+msgid "Webmakerr Buttons"
 msgstr ""
 
-msgid "FluentCart Logo"
+msgid "Webmakerr Logo"
 msgstr ""
 
-msgid "FluentCart Team"
+msgid "Webmakerr Team"
 msgstr ""
 
-msgid "FluentCart WordPress Plugin"
+msgid "Webmakerr WordPress Plugin"
 msgstr ""
 
-msgid "FluentCart products post type"
+msgid "Webmakerr products post type"
 msgstr ""
 
-msgid "FluentCart will send admin notification to this email address."
+msgid "Webmakerr will send admin notification to this email address."
 msgstr ""
 
 msgid "FluentCommunity"
@@ -6583,7 +6583,7 @@ msgstr ""
 msgid "Germany"
 msgstr ""
 
-msgid "Get access to this feature by Upgrading to FluentCart Pro"
+msgid "Get access to this feature by Upgrading to Webmakerr Pro"
 msgstr ""
 
 msgid "Get access to this feature by Upgrading to Webmakerr"
@@ -10848,7 +10848,7 @@ msgstr ""
 msgid "No edit found"
 msgstr ""
 
-msgid "No email notifications available! Please reactivate FluentCart!"
+msgid "No email notifications available! Please reactivate Webmakerr!"
 msgstr ""
 
 msgid "No email notifications available! Please reactivate Webmakerr!"
@@ -13190,7 +13190,7 @@ msgstr ""
 msgid "Product %s is deleted"
 msgstr ""
 
-msgid "Product (FluentCart)"
+msgid "Product (Webmakerr)"
 msgstr ""
 
 msgid "Product Action Container"
@@ -13442,7 +13442,7 @@ msgstr ""
 msgid "Product stock"
 msgstr ""
 
-msgid "Product title (FluentCart)"
+msgid "Product title (Webmakerr)"
 msgstr ""
 
 msgid "Product type"
@@ -17579,7 +17579,7 @@ msgstr ""
 msgid "This feature is only available for pro version."
 msgstr ""
 
-msgid "This feature is only available in FluentCart Pro."
+msgid "This feature is only available in Webmakerr Pro."
 msgstr ""
 
 msgid "This feature is only available in Webmakerr."
