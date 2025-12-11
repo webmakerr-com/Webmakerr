@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use Webmakerr\Framework\Http\Router;
+use FluentCart\Framework\Http\Router;
 use Webmakerr\App\Http\Controllers\Reports\ReportingController;
 use Webmakerr\App\Http\Controllers\Reports\OrderReportController;
 use Webmakerr\App\Http\Controllers\Reports\SourceReportController;

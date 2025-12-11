@@ -1,6 +1,6 @@
 <?php
 
-use Webmakerr\Framework\Http\Router;
+use FluentCart\Framework\Http\Router;
 use FluentCartPro\App\Modules\Promotional\Http\Controllers\OrderBumpController;
 
 /**
