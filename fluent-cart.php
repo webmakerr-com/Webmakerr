@@ -23,17 +23,7 @@ if (!defined('FLUENTCART_PLUGIN_PATH')) {
     define('FLUENTCART_UPLOAD_DIR', 'fluent_cart');
     define('FLUENT_CART_DIR_FILE', __FILE__);
     define('FLUENTCART_MIN_PRO_VERSION', '1.3.1');
-}
-
-if (!defined('FLUENTCART_PRO_PLUGIN_VERSION')) {
-    define('FLUENTCART_PRO_PLUGIN_VERSION', '1.3.1');
-    define('FLUENTCART_PRO_PLUGIN_DIR', FLUENTCART_PLUGIN_PATH . 'app/Pro/');
-    define('FLUENTCART_PRO_PLUGIN_URL', FLUENTCART_URL . 'app/Pro/');
-    define('FLUENTCART_PRO_PLUGIN_FILE_PATH', __FILE__);
-}
-
-if (!defined('FLUENT_CART_PRO_DEV_MODE')) {
-    define('FLUENT_CART_PRO_DEV_MODE', 'no');
+    define('FLUENTCART_PRO_PLUGIN_BASENAME', 'fluentcart-pro/fluentcart-pro.php');
 }
 
 register_activation_hook(__FILE__, function () {

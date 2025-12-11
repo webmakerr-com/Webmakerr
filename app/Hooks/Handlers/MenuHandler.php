@@ -34,6 +34,7 @@ use FluentCart\App\Modules\Integrations\AddOnModule;
 use FluentCart\App\Services\Translations\TransStrings;
 use FluentCart\App\Services\Permission\PermissionManager;
 use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
+use FluentCart\App\Services\Pro\ProFeatureManager;
 
 class MenuHandler
 {
@@ -383,9 +384,18 @@ class MenuHandler
             'order_filter_options'    => OrderFilter::getTableFilterOptions(),
             'customer_filter_options' => CustomerFilter::getTableFilterOptions(),
             'product_filter_options'  => ProductFilter::getTableFilterOptions(),
-            'license_filter_options'  => LicenseFilter::getTableFilterOptions(),
+            'license_filter_options'  => [],
             'tax_filter_options'      => TaxFilter::getTableFilterOptions(),
         ];
+
+        if (App::isProActive()) {
+            $filterOptions['license_filter_options'] = LicenseFilter::getTableFilterOptions();
+        } else {
+            $filterOptions['license_filter_options'] = [
+                'locked'  => true,
+                'message' => ProFeatureManager::instance()->getLockedMessage(__('License filters', 'fluent-cart')),
+            ];
+        }
         $filterOptions = apply_filters('fluent_cart/admin_filter_options', $filterOptions, []);
 
         $currentUser = get_user_by('ID', get_current_user_id());

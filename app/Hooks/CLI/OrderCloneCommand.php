@@ -8,8 +8,7 @@ use FluentCart\App\Models\OrderItem;
 use FluentCart\App\Models\AppliedCoupon;
 use FluentCart\App\Models\OrderMeta;
 use FluentCart\App\Services\DateTime\DateTime;
-use FluentCartPro\App\Modules\Licensing\Models\License;
-use FluentCartPro\App\Modules\Subscriptions\Models\Subscription;
+use FluentCart\App\Services\Pro\ProFeatureManager;
 
 class OrderCloneCommand
 {
@@ -261,11 +260,14 @@ class OrderCloneCommand
 
     private function cloneLicenses($sourceOrder, $newOrder)
     {
-        if (!class_exists(License::class)) {
+        $proManager = ProFeatureManager::instance();
+        $licenseClass = '\\FluentCartPro\\App\\Modules\\Licensing\\Models\\License';
+
+        if (!$proManager->isProActive() || !$proManager->ensureClassAvailable($licenseClass)) {
             return;
         }
 
-        $licenses = License::where('order_id', $sourceOrder['id'])->get();
+        $licenses = $licenseClass::where('order_id', $sourceOrder['id'])->get();
 
         foreach ($licenses as $license) {
             $licenseData = $license->toArray();
@@ -275,17 +277,20 @@ class OrderCloneCommand
             $licenseData['created_at'] = $newOrder->created_at;
             $licenseData['updated_at'] = $newOrder->created_at;
 
-            License::create($licenseData);
+            $licenseClass::create($licenseData);
         }
     }
 
     private function cloneSubscriptions($sourceOrder, $newOrder)
     {
-        if (!class_exists(Subscription::class)) {
+        $proManager = ProFeatureManager::instance();
+        $subscriptionClass = '\\FluentCartPro\\App\\Modules\\Subscriptions\\Models\\Subscription';
+
+        if (!$proManager->isProActive() || !$proManager->ensureClassAvailable($subscriptionClass)) {
             return;
         }
 
-        $subscriptions = Subscription::where('parent_order_id', $sourceOrder['id'])->get();
+        $subscriptions = $subscriptionClass::where('parent_order_id', $sourceOrder['id'])->get();
 
         foreach ($subscriptions as $subscription) {
             $subData = $subscription->toArray();
@@ -301,7 +306,7 @@ class OrderCloneCommand
                     strtotime($newOrder->created_at . " +1 {$interval}"));
             }
 
-            Subscription::create($subData);
+            $subscriptionClass::create($subData);
         }
     }
 

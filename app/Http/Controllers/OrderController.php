@@ -40,7 +40,6 @@ use FluentCart\Framework\Http\Request\Request;
 use FluentCart\Framework\Support\Arr;
 use FluentCart\Framework\Support\Collection;
 use FluentCart\Framework\Validator\ValidationException;
-use FluentCartPro\App\Hooks\Handlers\OrderActionsHandler;
 
 class OrderController extends Controller
 {

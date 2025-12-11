@@ -3,6 +3,7 @@
 namespace FluentCart\App;
 
 use FluentCart\Api\StoreSettings;
+use FluentCart\App\Services\Pro\ProFeatureManager;
 use FluentCart\Framework\Support\Once;
 use FluentCart\Framework\Foundation\App as AppFacade;
 
@@ -69,7 +70,7 @@ class App extends AppFacade
 
     public static function isProActive()
     {
-        return defined('FLUENTCART_PRO_PLUGIN_VERSION');
+        return ProFeatureManager::instance()->isProActive();
     }
 
     public static function doingRestRequest()
