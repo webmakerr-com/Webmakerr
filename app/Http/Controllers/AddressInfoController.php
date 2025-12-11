@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Http\Request\Request;
 
 class AddressInfoController extends Controller
 {

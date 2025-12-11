@@ -1,22 +1,22 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Events\Subscription\SubscriptionCanceled;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Concerns\CanUpdateBatch;
-use FluentCart\App\Models\Concerns\HasActivity;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\Framework\Database\Orm\Relations\BelongsTo;
-use FluentCart\Framework\Database\Orm\Relations\HasMany;
-use FluentCart\Framework\Database\Orm\Relations\HasOne;
-use FluentCart\Framework\Database\Orm\Relations\MorphMany;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Events\Subscription\SubscriptionCanceled;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Concerns\CanUpdateBatch;
+use Webmakerr\App\Models\Concerns\HasActivity;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\Framework\Database\Orm\Relations\BelongsTo;
+use Webmakerr\Framework\Database\Orm\Relations\HasMany;
+use Webmakerr\Framework\Database\Orm\Relations\HasOne;
+use Webmakerr\Framework\Database\Orm\Relations\MorphMany;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 
 /**
@@ -24,7 +24,7 @@ use FluentCartPro\App\Modules\Licensing\Models\License;
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -154,7 +154,7 @@ class Subscription extends Model
 
     public function getUrlAttribute($value)
     {
-        return apply_filters('fluent_cart/subscription/url_' . $this->current_payment_method, '', [
+        return webmakerr_apply_filters('webmakerr_cart/subscription/url_' . $this->current_payment_method, '', [
             'vendor_subscription_id' => $this->vendor_subscription_id,
             'payment_mode'           => (new StoreSettings())->get('order_mode'),
             'subscription'           => $this
@@ -393,7 +393,7 @@ class Subscription extends Model
 
         $canReactivate = in_array($this->status, [Status::SUBSCRIPTION_CANCELED, Status::SUBSCRIPTION_FAILING, Status::SUBSCRIPTION_EXPIRED, Status::SUBSCRIPTION_PAUSED, Status::SUBSCRIPTION_EXPIRING, Status::SUBSCRIPTION_PAST_DUE]);
 
-        return apply_filters('fluent_cart/subscription/can_reactivate', $canReactivate, [
+        return webmakerr_apply_filters('webmakerr_cart/subscription/can_reactivate', $canReactivate, [
             'subscription' => $this
         ]);
     }

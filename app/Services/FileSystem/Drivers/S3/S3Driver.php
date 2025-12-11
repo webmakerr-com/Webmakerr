@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Services\FileSystem\Drivers\S3;
+namespace Webmakerr\App\Services\FileSystem\Drivers\S3;
 
-use FluentCart\App\Models\ProductDownload;
-use FluentCart\App\Modules\StorageDrivers\S3\S3;
-use FluentCart\App\Modules\StorageDrivers\S3\S3 as S3StorageDriver;
-use FluentCart\App\Modules\StorageDrivers\S3\S3Settings;
-use FluentCart\App\Services\FileSystem\Drivers\BaseDriver;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\ProductDownload;
+use Webmakerr\App\Modules\StorageDrivers\S3\S3;
+use Webmakerr\App\Modules\StorageDrivers\S3\S3 as S3StorageDriver;
+use Webmakerr\App\Modules\StorageDrivers\S3\S3Settings;
+use Webmakerr\App\Services\FileSystem\Drivers\BaseDriver;
+use Webmakerr\Framework\Support\Arr;
 
 class S3Driver extends BaseDriver
 {
@@ -212,7 +212,7 @@ class S3Driver extends BaseDriver
     public function getSignedDownloadUrl(string $filePath, $bucket = null, $productDownload = null): string
     {
         $expirationMinutes = 7 * 24 * 60;
-        apply_filters('fluent_cart/download_expiration_minutes', $expirationMinutes, [
+        webmakerr_apply_filters('webmakerr_cart/download_expiration_minutes', $expirationMinutes, [
             'file_path' => $filePath,
             'bucket'    => $bucket,
             'driver'    => 's3',
@@ -227,7 +227,7 @@ class S3Driver extends BaseDriver
     public function downloadFile(string $filePath, $fileName = null, $bucket = null)
     {
         $expirationMinutes = 7 * 24 * 60;
-        apply_filters('fluent_cart/download_expiration_minutes', $expirationMinutes, [
+        webmakerr_apply_filters('webmakerr_cart/download_expiration_minutes', $expirationMinutes, [
             'file_path' => $filePath,
             'bucket'    => $bucket,
             'driver'    => 's3',

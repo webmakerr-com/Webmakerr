@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\UserResource;
-use FluentCart\App\App;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\UserResource;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Support\Arr;
 
 class User
 {
@@ -91,7 +91,7 @@ class User
             $processedData['password'] = wp_generate_password(8);
         }
 
-        do_action('fluent_cart/user/before_registration', $processedData);
+        webmakerr_do_action('webmakerr_cart/user/before_registration', $processedData);
 
         $this->createUser($processedData);
     }

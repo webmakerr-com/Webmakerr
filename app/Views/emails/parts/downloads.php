@@ -1,5 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
-<?php use FluentCart\App\Helpers\Helper;
+<?php use Webmakerr\App\Helpers\Helper;
 $showNotice = $show_notice ?? true;
 if (isset($heading)): ?>
     <p style="font-size:16px;font-weight:600;color:rgb(44,62,80);margin: 16px 0 0 0;line-height:24px;">

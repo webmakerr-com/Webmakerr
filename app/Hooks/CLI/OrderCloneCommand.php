@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Hooks\CLI;
+namespace Webmakerr\App\Hooks\CLI;
 
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderAddress;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\App\Models\OrderMeta;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Pro\ProFeatureManager;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderAddress;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\App\Models\OrderMeta;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Pro\ProFeatureManager;
 
 class OrderCloneCommand
 {
@@ -235,7 +235,7 @@ class OrderCloneCommand
 
             // Increment use_count for all used coupons
             if (!empty($couponIds)) {
-                \FluentCart\App\Models\Coupon::whereIn('id', array_unique($couponIds))
+                \Webmakerr\App\Models\Coupon::whereIn('id', array_unique($couponIds))
                     ->increment('use_count', 1);
             }
         }

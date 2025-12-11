@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\StorageDrivers\Local;
+namespace Webmakerr\App\Modules\StorageDrivers\Local;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class LocalSettings
 {

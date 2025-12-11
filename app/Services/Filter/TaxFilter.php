@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\App;
-use FluentCart\Framework\Support\Str;
-use FluentCart\App\Models\OrderTaxRate;
-use FluentCart\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\App\Models\OrderTaxRate;
+use Webmakerr\App\Services\Localization\LocalizationManager;
 
 class TaxFilter extends BaseFilter
 {

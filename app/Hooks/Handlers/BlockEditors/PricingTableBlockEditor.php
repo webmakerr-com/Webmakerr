@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Hooks\Handlers\ShortCodes\PricingTableShortCode;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\PricingTableShortCode;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class PricingTableBlockEditor extends BlockEditor
 {

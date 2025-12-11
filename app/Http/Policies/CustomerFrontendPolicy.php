@@ -1,7 +1,7 @@
 <?php
-namespace FluentCart\App\Http\Policies;
+namespace Webmakerr\App\Http\Policies;
 
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\Framework\Http\Request\Request;
 
 class CustomerFrontendPolicy extends Policy
 {

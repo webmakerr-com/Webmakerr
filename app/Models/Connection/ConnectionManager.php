@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Models\Connection;
+namespace Webmakerr\App\Models\Connection;
 
-use FluentCart\App\Models\Model;
-use FluentCart\Framework\Database\DBManager;
-use FluentCart\Database\Overrides\DbConnection;
-use FluentCart\Framework\Database\ConnectionResolver;
+use Webmakerr\App\Models\Model;
+use Webmakerr\Framework\Database\DBManager;
+use Webmakerr\Database\Overrides\DbConnection;
+use Webmakerr\Framework\Database\ConnectionResolver;
 
 class ConnectionManager
 {

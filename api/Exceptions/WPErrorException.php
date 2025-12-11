@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Api\Exceptions;
+namespace Webmakerr\Api\Exceptions;
 
 class WPErrorException extends \Exception
 {

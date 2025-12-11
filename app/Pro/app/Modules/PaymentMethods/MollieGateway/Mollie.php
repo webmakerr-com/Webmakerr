@@ -2,13 +2,13 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\MollieGateway;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\API\MollieAPI;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\Webhook\MollieIPN;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\Confirmations;
@@ -58,7 +58,7 @@ class Mollie extends AbstractPaymentGateway
         // Initialize IPN handler
         (new MollieIPN)->init();
         
-        add_filter('fluent_cart/payment_methods/mollie_settings', [$this, 'getSettings'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/payment_methods/mollie_settings', [$this, 'getSettings'], 10, 2);
 
         (new Confirmations())->init();
     }

@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Hooks\Cart;
+namespace Webmakerr\App\Hooks\Cart;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\UtmHelper;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Services\Renderer\CartRenderer;
-use FluentCart\App\Services\Renderer\CartDrawerRenderer;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\UtmHelper;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Services\Renderer\CartRenderer;
+use Webmakerr\App\Services\Renderer\CartDrawerRenderer;
 
 class CartLoader
 {
@@ -30,7 +30,7 @@ class CartLoader
             return;
         }
 
-        $enableNavFloatingButton = apply_filters('fluent_cart/buttons/enable_floating_cart_button', true, []);
+        $enableNavFloatingButton = webmakerr_apply_filters('webmakerr_cart/buttons/enable_floating_cart_button', true, []);
 
         if (!$enableNavFloatingButton) {
             return;

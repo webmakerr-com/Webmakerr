@@ -1,34 +1,34 @@
 <?php
 
-namespace FluentCart\Api\Checkout;
+namespace Webmakerr\Api\Checkout;
 
-use FluentCart\Api\Resource\FrontendResource\CustomerAddressResource;
-use FluentCart\Api\Resource\FrontendResource\CustomerResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Events\Order\OrderCreated;
-use FluentCart\App\Events\StockChanged;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\CheckoutProcessor;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Helpers\UtmHelper;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Services\CheckoutService;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\OrderService;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Services\Renderer\CheckoutFieldsSchema;
-use FluentCart\Framework\Http\Response;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
-use FluentCart\Framework\Validator\Validator;
+use Webmakerr\Api\Resource\FrontendResource\CustomerAddressResource;
+use Webmakerr\Api\Resource\FrontendResource\CustomerResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Events\Order\OrderCreated;
+use Webmakerr\App\Events\StockChanged;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\CheckoutProcessor;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Helpers\UtmHelper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Services\CheckoutService;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Services\Renderer\CheckoutFieldsSchema;
+use Webmakerr\Framework\Http\Response;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\Framework\Validator\Validator;
 
 class CheckoutApi
 {
@@ -136,7 +136,7 @@ class CheckoutApi
         $taxTotal = (int)Arr::get($cart->checkout_data, 'tax_data.tax_total', 0); // behavoir not applied here
 
         $shippingTax = (int)Arr::get($cart->checkout_data, 'tax_data.shipping_tax', 0);
-        $taxBehavior = apply_filters('fluent_cart/cart/tax_behavior', 0, ['cart' => $cart]);
+        $taxBehavior = webmakerr_apply_filters('webmakerr_cart/cart/tax_behavior', 0, ['cart' => $cart]);
 
         $checkoutProcessor = new CheckoutProcessor($cartCheckoutHelper->getItems(), [
             'customer_id'               => $customer->id,
@@ -168,7 +168,7 @@ class CheckoutApi
         }
 
         // prepare other data if any module needs to add data to the order data
-        do_action('fluent_cart/checkout/prepare_other_data', [
+        webmakerr_do_action('webmakerr_cart/checkout/prepare_other_data', [
             'cart'         => $cart,
             'order'        => $createdOrder,
             'prev_order'   => $prevOrder,
@@ -455,7 +455,7 @@ class CheckoutApi
     private static function hasCustomerWithAddress(string $type): bool
     {
         $addressType = $type . '_address';
-        $currentCustomer = \FluentCart\Api\Resource\CustomerResource::getCurrentCustomer();
+        $currentCustomer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
 
         return !empty($currentCustomer) && $currentCustomer->$addressType->count() === 1;
     }
@@ -761,7 +761,7 @@ class CheckoutApi
             }
         }
 
-        $errors = apply_filters('fluent_cart/checkout/validate_data', $errors, [
+        $errors = webmakerr_apply_filters('webmakerr_cart/checkout/validate_data', $errors, [
             'data' => $data,
             'cart' => $cart
         ]);
@@ -785,7 +785,7 @@ class CheckoutApi
 
 
         $methods = ShippingMethod::query()->applicableToCountry($shipping_country, $shipping_state)->get()->keyBy('id');
-        if ($methods->count() === 0 || \FluentCart\App\App::isDevMode()) {
+        if ($methods->count() === 0 || \Webmakerr\App\App::isDevMode()) {
             return true;
         }
 

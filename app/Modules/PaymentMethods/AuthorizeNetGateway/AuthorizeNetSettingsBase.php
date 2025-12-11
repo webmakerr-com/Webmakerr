@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\AuthorizeNetGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\AuthorizeNetGateway;
 
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
 
 class AuthorizeNetSettingsBase extends BaseGatewaySettings
 {

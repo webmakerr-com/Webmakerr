@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\ActivityResource;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Services\Filter\LogFilter;
+use Webmakerr\Api\Resource\ActivityResource;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Services\Filter\LogFilter;
 
 class ActivityController extends Controller
 {

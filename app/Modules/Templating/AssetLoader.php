@@ -1,26 +1,26 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating;
+namespace Webmakerr\App\Modules\Templating;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\UtmHelper;
-use FluentCart\App\Hooks\Cart\CartLoader;
-use FluentCart\App\Hooks\Handlers\ShortCodes\CustomerProfileHandler;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\Renderer\ProductFilterRender;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Services\URL;
-use FluentCart\App\Vite;
-use FluentCart\App\Services\Renderer\CartRenderer;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\UtmHelper;
+use Webmakerr\App\Hooks\Cart\CartLoader;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\CustomerProfileHandler;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\Renderer\ProductFilterRender;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Services\URL;
+use Webmakerr\App\Vite;
+use Webmakerr\App\Services\Renderer\CartRenderer;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
 
 class AssetLoader
 {
@@ -80,7 +80,7 @@ class AssetLoader
         $localizeData = [
             'fluentcart_single_product_vars' => [
                 'trans'                      => TransStrings::singleProductPageString(),
-                'cart_button_text'           => apply_filters('fluent_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
+                'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
                 // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
                 'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
                 'in_stock_status'            => Helper::IN_STOCK,
@@ -210,7 +210,7 @@ class AssetLoader
         )->with([
             'fluentcart_single_product_vars' => [
                 'trans'                    => TransStrings::singleProductPageString(),
-                'cart_button_text'         => apply_filters('fluent_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
+                'cart_button_text'         => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
                 // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
                 'out_of_stock_button_text' => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
                 'in_stock_status'          => Helper::IN_STOCK,
@@ -401,7 +401,7 @@ class AssetLoader
                 'is_all_digital'                               => !$cart->requireShipping(),
                 'is_cart_locked'                               => $cart->checkout_data['is_locked'] ?? 'no',
                 'disable_coupons'                              => $cart->checkout_data['disable_coupons'] ?? 'no',
-                'payment_methods_with_custom_checkout_buttons' => apply_filters('fluent_cart/payment_methods_with_custom_checkout_buttons', []),
+                'payment_methods_with_custom_checkout_buttons' => webmakerr_apply_filters('webmakerr_cart/payment_methods_with_custom_checkout_buttons', []),
                 'tax_settings'                                 => (new TaxModule())->getSettings(),
                 'submit_button'                                => [
                     'text' => __('Place Order', 'fluent-cart'),

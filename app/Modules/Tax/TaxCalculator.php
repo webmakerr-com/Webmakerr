@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Modules\Tax;
+namespace Webmakerr\App\Modules\Tax;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\TaxRate;
-use FluentCart\App\Models\TaxClass;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Services\Tax\TaxManager;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\TaxRate;
+use Webmakerr\App\Models\TaxClass;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Services\Tax\TaxManager;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\App\Services\Localization\LocalizationManager;
 
 class TaxCalculator
 {
@@ -60,7 +60,7 @@ class TaxCalculator
             $this->productIds = array_values(array_unique(array_column($lineItems, 'post_id')));
 
             if ($this->productIds) {
-                $this->products = \FluentCart\App\Models\Product::query()->whereIn('id', $this->productIds)
+                $this->products = \Webmakerr\App\Models\Product::query()->whereIn('id', $this->productIds)
                     ->with(['detail'])
                     ->get()
                     ->keyBy('ID');

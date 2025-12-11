@@ -2,13 +2,13 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\MollieGateway;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\DateTime\DateTime;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\API\MollieAPI;
 
 class MollieHelper

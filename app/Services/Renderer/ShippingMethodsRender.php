@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
 
 class ShippingMethodsRender
 {
@@ -109,7 +109,7 @@ class ShippingMethodsRender
             <?php endforeach; ?>
         </div>
         <?php
-//        do_action('fluent_cart/views/checkout_page_shipping_method_list', [
+//        webmakerr_do_action('webmakerr_cart/views/checkout_page_shipping_method_list', [
 //            'shipping_methods' => $this->shippingMethods
 //        ]);
     }

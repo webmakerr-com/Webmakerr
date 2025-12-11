@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     '6e3fae29631ef280660b3cdad06f25a8' => $vendorDir . '/symfony/deprecation-contracts/function.php',
     '9680a2abca0f3f510cf2fd1b6d61afe6' => $baseDir . '/boot/globals.php',
+    '2bfa0c164d07c628fd27a7d869e988ff' => $baseDir . '/boot/compatibility.php',
 );

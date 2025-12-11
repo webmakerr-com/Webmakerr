@@ -3,12 +3,12 @@
 namespace FluentCartPro\App\Http\Controllers;
 
 
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Services\Permission\PermissionManager;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Services\Permission\PermissionManager;
+use Webmakerr\Framework\Http\Request\Request;
 
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 use FluentCartPro\App\Http\Requests\RoleRequest;
 use FluentCartPro\App\Models\User;
 

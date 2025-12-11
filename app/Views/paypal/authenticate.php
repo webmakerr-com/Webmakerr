@@ -381,6 +381,6 @@
 
 </div>
 <?php //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript  ?>
-<script id="paypal-js" src="<?php echo esc_html($scriptJs);?>" PayPal-Partner-Attribution-Id="FLUENTCART_SP_PPCP" ></script>
+<script id="paypal-js" src="<?php echo esc_html($scriptJs);?>" PayPal-Partner-Attribution-Id="WEBMAKERR_SP_PPCP" ></script>
 </body>
 </html>

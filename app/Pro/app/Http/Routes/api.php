@@ -10,7 +10,7 @@ use FluentCartPro\App\Modules\Licensing\Http\Controllers\LicenseController;
 
 //Roles and permissions routes
 $router->prefix('roles')
-    ->withPolicy('FluentCart\App\Http\Policies\AdminPolicy')->group(function ($router) {
+    ->withPolicy('Webmakerr\App\Http\Policies\AdminPolicy')->group(function ($router) {
         $router->get('/managers', [RoleController::class, 'managers']);
         $router->get('/user-list', [RoleController::class, 'userList']);
         $router->get('/', [RoleController::class, 'index']);
@@ -22,7 +22,7 @@ $router->prefix('roles')
 
 //FluentCart pluginManager routes
 $router->prefix('settings/license')
-    ->withPolicy('FluentCart\App\Http\Policies\LicensePolicy')
+    ->withPolicy('Webmakerr\App\Http\Policies\LicensePolicy')
     ->group(function ($router) {
         $router->get('/', [LicenseController::class, 'getLicenseDetails']);
         $router->post('/', [LicenseController::class, 'activateLicense']);
@@ -30,7 +30,7 @@ $router->prefix('settings/license')
     });
 
 $router->prefix('products')
-    ->withPolicy('FluentCart\App\Http\Policies\ProductPolicy')
+    ->withPolicy('Webmakerr\App\Http\Policies\ProductPolicy')
     ->group(function ($router) {
         // manage Inventory
         $router->put('/{postId}/update-inventory/{variantId}', [ProductController::class, 'updateInventory'])->meta([

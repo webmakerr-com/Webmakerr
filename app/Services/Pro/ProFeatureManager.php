@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\Pro;
+namespace Webmakerr\App\Services\Pro;
 
-use FluentCart\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Services\Permission\PermissionManager;
 
 class ProFeatureManager
 {
@@ -24,10 +24,10 @@ class ProFeatureManager
     {
         add_action('plugins_loaded', function () use ($app) {
             $this->evaluateStatus();
-            do_action('fluent_cart/pro_bootstrap', $app, $this);
+            webmakerr_do_action('webmakerr_cart/pro_bootstrap', $app, $this);
 
             if ($this->isProActive()) {
-                do_action('fluent_cart/pro_loaded', $app, $this);
+                webmakerr_do_action('webmakerr_cart/pro_loaded', $app, $this);
             }
         }, 9);
 
@@ -37,7 +37,7 @@ class ProFeatureManager
             }
         });
 
-        add_filter('fluent_cart/admin_notices', function ($notices) {
+        webmakerr_add_filter('webmakerr_cart/admin_notices', function ($notices) {
             if ($this->shouldShowLockNotices()) {
                 $notices[] = '<div>' . esc_html($this->getLockedMessage()) . '</div>';
             }
@@ -52,18 +52,18 @@ class ProFeatureManager
             return;
         }
 
-        $status = (bool) apply_filters('fluent_cart/is_pro_active', false);
+        $status = (bool) webmakerr_apply_filters('webmakerr_cart/is_pro_active', false);
 
-        if (!$status && (defined('FLUENTCART_PRO_PLUGIN_VERSION') || defined('FLUENTCART_PRO_VERSION'))) {
+        if (!$status && (defined('WEBMAKERR_PRO_PLUGIN_VERSION') || defined('WEBMAKERR_PRO_VERSION'))) {
             $status = true;
         }
 
-        if (!$status && defined('FLUENTCART_PRO_PLUGIN_BASENAME')) {
+        if (!$status && defined('WEBMAKERR_PRO_PLUGIN_BASENAME')) {
             if (!function_exists('is_plugin_active')) {
                 include_once ABSPATH . 'wp-admin/includes/plugin.php';
             }
 
-            if (function_exists('is_plugin_active') && is_plugin_active(FLUENTCART_PRO_PLUGIN_BASENAME)) {
+            if (function_exists('is_plugin_active') && is_plugin_active(WEBMAKERR_PRO_PLUGIN_BASENAME)) {
                 $status = true;
             }
         }
@@ -103,7 +103,7 @@ class ProFeatureManager
             return $fallback();
         }
 
-        $handler = apply_filters('fluent_cart/pro_feature_handler', null, $featureKey, $payload, $this);
+        $handler = webmakerr_apply_filters('webmakerr_cart/pro_feature_handler', null, $featureKey, $payload, $this);
         if (is_callable($handler)) {
             return $handler($payload, $this);
         }
@@ -122,7 +122,7 @@ class ProFeatureManager
             return $notices;
         }
 
-        if (!defined('FLUENTCART_MIN_PRO_VERSION') || !defined('FLUENTCART_PRO_PLUGIN_VERSION')) {
+        if (!defined('WEBMAKERR_MIN_PRO_VERSION') || !defined('WEBMAKERR_PRO_PLUGIN_VERSION')) {
             return $notices;
         }
 
@@ -130,11 +130,11 @@ class ProFeatureManager
             return $notices;
         }
 
-        if (version_compare(FLUENTCART_MIN_PRO_VERSION, FLUENTCART_PRO_PLUGIN_VERSION, '>')) {
+        if (version_compare(WEBMAKERR_MIN_PRO_VERSION, WEBMAKERR_PRO_PLUGIN_VERSION, '>')) {
             $updateUrl = admin_url('plugins.php?s=fluent-cart&plugin_status=all&fluent-cart-pro-check-update=' . time());
             $notices[] = '<div>' . sprintf(
                     __('Webmakerr Pro needs to be updated to at least version %s. %sUpdate now%s', 'fluent-cart'),
-                    FLUENTCART_MIN_PRO_VERSION,
+                    WEBMAKERR_MIN_PRO_VERSION,
                     '<a href="' . esc_url($updateUrl) . '">',
                     '</a>'
                 ) . '</div>';

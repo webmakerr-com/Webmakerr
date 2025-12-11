@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\App;
+use Webmakerr\App\App;
 
 class FluentCartHandler
 {

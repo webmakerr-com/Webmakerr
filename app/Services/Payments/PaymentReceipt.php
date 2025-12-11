@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Services\Payments;
+namespace Webmakerr\App\Services\Payments;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\App\Helpers\ProductAdminHelper;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\OrderService;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Database\Orm\Collection;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\DateTime;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\App\Helpers\ProductAdminHelper;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Database\Orm\Collection;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\DateTime;
 
 class PaymentReceipt
 {

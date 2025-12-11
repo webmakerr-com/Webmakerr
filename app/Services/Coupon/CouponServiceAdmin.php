@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\Coupon;
+namespace Webmakerr\App\Services\Coupon;
 
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\Coupon\Concerns\CanCalculateLineTotal;
-use FluentCart\App\Services\Coupon\Concerns\CanValidateCoupon;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\Coupon\Concerns\CanCalculateLineTotal;
+use Webmakerr\App\Services\Coupon\Concerns\CanValidateCoupon;
+use Webmakerr\Framework\Support\Collection;
 use WP_Error;
 
 /*

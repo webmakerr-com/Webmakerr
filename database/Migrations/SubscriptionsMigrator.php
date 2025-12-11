@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\Database\Migrations;
+namespace Webmakerr\Database\Migrations;
 
-use FluentCart\Framework\Database\Schema;
+use Webmakerr\Framework\Database\Schema;
 
 class SubscriptionsMigrator extends Migrator
 {

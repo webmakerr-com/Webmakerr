@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\StorageDrivers\Local;
+namespace Webmakerr\App\Modules\StorageDrivers\Local;
 
-use FluentCart\App\Services\FileSystem\Drivers\Local\LocalDriver;
-use FluentCart\App\Vite;
-use FluentCart\App\Modules\StorageDrivers\BaseStorageDriver;
+use Webmakerr\App\Services\FileSystem\Drivers\Local\LocalDriver;
+use Webmakerr\App\Vite;
+use Webmakerr\App\Modules\StorageDrivers\BaseStorageDriver;
 
 class Local extends BaseStorageDriver
 {

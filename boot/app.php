@@ -1,10 +1,10 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use FluentCart\Framework\Foundation\Application;
-use FluentCart\App\Hooks\Handlers\ActivationHandler;
-use FluentCart\App\Hooks\Handlers\DeactivationHandler;
-use FluentCart\App\Services\Pro\ProFeatureManager;
+use Webmakerr\Framework\Foundation\Application;
+use Webmakerr\App\Hooks\Handlers\ActivationHandler;
+use Webmakerr\App\Hooks\Handlers\DeactivationHandler;
+use Webmakerr\App\Services\Pro\ProFeatureManager;
 
 return function ($file) {
 
@@ -26,15 +26,15 @@ return function ($file) {
         ($app->make(DeactivationHandler::class))->handle();
     });
 
-    require_once(FLUENTCART_PLUGIN_PATH . 'boot/action_scheduler_loader.php');
+    require_once(WEBMAKERR_PLUGIN_PATH . 'boot/action_scheduler_loader.php');
 
     add_action('plugins_loaded', function () use ($app, $proFeatures) {
-        do_action('fluentcart_loaded', $app);
+        webmakerr_do_action('webmakerr_loaded', $app);
 
-        (new FluentCart\App\Modules\Data\ProductDataSetup())->boot();
+        (new Webmakerr\App\Modules\Data\ProductDataSetup())->boot();
 
         add_action('init', function () use ($app) {
-            do_action('fluent_cart/init', $app);
+            webmakerr_do_action('webmakerr_cart/init', $app);
 
             if (defined('DATABASE_TYPE') && DATABASE_TYPE === 'sqlite') {
                 add_action('admin_notices', function () {

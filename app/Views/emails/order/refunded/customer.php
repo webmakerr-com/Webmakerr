@@ -1,7 +1,7 @@
 <?php if (!defined('ABSPATH')) exit; ?>
 <?php
 /**
- * @var $order \FluentCart\App\Models\Order
+ * @var $order \Webmakerr\App\Models\Order
  */
 ?>
     <div class="space_bottom_30">
@@ -22,7 +22,7 @@
     </div>
 <?php
 
-\FluentCart\App\App::make('view')->render('emails.parts.items_table', [
+\Webmakerr\App\App::make('view')->render('emails.parts.items_table', [
     'order'          => $order,
     'formattedItems' => $order->order_items,
     'heading'        => __('Summary', 'fluent-cart'),
@@ -30,7 +30,7 @@
 
 echo '<hr />';
 
-\FluentCart\App\App::make('view')->render('emails.parts.call_to_action_box', [
+\Webmakerr\App\App::make('view')->render('emails.parts.call_to_action_box', [
     'content'     => __('The refund should appear in your account within 5-10 business days, depending on your payment provider.', 'fluent-cart'),
     'link'        => $order->getViewUrl('customer'),
     'button_text' => __('View Details', 'fluent-cart')

@@ -1,24 +1,24 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\Api\Resource\FrontendResource\CustomerAddressResource;
-use FluentCart\Api\Resource\ProductResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\CheckoutService;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\OrderService;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Orm\Model;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\ArrayableInterface;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\Api\Resource\FrontendResource\CustomerAddressResource;
+use Webmakerr\Api\Resource\ProductResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\CheckoutService;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Model;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\ArrayableInterface;
+use Webmakerr\Framework\Support\Collection;
 
 class CartCheckoutHelper implements ArrayableInterface
 {
@@ -361,7 +361,7 @@ class CartCheckoutHelper implements ArrayableInterface
     /**
      * @param $itemId
      *
-     * @return Builder|Builder[]|\FluentCart\Framework\Database\Orm\Collection|Model|null
+     * @return Builder|Builder[]|\Webmakerr\Framework\Database\Orm\Collection|Model|null
      */
     public function getOriginalItem($itemId)
     {
@@ -689,7 +689,7 @@ class CartCheckoutHelper implements ArrayableInterface
 
         $fields = $fields + ($hasAddress ? $requiredOnLoggedIn : $requiredOnLoggedOut);
 
-        return apply_filters('fluent_cart/checkout_address_fields', $fields, []);
+        return webmakerr_apply_filters('webmakerr_cart/checkout_address_fields', $fields, []);
     }
 
     public function getBillingAddressFields($viewData = [])
@@ -727,7 +727,7 @@ class CartCheckoutHelper implements ArrayableInterface
 
         unset($fields['address_section']['schema']['label']);
 
-        return apply_filters('fluent_cart/checkout_billing_fields', $fields, [
+        return webmakerr_apply_filters('webmakerr_cart/checkout_billing_fields', $fields, [
             'viewData'         => $viewData,
             'customer'         => $customer,
             'labels'           => $labels,
@@ -768,7 +768,7 @@ class CartCheckoutHelper implements ArrayableInterface
             unset($fields['address_section']['schema']['label']);
         }
 
-        return apply_filters('fluent_cart/checkout_shipping_fields', $fields, [
+        return webmakerr_apply_filters('webmakerr_cart/checkout_shipping_fields', $fields, [
             'viewData' => $viewData,
             'labels'   => $labels,
         ]);
@@ -843,7 +843,7 @@ class CartCheckoutHelper implements ArrayableInterface
             ),
         );
 
-        return apply_filters('fluent_cart/checkout_signup_fields', $fields, []);
+        return webmakerr_apply_filters('webmakerr_cart/checkout_signup_fields', $fields, []);
     }
 
     public function getLoginFields()
@@ -869,7 +869,7 @@ class CartCheckoutHelper implements ArrayableInterface
             ),
         );
 
-        return apply_filters('fluent_cart/checkout_login_fields', $fields, []);
+        return webmakerr_apply_filters('webmakerr_cart/checkout_login_fields', $fields, []);
     }
 
     public function getCartHash()
@@ -922,7 +922,7 @@ class CartCheckoutHelper implements ArrayableInterface
             ),
         );
 
-        return apply_filters('fluent_cart/checkout_coupon_fields', $fields, []);
+        return webmakerr_apply_filters('webmakerr_cart/checkout_coupon_fields', $fields, []);
     }
 
     public function getManualDiscountAmount()

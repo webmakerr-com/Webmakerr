@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
 
-use FluentCart\Api\Checkout\CheckoutApi;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\Api\Checkout\CheckoutApi;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\Framework\Http\Request\Request;
 
 class CheckoutController extends Controller
 {
@@ -22,7 +22,7 @@ class CheckoutController extends Controller
 
     public function getCheckoutSummary(Request $request)
     {
-        $checkOutHelper =  \FluentCart\App\Helpers\CartCheckoutHelper::make();
+        $checkOutHelper =  \Webmakerr\App\Helpers\CartCheckoutHelper::make();
         $shippingMethodId = $request->getSafe('shipping_method_id', 'sanitize_text_field');
 
 
@@ -33,7 +33,7 @@ class CheckoutController extends Controller
         }
 
         ob_start();
-        do_action('fluent_cart/views/checkout_page_cart_item_list', [
+        webmakerr_do_action('webmakerr_cart/views/checkout_page_cart_item_list', [
             'checkout' => $checkOutHelper,
             'items'    => $checkOutHelper->getItems()
         ]);

@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Models\WpModels\Term;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Models\WpModels\Term;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Support\Str;
 
 class Taxonomy
 {

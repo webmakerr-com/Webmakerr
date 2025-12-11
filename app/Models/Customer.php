@@ -1,24 +1,24 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Concerns\CanUpdateBatch;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Database\Orm\Relations\BelongsTo;
-use FluentCart\Framework\Database\Orm\Relations\hasOne;
-use FluentCart\Framework\Database\Orm\Relations\MorphMany;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Helpers\Helper;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanUpdateBatch;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Database\Orm\Relations\BelongsTo;
+use Webmakerr\Framework\Database\Orm\Relations\hasOne;
+use Webmakerr\Framework\Database\Orm\Relations\MorphMany;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
 
 /**
  *  Order Model - DB Model for Orders
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -201,7 +201,7 @@ class Customer extends Model
     public function recountStat()
     {
 
-        $orders = \FluentCart\App\Models\Order::query()->where('customer_id', $this->id)
+        $orders = \Webmakerr\App\Models\Order::query()->where('customer_id', $this->id)
             ->whereIn('payment_status', Status::getOrderPaymentSuccessStatuses())
             ->get();
 
@@ -228,10 +228,10 @@ class Customer extends Model
     /**
      * Local scope to filter subscribers by search/query string
      *
-     * @param \FluentCart\Framework\Database\Query\Builder $query
+     * @param \Webmakerr\Framework\Database\Query\Builder $query
      * @param string $search
      *
-     * @return \FluentCart\Framework\Database\Query\Builder $query
+     * @return \Webmakerr\Framework\Database\Query\Builder $query
      */
     public function scopeSearchBy($query, $search)
     {
@@ -363,12 +363,12 @@ class Customer extends Model
         $this->status = $newStatus;
         $this->save();
 
-        do_action('fluent_cart/customer_status_to_' . $newStatus, [
+        webmakerr_do_action('webmakerr_cart/customer_status_to_' . $newStatus, [
             'customer'   => $this,
             'old_status' => $oldStatus,
             'new_status' => $newStatus
         ]);
-        do_action('fluent_cart/customer_status_updated', [
+        webmakerr_do_action('webmakerr_cart/customer_status_updated', [
             'customer'   => $this,
             'old_status' => $oldStatus,
             'new_status' => $newStatus
@@ -496,7 +496,7 @@ class Customer extends Model
         $search = Arr::get($data, 'value');
         $search = sanitize_text_field(trim($search));
 
-        $fullName = \FluentCart\App\App::db()->raw("CONCAT(first_name, ' ', last_name)");
+        $fullName = \Webmakerr\App\App::db()->raw("CONCAT(first_name, ' ', last_name)");
 
         switch ($operator) {
             case 'starts_with':

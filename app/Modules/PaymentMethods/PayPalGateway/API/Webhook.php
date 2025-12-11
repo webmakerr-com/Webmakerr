@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API;
 
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\PayPalSettingsBase;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\PayPalSettingsBase;
+use Webmakerr\Framework\Support\Arr;
 
 class Webhook
 {

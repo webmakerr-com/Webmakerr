@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes\Checkout;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes\Checkout;
 
 
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Hooks\Handlers\ShortCodes\ShortCode;
-use FluentCart\App\Services\Renderer\CheckoutRenderer;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\ShortCode;
+use Webmakerr\App\Services\Renderer\CheckoutRenderer;
 
 
 class CheckoutShippingMethodsShortCode extends ShortCode

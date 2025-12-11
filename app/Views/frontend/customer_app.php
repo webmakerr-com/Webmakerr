@@ -46,9 +46,9 @@
         </div>
 
         <div class="fct-customer-dashboard-app-container fluent-cart-customer-profile-app">
-            <?php do_action('fluent_cart/customer_menu'); ?>
+            <?php webmakerr_do_action('webmakerr_cart/customer_menu'); ?>
             <div class="fct-customer-dashboard-main-content">
-                <?php do_action('fluent_cart/customer_app'); ?>
+                <?php webmakerr_do_action('webmakerr_cart/customer_app'); ?>
             </div>
         </div>
     </div>

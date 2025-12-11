@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Services\DateTime\DateTime;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Promotional\Models\OrderPromotion;
 

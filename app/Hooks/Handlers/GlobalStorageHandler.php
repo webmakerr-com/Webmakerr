@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\Modules\StorageDrivers\Local\Local;
-use FluentCart\App\Modules\StorageDrivers\S3\S3;
-use FluentCart\Api\StorageDrivers;
+use Webmakerr\App\Modules\StorageDrivers\Local\Local;
+use Webmakerr\App\Modules\StorageDrivers\S3\S3;
+use Webmakerr\Api\StorageDrivers;
 
 class GlobalStorageHandler
 {
     public function register()
     {
-        add_action('fluentcart_loaded', [$this, 'init']);
+        webmakerr_add_action('webmakerr_loaded', [$this, 'init']);
     }
 
     public function init()
@@ -20,7 +20,7 @@ class GlobalStorageHandler
             (new S3())->init();
         });
         //This hook will allow others to register their storage driver with ours
-        do_action('fluent_cart/register_storage_drivers');
+        webmakerr_do_action('webmakerr_cart/register_storage_drivers');
 
     }
 

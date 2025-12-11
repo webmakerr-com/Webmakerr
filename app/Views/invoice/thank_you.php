@@ -1,11 +1,11 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use FluentCart\App\App;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Modules\Tax\TaxModule;
+use Webmakerr\App\App;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Modules\Tax\TaxModule;
 
 $settings = new StoreSettings();
 $profilePage = $settings->getCustomerProfilePage();
@@ -91,7 +91,7 @@ if ($order->payment_status !== 'paid') {
                                             esc_url($profilePage . 'order/' . $order->uuid),
                                             esc_html__('Your order', 'fluent-cart'),
                                             esc_html__('has payment due. You can pay from', 'fluent-cart'),
-                                            esc_url(\FluentCart\App\Services\Payments\PaymentHelper::getCustomPaymentLink($order->uuid)),
+                                            esc_url(\Webmakerr\App\Services\Payments\PaymentHelper::getCustomPaymentLink($order->uuid)),
                                             esc_html__('here', 'fluent-cart')
                                         );
                                         ?>
@@ -305,7 +305,7 @@ if ($order->payment_status !== 'paid') {
                             $downloads = $order->getDownloads();
                             $licenses = $order->getLicenses();
                             if ($downloads) {
-                                \FluentCart\App\App::make('view')->render('emails.parts.downloads', [
+                                \Webmakerr\App\App::make('view')->render('emails.parts.downloads', [
                                     'order'         => $order,
                                     'heading'       => 'Downloads',
                                     'downloadItems' => $downloads ?: [],
@@ -314,7 +314,7 @@ if ($order->payment_status !== 'paid') {
                             }
 
                             if ($licenses && $licenses->count() > 0) {
-                                \FluentCart\App\App::make('view')->render('emails.parts.licenses', [
+                                \Webmakerr\App\App::make('view')->render('emails.parts.licenses', [
                                     'licenses'    => $licenses,
                                     'heading'     => 'Licenses',
                                     'show_notice' => false
@@ -437,7 +437,7 @@ if ($order->payment_status !== 'paid') {
        style="background: var(--fluent-cart-primary-color, #253241); color: #fff; padding: 7px 20px; border-radius: 8px; border: none; font-size: 16px; font-weight: 500; text-decoration:none;display:inline-block;">
         <?php echo esc_html__('View Order', 'fluent-cart'); ?>
     </a>
-    <a href="<?php echo esc_url(\FluentCart\App\Services\URL::appendQueryParams(
+    <a href="<?php echo esc_url(\Webmakerr\App\Services\URL::appendQueryParams(
         home_url(),
         [
             'fluent-cart' => 'receipt',
@@ -450,7 +450,7 @@ if ($order->payment_status !== 'paid') {
     </a>
 </div>
 
-<?php do_action('fluent_cart/after_receipt', [
+<?php webmakerr_do_action('webmakerr_cart/after_receipt', [
     'order'           => $order,
     'is_first_time'   => $is_first_time ?? false,
     'order_operation' => $order_operation ?? null
@@ -459,7 +459,7 @@ if ($order->payment_status !== 'paid') {
 
 <?php
 if (!empty($is_first_time)) {
-    do_action('fluent_cart/after_receipt_first_time', [
+    webmakerr_do_action('webmakerr_cart/after_receipt_first_time', [
         'order'           => $order,
         'order_operation' => $order_operation ?? null
     ]);

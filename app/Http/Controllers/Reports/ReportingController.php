@@ -1,23 +1,23 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\Reports;
+namespace Webmakerr\App\Http\Controllers\Reports;
 
-use FluentCart\Api\Resource\OrderItemResource;
-use FluentCart\Api\Resource\OrderResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\CurrenciesHelper;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Modules\ReportingModule\OrdersReport;
-use FluentCart\App\Modules\ReportingModule\SalesReport;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Report\CartReportService;
-use FluentCart\App\Services\Report\DashBoardReportService;
-use FluentCart\App\Services\Report\ReportHelper;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\OrderItemResource;
+use Webmakerr\Api\Resource\OrderResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\CurrenciesHelper;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Modules\ReportingModule\OrdersReport;
+use Webmakerr\App\Modules\ReportingModule\SalesReport;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Report\CartReportService;
+use Webmakerr\App\Services\Report\DashBoardReportService;
+use Webmakerr\App\Services\Report\ReportHelper;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class ReportingController extends Controller
 {

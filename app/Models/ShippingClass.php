@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanSearch;
 
 /**
  * Shipping Class Model - DB Model for Shipping Classes
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  * @version 1.0.0
  */
 class ShippingClass extends Model

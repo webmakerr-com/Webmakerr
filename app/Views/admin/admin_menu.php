@@ -1,8 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use FluentCart\App\Services\Permission\PermissionManager;
-use FluentCart\App\Vite;
+use Webmakerr\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Vite;
 
 $darkLogo = Vite::getAssetUrl('images/logo/logo-full.svg');
 $lightLogo = Vite::getAssetUrl('images/logo/logo-full-dark.svg');

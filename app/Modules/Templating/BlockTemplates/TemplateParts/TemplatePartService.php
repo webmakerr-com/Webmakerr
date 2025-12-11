@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\BlockTemplates\TemplateParts;
+namespace Webmakerr\App\Modules\Templating\BlockTemplates\TemplateParts;
 
 class TemplatePartService
 {

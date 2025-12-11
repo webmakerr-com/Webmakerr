@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Modules\Subscriptions\Services;
+namespace Webmakerr\App\Modules\Subscriptions\Services;
 
-use FluentCart\App\Events\Subscription\SubscriptionEOT;
-use FluentCart\App\Events\Subscription\SubscriptionRenewed;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Helpers\StatusHelper;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\API;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Events\Subscription\SubscriptionEOT;
+use Webmakerr\App\Events\Subscription\SubscriptionRenewed;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Helpers\StatusHelper;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\API;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class SubscriptionService
 {
@@ -181,7 +181,7 @@ class SubscriptionService
 
         if ($oldStatus === $subscriptionModel->status) {
             if ($dirtyData) {
-                do_action('fluent_cart/subscription/data_updated', [
+                webmakerr_do_action('webmakerr_cart/subscription/data_updated', [
                     'subscription' => $subscriptionModel,
                     'updated_data' => $dirtyData
                 ]);
@@ -194,7 +194,7 @@ class SubscriptionService
             (new SubscriptionEOT($subscriptionModel, $subscriptionModel->order))->dispatch();
         }
 
-        do_action('fluent_cart/payments/subscription_status_changed', [
+        webmakerr_do_action('webmakerr_cart/payments/subscription_status_changed', [
             'subscription' => $subscriptionModel,
             'order' => $subscriptionModel->order,
             'customer' => $subscriptionModel->customer,
@@ -212,7 +212,7 @@ class SubscriptionService
          * fluent_cart/payments/subscription_expiring
          * fluent_cart/payments/subscription_completed
          **/
-        do_action('fluent_cart/payments/subscription_' . $subscriptionModel->status, [
+        webmakerr_do_action('webmakerr_cart/payments/subscription_' . $subscriptionModel->status, [
             'subscription' => $subscriptionModel,
             'order' => $subscriptionModel->order,
             'customer' => $subscriptionModel->customer,
@@ -229,8 +229,8 @@ class SubscriptionService
      * Use this method when you are reactivating a expired subscription manually by creating order, transaction etc.
      * Make sure you already handle your transaction statuses!
      *
-     * @param \FluentCart\App\Models\Subscription $subscriptionModel
-     * @param \FluentCart\App\Models\OrderTransaction $transaction
+     * @param \Webmakerr\App\Models\Subscription $subscriptionModel
+     * @param \Webmakerr\App\Models\OrderTransaction $transaction
      * @param $args
      * @return mixed
      */

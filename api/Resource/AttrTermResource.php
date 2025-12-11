@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Helpers\HelperTrait;
-use FluentCart\App\Models\AttributeRelation;
-use FluentCart\App\Models\AttributeTerm;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\HelperTrait;
+use Webmakerr\App\Models\AttributeRelation;
+use Webmakerr\App\Models\AttributeTerm;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class AttrTermResource extends BaseResourceApi
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\App\Models\Activity;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\App\Models\Activity;
+use Webmakerr\Framework\Support\Arr;
 
 class ActivityResource extends BaseResourceApi
 {

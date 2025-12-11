@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Helpers\HelperTrait;
-use FluentCart\App\Models\AttributeGroup;
-use FluentCart\App\Models\AttributeRelation;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\HelperTrait;
+use Webmakerr\App\Models\AttributeGroup;
+use Webmakerr\App\Models\AttributeRelation;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class AttrGroupResource extends BaseResourceApi
 {

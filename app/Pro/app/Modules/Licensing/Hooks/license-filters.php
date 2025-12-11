@@ -2,16 +2,16 @@
 
 defined('ABSPATH') || exit;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
-add_filter('fluent_cart/license/customer_licenses', function ($customerId, $data = []) {
+webmakerr_add_filter('webmakerr_cart/license/customer_licenses', function ($customerId, $data = []) {
     $params = Arr::get($data, 'params', []);
     return \FluentCartPro\App\Modules\Licensing\Models\License::query()
         ->where('customer_id', $customerId)
         ->paginate(Arr::get($params, 'per_page', 20), ['*'], 'page', Arr::get($params, 'page', 1));
 }, 10, 2);
 
-add_filter('fluent_cart/customer/view', function ($customer, $args) {
+webmakerr_add_filter('webmakerr_cart/customer/view', function ($customer, $args) {
     $licenses = \FluentCartPro\App\Modules\Licensing\Models\License::query()
         ->with([
             'product'        => function ($q) {
@@ -31,7 +31,7 @@ add_filter('fluent_cart/customer/view', function ($customer, $args) {
     return $customer;
 }, 10, 2);
 
-add_filter('fluent_cart/subscription/view', function ($subcription, $args) {
+webmakerr_add_filter('webmakerr_cart/subscription/view', function ($subcription, $args) {
     $orderIds = [];
 
     foreach ($subcription->related_orders as $order) {
@@ -57,7 +57,7 @@ add_filter('fluent_cart/subscription/view', function ($subcription, $args) {
 
 }, 10, 2);
 
-add_filter('fluent_cart/order/view', function ($order, $args) {
+webmakerr_add_filter('webmakerr_cart/order/view', function ($order, $args) {
 
     $upgradedFrom = null;
 
@@ -99,7 +99,7 @@ add_filter('fluent_cart/order/view', function ($order, $args) {
 
 }, 10, 2);
 
-add_filter('fluent_cart/customer_portal/subscription_data', function ($subscriptionData, $args) {
+webmakerr_add_filter('webmakerr_cart/customer_portal/subscription_data', function ($subscriptionData, $args) {
 
     $subscription = Arr::get($args, 'subscription', null);
 
@@ -124,7 +124,7 @@ add_filter('fluent_cart/customer_portal/subscription_data', function ($subscript
 
 }, 10, 2);
 
-add_filter('fluent_cart/customer/order_data', function ($orderData, $args) {
+webmakerr_add_filter('webmakerr_cart/customer/order_data', function ($orderData, $args) {
     $order = Arr::get($args, 'order', null);
     if (!$order) {
         return $orderData;

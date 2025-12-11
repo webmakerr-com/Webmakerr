@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\FrontendResource\CustomerAddressResource;
-use FluentCart\Api\Resource\FrontendResource\OrderAddressResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Services\Renderer\CheckoutFieldsSchema;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\FrontendResource\CustomerAddressResource;
+use Webmakerr\Api\Resource\FrontendResource\OrderAddressResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Services\Renderer\CheckoutFieldsSchema;
+use Webmakerr\Framework\Support\Arr;
 
 class AddressHelper
 {
@@ -517,7 +517,7 @@ class AddressHelper
             $countryCode = sanitize_text_field(wp_unslash($_SERVER["HTTP_CF_IPCOUNTRY"]));
         }
 
-        return apply_filters('fluent_cart/default_billing_country_for_checkout', $countryCode);
+        return webmakerr_apply_filters('webmakerr_cart/default_billing_country_for_checkout', $countryCode);
     }
 
 }

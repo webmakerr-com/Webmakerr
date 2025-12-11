@@ -1,8 +1,8 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * @var \FluentCart\App\Models\Subscription $subscription
- * @var \FluentCart\App\Models\Order $order
+ * @var \Webmakerr\App\Models\Subscription $subscription
+ * @var \Webmakerr\App\Models\Order $order
  */
 
 $transaction = $subscription->getLatestTransaction();
@@ -14,14 +14,14 @@ $transaction = $subscription->getLatestTransaction();
 </div>
 
 <?php
-\FluentCart\App\App::make('view')->render('emails.parts.subscription_item', [
+\Webmakerr\App\App::make('view')->render('emails.parts.subscription_item', [
     'transaction'  => $transaction,
     'order'        => $transaction->order,
     'subscription' => $subscription,
     'heading'      => 'Summary',
 ]);
 
-\FluentCart\App\App::make('view')->render('emails.parts.call_to_action_box', [
+\Webmakerr\App\App::make('view')->render('emails.parts.call_to_action_box', [
     'content'     => 'To manage your subscription, download receipts, please visit the details page.',
     'link'        => $subscription->getViewUrl('customer'),
     'button_text' => 'View Details'

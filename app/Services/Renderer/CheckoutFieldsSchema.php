@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\FrontendResource\CustomerAddressResource;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\FrontendResource\CustomerAddressResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Support\Arr;
 
 class CheckoutFieldsSchema
 {
@@ -83,7 +83,7 @@ class CheckoutFieldsSchema
             ];
         }
 
-        $nameFields = apply_filters('fluent_cart/checkout_page_name_fields_schema', $nameFields, [
+        $nameFields = webmakerr_apply_filters('webmakerr_cart/checkout_page_name_fields_schema', $nameFields, [
             'cart'  => $cart,
             'scope' => $scope
         ]);
@@ -317,7 +317,7 @@ class CheckoutFieldsSchema
             $fields = $formattedFields;
         }
 
-        return apply_filters('fluent_cart/fields/address_base_fields', $fields, [
+        return webmakerr_apply_filters('webmakerr_cart/fields/address_base_fields', $fields, [
             'config'       => $config,
             'scope'        => $scope,
             'requirements' => $requirementsFields

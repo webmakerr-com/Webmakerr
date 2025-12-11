@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Events\Order;
+namespace Webmakerr\App\Events\Order;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Listeners;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Listeners;
 
 class OrderBulkAction extends EventDispatcher
 {

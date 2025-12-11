@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
 /**
  *  Meta Model - DB Model for Meta table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -62,7 +62,7 @@ class OrderOperation extends Model
         return \json_decode($value, true);
     }
 
-    public function order(): \FluentCart\Framework\Database\Orm\Relations\BelongsTo
+    public function order(): \Webmakerr\Framework\Database\Orm\Relations\BelongsTo
     {
         return $this->belongsTo(Order::class, 'order_id', 'id');
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Services\FileSystem\DownloadService;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Services\FileSystem\DownloadService;
 
 /**
  *  Product Download Model - DB Model for Product Downloads
@@ -11,7 +11,7 @@ use FluentCart\App\Services\FileSystem\DownloadService;
  *  Database Model
  *
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -76,7 +76,7 @@ class ProductDownload extends Model
     /**
      * One2One: Dwonloadable Files belongs to one product
      *
-     * @return \FluentCart\Framework\Database\Orm\Relations\BelongsTo
+     * @return \Webmakerr\Framework\Database\Orm\Relations\BelongsTo
      */
     public function product()
     {

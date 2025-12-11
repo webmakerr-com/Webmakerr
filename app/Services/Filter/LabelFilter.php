@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\Models\Label;
-use FluentCart\App\Models\Order;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Label;
+use Webmakerr\App\Models\Order;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class LabelFilter extends BaseFilter
 {

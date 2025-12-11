@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanSearch;
 
 class DynamicModel extends Model
 {

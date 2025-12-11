@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway;
 
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Models\SubscriptionMeta;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Models\SubscriptionMeta;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\Framework\Support\Arr;
 
 class UpdateCustomerPaymentMethod
 {

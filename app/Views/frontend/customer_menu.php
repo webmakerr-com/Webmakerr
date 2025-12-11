@@ -48,7 +48,7 @@ if (!defined('ABSPATH')) {
                     <?php foreach ($menuItems as $itemSlug => $menuItem): ?>
                         <li class="fct-customer-nav-item fct-customer-nav-item-<?php echo esc_attr($itemSlug); ?>" role="listitem">
                             <a
-                                class="fct-customer-nav-link <?php echo esc_attr(\FluentCart\Framework\Support\Arr::get($menuItem, 'css_class')); ?>"
+                                class="fct-customer-nav-link <?php echo esc_attr(\Webmakerr\Framework\Support\Arr::get($menuItem, 'css_class')); ?>"
                                 aria-label="<?php echo esc_attr($menuItem['label']) ?>"
                                 href="<?php echo esc_url($menuItem['link']); ?>"
                             >

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\Integrations\FluentPlugins;
+namespace Webmakerr\App\Modules\Integrations\FluentPlugins;
 
-use FluentCart\App\Modules\Integrations\BaseIntegrationManager;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\Integrations\BaseIntegrationManager;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 use FluentCrm\App\Models\CustomContactField;
 use FluentCrm\App\Models\Lists;
 use FluentCrm\App\Models\Tag;
@@ -25,7 +25,7 @@ class FluentCRMConnect extends BaseIntegrationManager
 
 
         if ($this->isConfigured()) {
-            add_filter('fluent_cart/checkout_page_name_fields_schema', [$this, 'maybeSetNameEmailAtCheckout'], 10, 1);
+            webmakerr_add_filter('webmakerr_cart/checkout_page_name_fields_schema', [$this, 'maybeSetNameEmailAtCheckout'], 10, 1);
         }
         
     }

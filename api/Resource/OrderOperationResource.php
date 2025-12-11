@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Models\OrderOperation;
-use FluentCart\Framework\Database\Orm\Builder;
+use Webmakerr\App\Models\OrderOperation;
+use Webmakerr\Framework\Database\Orm\Builder;
 
 class OrderOperationResource extends BaseResourceApi
 {

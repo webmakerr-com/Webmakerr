@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\App\Modules\PaymentMethods\AddonGateways\PaystackAddon;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Modules\PaymentMethods\AddonGateways\PaystackAddon;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
 
 class AddonGatewaysHandler
 {
     public function register()
     {
-        add_action('fluent_cart/register_payment_methods', [$this, 'registerPromoGateways'], 20);
+        webmakerr_add_action('webmakerr_cart/register_payment_methods', [$this, 'registerPromoGateways'], 20);
     }
     
     public function registerPromoGateways()

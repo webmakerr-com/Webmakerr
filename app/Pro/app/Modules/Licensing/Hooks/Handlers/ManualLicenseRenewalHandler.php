@@ -8,7 +8,7 @@ class ManualLicenseRenewalHandler
 {
     public function register()
     {
-        add_action('fluent_cart_action_renew_license', [$this, 'handleManualLicenseRenewalRedirect'], 10, 1);
+        webmakerr_add_action('webmakerr_cart_action_renew_license', [$this, 'handleManualLicenseRenewalRedirect'], 10, 1);
     }
 
     public function handleManualLicenseRenewalRedirect($data = [])

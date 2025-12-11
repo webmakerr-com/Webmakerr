@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\OrderItemHelper;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Concerns\CanUpdateBatch;
-use FluentCart\App\Models\WpModels\PostMeta;
-use FluentCart\Framework\Database\Orm\Relations\HasOne;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\OrderItemHelper;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\CanUpdateBatch;
+use Webmakerr\App\Models\WpModels\PostMeta;
+use Webmakerr\Framework\Database\Orm\Relations\HasOne;
 
 /**
  *  OrderItem Model - DB Model for Order Items
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

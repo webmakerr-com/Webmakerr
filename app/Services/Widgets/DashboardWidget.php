@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Widgets;
+namespace Webmakerr\App\Services\Widgets;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\URL;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\URL;
 
 
 class DashboardWidget extends BaseWidget

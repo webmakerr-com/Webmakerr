@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\Report;
+namespace Webmakerr\App\Services\Report;
 
-use FluentCart\App\App;
+use Webmakerr\App\App;
 
 class OrderReportService extends ReportService
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser;
+namespace Webmakerr\App\Services\ShortCodeParser;
 
-use FluentCart\Framework\Container\Contracts\BindingResolutionException;
-use FluentCart\Framework\Foundation\App;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Container\Contracts\BindingResolutionException;
+use Webmakerr\Framework\Foundation\App;
+use Webmakerr\Framework\Support\Arr;
 
 class ShortcodeTemplateBuilder
 {

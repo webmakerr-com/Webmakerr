@@ -1,45 +1,45 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\OrderResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Events\Order\OrderBulkAction;
-use FluentCart\App\Events\Order\OrderCreated;
-use FluentCart\App\Events\Order\OrderDeleted;
-use FluentCart\App\Events\Order\OrderPaid;
-use FluentCart\App\Events\Order\OrderStatusUpdated;
-use FluentCart\App\Events\Order\RenewalOrderDeleted;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\OrderItemHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Http\Requests\CustomerRequest;
-use FluentCart\App\Http\Requests\OrderEditRequest;
-use FluentCart\App\Http\Requests\OrderRequest;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Models\CustomerMeta;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderAddress;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\OrderMeta;
-use FluentCart\App\Models\OrderOperation;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\Filter\OrderFilter;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Payments\Refund;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Validator\ValidationException;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\OrderResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Events\Order\OrderBulkAction;
+use Webmakerr\App\Events\Order\OrderCreated;
+use Webmakerr\App\Events\Order\OrderDeleted;
+use Webmakerr\App\Events\Order\OrderPaid;
+use Webmakerr\App\Events\Order\OrderStatusUpdated;
+use Webmakerr\App\Events\Order\RenewalOrderDeleted;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\OrderItemHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Http\Requests\CustomerRequest;
+use Webmakerr\App\Http\Requests\OrderEditRequest;
+use Webmakerr\App\Http\Requests\OrderRequest;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Models\CustomerMeta;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderAddress;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\OrderMeta;
+use Webmakerr\App\Models\OrderOperation;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\Filter\OrderFilter;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Payments\Refund;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Validator\ValidationException;
 
 class OrderController extends Controller
 {
@@ -47,7 +47,7 @@ class OrderController extends Controller
     {
         $orders = OrderFilter::fromRequest($request)->paginate();
 
-        $orders = apply_filters('fluent_cart/orders_list', $orders);
+        $orders = webmakerr_apply_filters('webmakerr_cart/orders_list', $orders);
 
         return $this->sendSuccess(
             [
@@ -67,7 +67,7 @@ class OrderController extends Controller
         if ($hasSubscription) {
             $type = 'subscription';
             // right now we don't support subscription with manual order
-            $isSubscriptionAllowedInManualOrder = apply_filters('fluent_cart/order/is_subscription_allowed_in_manual_order', false, [
+            $isSubscriptionAllowedInManualOrder = webmakerr_apply_filters('webmakerr_cart/order/is_subscription_allowed_in_manual_order', false, [
                 'order_items' => Arr::get($data, 'order_items', [])
             ]);
 
@@ -80,7 +80,7 @@ class OrderController extends Controller
         }
 
 
-        $data['type'] = apply_filters('fluent_cart/order/type', $type, []);
+        $data['type'] = webmakerr_apply_filters('webmakerr_cart/order/type', $type, []);
         $order = OrderResource::updatedPlaceOrder($data);
 
 
@@ -203,7 +203,7 @@ class OrderController extends Controller
         }
 
         $generatedLicenseCount = $order->licenses->count();
-        $expectedLicenseCount = apply_filters('fluent_cart/order/expected_license_count', 0, [
+        $expectedLicenseCount = webmakerr_apply_filters('webmakerr_cart/order/expected_license_count', 0, [
             'order_items' => $order->order_items
         ]);
 
@@ -213,7 +213,7 @@ class OrderController extends Controller
             ], 400);
         }
 
-        do_action('fluent_cart/order/generateMissingLicenses', ['order' => $order]);
+        webmakerr_do_action('webmakerr_cart/order/generateMissingLicenses', ['order' => $order]);
 
     }
 
@@ -395,7 +395,7 @@ class OrderController extends Controller
             $oldCustomer->recountStat();
         }
 
-        do_action('fluent_cart/order_customer_changed', [
+        webmakerr_do_action('webmakerr_cart/order_customer_changed', [
             'order'               => $order,
             'old_customer'        => $oldCustomer,
             'new_customer'        => $newCustomer,
@@ -527,12 +527,12 @@ class OrderController extends Controller
             );
         }
 
-        $data['order'] = apply_filters('fluent_cart/order/view', $data['order'], []);
+        $data['order'] = webmakerr_apply_filters('webmakerr_cart/order/view', $data['order'], []);
 
         // check if the order has generated license
         $data['order']['has_missing_licenses'] = false;
 
-        $expectedLicenseCount = apply_filters('fluent_cart/order/expected_license_count', 0, [
+        $expectedLicenseCount = webmakerr_apply_filters('webmakerr_cart/order/expected_license_count', 0, [
             'order_items' => Arr::get($data, 'order.order_items', [])
         ]);
 
@@ -708,13 +708,13 @@ class OrderController extends Controller
         ];
 
         if ($order->type === 'subscription' || $order->type === 'renewal') {
-            $subscription = \FluentCart\App\Models\Subscription::query()->where('parent_order_id', $order->id)->first();
+            $subscription = \Webmakerr\App\Models\Subscription::query()->where('parent_order_id', $order->id)->first();
             if ($subscription) {
                 $eventData['subscription'] = $subscription;
             }
         }
 
-        do_action('fluent_cart/order_paid_done', $eventData);
+        webmakerr_do_action('webmakerr_cart/order_paid_done', $eventData);
 
         return $this->response->sendSuccess([
             'message' => __('Order has been marked as paid', 'fluent-cart')
@@ -972,7 +972,7 @@ class OrderController extends Controller
     {
         $order = OrderResource::find($orderUuid);
         return $this->sendSuccess([
-            'widgets' => apply_filters('fluent_cart/widgets/single_order', [], $order)
+            'widgets' => webmakerr_apply_filters('webmakerr_cart/widgets/single_order', [], $order)
         ]);
     }
 

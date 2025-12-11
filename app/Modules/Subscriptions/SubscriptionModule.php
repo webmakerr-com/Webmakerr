@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\Subscriptions;
+namespace Webmakerr\App\Modules\Subscriptions;
 
-use FluentCart\App\App;
-use FluentCart\App\Modules\Subscriptions\Services\Filter\SubscriptionFilter;
+use Webmakerr\App\App;
+use Webmakerr\App\Modules\Subscriptions\Services\Filter\SubscriptionFilter;
 
 class SubscriptionModule
 {
@@ -19,9 +19,9 @@ class SubscriptionModule
             require_once __DIR__ . '/Http/subscriptions-api.php';
         });
 
-        (new \FluentCart\App\Modules\Subscriptions\Http\Handlers\AdminMenuHandler())->register();
+        (new \Webmakerr\App\Modules\Subscriptions\Http\Handlers\AdminMenuHandler())->register();
 
-        add_filter('fluent_cart/admin_filter_options', function ($filterOptions, $args) {
+        webmakerr_add_filter('webmakerr_cart/admin_filter_options', function ($filterOptions, $args) {
             $filterOptions['subscription_filter_options'] = SubscriptionFilter::getTableFilterOptions();
             return $filterOptions;
         }, 10, 2);

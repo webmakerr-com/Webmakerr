@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Support\Arr;
 use WP_Error;
 
 class PayPalPartner
@@ -91,7 +91,7 @@ class PayPalPartner
             'headers'   => [
                 'Content-Type'                  => 'application/json',
                 'Authorization'                 => 'Bearer ' . $sellerAccessToken,
-                'PayPal-Partner-Attribution-ID' => 'FLUENTCART_SP_PPCP'
+                'PayPal-Partner-Attribution-ID' => 'WEBMAKERR_SP_PPCP'
             ],
             'method'    => $method
         ];
@@ -122,7 +122,7 @@ class PayPalPartner
             'body'      => $payload,
             'headers'   => [
                 'Content-Type'                  => 'application/x-www-form-urlencoded',
-                'PayPal-Partner-Attribution-ID' => 'FLUENTCART_SP_PPCP',
+                'PayPal-Partner-Attribution-ID' => 'WEBMAKERR_SP_PPCP',
                 'Authorization'                 => 'Basic ' . base64_encode($sharedId . ':')
             ]
         ];
@@ -257,7 +257,7 @@ class PayPalPartner
 
     public function getBNCode()
     {
-        return 'FLUENTCART_SP_PPCP';
+        return 'WEBMAKERR_SP_PPCP';
     }
 
     private function sendRequest($method, $url, $payload = null)
@@ -265,7 +265,7 @@ class PayPalPartner
         $headers = [
             'Content-Type'                  => 'application/json',
             'Authorization'                 => 'Bearer ' . $this->accessToken,
-            'PayPal-Partner-Attribution-ID' => 'FLUENTCART_SP_PPCP'
+            'PayPal-Partner-Attribution-ID' => 'WEBMAKERR_SP_PPCP'
         ];
 
         $args = [

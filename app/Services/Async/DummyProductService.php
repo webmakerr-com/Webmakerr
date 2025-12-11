@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Async;
+namespace Webmakerr\App\Services\Async;
 
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class DummyProductService
 {
@@ -167,7 +167,7 @@ class DummyProductService
 
     protected function getFilePath(string $category): string
     {
-        return FLUENTCART_PLUGIN_PATH . 'dummies' . DIRECTORY_SEPARATOR . $category . '.json';
+        return WEBMAKERR_PLUGIN_PATH . 'dummies' . DIRECTORY_SEPARATOR . $category . '.json';
     }
 
 }

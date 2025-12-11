@@ -1,21 +1,21 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Modules\Integrations\GlobalIntegrationSettings;
-use FluentCart\App\Modules\Integrations\IntegrationHelper;
-use FluentCart\Framework\Http\Controller;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Modules\Integrations\GlobalIntegrationSettings;
+use Webmakerr\App\Modules\Integrations\IntegrationHelper;
+use Webmakerr\Framework\Http\Controller;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductIntegrationsController extends Controller
 {
     public function getFeeds(Request $request)
     {
         $formattedFeeds = $this->getNotificationFeeds($request->productId);
-        $availableIntegrations = apply_filters('fluent_cart/integration/order_integrations', []);
+        $availableIntegrations = webmakerr_apply_filters('webmakerr_cart/integration/order_integrations', []);
 
         $availableIntegrations = array_filter($availableIntegrations, function ($integration) {
             return in_array('product', Arr::get($integration, 'scopes', [])) && $integration['enabled'];
@@ -37,7 +37,7 @@ class ProductIntegrationsController extends Controller
     /**
      * Get product-specific integration settings
      *
-     * @param \FluentCart\Framework\Http\Request\Request $request
+     * @param \Webmakerr\Framework\Http\Request\Request $request
      * @param int $product_id
      * @param string $integration_name
      */
@@ -45,7 +45,7 @@ class ProductIntegrationsController extends Controller
     {
         $product = Product::findOrFail($product_id);
 
-        $allIntegrations = apply_filters('fluent_cart/integration/order_integrations', []);
+        $allIntegrations = webmakerr_apply_filters('webmakerr_cart/integration/order_integrations', []);
 
         if (!isset($allIntegrations[$integration_name])) {
             return $this->sendError([
@@ -106,7 +106,7 @@ class ProductIntegrationsController extends Controller
 
 
     /**
-     * @param \FluentCart\Framework\Http\Request\Request $request
+     * @param \Webmakerr\Framework\Http\Request\Request $request
      * @param $product_id
      * @return array|\WP_REST_Response
      */
@@ -166,7 +166,7 @@ class ProductIntegrationsController extends Controller
             ]);
         }
 
-        do_action('fluent_cart/reindex_integration_feeds', []);
+        webmakerr_do_action('webmakerr_cart/reindex_integration_feeds', []);
 
         return [
             'message'          => __('Integration has been successfully saved', 'fluent-cart'),

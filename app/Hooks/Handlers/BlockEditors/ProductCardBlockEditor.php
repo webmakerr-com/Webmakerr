@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
-use FluentCart\App\Helpers\CurrenciesHelper;
-use FluentCart\App\Hooks\Handlers\ShortCodes\ProductCardShortCode;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Helpers\Helper;
+use Webmakerr\App\Helpers\CurrenciesHelper;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\ProductCardShortCode;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
 
 class ProductCardBlockEditor extends BlockEditor
 {

@@ -1,21 +1,21 @@
 <?php
 
-namespace FluentCart\App\Http\Routes;
+namespace Webmakerr\App\Http\Routes;
 
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
 
-use FluentCart\App\Hooks\Handlers\ShortCodes\Checkout\CheckoutPageHandler;
-use FluentCart\App\Hooks\Handlers\ShortCodes\ReceiptHandler;
-use FluentCart\App\Http\Controllers\WebController\FileDownloader;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\PayPalPartnerRenderer;
-use FluentCart\App\Services\FrontendView;
-use FluentCart\App\Services\PrintService;
-use FluentCart\App\Services\Renderer\CartRenderer;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\Checkout\CheckoutPageHandler;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\ReceiptHandler;
+use Webmakerr\App\Http\Controllers\WebController\FileDownloader;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\PayPalPartnerRenderer;
+use Webmakerr\App\Services\FrontendView;
+use Webmakerr\App\Services\PrintService;
+use Webmakerr\App\Services\Renderer\CartRenderer;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Support\Arr;
 
 class WebRoutes
 {
@@ -136,7 +136,7 @@ class WebRoutes
         }
 
         if (has_action('fluent_cart_action_' . $page)) {
-            do_action('fluent_cart_action_' . $page, App::request()->all());
+            webmakerr_do_action('webmakerr_cart_action_' . $page, App::request()->all());
             die();
         }
 

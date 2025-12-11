@@ -2,7 +2,7 @@
 
 if (!function_exists('fluent_cart_scheduler_register') && function_exists('add_action')) { // WRCS: DEFINED_VERSION.
     if (!class_exists('ActionScheduler_Versions', false)) {
-        require_once FLUENTCART_PLUGIN_PATH . 'vendor/woocommerce/action-scheduler/classes/ActionScheduler_Versions.php';
+        require_once WEBMAKERR_PLUGIN_PATH . 'vendor/woocommerce/action-scheduler/classes/ActionScheduler_Versions.php';
         add_action('plugins_loaded', array('ActionScheduler_Versions', 'initialize_latest_version'), 1, 0);
     }
 
@@ -26,8 +26,8 @@ if (!function_exists('fluent_cart_scheduler_register') && function_exists('add_a
         // followed a different pattern (in some unusual cases, we could reach this point and the
         // ActionScheduler class is already defined—so we need to guard against that).
         if (!class_exists('ActionScheduler', false)) {
-            require_once FLUENTCART_PLUGIN_PATH . 'vendor/woocommerce/action-scheduler/classes/abstracts/ActionScheduler.php';
-            ActionScheduler::init(FLUENTCART_PLUGIN_PATH . 'vendor/woocommerce/action-scheduler/action-scheduler.php');
+            require_once WEBMAKERR_PLUGIN_PATH . 'vendor/woocommerce/action-scheduler/classes/abstracts/ActionScheduler.php';
+            ActionScheduler::init(WEBMAKERR_PLUGIN_PATH . 'vendor/woocommerce/action-scheduler/action-scheduler.php');
         }
     }
 

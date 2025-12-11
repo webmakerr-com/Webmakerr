@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\Data;
+namespace Webmakerr\App\Modules\Data;
 
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\WpModels\Term;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\WpModels\Term;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductQuery
 {

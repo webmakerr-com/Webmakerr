@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Events\Order;
+namespace Webmakerr\App\Events\Order;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Listeners;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Listeners;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\Framework\Support\Str;
 use ReflectionClass;
 
 class OrderCreated extends EventDispatcher

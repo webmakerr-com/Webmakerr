@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\ReportingModule;
+namespace Webmakerr\App\Modules\ReportingModule;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
 
 class ProductReport
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\OpenSpout\Writer\Common\Creator\WriterEntityFactory;
-use FluentCart\Api\Resource\ProductResource;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\OpenSpout\Writer\Common\Creator\WriterEntityFactory;
+use Webmakerr\Api\Resource\ProductResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\Framework\Support\Arr;
 
 class ExportHandler
 {

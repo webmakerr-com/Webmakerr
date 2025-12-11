@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App;
+namespace Webmakerr\App;
 
 use Composer\Script\Event;
 use InvalidArgumentException;

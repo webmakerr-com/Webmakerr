@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Vite;
+namespace Webmakerr\App\Services\Renderer;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Vite;
 
 class CartDrawerRenderer
 {

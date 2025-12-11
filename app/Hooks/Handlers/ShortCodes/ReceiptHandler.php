@@ -1,21 +1,21 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\Orders;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\OrderMeta;
-use FluentCart\App\Models\OrderOperation;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Email\EmailNotifications;
-use FluentCart\App\Services\FrontendView;
-use FluentCart\App\Services\Renderer\Receipt\ReceiptRenderer;
-use FluentCart\App\Services\Renderer\Receipt\ThankYouRender;
-use FluentCart\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Orders;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\OrderMeta;
+use Webmakerr\App\Models\OrderOperation;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Email\EmailNotifications;
+use Webmakerr\App\Services\FrontendView;
+use Webmakerr\App\Services\Renderer\Receipt\ReceiptRenderer;
+use Webmakerr\App\Services\Renderer\Receipt\ThankYouRender;
+use Webmakerr\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class ReceiptHandler
 {
@@ -36,7 +36,7 @@ class ReceiptHandler
         $orderHash = sanitize_text_field($request->get('order_hash'));
         $transactionHash = sanitize_text_field($request->get('trx_hash'));
 
-        do_action('fluent_cart/before_render_redirect_page', [
+        webmakerr_do_action('webmakerr_cart/before_render_redirect_page', [
             'order_hash' => $orderHash,
             'trx_hash'   => $transactionHash,
             'method'      => sanitize_text_field($request->get('method')),

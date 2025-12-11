@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
 
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Hooks\Handlers\ShortCodes\Checkout\CheckoutPageHandler;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\Checkout\CheckoutPageHandler;
+use Webmakerr\Framework\Support\Arr;
 
 
 class CheckoutBlockEditor extends BlockEditor
@@ -54,7 +54,7 @@ class CheckoutBlockEditor extends BlockEditor
             $cssClasses[] = 'fct_has_align align' . $align;
         }
 
-        add_filter('fluent_cart/checkout_page_css_classes', function ($classes) use ($cssClasses) {
+        webmakerr_add_filter('webmakerr_cart/checkout_page_css_classes', function ($classes) use ($cssClasses) {
             if(!is_array($cssClasses)) {
                 $cssClasses = [];
             }

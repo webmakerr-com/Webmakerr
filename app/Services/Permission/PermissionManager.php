@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\Permission;
+namespace Webmakerr\App\Services\Permission;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Models\User;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Models\User;
 
 class PermissionManager
 {
@@ -89,7 +89,7 @@ class PermissionManager
             ]
         ];
 
-        return apply_filters('fluent_cart/permission/all_roles', $allRoles, []);
+        return webmakerr_apply_filters('webmakerr_cart/permission/all_roles', $allRoles, []);
     }
 
     public static function getUserPermissions($userId = false)

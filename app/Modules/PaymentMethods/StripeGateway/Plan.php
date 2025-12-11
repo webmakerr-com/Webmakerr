@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\Framework\Support\Arr;
 
 class Plan
 {
@@ -51,7 +51,7 @@ class Plan
             'interval_frequency' => $intervalCount,
         ];
 
-        $billingPeriod = apply_filters('fluent_cart/subscription_billing_period', $billingPeriod, [
+        $billingPeriod = webmakerr_apply_filters('webmakerr_cart/subscription_billing_period', $billingPeriod, [
             'subscription_interval' => $originalInterval,
             'payment_method' => 'stripe',
         ]);

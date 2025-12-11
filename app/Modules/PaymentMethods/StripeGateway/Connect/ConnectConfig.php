@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway\Connect;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway\Connect;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\Account;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Stripe;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\StripeSettingsBase;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\Account;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Stripe;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\StripeSettingsBase;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class ConnectConfig
 {

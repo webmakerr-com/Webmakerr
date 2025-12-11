@@ -11,54 +11,54 @@
  */
 
 /**
- * @var $app FluentCart\Framework\Foundation\Application
+ * @var $app Webmakerr\Framework\Foundation\Application
  */
 
-use FluentCart\App\App;
-use FluentCart\App\Services\FileSystem\Drivers\Local\LocalDriver;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Services\FileSystem\Drivers\Local\LocalDriver;
+use Webmakerr\Framework\Support\Arr;
 
-(new \FluentCart\App\CPT\FluentProducts)->register();
-(new \FluentCart\App\Services\Email\EmailNotificationMailer)->register();
-(new \FluentCart\App\Hooks\Handlers\CPTHandler)->register();
-(new \FluentCart\App\Hooks\Handlers\MenuHandler)->register();
-(new \FluentCart\App\Hooks\Handlers\AdminMenuBarHandler)->register();
-(new \FluentCart\App\Hooks\Handlers\FluentCartHandler)->register();
+(new \Webmakerr\App\CPT\FluentProducts)->register();
+(new \Webmakerr\App\Services\Email\EmailNotificationMailer)->register();
+(new \Webmakerr\App\Hooks\Handlers\CPTHandler)->register();
+(new \Webmakerr\App\Hooks\Handlers\MenuHandler)->register();
+(new \Webmakerr\App\Hooks\Handlers\AdminMenuBarHandler)->register();
+(new \Webmakerr\App\Hooks\Handlers\FluentCartHandler)->register();
 
-(new \FluentCart\App\Hooks\Handlers\ShortCodes\ShopAppHandler)->register();
-(new \FluentCart\App\Hooks\Handlers\ExportHandler)->register();
+(new \Webmakerr\App\Hooks\Handlers\ShortCodes\ShopAppHandler)->register();
+(new \Webmakerr\App\Hooks\Handlers\ExportHandler)->register();
 
-(new FluentCart\App\Hooks\Handlers\CustomCheckout\CustomCheckout())->register();
+(new Webmakerr\App\Hooks\Handlers\CustomCheckout\CustomCheckout())->register();
 
 // Tax Module Init
-(new \FluentCart\App\Modules\Tax\TaxModule())->register();
+(new \Webmakerr\App\Modules\Tax\TaxModule())->register();
 
 // Register Pro Gateways Promo
-(new \FluentCart\App\Hooks\Handlers\PromoGatewaysHandler())->register();
+(new \Webmakerr\App\Hooks\Handlers\PromoGatewaysHandler())->register();
 
 // Register Addon Gateways
-(new \FluentCart\App\Hooks\Handlers\AddonGatewaysHandler())->register();
+(new \Webmakerr\App\Hooks\Handlers\AddonGatewaysHandler())->register();
 
 
 // Web Checkout
-(new \FluentCart\App\Hooks\Cart\WebCheckoutHandler())->register();
+(new \Webmakerr\App\Hooks\Cart\WebCheckoutHandler())->register();
 
 
-\FluentCart\App\Hooks\Handlers\BlockEditors\ShopApp\ShopAppBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\ShortCodes\SearchBarShortCode::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\SearchBarBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\PricingTableBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\CustomerProfileBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\ShortCodes\CustomerProfileHandler::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\CheckoutBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\ShortCodes\CartShortcode::register();
-\FluentCart\App\Hooks\Handlers\ShortCodes\PricingTableShortCode::register();
-\FluentCart\App\Hooks\Handlers\ShortCodes\Checkout\CheckoutPageHandler::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\ProductCardBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\ProductGalleryBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\ProductInfoBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\BlockEditors\BuySectionBlockEditor::register();
-\FluentCart\App\Hooks\Handlers\ShortCodes\ProductCardShortCode::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\ShopApp\ShopAppBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\ShortCodes\SearchBarShortCode::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\SearchBarBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\PricingTableBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\CustomerProfileBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\ShortCodes\CustomerProfileHandler::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\CheckoutBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\ShortCodes\CartShortcode::register();
+\Webmakerr\App\Hooks\Handlers\ShortCodes\PricingTableShortCode::register();
+\Webmakerr\App\Hooks\Handlers\ShortCodes\Checkout\CheckoutPageHandler::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\ProductCardBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\ProductGalleryBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\ProductInfoBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\BlockEditors\BuySectionBlockEditor::register();
+\Webmakerr\App\Hooks\Handlers\ShortCodes\ProductCardShortCode::register();
 
 $registerShortcodeAlias = function ($alias, $originalShortcode) {
     add_shortcode($alias, function ($shortcodeAttributes, $content = null, $block = null) use ($originalShortcode) {
@@ -85,52 +85,52 @@ $registerShortcodeAlias('webmakerr_receipt', 'fluent_cart_receipt');
 $registerShortcodeAlias('webmakerr_checkout', 'fluent_cart_checkout');
 $registerShortcodeAlias('webmakerr_toggle_button', 'fcart-cart-toggle-button');
 
-if (\FluentCart\Api\ModuleSettings::isActive('stock_management')) {
-    \FluentCart\App\Hooks\Handlers\BlockEditors\StockBlock::register();
+if (\Webmakerr\Api\ModuleSettings::isActive('stock_management')) {
+    \Webmakerr\App\Hooks\Handlers\BlockEditors\StockBlock::register();
 }
 
-(new \FluentCart\App\Hooks\Cart\CartLoader)->register();
-(new \FluentCart\App\Hooks\Handlers\GlobalPaymentHandler)->register();
+(new \Webmakerr\App\Hooks\Cart\CartLoader)->register();
+(new \Webmakerr\App\Hooks\Handlers\GlobalPaymentHandler)->register();
 
-\FluentCart\App\Http\Routes\WebRoutes::register();
+\Webmakerr\App\Http\Routes\WebRoutes::register();
 
-(new \FluentCart\App\Modules\IntegrationActions\GlobalIntegrationActionHandler())->register();
-(new \FluentCart\App\Hooks\Handlers\GlobalStorageHandler)->register();
+(new \Webmakerr\App\Modules\IntegrationActions\GlobalIntegrationActionHandler())->register();
+(new \Webmakerr\App\Hooks\Handlers\GlobalStorageHandler)->register();
 
 
 //Register Page Handlers
-(new \FluentCart\App\Hooks\Handlers\ShortCodes\ReceiptHandler)->register();
+(new \Webmakerr\App\Hooks\Handlers\ShortCodes\ReceiptHandler)->register();
 
-(new \FluentCart\App\Modules\Coupon\CouponHandler)->register();
+(new \Webmakerr\App\Modules\Coupon\CouponHandler)->register();
 
-\FluentCart\App\Services\Theme\AdminTheme::applyTheme();
-\FluentCart\App\Services\Theme\FrontendTheme::applyTheme();
+\Webmakerr\App\Services\Theme\AdminTheme::applyTheme();
+\Webmakerr\App\Services\Theme\FrontendTheme::applyTheme();
 
-(new \FluentCart\App\CPT\Pages)->handlePageDelete();
-(new \FluentCart\App\Services\FileSystem\DownloadService)->register();
+(new \Webmakerr\App\CPT\Pages)->handlePageDelete();
+(new \Webmakerr\App\Services\FileSystem\DownloadService)->register();
 
-(new \FluentCart\App\Hooks\Handlers\UserHandler())->register();
+(new \Webmakerr\App\Hooks\Handlers\UserHandler())->register();
 
-\FluentCart\App\Http\Routes\AjaxRoute::register();
+\Webmakerr\App\Http\Routes\AjaxRoute::register();
 
 
-add_action('fluent_cart/order_paid_ansyc_private_handle', function ($data) {
-    $orderId = \FluentCart\Framework\Support\Arr::get($data, 'order_id');
+webmakerr_add_action('webmakerr_cart/order_paid_ansyc_private_handle', function ($data) {
+    $orderId = \Webmakerr\Framework\Support\Arr::get($data, 'order_id');
 
     if (!$orderId) {
         return;
     }
 
-    $order = \FluentCart\App\Models\Order::find($orderId);
+    $order = \Webmakerr\App\Models\Order::find($orderId);
     if (!$order || $order->payment_status !== 'paid' || !$order->getMeta('action_scheduler_id')) {
         return;
     }
 
     $order->deleteMeta('action_scheduler_id');
 
-    $transaction = \FluentCart\App\Models\OrderTransaction::query()
+    $transaction = \Webmakerr\App\Models\OrderTransaction::query()
         ->where('order_id', $order->id)
-        ->where('status', \FluentCart\App\Helpers\Status::TRANSACTION_SUCCEEDED)
+        ->where('status', \Webmakerr\App\Helpers\Status::TRANSACTION_SUCCEEDED)
         ->orderBy('id', 'DESC')
         ->first();
 
@@ -141,34 +141,34 @@ add_action('fluent_cart/order_paid_ansyc_private_handle', function ($data) {
     ];
 
     if ($order->type === 'subscription' || $order->type === 'renewal') {
-        $subscription = \FluentCart\App\Models\Subscription::query()->where('parent_order_id', $order->id)->first();
+        $subscription = \Webmakerr\App\Models\Subscription::query()->where('parent_order_id', $order->id)->first();
         if ($subscription) {
             $eventData['subscription'] = $subscription;
         }
     }
 
-    do_action('fluent_cart/order_paid_done', $eventData);
+    webmakerr_do_action('webmakerr_cart/order_paid_done', $eventData);
 
 }, 1, 1);
 
 
 //
 //$app->addAction('fluent_cart/orders_filter_customer', function ($query, $filters) {
-//    return (new \FluentCart\App\Models\Order)->buildCustomerFilterQuery($query, $filters);
+//    return (new \Webmakerr\App\Models\Order)->buildCustomerFilterQuery($query, $filters);
 //}, 10, 2);
 
 // require the CLI
 if (defined('WP_CLI') && WP_CLI) {
-    \WP_CLI::add_command('fluent_cart', '\FluentCart\App\Hooks\CLI\Commands');
+    \WP_CLI::add_command('fluent_cart', '\Webmakerr\App\Hooks\CLI\Commands');
 
 }
 
-\FluentCart\App\Modules\Subscriptions\SubscriptionModule::register();
-\FluentCart\App\Modules\Shipping\ShippingModule::register();
+\Webmakerr\App\Modules\Subscriptions\SubscriptionModule::register();
+\Webmakerr\App\Modules\Shipping\ShippingModule::register();
 
 
 $app->ready(function () use ($app) {
-    \FluentCart\App\Models\Connection\ConnectionManager::connect($this->app);
+    \Webmakerr\App\Models\Connection\ConnectionManager::connect($this->app);
 });
 
 
@@ -176,26 +176,26 @@ $app->ready(function () use ($app) {
 // For Elementor preview URL
 
 
-(new \FluentCart\App\Services\Integration)->register();
+(new \Webmakerr\App\Services\Integration)->register();
 
 $app->addAction('fluent_cart/integration/schedule_feed', function ($queueId) use ($app) {
-    (new \FluentCart\App\Modules\Integrations\GlobalNotificationHandler())->processIntegrationAction($queueId);
+    (new \Webmakerr\App\Modules\Integrations\GlobalNotificationHandler())->processIntegrationAction($queueId);
 });
 
 // Schedulers
-(new \FluentCart\App\Hooks\Scheduler\AutoSchedules\FiveMinuteScheduler())->register();
-(new \FluentCart\App\Hooks\Scheduler\AutoSchedules\HourlyScheduler())->register();
-(new \FluentCart\App\Hooks\Scheduler\AutoSchedules\DailyScheduler())->register();
+(new \Webmakerr\App\Hooks\Scheduler\AutoSchedules\FiveMinuteScheduler())->register();
+(new \Webmakerr\App\Hooks\Scheduler\AutoSchedules\HourlyScheduler())->register();
+(new \Webmakerr\App\Hooks\Scheduler\AutoSchedules\DailyScheduler())->register();
 
 
 /**
  * Theme Hooks
  */
 
-add_action('init', [\FluentCart\App\Modules\Templating\TemplateLoader::class, 'init']);
+add_action('init', [\Webmakerr\App\Modules\Templating\TemplateLoader::class, 'init']);
 add_action('after_setup_theme', function () {
-    \FluentCart\App\Modules\Templating\TemplateLoader::registerBlockParts();
-    (new \FluentCart\App\Modules\Templating\Bricks\BricksLoader())->register();
+    \Webmakerr\App\Modules\Templating\TemplateLoader::registerBlockParts();
+    (new \Webmakerr\App\Modules\Templating\Bricks\BricksLoader())->register();
 });
 
 add_action('init', function () {

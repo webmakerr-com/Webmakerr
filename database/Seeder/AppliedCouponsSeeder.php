@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\Faker\Factory;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\Faker\Factory;
 
 class AppliedCouponsSeeder
 {

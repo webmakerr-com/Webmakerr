@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
-    use FluentCart\App\Helpers\Helper;
+    use Webmakerr\App\Helpers\Helper;
 ?>
 
 <tr>

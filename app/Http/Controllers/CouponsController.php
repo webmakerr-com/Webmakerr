@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
 
-use FluentCart\Api\Resource\CouponResource;
-use FluentCart\Api\Resource\FluentMetaResource;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\App\Helpers\CouponHelper;
-use FluentCart\App\Http\Requests\CouponRequest;
-use FluentCart\App\Http\Requests\FrontendRequests\CouponRequest as OrderCouponRequest;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Services\Filter\CouponFilter;
+use Webmakerr\Api\Resource\CouponResource;
+use Webmakerr\Api\Resource\FluentMetaResource;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\App\Helpers\CouponHelper;
+use Webmakerr\App\Http\Requests\CouponRequest;
+use Webmakerr\App\Http\Requests\FrontendRequests\CouponRequest as OrderCouponRequest;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Services\Filter\CouponFilter;
 
 class CouponsController extends Controller
 {
@@ -74,7 +74,7 @@ class CouponsController extends Controller
         }
 
 
-        do_action('fluent_cart/coupon_created', [
+        webmakerr_do_action('webmakerr_cart/coupon_created', [
             'data'   => $data,
             'coupon' => $isCreated['data']
         ]);
@@ -101,7 +101,7 @@ class CouponsController extends Controller
         if (is_wp_error($isUpdated)) {
             return $isUpdated;
         }
-        do_action('fluent_cart/coupon_updated', [
+        webmakerr_do_action('webmakerr_cart/coupon_updated', [
             'data'   => $data,
             'coupon' => $isUpdated['data']
         ]);

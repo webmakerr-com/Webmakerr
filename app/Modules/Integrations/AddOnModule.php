@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\Integrations;
+namespace Webmakerr\App\Modules\Integrations;
 
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Vite;
 
 
 class AddOnModule
@@ -13,7 +13,7 @@ class AddOnModule
      */
     public static function showAddOns(): array
     {
-        $addOns = apply_filters('fluent_cart/integration/order_integrations', []);
+        $addOns = webmakerr_apply_filters('webmakerr_cart/integration/order_integrations', []);
 
         return [
             'addOns' => $addOns

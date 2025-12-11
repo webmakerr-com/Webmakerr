@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\AddonGateways;
+namespace Webmakerr\App\Modules\PaymentMethods\AddonGateways;
 
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Services\PluginInstaller\PaymentAddonManager;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Services\PluginInstaller\PaymentAddonManager;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class PaystackAddon extends AbstractPaymentGateway
 {

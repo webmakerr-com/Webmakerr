@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Models\Concerns;
+namespace Webmakerr\App\Models\Concerns;
 
-use FluentCart\App\Models\Activity;
-use FluentCart\Framework\Database\Orm\Relations\MorphMany;
+use Webmakerr\App\Models\Activity;
+use Webmakerr\Framework\Database\Orm\Relations\MorphMany;
 
 trait HasActivity
 {

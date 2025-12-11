@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
 
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Concerns\HasActivity;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Concerns\HasActivity;
+use Webmakerr\App\Services\DateTime\DateTime;
 
 class Coupon extends Model
 {
@@ -77,7 +77,7 @@ class Coupon extends Model
         return $this->hasMany(AppliedCoupon::class, 'coupon_id', 'id');
     }
 
-    public function orders(): \FluentCart\Framework\Database\Orm\Relations\BelongsToMany
+    public function orders(): \Webmakerr\Framework\Database\Orm\Relations\BelongsToMany
     {
         return $this->belongsToMany(Order::class, 'fct_applied_coupons', 'coupon_id', 'order_id');
     }

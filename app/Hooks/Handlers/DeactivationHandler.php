@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
 class DeactivationHandler
 {

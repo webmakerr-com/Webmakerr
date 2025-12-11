@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\App\Models\OrderItem;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\Framework\Support\Arr;
 
 class OrderItemHelper
 {

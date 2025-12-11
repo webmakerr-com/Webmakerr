@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Events;
+namespace Webmakerr\App\Events;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Listeners\FirstTimePluginActivation as FirstTimeEvents;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Listeners\FirstTimePluginActivation as FirstTimeEvents;
 
 class FirstTimePluginActivation extends EventDispatcher
 {

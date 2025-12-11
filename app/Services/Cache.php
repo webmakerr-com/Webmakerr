@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\App\App;
+use Webmakerr\App\App;
 
 class Cache
 {

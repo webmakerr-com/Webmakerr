@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\Api\Resource\FrontendResource;
+namespace Webmakerr\Api\Resource\FrontendResource;
 
-use FluentCart\Api\Resource\BaseResourceApi;
-use FluentCart\Api\Resource\OrderResource;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Customer;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\BaseResourceApi;
+use Webmakerr\Api\Resource\OrderResource;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class CustomerResource extends BaseResourceApi
 {
@@ -194,7 +194,7 @@ class CustomerResource extends BaseResourceApi
      */
     public static function getOrders(array $data, $customerId): array
     {
-        return OrderResource::search(['customer_id' => ['column' => 'customer_id', 'value' => $customerId]], function (\FluentCart\Framework\Database\Orm\Builder $query) use ($data) {
+        return OrderResource::search(['customer_id' => ['column' => 'customer_id', 'value' => $customerId]], function (\Webmakerr\Framework\Database\Orm\Builder $query) use ($data) {
             return $query->orderBy('id', 'DESC')
                 ->paginate(Arr::get($data, 'per_page', 15));
         });

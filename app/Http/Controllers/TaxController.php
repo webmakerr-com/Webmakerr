@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Models\OrderTaxRate;
-use FluentCart\App\Services\Filter\TaxFilter;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Models\OrderTaxRate;
+use Webmakerr\App\Services\Filter\TaxFilter;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Http\Request\Request;
 
 class TaxController extends Controller
 {

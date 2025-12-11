@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services\DateTime;
+namespace Webmakerr\App\Services\DateTime;
 
 use DateTimeInterface;
 use DateTimeZone;
 
-class DateTime extends \FluentCart\Framework\Support\DateTime
+class DateTime extends \Webmakerr\Framework\Support\DateTime
 {
 
     use CanExtractTimeZone;

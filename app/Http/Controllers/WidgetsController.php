@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\OrderResource;
-use FluentCart\App\Services\Permission\PermissionManager;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\Api\Resource\OrderResource;
+use Webmakerr\App\Services\Permission\PermissionManager;
+use Webmakerr\Framework\Http\Request\Request;
 
 class WidgetsController extends Controller
 {
@@ -21,7 +21,7 @@ class WidgetsController extends Controller
         $data = $request->get('data');
 
         return $this->sendSuccess([
-            'widgets' => apply_filters('fluent_cart/widgets/' . $filter, [], $data)
+            'widgets' => webmakerr_apply_filters('webmakerr_cart/widgets/' . $filter, [], $data)
         ]);
     }
 }

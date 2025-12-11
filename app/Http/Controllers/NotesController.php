@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
 
-use FluentCart\App\Models\Order;
-use FluentCart\Framework\Http\Request\Request;
+use Webmakerr\App\Models\Order;
+use Webmakerr\Framework\Http\Request\Request;
 
 class NotesController extends Controller
 {

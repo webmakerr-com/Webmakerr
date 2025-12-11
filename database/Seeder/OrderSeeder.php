@@ -1,28 +1,28 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Faker\Factory;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Faker\Factory;
+use Webmakerr\Framework\Support\Arr;
 
 class OrderSeeder
 {
     public static function seed($count, $assoc_args = [])
     {
-        $db = \FluentCart\App\App::getInstance('db');
+        $db = \Webmakerr\App\App::getInstance('db');
 
         $faker = Factory::create();
-        $faker->addProvider(new \FluentCart\Database\Seeder\ProductNameProvide($faker));
+        $faker->addProvider(new \Webmakerr\Database\Seeder\ProductNameProvide($faker));
 
         $customerIds = Customer::query()->select('id')->orderBy('id', 'desc')->take($count / 2)->pluck('id');
         $products = Product::with('variants')->take(100)->get()->toArray();

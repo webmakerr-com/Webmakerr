@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\SquareGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\SquareGateway;
 
-use FluentCart\App\App;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Vite;
+use Webmakerr\App\App;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Vite;
 
 class Square extends AbstractPaymentGateway
 {
@@ -39,7 +39,7 @@ class Square extends AbstractPaymentGateway
     {
         // init ipn related actions/class can be initiated here
 
-        add_filter('fluent_cart/payment_methods/square_settings', [$this, 'getSettings'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/payment_methods/square_settings', [$this, 'getSettings'], 10, 2);
     }
 
     public function makePaymentFromPaymentInstance(PaymentInstance $paymentInstance)
@@ -392,7 +392,7 @@ class Square extends AbstractPaymentGateway
         $order->vendor_charge_id = $payment['id'];
         $order->save();
 
-        do_action('fluent_cart/payment_success', [
+        webmakerr_do_action('webmakerr_cart/payment_success', [
             'order' => $order,
             'payment_intent' => $payment
         ]);

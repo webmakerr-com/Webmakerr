@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\PluginInstaller;
+namespace Webmakerr\App\Services\PluginInstaller;
 
 class BackgroundInstaller
 {

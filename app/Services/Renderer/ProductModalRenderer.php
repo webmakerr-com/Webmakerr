@@ -1,7 +1,7 @@
 <?php
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\App\Models\Product;
+use Webmakerr\App\Models\Product;
 
 class ProductModalRenderer
 {

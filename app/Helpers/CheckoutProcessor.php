@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\Checkout\CheckoutApi;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\Tax\TaxCalculator;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Helpers\Helper;
+use Webmakerr\Api\Checkout\CheckoutApi;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\Tax\TaxCalculator;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Helper;
 
 class CheckoutProcessor
 {
@@ -79,7 +79,7 @@ class CheckoutProcessor
             $orderData['mode'] = $this->storeSettings->get('order_mode', 'test');
         }
 
-        $this->orderModel = \FluentCart\App\Models\Order::query()->create($orderData);
+        $this->orderModel = \Webmakerr\App\Models\Order::query()->create($orderData);
 
         if (!$this->orderModel) {
             return new \WP_Error('order_creation_failed', __('Failed to create order.', 'fluent-cart'));
@@ -163,7 +163,7 @@ class CheckoutProcessor
             'meta'                => [],
         ];
 
-        $this->transactionModel = \FluentCart\App\Models\OrderTransaction::query()->create($transactionData);
+        $this->transactionModel = \Webmakerr\App\Models\OrderTransaction::query()->create($transactionData);
 
         // insert the applied coupons
         $this->insertAppliedCoupons(
@@ -202,7 +202,7 @@ class CheckoutProcessor
                     }
 
                     // We are just renewing it!
-                    $this->orderModel = \FluentCart\App\Models\Order::query()
+                    $this->orderModel = \Webmakerr\App\Models\Order::query()
                         ->where('id', $this->orderModel->id)
                         ->first();
                 }
@@ -377,7 +377,7 @@ class CheckoutProcessor
             }
         }
 
-        $existingTransaction = \FluentCart\App\Models\OrderTransaction::query()
+        $existingTransaction = \Webmakerr\App\Models\OrderTransaction::query()
             ->where('order_id', $this->orderModel->id)
             ->first();
 
@@ -386,7 +386,7 @@ class CheckoutProcessor
             $existingTransaction->save();
             $this->transactionModel = $existingTransaction;
         } else {
-            $this->transactionModel = \FluentCart\App\Models\OrderTransaction::query()->create($transactionData);
+            $this->transactionModel = \Webmakerr\App\Models\OrderTransaction::query()->create($transactionData);
         }
 
         // insert the applied coupons

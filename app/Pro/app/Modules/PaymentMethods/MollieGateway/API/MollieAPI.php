@@ -3,7 +3,7 @@
 namespace FluentCartPro\App\Modules\PaymentMethods\MollieGateway\API;
 
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\MollieSettingsBase;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class MollieAPI
 {

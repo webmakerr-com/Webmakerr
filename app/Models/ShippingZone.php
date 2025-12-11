@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Database\Orm\Relations\HasMany;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Database\Orm\Relations\HasMany;
 
 /**
  * Shipping Zone Model - DB Model for Shipping Zones
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  * @version 1.0.0
  */
 class ShippingZone extends Model

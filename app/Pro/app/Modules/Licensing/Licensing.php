@@ -2,17 +2,17 @@
 
 namespace FluentCartPro\App\Modules\Licensing;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\Services\Permission\PermissionManager;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class Licensing
 {
     public function register($app)
     {
 
-        add_action('fluent_cart/module/activated/license', function ($newData, $oldData) {
+        webmakerr_add_action('webmakerr_cart/module/activated/license', function ($newData, $oldData) {
             (new \FluentCartPro\App\Modules\Licensing\Database\DBMigrator())->migrate();
         }, 10, 2);
 
@@ -44,10 +44,10 @@ class Licensing
         require_once __DIR__ . '/Hooks/license-actions.php';
         require_once __DIR__ . '/Hooks/license-filters.php';
 
-        add_filter('fluent_cart/product_admin_items', [$this, 'addLicenseSettingsMenu'], 10, 2);
-        add_filter('fluent_cart/global_admin_menu_items', [$this, 'addLicenseAdminMenu'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/product_admin_items', [$this, 'addLicenseSettingsMenu'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/global_admin_menu_items', [$this, 'addLicenseAdminMenu'], 10, 2);
 
-        add_action('fluent_cart/loading_app', function () {
+        webmakerr_add_action('webmakerr_cart/loading_app', function () {
             Vite::enqueueScript('fluent_cart_licensing', 'licensing/license.js');
         });
     }

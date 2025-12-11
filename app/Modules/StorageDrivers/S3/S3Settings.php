@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\StorageDrivers\S3;
+namespace Webmakerr\App\Modules\StorageDrivers\S3;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class S3Settings
 {

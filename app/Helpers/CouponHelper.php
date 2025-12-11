@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\Resource\AppliedCouponResource;
-use FluentCart\Api\Resource\CouponResource;
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\AppliedCouponResource;
+use Webmakerr\Api\Resource\CouponResource;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  * Class CouponHelper

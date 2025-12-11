@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Hooks\CLI;
+namespace Webmakerr\App\Hooks\CLI;
 
 class ClipboardManager
 {

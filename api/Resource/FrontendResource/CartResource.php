@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\Api\Resource\FrontendResource;
+namespace Webmakerr\Api\Resource\FrontendResource;
 
-use FluentCart\Api\Cookie\Cookie;
-use FluentCart\Api\Resource\BaseResourceApi;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Api\Cookie\Cookie;
+use Webmakerr\Api\Resource\BaseResourceApi;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 use WP_Error;
 
 class CartResource extends BaseResourceApi
@@ -36,7 +36,7 @@ class CartResource extends BaseResourceApi
             return new WP_Error(__('Invalid Product', 'fluent-cart'));
         }
 
-        $quantity = apply_filters('fluent_cart/item_max_quantity', $quantity, [
+        $quantity = webmakerr_apply_filters('webmakerr_cart/item_max_quantity', $quantity, [
             'variation' => $variation,
             'product'   => $variation->product
         ]);
@@ -514,7 +514,7 @@ class CartResource extends BaseResourceApi
         $isFilteredItem = false;
         if (empty($productVariation)) {
             $isFilteredItem = true;
-            $productVariation = apply_filters('fluent_cart/cart_item_product_variation', $productVariation, $itemId, $incrementBy, $existingItemsArray);
+            $productVariation = webmakerr_apply_filters('webmakerr_cart/cart_item_product_variation', $productVariation, $itemId, $incrementBy, $existingItemsArray);
         }
 
 

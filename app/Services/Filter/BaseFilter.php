@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Model;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Filter\Concerns\HandleDateFilter;
-use FluentCart\App\Services\Filter\Concerns\HandleRelationalFilter;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Pagination\LengthAwarePaginator;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Model;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Filter\Concerns\HandleDateFilter;
+use Webmakerr\App\Services\Filter\Concerns\HandleRelationalFilter;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Pagination\LengthAwarePaginator;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 use InvalidArgumentException;
 
 /**
@@ -20,7 +20,7 @@ use InvalidArgumentException;
  *
  * Base class for filtering and querying models with simple and advanced filters.
  *
- * @package FluentCart\App\Services\Filter
+ * @package Webmakerr\App\Services\Filter
  */
 abstract class BaseFilter
 {
@@ -550,7 +550,7 @@ abstract class BaseFilter
                             if ($isCallbackFound) {
                                 return;
                             }
-                            do_action_ref_array("fluent_cart/{$filterName}_filter/{$providerName}/{$item['property']}", [&$this->query, $item]);
+                            webmakerr_do_action_ref_array("webmakerr_cart/{$filterName}_filter/{$providerName}/{$item['property']}", [&$this->query, $item]);
                         } else {
                             $this->handleAdvanceFilter($query, $item);
                         }
@@ -893,7 +893,7 @@ abstract class BaseFilter
             $this->applyOffset();
         }
         $filter = $this->getFilterName();
-        $this->query = apply_filters("fluent_cart/{$filter}_list_filter_query", $this->query, $this->toArray());
+        $this->query = webmakerr_apply_filters("webmakerr_cart/{$filter}_list_filter_query", $this->query, $this->toArray());
         return $this->query->get();
     }
 
@@ -902,7 +902,7 @@ abstract class BaseFilter
         $this->buildQuery();
         $perPage = empty($perPage) ? $this->perPage : $perPage;
         $filter = $this->getFilterName();
-        $this->query = apply_filters("fluent_cart/{$filter}_list_filter_query", $this->query, $this->toArray());
+        $this->query = webmakerr_apply_filters("webmakerr_cart/{$filter}_list_filter_query", $this->query, $this->toArray());
         return $this->query->paginate($perPage);
     }
 
@@ -921,7 +921,7 @@ abstract class BaseFilter
     public static function getAdvanceFilterOptions(): ?array
     {
         $filterName = static::getFilterName();
-        $options = apply_filters("fluent_cart/{$filterName}_filter_options", static::advanceFilterOptions());
+        $options = webmakerr_apply_filters("webmakerr_cart/{$filterName}_filter_options", static::advanceFilterOptions());
         return is_array($options) ? array_values($options) : null;
     }
 
@@ -964,7 +964,7 @@ abstract class BaseFilter
 //            ]
 //        ];
         $filterName = static::getFilterName();
-        return apply_filters("fluent_cart/{$filterName}_table_columns", []);
+        return webmakerr_apply_filters("webmakerr_cart/{$filterName}_table_columns", []);
     }
 
     public static function getTableFilterOptions(): array

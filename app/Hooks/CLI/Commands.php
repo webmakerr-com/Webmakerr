@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Hooks\CLI;
+namespace Webmakerr\App\Hooks\CLI;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\Pro\ProFeatureManager;
-use FluentCart\Database\DBMigrator;
-use FluentCart\Database\DBSeeder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\Pro\ProFeatureManager;
+use Webmakerr\Database\DBMigrator;
+use Webmakerr\Database\DBSeeder;
+use Webmakerr\Framework\Support\Arr;
 
 class Commands
 {
@@ -21,13 +21,13 @@ class Commands
             return;
         }
 
-        $tableCheck = \FluentCart\App\Modules\WooCommerceMigrator\WooCommerceMigratorHelper::checkRequiredTables();
+        $tableCheck = \Webmakerr\App\Modules\WooCommerceMigrator\WooCommerceMigratorHelper::checkRequiredTables();
         if (is_wp_error($tableCheck)) {
             \WP_CLI::error($tableCheck->get_error_message());
             return;
         }
 
-        $wcMigrator = new \FluentCart\App\Modules\WooCommerceMigrator\WooCommerceMigratorCli();
+        $wcMigrator = new \Webmakerr\App\Modules\WooCommerceMigrator\WooCommerceMigratorCli();
 
         try {
             // Count total products for progress bar
@@ -295,7 +295,7 @@ class Commands
             }
 
             foreach ($customers as $customer) {
-                $orders = \FluentCart\App\Models\Order::query()->where('customer_id', $customer->id)
+                $orders = \Webmakerr\App\Models\Order::query()->where('customer_id', $customer->id)
                     ->with('transactions')
                     ->get();
 
@@ -377,7 +377,7 @@ class Commands
                 $parentOrderIds[] = $subscription->parent_order_id;
             }
 
-            $renewals = \FluentCart\App\Models\Order::query()
+            $renewals = \Webmakerr\App\Models\Order::query()
                 ->where(function ($query) use ($parentOrderIds) {
                     $query->whereIn('id', $parentOrderIds)
                         ->orWhereIn('parent_id', $parentOrderIds);
@@ -780,7 +780,7 @@ class Commands
             return;
         }
 
-        $service = new \FluentCart\App\Modules\WooCommerceMigrator\Services\CustomerMigrationService();
+        $service = new \Webmakerr\App\Modules\WooCommerceMigrator\Services\CustomerMigrationService();
 
         if (!$service->checkDependencies()) {
             \WP_CLI::error('Migration dependencies not met. Check error logs for details.');
@@ -828,7 +828,7 @@ class Commands
     {
         \WP_CLI::line('Starting WooCommerce to FluentCart order migration...');
 
-        $service = new \FluentCart\App\Modules\WooCommerceMigrator\Services\OrderMigrationService();
+        $service = new \Webmakerr\App\Modules\WooCommerceMigrator\Services\OrderMigrationService();
 
         if (!$service->canMigrate()) {
             $errors = $service->getErrors();
@@ -912,7 +912,7 @@ class Commands
         \WP_CLI::line('Updating customer purchase statistics...');
 
         try {
-            $orderService = new \FluentCart\App\Modules\WooCommerceMigrator\Services\OrderMigrationService();
+            $orderService = new \Webmakerr\App\Modules\WooCommerceMigrator\Services\OrderMigrationService();
             $result = $orderService->updateAllCustomerStats();
 
             \WP_CLI::success($result['message']);
@@ -981,7 +981,7 @@ class Commands
             \WP_CLI::line('');
             \WP_CLI::line('=== MIGRATING CUSTOMERS ===');
             \WP_CLI::line('Customers must be migrated before orders (required for order ownership)');
-            $service = new \FluentCart\App\Modules\WooCommerceMigrator\Services\CustomerMigrationService();
+            $service = new \Webmakerr\App\Modules\WooCommerceMigrator\Services\CustomerMigrationService();
             $totalStats['customers'] = $service->migrate();
             $this->displayMigrationStats('Customers', $totalStats['customers']);
 
@@ -996,7 +996,7 @@ class Commands
             \WP_CLI::line('=== MIGRATING ORDERS ===');
             \WP_CLI::line('Orders migration includes: line items, addresses, coupons, fees, and metadata');
 
-            $orderService = new \FluentCart\App\Modules\WooCommerceMigrator\Services\OrderMigrationService();
+            $orderService = new \Webmakerr\App\Modules\WooCommerceMigrator\Services\OrderMigrationService();
 
             if (!$orderService->canMigrate()) {
                 $errors = $orderService->getErrors();

@@ -2,26 +2,26 @@
 
 namespace FluentCartPro\App\Hooks\Handlers;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\PlanUpgradeService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\PlanUpgradeService;
+use Webmakerr\Framework\Support\Arr;
 
 class UpgradeHandler
 {
     public function register()
     {
-        add_action('fluent_cart_action_upgrade_plan', [$this, 'handleUpgradePlanRedirect'], 10, 1);
+        webmakerr_add_action('webmakerr_cart_action_upgrade_plan', [$this, 'handleUpgradePlanRedirect'], 10, 1);
 
-        add_action('fluent_cart/upgraded_order_created', [$this, 'handleUpgradedOrderCreated'], 10, 1);
-        add_action('fluent_cart/upgrade_plan_completed', [$this, 'handleUpgradePlanCompleted'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/upgraded_order_created', [$this, 'handleUpgradedOrderCreated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/upgrade_plan_completed', [$this, 'handleUpgradePlanCompleted'], 10, 1);
     }
 
     public function handleUpgradePlanRedirect($data = [])
@@ -211,7 +211,7 @@ class UpgradeHandler
                 $newSubscription->save();
             }
 
-            do_action('fluent_cart/order/upgraded', [
+            webmakerr_do_action('webmakerr_cart/order/upgraded', [
                 'order'           => $newOrder,
                 'from_order'      => $upgradeFromOrder,
                 'cart'            => $cartModel,

@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Http\Requests\FrontendRequests\CustomerRequests;
+namespace Webmakerr\App\Http\Requests\FrontendRequests\CustomerRequests;
 
-use FluentCart\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Foundation\RequestGuard;
 
 class CustomerProfileAccountDetailsRequest extends RequestGuard
 {

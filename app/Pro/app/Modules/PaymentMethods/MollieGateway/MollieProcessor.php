@@ -2,9 +2,9 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\MollieGateway;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\API\MollieAPI;
 
 class MollieProcessor
@@ -141,7 +141,7 @@ class MollieProcessor
             'captureMode'       => $captureMode
         ];
 
-        $passLineItems = apply_filters('fluent_cart/mollie/pass_line_items_details', false, $order, $transaction);
+        $passLineItems = webmakerr_apply_filters('webmakerr_cart/mollie/pass_line_items_details', false, $order, $transaction);
 
         if ($passLineItems) {
             $paymentData['lines'] = $lines;
@@ -155,7 +155,7 @@ class MollieProcessor
 
 
         // Apply filters for customization
-        $paymentData = apply_filters('fluent_cart/payments/mollie_payment_args', $paymentData, [
+        $paymentData = webmakerr_apply_filters('webmakerr_cart/payments/mollie_payment_args', $paymentData, [
             'order'       => $order,
             'transaction' => $transaction
         ]);
@@ -330,7 +330,7 @@ class MollieProcessor
 
     public function getWebhookUrl()
     {
-        return apply_filters('fluent_cart/mollie/webhook_url', site_url('?fluent-cart=fct_payment_listener_ipn&method=mollie'));
+        return webmakerr_apply_filters('webmakerr_cart/mollie/webhook_url', site_url('?fluent-cart=fct_payment_listener_ipn&method=mollie'));
     }
 
     public function createOrGetCustomer($fcCustomer)

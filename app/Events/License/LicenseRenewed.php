@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Events\License;
+namespace Webmakerr\App\Events\License;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Models\Order;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Models\Order;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 
 class LicenseRenewed extends EventDispatcher

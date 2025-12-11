@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\Models\OrderMeta;
+use Webmakerr\App\Models\OrderMeta;
 
 class OrderMetaApi
 {

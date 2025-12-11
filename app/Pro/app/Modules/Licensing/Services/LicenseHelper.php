@@ -2,17 +2,17 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Services;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Database\Orm\Collection;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Database\Orm\Collection;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Services\DateTime\DateTime;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
 
@@ -32,7 +32,7 @@ class LicenseHelper
         // remove http:// or https://
         $url = preg_replace('/^https?:\/\//', '', $url);
 
-        return apply_filters('fluent_cart/license/santized_url', $url, $originalUrl);
+        return webmakerr_apply_filters('webmakerr_cart/license/santized_url', $url, $originalUrl);
     }
 
     public static function getExpirationDateByVariation(ProductVariation $variation)
@@ -562,9 +562,9 @@ class LicenseHelper
         );
 
         // Allow filtering of patterns
-        $subdomain_patterns = apply_filters('fluent_cart/license/staging_subdomain_patterns', $subdomain_patterns);
-        $subfolder_patterns = apply_filters('fluent_cart/license/staging_subfolder_patterns', $subfolder_patterns);
-        $staging_domains = apply_filters('fluent_cart/license/staging_domains', $staging_domains);
+        $subdomain_patterns = webmakerr_apply_filters('webmakerr_cart/license/staging_subdomain_patterns', $subdomain_patterns);
+        $subfolder_patterns = webmakerr_apply_filters('webmakerr_cart/license/staging_subfolder_patterns', $subfolder_patterns);
+        $staging_domains = webmakerr_apply_filters('webmakerr_cart/license/staging_domains', $staging_domains);
 
         // If $url doesn't contain scheme, add http:// to parse correctly
         if (!preg_match('/^https?:\/\//', $url)) {
@@ -600,7 +600,7 @@ class LicenseHelper
         }
 
         // Allow final result to be filtered
-        return apply_filters('fluent_cart/license/is_staging_site_result', false, $url);
+        return webmakerr_apply_filters('webmakerr_cart/license/is_staging_site_result', false, $url);
     }
 
     public static function formatLicense(License $license)
@@ -630,7 +630,7 @@ class LicenseHelper
 
     public static function getLicenseGracePeriodDays()
     {
-        return apply_filters('fluent_cart/license/grace_period_in_days', 15);
+        return webmakerr_apply_filters('webmakerr_cart/license/grace_period_in_days', 15);
     }
 
 }

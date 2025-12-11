@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Support\Arr;
 
 class AddressSelectRenderer
 {

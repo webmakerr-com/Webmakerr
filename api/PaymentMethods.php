@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\Api;
+namespace Webmakerr\Api;
 
-use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Stripe;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Modules\PaymentMethods\Core\GatewayManager;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Stripe;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 class  PaymentMethods
 {
@@ -19,7 +19,7 @@ class  PaymentMethods
     {
         $manager = GatewayManager::getInstance();
         return $manager->getAllMeta();
-        //return apply_filters('fluent_cart/payments/get_global_payment_methods', []);
+        //return webmakerr_apply_filters('webmakerr_cart/payments/get_global_payment_methods', []);
     }
 
     public static function getLogos(): array
@@ -92,7 +92,7 @@ class  PaymentMethods
      */
     public function getConnectInfo($method)
     {
-        return apply_filters('fluent_cart/get_payment_connect_info_' . sanitize_text_field($method), [], []);
+        return webmakerr_apply_filters('webmakerr_cart/get_payment_connect_info_' . sanitize_text_field($method), [], []);
     }
 
 }

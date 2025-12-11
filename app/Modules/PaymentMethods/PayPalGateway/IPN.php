@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\API;
-use FluentCart\App\Modules\Subscriptions\Services\SubscriptionService;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\API;
+use Webmakerr\App\Modules\Subscriptions\Services\SubscriptionService;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 
 class IPN
 {
@@ -21,22 +21,22 @@ class IPN
     public function init()
     {
         // New
-        add_action('fluent_cart/payments/paypal/webhook_payment_capture_completed', [$this, 'processChargeCaptured'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_payment_capture_completed', [$this, 'processChargeCaptured'], 10, 1);
 
         // reviewed.
-        add_action('fluent_cart/payments/paypal/webhook_billing_subscription_activated', [$this, 'processSubscriptionActivated'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_subscription_payment_received', [$this, 'processRecurringPaymentReceived'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_payment_capture_refunded', [$this, 'handleSinglePaymentRefund']);
-        add_action('fluent_cart/payments/paypal/webhook_payment_sale_refunded', [$this, 'handleWebhookRecurringPaymentRefunded'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_billing_subscription_cancelled', [$this, 'handleWebhookRecurringProfileCancelled'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_billing_subscription_expired', [$this, 'handleWebhookRecurringProfileExpired'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_billing_subscription_suspended', [$this, 'handleWebhookRecurringProfileSuspended'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_billing_subscription_re-activated', [$this, 'handleWebhookRecurringProfileReactivated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_billing_subscription_activated', [$this, 'processSubscriptionActivated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_subscription_payment_received', [$this, 'processRecurringPaymentReceived'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_payment_capture_refunded', [$this, 'handleSinglePaymentRefund']);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_payment_sale_refunded', [$this, 'handleWebhookRecurringPaymentRefunded'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_billing_subscription_cancelled', [$this, 'handleWebhookRecurringProfileCancelled'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_billing_subscription_expired', [$this, 'handleWebhookRecurringProfileExpired'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_billing_subscription_suspended', [$this, 'handleWebhookRecurringProfileSuspended'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_billing_subscription_re-activated', [$this, 'handleWebhookRecurringProfileReactivated'], 10, 1);
 
         // dispute
-        add_action('fluent_cart/payments/paypal/webhook_customer_dispute_created', [$this, 'handleWebhookDisputeCreated'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_customer_dispute_updated', [$this, 'handleWebhookDisputeUpdated'], 10, 1);
-        add_action('fluent_cart/payments/paypal/webhook_customer_dispute_resolved', [$this, 'handleWebhookDisputeResolved'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_customer_dispute_created', [$this, 'handleWebhookDisputeCreated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_customer_dispute_updated', [$this, 'handleWebhookDisputeUpdated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/paypal/webhook_customer_dispute_resolved', [$this, 'handleWebhookDisputeResolved'], 10, 1);
 
     }
 
@@ -55,31 +55,31 @@ class IPN
         if ($eventType === 'payment_sale_completed') {
             $billingAgreementId = Arr::get($resource, 'billing_agreement_id', '');
             if ($billingAgreementId) {
-                do_action('fluent_cart/payments/paypal/webhook_subscription_payment_received', [
+                webmakerr_do_action('webmakerr_cart/payments/paypal/webhook_subscription_payment_received', [
                     'charge'                 => $resource,
                     'vendor_subscription_id' => $billingAgreementId,
                 ]);
             } else {
                 // do not need webhook for one time payment
-                do_action('fluent_cart/payments/paypal/webhook_payment_capture_completed', [
+                webmakerr_do_action('webmakerr_cart/payments/paypal/webhook_payment_capture_completed', [
                     'charge' => $resource
                 ]);
             }
         } else if ($eventType === 'payment_sale_refunded') {
             // recurring payment refund
-            do_action('fluent_cart/payments/paypal/webhook_payment_sale_refunded', [
+            webmakerr_do_action('webmakerr_cart/payments/paypal/webhook_payment_sale_refunded', [
                 'refund' => $resource
             ]);
         } else if ($eventType === 'payment_capture_refunded') { // this is manly the refund for one time items
-            do_action('fluent_cart/payments/paypal/webhook_payment_capture_refunded', [
+            webmakerr_do_action('webmakerr_cart/payments/paypal/webhook_payment_capture_refunded', [
                 'refund' => $resource
             ]);
         } else if ($eventType === 'payment_capture_completed') {
-            do_action('fluent_cart/payments/paypal/webhook_payment_capture_completed', [
+            webmakerr_do_action('webmakerr_cart/payments/paypal/webhook_payment_capture_completed', [
                 'charge' => $resource,
             ]);
         } else if ( $eventType === 'customer_dispute_created' ||$eventType == 'customer_dispute_updated' || $eventType === 'customer_dispute_resolved') {
-            do_action('fluent_cart/payments/paypal/webhook_' . $eventType, [
+            webmakerr_do_action('webmakerr_cart/payments/paypal/webhook_' . $eventType, [
                 'dispute' => $resource
             ]);
         }
@@ -93,7 +93,7 @@ class IPN
              * fluent_cart/payments/paypal/webhook_billing_subscription_suspended
              * fluent_cart/payments/paypal/webhook_billing_subscription_re-activated
              */
-            do_action('fluent_cart/payments/paypal/webhook_' . $eventType, [
+            webmakerr_do_action('webmakerr_cart/payments/paypal/webhook_' . $eventType, [
                 'paypal_subscription' => $resource
             ]);
         }
@@ -176,7 +176,7 @@ class IPN
      */
     public function verifyWebhook($webhookId)
     {
-        $disableWebhookVerification = apply_filters('fluent_cart/payments/paypal/disable_webhook_verification', 'no', []);
+        $disableWebhookVerification = webmakerr_apply_filters('webmakerr_cart/payments/paypal/disable_webhook_verification', 'no', []);
         if ($disableWebhookVerification === 'yes') {
             return true;
         }
@@ -213,12 +213,12 @@ class IPN
         $response = API::verifyWebhookSignature($body);
 
         if (is_wp_error($response)) {
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $body,
                 'status'      => 'failed',
                 'title'       => __('Failed to verify PayPal webhook signature', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
 
@@ -272,18 +272,18 @@ class IPN
             return;
         }
 
-        do_action('fluent_cart/paypal_webhook_received', [
+        webmakerr_do_action('webmakerr_cart/paypal_webhook_received', [
             'data' => $data,
             'raw'  => $post_data
         ]);
 
-        if (defined('FLUENT_CART_DEV_MODE')) {
-            do_action('fluent_cart/dev_log', [
+        if (defined('WEBMAKERR_DEV_MODE')) {
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $post_data,
                 'status'      => 'received',
                 'title'       => __('PayPal Webhook Received', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
         }
@@ -299,7 +299,7 @@ class IPN
             $webhookId = defined('FCT_PAYPAL_LIVE_WEBHOOK_ID') ? FCT_PAYPAL_LIVE_WEBHOOK_ID : Arr::get($paymentSettings, $mode . '_webhook_id', '');
         }
 
-        $willVerify = apply_filters('fluent_cart/payments/paypal/verify_webhook', true, [
+        $willVerify = webmakerr_apply_filters('webmakerr_cart/payments/paypal/verify_webhook', true, [
             'data' => $data,
             'mode' => $mode,
             'type' => $webhookType
@@ -313,7 +313,7 @@ class IPN
                 $data = json_encode($verified->get_error_data());
                 fluent_cart_add_log($verified->get_error_message() . ' Webhook: ' . $webhookType, $data, 'error', [
                     'log_type'    => 'webhook',
-                    'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                    'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                     'module_name' => 'PayPal',
                 ]);
 
@@ -475,12 +475,12 @@ class IPN
 
         if (!$paypalTransactionId) {
 
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $refundData,
                 'status'      => 'failed',
                 'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
 
@@ -494,19 +494,19 @@ class IPN
 
         if (!$parentTransaction) {
 
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $refundData,
                 'status'      => 'failed',
                 'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
 
             return false; // not our transaction, we are not handling this refund
         }
 
-        return \FluentCart\App\Services\Payments\Refund::createOrRecordRefund([
+        return \Webmakerr\App\Services\Payments\Refund::createOrRecordRefund([
             'vendor_charge_id' => $paypalRefundId,
             'payment_method'   => 'paypal',
             'total'            => $paypalRefundAmount,
@@ -544,12 +544,12 @@ class IPN
         }
 
         if (!$parentTransaction) {
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $data,
                 'status'      => 'failed',
                 'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
 
@@ -558,7 +558,7 @@ class IPN
 
         $paypalRefundAmount = Helper::toCent(Arr::get($refundData, 'amount.total', 0));
 
-        return \FluentCart\App\Services\Payments\Refund::createOrRecordRefund([
+        return \Webmakerr\App\Services\Payments\Refund::createOrRecordRefund([
             'vendor_charge_id' => Arr::get($refundData, 'id'),
             'payment_method'   => 'paypal',
             'total'            => $paypalRefundAmount,
@@ -572,12 +572,12 @@ class IPN
         $subscriptionModel = $this->getSubscriptionByPaypalSubscriptionInfo($subscriptionInfo);
 
         if (!$subscriptionModel) {
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
                 'title'       => __('Failed to find Subscription for PayPal Cancel webhook', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
             return;
@@ -602,12 +602,12 @@ class IPN
         $subscriptionModel = $this->getSubscriptionByPaypalSubscriptionInfo($subscriptionInfo);
 
         if (!$subscriptionModel) {
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
                 'title'       => __('Failed to find Subscription for PayPal Subscription Expired webhook', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
             return;
@@ -624,12 +624,12 @@ class IPN
         $subscriptionModel = $this->getSubscriptionByPaypalSubscriptionInfo($subscriptionInfo);
 
         if (!$subscriptionModel) {
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
                 'title'       => __('Failed to find Subscription for PayPal Subscription Suspended webhook', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
             return;
@@ -647,12 +647,12 @@ class IPN
         $subscriptionModel = $this->getSubscriptionByPaypalSubscriptionInfo($subscriptionInfo);
 
         if (!$subscriptionModel) {
-            do_action('fluent_cart/dev_log', [
+            webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
                 'title'       => __('Failed to find Subscription for PayPal Subscription Reactive webhook', 'fluent-cart'),
                 'log_type'    => 'webhook',
-                'module_type' => 'FluentCart\App\Modules\PaymentMethods\PayPal',
+                'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
             ]);
             return;

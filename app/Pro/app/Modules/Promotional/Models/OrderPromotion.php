@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Modules\Promotional\Models;
 
-use FluentCart\App\Models\Model;
+use Webmakerr\App\Models\Model;
 
 /**
  *
@@ -88,7 +88,7 @@ class OrderPromotion extends Model
 
     public function product_variant()
     {
-        return $this->belongsTo(\FluentCart\App\Models\ProductVariation::class, 'src_object_id', 'id');
+        return $this->belongsTo(\Webmakerr\App\Models\ProductVariation::class, 'src_object_id', 'id');
     }
 }
 

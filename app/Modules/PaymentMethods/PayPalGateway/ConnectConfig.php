@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway;
 
-use FluentCart\App\App;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\API;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\PayPalPartner;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\Webhook;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\API;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\PayPalPartner;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\Webhook;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class ConnectConfig
 {

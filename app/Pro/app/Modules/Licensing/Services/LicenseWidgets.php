@@ -6,7 +6,7 @@ class LicenseWidgets
 {
     public function register()
     {
-        add_filter('fluent_cart/widgets/single_order', [$this, 'singleOrder'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/widgets/single_order', [$this, 'singleOrder'], 10, 2);
     }
     public function singleOrder($oldWidgets, $order)
     {

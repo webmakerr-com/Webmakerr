@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
 use DateTimeInterface;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Orm\Model as BaseModel;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Model as BaseModel;
 
 
 class Model extends BaseModel
@@ -24,7 +24,7 @@ class Model extends BaseModel
      * Return a timestamp as DateTime object.
      *
      * @param mixed $value
-     * @return \FluentCart\Framework\Support\DateTime;
+     * @return \Webmakerr\Framework\Support\DateTime;
      */
     protected function asDateTime($value)
     {

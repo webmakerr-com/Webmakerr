@@ -1,13 +1,13 @@
 <?php
 
 
-namespace FluentCart\App\Events\Subscription;
+namespace Webmakerr\App\Events\Subscription;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Listeners;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Subscription;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Listeners;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Subscription;
 
 
 class SubscriptionCanceled extends EventDispatcher

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
 
 class StripeSettingsBase extends BaseGatewaySettings
 {
@@ -35,7 +35,7 @@ class StripeSettingsBase extends BaseGatewaySettings
         $settings['define_live_keys'] = $isLiveDefined || !empty($settings['live_secret_key']);
 
 
-        $this->settings = apply_filters('fluent_cart/stripe_settings', $settings);
+        $this->settings = webmakerr_apply_filters('webmakerr_cart/stripe_settings', $settings);
     }
 
     /**

@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Http\Requests;
+namespace Webmakerr\App\Http\Requests;
 
-use FluentCart\Framework\Foundation\RequestGuard;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductVariationRequest extends RequestGuard
 {

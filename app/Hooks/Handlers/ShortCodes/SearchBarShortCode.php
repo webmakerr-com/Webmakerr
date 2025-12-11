@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\App\Services\Renderer\SearchBarRenderer;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\App\Services\Renderer\SearchBarRenderer;
 
 class SearchBarShortCode extends ShortCode
 {

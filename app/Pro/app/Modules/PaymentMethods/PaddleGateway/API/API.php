@@ -3,7 +3,7 @@
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\API;
 
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\PaddleSettings;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class API
 {

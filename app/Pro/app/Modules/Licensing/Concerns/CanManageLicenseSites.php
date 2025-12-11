@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Concerns;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseSite;
@@ -81,7 +81,7 @@ trait CanManageLicenseSites
             }
         }
 
-        do_action('fluent_cart_sl/site_activated', [
+        webmakerr_do_action('webmakerr_cart_sl/site_activated', [
             'site'       => $site,
             'license'    => $license,
             'activation' => $activation
@@ -138,7 +138,7 @@ trait CanManageLicenseSites
             LicenseSite::query()->where('id', $siteId)->delete();
         }
 
-        do_action('fluent_cart_sl/site_license_deactivated', [
+        webmakerr_do_action('webmakerr_cart_sl/site_license_deactivated', [
             'site'    => $site,
             'license' => $license
         ]);
@@ -174,7 +174,7 @@ trait CanManageLicenseSites
             $this->sendErrorResponse($license, 'failed');
         }
 
-        do_action('fluent_cart_sl/site_license_deactivated', [
+        webmakerr_do_action('webmakerr_cart_sl/site_license_deactivated', [
             'site'    => $site,
             'license' => $license
         ]);

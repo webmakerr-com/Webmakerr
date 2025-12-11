@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\Api\PaymentMethods;
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\Api\PaymentMethods;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class CustomerProfileHandler extends ShortCode
 {
@@ -101,8 +101,8 @@ class CustomerProfileHandler extends ShortCode
         }
 
         $colors = self::generateCssColorVariables(Arr::get($this->shortCodeAttributes, 'colors', ''));
-        add_action('fluent_cart/customer_menu', array($this, 'renderCustomerMenu'));
-        add_action('fluent_cart/customer_app', function () use ($customEndpointContent) {
+        webmakerr_add_action('webmakerr_cart/customer_menu', array($this, 'renderCustomerMenu'));
+        webmakerr_add_action('webmakerr_cart/customer_app', function () use ($customEndpointContent) {
             if($customEndpointContent) {
                 echo $customEndpointContent; // @phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             } else {
@@ -114,7 +114,7 @@ class CustomerProfileHandler extends ShortCode
         App::make('view')->render('frontend.customer_app', [
             'wp_page_title' => get_the_title(),
             'colors'        => $colors,
-            'active_tab' => apply_filters('fluent_cart/customer_portal/active_tab', ''),
+            'active_tab' => webmakerr_apply_filters('webmakerr_cart/customer_portal/active_tab', ''),
         ]);
     }
 
@@ -138,7 +138,7 @@ class CustomerProfileHandler extends ShortCode
         }
 
         // Maybe it's a custom endpoint path
-        $customEndpoints = apply_filters('fluent_cart/customer_portal/custom_endpoints', []);
+        $customEndpoints = webmakerr_apply_filters('webmakerr_cart/customer_portal/custom_endpoints', []);
 
         if(empty($customEndpoints) || !isset($customEndpoints[$requestedPath])) {
             return ''; // No custom endpoints defined, return early
@@ -147,7 +147,7 @@ class CustomerProfileHandler extends ShortCode
         ob_start();
         $endpoint = $customEndpoints[$requestedPath];
 
-        add_filter('fluent_cart/customer_portal/active_tab', function ($activeTab) use ($requestedPath) {
+        webmakerr_add_filter('webmakerr_cart/customer_portal/active_tab', function ($activeTab) use ($requestedPath) {
             return $requestedPath;
         });
 
@@ -263,7 +263,7 @@ class CustomerProfileHandler extends ShortCode
             unset($menuItems['subscriptions']);
         }
 
-        $menuItems = apply_filters('fluent_cart/global_customer_menu_items', $menuItems, [
+        $menuItems = webmakerr_apply_filters('webmakerr_cart/global_customer_menu_items', $menuItems, [
             'base_url' => $baseUrl
         ]);
 
@@ -353,8 +353,8 @@ class CustomerProfileHandler extends ShortCode
                 'trans'             => TransStrings::getCustomerProfileString(),
                 'download_url_base' => site_url('fluent-cart/download-file/?fluent_cart_download=true'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
-                'stripe_pub_key'    => apply_filters('fluent_cart/payment_methods/stripe_pub_key', ''),
-                'paypal_client_id'  => apply_filters('fluent_cart/payment_methods/paypal_client_id', '', []),
+                'stripe_pub_key'    => webmakerr_apply_filters('webmakerr_cart/payment_methods/stripe_pub_key', ''),
+                'paypal_client_id'  => webmakerr_apply_filters('webmakerr_cart/payment_methods/paypal_client_id', '', []),
                 'assets_path'       => Vite::getAssetUrl(),
                 'rest'              => Helper::getRestInfo(),
                 'customer_email'    => $customerEmail,

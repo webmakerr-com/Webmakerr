@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; 
 
-use FluentCart\App\Modules\Tax\TaxModule;?>
+use Webmakerr\App\Modules\Tax\TaxModule;?>
 
 <?php if(!empty($order)): ?>
 <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"

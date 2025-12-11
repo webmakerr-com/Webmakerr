@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Hooks\Cart\CartLoader;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\App\Services\Renderer\CartRenderer;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Hooks\Cart\CartLoader;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\App\Services\Renderer\CartRenderer;
 
 class CartShortcode extends ShortCode
 {

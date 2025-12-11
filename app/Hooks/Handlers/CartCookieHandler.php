@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers;
+namespace Webmakerr\App\Hooks\Handlers;
 
-use FluentCart\Api\Hasher\Hash;
-use FluentCart\App\App;
+use Webmakerr\Api\Hasher\Hash;
+use Webmakerr\App\App;
 
 class CartCookieHandler
 {
@@ -17,9 +17,9 @@ class CartCookieHandler
                 return;
             }
 
-            $cartCookie = \FluentCart\Api\Cookie\Cookie::getCartHash();
+            $cartCookie = \Webmakerr\Api\Cookie\Cookie::getCartHash();
             if (!$cartCookie) {
-                \FluentCart\Api\Cookie\Cookie::setCartHash(
+                \Webmakerr\Api\Cookie\Cookie::setCartHash(
                     md5(time() . wp_generate_uuid4())
                 );
             }
@@ -28,9 +28,9 @@ class CartCookieHandler
 
         add_filter('rest_request_before_callbacks', function ($response, $handler, $request) {
             // Only set cookie if not already present
-            $cartCookie = \FluentCart\Api\Cookie\Cookie::getCartHash();
+            $cartCookie = \Webmakerr\Api\Cookie\Cookie::getCartHash();
             if (!$cartCookie) {
-                \FluentCart\Api\Cookie\Cookie::setCartHash(
+                \Webmakerr\Api\Cookie\Cookie::setCartHash(
                     md5(time() . wp_generate_uuid4())
                 );
             }

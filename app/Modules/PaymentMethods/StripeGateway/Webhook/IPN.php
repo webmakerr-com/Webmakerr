@@ -1,34 +1,34 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway\Webhook;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway\Webhook;
 
-use FluentCart\App\Events\Order\OrderRefund;
-use FluentCart\App\Events\Order\OrderStatusUpdated;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\Confirmations;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\StripeHelper;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Events\Order\OrderRefund;
+use Webmakerr\App\Events\Order\OrderStatusUpdated;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\Confirmations;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\StripeHelper;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\Framework\Support\Arr;
 
 class IPN
 {
     public function init(): void
     {
         // DONE!
-        add_action('fluent_cart/payments/stripe/webhook_charge_refunded', [$this, 'handleChargeRefunded'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/stripe/webhook_charge_refunded', [$this, 'handleChargeRefunded'], 10, 1);
 
         // Done
-        add_action('fluent_cart/payments/stripe/webhook_charge_succeeded', [$this, 'handleChargeSucceeded'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/stripe/webhook_charge_succeeded', [$this, 'handleChargeSucceeded'], 10, 1);
 
-        add_action('fluent_cart/payments/stripe/webhook_charge_dispute_created', [$this, 'handleChargeDisputeCreated'], 10, 1);
-        add_action('fluent_cart/payments/stripe/webhook_charge_dispute_closed', [$this, 'handleChargeDisputeClosed'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/stripe/webhook_charge_dispute_created', [$this, 'handleChargeDisputeCreated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/stripe/webhook_charge_dispute_closed', [$this, 'handleChargeDisputeClosed'], 10, 1);
 
         // For Subscriptions
-        add_action('fluent_cart/payments/stripe/webhook_customer_subscription_updated', [$this, 'handleSubscriptionUpdated'], 10, 1);
-        add_action('fluent_cart/payments/stripe/webhook_customer_subscription_deleted', [$this, 'handleSubscriptionUpdated'], 10, 1); // canceled event
+        webmakerr_add_action('webmakerr_cart/payments/stripe/webhook_customer_subscription_updated', [$this, 'handleSubscriptionUpdated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/payments/stripe/webhook_customer_subscription_deleted', [$this, 'handleSubscriptionUpdated'], 10, 1); // canceled event
     }
 
 
@@ -323,7 +323,7 @@ class IPN
 
         if (has_action('fluent_cart/payments/stripe/webhook_' . $eventType)) {
 
-            do_action('fluent_cart/payments/stripe/webhook_' . $eventType, [
+            webmakerr_do_action('webmakerr_cart/payments/stripe/webhook_' . $eventType, [
                 'event' => $event,
                 'order' => $order
             ]);

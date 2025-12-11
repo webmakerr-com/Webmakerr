@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Models\WpModels;
+namespace Webmakerr\App\Models\WpModels;
 
-use FluentCart\App\Models\Model;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Product;
+use Webmakerr\App\Models\Model;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Product;
 
 class Term extends Model
 {
@@ -19,7 +19,7 @@ class Term extends Model
      */
     protected $primaryKey = 'term_id';
 
-    public function taxonomy(): \FluentCart\Framework\Database\Orm\Relations\HasOne
+    public function taxonomy(): \Webmakerr\Framework\Database\Orm\Relations\HasOne
     {
         return $this->hasOne(TermTaxonomy::class, 'term_id', 'term_id');
     }

@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser\Parsers;
+namespace Webmakerr\App\Services\ShortCodeParser\Parsers;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Payments\PaymentReceipt;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Payments\PaymentReceipt;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class OrderParser extends BaseParser
 {
@@ -105,7 +105,7 @@ class OrderParser extends BaseParser
             $order = $this->order;
 
             if ($code == 'order.items_table') {
-                return \FluentCart\App\App::make('view')->make('emails.parts.items_table', [
+                return \Webmakerr\App\App::make('view')->make('emails.parts.items_table', [
                     'order'          => $order,
                     'formattedItems' => $order->order_items,
                     'heading'        => __('Order Summary', 'fluent-cart'),
@@ -114,7 +114,7 @@ class OrderParser extends BaseParser
 
             if ($code === 'order.subscription_details') {
                 if ($order->subscriptions && $order->subscriptions->count() > 0) {
-                    return \FluentCart\App\App::make('view')->make('invoice.parts.subscription_items', [
+                    return \Webmakerr\App\App::make('view')->make('invoice.parts.subscription_items', [
                         'subscriptions' => $order->subscriptions,
                         'order'         => $order
                     ]);
@@ -125,7 +125,7 @@ class OrderParser extends BaseParser
             if ($code === 'order.license_details') {
                 $licenses = $order->getLicenses();
                 if ($licenses && $licenses->count() > 0) {
-                    return \FluentCart\App\App::make('view')->make('emails.parts.licenses', [
+                    return \Webmakerr\App\App::make('view')->make('emails.parts.licenses', [
                         'licenses'    => $licenses,
                         'heading'     => _n('License', 'Licenses', $licenses->count(), 'fluent-cart'),
                         'show_notice' => false
@@ -137,7 +137,7 @@ class OrderParser extends BaseParser
             if ($code === 'order.download_details') {
                 $downloads = $order->getDownloads();
                 if ($downloads) {
-                    return \FluentCart\App\App::make('view')->make('emails.parts.downloads', [
+                    return \Webmakerr\App\App::make('view')->make('emails.parts.downloads', [
                         'order'         => $order,
                         'heading'       => _n('Download', 'Downloads', count($downloads), 'fluent-cart'),
                         'downloadItems' => $downloads,
@@ -147,7 +147,7 @@ class OrderParser extends BaseParser
             }
 
             if ($code === 'order.address_details') {
-                return \FluentCart\App\App::make('view')->make('emails.parts.addresses', [
+                return \Webmakerr\App\App::make('view')->make('emails.parts.addresses', [
                     'order' => $order,
                 ]);
             }
@@ -197,7 +197,7 @@ class OrderParser extends BaseParser
     {
         $order = $this->order;
 
-        return \FluentCart\App\App::make('view')->make('emails.parts.items_table', [
+        return \Webmakerr\App\App::make('view')->make('emails.parts.items_table', [
             'order'          => $order,
             'formattedItems' => $order->order_items,
             'heading'        => '',
@@ -210,7 +210,7 @@ class OrderParser extends BaseParser
 
         ob_start();
 
-        \FluentCart\App\App::make('view')->render('emails.parts.items_table', [
+        \Webmakerr\App\App::make('view')->render('emails.parts.items_table', [
             'order'          => $order,
             'formattedItems' => $order->order_items,
             'heading'        => __('Order Summary', 'fluent-cart'),
@@ -218,7 +218,7 @@ class OrderParser extends BaseParser
 
 
         if ($order->subscriptions && $order->subscriptions->count() > 0) {
-            \FluentCart\App\App::make('view')->render('invoice.parts.subscription_items', [
+            \Webmakerr\App\App::make('view')->render('invoice.parts.subscription_items', [
                 'subscriptions' => $order->subscriptions,
                 'order'         => $order
             ]);
@@ -226,7 +226,7 @@ class OrderParser extends BaseParser
 
         $licenses = $order->getLicenses();
         if ($licenses && $licenses->count() > 0) {
-            \FluentCart\App\App::make('view')->render('emails.parts.licenses', [
+            \Webmakerr\App\App::make('view')->render('emails.parts.licenses', [
                 'licenses'    => $licenses,
                 'heading'     => __('Licenses', 'fluent-cart'),
                 'show_notice' => false
@@ -235,7 +235,7 @@ class OrderParser extends BaseParser
 
         $downloads = $order->getDownloads();
         if ($downloads) {
-            \FluentCart\App\App::make('view')->render('emails.parts.downloads', [
+            \Webmakerr\App\App::make('view')->render('emails.parts.downloads', [
                 'order'         => $order,
                 'heading'       => __('Downloads', 'fluent-cart'),
                 'downloadItems' => $downloads,
@@ -244,7 +244,7 @@ class OrderParser extends BaseParser
 
         echo '<hr />';
 
-        \FluentCart\App\App::make('view')->render('emails.parts.addresses', [
+        \Webmakerr\App\App::make('view')->render('emails.parts.addresses', [
             'order' => $order,
         ]);
 
@@ -331,7 +331,7 @@ class OrderParser extends BaseParser
 
         $downloads = $order->getDownloads();
         if ($downloads) {
-            return (string)\FluentCart\App\App::make('view')->make('emails.parts.downloads', [
+            return (string)\Webmakerr\App\App::make('view')->make('emails.parts.downloads', [
                 'order'         => $order,
                 'heading'       => '',
                 'downloadItems' => $downloads
@@ -347,7 +347,7 @@ class OrderParser extends BaseParser
         $order = $this->order;
         $licenses = $order->getLicenses();
         if ($licenses && $licenses->count() > 0) {
-            return (string)\FluentCart\App\App::make('view')->make('emails.parts.licenses', [
+            return (string)\Webmakerr\App\App::make('view')->make('emails.parts.licenses', [
                 'licenses'    => $licenses,
                 'heading'     => __('Licenses', 'fluent-cart'),
                 'show_notice' => false

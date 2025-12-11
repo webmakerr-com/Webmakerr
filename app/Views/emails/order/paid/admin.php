@@ -1,14 +1,14 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * @var $order \FluentCart\App\Models\Order
+ * @var $order \Webmakerr\App\Models\Order
  */
-$celebration = \FluentCart\App\Services\TemplateService::getCelebration('order');
+$celebration = \Webmakerr\App\Services\TemplateService::getCelebration('order');
 ?>
 
 <?php
 if (!empty($celebration)) {
-    \FluentCart\App\App::make('view')->render('emails.parts.celebration', [
+    \Webmakerr\App\App::make('view')->render('emails.parts.celebration', [
         'text' => $celebration
     ]);
 }
@@ -29,7 +29,7 @@ if (!empty($celebration)) {
 
 <?php
 
-\FluentCart\App\App::make('view')->render('emails.parts.items_table', [
+\Webmakerr\App\App::make('view')->render('emails.parts.items_table', [
     'order'          => $order,
     'formattedItems' => $order->order_items,
     'heading'        => __('Order Summary', 'fluent-cart'),
@@ -37,13 +37,13 @@ if (!empty($celebration)) {
 
 echo '<hr />';
 
-\FluentCart\App\App::make('view')->render('emails.parts.addresses', [
+\Webmakerr\App\App::make('view')->render('emails.parts.addresses', [
     'order' => $order,
 ]);
 
 echo '<hr />';
 
-\FluentCart\App\App::make('view')->render('emails.parts.call_to_action_box', [
+\Webmakerr\App\App::make('view')->render('emails.parts.call_to_action_box', [
     'content'     => __('To view more details of this order, please check the order detail page.', 'fluent-cart'),
     'link'        => $order->getViewUrl('admin'),
     'button_text' => __('View Details', 'fluent-cart')

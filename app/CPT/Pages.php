@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\CPT;
+namespace Webmakerr\App\CPT;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Models\DynamicModel;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Models\DynamicModel;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class Pages
 {
@@ -121,7 +121,7 @@ class Pages
     {
         add_action('wp_trash_post', function ($post_id) {
             if (get_post_type($post_id) === 'page') {
-                $settings = (new \FluentCart\Api\StoreSettings());
+                $settings = (new \Webmakerr\Api\StoreSettings());
                 $pageSettings = $settings->getPagesSettings();
                 $allSettings = $settings->get();
                 $pageId = $post_id;

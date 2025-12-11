@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Modules\Shipping\Http\Controllers;
+namespace Webmakerr\App\Modules\Shipping\Http\Controllers;
 
-use FluentCart\App\App;
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Models\ShippingZone;
-use FluentCart\App\Models\ShippingMethod;
-use FluentCart\App\Modules\Shipping\Services\Filter\ShippingZoneFilter;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Modules\Shipping\Http\Requests\ShippingMethodRequest;
-use FluentCart\App\Modules\Shipping\Http\Requests\ShippingZoneRequest;
+use Webmakerr\App\App;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Models\ShippingZone;
+use Webmakerr\App\Models\ShippingMethod;
+use Webmakerr\App\Modules\Shipping\Services\Filter\ShippingZoneFilter;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Modules\Shipping\Http\Requests\ShippingMethodRequest;
+use Webmakerr\App\Modules\Shipping\Http\Requests\ShippingZoneRequest;
 
 class ShippingZoneController extends Controller
 {

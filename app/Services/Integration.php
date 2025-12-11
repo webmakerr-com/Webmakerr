@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Services;
+namespace Webmakerr\App\Services;
 
-use FluentCart\App\Modules\Integrations\FluentPlugins\FluentCommunityConnect;
-use FluentCart\App\Modules\Integrations\FluentPlugins\FluentCRMConnect;
-use FluentCart\App\Modules\Integrations\FluentPlugins\FluentCRMDeepIntegration;
-use FluentCart\App\Modules\Integrations\FluentPlugins\FluentSupportWidget;
+use Webmakerr\App\Modules\Integrations\FluentPlugins\FluentCommunityConnect;
+use Webmakerr\App\Modules\Integrations\FluentPlugins\FluentCRMConnect;
+use Webmakerr\App\Modules\Integrations\FluentPlugins\FluentCRMDeepIntegration;
+use Webmakerr\App\Modules\Integrations\FluentPlugins\FluentSupportWidget;
 
 class Integration
 {
@@ -13,7 +13,7 @@ class Integration
     {
         add_action('init', function () {
             $this->init();
-            (new \FluentCart\App\Listeners\IntegrationEventListener())->registerHooks();
+            (new \Webmakerr\App\Listeners\IntegrationEventListener())->registerHooks();
         }, 2);
     }
 

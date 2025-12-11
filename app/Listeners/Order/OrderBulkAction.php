@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Listeners\Order;
+namespace Webmakerr\App\Listeners\Order;
 
-use FluentCart\App\Helpers\CustomerHelper;
+use Webmakerr\App\Helpers\CustomerHelper;
 
 class OrderBulkAction
 {
-    public static function handle(\FluentCart\App\Events\Order\OrderBulkAction $event)
+    public static function handle(\Webmakerr\App\Events\Order\OrderBulkAction $event)
     {
         if ($event->customerIds) {
             (new CustomerHelper)->calculateCustomerStats($event->customerIds);

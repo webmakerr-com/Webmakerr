@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Events;
+namespace Webmakerr\App\Events;
 
-use FluentCart\App\Listeners\Activity;
-use FluentCart\Framework\Support\ArrayableInterface;
+use Webmakerr\App\Listeners\Activity;
+use Webmakerr\Framework\Support\ArrayableInterface;
 
 abstract class EventDispatcher implements ArrayableInterface
 {

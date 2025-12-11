@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\EditorShortCodeHelper;
-use FluentCart\App\Http\Requests\EmailNotificationRequest;
-use FluentCart\App\Http\Requests\EmailSettingsRequest;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Services\Email\EmailNotifications;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\EditorShortCodeHelper;
+use Webmakerr\App\Http\Requests\EmailNotificationRequest;
+use Webmakerr\App\Http\Requests\EmailSettingsRequest;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Services\Email\EmailNotifications;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class EmailNotificationController extends Controller
 {
@@ -112,7 +112,7 @@ class EmailNotificationController extends Controller
 
     public function getTemplateFiles()
     {
-        $defaultFilePath = FLUENTCART_PLUGIN_PATH . '/app/Views/emails';
+        $defaultFilePath = WEBMAKERR_PLUGIN_PATH . '/app/Views/emails';
         $filesArray = [];
         $files = scandir($defaultFilePath);
         foreach ($files as $file) {

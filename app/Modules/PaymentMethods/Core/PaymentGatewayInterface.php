@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Core;
+namespace Webmakerr\App\Modules\PaymentMethods\Core;
 
-use FluentCart\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Services\Payments\PaymentInstance;
 
 interface PaymentGatewayInterface
 {

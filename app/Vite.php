@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App;
+namespace Webmakerr\App;
 
 use Exception;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class  Vite
 {
@@ -21,7 +21,7 @@ class  Vite
 
     public function __construct()
     {
-        $serverConfigPath = FLUENTCART_PLUGIN_PATH . 'config' . DIRECTORY_SEPARATOR . 'vite.json';
+        $serverConfigPath = WEBMAKERR_PLUGIN_PATH . 'config' . DIRECTORY_SEPARATOR . 'vite.json';
         if (file_exists($serverConfigPath)) {
             $serverConfig = json_decode(file_get_contents($serverConfigPath));
             $this->viteHost = $serverConfig->host ?: $this->viteHost;
@@ -105,7 +105,7 @@ class  Vite
             return $this;
         }
 
-        $version = empty($version) ? FLUENTCART_VERSION : $version;
+        $version = empty($version) ? WEBMAKERR_VERSION : $version;
 
         wp_enqueue_script(
             $handle,
@@ -153,7 +153,7 @@ class  Vite
                     $file['file'] . '_' . $key . '_css',
                     $assetPath . $path,
                     [],
-                    FLUENTCART_VERSION
+                    WEBMAKERR_VERSION
                 );
             }
         }
@@ -200,7 +200,7 @@ class  Vite
             return;
         }
 
-        $version = empty($version) ? FLUENTCART_VERSION : $version;
+        $version = empty($version) ? WEBMAKERR_VERSION : $version;
 
         wp_enqueue_style(
             $handle,
@@ -213,7 +213,7 @@ class  Vite
 
     public static function enqueueStaticScript($handle, $src, $dependency = [], $version = null, $inFooter = false): Vite
     {
-        $version = empty($version) ? FLUENTCART_VERSION : $version;
+        $version = empty($version) ? WEBMAKERR_VERSION : $version;
 
         return static::getInstance()->enqueue_static_script(
             $handle,
@@ -226,7 +226,7 @@ class  Vite
 
     private function enqueue_static_script($handle, $src, $dependency = [], $version = null, $inFooter = false): Vite
     {
-        $version = empty($version) ? FLUENTCART_VERSION : $version;
+        $version = empty($version) ? WEBMAKERR_VERSION : $version;
         wp_enqueue_script(
             $handle,
             $this->getStaticEnqueuePath($src),
@@ -251,7 +251,7 @@ class  Vite
 
     public static function enqueueStaticStyle($handle, $src, $dependency = [], $version = null, $media = 'all')
     {
-        $version = empty($version) ? FLUENTCART_VERSION : $version;
+        $version = empty($version) ? WEBMAKERR_VERSION : $version;
 
         static::getInstance()->enqueue_static_style(
             $handle, $src, $dependency, $version, $media
@@ -261,7 +261,7 @@ class  Vite
     private function enqueue_static_style($handle, $src, $dependency = [], $version = null, $media = 'all')
     {
 
-        $version = empty($version) ? FLUENTCART_VERSION : $version;
+        $version = empty($version) ? WEBMAKERR_VERSION : $version;
 
         wp_enqueue_style(
             $handle,
@@ -316,7 +316,7 @@ class  Vite
     private function get_asset_url($path = ''): string
     {
         if (!$this->usingDevMode()) {
-            return FLUENTCART_URL . 'assets' . DIRECTORY_SEPARATOR . $path;
+            return WEBMAKERR_URL . 'assets' . DIRECTORY_SEPARATOR . $path;
         } else {
             return $this->getVitePath() . $path;
         }
@@ -367,7 +367,7 @@ class  Vite
             }
 
             if (!$version) {
-                $version = FLUENTCART_VERSION;
+                $version = WEBMAKERR_VERSION;
             }
 
             if (!$handle) {
@@ -487,7 +487,7 @@ class  Vite
             }
 
             if (!$version) {
-                $version = FLUENTCART_VERSION;
+                $version = WEBMAKERR_VERSION;
             }
 
             $vite = static::getInstance();
@@ -504,7 +504,7 @@ class  Vite
             }
 
             if (!empty($srcPath)) {
-                $version = empty($version) ? FLUENTCART_VERSION : $version;
+                $version = empty($version) ? WEBMAKERR_VERSION : $version;
                 $type = !$isStatic && in_array($handle, $vite->moduleScripts) ? 'module' : 'text/javascript';
 
                 echo '<script type="' . esc_attr($type) . '" src="' . esc_url($srcPath) . '?ver=' . esc_attr($version) . '" id="' . esc_attr($handle) . '-js"></script>' . "\n";
@@ -565,7 +565,7 @@ class  Vite
             }
 
             if (!empty($srcPath)) {
-                $version = empty($version) ? FLUENTCART_VERSION : $version;
+                $version = empty($version) ? WEBMAKERR_VERSION : $version;
                 //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet
                 echo '<link rel="stylesheet" id="' . esc_attr($handle) . '-css" href="' . esc_url($srcPath) . '?ver=' . esc_attr($version) . '" type="text/css" media="' . esc_attr($media) . '" />' . "\n";
             }

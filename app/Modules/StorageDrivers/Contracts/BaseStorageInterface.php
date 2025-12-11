@@ -1,5 +1,5 @@
 <?php
-namespace FluentCart\App\Modules\StorageDrivers\Contracts;
+namespace Webmakerr\App\Modules\StorageDrivers\Contracts;
 
 interface BaseStorageInterface
 {

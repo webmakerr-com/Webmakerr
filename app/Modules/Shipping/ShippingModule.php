@@ -1,25 +1,25 @@
 <?php
 
-namespace FluentCart\App\Modules\Shipping;
+namespace Webmakerr\App\Modules\Shipping;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Modules\Shipping\Http\Handlers\ScriptHandler;
-use FluentCart\App\Modules\Shipping\Services\Filter\ShippingZoneFilter;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Modules\Shipping\Http\Handlers\ScriptHandler;
+use Webmakerr\App\Modules\Shipping\Services\Filter\ShippingZoneFilter;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class ShippingModule
 {
     public static function register()
     {
         $self = new static();
-        add_action('fluentcart_loaded', [$self, 'init']);
+        webmakerr_add_action('webmakerr_loaded', [$self, 'init']);
 
-        add_filter('fluent_cart/checkout/before_patch_checkout_data', [$self, 'maybeRecalculateShippingCharges'], 9, 2);
+        webmakerr_add_filter('webmakerr_cart/checkout/before_patch_checkout_data', [$self, 'maybeRecalculateShippingCharges'], 9, 2);
 
-        add_action('fluent_cart/cart/cart_data_items_updated', [$self, 'handleItemsChanges'], 9, 1);
+        webmakerr_add_action('webmakerr_cart/cart/cart_data_items_updated', [$self, 'handleItemsChanges'], 9, 1);
     }
 
     public function init($app)

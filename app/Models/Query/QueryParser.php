@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Models\Query;
+namespace Webmakerr\App\Models\Query;
 
 
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class QueryParser
 {

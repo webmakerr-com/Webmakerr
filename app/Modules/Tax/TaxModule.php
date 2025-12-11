@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Modules\Tax;
+namespace Webmakerr\App\Modules\Tax;
 
-use FluentCart\App\App;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Models\OrderTaxRate;
-use FluentCart\App\Services\Renderer\EUVatRenderer;
-use FluentCart\App\Services\Renderer\CartSummaryRender;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\App;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Models\OrderTaxRate;
+use Webmakerr\App\Services\Renderer\EUVatRenderer;
+use Webmakerr\App\Services\Renderer\CartSummaryRender;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\App\Services\Localization\LocalizationManager;
 
 class TaxModule
 {
@@ -25,7 +25,7 @@ class TaxModule
             return;
         }
 
-        add_filter('fluent_cart/cart/estimated_total', function ($total, $data) {
+        webmakerr_add_filter('webmakerr_cart/cart/estimated_total', function ($total, $data) {
             $cart = $data['cart'];
             if (Arr::get($cart->checkout_data, 'tax_data.tax_behavior', 0) == 1) {
                 $taxTotal = (int)Arr::get($cart->checkout_data, 'tax_data.tax_total', 0);
@@ -38,14 +38,14 @@ class TaxModule
         }, 10, 2);
 
         //new hook to get changes
-        add_filter('fluent_cart/checkout/before_patch_checkout_data', [$this, 'maybeRecalculateTaxAmount'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/checkout/before_patch_checkout_data', [$this, 'maybeRecalculateTaxAmount'], 10, 2);
 
-        add_filter('fluent_cart/cart/tax_behavior', function ($behavior, $data) {
+        webmakerr_add_filter('webmakerr_cart/cart/tax_behavior', function ($behavior, $data) {
             $cart = $data['cart'];
             return Arr::get($cart->checkout_data, 'tax_data.tax_behavior', $behavior);
         }, 10, 2);
 
-        add_action('fluent_cart/checkout/before_summary_total', function ($data) {
+        webmakerr_add_action('webmakerr_cart/checkout/before_summary_total', function ($data) {
             $cart = $data['cart'];
 
             if (empty($cart->checkout_data['tax_data'])) {
@@ -128,16 +128,16 @@ class TaxModule
             <?php
         });
 
-        add_action('fluent_cart/checkout/prepare_other_data', [$this, 'prepareOtherData'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/checkout/prepare_other_data', [$this, 'prepareOtherData'], 10, 1);
 
-        add_action('fluent_cart/product/after_price', function () {
+        webmakerr_add_action('webmakerr_cart/product/after_price', function () {
             $priceSuffix = Arr::get($this->taxSettings, 'price_suffix', '');
             if ($priceSuffix) {
                 echo '<span class="fct_price_suffix">' . wp_kses_post($priceSuffix) . '</span>';
             }
         });
 
-        add_filter('fluent_cart/product/price_suffix_atts', function ($suffix) {
+        webmakerr_add_filter('webmakerr_cart/product/price_suffix_atts', function ($suffix) {
             $priceSuffix = Arr::get($this->taxSettings, 'price_suffix', '');
             if ($priceSuffix) {
                 return $priceSuffix;
@@ -145,12 +145,12 @@ class TaxModule
             return $suffix;
         });
 
-        add_filter('fluent_cart/checkout/after_patch_checkout_data_fragments', [$this, 'maybeRerenderEuVatField'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/checkout/after_patch_checkout_data_fragments', [$this, 'maybeRerenderEuVatField'], 10, 2);
 
         $this->initCheckoutActions();
         $this->registerAjaxHandlers();
 
-        add_action('fluent_cart/cart/cart_data_items_updated', [$this, 'recalculateTax']);
+        webmakerr_add_action('webmakerr_cart/cart/cart_data_items_updated', [$this, 'recalculateTax']);
     }
 
     public function recalculateTax($data)
@@ -334,7 +334,7 @@ class TaxModule
         }
         if (empty($storeVatNumber)) {
             $key = 'fluent_cart_tax_id_' . $taxCountry;
-            $taxCountryData = \FluentCart\App\Models\Meta::query()->where('meta_key', $key)->where('object_type', 'tax')->first();
+            $taxCountryData = \Webmakerr\App\Models\Meta::query()->where('meta_key', $key)->where('object_type', 'tax')->first();
             if ($taxCountryData) {
                 $storeVatNumber = Arr::get($taxCountryData->meta_value, 'tax_id', '');
             }
@@ -396,7 +396,7 @@ class TaxModule
 
     public function initCheckoutActions()
     {
-        add_action('fluent_cart/before_payment_methods', [$this, 'renderTaxField'], 10, 1);
+        webmakerr_add_action('webmakerr_cart/before_payment_methods', [$this, 'renderTaxField'], 10, 1);
     }
 
     public function registerAjaxHandlers()
@@ -636,7 +636,7 @@ class TaxModule
         }
 
         // recalculate tax amount
-        do_action('fluent_cart/checkout/cart_amount_updated', [
+        webmakerr_do_action('webmakerr_cart/checkout/cart_amount_updated', [
             'cart' => $cart
         ]);
 
@@ -784,7 +784,7 @@ class TaxModule
 
     public static function taxTitleLists() :array
     {
-        return apply_filters('fluent_cart/tax/country_tax_titles', [
+        return webmakerr_apply_filters('webmakerr_cart/tax/country_tax_titles', [
             'AU' => 'ABN', // Australia
             'NZ' => 'GST', // New Zealand
             'IN' => 'GST', // India

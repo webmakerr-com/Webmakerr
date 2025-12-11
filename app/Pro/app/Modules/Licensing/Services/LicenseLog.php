@@ -2,15 +2,15 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Services;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class LicenseLog
 {
     public function register()
     {
-        add_action('fluent_cart_sl/site_license_deactivated', [$this, 'licenseDeactivated'], 10, 1);
-        add_action('fluent_cart_sl/license_key_generated', [$this, 'licenseGenerated'], 10, 1);
-        add_action('fluent_cart_sl/license_issued', [$this, 'licenseGenerated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart_sl/site_license_deactivated', [$this, 'licenseDeactivated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart_sl/license_key_generated', [$this, 'licenseGenerated'], 10, 1);
+        webmakerr_add_action('webmakerr_cart_sl/license_issued', [$this, 'licenseGenerated'], 10, 1);
     }
 
     public function log($title, $license_key, $data = [])

@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Services\Coupon\Concerns;
+namespace Webmakerr\App\Services\Coupon\Concerns;
 
-use FluentCart\Api\CurrencySettings;
-use FluentCart\Api\Resource\FrontendResource\CartResource;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Coupon;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\Api\CurrencySettings;
+use Webmakerr\Api\Resource\FrontendResource\CartResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 trait CanCalculateLineTotal
 {

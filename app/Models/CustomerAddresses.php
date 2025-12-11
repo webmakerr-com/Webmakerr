@@ -1,18 +1,18 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  *  Order Model - DB Model for Orders
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */

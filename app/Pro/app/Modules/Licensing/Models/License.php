@@ -2,30 +2,30 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Models;
 
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\LabelRelationship;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\Model;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductDownload;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Database\Orm\Relations\MorphMany;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\LabelRelationship;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\Model;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductDownload;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Database\Orm\Relations\MorphMany;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Services\LicenseHelper;
 use FluentCartPro\App\Modules\Licensing\Services\UUID;
-use FluentCart\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Helper;
 
 /**
  *  Meta Model - DB Model for Meta table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -202,12 +202,12 @@ class License extends Model
         $this->status = $newStatus;
         $this->save();
 
-        do_action('fluent_cart_sl/license_status_updated', [
+        webmakerr_do_action('webmakerr_cart_sl/license_status_updated', [
             'license'    => $this,
             'old_status' => $oldStatus,
             'new_status' => $newStatus
         ]);
-        do_action('fluent_cart_sl/license_status_updated_to_' . $newStatus, [
+        webmakerr_do_action('webmakerr_cart_sl/license_status_updated_to_' . $newStatus, [
             'license'    => $this,
             'old_status' => $oldStatus,
             'new_status' => $newStatus
@@ -220,7 +220,7 @@ class License extends Model
     {
         $oldCount = $this->activation_count;
         $this->increment('activation_count');
-        do_action('fluent_cart_sl/license_limit_increased', [
+        webmakerr_do_action('webmakerr_cart_sl/license_limit_increased', [
             'license'   => $this,
             'old_count' => $oldCount
         ]);
@@ -235,7 +235,7 @@ class License extends Model
         }
         $oldCount = $this->activation_count;
         $this->decrement('activation_count', 1);
-        do_action('fluent_cart_sl/license_limit_decreased', [
+        webmakerr_do_action('webmakerr_cart_sl/license_limit_decreased', [
             'license'   => $this,
             'old_count' => $oldCount
         ]);
@@ -255,7 +255,7 @@ class License extends Model
 
         $this->save();
 
-        do_action('fluent_cart_sl/license_limit_increased', [
+        webmakerr_do_action('webmakerr_cart_sl/license_limit_increased', [
             'license'   => $this,
             'old_limit' => $oldLimit
         ]);
@@ -314,7 +314,7 @@ class License extends Model
         ]);
 
         $this->save();
-        do_action('fluent_cart_sl/license_key_regenerated', [
+        webmakerr_do_action('webmakerr_cart_sl/license_key_regenerated', [
             'license' => $this,
             'old_key' => $oldKey
         ]);
@@ -344,7 +344,7 @@ class License extends Model
             $license = $this->updateLicenseStatus('active');
         }
 
-        do_action('fluent_cart_sl/license_validity_extended', [
+        webmakerr_do_action('webmakerr_cart_sl/license_validity_extended', [
             'license'  => $license,
             'old_date' => $oldDate,
             'new_date' => $newDate

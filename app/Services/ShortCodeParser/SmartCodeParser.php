@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser;
+namespace Webmakerr\App\Services\ShortCodeParser;
 
-use FluentCart\App\App;
-use FluentCart\Framework\Container\Contracts\BindingResolutionException;
-use FluentCart\Framework\Foundation\Application;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Container\Contracts\BindingResolutionException;
+use Webmakerr\Framework\Foundation\Application;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
 
 class SmartCodeParser
 {

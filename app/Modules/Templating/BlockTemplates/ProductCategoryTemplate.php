@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\BlockTemplates;
+namespace Webmakerr\App\Modules\Templating\BlockTemplates;
 
 /**
  * ProductCategoryTemplate class.

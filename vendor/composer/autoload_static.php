@@ -9,9 +9,18 @@ class ComposerStaticInitb2eff533900bbaf3c7b668b284ce4755
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '9680a2abca0f3f510cf2fd1b6d61afe6' => __DIR__ . '/../..' . '/boot/globals.php',
+        '2bfa0c164d07c628fd27a7d869e988ff' => __DIR__ . '/../..' . '/boot/compatibility.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Webmakerr\\OpenSpout\\' => 20,
+            'Webmakerr\\Framework\\' => 20,
+            'Webmakerr\\Dev\\' => 14,
+            'Webmakerr\\App\\' => 14,
+            'Webmakerr\\Api\\' => 14,
+        ),
         'F' => 
         array (
             'FluentCart\\Psr\\Container\\' => 25,
@@ -35,13 +44,30 @@ class ComposerStaticInitb2eff533900bbaf3c7b668b284ce4755
             'FluentCart\\FluentCart\\FluentCart\\Faker\\' => 39,
             'FluentCart\\FluentCart\\Faker\\' => 28,
             'FluentCart\\Faker\\' => 17,
-            'FluentCart\\Dev\\' => 15,
-            'FluentCart\\App\\' => 15,
-            'FluentCart\\Api\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Webmakerr\\OpenSpout\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/openspout/openspout/src',
+        ),
+        'Webmakerr\\Framework\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wpfluent/framework/src/WPFluent',
+        ),
+        'Webmakerr\\Dev\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/dev',
+        ),
+        'Webmakerr\\App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Webmakerr\\Api\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api',
+        ),
         'FluentCart\\Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
@@ -128,74 +154,62 @@ class ComposerStaticInitb2eff533900bbaf3c7b668b284ce4755
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
-        'FluentCart\\Dev\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/dev',
-        ),
-        'FluentCart\\App\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app',
-        ),
-        'FluentCart\\Api\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api',
-        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'FluentCart\\Database\\DBMigrator' => __DIR__ . '/../..' . '/database/DBMigrator.php',
-        'FluentCart\\Database\\DBSeeder' => __DIR__ . '/../..' . '/database/DBSeeder.php',
-        'FluentCart\\Database\\Migrations\\ActivityMigrator' => __DIR__ . '/../..' . '/database/Migrations/ActivityMigrator.php',
-        'FluentCart\\Database\\Migrations\\AppliedCouponsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AppliedCouponsMigrator.php',
-        'FluentCart\\Database\\Migrations\\AttributeGroupsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AttributeGroupsMigrator.php',
-        'FluentCart\\Database\\Migrations\\AttributeObjectRelationsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AttributeObjectRelationsMigrator.php',
-        'FluentCart\\Database\\Migrations\\AttributeTermsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AttributeTermsMigrator.php',
-        'FluentCart\\Database\\Migrations\\CartMigrator' => __DIR__ . '/../..' . '/database/Migrations/CartMigrator.php',
-        'FluentCart\\Database\\Migrations\\CouponsMigrator' => __DIR__ . '/../..' . '/database/Migrations/CouponsMigrator.php',
-        'FluentCart\\Database\\Migrations\\CustomerAddressesMigrator' => __DIR__ . '/../..' . '/database/Migrations/CustomerAddressesMigrator.php',
-        'FluentCart\\Database\\Migrations\\CustomerMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/CustomerMetaMigrator.php',
-        'FluentCart\\Database\\Migrations\\CustomersMigrator' => __DIR__ . '/../..' . '/database/Migrations/CustomersMigrator.php',
-        'FluentCart\\Database\\Migrations\\LabelMigrator' => __DIR__ . '/../..' . '/database/Migrations/LabelMigrator.php',
-        'FluentCart\\Database\\Migrations\\LabelRelationshipsMigrator' => __DIR__ . '/../..' . '/database/Migrations/LabelRelationshipsMigrator.php',
-        'FluentCart\\Database\\Migrations\\MetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/MetaMigrator.php',
-        'FluentCart\\Database\\Migrations\\Migrator' => __DIR__ . '/../..' . '/database/Migrations/Migrator.php',
-        'FluentCart\\Database\\Migrations\\OrderAddressesMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderAddressesMigrator.php',
-        'FluentCart\\Database\\Migrations\\OrderDownloadPermissionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderDownloadPermissionsMigrator.php',
-        'FluentCart\\Database\\Migrations\\OrderMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderMetaMigrator.php',
-        'FluentCart\\Database\\Migrations\\OrderOperationsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderOperationsMigrator.php',
-        'FluentCart\\Database\\Migrations\\OrderTaxRateMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderTaxRateMigrator.php',
-        'FluentCart\\Database\\Migrations\\OrderTransactionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderTransactionsMigrator.php',
-        'FluentCart\\Database\\Migrations\\OrdersItemsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrdersItemsMigrator.php',
-        'FluentCart\\Database\\Migrations\\OrdersMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrdersMigrator.php',
-        'FluentCart\\Database\\Migrations\\ProductDetailsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductDetailsMigrator.php',
-        'FluentCart\\Database\\Migrations\\ProductDownloadsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductDownloadsMigrator.php',
-        'FluentCart\\Database\\Migrations\\ProductMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductMetaMigrator.php',
-        'FluentCart\\Database\\Migrations\\ProductVariationMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductVariationMigrator.php',
-        'FluentCart\\Database\\Migrations\\ScheduledActionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ScheduledActionsMigrator.php',
-        'FluentCart\\Database\\Migrations\\ShippingClassesMigrator' => __DIR__ . '/../..' . '/database/Migrations/ShippingClassesMigrator.php',
-        'FluentCart\\Database\\Migrations\\ShippingMethodsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ShippingMethodsMigrator.php',
-        'FluentCart\\Database\\Migrations\\ShippingZonesMigrator' => __DIR__ . '/../..' . '/database/Migrations/ShippingZonesMigrator.php',
-        'FluentCart\\Database\\Migrations\\SubscriptionMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/SubscriptionMetaMigrator.php',
-        'FluentCart\\Database\\Migrations\\SubscriptionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/SubscriptionsMigrator.php',
-        'FluentCart\\Database\\Migrations\\TaxClassesMigrator' => __DIR__ . '/../..' . '/database/Migrations/TaxClassesMigrator.php',
-        'FluentCart\\Database\\Migrations\\TaxRatesMigrator' => __DIR__ . '/../..' . '/database/Migrations/TaxRatesMigrator.php',
-        'FluentCart\\Database\\Migrations\\WebhookLogger' => __DIR__ . '/../..' . '/database/Migrations/WebhookLogger.php',
-        'FluentCart\\Database\\Overrides\\DbConnection' => __DIR__ . '/../..' . '/database/Overrides/DbConnection.php',
-        'FluentCart\\Database\\Overrides\\QueryBuilder' => __DIR__ . '/../..' . '/database/Overrides/QueryBuilder.php',
-        'FluentCart\\Database\\Seeder\\AppliedCouponsSeeder' => __DIR__ . '/../..' . '/database/Seeder/AppliedCouponsSeeder.php',
-        'FluentCart\\Database\\Seeder\\AttributeSeeder' => __DIR__ . '/../..' . '/database/Seeder/AttributeSeeder.php',
-        'FluentCart\\Database\\Seeder\\CouponSeeder' => __DIR__ . '/../..' . '/database/Seeder/CouponSeeder.php',
-        'FluentCart\\Database\\Seeder\\CustomerAddressSeeder' => __DIR__ . '/../..' . '/database/Seeder/CustomerAddressSeeder.php',
-        'FluentCart\\Database\\Seeder\\CustomerSeeder' => __DIR__ . '/../..' . '/database/Seeder/CustomerSeeder.php',
-        'FluentCart\\Database\\Seeder\\OrderAddressSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderAddressSeeder.php',
-        'FluentCart\\Database\\Seeder\\OrderMetaSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderMetaSeeder.php',
-        'FluentCart\\Database\\Seeder\\OrderOperationSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderOperationSeeder.php',
-        'FluentCart\\Database\\Seeder\\OrderSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderSeeder.php',
-        'FluentCart\\Database\\Seeder\\ProductNameProvide' => __DIR__ . '/../..' . '/database/Seeder/ProductNameProvide.php',
-        'FluentCart\\Database\\Seeder\\ProductSeeder' => __DIR__ . '/../..' . '/database/Seeder/ProductSeeder.php',
-        'FluentCart\\Database\\Seeder\\SubscriptionSeeder' => __DIR__ . '/../..' . '/database/Seeder/SubscriptionSeeder.php',
-        'FluentCart\\Database\\Seeder\\TaxSeeder' => __DIR__ . '/../..' . '/database/Seeder/TaxSeeder.php',
+        'Webmakerr\\Database\\DBMigrator' => __DIR__ . '/../..' . '/database/DBMigrator.php',
+        'Webmakerr\\Database\\DBSeeder' => __DIR__ . '/../..' . '/database/DBSeeder.php',
+        'Webmakerr\\Database\\Migrations\\ActivityMigrator' => __DIR__ . '/../..' . '/database/Migrations/ActivityMigrator.php',
+        'Webmakerr\\Database\\Migrations\\AppliedCouponsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AppliedCouponsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\AttributeGroupsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AttributeGroupsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\AttributeObjectRelationsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AttributeObjectRelationsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\AttributeTermsMigrator' => __DIR__ . '/../..' . '/database/Migrations/AttributeTermsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\CartMigrator' => __DIR__ . '/../..' . '/database/Migrations/CartMigrator.php',
+        'Webmakerr\\Database\\Migrations\\CouponsMigrator' => __DIR__ . '/../..' . '/database/Migrations/CouponsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\CustomerAddressesMigrator' => __DIR__ . '/../..' . '/database/Migrations/CustomerAddressesMigrator.php',
+        'Webmakerr\\Database\\Migrations\\CustomerMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/CustomerMetaMigrator.php',
+        'Webmakerr\\Database\\Migrations\\CustomersMigrator' => __DIR__ . '/../..' . '/database/Migrations/CustomersMigrator.php',
+        'Webmakerr\\Database\\Migrations\\LabelMigrator' => __DIR__ . '/../..' . '/database/Migrations/LabelMigrator.php',
+        'Webmakerr\\Database\\Migrations\\LabelRelationshipsMigrator' => __DIR__ . '/../..' . '/database/Migrations/LabelRelationshipsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\MetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/MetaMigrator.php',
+        'Webmakerr\\Database\\Migrations\\Migrator' => __DIR__ . '/../..' . '/database/Migrations/Migrator.php',
+        'Webmakerr\\Database\\Migrations\\OrderAddressesMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderAddressesMigrator.php',
+        'Webmakerr\\Database\\Migrations\\OrderDownloadPermissionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderDownloadPermissionsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\OrderMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderMetaMigrator.php',
+        'Webmakerr\\Database\\Migrations\\OrderOperationsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderOperationsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\OrderTaxRateMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderTaxRateMigrator.php',
+        'Webmakerr\\Database\\Migrations\\OrderTransactionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrderTransactionsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\OrdersItemsMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrdersItemsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\OrdersMigrator' => __DIR__ . '/../..' . '/database/Migrations/OrdersMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ProductDetailsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductDetailsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ProductDownloadsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductDownloadsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ProductMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductMetaMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ProductVariationMigrator' => __DIR__ . '/../..' . '/database/Migrations/ProductVariationMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ScheduledActionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ScheduledActionsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ShippingClassesMigrator' => __DIR__ . '/../..' . '/database/Migrations/ShippingClassesMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ShippingMethodsMigrator' => __DIR__ . '/../..' . '/database/Migrations/ShippingMethodsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\ShippingZonesMigrator' => __DIR__ . '/../..' . '/database/Migrations/ShippingZonesMigrator.php',
+        'Webmakerr\\Database\\Migrations\\SubscriptionMetaMigrator' => __DIR__ . '/../..' . '/database/Migrations/SubscriptionMetaMigrator.php',
+        'Webmakerr\\Database\\Migrations\\SubscriptionsMigrator' => __DIR__ . '/../..' . '/database/Migrations/SubscriptionsMigrator.php',
+        'Webmakerr\\Database\\Migrations\\TaxClassesMigrator' => __DIR__ . '/../..' . '/database/Migrations/TaxClassesMigrator.php',
+        'Webmakerr\\Database\\Migrations\\TaxRatesMigrator' => __DIR__ . '/../..' . '/database/Migrations/TaxRatesMigrator.php',
+        'Webmakerr\\Database\\Migrations\\WebhookLogger' => __DIR__ . '/../..' . '/database/Migrations/WebhookLogger.php',
+        'Webmakerr\\Database\\Overrides\\DbConnection' => __DIR__ . '/../..' . '/database/Overrides/DbConnection.php',
+        'Webmakerr\\Database\\Overrides\\QueryBuilder' => __DIR__ . '/../..' . '/database/Overrides/QueryBuilder.php',
+        'Webmakerr\\Database\\Seeder\\AppliedCouponsSeeder' => __DIR__ . '/../..' . '/database/Seeder/AppliedCouponsSeeder.php',
+        'Webmakerr\\Database\\Seeder\\AttributeSeeder' => __DIR__ . '/../..' . '/database/Seeder/AttributeSeeder.php',
+        'Webmakerr\\Database\\Seeder\\CouponSeeder' => __DIR__ . '/../..' . '/database/Seeder/CouponSeeder.php',
+        'Webmakerr\\Database\\Seeder\\CustomerAddressSeeder' => __DIR__ . '/../..' . '/database/Seeder/CustomerAddressSeeder.php',
+        'Webmakerr\\Database\\Seeder\\CustomerSeeder' => __DIR__ . '/../..' . '/database/Seeder/CustomerSeeder.php',
+        'Webmakerr\\Database\\Seeder\\OrderAddressSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderAddressSeeder.php',
+        'Webmakerr\\Database\\Seeder\\OrderMetaSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderMetaSeeder.php',
+        'Webmakerr\\Database\\Seeder\\OrderOperationSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderOperationSeeder.php',
+        'Webmakerr\\Database\\Seeder\\OrderSeeder' => __DIR__ . '/../..' . '/database/Seeder/OrderSeeder.php',
+        'Webmakerr\\Database\\Seeder\\ProductNameProvide' => __DIR__ . '/../..' . '/database/Seeder/ProductNameProvide.php',
+        'Webmakerr\\Database\\Seeder\\ProductSeeder' => __DIR__ . '/../..' . '/database/Seeder/ProductSeeder.php',
+        'Webmakerr\\Database\\Seeder\\SubscriptionSeeder' => __DIR__ . '/../..' . '/database/Seeder/SubscriptionSeeder.php',
+        'Webmakerr\\Database\\Seeder\\TaxSeeder' => __DIR__ . '/../..' . '/database/Seeder/TaxSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

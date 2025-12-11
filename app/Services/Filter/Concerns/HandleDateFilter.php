@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Filter\Concerns;
+namespace Webmakerr\App\Services\Filter\Concerns;
 
 
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\DateTime\DateTime;
 
 trait HandleDateFilter
 {

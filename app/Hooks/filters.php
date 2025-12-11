@@ -1,11 +1,11 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Foundation\Application;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Foundation\Application;
 
-use FluentCart\App\Services\Payments\SubscriptionHelper;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Services\Payments\SubscriptionHelper;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  * All registered filter's handlers should be in app\Hooks\Handlers,
@@ -36,7 +36,7 @@ add_filter('block_categories_all', function ($categories) {
     return $categories;
 });
 
-add_filter('fluent_cart/dummy_product_info', function ($info) {
+webmakerr_add_filter('webmakerr_cart/dummy_product_info', function ($info) {
     $infos = [
         'mens-shoes' => [
             'title'    => __("Men’s Shoes", 'fluent-cart'),
@@ -69,7 +69,7 @@ add_filter('fluent_cart/dummy_product_info', function ($info) {
     ];
 
     foreach ($infos as $key => $info) {
-        $filePath = FLUENTCART_PLUGIN_PATH . 'dummies' . DIRECTORY_SEPARATOR . $key . '.json';
+        $filePath = WEBMAKERR_PLUGIN_PATH . 'dummies' . DIRECTORY_SEPARATOR . $key . '.json';
         if (file_exists($filePath)) {
             try {
                 $json = file_get_contents($filePath);

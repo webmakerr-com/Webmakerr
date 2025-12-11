@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Models\WpModels;
+namespace Webmakerr\App\Models\WpModels;
 
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\Model;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\Model;
 
 class TermRelationship extends Model
 {
@@ -20,6 +20,6 @@ class TermRelationship extends Model
 
     public function products()
     {
-        return $this->hasMany(\FluentCart\App\Models\Product::class, 'ID', 'object_id');
+        return $this->hasMany(\Webmakerr\App\Models\Product::class, 'ID', 'object_id');
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Modules\Integrations\FluentPlugins;
+namespace Webmakerr\App\Modules\Integrations\FluentPlugins;
 
 use FluentAffiliate\App\Models\Affiliate;
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Services\URL;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Services\URL;
 use FluentCrm\App\Models\Subscriber;
 use FluentCrm\App\Services\Helper;
 use FluentCrm\App\Services\Libs\ConditionAssessor;
@@ -262,7 +262,7 @@ class FluentCRMDeepIntegration
         $customerProperties = ['ltv', 'aov'];
 
         if (in_array($key, $customerProperties)) {
-            $value = \FluentCart\App\Helpers\Helper::toCent($value);
+            $value = \Webmakerr\App\Helpers\Helper::toCent($value);
             return $query->whereExists(function ($q) use ($key, $value, $operator) {
                 $q->select(fluentCrmDb()->raw(1))
                     ->from('fct_customers')
@@ -566,7 +566,7 @@ class FluentCRMDeepIntegration
         $stats = [
             [
                 'title' => __('Lifetime Value', 'fluent-cart'),
-                'value' => '<a href="' . URL::getDashboardUrl('customers/' . $customer->id . '/view') . '" target="_blank" class="fc_view_more">' . \FluentCart\App\Helpers\Helper::toDecimal($customer->ltv) . '</a>'
+                'value' => '<a href="' . URL::getDashboardUrl('customers/' . $customer->id . '/view') . '" target="_blank" class="fc_view_more">' . \Webmakerr\App\Helpers\Helper::toDecimal($customer->ltv) . '</a>'
             ],
             [
                 'title' => __('Purchases', 'fluent-cart'),

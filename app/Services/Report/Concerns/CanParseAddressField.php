@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services\Report\Concerns;
+namespace Webmakerr\App\Services\Report\Concerns;
 
-use FluentCart\App\Services\Report\ReportService;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\DateTime;
+use Webmakerr\App\Services\Report\ReportService;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\DateTime;
 
 trait CanParseAddressField
 {

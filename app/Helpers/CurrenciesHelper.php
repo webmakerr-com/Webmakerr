@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\CurrencySettings;
+use Webmakerr\Api\CurrencySettings;
 use FLuentCart\Framework\Support\Arr;
 
 if (!defined('ABSPATH')) {
@@ -17,7 +17,7 @@ class CurrenciesHelper
      */
     public static function getCurrencies($code = null)
     {
-        $currencies = apply_filters('fluent_cart/accepted_currencies', array(
+        $currencies = webmakerr_apply_filters('webmakerr_cart/accepted_currencies', array(
             'AED' => __('United Arab Emirates Dirham', 'fluent-cart'),
             'AFN' => __('Afghan Afghani', 'fluent-cart'),
             'ALL' => __('Albanian Lek', 'fluent-cart'),
@@ -191,7 +191,7 @@ class CurrenciesHelper
 
     public static function getCurrencySigns()
     {
-        return apply_filters('fluent_cart/global_currency_symbols', [
+        return webmakerr_apply_filters('webmakerr_cart/global_currency_symbols', [
 			'AED' => '&#x62f;.&#x625;',
 			'AFN' => '&#x60b;',
 			'ALL' => 'L',
@@ -379,7 +379,7 @@ class CurrenciesHelper
 
     public static function zeroDecimalCurrencies()
     {
-        return apply_filters('fluent_cart/zero_decimal_currencies', array(
+        return webmakerr_apply_filters('webmakerr_cart/zero_decimal_currencies', array(
             'BIF' => esc_html__('Burundian Franc', 'fluent-cart'),
             'CLP' => esc_html__('Chilean Peso', 'fluent-cart'),
             'DJF' => esc_html__('Djiboutian Franc', 'fluent-cart'),

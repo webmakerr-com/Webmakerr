@@ -2,11 +2,11 @@
 
 namespace FluentCartPro\App\Modules\Integrations;
 
-use FluentCart\App\Helpers\EditorShortCodeHelper;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Modules\Integrations\BaseIntegrationManager;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\EditorShortCodeHelper;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Modules\Integrations\BaseIntegrationManager;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class WebhookConnect extends BaseIntegrationManager
 {

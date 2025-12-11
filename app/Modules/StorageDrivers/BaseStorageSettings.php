@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\StorageDrivers;
+namespace Webmakerr\App\Modules\StorageDrivers;
 
 abstract class BaseStorageSettings
 {

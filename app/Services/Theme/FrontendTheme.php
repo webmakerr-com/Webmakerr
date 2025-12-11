@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Theme;
+namespace Webmakerr\App\Services\Theme;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\Framework\Support\Arr;
 
 class FrontendTheme {
 
@@ -21,7 +21,7 @@ class FrontendTheme {
 		$style = $this->prepareInlineStyle($themeData);
 
 		if (!empty($style)){
-			wp_register_style( 'fluent-cart-inline-style', false, [], FLUENTCART_VERSION );
+			wp_register_style( 'fluent-cart-inline-style', false, [], WEBMAKERR_VERSION );
 			wp_enqueue_style( 'fluent-cart-inline-style' );
 			wp_add_inline_style( 'fluent-cart-inline-style', "body{ {$style}}" );
 		}

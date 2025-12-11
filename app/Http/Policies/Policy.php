@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Http\Policies;
+namespace Webmakerr\App\Http\Policies;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\Framework\Foundation\Policy as BasePolicy;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\Framework\Foundation\Policy as BasePolicy;
+use Webmakerr\Framework\Support\Arr;
 
 class Policy extends BasePolicy
 {

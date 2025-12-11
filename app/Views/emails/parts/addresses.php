@@ -1,9 +1,9 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * @var $order \FluentCart\App\Models\Order
+ * @var $order \Webmakerr\App\Models\Order
  */
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 $billingAddress = $order->billing_address;
 $shippingAddress = $order->shipping_address;

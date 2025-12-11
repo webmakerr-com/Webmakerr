@@ -2,10 +2,10 @@
 
 namespace FluentCartPro\App\Http\Requests;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\User;
-use FluentCart\App\Services\Permission\PermissionManager;
-use FluentCart\Framework\Foundation\RequestGuard;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\User;
+use Webmakerr\App\Services\Permission\PermissionManager;
+use Webmakerr\Framework\Foundation\RequestGuard;
 
 class RoleRequest extends RequestGuard
 {

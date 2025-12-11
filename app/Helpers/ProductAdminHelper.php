@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Helpers;
+namespace Webmakerr\App\Helpers;
 
-use FluentCart\Api\Resource\ProductDownloadResource;
-use FluentCart\Api\Resource\ProductVariationResource;
-use FluentCart\App\Models\AttributeRelation;
-use FluentCart\App\Models\AttributeTerm;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\Helpers;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\ProductDownloadResource;
+use Webmakerr\Api\Resource\ProductVariationResource;
+use Webmakerr\App\Models\AttributeRelation;
+use Webmakerr\App\Models\AttributeTerm;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\Helpers;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class ProductAdminHelper
 {
@@ -42,7 +42,7 @@ class ProductAdminHelper
 
             $variationIds[] = Arr::get($result, 'data.id');
             $variants[$index]['id'] = Arr::get($result, 'data.id');
-            if ($variationType === \FluentCart\App\Helpers\Helper::PRODUCT_TYPE_SIMPLE) {
+            if ($variationType === \Webmakerr\App\Helpers\Helper::PRODUCT_TYPE_SIMPLE) {
                 break;
             }
         }

@@ -1,20 +1,20 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\CustomerAddressResource;
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Http\Requests\AttachUserRequest;
-use FluentCart\App\Http\Requests\CustomerAddressRequest;
-use FluentCart\App\Http\Requests\CustomerRequest;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\User;
-use FluentCart\App\Services\Filter\CustomerFilter;
-use FluentCart\App\Services\Filter\OrderFilter;
-use FluentCart\Framework\Database\Orm\Collection;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\CustomerAddressResource;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Http\Requests\AttachUserRequest;
+use Webmakerr\App\Http\Requests\CustomerAddressRequest;
+use Webmakerr\App\Http\Requests\CustomerRequest;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\User;
+use Webmakerr\App\Services\Filter\CustomerFilter;
+use Webmakerr\App\Services\Filter\OrderFilter;
+use Webmakerr\Framework\Database\Orm\Collection;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class CustomerController extends Controller
 {
@@ -71,7 +71,7 @@ class CustomerController extends Controller
 
         $customer['selected_labels'] = $selectedLabels;
 
-        $customer = apply_filters('fluent_cart/customer/view', $customer, $request->all());
+        $customer = webmakerr_apply_filters('webmakerr_cart/customer/view', $customer, $request->all());
         return $this->sendSuccess(['customer' => $customer]);
     }
 
@@ -176,7 +176,7 @@ class CustomerController extends Controller
     {
         $customer = CustomerResource::find($customerId);
         return $this->sendSuccess([
-            'widgets' => apply_filters('fluent_cart/widgets/single_customer', [], $customer)
+            'widgets' => webmakerr_apply_filters('webmakerr_cart/widgets/single_customer', [], $customer)
         ]);
     }
 

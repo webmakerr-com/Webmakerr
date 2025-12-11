@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\Report\Concerns\Subscription;
+namespace Webmakerr\App\Services\Report\Concerns\Subscription;
 
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\DateTime\DateTime;
 
 trait CanCalculateMrr
 {

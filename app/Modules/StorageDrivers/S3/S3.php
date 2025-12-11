@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\StorageDrivers\S3;
+namespace Webmakerr\App\Modules\StorageDrivers\S3;
 
-use FluentCart\App\Services\FileSystem\Drivers\S3\S3ConnectionVerify;
-use FluentCart\App\Services\FileSystem\Drivers\S3\S3Driver;
-use FluentCart\App\Vite;
-use FluentCart\App\Modules\StorageDrivers\BaseStorageDriver;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Services\FileSystem\Drivers\S3\S3ConnectionVerify;
+use Webmakerr\App\Services\FileSystem\Drivers\S3\S3Driver;
+use Webmakerr\App\Vite;
+use Webmakerr\App\Modules\StorageDrivers\BaseStorageDriver;
+use Webmakerr\Framework\Support\Arr;
 
 class S3 extends BaseStorageDriver
 {
@@ -24,8 +24,8 @@ class S3 extends BaseStorageDriver
 
     public function registerHooks()
     {
-        add_filter('fluent_cart/verify_driver_connect_info_' . $this->slug, [$this, 'verifyConnectInfo'], 10, 2);
-        add_filter('fluent_cart/get_dynamic_search_s3_bucket_list', [$this, 'getBucketList'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/verify_driver_connect_info_' . $this->slug, [$this, 'verifyConnectInfo'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/get_dynamic_search_s3_bucket_list', [$this, 'getBucketList'], 10, 2);
 
     }
 
@@ -95,7 +95,7 @@ class S3 extends BaseStorageDriver
             $data['buckets'] = [];
             $data['show_buckets'] = 'no';
             $cacheKey = 'fct_s3_region';
-            \FluentCart\App\Models\Meta::query()->where('meta_key', $cacheKey)->delete();
+            \Webmakerr\App\Models\Meta::query()->where('meta_key', $cacheKey)->delete();
             $message = __('S3 is deactivated successfully', 'fluent-cart');
         }
 
@@ -281,7 +281,7 @@ class S3 extends BaseStorageDriver
     public static function getBucketRegion($bucket)
     {
         $cacheKey = 'fct_s3_region';
-        $existingMeta = \FluentCart\App\Models\Meta::query()->where('meta_key', $cacheKey)->first();
+        $existingMeta = \Webmakerr\App\Models\Meta::query()->where('meta_key', $cacheKey)->first();
 
 
         if ($existingMeta) {
@@ -310,7 +310,7 @@ class S3 extends BaseStorageDriver
             $existingMeta->meta_value = $values;
             $existingMeta->save();
         } else {
-            \FluentCart\App\Models\Meta::query()->create([
+            \Webmakerr\App\Models\Meta::query()->create([
                 'meta_key'   => $cacheKey,
                 'meta_value' => [
                     $bucket => $region

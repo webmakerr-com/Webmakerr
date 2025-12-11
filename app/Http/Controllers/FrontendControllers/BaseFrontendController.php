@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\FrontendControllers;
+namespace Webmakerr\App\Http\Controllers\FrontendControllers;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\App\Http\Controllers\Controller;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\App\Http\Controllers\Controller;
 
 class BaseFrontendController extends Controller
 {

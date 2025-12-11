@@ -3,14 +3,14 @@
 namespace FluentCartPro\App\Modules\PaymentMethods\PaddleGateway;
 
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\API\API;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Helpers\StatusHelper;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\Subscriptions\Services\SubscriptionService;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Helpers\StatusHelper;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\Subscriptions\Services\SubscriptionService;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\Framework\Support\Arr;
 
 class Confirmations
 {

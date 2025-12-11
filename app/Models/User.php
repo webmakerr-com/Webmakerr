@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
 
-use FluentCart\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Services\Permission\PermissionManager;
 
 class User extends Model
 {
@@ -53,7 +53,7 @@ class User extends Model
         return update_user_meta($this->ID, '_fluent_cart_admin_role', $role);
     }
 
-    public function customer(): \FluentCart\Framework\Database\Orm\Relations\HasOne
+    public function customer(): \Webmakerr\Framework\Database\Orm\Relations\HasOne
     {
         return $this->hasOne(Customer::class, 'user_id');
     }

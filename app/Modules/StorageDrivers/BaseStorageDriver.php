@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Modules\StorageDrivers;
+namespace Webmakerr\App\Modules\StorageDrivers;
 
-use FluentCart\Api\Helper;
-use FluentCart\Api\StorageDrivers;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Modules\StorageDrivers\Contracts\BaseStorageInterface;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Validator\Validator;
+use Webmakerr\Api\Helper;
+use Webmakerr\Api\StorageDrivers;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Modules\StorageDrivers\Contracts\BaseStorageInterface;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Validator\Validator;
 use WP_Error;
 
 abstract class BaseStorageDriver implements BaseStorageInterface
@@ -53,10 +53,10 @@ abstract class BaseStorageDriver implements BaseStorageInterface
 
     public function init()
     {
-        add_filter('fluent_cart/storage/get_global_storage_settings_' . $this->slug, [$this, 'globalFields'], 10, 2);
-        add_filter('fluent_cart/storage/get_global_storage_drivers', [$this, 'register'], 10, 2);
-        add_filter('fluent_cart/storage/storage_driver_settings_routes', [$this, 'setRoutes'], 10, 2);
-        add_filter('fluent_cart/storage/get_global_storage_driver_status_' . $this->slug, [$this, 'getActiveStatus'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/storage/get_global_storage_settings_' . $this->slug, [$this, 'globalFields'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/storage/get_global_storage_drivers', [$this, 'register'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/storage/storage_driver_settings_routes', [$this, 'setRoutes'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/storage/get_global_storage_driver_status_' . $this->slug, [$this, 'getActiveStatus'], 10, 2);
 
         $this->registerHooks();
     }
@@ -149,7 +149,7 @@ abstract class BaseStorageDriver implements BaseStorageInterface
 
         $settings = $data;
 
-        $settings = apply_filters('fluent_cart/storage/storage_settings_before_update_' . $this->slug, $settings, $oldSettings);
+        $settings = webmakerr_apply_filters('webmakerr_cart/storage/storage_settings_before_update_' . $this->slug, $settings, $oldSettings);
 
         $settings = Helper::sanitize($settings, $this->fields());
 

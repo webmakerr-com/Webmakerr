@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Models\Concerns;
+namespace Webmakerr\App\Models\Concerns;
 
-use FluentCart\Framework\Database\ORM\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Database\ORM\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  * @method static Builder search(array $query = [])

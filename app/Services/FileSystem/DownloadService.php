@@ -1,25 +1,25 @@
 <?php
 
-namespace FluentCart\App\Services\FileSystem;
+namespace Webmakerr\App\Services\FileSystem;
 
-use FluentCart\Api\Resource\ProductDownloadResource;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\CustomerHelper;
-use FluentCart\App\Http\Controllers\FrontendControllers\CustomerProfileController;
-use FluentCart\App\Models\ProductDownload;
-use FluentCart\App\Services\URL;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Http\URL as BaseUrl;
+use Webmakerr\Api\Resource\ProductDownloadResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\CustomerHelper;
+use Webmakerr\App\Http\Controllers\FrontendControllers\CustomerProfileController;
+use Webmakerr\App\Models\ProductDownload;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Http\URL as BaseUrl;
 
 class DownloadService
 {
     public function register()
     {
-        add_action('fluent_cart/before_download_check_permission_and_store_log', function ($params) {
+        webmakerr_add_action('webmakerr_cart/before_download_check_permission_and_store_log', function ($params) {
             $this->checkPermissionBeforeDownloadPermissionAndStoreLog($params);
         }, 10, 2);
 
-        add_action('fluent_cart/download_file', function ($params) {
+        webmakerr_add_action('webmakerr_cart/download_file', function ($params) {
             $this->downloadFile($params);
         });
 

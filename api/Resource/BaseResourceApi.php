@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
 use BadMethodCallException;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Foundation\App;
-use FluentCart\Framework\Http\Response\Response;
-use FluentCart\Framework\Pagination\AbstractPaginator;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Foundation\App;
+use Webmakerr\Framework\Http\Response\Response;
+use Webmakerr\Framework\Pagination\AbstractPaginator;
+use Webmakerr\Framework\Support\Arr;
 use WP_Error;
 
 

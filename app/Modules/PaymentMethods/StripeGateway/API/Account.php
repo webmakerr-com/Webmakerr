@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway\API;
 
 class Account
 {

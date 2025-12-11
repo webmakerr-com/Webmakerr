@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\AppliedCoupon;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\AppliedCoupon;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  * Class CouponResource
  *
- * @package FluentCart\Api\Resource
+ * @package Webmakerr\Api\Resource
  */
 
 class AppliedCouponResource extends BaseResourceApi

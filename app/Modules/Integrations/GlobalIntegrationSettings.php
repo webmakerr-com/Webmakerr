@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Modules\Integrations;
+namespace Webmakerr\App\Modules\Integrations;
 
-use FluentCart\App\Helpers\EditorShortCodeHelper;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Services\PluginInstaller\BackgroundInstaller;
+use Webmakerr\App\Helpers\EditorShortCodeHelper;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Services\PluginInstaller\BackgroundInstaller;
 
 // Load necessary WordPress files for filesystem and plugin installation
 require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
@@ -21,8 +21,8 @@ class GlobalIntegrationSettings
     public function getGlobalSettingsData($request)
     {
         $settingsKey = sanitize_text_field(Arr::get($request, 'settings_key'));
-        $settings = apply_filters('fluent_cart/integration/global_integration_settings_' . $settingsKey, [], []);
-        $fieldSettings = apply_filters('fluent_cart/integration/global_integration_fields_' . $settingsKey, [], []);
+        $settings = webmakerr_apply_filters('webmakerr_cart/integration/global_integration_settings_' . $settingsKey, [], []);
+        $fieldSettings = webmakerr_apply_filters('webmakerr_cart/integration/global_integration_fields_' . $settingsKey, [], []);
 
         if (!$fieldSettings) {
             wp_send_json([
@@ -54,7 +54,7 @@ class GlobalIntegrationSettings
     {
         $settingsKey = sanitize_text_field(Arr::get($request, 'settings_key'));
         $integration = wp_unslash(Arr::get($request, 'integration'));
-        do_action('fluent_cart/integration/authenticate_global_credentials_' . $settingsKey, [
+        webmakerr_do_action('webmakerr_cart/integration/authenticate_global_credentials_' . $settingsKey, [
             'settings_key' => $settingsKey,
             'integration'  => $integration
         ]);
@@ -64,7 +64,7 @@ class GlobalIntegrationSettings
     {
         $settingsKey = sanitize_text_field(Arr::get($request, 'settings_key'));
         $integration = wp_unslash(Arr::get($request, 'integration'));
-        do_action('fluent_cart/integration/save_global_integration_settings_' . $settingsKey, [
+        webmakerr_do_action('webmakerr_cart/integration/save_global_integration_settings_' . $settingsKey, [
             'settings_key' => $settingsKey,
             'integration'  => $integration
         ]);
@@ -81,7 +81,7 @@ class GlobalIntegrationSettings
     public function getFeeds()
     {
 
-        $availableIntegrations = apply_filters('fluent_cart/integration/order_integrations', [], []);
+        $availableIntegrations = webmakerr_apply_filters('webmakerr_cart/integration/order_integrations', [], []);
 
         $availableIntegrations = array_filter($availableIntegrations, function ($integration) {
             return in_array('global', Arr::get($integration, 'scopes', [])) && $integration['enabled'];
@@ -116,7 +116,7 @@ class GlobalIntegrationSettings
 
     public function getNotificationFeeds()
     {
-        $notificationKeys = apply_filters('fluent_cart/integration/global_notification_types', [], []);
+        $notificationKeys = webmakerr_apply_filters('webmakerr_cart/integration/global_notification_types', [], []);
         if ($notificationKeys) {
             $feeds = Meta::whereIn('meta_key', $notificationKeys)
                 ->orderBy('id', 'DESC')
@@ -148,7 +148,7 @@ class GlobalIntegrationSettings
             'feed'     => $data
         ];
 
-        return apply_filters('fluent_cart/integration/global_notification_feed_' . $feed->meta_key, $feedData, []);
+        return webmakerr_apply_filters('webmakerr_cart/integration/global_notification_feed_' . $feed->meta_key, $feedData, []);
     }
 
     // public function updateNotificationStatus($request)
@@ -196,12 +196,12 @@ class GlobalIntegrationSettings
             }
 
             $feedValue = $feed->meta_value ?? [];
-            $settings = wp_parse_args($feedValue, apply_filters('fluent_cart/integration/get_integration_defaults_' . $integrationName, [], []));
+            $settings = wp_parse_args($feedValue, webmakerr_apply_filters('webmakerr_cart/integration/get_integration_defaults_' . $integrationName, [], []));
         } else {
-            $settings = apply_filters('fluent_cart/integration/get_integration_defaults_' . $integrationName, $settings, []);
+            $settings = webmakerr_apply_filters('webmakerr_cart/integration/get_integration_defaults_' . $integrationName, $settings, []);
         }
 
-        $settingsFields = apply_filters('fluent_cart/integration/get_integration_settings_fields_' . $integrationName, [], $settings);
+        $settingsFields = webmakerr_apply_filters('webmakerr_cart/integration/get_integration_settings_fields_' . $integrationName, [], $settings);
         $shortCodes = EditorShortCodeHelper::getShortCodes();
 
         return [
@@ -245,7 +245,7 @@ class GlobalIntegrationSettings
             $integration = wp_unslash(Arr::get($data, 'integration'));
         }
 
-        $integration = apply_filters('fluent_cart/integration/save_integration_values_' . $integrationName, $integration, [
+        $integration = webmakerr_apply_filters('webmakerr_cart/integration/save_integration_values_' . $integrationName, $integration, [
             'id'        => $integrationId,
             'provider'  => $integrationName,
             'feed_type' => $feedType,
@@ -273,7 +273,7 @@ class GlobalIntegrationSettings
         }
 
         $data = json_decode($data['integration'], true);
-        $settingsFields = apply_filters('fluent_cart/integration/get_integration_settings_fields_' . $integrationName, [], []);
+        $settingsFields = webmakerr_apply_filters('webmakerr_cart/integration/get_integration_settings_fields_' . $integrationName, [], []);
         $fields = Arr::get($settingsFields, 'fields');
         return $this->validateFields($fields, $data);
     }
@@ -366,7 +366,7 @@ class GlobalIntegrationSettings
         $integrationName = Arr::get($request, 'integration_name');
         $list = [];
         $listId = Arr::get($request, 'list_id');
-        $merge_fields = apply_filters('fluent_cart/integration/get_integration_merge_fields_' . $integrationName, $list, $listId);
+        $merge_fields = webmakerr_apply_filters('webmakerr_cart/integration/get_integration_merge_fields_' . $integrationName, $list, $listId);
         return [
             'merge_fields' => $merge_fields
         ];
@@ -374,7 +374,7 @@ class GlobalIntegrationSettings
 
     public function chainedData($requestData)
     {
-        do_action('fluent_cart/integration/chained_' . Arr::get($requestData, 'route'), [
+        webmakerr_do_action('webmakerr_cart/integration/chained_' . Arr::get($requestData, 'route'), [
             'data' => $requestData
         ]);
     }
@@ -393,7 +393,7 @@ class GlobalIntegrationSettings
             $pluginSlug = 'fluent-crm';
         }
 
-        $listedPlugins = apply_filters('fluent_cart/installable_repo_plugins', [
+        $listedPlugins = webmakerr_apply_filters('webmakerr_cart/installable_repo_plugins', [
             'fluent-crm',
             'fluent-smtp',
             'fluent-community',

@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Services\Filter;
+namespace Webmakerr\App\Services\Filter;
 
-use FluentCart\App\Models\Activity;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Models\Activity;
+use Webmakerr\Framework\Support\Str;
 
 class LogFilter extends BaseFilter
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
 
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\Framework\Database\Orm\Relations\BelongsTo;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\Framework\Database\Orm\Relations\BelongsTo;
 
 /**
  * Shipping Method Model - DB Model for Shipping Methods
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  * @version 1.0.0
  */
 class ShippingMethod extends Model

@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Services\Report;
+namespace Webmakerr\App\Services\Report;
 
-use FluentCart\App\App;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Activity;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\Report\Concerns\CanParseAddressField;
-use FluentCart\App\Services\Report\Concerns\HasRange;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\DateTime;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Activity;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\Report\Concerns\CanParseAddressField;
+use Webmakerr\App\Services\Report\Concerns\HasRange;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\DateTime;
 
 class DashBoardReportService extends ReportService
 {

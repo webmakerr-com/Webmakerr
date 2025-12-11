@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\Integrations;
+namespace Webmakerr\App\Modules\Integrations;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Services\ShortCodeParser\ShortcodeTemplateBuilder;
+use Webmakerr\Framework\Support\Arr;
 
 abstract class BaseIntegrationManager
 {
@@ -44,7 +44,7 @@ abstract class BaseIntegrationManager
 
     final public function register()
     {
-        add_filter('fluent_cart/integration/order_integrations', function ($addons) {
+        webmakerr_add_filter('webmakerr_cart/integration/order_integrations', function ($addons) {
             $addons[$this->integrationKey] = $this->getInfo();
             return $addons;
         }, $this->priority, 1);
@@ -52,10 +52,10 @@ abstract class BaseIntegrationManager
         $isConfigured = $this->isConfigured();
 
         if ($isConfigured) {
-            add_filter('fluent_cart/integration/get_integration_defaults_' . $this->integrationKey, array($this, 'getIntegrationDefaults'), 10, 2);
-            add_filter('fluent_cart/integration/get_integration_settings_fields_' . $this->integrationKey, array($this, 'getSettingsFields'), 10, 2);
-            add_filter('fluent_cart/integration/integration_saving_data_' . $this->integrationKey, [$this, 'validateFeedData'], 10, 2);
-            add_action('fluent_cart/integration/run/' . $this->integrationKey, function ($eventData) {
+            webmakerr_add_filter('webmakerr_cart/integration/get_integration_defaults_' . $this->integrationKey, array($this, 'getIntegrationDefaults'), 10, 2);
+            webmakerr_add_filter('webmakerr_cart/integration/get_integration_settings_fields_' . $this->integrationKey, array($this, 'getSettingsFields'), 10, 2);
+            webmakerr_add_filter('webmakerr_cart/integration/integration_saving_data_' . $this->integrationKey, [$this, 'validateFeedData'], 10, 2);
+            webmakerr_add_action('webmakerr_cart/integration/run/' . $this->integrationKey, function ($eventData) {
                 $order = Arr::get($eventData, 'order', null);
                 if (!$order) {
                     return;
@@ -162,7 +162,7 @@ abstract class BaseIntegrationManager
                 ]
             ];
 
-            if (\FluentCart\App\Services\ConditionAssesor::evaluate($condition, $inputData)) {
+            if (\Webmakerr\App\Services\ConditionAssesor::evaluate($condition, $inputData)) {
                 $validInputs[] = $inputValue;
             }
         }

@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\Api\Contracts;
+namespace Webmakerr\Api\Contracts;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Str;
 
 trait CanEnqueue
 {

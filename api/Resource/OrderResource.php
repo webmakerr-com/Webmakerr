@@ -1,32 +1,32 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\Api\Orders;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;
-use FluentCart\App\Events\Order\OrderDeleted;
-use FluentCart\App\Events\Order\OrderStatusUpdated;
-use FluentCart\App\Events\Order\OrderUpdated;
-use FluentCart\App\Events\StockChanged;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\AdminOrderProcessor;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Coupon;
-use FluentCart\App\Models\CustomerAddresses;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderAddress;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\Query\QueryParser;
-use FluentCart\App\Models\Query\Sort;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\OrderService;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Orm\Collection;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Orders;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;
+use Webmakerr\App\Events\Order\OrderDeleted;
+use Webmakerr\App\Events\Order\OrderStatusUpdated;
+use Webmakerr\App\Events\Order\OrderUpdated;
+use Webmakerr\App\Events\StockChanged;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\AdminOrderProcessor;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Coupon;
+use Webmakerr\App\Models\CustomerAddresses;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderAddress;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\Query\QueryParser;
+use Webmakerr\App\Models\Query\Sort;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\OrderService;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Collection;
+use Webmakerr\Framework\Support\Arr;
 
 
 class OrderResource extends BaseResourceApi
@@ -374,14 +374,14 @@ class OrderResource extends BaseResourceApi
 
         if (in_array($transactionStatus, Status::getTransactionSuccessStatuses())) {
 
-            do_action('fluent_cart/payment_' . $paymentStatus,
+            webmakerr_do_action('webmakerr_cart/payment_' . $paymentStatus,
                 [
                     'order'       => $order,
                     'customer'    => $order->customer,
                     'transaction' => $order->latest_transaction
                 ]);
 
-            do_action('fluent_cart/payment_' . $order->latest_transaction->transaction_type . '_' . $paymentStatus, [
+            webmakerr_do_action('webmakerr_cart/payment_' . $order->latest_transaction->transaction_type . '_' . $paymentStatus, [
                 'order'       => $order,
                 'customer'    => $order->customer,
                 'transaction' => $order->latest_transaction

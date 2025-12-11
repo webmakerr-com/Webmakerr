@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway\API;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway\API;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  * WC_Stripe_API class.
@@ -60,7 +60,7 @@ class ApiRequest
     {
         $app_info = array(
             'name'       => 'FluentCart',
-            'version'    => FLUENTCART_VERSION,
+            'version'    => WEBMAKERR_VERSION,
             'url'        => site_url(),
             'partner_id' => ''
             // 'partner_id' => 'pp_partner_FN62GfRLM2Kx5d'
@@ -84,8 +84,7 @@ class ApiRequest
     {
         $user_agent = self::get_user_agent();
         $app_info = $user_agent['application'];
-        return apply_filters(
-            'fluent_cart_stripe_request_headers',
+        return webmakerr_apply_filters('webmakerr_cart_stripe_request_headers',
             array(
                 'Authorization'              => 'Basic ' . base64_encode(self::get_secret_key() . ':'),
                 'Stripe-Version'             => self::STRIPE_API_VERSION,
@@ -112,7 +111,7 @@ class ApiRequest
         if ('charges' === $api && 'POST' === $method) {
             $customer = !empty($request['customer']) ? $request['customer'] : '';
             $source = !empty($request['source']) ? $request['source'] : $customer;
-            $idempotency_key = apply_filters('fluent_cart_stripe_idempotency_key', Arr::get($request, 'metadata.fluentcart_tid') . '-' . $source . '-' . $api, [
+            $idempotency_key = webmakerr_apply_filters('webmakerr_cart_stripe_idempotency_key', Arr::get($request, 'metadata.fluentcart_tid') . '-' . $source . '-' . $api, [
                 'request' => $request
             ]);
             $headers['Idempotency-Key'] = $idempotency_key;
@@ -123,7 +122,7 @@ class ApiRequest
             array(
                 'method'  => $method,
                 'headers' => $headers,
-                'body'    => apply_filters('fluent_cart_stripe_request_body', $request, [
+                'body'    => webmakerr_apply_filters('webmakerr_cart_stripe_request_body', $request, [
                     'api' => $api
                 ]),
                 'timeout' => 50,

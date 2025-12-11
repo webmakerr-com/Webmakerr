@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\BlockTemplates\TemplateParts;
+namespace Webmakerr\App\Modules\Templating\BlockTemplates\TemplateParts;
 
 class ProductModalTemplatePart
 {
@@ -242,15 +242,15 @@ class ProductModalTemplatePart
         }
 
         // Apply filters before rendering (allows other plugins to modify)
-        $content = apply_filters('fluent_cart_template_part_content', $content, self::SLUG, $args);
-        $content = apply_filters('fluent_cart_template_part_content_' . self::SLUG, $content, $args);
+        $content = webmakerr_apply_filters('webmakerr_cart_template_part_content', $content, self::SLUG, $args);
+        $content = webmakerr_apply_filters('webmakerr_cart_template_part_content_' . self::SLUG, $content, $args);
 
         // Parse and render blocks
         $output = do_blocks($content);
 
         // Apply filters after rendering
-        $output = apply_filters('fluent_cart_template_part_output', $output, self::SLUG, $args);
-        $output = apply_filters('fluent_cart_template_part_output_' . self::SLUG, $output, $args);
+        $output = webmakerr_apply_filters('webmakerr_cart_template_part_output', $output, self::SLUG, $args);
+        $output = webmakerr_apply_filters('webmakerr_cart_template_part_output_' . self::SLUG, $output, $args);
 
         return $output;
     }

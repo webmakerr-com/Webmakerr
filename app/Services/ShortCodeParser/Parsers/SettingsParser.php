@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Services\ShortCodeParser\Parsers;
+namespace Webmakerr\App\Services\ShortCodeParser\Parsers;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Services\Localization\LocalizationManager;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Services\Localization\LocalizationManager;
 
 class SettingsParser extends BaseParser
 {

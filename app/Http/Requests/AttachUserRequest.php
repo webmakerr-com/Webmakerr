@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Http\Requests;
+namespace Webmakerr\App\Http\Requests;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\Customer;
-use FluentCart\App\Models\User;
-use FluentCart\Framework\Foundation\RequestGuard;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\App\Models\User;
+use Webmakerr\Framework\Foundation\RequestGuard;
 
 class AttachUserRequest extends RequestGuard
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Events\Order;
+namespace Webmakerr\App\Events\Order;
 
-use FluentCart\App\Events\EventDispatcher;
-use FluentCart\App\Listeners;
-use FluentCart\App\Models\Order;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Events\EventDispatcher;
+use Webmakerr\App\Listeners;
+use Webmakerr\App\Models\Order;
+use Webmakerr\Framework\Support\Arr;
 
 class OrderStatusUpdated extends EventDispatcher
 {
@@ -78,18 +78,18 @@ class OrderStatusUpdated extends EventDispatcher
         }
 
         if ($this->type === 'payment_status') {
-            do_action('fluent_cart/payment_status_changed_to_'.$this->newStatus, $this->toArray());
-            do_action('fluent_cart/payment_status_changed', $this->toArray());
+            webmakerr_do_action('webmakerr_cart/payment_status_changed_to_'.$this->newStatus, $this->toArray());
+            webmakerr_do_action('webmakerr_cart/payment_status_changed', $this->toArray());
         }
 
         if ($this->type === 'shipping_status') {
-            do_action('fluent_cart/shipping_status_changed_to_' . $this->newStatus, $this->toArray());
-            do_action('fluent_cart/shipping_status_changed', $this->toArray());
+            webmakerr_do_action('webmakerr_cart/shipping_status_changed_to_' . $this->newStatus, $this->toArray());
+            webmakerr_do_action('webmakerr_cart/shipping_status_changed', $this->toArray());
         }
 
         if ($this->type === 'order_status') {
-            do_action('fluent_cart/order_status_changed_to_' . $this->newStatus, $this->toArray());
-            do_action('fluent_cart/order_status_changed', $this->toArray());
+            webmakerr_do_action('webmakerr_cart/order_status_changed_to_' . $this->newStatus, $this->toArray());
+            webmakerr_do_action('webmakerr_cart/order_status_changed', $this->toArray());
         }
     }
 }

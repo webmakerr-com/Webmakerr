@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Concerns\CanSearch;
-use FluentCart\App\Models\WpModels\PostMeta;
-use FluentCart\App\Models\WpModels\Term;
-use FluentCart\App\Models\WpModels\TermRelationship;
-use FluentCart\App\Models\WpModels\TermTaxonomy;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Database\Orm\Relations\hasOne;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Concerns\CanSearch;
+use Webmakerr\App\Models\WpModels\PostMeta;
+use Webmakerr\App\Models\WpModels\Term;
+use Webmakerr\App\Models\WpModels\TermRelationship;
+use Webmakerr\App\Models\WpModels\TermTaxonomy;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Database\Orm\Relations\hasOne;
+use Webmakerr\Framework\Support\Arr;
 
 /**
  *  Product Model - DB Model for Products
@@ -23,7 +23,7 @@ use FluentCart\Framework\Support\Arr;
  * This model is intended to be use for relationships and DB query
  * For insert update we will use WordPress's native functions
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -121,7 +121,7 @@ class Product extends Model
         return $this->hasOne(ProductDetail::class, 'post_id', 'ID');
     }
 
-    public function variants(): \FluentCart\Framework\Database\Orm\Relations\HasMany
+    public function variants(): \Webmakerr\Framework\Database\Orm\Relations\HasMany
     {
         return $this->hasMany(ProductVariation::class, 'post_id', 'ID');
     }
@@ -141,7 +141,7 @@ class Product extends Model
         return false;
     }
 
-    public function downloadable_files(): \FluentCart\Framework\Database\Orm\Relations\HasMany
+    public function downloadable_files(): \Webmakerr\Framework\Database\Orm\Relations\HasMany
     {
         return $this->hasMany(ProductDownload::class, 'post_id', 'ID');
     }
@@ -156,7 +156,7 @@ class Product extends Model
             ->where('postmeta.meta_key', 'fluent-products-gallery-image');
     }
 
-    public function wp_terms(): \FluentCart\Framework\Database\Orm\Relations\HasMany
+    public function wp_terms(): \Webmakerr\Framework\Database\Orm\Relations\HasMany
     {
         return $this->hasMany(
             TermRelationship::class,
@@ -165,7 +165,7 @@ class Product extends Model
         );
     }
 
-    public function orderItems(): \FluentCart\Framework\Database\Orm\Relations\HasMany
+    public function orderItems(): \Webmakerr\Framework\Database\Orm\Relations\HasMany
     {
         return $this->hasMany(OrderItem::class, 'post_id', 'ID');
     }

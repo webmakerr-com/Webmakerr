@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title><?php use FluentCart\App\App;
+    <title><?php use Webmakerr\App\App;
 
         echo esc_html__('Order Created Notification', 'fluent-cart'); ?>
     </title>

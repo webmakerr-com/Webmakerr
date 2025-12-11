@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors;
 
-use FluentCart\App\Hooks\Handlers\ShortCodes\ProductCardShortCode;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Services\Renderer\ProductRenderer;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\App;
-use FluentCart\Api\StoreSettings;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\ProductCardShortCode;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Services\Renderer\ProductRenderer;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\App;
+use Webmakerr\Api\StoreSettings;
 
 class ProductGalleryBlockEditor extends BlockEditor
 {

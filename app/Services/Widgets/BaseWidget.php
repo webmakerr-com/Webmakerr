@@ -1,8 +1,8 @@
 <?php
 
-namespace FluentCart\App\Services\Widgets;
+namespace Webmakerr\App\Services\Widgets;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 abstract class BaseWidget
 {
@@ -13,7 +13,7 @@ abstract class BaseWidget
     public static function widgets(): array
     {
         $instance = new static();
-        $stats = apply_filters('fluent_cart/' . $instance->widgetName(), $instance->widgetData());
+        $stats = webmakerr_apply_filters('webmakerr_cart/' . $instance->widgetName(), $instance->widgetData());
         return Arr::wrap($stats);
     }
 }

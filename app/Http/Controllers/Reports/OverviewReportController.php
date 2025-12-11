@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers\Reports;
+namespace Webmakerr\App\Http\Controllers\Reports;
 
-use FluentCart\App\App;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Status;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Http\Controllers\Controller;
+use Webmakerr\App\App;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Http\Controllers\Controller;
 
 class OverviewReportController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\Localization;
+namespace Webmakerr\App\Services\Localization;
 
 class PostcodeVerification
 {
@@ -50,7 +50,7 @@ class PostcodeVerification
 				break;
 		}
 
-		return apply_filters('fluent_cart/address/postcode/format', trim($postcode), $country);
+		return webmakerr_apply_filters('webmakerr_cart/address/postcode/format', trim($postcode), $country);
 	}
 
 	/**
@@ -151,7 +151,7 @@ class PostcodeVerification
 				break;
 		}
 
-		return apply_filters('fluent_cart/address/postcode/is_valid', $valid, $postcode, $country);
+		return webmakerr_apply_filters('webmakerr_cart/address/postcode/is_valid', $valid, $postcode, $country);
 	}
 
     public static function isGBPostcode( $to_check ) {

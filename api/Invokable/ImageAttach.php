@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\Api\Invokable;
+namespace Webmakerr\Api\Invokable;
 
-use FluentCart\App\Services\Async\ImageAttachService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Services\Async\ImageAttachService;
+use Webmakerr\Framework\Support\Arr;
 
 class ImageAttach
 {

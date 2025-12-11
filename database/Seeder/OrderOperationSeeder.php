@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\Database\Seeder;
+namespace Webmakerr\Database\Seeder;
 
-use FluentCart\Faker\Factory;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderOperation;
+use Webmakerr\Faker\Factory;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderOperation;
 
 class OrderOperationSeeder
 {

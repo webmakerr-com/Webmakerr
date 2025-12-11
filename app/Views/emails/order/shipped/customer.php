@@ -1,7 +1,7 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * @var $order \FluentCart\App\Models\Order
+ * @var $order \Webmakerr\App\Models\Order
  */
 ?>
 
@@ -12,7 +12,7 @@
 
 <?php
 
-\FluentCart\App\App::make('view')->render('emails.parts.items_table', [
+\Webmakerr\App\App::make('view')->render('emails.parts.items_table', [
     'order'          => $order,
     'formattedItems' => $order->order_items,
     'heading'        => 'Order Summary',
@@ -20,7 +20,7 @@
 
 $downloads = $order->getDownloads();
 if($downloads) {
-    \FluentCart\App\App::make('view')->render('emails.parts.downloads', [
+    \Webmakerr\App\App::make('view')->render('emails.parts.downloads', [
         'order'         => $order,
         'heading'       => 'Downloads',
         'downloadItems' => $order->getDownloads() ?: [],
@@ -29,11 +29,11 @@ if($downloads) {
 
 echo '<hr />';
 
-\FluentCart\App\App::make('view')->render('emails.parts.addresses', [
+\Webmakerr\App\App::make('view')->render('emails.parts.addresses', [
     'order' => $order,
 ]);
 
-\FluentCart\App\App::make('view')->render('emails.parts.call_to_action_box', [
+\Webmakerr\App\App::make('view')->render('emails.parts.call_to_action_box', [
     'content'     => 'Thank you for choosing us! We hope you’re excited about your order. If you have any questions, feel free to reach out.',
     'link'        => $order->getViewUrl('customer'),
     'button_text' => 'View Details'

@@ -1,35 +1,35 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\Api\Resource\ProductDetailResource;
-use FluentCart\Api\Resource\ProductResource;
-use FluentCart\Api\Resource\ProductVariationResource;
-use FluentCart\Api\Resource\ShopResource;
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Helpers\AdminHelper;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Http\Requests\ProductCreateRequest;
-use FluentCart\App\Http\Requests\ProductRequest;
-use FluentCart\App\Http\Requests\ProductUpdateRequest;
-use FluentCart\App\Http\Requests\UpgradePathSettingRequest;
-use FluentCart\App\Models\Meta;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Models\TaxClass;
-use FluentCart\App\Modules\ReportingModule\ProductReport;
-use FluentCart\App\Services\Async\DummyProductService;
-use FluentCart\App\Services\Filter\ProductFilter;
-use FluentCart\App\Services\PlanUpgradeService;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Resource\ProductDetailResource;
+use Webmakerr\Api\Resource\ProductResource;
+use Webmakerr\Api\Resource\ProductVariationResource;
+use Webmakerr\Api\Resource\ShopResource;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Helpers\AdminHelper;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Http\Requests\ProductCreateRequest;
+use Webmakerr\App\Http\Requests\ProductRequest;
+use Webmakerr\App\Http\Requests\ProductUpdateRequest;
+use Webmakerr\App\Http\Requests\UpgradePathSettingRequest;
+use Webmakerr\App\Models\Meta;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Models\TaxClass;
+use Webmakerr\App\Modules\ReportingModule\ProductReport;
+use Webmakerr\App\Services\Async\DummyProductService;
+use Webmakerr\App\Services\Filter\ProductFilter;
+use Webmakerr\App\Services\PlanUpgradeService;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Support\Str;
 use WP_REST_Response;
-use FluentCart\Api\Helper as ApiHelper;
+use Webmakerr\Api\Helper as ApiHelper;
 
 class ProductController extends Controller
 {
@@ -44,7 +44,7 @@ class ProductController extends Controller
             })
         );
 
-        $products = apply_filters('fluent_cart/products_list', $products);
+        $products = webmakerr_apply_filters('webmakerr_cart/products_list', $products);
 
         return $this->sendSuccess([
             'products' => $products
@@ -179,7 +179,7 @@ class ProductController extends Controller
             return $isUpdated;
         }
 
-        do_action('fluent_cart/product_updated', [
+        webmakerr_do_action('webmakerr_cart/product_updated', [
             'data'    => $data,
             'product' => $isUpdated['data']
         ]);

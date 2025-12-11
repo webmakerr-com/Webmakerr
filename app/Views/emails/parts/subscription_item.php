@@ -38,7 +38,7 @@
                     </td>
                     <td style="width:20%;text-align:right">
                         <p style="font-size:14px;color:rgb(17,24,39);margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                            <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($transaction->total)); ?>
+                            <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($transaction->total)); ?>
                             (<?php echo esc_html($subscription->billing_interval); ?>)
                         </p>
                     </td>
@@ -64,7 +64,7 @@
                     </td>
                     <td style="width:30%;text-align:right">
                         <p style="font-size:16px;font-weight:700;color:rgb(17,24,39);margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                            <?php echo esc_html(\FluentCart\App\Helpers\Helper::toDecimal($transaction->total)); ?>
+                            <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($transaction->total)); ?>
                         </p>
                     </td>
                 </tr>

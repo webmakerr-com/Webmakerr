@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\PayPalGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\PayPalGateway;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Modules\PaymentMethods\PayPalGateway\API\API;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Modules\PaymentMethods\PayPalGateway\API\API;
+use Webmakerr\Framework\Support\Arr;
 
 class PayPalHelper
 {
@@ -49,7 +49,7 @@ class PayPalHelper
             . $data['signup_fee'] . '_'
             . $data['bill_times'];
 
-        $planId = apply_filters('fluent_cart/paypal_plan_id', $planId, [
+        $planId = webmakerr_apply_filters('webmakerr_cart/paypal_plan_id', $planId, [
             'plan_data' => $data,
             'variation' => $variation,
             'product'   => $product
@@ -232,7 +232,7 @@ class PayPalHelper
             'interval_frequency' => $intervalCount,
         ];
 
-        $billingPeriod = apply_filters('fluent_cart/subscription_billing_period', $billingPeriod, [
+        $billingPeriod = webmakerr_apply_filters('webmakerr_cart/subscription_billing_period', $billingPeriod, [
             'subscription_interval' => $data['billing_interval'],
             'payment_method' => 'paypal',
         ]);

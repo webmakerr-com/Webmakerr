@@ -1,14 +1,14 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\WpModels\TermRelationship;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\WpModels\TermRelationship;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
 
 class ShopResource extends BaseResourceApi
 {
@@ -97,7 +97,7 @@ class ShopResource extends BaseResourceApi
             ->select(Arr::get($params, 'select', '*'))
             ->with(Arr::get($params, 'with', []));
 
-        $query = apply_filters('fluent_cart/shop_query', $query, $params);
+        $query = webmakerr_apply_filters('webmakerr_cart/shop_query', $query, $params);
 
         $query = $query->when(!Arr::get($params, 'selected_status'), function ($query) use ($params) {
             return $query->search(Arr::get($params, 'admin_all_statuses', []));

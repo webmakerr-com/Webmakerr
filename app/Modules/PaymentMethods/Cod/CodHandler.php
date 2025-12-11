@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\Cod;
+namespace Webmakerr\App\Modules\PaymentMethods\Cod;
 
-use FluentCart\App\Events\Order\OrderStatusUpdated;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Helpers\StatusHelper;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Services\DateTime\DateTime;
-use FluentCart\App\Services\Payments\PaymentHelper;
-use FluentCart\App\Services\Payments\SubscriptionHelper;
+use Webmakerr\App\Events\Order\OrderStatusUpdated;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Helpers\StatusHelper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Services\DateTime\DateTime;
+use Webmakerr\App\Services\Payments\PaymentHelper;
+use Webmakerr\App\Services\Payments\SubscriptionHelper;
 
 class CodHandler {
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\AirwallexGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\AirwallexGateway;
 
-use FluentCart\App\App;
-use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
 
 class Airwallex extends AbstractPaymentGateway
 {
@@ -38,7 +38,7 @@ class Airwallex extends AbstractPaymentGateway
     public function boot()
     {
         // init IPN related class/actions here
-        add_filter('fluent_cart/payment_methods/airwallex_settings', [$this, 'getSettings'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/payment_methods/airwallex_settings', [$this, 'getSettings'], 10, 2);
     }
 
     public function makePaymentFromPaymentInstance(PaymentInstance $paymentInstance)
@@ -460,7 +460,7 @@ class Airwallex extends AbstractPaymentGateway
         $order->vendor_charge_id = $paymentIntent['id'];
         $order->save();
 
-        do_action('fluent_cart/payment_success', [
+        webmakerr_do_action('webmakerr_cart/payment_success', [
             'order' => $order,
             'payment_intent' => $paymentIntent
         ]);
@@ -472,7 +472,7 @@ class Airwallex extends AbstractPaymentGateway
         $order->status = 'failed';
         $order->save();
 
-        do_action('fluent_cart/payment_failed', [
+        webmakerr_do_action('webmakerr_cart/payment_failed', [
             'order' => $order,
             'payment_intent' => $paymentIntent
         ]);

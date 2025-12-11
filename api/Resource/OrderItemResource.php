@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\App\App;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Support\DateTime;
+use Webmakerr\App\App;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Support\DateTime;
 
 class OrderItemResource extends BaseResourceApi
 {

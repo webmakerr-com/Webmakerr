@@ -1,19 +1,19 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors\ShopApp;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors\ShopApp;
 
-use FluentCart\Api\Taxonomy;
-use FluentCart\App\CPT\FluentProducts;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Hooks\Handlers\BlockEditors\BlockEditor;
-use FluentCart\App\Hooks\Handlers\BlockEditors\ShopApp\InnerBlocks\InnerBlocks;
-use FluentCart\App\Hooks\Handlers\ShortCodes\ShopAppHandler;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Collection;
-use FluentCart\Framework\Support\Str;
+use Webmakerr\Api\Taxonomy;
+use Webmakerr\App\CPT\FluentProducts;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Hooks\Handlers\BlockEditors\BlockEditor;
+use Webmakerr\App\Hooks\Handlers\BlockEditors\ShopApp\InnerBlocks\InnerBlocks;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\ShopAppHandler;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Collection;
+use Webmakerr\Framework\Support\Str;
 
 class ShopAppBlockEditor extends BlockEditor
 {

@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\Models\TaxClass;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Str;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Http\Requests\TaxClassRequest;
+use Webmakerr\App\Models\TaxClass;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Str;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Http\Requests\TaxClassRequest;
 
 class TaxClassController extends Controller
 {

@@ -36,7 +36,7 @@
                                     /* translators: %s is the auto-renewal date and time */
                                     esc_html__('- Auto renews on %s', 'fluent-cart'),
                                     esc_html(
-                                        \FluentCart\App\Services\DateTime\DateTime::anyTimeToGmt($subs->next_billing_date)->format('M d, Y h:i A')
+                                        \Webmakerr\App\Services\DateTime\DateTime::anyTimeToGmt($subs->next_billing_date)->format('M d, Y h:i A')
                                     )
                                 );
                                 ?>

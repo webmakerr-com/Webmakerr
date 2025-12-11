@@ -1,16 +1,16 @@
 <?php
 
-namespace FluentCart\App\Services\Renderer;
+namespace Webmakerr\App\Services\Renderer;
 
-use FluentCart\Api\PaymentMethods;
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\Api\Resource\FrontendResource\CustomerAddressResource;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\App;use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Services\Localization\LocalizationManager;use FluentCart\App\Services\URL;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\PaymentMethods;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\Api\Resource\FrontendResource\CustomerAddressResource;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\App;use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Services\Localization\LocalizationManager;use Webmakerr\App\Services\URL;
+use Webmakerr\Framework\Support\Arr;
 
 class CheckoutRenderer
 {
@@ -138,7 +138,7 @@ class CheckoutRenderer
             $classNames[] = $configClass;
         }
 
-        $classNames = apply_filters('fluent_cart/checkout_page_css_classes', $classNames, [
+        $classNames = webmakerr_apply_filters('webmakerr_cart/checkout_page_css_classes', $classNames, [
             'cart' => $this->cart
         ]);
 
@@ -149,13 +149,13 @@ class CheckoutRenderer
             'data-fluent-cart-checkout-page' => '',
         ];
 
-        do_action('fluent_cart/before_checkout_page_start', [
+        webmakerr_do_action('webmakerr_cart/before_checkout_page_start', [
             'cart' => $this->cart
         ]);
         ?>
         <div <?php RenderHelper::renderAtts($atts); ?> role="main" aria-label="<?php esc_attr_e('Checkout Page', 'fluent-cart'); ?>">
         <?php
-        do_action('fluent_cart/afrer_checkout_page_start', [
+        webmakerr_do_action('webmakerr_cart/afrer_checkout_page_start', [
             'cart' => $this->cart
         ]);
     }
@@ -163,7 +163,7 @@ class CheckoutRenderer
     public function renderNotices()
     {
         $notices = Arr::get($this->cart->checkout_data, '__cart_notices', []);
-        $hookedNotices = apply_filters('fluent_cart/checkout_page_notices', [], [
+        $hookedNotices = webmakerr_apply_filters('webmakerr_cart/checkout_page_notices', [], [
             'cart' => $this->cart
         ]);
         if (!$notices && !$hookedNotices) {
@@ -204,10 +204,10 @@ class CheckoutRenderer
             'action'                                       => $current_url,
             'enctype'                                      => 'multipart/form-data',
         ];
-        do_action('fluent_cart/before_checkout_form', ['cart' => $this->cart]);
+        webmakerr_do_action('webmakerr_cart/before_checkout_form', ['cart' => $this->cart]);
         ?>
         <form <?php RenderHelper::renderAtts($formAttributes); ?> aria-label="<?php esc_attr_e('Checkout Form', 'fluent-cart'); ?>">
-            <?php do_action('fluent_cart/checkout_form_opening', ['cart' => $this->cart]); ?>
+            <?php webmakerr_do_action('webmakerr_cart/checkout_form_opening', ['cart' => $this->cart]); ?>
             <div class="fct_checkout_inner">
                 <div class="fct_checkout_form">
                     <div class="fct_checkout_form_items">
@@ -216,7 +216,7 @@ class CheckoutRenderer
 
                         <?php $this->renderCreateAccountField(); ?>
 
-                        <?php do_action('fluent_cart/before_billing_fields', ['cart' => $this->cart]); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/before_billing_fields', ['cart' => $this->cart]); ?>
 
                         <?php $this->renderAddressFields(); ?>
                         <div  class="fct_checkout_shipping_methods <?php echo $this->requireShipping ? '' : 'is-hidden' ?>">
@@ -225,17 +225,17 @@ class CheckoutRenderer
 
                         <?php $this->agreeTerms(); ?>
 
-                        <?php do_action('fluent_cart/before_payment_methods', ['cart' => $this->cart]); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/before_payment_methods', ['cart' => $this->cart]); ?>
 
                        <div class="fct_checkout_payment_methods " data-fluent-cart-checkout-payment-methods>
                             <?php $this->renderPaymentMethods(); ?>
                        </div>
 
-                       <?php do_action('fluent_cart/after_payment_methods', ['cart' => $this->cart]); ?>
+                       <?php webmakerr_do_action('webmakerr_cart/after_payment_methods', ['cart' => $this->cart]); ?>
 
                         <?php $this->renderCheckoutButton(); ?>
 
-                        <?php do_action('fluent_cart/after_checkout_button', ['cart' => $this->cart]); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/after_checkout_button', ['cart' => $this->cart]); ?>
 
                     </div>
                 </div>
@@ -247,24 +247,24 @@ class CheckoutRenderer
 
                         <?php (new CartSummaryRender($this->cart))->render(); ?>
                         <?php $this->renderOrderNoteField(); ?>
-                        <?php do_action('fluent_cart/after_order_notes', ['cart' => $this->cart]); ?>
+                        <?php webmakerr_do_action('webmakerr_cart/after_order_notes', ['cart' => $this->cart]); ?>
                     </div>
                 </div>
             </div>
         </form>
         <?php
-        do_action('fluent_cart/after_checkout_form', ['cart' => $this->cart]);
+        webmakerr_do_action('webmakerr_cart/after_checkout_form', ['cart' => $this->cart]);
     }
 
     public function wrapperEnd()
     {
-        do_action('fluent_cart/before_checkout_page_close', [
+        webmakerr_do_action('webmakerr_cart/before_checkout_page_close', [
             'cart' => $this->cart
         ]);
         ?>
         </div>
         <?php
-        do_action('fluent_cart/after_checkout_page', [
+        webmakerr_do_action('webmakerr_cart/after_checkout_page', [
             'cart' => $this->cart
         ]);
     }
@@ -372,12 +372,12 @@ class CheckoutRenderer
         $billingFields = $this->maybeRearrangeAddressFields($billingFields);
 
 
-        $billingFields = apply_filters('fluent_cart/checkout_renderer/billing_fields', $billingFields, [
+        $billingFields = webmakerr_apply_filters('webmakerr_cart/checkout_renderer/billing_fields', $billingFields, [
                 'checkout_renderer' => $this,
                 'cart' => $this->cart
         ]);
 
-        do_action('fluent_cart/before_billing_fields_section', ['cart' => $this->cart]);
+        webmakerr_do_action('webmakerr_cart/before_billing_fields_section', ['cart' => $this->cart]);
 
         $formRender = new FormFieldRenderer();
 
@@ -395,7 +395,7 @@ class CheckoutRenderer
             ]
         ]);
 
-        do_action('fluent_cart/after_billing_fields_section', ['cart' => $this->cart]);
+        webmakerr_do_action('webmakerr_cart/after_billing_fields_section', ['cart' => $this->cart]);
 
         if (!$requireShipping) {
             echo '</div>';
@@ -427,7 +427,7 @@ class CheckoutRenderer
 
         $shippingFields = $this->validateAddressField($shippingAddress,$shippingFields);
 
-        $shippingFields = apply_filters('fluent_cart/checkout_renderer/shipping_fields', $shippingFields, [
+        $shippingFields = webmakerr_apply_filters('webmakerr_cart/checkout_renderer/shipping_fields', $shippingFields, [
                 'checkout_renderer' => $this,
                 'cart' => $this->cart
         ]);
@@ -441,7 +441,7 @@ class CheckoutRenderer
 
         $shippingFields = $this->maybeRearrangeAddressFields($shippingFields);
 
-        do_action('fluent_cart/before_shipping_fields_section', ['cart' => $this->cart]);
+        webmakerr_do_action('webmakerr_cart/before_shipping_fields_section', ['cart' => $this->cart]);
         $formRender->renderSection([
             'id'           => 'shipping_address_section_section',
             'type'         => 'section',
@@ -454,7 +454,7 @@ class CheckoutRenderer
                 'aria-label' => __('Shipping Address', 'fluent-cart')
             ]
         ]);
-        do_action('fluent_cart/after_shipping_fields_section', ['cart' => $this->cart]);
+        webmakerr_do_action('webmakerr_cart/after_shipping_fields_section', ['cart' => $this->cart]);
         echo '</div>';
     }
 
@@ -462,7 +462,7 @@ class CheckoutRenderer
     {
         if (
             !$this->requireShipping &&
-            apply_filters('fluent_cart/disable_order_notes_for_digital_products', true, [
+            webmakerr_apply_filters('webmakerr_cart/disable_order_notes_for_digital_products', true, [
                 'cart' => $this->cart
             ])
         ) {
@@ -515,7 +515,7 @@ class CheckoutRenderer
             }
         ]);
 
-        do_action('fluent_cart/after_order_notes_field', ['cart' => $this->cart]);
+        webmakerr_do_action('webmakerr_cart/after_order_notes_field', ['cart' => $this->cart]);
     }
 
     public function renderShippingOptions()
@@ -553,7 +553,7 @@ class CheckoutRenderer
         $selectedPaymentMethod = Arr::get($this->cart->checkout_data, 'form_data._fct_pay_method', '');
         $activePaymentMethods = PaymentMethods::getActiveMethodInstance($this->cart);
 
-        $activePaymentMethods = apply_filters('fluent_cart/checkout_active_payment_methods', $activePaymentMethods, [
+        $activePaymentMethods = webmakerr_apply_filters('webmakerr_cart/checkout_active_payment_methods', $activePaymentMethods, [
             'cart' => $this->cart
         ]);
 
@@ -670,7 +670,7 @@ class CheckoutRenderer
             <?php endif; ?>
             <div class="fluent-cart-checkout_embed_payment_wrapper">
             <?php
-                $paymentMethodClass = apply_filters('fluent_cart_payment_method_list_class', '',[
+                $paymentMethodClass = webmakerr_apply_filters('webmakerr_cart_payment_method_list_class', '',[
                         'route' => $route,
                         'method_title' => $methodTitle,
                         'method_style' => $methodStyle,
@@ -678,7 +678,7 @@ class CheckoutRenderer
 
              ?>
                 <div class="<?php echo "fluent-cart-checkout_embed_payment_container fluent-cart-checkout_embed_payment_container_" . esc_attr($route. ' '. $paymentMethodClass);?>" aria-hidden="true">
-                    <?php do_action('fluent_cart/checkout_embed_payment_method_content', [
+                    <?php webmakerr_do_action('webmakerr_cart/checkout_embed_payment_method_content', [
                             'method' => $method,
                             'cart' => $this->cart,
                             'route' => $route

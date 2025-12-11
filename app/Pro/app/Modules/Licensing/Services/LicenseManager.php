@@ -2,14 +2,14 @@
 
 namespace FluentCartPro\App\Modules\Licensing\Services;
 
-use FluentCart\Api\Resource\ProductResource;
-use FluentCart\App\Models\Product;
-use FluentCart\App\Models\ProductDownload;
-use FluentCart\App\Models\ProductMeta;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\App\Services\FileSystem\DownloadService;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\ProductResource;
+use Webmakerr\App\Models\Product;
+use Webmakerr\App\Models\ProductDownload;
+use Webmakerr\App\Models\ProductMeta;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\App\Services\FileSystem\DownloadService;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 use FluentCartPro\App\Modules\Licensing\Concerns\CanManageLicenseSites;
 use FluentCartPro\App\Modules\Licensing\Models\License;
 use FluentCartPro\App\Modules\Licensing\Models\LicenseActivation;
@@ -149,7 +149,7 @@ class LicenseManager
         $downloadService = new DownloadService();
         $package_url = $downloadService->getDownloadableUrl($params);
 
-        return apply_filters( 'fluent_cart_sl_encoded_package_url', $package_url, []);
+        return webmakerr_apply_filters('webmakerr_cart_sl_encoded_package_url', $package_url, []);
     }
 
     public function isSiteActive($licenseId, $siteUrl)
@@ -229,12 +229,12 @@ class LicenseManager
         try {
             $licenses = License::query()->where('order_id', $orderId)->get();
             $licenseIds = $licenses->pluck('id')->toArray();
-            do_action('fluent_cart_sl/before_deleting_licenses', [
+            webmakerr_do_action('webmakerr_cart_sl/before_deleting_licenses', [
                 'licenses' => $licenses
             ]);
             License::query()->where('order_id', $orderId)->delete();
             LicenseActivation::query()->whereIn('license_id', $licenseIds)->delete();
-            do_action('fluent_cart_sl/after_deleting_licenses', [
+            webmakerr_do_action('webmakerr_cart_sl/after_deleting_licenses', [
                 'licenses' => $licenses
             ]);
             return true;
@@ -254,11 +254,11 @@ class LicenseManager
 
         $data['license_key'] = UUID::licensesKey($data);
 
-        $data = apply_filters('fluent_cart_sl/issue_license_data', $data, []);
+        $data = webmakerr_apply_filters('webmakerr_cart_sl/issue_license_data', $data, []);
 
         try {
             $license = License::query()->create($data);
-            do_action('fluent_cart_sl/license_issued', [
+            webmakerr_do_action('webmakerr_cart_sl/license_issued', [
                 'license' => $license,
                 'data' => $data
             ]);
@@ -282,13 +282,13 @@ class LicenseManager
             return false;
         }
 
-        do_action('fluent_cart_sl/before_updating_licenses_status', ['licenses' => $licenses]);
-        do_action('fluent_cart_sl/before_updating_licenses_status_to_disabled', ['licenses' => $licenses]);
+        webmakerr_do_action('webmakerr_cart_sl/before_updating_licenses_status', ['licenses' => $licenses]);
+        webmakerr_do_action('webmakerr_cart_sl/before_updating_licenses_status_to_disabled', ['licenses' => $licenses]);
 
         $markDisable = License::query()->where('order_id', $orderId)->update(['status' => 'disabled']);
 
-        do_action('fluent_cart_sl/after_updating_licenses_status', ['licenses' => $licenses]);
-        do_action('fluent_cart_sl/after_updating_licenses_status_to_disabled', ['licenses' => $licenses]);
+        webmakerr_do_action('webmakerr_cart_sl/after_updating_licenses_status', ['licenses' => $licenses]);
+        webmakerr_do_action('webmakerr_cart_sl/after_updating_licenses_status_to_disabled', ['licenses' => $licenses]);
 
         return $markDisable;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Api\Cookie;
+namespace Webmakerr\Api\Cookie;
 
 class Cookie
 {
@@ -8,7 +8,7 @@ class Cookie
 
     public static function getCartHash(string $default = ''): string
     {
-        $hash = \FluentCart\Framework\Http\Cookie::get(static::getCartHashKey(), $default);
+        $hash = \Webmakerr\Framework\Http\Cookie::get(static::getCartHashKey(), $default);
         return trim($hash);
     }
 
@@ -19,7 +19,7 @@ class Cookie
 
     public static function setCartHash(string $cartHash): void
     {
-        $expireTime = apply_filters('fluent_cart/cart_cookie_minutes', time() + 24 * 60 * 30);
+        $expireTime = webmakerr_apply_filters('webmakerr_cart/cart_cookie_minutes', time() + 24 * 60 * 30);
         setcookie(static::getCartHashKey(), $cartHash, [
             'expires'  => $expireTime,
             'path'     => COOKIEPATH,
@@ -32,7 +32,7 @@ class Cookie
 
     public static function deleteCartHash(): void
     {
-        \FluentCart\Framework\Http\Cookie::delete(
+        \Webmakerr\Framework\Http\Cookie::delete(
             static::getCartHashKey(),
             COOKIEPATH,
             COOKIE_DOMAIN

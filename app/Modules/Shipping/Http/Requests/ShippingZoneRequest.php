@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\App\Modules\Shipping\Http\Requests;
+namespace Webmakerr\App\Modules\Shipping\Http\Requests;
 
-use FluentCart\App\App;
-use FluentCart\Framework\Foundation\RequestGuard;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Validator\ValidationException;
+use Webmakerr\App\App;
+use Webmakerr\Framework\Foundation\RequestGuard;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Validator\ValidationException;
 
 class ShippingZoneRequest extends RequestGuard
 {
@@ -28,7 +28,7 @@ class ShippingZoneRequest extends RequestGuard
             'name'   => 'required|string|maxLength:192',
             'region' => function ($attr, $value) {
                 if ($value === 'all') {
-                    $zone = \FluentCart\App\Models\ShippingZone::query()->where('region', 'all');
+                    $zone = \Webmakerr\App\Models\ShippingZone::query()->where('region', 'all');
                     if($this->id){
                         $zone = $zone->where('id', '!=', $this->id);
                     }

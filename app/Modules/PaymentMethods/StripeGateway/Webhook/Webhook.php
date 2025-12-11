@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway\Webhook;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway\Webhook;
 
-use FluentCart\App\Helpers\Status;
-use FluentCart\App\Models\Order;
-use FluentCart\App\Models\OrderTransaction;
-use FluentCart\App\Models\Subscription;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\StripeHelper;
-use FluentCart\App\Modules\Subscriptions\Services\SubscriptionService;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\App\Models\Order;
+use Webmakerr\App\Models\OrderTransaction;
+use Webmakerr\App\Models\Subscription;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\StripeHelper;
+use Webmakerr\App\Modules\Subscriptions\Services\SubscriptionService;
+use Webmakerr\Framework\Support\Arr;
 
 class Webhook
 {
@@ -110,7 +110,7 @@ class Webhook
                 ->first();
 
             if (!$orderTransaction) {
-                $orderTransaction = apply_filters('fluent_cart/stripe/fallback_order_transaction', null, $vendorDataObject);
+                $orderTransaction = webmakerr_apply_filters('webmakerr_cart/stripe/fallback_order_transaction', null, $vendorDataObject);
                 if (!$orderTransaction || $orderTransaction instanceof OrderTransaction) {
                     $orderTransaction = null;
                 }

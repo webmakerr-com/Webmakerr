@@ -1,10 +1,10 @@
 <?php
 
-namespace FluentCart\App\Modules\PaymentMethods\StripeGateway;
+namespace Webmakerr\App\Modules\PaymentMethods\StripeGateway;
 
-use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\API;
-use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Modules\PaymentMethods\StripeGateway\API\API;
+use Webmakerr\App\Services\Payments\PaymentInstance;
+use Webmakerr\Framework\Support\Arr;
 
 class Processor
 {
@@ -206,7 +206,7 @@ class Processor
 
         $paymentArgs['public_key'] = (new StripeSettingsBase())->getPublicKey();
 
-        $intentData = apply_filters('fluent_cart/payments/stripe_onetime_intent_args', $intentData, [
+        $intentData = webmakerr_apply_filters('webmakerr_cart/payments/stripe_onetime_intent_args', $intentData, [
             'order'       => $order,
             'transaction' => $transaction
         ]);

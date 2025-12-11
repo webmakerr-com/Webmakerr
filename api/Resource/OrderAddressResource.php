@@ -1,11 +1,11 @@
 <?php
 
-namespace FluentCart\Api\Resource;
+namespace Webmakerr\Api\Resource;
 
-use FluentCart\Api\Resource\BaseResourceApi;
-use FluentCart\App\Models\OrderAddress;
-use FluentCart\Framework\Database\Orm\Builder;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\Resource\BaseResourceApi;
+use Webmakerr\App\Models\OrderAddress;
+use Webmakerr\Framework\Database\Orm\Builder;
+use Webmakerr\Framework\Support\Arr;
 
 class OrderAddressResource extends BaseResourceApi
 {

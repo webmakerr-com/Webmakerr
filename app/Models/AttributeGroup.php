@@ -1,15 +1,15 @@
 <?php
 
-namespace FluentCart\App\Models;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Models\Concerns\CanSearch;
+namespace Webmakerr\App\Models;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Models\Concerns\CanSearch;
 
 /**
  *  Attributes Group Model - DB Model for Attributes Group eg: color, size etc
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -57,7 +57,7 @@ class AttributeGroup extends Model
     /**
      * hasMany: Group has many Terms
      *
-     * @return \FluentCart\Framework\Database\Orm\Relations\hasMany
+     * @return \Webmakerr\Framework\Database\Orm\Relations\hasMany
      */
     public function terms()
     {

@@ -1,11 +1,11 @@
 <?php
-namespace FluentCart\App\Http\Controllers;
+namespace Webmakerr\App\Http\Controllers;
 
-use FluentCart\App\App;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\App\Vite;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\App;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\App\Vite;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\Framework\Support\Arr;
 
 class TemplateController extends Controller
 {

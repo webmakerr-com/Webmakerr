@@ -1,17 +1,17 @@
 <?php
 
-namespace FluentCart\App\Models;
+namespace Webmakerr\App\Models;
 
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\Framework\Support\Collection;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\Framework\Support\Collection;
 
 /**
  *  OrderItem Model - DB Model for Order Items
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -79,7 +79,7 @@ class OrderAddress extends Model
         return end($nameParts);
     }
 
-    public function order(): \FluentCart\Framework\Database\Orm\Relations\belongsTo
+    public function order(): \Webmakerr\Framework\Database\Orm\Relations\belongsTo
     {
         return $this->belongsTo(Order::class, 'order_id', 'id');
     }

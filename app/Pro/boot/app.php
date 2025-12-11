@@ -1,13 +1,13 @@
 <?php
 
 use FluentCartPro\App\Core\Application;
-use FluentCart\App\Services\Permission\PermissionManager;
+use Webmakerr\App\Services\Permission\PermissionManager;
 use FluentCartPro\App\Services\PluginManager\FluentLicensing;
 use FluentCartPro\App\Modules\PaymentMethods\PaddleGateway\Paddle;
 use FluentCartPro\App\Modules\PaymentMethods\MollieGateway\Mollie;
 
 return function ($file) {
-    add_action('fluentcart_loaded', function ($app) use ($file) {
+    webmakerr_add_action('webmakerr_loaded', function ($app) use ($file) {
         new Application($app, $file);
 
         (new \FluentCartPro\App\Modules\Licensing\Licensing())->register($app);
@@ -18,8 +18,8 @@ return function ($file) {
 
         $fluentLicensing->register([
             'item_id'      => 21480,
-            'basename'     => plugin_basename(FLUENTCART_PRO_PLUGIN_FILE_PATH),
-            'version'      => FLUENTCART_PRO_PLUGIN_VERSION,
+            'basename'     => plugin_basename(WEBMAKERR_PRO_PLUGIN_FILE_PATH),
+            'version'      => WEBMAKERR_PRO_PLUGIN_VERSION,
             'api_url'      => 'https://fluentcart.com/',
             'activate_url' => admin_url('admin.php?page=webmakerr#/settings/licensing'),
             'plugin_title' => 'Webmakerr',
@@ -34,7 +34,7 @@ return function ($file) {
                 printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), wp_kses_post($message));
             });
 
-            add_filter('fluent_cart/admin_notices', function ($notices) use ($licenseNotice) {
+            webmakerr_add_filter('webmakerr_cart/admin_notices', function ($notices) use ($licenseNotice) {
                 if (!$licenseNotice || !PermissionManager::userCan('is_super_admin')) {
                     return;
                 }
@@ -47,7 +47,7 @@ return function ($file) {
             });
         }
 
-        add_action('fluent_cart/init', function ($app) {
+        webmakerr_add_action('webmakerr_cart/init', function ($app) {
             Paddle::register();
             Mollie::register();
         });
@@ -59,11 +59,11 @@ return function ($file) {
     });
 
     add_action('plugins_loaded', function () {
-        if (!defined('FLUENTCART_VERSION')) {
+        if (!defined('WEBMAKERR_VERSION')) {
             (new \FluentCartPro\App\Services\Onboarding\CoreDependencyHandler())->register();
         } else {
-            add_filter('fluent_cart/admin_notices', function ($notices) {
-                if (FLUENTCART_MIN_CORE_VERSION !== FLUENTCART_VERSION && version_compare(FLUENTCART_MIN_CORE_VERSION, FLUENTCART_VERSION, '>')) {
+            webmakerr_add_filter('webmakerr_cart/admin_notices', function ($notices) {
+                if (WEBMAKERR_MIN_CORE_VERSION !== WEBMAKERR_VERSION && version_compare(WEBMAKERR_MIN_CORE_VERSION, WEBMAKERR_VERSION, '>')) {
                     if (!PermissionManager::userCan('is_super_admin')) {
                         return $notices;
                     }

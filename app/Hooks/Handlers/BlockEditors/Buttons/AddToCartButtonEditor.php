@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\BlockEditors\Buttons;
+namespace Webmakerr\App\Hooks\Handlers\BlockEditors\Buttons;
 
-use FluentCart\App\Hooks\Handlers\BlockEditors\BlockEditor;
-//use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
-//use FluentCart\App\Hooks\Handlers\ShortCodes\Buttons\DirectCheckoutShortcode;
-use FluentCart\App\Services\Translations\TransStrings;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Hooks\Handlers\BlockEditors\BlockEditor;
+//use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\AddToCartShortcode;
+//use Webmakerr\App\Hooks\Handlers\ShortCodes\Buttons\DirectCheckoutShortcode;
+use Webmakerr\App\Services\Translations\TransStrings;
+use Webmakerr\Framework\Support\Arr;
 
 class AddToCartButtonEditor extends BlockEditor
 {

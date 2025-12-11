@@ -2,7 +2,7 @@
 
 namespace FluentCartPro\App\Services\PluginManager;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class PluginLicenseManager
 {
@@ -20,8 +20,8 @@ class PluginLicenseManager
             'license_server' => 'https://cart-ddwe.wp1.site/', // Your store URL where the fluent software licensing plugin installed
             'item_id'        => 124373,                   // FluentCart product ID
             'license_server' => 'https://cart.test/', // Your store URL where the fluent software licensing plugin installed
-            'plugin_file'    => FLUENTCART_PRO_PLUGIN_FILE_PATH,         // File path of your plugin
-            'version'        => FLUENTCART_PRO_PLUGIN_VERSION,      // Current version of your plugin
+            'plugin_file'    => WEBMAKERR_PRO_PLUGIN_FILE_PATH,         // File path of your plugin
+            'version'        => WEBMAKERR_PRO_PLUGIN_VERSION,      // Current version of your plugin
             'store_url'      => 'https://fluentcart.com',
             'purchase_url'   => 'https://fluentcart.com',
             'settings_key'   => '__fct_pro_plugin_license',

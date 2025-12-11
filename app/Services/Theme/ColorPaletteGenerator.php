@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\App\Services\Theme;
+namespace Webmakerr\App\Services\Theme;
 
 class ColorPaletteGenerator {
 

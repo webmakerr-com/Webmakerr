@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\Templating\Bricks;
+namespace Webmakerr\App\Modules\Templating\Bricks;
 
 use Bricks\Frontend;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class BricksHelper
 {

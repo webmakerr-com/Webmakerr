@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\Api\Invokable;
+namespace Webmakerr\Api\Invokable;
 
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Arr;
 
 class DummyProduct
 {
     public function __invoke($app, $params)
     {
-        \FluentCart\App\Services\Async\DummyProductService::createAll(Arr::get($params, 'category'));
+        \Webmakerr\App\Services\Async\DummyProductService::createAll(Arr::get($params, 'category'));
     }
 }

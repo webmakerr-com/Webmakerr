@@ -1,6 +1,6 @@
 <?php
 
-namespace FluentCart\Api\Sanitizer;
+namespace Webmakerr\Api\Sanitizer;
 
 class Sanitizer
 {

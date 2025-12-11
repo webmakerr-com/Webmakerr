@@ -3,13 +3,13 @@
 namespace FluentCartPro\App\Modules\StockManagement;
 
 
-use FluentCart\Api\ModuleSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\OrderItem;
-use FluentCart\App\Models\OrderMeta;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\Api\ModuleSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\OrderItem;
+use Webmakerr\App\Models\OrderMeta;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Support\Arr;
 
 class StockManagement
 {
@@ -34,7 +34,7 @@ class StockManagement
             return $values;
         }, 10, 2);
 
-        add_filter('fluent_cart/shop_query', [$this, 'filterShopQuery'], 10, 2);
+        webmakerr_add_filter('webmakerr_cart/shop_query', [$this, 'filterShopQuery'], 10, 2);
 
 
         if (!ModuleSettings::isActive('stock_management')) {

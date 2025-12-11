@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Listeners;
+namespace Webmakerr\App\Listeners;
 
-use FluentCart\App\Events\StockChanged;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\ProductDetail;
-use FluentCart\App\Models\ProductVariation;
-use FluentCart\Framework\Support\Arr;
+use Webmakerr\App\Events\StockChanged;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\ProductDetail;
+use Webmakerr\App\Models\ProductVariation;
+use Webmakerr\Framework\Support\Arr;
 
 class UpdateDefaultVariation
 {

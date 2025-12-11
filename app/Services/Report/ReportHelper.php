@@ -1,13 +1,13 @@
 <?php
 
-namespace FluentCart\App\Services\Report;
+namespace Webmakerr\App\Services\Report;
 
-use FluentCart\App\App;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Status;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\Framework\Support\Sanitizer;
-use FluentCart\App\Services\DateTime\DateTime;
+use Webmakerr\App\App;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Status;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\Framework\Support\Sanitizer;
+use Webmakerr\App\Services\DateTime\DateTime;
 
 class ReportHelper
 {

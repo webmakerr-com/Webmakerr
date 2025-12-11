@@ -1,12 +1,12 @@
 <?php
 
-namespace FluentCart\App\Modules\Shipping\Http\Controllers;
+namespace Webmakerr\App\Modules\Shipping\Http\Controllers;
 
-use FluentCart\App\Http\Controllers\Controller;
-use FluentCart\App\Models\ShippingClass;
-use FluentCart\App\Modules\Shipping\Http\Requests\ShippingClassRequest;
-use FluentCart\Framework\Http\Request\Request;
-use FluentCart\App\Modules\Shipping\Services\Filter\ShippingClassFilter;
+use Webmakerr\App\Http\Controllers\Controller;
+use Webmakerr\App\Models\ShippingClass;
+use Webmakerr\App\Modules\Shipping\Http\Requests\ShippingClassRequest;
+use Webmakerr\Framework\Http\Request\Request;
+use Webmakerr\App\Modules\Shipping\Services\Filter\ShippingClassFilter;
 
 class ShippingClassController extends Controller
 {

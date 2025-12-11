@@ -2,9 +2,9 @@
 
 namespace FluentCartPro\App\Modules\PaymentMethods\MollieGateway;
 
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Modules\PaymentMethods\Core\BaseGatewaySettings;
 
 class MollieSettingsBase extends BaseGatewaySettings
 {
@@ -23,7 +23,7 @@ class MollieSettingsBase extends BaseGatewaySettings
             $settings = wp_parse_args($settings, $defaults);
         }
 
-        $this->settings = apply_filters('fluent_cart/mollie_settings', $settings);
+        $this->settings = webmakerr_apply_filters('webmakerr_cart/mollie_settings', $settings);
     }
 
     public static function getDefaults()

@@ -1,19 +1,19 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <?php
 /**
- * @var $router \FluentCart\Framework\Http\Router
+ * @var $router \Webmakerr\Framework\Http\Router
  */
 
-use FluentCart\App\Http\Controllers\CartController;
-use FluentCart\App\Http\Controllers\CheckoutController;
-use FluentCart\App\Http\Controllers\FrontendControllers\CustomerController;
-use FluentCart\App\Http\Controllers\FrontendControllers\CustomerOrderController;
-use FluentCart\App\Http\Controllers\FrontendControllers\CustomerProfileController;
-use FluentCart\App\Http\Controllers\FrontendControllers\CustomerSubscriptionController;
-use FluentCart\App\Http\Controllers\ShopController;
-use FluentCart\App\Http\Controllers\UserController;
-use FluentCart\App\Modules\Shipping\Http\Controllers\Frontend\ShippingFrontendController;
-use FluentCart\Framework\Http\Router;
+use Webmakerr\App\Http\Controllers\CartController;
+use Webmakerr\App\Http\Controllers\CheckoutController;
+use Webmakerr\App\Http\Controllers\FrontendControllers\CustomerController;
+use Webmakerr\App\Http\Controllers\FrontendControllers\CustomerOrderController;
+use Webmakerr\App\Http\Controllers\FrontendControllers\CustomerProfileController;
+use Webmakerr\App\Http\Controllers\FrontendControllers\CustomerSubscriptionController;
+use Webmakerr\App\Http\Controllers\ShopController;
+use Webmakerr\App\Http\Controllers\UserController;
+use Webmakerr\App\Modules\Shipping\Http\Controllers\Frontend\ShippingFrontendController;
+use Webmakerr\Framework\Http\Router;
 
 $router->prefix('public')
     ->withPolicy('PublicPolicy')->group(function (Router $router) {

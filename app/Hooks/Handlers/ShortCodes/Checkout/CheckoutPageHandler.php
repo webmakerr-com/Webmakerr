@@ -1,28 +1,28 @@
 <?php
 
-namespace FluentCart\App\Hooks\Handlers\ShortCodes\Checkout;
+namespace Webmakerr\App\Hooks\Handlers\ShortCodes\Checkout;
 
-use FluentCart\Api\Resource\CustomerResource;
-use FluentCart\App\App;
-use FluentCart\App\Helpers\AddressHelper;
-use FluentCart\App\Models\Cart;
-use FluentCart\App\Modules\Templating\AssetLoader;
-use FluentCart\App\Services\Renderer\CheckoutRenderer;
-use FluentCart\App\Services\URL;
-use FluentCart\Api\StoreSettings;
-use FluentCart\App\Helpers\Helper;
-use FluentCart\App\Models\Customer;
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\Helpers\CartHelper;
-use FluentCart\App\Modules\Tax\TaxModule;
-use FluentCart\App\Services\CheckoutService;
-use FluentCart\App\Services\TemplateService;
-use FluentCart\App\Helpers\CartCheckoutHelper;
-use FluentCart\Api\Resource\CustomerAddressResource;
-use FluentCart\App\Hooks\Handlers\ShortCodes\ShortCode;
-use FluentCart\App\Services\Localization\LocalizationManager;
-use FluentCart\App\Hooks\Handlers\BlockEditors\CheckoutBlockEditor;
-use FluentCart\App\Services\Renderer\CartRenderer;
+use Webmakerr\Api\Resource\CustomerResource;
+use Webmakerr\App\App;
+use Webmakerr\App\Helpers\AddressHelper;
+use Webmakerr\App\Models\Cart;
+use Webmakerr\App\Modules\Templating\AssetLoader;
+use Webmakerr\App\Services\Renderer\CheckoutRenderer;
+use Webmakerr\App\Services\URL;
+use Webmakerr\Api\StoreSettings;
+use Webmakerr\App\Helpers\Helper;
+use Webmakerr\App\Models\Customer;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\Helpers\CartHelper;
+use Webmakerr\App\Modules\Tax\TaxModule;
+use Webmakerr\App\Services\CheckoutService;
+use Webmakerr\App\Services\TemplateService;
+use Webmakerr\App\Helpers\CartCheckoutHelper;
+use Webmakerr\Api\Resource\CustomerAddressResource;
+use Webmakerr\App\Hooks\Handlers\ShortCodes\ShortCode;
+use Webmakerr\App\Services\Localization\LocalizationManager;
+use Webmakerr\App\Hooks\Handlers\BlockEditors\CheckoutBlockEditor;
+use Webmakerr\App\Services\Renderer\CartRenderer;
 
 class CheckoutPageHandler extends ShortCode
 {
@@ -79,7 +79,7 @@ class CheckoutPageHandler extends ShortCode
         $cart->checkout_data = $checkoutData;
         $cart->save();
 
-        do_action('fluent_cart/cart/cart_data_items_updated', [
+        webmakerr_do_action('webmakerr_cart/cart/cart_data_items_updated', [
             'cart'       => $cart,
             'scope'      => 'loading',
             'scope_data' => ''

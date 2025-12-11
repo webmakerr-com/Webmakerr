@@ -1,9 +1,9 @@
 <?php
 
-namespace FluentCart\App\Modules\WooCommerceMigrator;
+namespace Webmakerr\App\Modules\WooCommerceMigrator;
 
-use FluentCart\Framework\Support\Arr;
-use FluentCart\App\CPT\FluentProducts;
+use Webmakerr\Framework\Support\Arr;
+use Webmakerr\App\CPT\FluentProducts;
 use WP_CLI;
 
 /**
@@ -208,7 +208,7 @@ class WooCommerceMigratorCli
     {
         // Ensure the product-categories taxonomy is registered
         if (!taxonomy_exists('product-categories')) {
-            $fluentProducts = new \FluentCart\App\CPT\FluentProducts();
+            $fluentProducts = new \Webmakerr\App\CPT\FluentProducts();
             $fluentProducts->registerProductTaxonomies();
         }
 
@@ -1037,7 +1037,7 @@ class WooCommerceMigratorCli
     {
         if (!taxonomy_exists($destTaxonomy)) {
             // Register taxonomy if needed
-            // $fluentProducts = new \FluentCart\App\CPT\FluentProducts();
+            // $fluentProducts = new \Webmakerr\App\CPT\FluentProducts();
             // $fluentProducts->registerProductTaxonomies();
         }
 

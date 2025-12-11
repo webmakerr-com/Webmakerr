@@ -3,14 +3,14 @@
 namespace FluentCartPro\App\Modules\Licensing\Models;
 
 
-use FluentCart\App\Models\Model;
+use Webmakerr\App\Models\Model;
 
 /**
  *  Meta Model - DB Model for Meta table
  *
  *  Database Model
  *
- * @package FluentCart\App\Models
+ * @package Webmakerr\App\Models
  *
  * @version 1.0.0
  */
@@ -66,7 +66,7 @@ class LicenseSite extends Model
             $isLocal = true;
         }
 
-        return apply_filters('fluent_cart_sl/is_local_site', $isLocal, [
+        return webmakerr_apply_filters('webmakerr_cart_sl/is_local_site', $isLocal, [
             'url' => $url,
             'site' => $this
         ]);
