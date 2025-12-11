@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title><?php use Webmakerr\App\App;
 
-        echo esc_html__('Order Created Notification', 'fluent-cart'); ?></title>
+        echo esc_html__('Order Created Notification', 'webmakerr-cart'); ?></title>
 </head>
 
 <body style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 0;margin: 0;">

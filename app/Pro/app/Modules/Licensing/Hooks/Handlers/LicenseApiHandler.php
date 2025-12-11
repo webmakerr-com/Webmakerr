@@ -35,7 +35,7 @@ class LicenseApiHandler
             return $this->sendSuccessResponse([
                 'status'     => 'invalid',
                 'error_type' => 'validation_error',
-                'message'    => __('license_key, site_url and item_id is required', 'fluent-cart-pro'),
+                'message'    => __('license_key, site_url and item_id is required', 'webmakerr-cart-pro'),
             ]);
         }
 
@@ -103,7 +103,7 @@ class LicenseApiHandler
 
         if (!$formattedData['site_url'] || !$formattedData['license_key'] || !$formattedData['item_id']) {
             return $this->sendErrorResponse([
-                'message'    => __('license_key, site_url and item_id is required', 'fluent-cart-pro'),
+                'message'    => __('license_key, site_url and item_id is required', 'webmakerr-cart-pro'),
                 'error_type' => 'validation_error'
             ], 422);
         }
@@ -115,28 +115,28 @@ class LicenseApiHandler
 
         if (!$license) {
             return $this->sendErrorResponse([
-                'message'    => __('License not found', 'fluent-cart-pro'),
+                'message'    => __('License not found', 'webmakerr-cart-pro'),
                 'error_type' => 'license_not_found'
             ], 422);
         }
 
         if ($license->product_id != $formattedData['item_id']) {
             return $this->sendErrorResponse([
-                'message'    => __('This license key is not valid for this product. Did you provide the valid license key?', 'fluent-cart-pro'),
+                'message'    => __('This license key is not valid for this product. Did you provide the valid license key?', 'webmakerr-cart-pro'),
                 'error_type' => 'key_mismatch'
             ], 422);
         }
 
         if ($license->isExpired()) {
             return $this->sendErrorResponse([
-                'message'    => __('The license key is expired. Please renew or purchase a new license', 'fluent-cart-pro'),
+                'message'    => __('The license key is expired. Please renew or purchase a new license', 'webmakerr-cart-pro'),
                 'error_type' => 'license_expired'
             ], 422);
         }
 
         if (!$license->isActive()) {
             return $this->sendErrorResponse([
-                'message'    => __('The license is not Active. Please contact the support.', 'fluent-cart-pro'),
+                'message'    => __('The license is not Active. Please contact the support.', 'webmakerr-cart-pro'),
                 'error_type' => 'license_not_active'
             ], 422);
         }
@@ -185,7 +185,7 @@ class LicenseApiHandler
 
         if (!$isLocalSite && !$activationLimit) {
             return $this->sendErrorResponse([
-                'message'    => __('This license key has no activation limit. Please upgrade or purchase a new license.', 'fluent-cart-pro'),
+                'message'    => __('This license key has no activation limit. Please upgrade or purchase a new license.', 'webmakerr-cart-pro'),
                 'error_type' => 'activation_limit_exceeded'
             ], 422);
         }
@@ -295,7 +295,7 @@ class LicenseApiHandler
             webmakerr_do_action('webmakerr_cart/license/site_deactivated_failed', $formattedData);
 
             return $this->sendErrorResponse([
-                'message'    => __('license_key, site_url and item_id is required', 'fluent-cart-pro'),
+                'message'    => __('license_key, site_url and item_id is required', 'webmakerr-cart-pro'),
                 'error_type' => 'validation_error'
             ], 422);
         }
@@ -308,7 +308,7 @@ class LicenseApiHandler
         if (!$license || $license->product_id != $formattedData['item_id']) {
             webmakerr_do_action('webmakerr_cart/license/site_deactivated_failed', $formattedData);
             return $this->sendErrorResponse([
-                'message'    => __('License not found or does not match with the item_id', 'fluent-cart-pro'),
+                'message'    => __('License not found or does not match with the item_id', 'webmakerr-cart-pro'),
                 'error_type' => 'license_not_found'
             ], 422);
         }
@@ -320,7 +320,7 @@ class LicenseApiHandler
         if (!$site) {
             webmakerr_do_action('webmakerr_cart/license/site_deactivated_failed', $formattedData);
             return $this->sendErrorResponse([
-                'message'    => __('Site not found', 'fluent-cart-pro'),
+                'message'    => __('Site not found', 'webmakerr-cart-pro'),
                 'error_type' => 'site_not_found'
             ], 422);
         }
@@ -373,7 +373,7 @@ class LicenseApiHandler
 
         if (!$product) {
             return $this->sendErrorResponse([
-                'message'    => __('Product not found', 'fluent-cart-pro'),
+                'message'    => __('Product not found', 'webmakerr-cart-pro'),
                 'error_type' => 'product_not_found'
             ], 422);
         }
@@ -381,7 +381,7 @@ class LicenseApiHandler
         $licenseSettings = $product->getProductMeta('license_settings');
         if (empty($licenseSettings) || !is_array($licenseSettings)) {
             return $this->sendErrorResponse([
-                'message'    => __('License settings not found for this product', 'fluent-cart-pro'),
+                'message'    => __('License settings not found for this product', 'webmakerr-cart-pro'),
                 'error_type' => 'license_settings_not_found'
             ], 422);
         }
@@ -389,7 +389,7 @@ class LicenseApiHandler
         $enabled = Arr::get($licenseSettings, 'enabled', '') === 'yes';
         if (!$enabled) {
             return $this->sendErrorResponse([
-                'message'    => __('License is not enabled for this product', 'fluent-cart-pro'),
+                'message'    => __('License is not enabled for this product', 'webmakerr-cart-pro'),
                 'error_type' => 'license_not_enabled'
             ], 422);
         }
@@ -479,7 +479,7 @@ class LicenseApiHandler
 
         if (!$packageData) {
             return $this->sendErrorResponse([
-                'message'    => __('Invalid package data', 'fluent-cart-pro'),
+                'message'    => __('Invalid package data', 'webmakerr-cart-pro'),
                 'error_type' => 'invalid_package_data'
             ], 422);
         }
@@ -504,7 +504,7 @@ class LicenseApiHandler
 
         if (!$license->isValid()) {
             return $this->sendErrorResponse([
-                'message'    => __('This license key is not valid', 'fluent-cart-pro'),
+                'message'    => __('This license key is not valid', 'webmakerr-cart-pro'),
                 'error_type' => 'expired_license'
             ], 422);
         }
@@ -513,7 +513,7 @@ class LicenseApiHandler
         $product = Product::query()->find($data['item_id']);
         if (!$product) {
             return $this->sendErrorResponse([
-                'message'    => __('Product not found', 'fluent-cart-pro'),
+                'message'    => __('Product not found', 'webmakerr-cart-pro'),
                 'error_type' => 'product_not_found'
             ], 422);
         }
@@ -522,7 +522,7 @@ class LicenseApiHandler
         $enabled = Arr::get($licenseSettings, 'enabled', '') === 'yes';
         if (!$enabled) {
             return $this->sendErrorResponse([
-                'message'    => __('License is not enabled for this product', 'fluent-cart-pro'),
+                'message'    => __('License is not enabled for this product', 'webmakerr-cart-pro'),
                 'error_type' => 'license_not_enabled'
             ], 422);
         }
@@ -540,7 +540,7 @@ class LicenseApiHandler
 
         if (!$downloadableFile) {
             return $this->sendErrorResponse([
-                'message'    => __('No downloadable file found for this product', 'fluent-cart-pro'),
+                'message'    => __('No downloadable file found for this product', 'webmakerr-cart-pro'),
                 'error_type' => 'downloadable_file_not_found'
             ], 422);
         }

@@ -18,8 +18,8 @@ class StockManagement
     {
         $app->addFilter('fluent_cart/module_setting/fields', function ($fields, $args) {
             $fields['stock_management'] = [
-                'title'       => __('Stock Management', 'fluent-cart-pro'),
-                'description' => __('Manage stock of your products easier than ever!', 'fluent-cart-pro'),
+                'title'       => __('Stock Management', 'webmakerr-cart-pro'),
+                'description' => __('Manage stock of your products easier than ever!', 'webmakerr-cart-pro'),
                 'type'        => 'component',
                 'component'   => 'ModuleSettings',
             ];

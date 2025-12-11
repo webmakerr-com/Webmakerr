@@ -147,7 +147,7 @@ class LicenseReportService extends ReportService
         COALESCE(p.post_title, ?) AS post_title,
         COUNT(*) AS activation_count,
         ROUND(COUNT(*) * 100.0 / total.total_activation_count, 2) AS percentage
-    ', [__('Unknown Product', 'fluent-cart')])
+    ', [__('Unknown Product', 'webmakerr-cart')])
             ->leftJoin('posts as p', 'p.ID', '=', 'l.product_id')
             ->crossJoinSub($totalSubquery, 'total')
             ->where('l.status', '=', 'active')

@@ -60,9 +60,9 @@ class ReceiptHandler
             if (!$transaction) {
                 ob_start();
                 FrontendView::renderNotFoundPage(
-                    __('Not found.', 'fluent-cart'),
-                    __('Sorry, no transaction found.', 'fluent-cart'),
-                    __('The provided transaction appears invalid, expired or does’t match our records', 'fluent-cart')
+                    __('Not found.', 'webmakerr-cart'),
+                    __('Sorry, no transaction found.', 'webmakerr-cart'),
+                    __('The provided transaction appears invalid, expired or does’t match our records', 'webmakerr-cart')
                 );
                 return ob_get_clean();
                 //return '<div class="fluent_cart_order_confirmation">No Transaction found!</div>';
@@ -154,7 +154,7 @@ class ReceiptHandler
 
         ob_start();
 
-        $footerContent = "<div style='padding: 15px; text-align: center; font-size: 16px; color: #2F3448;'>Powered by <a href='https://webmakerr.com' style='color: #017EF3; text-decoration: none;'>". __('Webmakerr Technologies', 'fluent-cart') ."</a></div>";
+        $footerContent = "<div style='padding: 15px; text-align: center; font-size: 16px; color: #2F3448;'>Powered by <a href='https://webmakerr.com' style='color: #017EF3; text-decoration: none;'>". __('Webmakerr Technologies', 'webmakerr-cart') ."</a></div>";
 
         if ((!App::isProActive() || $isEmailFooter == 'yes') && $isReceipt) {
             $parsedContent .= $footerContent;
@@ -172,7 +172,7 @@ class ReceiptHandler
                 'wp_footer'    => false,
             ]);
         }else{
-            FrontendView::make(__('Thank you', 'fluent-cart'), Arr::get($viewData,'content'));
+            FrontendView::make(__('Thank you', 'webmakerr-cart'), Arr::get($viewData,'content'));
         }
 
 
@@ -184,9 +184,9 @@ class ReceiptHandler
     {
         ob_start();
         FrontendView::renderNotFoundPage(
-            __('Not found.', 'fluent-cart'),
-            __('Sorry, no receipt found.', 'fluent-cart'),
-            __("The requested receipt is invalid", 'fluent-cart')
+            __('Not found.', 'webmakerr-cart'),
+            __('Sorry, no receipt found.', 'webmakerr-cart'),
+            __("The requested receipt is invalid", 'webmakerr-cart')
         );
         return ob_get_clean();
     }

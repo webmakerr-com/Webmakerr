@@ -87,7 +87,7 @@ class PlanUpgradeService
                 wp_send_json([
                     'message' => sprintf(
                         /* translators: 1: Variation ID */
-                        __('Duplicate upgrade path found for variation #%1$s. Each target variation must be unique.', 'fluent-cart'),
+                        __('Duplicate upgrade path found for variation #%1$s. Each target variation must be unique.', 'webmakerr-cart'),
                         $variationId
                     ),
                     'duplicates' => $duplicates

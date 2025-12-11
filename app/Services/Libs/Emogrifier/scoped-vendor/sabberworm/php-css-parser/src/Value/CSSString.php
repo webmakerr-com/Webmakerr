@@ -60,7 +60,7 @@ class CSSString extends PrimitiveValue
                     throw new SourceException(
                         sprintf(
                             /* translators: %s is the peeked string */
-                            esc_html__( 'Non-well-formed quoted string %s', 'fluent-cart' ),
+                            esc_html__( 'Non-well-formed quoted string %s', 'webmakerr-cart' ),
                             esc_html($oParserState->peek(3))
                         ),
                         esc_html($oParserState->currentLine())

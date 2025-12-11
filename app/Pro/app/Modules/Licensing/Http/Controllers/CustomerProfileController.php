@@ -18,7 +18,7 @@ class CustomerProfileController extends Controller
         $customer = CustomerResource::getCurrentCustomer();
         if (!$customer) {
             return $this->sendSuccess([
-                'message'  => __('Unable to find licenses', 'fluent-cart-pro'),
+                'message'  => __('Unable to find licenses', 'webmakerr-cart-pro'),
                 'licenses' => [
                     'data'  => [],
                     'total' => 0,
@@ -55,7 +55,7 @@ class CustomerProfileController extends Controller
 
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart-pro')
+                'message' => __('Customer not found', 'webmakerr-cart-pro')
             ]);
         }
 
@@ -117,7 +117,7 @@ class CustomerProfileController extends Controller
 
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart-pro')
+                'message' => __('Customer not found', 'webmakerr-cart-pro')
             ]);
         }
 
@@ -158,7 +158,7 @@ class CustomerProfileController extends Controller
 
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart-pro')
+                'message' => __('Customer not found', 'webmakerr-cart-pro')
             ]);
         }
 
@@ -195,13 +195,13 @@ class CustomerProfileController extends Controller
                 ]);
 
                 return $this->sendSuccess([
-                    'message' => __('Site deactivated successfully', 'fluent-cart-pro')
+                    'message' => __('Site deactivated successfully', 'webmakerr-cart-pro')
                 ]);
             }
         }
 
         return $this->sendError([
-            'message' => __('Site not found or not activated for this license', 'fluent-cart-pro')
+            'message' => __('Site not found or not activated for this license', 'webmakerr-cart-pro')
         ], 422);
     }
 

@@ -30,23 +30,23 @@ class ProductsCollection extends Custom_Render_Element
 
     public function get_label()
     {
-        return esc_html__('Products', 'fluent-cart');
+        return esc_html__('Products', 'webmakerr-cart');
     }
 
     public function set_control_groups()
     {
         $this->control_groups['query'] = [
-            'title' => esc_html__('Query', 'fluent-cart'),
+            'title' => esc_html__('Query', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
 
         $this->control_groups['fields'] = [
-            'title' => esc_html__('Fields', 'fluent-cart'),
+            'title' => esc_html__('Fields', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
 
         $this->control_groups['widgets'] = [
-            'title' => esc_html__('Widgets', 'fluent-cart'),
+            'title' => esc_html__('Widgets', 'webmakerr-cart'),
             'tab'   => 'widgets',
         ];
     }
@@ -56,7 +56,7 @@ class ProductsCollection extends Custom_Render_Element
         // LAYOUT
         $this->controls['columns'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Columns', 'fluent-cart'),
+            'label'       => esc_html__('Columns', 'webmakerr-cart'),
             'type'        => 'number',
             'min'         => 1,
             'max'         => 5,
@@ -67,7 +67,7 @@ class ProductsCollection extends Custom_Render_Element
 
         $this->controls['gap'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Gap', 'fluent-cart'),
+            'label'       => esc_html__('Gap', 'webmakerr-cart'),
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -81,7 +81,7 @@ class ProductsCollection extends Custom_Render_Element
 
         $this->controls['posts_per_page'] = [
             'tab'   => 'content',
-            'label' => esc_html__('Products per page', 'fluent-cart'),
+            'label' => esc_html__('Products per page', 'webmakerr-cart'),
             'type'  => 'number',
             'min'   => -1,
             'step'  => 1,
@@ -89,7 +89,7 @@ class ProductsCollection extends Custom_Render_Element
 
         $this->controls['is_main_query'] = [
             'tab'    => 'content',
-            'label'  => esc_html__('Is main query', 'fluent-cart'),
+            'label'  => esc_html__('Is main query', 'webmakerr-cart'),
             'type'   => 'checkbox',
             'inline' => true,
         ];
@@ -97,60 +97,60 @@ class ProductsCollection extends Custom_Render_Element
         // QUERY
         $this->controls['orderby'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Order by', 'fluent-cart'),
+            'label'       => esc_html__('Order by', 'webmakerr-cart'),
             'type'        => 'select',
             // id|date|title|price
             'options'     => [
-                'price' => esc_html__('Price', 'fluent-cart'),
-                'title' => esc_html__('Product Name', 'fluent-cart'),
-                'date'  => esc_html__('Published date', 'fluent-cart'),
-                'id'    => esc_html__('Product ID', 'fluent-cart')
+                'price' => esc_html__('Price', 'webmakerr-cart'),
+                'title' => esc_html__('Product Name', 'webmakerr-cart'),
+                'date'  => esc_html__('Published date', 'webmakerr-cart'),
+                'id'    => esc_html__('Product ID', 'webmakerr-cart')
             ],
             'inline'      => true,
-            'placeholder' => esc_html__('Default', 'fluent-cart'),
+            'placeholder' => esc_html__('Default', 'webmakerr-cart'),
         ];
 
         $this->controls['order'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Order', 'fluent-cart'),
+            'label'       => esc_html__('Order', 'webmakerr-cart'),
             'type'        => 'select',
             'options'     => [
-                'ASC'  => esc_html__('Ascending', 'fluent-cart'),
-                'DESC' => esc_html__('Descending', 'fluent-cart'),
+                'ASC'  => esc_html__('Ascending', 'webmakerr-cart'),
+                'DESC' => esc_html__('Descending', 'webmakerr-cart'),
             ],
             'inline'      => true,
-            'placeholder' => esc_html__('Descending', 'fluent-cart'),
+            'placeholder' => esc_html__('Descending', 'webmakerr-cart'),
         ];
 
         $this->controls['main_query_info'] = [
             'tab'     => 'content',
             'group'   => 'query',
             'type'    => 'info',
-            'content' => esc_html__('The query settings will be ignored when Is main query is enabled.', 'fluent-cart'),
+            'content' => esc_html__('The query settings will be ignored when Is main query is enabled.', 'webmakerr-cart'),
         ];
 
         $this->controls['productType'] = [
             'tab'         => 'content',
             'group'       => 'query',
-            'label'       => esc_html__('Product type', 'fluent-cart'),
+            'label'       => esc_html__('Product type', 'webmakerr-cart'),
             'type'        => 'select',
             // physical|digital|subscription|onetime|simple|variations
             'options'     => [
-                'simple'       => esc_html__('Simple', 'fluent-cart'),
-                'physical'     => esc_html__('Physical', 'fluent-cart'),
-                'digital'      => esc_html__('Digital', 'fluent-cart'),
-                'variations'   => esc_html__('Variations', 'fluent-cart'),
-                'ontime'       => esc_html__('One-time', 'fluent-cart'),
-                'subscription' => esc_html__('Subscriptions', 'fluent-cart'),
+                'simple'       => esc_html__('Simple', 'webmakerr-cart'),
+                'physical'     => esc_html__('Physical', 'webmakerr-cart'),
+                'digital'      => esc_html__('Digital', 'webmakerr-cart'),
+                'variations'   => esc_html__('Variations', 'webmakerr-cart'),
+                'ontime'       => esc_html__('One-time', 'webmakerr-cart'),
+                'subscription' => esc_html__('Subscriptions', 'webmakerr-cart'),
             ],
             'multiple'    => false,
-            'placeholder' => esc_html__('all product types', 'fluent-cart'),
+            'placeholder' => esc_html__('all product types', 'webmakerr-cart'),
         ];
 
         $this->controls['include'] = [
             'tab'         => 'content',
             'group'       => 'query',
-            'label'       => esc_html__('Include', 'fluent-cart'),
+            'label'       => esc_html__('Include', 'webmakerr-cart'),
             'type'        => 'select',
             'optionsAjax' => [
                 'action'   => 'bricks_get_posts',
@@ -158,14 +158,14 @@ class ProductsCollection extends Custom_Render_Element
             ],
             'multiple'    => true,
             'searchable'  => true,
-            'placeholder' => esc_html__('Select products', 'fluent-cart'),
+            'placeholder' => esc_html__('Select products', 'webmakerr-cart'),
         ];
 
         //phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
         $this->controls['exclude'] = [
             'tab'         => 'content',
             'group'       => 'query',
-            'label'       => esc_html__('Exclude', 'fluent-cart'),
+            'label'       => esc_html__('Exclude', 'webmakerr-cart'),
             'type'        => 'select',
             'optionsAjax' => [
                 'action'   => 'bricks_get_posts',
@@ -173,13 +173,13 @@ class ProductsCollection extends Custom_Render_Element
             ],
             'multiple'    => true,
             'searchable'  => true,
-            'placeholder' => esc_html__('Select products', 'fluent-cart'),
+            'placeholder' => esc_html__('Select products', 'webmakerr-cart'),
         ];
 
         $this->controls['categories'] = [
             'tab'      => 'content',
             'group'    => 'query',
-            'label'    => esc_html__('Product categories', 'fluent-cart'),
+            'label'    => esc_html__('Product categories', 'webmakerr-cart'),
             'type'     => 'select',
             'options'  => BricksHelper::getCategoriesOptions(),
             'multiple' => true,
@@ -188,14 +188,14 @@ class ProductsCollection extends Custom_Render_Element
         $this->controls['onSale'] = [
             'tab'   => 'content',
             'group' => 'query',
-            'label' => esc_html__('On sale Products only', 'fluent-cart'),
+            'label' => esc_html__('On sale Products only', 'webmakerr-cart'),
             'type'  => 'checkbox',
         ];
 
 //        $this->controls['hideOutOfStock'] = [
 //            'tab'   => 'content',
 //            'group' => 'query',
-//            'label' => esc_html__('Hide out of stock items', 'fluent-cart'),
+//            'label' => esc_html__('Hide out of stock items', 'webmakerr-cart'),
 //            'type'  => 'checkbox',
 //        ];
 
@@ -238,10 +238,10 @@ class ProductsCollection extends Custom_Render_Element
         $this->controls['linkProduct'] = [
             'tab'         => 'content',
             'group'       => 'fields',
-            'label'       => esc_html__('Link entire product', 'fluent-cart'),
+            'label'       => esc_html__('Link entire product', 'webmakerr-cart'),
             'type'        => 'checkbox',
             'inline'      => true,
-            'description' => esc_html__('Only added if none of your product fields contains any links.', 'fluent-cart'),
+            'description' => esc_html__('Only added if none of your product fields contains any links.', 'webmakerr-cart'),
         ];
     }
 

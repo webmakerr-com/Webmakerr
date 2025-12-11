@@ -13,7 +13,7 @@ class MaxPostCodeRule
         if(!is_string($value)) {
             return sprintf(
                 /* translators: 1: attribute name */
-                __("The %s must be a valid text", "fluent-cart"),
+                __("The %s must be a valid text", "webmakerr-cart"),
                 $attr
             );
         }
@@ -21,7 +21,7 @@ class MaxPostCodeRule
         if(strlen($value) > 100) {
             return sprintf(
                 /* translators: 1: attribute name */
-                __("The %s must not be greater than 100 characters.", "fluent-cart"),
+                __("The %s must not be greater than 100 characters.", "webmakerr-cart"),
                 $attr
             );
         }

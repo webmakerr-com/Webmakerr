@@ -165,7 +165,7 @@ class CouponHelper
             return
                 ['code' => 400, 'message' => sprintf(
                     /* translators: %s is the coupon code */
-                    __('%s coupon can only be applied once per order', 'fluent-cart'), $appliedCoupon)];
+                    __('%s coupon can only be applied once per order', 'webmakerr-cart'), $appliedCoupon)];
         }
 
         if (count($appliedCouponList) > 0) {
@@ -175,7 +175,7 @@ class CouponHelper
                 return
                     ['code' => 400, 'message' => sprintf(
                         /* translators: %s is the coupon code */
-                        __('%s coupon cannot be used with other coupon', 'fluent-cart'), end($appliedCouponList))];
+                        __('%s coupon cannot be used with other coupon', 'webmakerr-cart'), end($appliedCouponList))];
             }
         }
 
@@ -192,7 +192,7 @@ class CouponHelper
                 'code' => 400,
                 'message' => sprintf(
                     /* translators: %s is the applied coupon code */
-                    __('This %s coupon cannot be used with other coupon', 'fluent-cart'),
+                    __('This %s coupon cannot be used with other coupon', 'webmakerr-cart'),
                     $appliedCoupon // %s: Applied Coupon (e.g., "DISCOUNT10")
                 )
             ];
@@ -363,7 +363,7 @@ class CouponHelper
          */
         $message = sprintf(
             /* translators: %1$s: Product Title, %2$s: Coupon Code */
-            __('%1$s conflicts with %2$s coupon. Remove the coupon first.', 'fluent-cart'),
+            __('%1$s conflicts with %2$s coupon. Remove the coupon first.', 'webmakerr-cart'),
             $product['post_title'], // %1$s: Product Title (e.g., "Product A")
             $couponCode             // %2$s: Coupon Code (e.g., "DISCOUNT10")
         );
@@ -380,7 +380,7 @@ class CouponHelper
         if ($includedCategories !== null && empty(array_intersect($includedCategories, $productCategories))) {
             return [
                 'isApplicable' => false,
-                'message' => __('This coupon can not be applied to some items in your cart', 'fluent-cart'),
+                'message' => __('This coupon can not be applied to some items in your cart', 'webmakerr-cart'),
             ];
         }
         return [

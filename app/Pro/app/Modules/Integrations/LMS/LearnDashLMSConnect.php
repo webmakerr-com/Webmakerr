@@ -15,7 +15,7 @@ class LearnDashLMSConnect extends BaseIntegrationManager
     {
         parent::__construct('LearnDash', 'learndash', 20);
 
-        $this->description = __('Manage Course accesses with FluentCart + LearnDash', 'fluent-cart-pro');
+        $this->description = __('Manage Course accesses with FluentCart + LearnDash', 'webmakerr-cart-pro');
         $this->logo = Vite::getAssetUrl('images/integrations/learndash.svg');
     }
 
@@ -41,17 +41,17 @@ class LearnDashLMSConnect extends BaseIntegrationManager
         $fields = [
             'name'                   => [
                 'key'         => 'name',
-                'label'       => __('Feed Title', 'fluent-cart-pro'),
+                'label'       => __('Feed Title', 'webmakerr-cart-pro'),
                 'required'    => true,
-                'placeholder' => __('Name', 'fluent-cart-pro'),
+                'placeholder' => __('Name', 'webmakerr-cart-pro'),
                 'component'   => 'text',
-                'inline_tip'  => __('Name of this feed, it will be used to identify this feed in the list of feeds', 'fluent-cart-pro')
+                'inline_tip'  => __('Name of this feed, it will be used to identify this feed in the list of feeds', 'webmakerr-cart-pro')
             ],
             'course_ids'             => [
                 'key'            => 'course_ids',
-                'label'          => __('Add to Courses', 'fluent-cart-pro'),
-                'placeholder'    => __('Select Learndash Courses', 'fluent-cart-pro'),
-                'inline_tip'     => __('Select the LearnDash Courses you would like to add.', 'fluent-cart-pro'),
+                'label'          => __('Add to Courses', 'webmakerr-cart-pro'),
+                'placeholder'    => __('Select Learndash Courses', 'webmakerr-cart-pro'),
+                'inline_tip'     => __('Select the LearnDash Courses you would like to add.', 'webmakerr-cart-pro'),
                 'component'      => 'rest_selector',
                 'option_key'     => 'post_type',
                 'sub_option_key' => 'sfwd-courses',
@@ -61,19 +61,19 @@ class LearnDashLMSConnect extends BaseIntegrationManager
             'group_ids'              => [
                 'key'            => 'group_ids',
                 'require_list'   => false,
-                'label'          => __('Add to LearnDash Groups', 'fluent-cart-pro'),
-                'placeholder'    => __('Select LearnDash Groups', 'fluent-cart-pro'),
+                'label'          => __('Add to LearnDash Groups', 'webmakerr-cart-pro'),
+                'placeholder'    => __('Select LearnDash Groups', 'webmakerr-cart-pro'),
                 'is_multiple'    => true,
                 'component'      => 'rest_selector',
                 'option_key'     => 'post_type',
                 'sub_option_key' => 'groups',
-                'inline_tip'     => __('Select the groups you would like to add the customer to', 'fluent-cart-pro')
+                'inline_tip'     => __('Select the groups you would like to add the customer to', 'webmakerr-cart-pro')
             ],
             'watch_on_access_revoke' => [
                 'key'            => 'watch_on_access_revoke',
                 'component'      => 'yes-no-checkbox',
-                'checkbox_label' => __('Remove from selected Courses/Groups on Refund or Subscription Access Expiration ', 'fluent-cart-pro'),
-                'inline_tip'     => __('If you enable this, on refund or subscription validity expiration, the selected groups and courses will be removed from the customer.', 'fluent-cart-pro')
+                'checkbox_label' => __('Remove from selected Courses/Groups on Refund or Subscription Access Expiration ', 'webmakerr-cart-pro'),
+                'inline_tip'     => __('If you enable this, on refund or subscription validity expiration, the selected groups and courses will be removed from the customer.', 'webmakerr-cart-pro')
             ]
         ];
 
@@ -84,7 +84,7 @@ class LearnDashLMSConnect extends BaseIntegrationManager
         return [
             'fields'              => $fields,
             'button_require_list' => false,
-            'integration_title'   => __('LearnDash', 'fluent-cart-pro')
+            'integration_title'   => __('LearnDash', 'webmakerr-cart-pro')
         ];
     }
 
@@ -129,7 +129,7 @@ class LearnDashLMSConnect extends BaseIntegrationManager
             }
 
             $order->addLog(
-                __('Accesses Removed from the connected student on order revoke', 'fluent-cart-pro'),
+                __('Accesses Removed from the connected student on order revoke', 'webmakerr-cart-pro'),
                 $userId->get_error_message(),
                 'info',
                 'LearnDash Integration'
@@ -142,7 +142,7 @@ class LearnDashLMSConnect extends BaseIntegrationManager
             $userId = AuthService::createUserFromCustomer($customer);
             if (is_wp_error($userId)) {
                 $order->addLog(
-                    __('User creation failed from LearnDash Integration', 'fluent-cart-pro'),
+                    __('User creation failed from LearnDash Integration', 'webmakerr-cart-pro'),
                     $userId->get_error_message(),
                     'error',
                     'LearnDash Integration'
@@ -172,8 +172,8 @@ class LearnDashLMSConnect extends BaseIntegrationManager
         }
 
         $order->addLog(
-            __('LearnDash Integration Success', 'fluent-cart-pro'),
-            sprintf(__('User has been added to courses: %s and groups: %s', 'fluent-cart-pro'), implode(', ', $courseIds), implode(', ', $groupIds)),
+            __('LearnDash Integration Success', 'webmakerr-cart-pro'),
+            sprintf(__('User has been added to courses: %s and groups: %s', 'webmakerr-cart-pro'), implode(', ', $courseIds), implode(', ', $groupIds)),
             'info',
             'LearnDash Integration'
         );

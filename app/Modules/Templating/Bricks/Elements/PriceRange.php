@@ -18,19 +18,19 @@ class PriceRange extends Element
 
     public function get_label()
     {
-        return esc_html__('Price range', 'fluent-cart');
+        return esc_html__('Price range', 'webmakerr-cart');
     }
 
     public function set_controls()
     {
         $this->controls['hideNoRange'] = [
             'tab'     => 'content',
-            'label'   => esc_html__('Hide when max and mix is same', 'fluent-cart'),
+            'label'   => esc_html__('Hide when max and mix is same', 'webmakerr-cart'),
             'type'    => 'checkbox'
         ];
         $this->controls['priceRangeTypography'] = [
             'tab'   => 'content',
-            'label' => esc_html__('Price Range typography', 'fluent-cart'),
+            'label' => esc_html__('Price Range typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -50,8 +50,8 @@ class PriceRange extends Element
         if (empty($product)) {
             return $this->render_element_placeholder(
                 [
-                    'title'       => esc_html__('For better preview select content to show.', 'fluent-cart'),
-                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'fluent-cart'),
+                    'title'       => esc_html__('For better preview select content to show.', 'webmakerr-cart'),
+                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'webmakerr-cart'),
                 ]
             );
         }
@@ -66,7 +66,7 @@ class PriceRange extends Element
             if(!$hasPriceRange) {
                 return $this->render_element_placeholder(
                     [
-                        'description' => esc_html__('Product does not have min-max range', 'fluent-cart'),
+                        'description' => esc_html__('Product does not have min-max range', 'webmakerr-cart'),
                     ]
                 );
             }

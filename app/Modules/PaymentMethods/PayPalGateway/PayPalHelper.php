@@ -35,7 +35,7 @@ class PayPalHelper
         $product = Product::query()->find(Arr::get($data, 'product_id'));
 
         if (!$variation || !$product) {
-            return new \WP_Error('invalid_product', esc_html__('Invalid product or variation.', 'fluent-cart'));
+            return new \WP_Error('invalid_product', esc_html__('Invalid product or variation.', 'webmakerr-cart'));
         }
         $sitePrefix = Helper::getSitePrefix();
 
@@ -98,7 +98,7 @@ class PayPalHelper
         $chargeId = $transaction->vendor_charge_id;
 
         if (!$chargeId) {
-            return new \WP_Error('invalid_charge_id', __('Please provide a valid charge Id!', 'fluent-cart'));
+            return new \WP_Error('invalid_charge_id', __('Please provide a valid charge Id!', 'webmakerr-cart'));
         }
 
         $refundData = [
@@ -123,7 +123,7 @@ class PayPalHelper
         }
 
         if (Arr::get($vendorRefund, 'status') !== 'COMPLETED') {
-            return new \WP_Error('refund_not_completed', __('Refund not completed in paypal. Please refund from PayPal Manually.', 'fluent-cart'));
+            return new \WP_Error('refund_not_completed', __('Refund not completed in paypal. Please refund from PayPal Manually.', 'webmakerr-cart'));
         }
 
         return Arr::get($vendorRefund, 'id');
@@ -186,8 +186,8 @@ class PayPalHelper
             'recurring_amount'  => 0,
             'signup_fee'        => 0,
             'bill_times'        => 0,
-            'plan_name'         => __('Subscription', 'fluent-cart'),
-            'plan_description'  => __('Subscription Plan', 'fluent-cart')
+            'plan_name'         => __('Subscription', 'webmakerr-cart'),
+            'plan_description'  => __('Subscription Plan', 'webmakerr-cart')
         ];
 
         // Merge input data with defaults

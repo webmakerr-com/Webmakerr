@@ -182,7 +182,7 @@ class IPN
         }
 
         if (empty($webhookId)) {
-            return new \WP_Error('webhook_id_missing', __('Webhook ID is missing.', 'fluent-cart'));
+            return new \WP_Error('webhook_id_missing', __('Webhook ID is missing.', 'webmakerr-cart'));
         }
 
         $webhookId = trim($webhookId);
@@ -194,7 +194,7 @@ class IPN
             !isset($header['paypal-transmission-id']) || !isset($header['paypal-transmission-sig']) ||
             !isset($header['paypal-transmission-time'])) {
 
-            return new \WP_Error('webhook_header_missing', __('Required PayPal webhook headers are missing.', 'fluent-cart'), [
+            return new \WP_Error('webhook_header_missing', __('Required PayPal webhook headers are missing.', 'webmakerr-cart'), [
                 'headers' => $header
             ]);
         }
@@ -216,7 +216,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $body,
                 'status'      => 'failed',
-                'title'       => __('Failed to verify PayPal webhook signature', 'fluent-cart'),
+                'title'       => __('Failed to verify PayPal webhook signature', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -230,7 +230,7 @@ class IPN
         $response_data = json_decode($response_body, true);
 
         if ($http_code !== 200 || empty($response_data['verification_status']) || $response_data['verification_status'] !== 'SUCCESS') {
-            return new \WP_Error('webhook_verification_failed', __('Webhook verification failed.', 'fluent-cart'), [
+            return new \WP_Error('webhook_verification_failed', __('Webhook verification failed.', 'webmakerr-cart'), [
                 'http_code' => $http_code,
                 'response'  => $response_data
             ]);
@@ -281,7 +281,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $post_data,
                 'status'      => 'received',
-                'title'       => __('PayPal Webhook Received', 'fluent-cart'),
+                'title'       => __('PayPal Webhook Received', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -478,7 +478,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $refundData,
                 'status'      => 'failed',
-                'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'fluent-cart'),
+                'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -497,7 +497,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $refundData,
                 'status'      => 'failed',
-                'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'fluent-cart'),
+                'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -547,7 +547,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $data,
                 'status'      => 'failed',
-                'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'fluent-cart'),
+                'title'       => __('Failed to find parent transaction for PayPal Refund webhook', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -575,7 +575,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
-                'title'       => __('Failed to find Subscription for PayPal Cancel webhook', 'fluent-cart'),
+                'title'       => __('Failed to find Subscription for PayPal Cancel webhook', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -605,7 +605,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
-                'title'       => __('Failed to find Subscription for PayPal Subscription Expired webhook', 'fluent-cart'),
+                'title'       => __('Failed to find Subscription for PayPal Subscription Expired webhook', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -627,7 +627,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
-                'title'       => __('Failed to find Subscription for PayPal Subscription Suspended webhook', 'fluent-cart'),
+                'title'       => __('Failed to find Subscription for PayPal Subscription Suspended webhook', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'
@@ -650,7 +650,7 @@ class IPN
             webmakerr_do_action('webmakerr_cart/dev_log', [
                 'raw_data'    => $subscriptionInfo,
                 'status'      => 'failed',
-                'title'       => __('Failed to find Subscription for PayPal Subscription Reactive webhook', 'fluent-cart'),
+                'title'       => __('Failed to find Subscription for PayPal Subscription Reactive webhook', 'webmakerr-cart'),
                 'log_type'    => 'webhook',
                 'module_type' => 'Webmakerr\App\Modules\PaymentMethods\PayPal',
                 'module_name' => 'PayPal'

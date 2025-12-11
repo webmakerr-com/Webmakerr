@@ -22,7 +22,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
         if ($subscriptionModel->current_payment_method !== 'paddle') {
             return new \WP_Error(
                 'invalid_payment_method',
-                __('This subscription is not using Paddle as payment method.', 'fluent-cart-pro')
+                __('This subscription is not using Paddle as payment method.', 'webmakerr-cart-pro')
             );
         }
 
@@ -32,7 +32,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
         if (!$vendorSubscriptionId) {
             return new \WP_Error(
                 'invalid_subscription',
-                __('Invalid vendor subscription ID.', 'fluent-cart-pro')
+                __('Invalid vendor subscription ID.', 'webmakerr-cart-pro')
             );
         }
 
@@ -184,7 +184,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
         if (!$vendorSubscriptionId) {
             return new \WP_Error(
                 'invalid_subscription',
-                __('Invalid vendor subscription ID.', 'fluent-cart-pro')
+                __('Invalid vendor subscription ID.', 'webmakerr-cart-pro')
             );
         }
 
@@ -214,7 +214,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
         $vendorSubscriptionId = $subscription->vendor_subscription_id;
         
         if (!$vendorSubscriptionId) {
-            throw new \Exception(__('Invalid vendor subscription ID.', 'fluent-cart-pro'), 404);
+            throw new \Exception(__('Invalid vendor subscription ID.', 'webmakerr-cart-pro'), 404);
         }
 
         $pauseData = [
@@ -229,7 +229,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
 
         return [
             'status' => 'success',
-            'message' => __('Subscription paused successfully', 'fluent-cart-pro'),
+            'message' => __('Subscription paused successfully', 'webmakerr-cart-pro'),
             'paddle_response' => $response
         ];
     }
@@ -242,7 +242,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
         $vendorSubscriptionId = $subscription->vendor_subscription_id;
         
         if (!$vendorSubscriptionId) {
-            throw new \Exception(__('Invalid vendor subscription ID.', 'fluent-cart-pro'), 404);
+            throw new \Exception(__('Invalid vendor subscription ID.', 'webmakerr-cart-pro'), 404);
         }
 
         $resumeData = [
@@ -257,7 +257,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
 
         return [
             'status' => 'success',
-            'message' => __('Subscription resumed successfully', 'fluent-cart-pro'),
+            'message' => __('Subscription resumed successfully', 'webmakerr-cart-pro'),
             'paddle_response' => $response
         ];
     }
@@ -275,7 +275,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
 
         return [
             'status' => 'success',
-            'message' => __('Subscription updated successfully', 'fluent-cart-pro'),
+            'message' => __('Subscription updated successfully', 'webmakerr-cart-pro'),
             'paddle_response' => $response
         ];
     }
@@ -287,7 +287,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
     {
        new \WP_Error(
             'not_supported',
-            __('Payment method switching is not directly supported by Paddle. Please cancel and recreate the subscription.', 'fluent-cart-pro')
+            __('Payment method switching is not directly supported by Paddle. Please cancel and recreate the subscription.', 'webmakerr-cart-pro')
         );
     }
 
@@ -300,7 +300,7 @@ class PaddleSubscriptions extends AbstractSubscriptionModule
         // or creating a new subscription if the old one was canceled
        new \WP_Error(
             'not_supported',
-            __('Subscription reactivation is not directly supported by Paddle. Please create a new subscription.', 'fluent-cart-pro')
+            __('Subscription reactivation is not directly supported by Paddle. Please create a new subscription.', 'webmakerr-cart-pro')
         );
     }
 }

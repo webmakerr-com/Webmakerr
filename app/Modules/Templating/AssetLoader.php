@@ -80,9 +80,9 @@ class AssetLoader
         $localizeData = [
             'fluentcart_single_product_vars' => [
                 'trans'                      => TransStrings::singleProductPageString(),
-                'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
-                // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
-                'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
+                'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'webmakerr-cart'), []),
+                // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'webmakerr-cart')),
+                'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'webmakerr-cart')),
                 'in_stock_status'            => Helper::IN_STOCK,
                 'out_of_stock_status'        => Helper::OUT_OF_STOCK,
                 'enable_image_zoom'          => (new StoreSettings())->get('enable_image_zoom_in_single_product'),
@@ -210,9 +210,9 @@ class AssetLoader
         )->with([
             'fluentcart_single_product_vars' => [
                 'trans'                    => TransStrings::singleProductPageString(),
-                'cart_button_text'         => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
-                // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
-                'out_of_stock_button_text' => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
+                'cart_button_text'         => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'webmakerr-cart'), []),
+                // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'webmakerr-cart')),
+                'out_of_stock_button_text' => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'webmakerr-cart')),
                 'in_stock_status'          => Helper::IN_STOCK,
                 'out_of_stock_status'      => Helper::OUT_OF_STOCK,
                 'enable_image_zoom'        => (new StoreSettings())->get('enable_image_zoom_in_single_product')
@@ -404,7 +404,7 @@ class AssetLoader
                 'payment_methods_with_custom_checkout_buttons' => webmakerr_apply_filters('webmakerr_cart/payment_methods_with_custom_checkout_buttons', []),
                 'tax_settings'                                 => (new TaxModule())->getSettings(),
                 'submit_button'                                => [
-                    'text' => __('Place Order', 'fluent-cart'),
+                    'text' => __('Place Order', 'webmakerr-cart'),
                 ],
                 'trans'                                        => TransStrings::checkoutPageString(),
                 'payments_trans'                               => TransStrings::paymentsString()

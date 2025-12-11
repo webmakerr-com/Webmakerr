@@ -31,12 +31,12 @@ class ProductDownloadableFileRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'title.required' => esc_html__('Title is required.', 'fluent-cart'),
-            'type.required' => esc_html__('Type is required.', 'fluent-cart'),
-            'driver.required' => esc_html__('Driver is required.', 'fluent-cart'),
-            'file_name.required' => esc_html__('File Name is required.', 'fluent-cart'),
-            'file_path.required' => esc_html__('File Path is required.', 'fluent-cart'),
-            'file_url.required' => esc_html__('File URL is required.', 'fluent-cart'),
+            'title.required' => esc_html__('Title is required.', 'webmakerr-cart'),
+            'type.required' => esc_html__('Type is required.', 'webmakerr-cart'),
+            'driver.required' => esc_html__('Driver is required.', 'webmakerr-cart'),
+            'file_name.required' => esc_html__('File Name is required.', 'webmakerr-cart'),
+            'file_path.required' => esc_html__('File Path is required.', 'webmakerr-cart'),
+            'file_url.required' => esc_html__('File URL is required.', 'webmakerr-cart'),
         ];
     }
 

@@ -90,7 +90,7 @@ class SwitchCustomerMethod
         if ($newSubStatus == 'incomplete') {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Could not switch payment method, please try again later', 'fluent-cart'),
+                'message' => __('Could not switch payment method, please try again later', 'webmakerr-cart'),
                 'data'    => Arr::get($newSub, 'id')
             ], 200);
         }
@@ -116,7 +116,7 @@ class SwitchCustomerMethod
 
         wp_send_json([
             'status'  => 'success',
-            'message' => __('Payment Method updated successfully', 'fluent-cart'),
+            'message' => __('Payment Method updated successfully', 'webmakerr-cart'),
             'data'    => Arr::get($newSub, 'id')
         ], 200);
     }

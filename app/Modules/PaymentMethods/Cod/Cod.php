@@ -35,10 +35,10 @@ class Cod extends AbstractPaymentGateway
     public function meta(): array
     {
         return [
-            'title'       => __('Cash', 'fluent-cart'),
+            'title'       => __('Cash', 'webmakerr-cart'),
             'route'       => 'offline_payment',
             'slug'        => 'offline_payment',
-            'description' => esc_html__('Pay with cash upon delivery', 'fluent-cart'),
+            'description' => esc_html__('Pay with cash upon delivery', 'webmakerr-cart'),
             'logo'        => Vite::getAssetUrl("images/payment-methods/offline-payment.svg"),
             'icon'        => Vite::getAssetUrl("images/payment-methods/cod-icon.svg"),
             'brand_color' => '#136196',
@@ -59,7 +59,7 @@ class Cod extends AbstractPaymentGateway
         try {
             return [
                 'status'      => 'success',
-                'message'     => __('Order has been placed successfully', 'fluent-cart'),
+                'message'     => __('Order has been placed successfully', 'webmakerr-cart'),
                 'redirect_to' => (new CodHandler($this))->handlePayment($paymentInstance)
             ];
 
@@ -93,10 +93,10 @@ class Cod extends AbstractPaymentGateway
             $order->save();
 
             $actionActivity = [
-                'title'   => __('Order status updated', 'fluent-cart'),
+                'title'   => __('Order status updated', 'webmakerr-cart'),
                 'content' => sprintf(
                 /* translators: 1: old status, 2: new status */
-                    __('Order status has been updated from %1$s to %2$s', 'fluent-cart'),
+                    __('Order status has been updated from %1$s to %2$s', 'webmakerr-cart'),
                     $orderStatus,
                     $order->status
                 )
@@ -155,7 +155,7 @@ class Cod extends AbstractPaymentGateway
         return [
             'fct_cod_data' => [
                 'translations' => [
-                    'Cash upon delivery, bank transfer or other manual process.' => __('Cash upon delivery, bank transfer or other manual process.', 'fluent-cart'),
+                    'Cash upon delivery, bank transfer or other manual process.' => __('Cash upon delivery, bank transfer or other manual process.', 'webmakerr-cart'),
                 ]
             ]
         ];
@@ -171,14 +171,14 @@ class Cod extends AbstractPaymentGateway
                             <p>%s</p>
                         </div>",
                         __('✅  Customers can pay for their orders by cash upon delivery. You may receive using bank transfer or other manual process as well.
-                        You may remind them to have the exact amount ready for our delivery personnel!', 'fluent-cart')
+                        You may remind them to have the exact amount ready for our delivery personnel!', 'webmakerr-cart')
                     ),
                         [
                             'p'   => [],
                             'div' => ['class' => true],
                             'i'   => [],
                         ]),
-                'label' => __('Webhook URL', 'fluent-cart'),
+                'label' => __('Webhook URL', 'webmakerr-cart'),
                 'type'  => 'html_attr'
             ),
         );
@@ -189,7 +189,7 @@ class Cod extends AbstractPaymentGateway
     {
         return [
             'status'  => 'success',
-            'message' => __('Settings saved successfully', 'fluent-cart')
+            'message' => __('Settings saved successfully', 'webmakerr-cart')
         ];
     }
 

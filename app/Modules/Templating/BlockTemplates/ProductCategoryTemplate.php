@@ -35,7 +35,7 @@ class ProductCategoryTemplate
      */
     public function getTitle()
     {
-        return _x('Products by Category', 'Template name', 'fluent-cart');
+        return _x('Products by Category', 'Template name', 'webmakerr-cart');
     }
 
     /**
@@ -45,7 +45,7 @@ class ProductCategoryTemplate
      */
     public function getDescription()
     {
-        return __('Displays products filtered by a category.', 'fluent-cart');
+        return __('Displays products filtered by a category.', 'webmakerr-cart');
     }
 
     public function getDefaultTemplate()

@@ -106,7 +106,7 @@ class AttrTermResource extends BaseResourceApi
 
         if (!$group) {
             return static::makeErrorResponse([
-                [ 'code' => 404, 'message' => __('Information mismatch.', 'fluent-cart') ]
+                [ 'code' => 404, 'message' => __('Information mismatch.', 'webmakerr-cart') ]
             ]);
         }
 
@@ -118,12 +118,12 @@ class AttrTermResource extends BaseResourceApi
         if ($term) {
             return static::makeSuccessResponse(
                 $term,
-                __('Successfully created!', 'fluent-cart')
+                __('Successfully created!', 'webmakerr-cart')
             );
         }
         
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Term creation failed.', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Term creation failed.', 'webmakerr-cart') ]
         ]);
     }
 
@@ -155,7 +155,7 @@ class AttrTermResource extends BaseResourceApi
 
         if (!$term) {
             return static::makeErrorResponse([
-                [ 'code' => 404, 'message' => __('Information mismatch.', 'fluent-cart') ]
+                [ 'code' => 404, 'message' => __('Information mismatch.', 'webmakerr-cart') ]
             ]);
         }
 
@@ -164,12 +164,12 @@ class AttrTermResource extends BaseResourceApi
         if ($isUpdated) {
             return static::makeSuccessResponse(
                 $isUpdated,
-                __('Successfully updated!', 'fluent-cart')
+                __('Successfully updated!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Term info update failed.', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Term info update failed.', 'webmakerr-cart') ]
         ]);  
     }
 
@@ -201,17 +201,17 @@ class AttrTermResource extends BaseResourceApi
                 
                 return static::makeSuccessResponse(
                     '',
-                    __('Attribute term successfully deleted!', 'fluent-cart')
+                    __('Attribute term successfully deleted!', 'webmakerr-cart')
                 );
             }
             
             return static::makeErrorResponse([
-                [ 'code' => 404, 'message' => __('Term not found in database, failed to remove.', 'fluent-cart') ]
+                [ 'code' => 404, 'message' => __('Term not found in database, failed to remove.', 'webmakerr-cart') ]
             ]);
         }
         
         return static::makeErrorResponse([
-            [ 'code' => 403, 'message' => __('This term is already in use, can not be deleted.', 'fluent-cart') ]
+            [ 'code' => 403, 'message' => __('This term is already in use, can not be deleted.', 'webmakerr-cart') ]
         ]);
     }
 
@@ -249,12 +249,12 @@ class AttrTermResource extends BaseResourceApi
             
             return static::makeSuccessResponse(
                 $term->serial,
-                __('Serial updated.', 'fluent-cart')
+                __('Serial updated.', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            [ 'code' => 404, 'message' => __('Info mismatch.', 'fluent-cart') ]
+            [ 'code' => 404, 'message' => __('Info mismatch.', 'webmakerr-cart') ]
         ]);
     }
 }

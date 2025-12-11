@@ -58,12 +58,12 @@ class ProductDownloadResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('File added successfully', 'fluent-cart')
+                __('File added successfully', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to add file!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to add file!', 'webmakerr-cart')]
         ]);
     }
 
@@ -95,12 +95,12 @@ class ProductDownloadResource extends BaseResourceApi
         if ($isUpdated) {
             return static::makeSuccessResponse(
                 $isUpdated,
-                __('File updated successfully', 'fluent-cart')
+                __('File updated successfully', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to update file!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to update file!', 'webmakerr-cart')]
         ]);
     }
 
@@ -124,12 +124,12 @@ class ProductDownloadResource extends BaseResourceApi
         if (static::getQuery()->where('id', $id)->delete()) {
             return static::makeSuccessResponse(
                 '',
-                __('File has been deleted successfully', 'fluent-cart')
+                __('File has been deleted successfully', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to delete!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to delete!', 'webmakerr-cart')]
         ]);
     }
 

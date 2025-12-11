@@ -25,7 +25,7 @@ class FluentCartGeneralApi
     public function addCustomerDashboardEndpoint($slug, $args = [])
     {
         if (!$slug) {
-            throw new \Exception(esc_html__('The endpoint slug cannot be empty.', 'fluent-cart'));
+            throw new \Exception(esc_html__('The endpoint slug cannot be empty.', 'webmakerr-cart'));
         }
 
         $reserved = ['dashboard', 'purchase-history', 'subscriptions', 'licenses', 'downloads', 'profile'];
@@ -36,7 +36,7 @@ class FluentCartGeneralApi
                     /* translators: %s: The reserved endpoint slug. */
                     esc_html__(
                         'The endpoint slug "%s" is reserved and cannot be used.',
-                        'fluent-cart'
+                        'webmakerr-cart'
                     ),
                     esc_html($slug)
                 )
@@ -45,7 +45,7 @@ class FluentCartGeneralApi
         }
 
         if (!isset($args['render_callback']) && !isset($args['page_id'])) {
-            throw new \Exception(esc_html__('You must provide either a render callback or a page ID for the endpoint.', 'fluent-cart'));
+            throw new \Exception(esc_html__('You must provide either a render callback or a page ID for the endpoint.', 'webmakerr-cart'));
         }
 
         webmakerr_add_filter('webmakerr_cart/global_customer_menu_items', function ($items) use ($slug, $args) {
@@ -97,7 +97,7 @@ class FluentCartGeneralApi
                     /* translators: %s: The name of the invalid payment gateway class. */
                     esc_html__(
                         'The payment gateway class "%s" is not valid. It must extend AbstractPaymentGateway.',
-                        'fluent-cart'
+                        'webmakerr-cart'
                     ),
                     esc_html($paymentGatewayClass)
                 )

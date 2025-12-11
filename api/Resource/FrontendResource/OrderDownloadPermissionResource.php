@@ -66,12 +66,12 @@ class OrderDownloadPermissionResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                     $isCreated,
-                    __('Download log created successfully!', 'fluent-cart')
+                    __('Download log created successfully!', 'webmakerr-cart')
                 );
         }
 
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Download log creation failed.', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Download log creation failed.', 'webmakerr-cart') ]
         ]);
     }
 
@@ -98,12 +98,12 @@ class OrderDownloadPermissionResource extends BaseResourceApi
         if ($isUpdated) {
             return static::makeSuccessResponse(
                 $isUpdated,
-                __('Download log updated successfully!', 'fluent-cart')
+                __('Download log updated successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Download log update failed.', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Download log update failed.', 'webmakerr-cart') ]
         ]);
     }
 

@@ -106,7 +106,7 @@ class Customers
         }
 
         return [
-            'message' => __('Selected Customers has been deleted permanently', 'fluent-cart'),
+            'message' => __('Selected Customers has been deleted permanently', 'webmakerr-cart'),
         ];
     }
 
@@ -161,12 +161,12 @@ class Customers
     {
         $newStatus = sanitize_text_field(Arr::get($arg, 'new_status', ''));
         if (!$newStatus) {
-            throw new \Exception(esc_html__('Please select status', 'fluent-cart'));
+            throw new \Exception(esc_html__('Please select status', 'webmakerr-cart'));
         }
 
         $validStatuses = Status::getEditableCustomerStatuses();
         if (!isset($validStatuses[$newStatus])) {
-            throw new \Exception(esc_html__('Provided customer status is not valid', 'fluent-cart'));
+            throw new \Exception(esc_html__('Provided customer status is not valid', 'webmakerr-cart'));
         }
 
         $customers = Customer::with(['orders'])->whereIn('id', Arr::get($arg, 'customer_ids'))->get();
@@ -175,7 +175,7 @@ class Customers
         }
 
         return [
-            'message' => __('Customer Status has been changed', 'fluent-cart')
+            'message' => __('Customer Status has been changed', 'webmakerr-cart')
         ];
     }
 

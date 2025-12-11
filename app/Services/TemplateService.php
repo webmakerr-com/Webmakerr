@@ -117,127 +117,127 @@ class TemplateService
 
         $orderCelebrations = [
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Woo-Hoo! Another Sale to Celebrate! %1$s', 'Email Celebration', 'fluent-cart'), '🎉✨'),
+            wp_sprintf(_x('Woo-Hoo! Another Sale to Celebrate! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎉✨'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Cha-Ching! Your Shop\'s Raking It In! %1$s', 'Email Celebration', 'fluent-cart'), '💰🚀'),
+            wp_sprintf(_x('Cha-Ching! Your Shop\'s Raking It In! %1$s', 'Email Celebration', 'webmakerr-cart'), '💰🚀'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Yasss! New Order, Let\'s Party! %1$s', 'Email Celebration', 'fluent-cart'), '🥳🎈'),
+            wp_sprintf(_x('Yasss! New Order, Let\'s Party! %1$s', 'Email Celebration', 'webmakerr-cart'), '🥳🎈'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('High-Five! You Nailed Another Sale! %1$s', 'Email Celebration', 'fluent-cart'), '🙌💥'),
+            wp_sprintf(_x('High-Five! You Nailed Another Sale! %1$s', 'Email Celebration', 'webmakerr-cart'), '🙌💥'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Boom! Your Store\'s Popping Off! %1$s', 'Email Celebration', 'fluent-cart'), '🌟🎊'),
+            wp_sprintf(_x('Boom! Your Store\'s Popping Off! %1$s', 'Email Celebration', 'webmakerr-cart'), '🌟🎊'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Heck Yeah! Another Sale in the Bag! %1$s', 'Email Celebration', 'fluent-cart'), '🛍️🔥'),
+            wp_sprintf(_x('Heck Yeah! Another Sale in the Bag! %1$s', 'Email Celebration', 'webmakerr-cart'), '🛍️🔥'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Dance Party! New Order Just Dropped! %1$s', 'Email Celebration', 'fluent-cart'), '💃🕺'),
+            wp_sprintf(_x('Dance Party! New Order Just Dropped! %1$s', 'Email Celebration', 'webmakerr-cart'), '💃🕺'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Cheers! Your Shop\'s Got Another Win! %1$s', 'Email Celebration', 'fluent-cart'), '🥂🎉'),
+            wp_sprintf(_x('Cheers! Your Shop\'s Got Another Win! %1$s', 'Email Celebration', 'webmakerr-cart'), '🥂🎉'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Jackpot! Another Sale to Celebrate! %1$s', 'Email Celebration', 'fluent-cart'), '🎰✨'),
+            wp_sprintf(_x('Jackpot! Another Sale to Celebrate! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎰✨'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Epic Win! Your Store\'s Crushing It! %1$s', 'Email Celebration', 'fluent-cart'), '🏆🚀'),
+            wp_sprintf(_x('Epic Win! Your Store\'s Crushing It! %1$s', 'Email Celebration', 'webmakerr-cart'), '🏆🚀'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Sweet Victory! Another Sale to Celebrate! %1$s', 'Email Celebration', 'fluent-cart'), '🏆🎉'),
+            wp_sprintf(_x('Sweet Victory! Another Sale to Celebrate! %1$s', 'Email Celebration', 'webmakerr-cart'), '🏆🎉'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Bling Bling! Your Shop\'s Cashin\' In! %1$s', 'Email Celebration', 'fluent-cart'), '💰✨'),
+            wp_sprintf(_x('Bling Bling! Your Shop\'s Cashin\' In! %1$s', 'Email Celebration', 'webmakerr-cart'), '💰✨'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Huzzah! New Order, Time to Party! %1$s', 'Email Celebration', 'fluent-cart'), '🎈🥳'),
+            wp_sprintf(_x('Huzzah! New Order, Time to Party! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎈🥳'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Fist Bump! You Scored Another Sale! %1$s', 'Email Celebration', 'fluent-cart'), '👊🔥'),
+            wp_sprintf(_x('Fist Bump! You Scored Another Sale! %1$s', 'Email Celebration', 'webmakerr-cart'), '👊🔥'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Wowza! Your Store\'s on a Roll! %1$s', 'Email Celebration', 'fluent-cart'), '🚀🌟'),
+            wp_sprintf(_x('Wowza! Your Store\'s on a Roll! %1$s', 'Email Celebration', 'webmakerr-cart'), '🚀🌟'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Yippee! Another Sale in the Books! %1$s', 'Email Celebration', 'fluent-cart'), '🛍️🎊'),
+            wp_sprintf(_x('Yippee! Another Sale in the Books! %1$s', 'Email Celebration', 'webmakerr-cart'), '🛍️🎊'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Let\'s Groove! New Order Just Landed! %1$s', 'Email Celebration', 'fluent-cart'), '🕺💃'),
+            wp_sprintf(_x('Let\'s Groove! New Order Just Landed! %1$s', 'Email Celebration', 'webmakerr-cart'), '🕺💃'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Pop the Confetti! Another Sale Win! %1$s', 'Email Celebration', 'fluent-cart'), '🎉🚨'),
+            wp_sprintf(_x('Pop the Confetti! Another Sale Win! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎉🚨'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Money Moves! Your Shop\'s Killing It! %1$s', 'Email Celebration', 'fluent-cart'), '💸🏅'),
+            wp_sprintf(_x('Money Moves! Your Shop\'s Killing It! %1$s', 'Email Celebration', 'webmakerr-cart'), '💸🏅'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Epic Haul! Another Sale to Cheer! %1$s', 'Email Celebration', 'fluent-cart'), '🥂⚡️'),
+            wp_sprintf(_x('Epic Haul! Another Sale to Cheer! %1$s', 'Email Celebration', 'webmakerr-cart'), '🥂⚡️'),
         ];
 
 
         $renewalCelebrations = [
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Your Subscription\'s Renewed! Keep Rockin\' It! %1$s', 'Email Celebration', 'fluent-cart'), '🎉🚀'),
+            wp_sprintf(_x('Your Subscription\'s Renewed! Keep Rockin\' It! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎉🚀'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Big News! Another Subscription Locked In! %1$s', 'Email Celebration', 'fluent-cart'), '💰✨'),
+            wp_sprintf(_x('Big News! Another Subscription Locked In! %1$s', 'Email Celebration', 'webmakerr-cart'), '💰✨'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Woohoo! A Customer Renewed Their Sub! %1$s', 'Email Celebration', 'fluent-cart'), '🥳🎈'),
+            wp_sprintf(_x('Woohoo! A Customer Renewed Their Sub! %1$s', 'Email Celebration', 'webmakerr-cart'), '🥳🎈'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('High-Five! Your Shop\'s Got a Renewal! %1$s', 'Email Celebration', 'fluent-cart'), '🙌🔥'),
+            wp_sprintf(_x('High-Five! Your Shop\'s Got a Renewal! %1$s', 'Email Celebration', 'webmakerr-cart'), '🙌🔥'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Cha-Ching! Subscription Renewed, Boss! %1$s', 'Email Celebration', 'fluent-cart'), '💸🌟'),
+            wp_sprintf(_x('Cha-Ching! Subscription Renewed, Boss! %1$s', 'Email Celebration', 'webmakerr-cart'), '💸🌟'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Yasss! Another Loyal Sub Stays On! %1$s', 'Email Celebration', 'fluent-cart'), '🏆🎊'),
+            wp_sprintf(_x('Yasss! Another Loyal Sub Stays On! %1$s', 'Email Celebration', 'webmakerr-cart'), '🏆🎊'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Boom! Your Store\'s Sub Count Grows! %1$s', 'Email Celebration', 'fluent-cart'), '💥🛍️'),
+            wp_sprintf(_x('Boom! Your Store\'s Sub Count Grows! %1$s', 'Email Celebration', 'webmakerr-cart'), '💥🛍️'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Hooray! A Renewal Just Hit Your Shop! %1$s', 'Email Celebration', 'fluent-cart'), '🥂⚡️'),
+            wp_sprintf(_x('Hooray! A Renewal Just Hit Your Shop! %1$s', 'Email Celebration', 'webmakerr-cart'), '🥂⚡️'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Confetti Time! Subscription Renewed! %1$s', 'Email Celebration', 'fluent-cart'), '🎉🚨'),
+            wp_sprintf(_x('Confetti Time! Subscription Renewed! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎉🚨'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Keep Shining! Another Sub Stays With You! %1$s', 'Email Celebration', 'fluent-cart'), '🌟💪'),
+            wp_sprintf(_x('Keep Shining! Another Sub Stays With You! %1$s', 'Email Celebration', 'webmakerr-cart'), '🌟💪'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Party On! Your Shop\'s Got a Renewal! %1$s', 'Email Celebration', 'fluent-cart'), '🎈🕺'),
+            wp_sprintf(_x('Party On! Your Shop\'s Got a Renewal! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎈🕺'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Score! A Customer Renewed Their Plan! %1$s', 'Email Celebration', 'fluent-cart'), '🏅✨'),
+            wp_sprintf(_x('Score! A Customer Renewed Their Plan! %1$s', 'Email Celebration', 'webmakerr-cart'), '🏅✨'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Woot Woot! Subscription Renewal Alert! %1$s', 'Email Celebration', 'fluent-cart'), '🛵🎉'),
+            wp_sprintf(_x('Woot Woot! Subscription Renewal Alert! %1$s', 'Email Celebration', 'webmakerr-cart'), '🛵🎉'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Money Moves! Another Sub Renewed! %1$s', 'Email Celebration', 'fluent-cart'), '💰🔥'),
+            wp_sprintf(_x('Money Moves! Another Sub Renewed! %1$s', 'Email Celebration', 'webmakerr-cart'), '💰🔥'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Epic Win! Your Shop\'s Sub is Back! %1$s', 'Email Celebration', 'fluent-cart'), '🎰⚡️'),
+            wp_sprintf(_x('Epic Win! Your Shop\'s Sub is Back! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎰⚡️'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Cheers! A Loyal Customer Renewed! %1$s', 'Email Celebration', 'fluent-cart'), '🥳🥂'),
+            wp_sprintf(_x('Cheers! A Loyal Customer Renewed! %1$s', 'Email Celebration', 'webmakerr-cart'), '🥳🥂'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Fist Bump! Subscription Renewed, Champ! %1$s', 'Email Celebration', 'fluent-cart'), '👊🌟'),
+            wp_sprintf(_x('Fist Bump! Subscription Renewed, Champ! %1$s', 'Email Celebration', 'webmakerr-cart'), '👊🌟'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Let\'s Dance! Another Sub Stays On Board! %1$s', 'Email Celebration', 'fluent-cart'), '💃🎊'),
+            wp_sprintf(_x('Let\'s Dance! Another Sub Stays On Board! %1$s', 'Email Celebration', 'webmakerr-cart'), '💃🎊'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('Jackpot! Your Shop\'s Got a Renewal! %1$s', 'Email Celebration', 'fluent-cart'), '🎉🏆'),
+            wp_sprintf(_x('Jackpot! Your Shop\'s Got a Renewal! %1$s', 'Email Celebration', 'webmakerr-cart'), '🎉🏆'),
 
             // translators: %1$s is celebration emoji(s)
-            wp_sprintf(_x('You\'re Killing It! Another Sub Renewed! %1$s', 'Email Celebration', 'fluent-cart'), '🚀✨'),
+            wp_sprintf(_x('You\'re Killing It! Another Sub Renewed! %1$s', 'Email Celebration', 'webmakerr-cart'), '🚀✨'),
         ];
 
 

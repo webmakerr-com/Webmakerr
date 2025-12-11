@@ -41,8 +41,8 @@ class FluentMetaRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'store_name.required'    => esc_html__('Store name is required.', 'fluent-cart'),
-            'store_country.required' => esc_html__('Store country is required.', 'fluent-cart'),
+            'store_name.required'    => esc_html__('Store name is required.', 'webmakerr-cart'),
+            'store_country.required' => esc_html__('Store country is required.', 'webmakerr-cart'),
         ];
     }
 

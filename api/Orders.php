@@ -87,7 +87,7 @@ class Orders
 
         if (empty($order) || $order->status === Status::ORDER_COMPLETED) {
 
-            throw new \Exception(esc_html__('Order information does not match.', 'fluent-cart'));
+            throw new \Exception(esc_html__('Order information does not match.', 'webmakerr-cart'));
         }
         $orderId = $order->id;
 
@@ -127,7 +127,7 @@ class Orders
         $order->update($orderData);
 
         return [
-            'message' => __('Order updated.', 'fluent-cart')
+            'message' => __('Order updated.', 'webmakerr-cart')
         ];
     }
 

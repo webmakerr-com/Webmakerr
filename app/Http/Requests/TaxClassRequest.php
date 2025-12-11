@@ -23,7 +23,7 @@ class TaxClassRequest extends RequestGuard
     public function messages()
     {
         return [
-            'title.required' => esc_html__('Tax class title is required.', 'fluent-cart'),
+            'title.required' => esc_html__('Tax class title is required.', 'webmakerr-cart'),
         ];
     }
 

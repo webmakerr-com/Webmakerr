@@ -61,7 +61,7 @@ class DiscountService
             return $this->applyCouponCodes($this->cart->coupons);
         }
 
-        return new \WP_Error('no_coupons', __('No coupons found to revalidate.', 'fluent-cart'));
+        return new \WP_Error('no_coupons', __('No coupons found to revalidate.', 'webmakerr-cart'));
     }
 
     public function applyCouponCodes($codes = [])
@@ -88,7 +88,7 @@ class DiscountService
             ->get();
 
         if ($coupons->isEmpty()) {
-            return new \WP_Error('no_valid_coupons', __('Coupon can not be applied.', 'fluent-cart'), []);
+            return new \WP_Error('no_valid_coupons', __('Coupon can not be applied.', 'webmakerr-cart'), []);
         }
 
         $invalidCoupons = [];
@@ -109,7 +109,7 @@ class DiscountService
         }
 
         if (empty($validCoupons)) {
-            return new \WP_Error('no_valid_coupons', __('Coupon can not be applied.', 'fluent-cart'), $invalidCoupons);
+            return new \WP_Error('no_valid_coupons', __('Coupon can not be applied.', 'webmakerr-cart'), $invalidCoupons);
         }
 
         // Let's check if we have multiple coupons and if they are stackable. If not, we will only keep the first one and invalidate the rest.
@@ -121,7 +121,7 @@ class DiscountService
                 } else {
                     $invalidCoupons[$coupon->code] = [
                         'success'    => false,
-                        'error'      => __('This coupon cannot be stacked with other coupons.', 'fluent-cart'),
+                        'error'      => __('This coupon cannot be stacked with other coupons.', 'webmakerr-cart'),
                         'error_code' => 'coupon_not_stackable'
                     ];
                 }
@@ -201,7 +201,7 @@ class DiscountService
         ]);
 
         if (!$canUse || is_wp_error($canUse)) {
-            $message = __('This coupon cannot be used.', 'fluent-cart');
+            $message = __('This coupon cannot be used.', 'webmakerr-cart');
             if (is_wp_error($canUse)) {
                 $message = $canUse->get_error_message();
             }
@@ -289,7 +289,7 @@ class DiscountService
         $preValidatedItems = array_values(array_filter($preValidatedItems));
 
         if (!$preValidatedItems) {
-            return new \WP_Error('no_applicable_items', __('No applicable items found for this coupon.', 'fluent-cart'));
+            return new \WP_Error('no_applicable_items', __('No applicable items found for this coupon.', 'webmakerr-cart'));
         }
 
         $currentItemsSubtotal = array_sum(array_map(function ($item) {
@@ -303,7 +303,7 @@ class DiscountService
         $currentItemsTotalAfterDiscount = $currentItemsSubtotal - $currentItemsDiscountTotal;
 
         if ($currentItemsTotalAfterDiscount <= 0) {
-            return new \WP_Error('no_applicable_items', __('No applicable items found for this coupon.', 'fluent-cart'));
+            return new \WP_Error('no_applicable_items', __('No applicable items found for this coupon.', 'webmakerr-cart'));
         }
 
         if ($coupon->type == 'fixed') {
@@ -392,7 +392,7 @@ class DiscountService
         }
 
         if (!$couponDiscountTotal) {
-            return new \WP_Error('no_discount_applied', __('This coupon could not apply any discount.', 'fluent-cart'));
+            return new \WP_Error('no_discount_applied', __('This coupon could not apply any discount.', 'webmakerr-cart'));
         }
 
         foreach ($cartItems as &$item) {
@@ -414,7 +414,7 @@ class DiscountService
     public function saveCart()
     {
         if (!$this->cart) {
-            return new \WP_Error('no_cart', __('No cart found to save.', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No cart found to save.', 'webmakerr-cart'));
         }
 
         $existingCheckoutData = $this->cart->checkout_data;
@@ -450,11 +450,11 @@ class DiscountService
         // let's validate the start date and end date first
         $startDate = $coupon->start_date;
         if ($startDate && $startDate != '0000-00-00 00:00:00' && strtotime($startDate) > time()) {
-            return new \WP_Error('coupon_not_started', __('This coupon is no longer valid.', 'fluent-cart'));
+            return new \WP_Error('coupon_not_started', __('This coupon is no longer valid.', 'webmakerr-cart'));
         }
         $endDate = $coupon->end_date;
         if ($endDate && $endDate != '0000-00-00 00:00:00' && strtotime($endDate) < time()) {
-            return new \WP_Error('coupon_expired', __('This coupon is no longer valid.', 'fluent-cart'));
+            return new \WP_Error('coupon_expired', __('This coupon is no longer valid.', 'webmakerr-cart'));
         }
 
         $conditions = $coupon->conditions;
@@ -468,14 +468,14 @@ class DiscountService
 
         if ($maxPurchaseAmount) {
             if ($getCartTotal > $maxPurchaseAmount) {
-                return new \WP_Error('max_purchase_amount_exceeded', __('This coupon is no longer valid.', 'fluent-cart'));
+                return new \WP_Error('max_purchase_amount_exceeded', __('This coupon is no longer valid.', 'webmakerr-cart'));
             }
         }
 
         $minPurchaseAmount = Arr::get($conditions, 'min_purchase_amount', 0);
         if ($minPurchaseAmount) {
             if ($getCartTotal < ($minPurchaseAmount / 100)) {
-                return new \WP_Error('min_purchase_amount_not_met', __('This coupon is no longer valid.', 'fluent-cart'));
+                return new \WP_Error('min_purchase_amount_not_met', __('This coupon is no longer valid.', 'webmakerr-cart'));
             }
         }
 
@@ -483,7 +483,7 @@ class DiscountService
         $useCount = $coupon->use_count;
         $maxUses = Arr::get($conditions, 'max_uses', 0);
         if ($useCount && $maxUses && $useCount >= $maxUses) {
-            return new \WP_Error('coupon_max_uses_exceeded', __('This coupon has reached its maximum number of uses.', 'fluent-cart'));
+            return new \WP_Error('coupon_max_uses_exceeded', __('This coupon has reached its maximum number of uses.', 'webmakerr-cart'));
         }
         $maxPerCustomer = Arr::get($conditions, 'max_per_customer', 0);
         if ($maxPerCustomer && $useCount) {
@@ -497,7 +497,7 @@ class DiscountService
                     ->where('coupon_id', $coupon->id)->count();
 
                 if ($usedCount && $usedCount >= $maxPerCustomer) {
-                    return new \WP_Error('coupon_max_uses_exceeded', __('You have reached the maximum number of uses for this coupon.', 'fluent-cart'));
+                    return new \WP_Error('coupon_max_uses_exceeded', __('You have reached the maximum number of uses for this coupon.', 'webmakerr-cart'));
                 }
             }
         }

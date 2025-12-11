@@ -24,21 +24,21 @@ class SubscriptionService
         }
 
         if (!$subscriptionModel) {
-            return new \WP_Error('subscription_not_found', __('Subscription not found.', 'fluent-cart'));
+            return new \WP_Error('subscription_not_found', __('Subscription not found.', 'webmakerr-cart'));
         }
 
         $vendorTransactionId = $transactionData['vendor_charge_id'] ?? null;
 
         if ($vendorTransactionId) {
             if (OrderTransaction::query()->where('vendor_charge_id', $vendorTransactionId)->exists()) {
-                return new \WP_Error('transaction_exists', __('This transaction already exists for this subscription.', 'fluent-cart'));
+                return new \WP_Error('transaction_exists', __('This transaction already exists for this subscription.', 'webmakerr-cart'));
             }
         }
 
         $parentOrder = $subscriptionModel->order;
 
         if (!$parentOrder) {
-            return new \WP_Error('parent_order_not_found', __('Parent order not found for this subscription.', 'fluent-cart'));
+            return new \WP_Error('parent_order_not_found', __('Parent order not found for this subscription.', 'webmakerr-cart'));
         }
 
         $transactionDefaults = [
@@ -115,7 +115,7 @@ class SubscriptionService
         $childOrder = Order::query()->create($childOrderData);
 
         if (!$childOrder) {
-            return new \WP_Error('order_creation_failed', __('Failed to create child order for the subscription renewal.', 'fluent-cart'));
+            return new \WP_Error('order_creation_failed', __('Failed to create child order for the subscription renewal.', 'webmakerr-cart'));
         }
 
         //  Create Order Item

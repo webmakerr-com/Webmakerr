@@ -30,7 +30,7 @@ class PaymentAddonManager
     public function installAddon($sourceType, $sourceLink, $pluginSlug)
     {
         if (!current_user_can('install_plugins')) {
-            return new \WP_Error('permission_denied', __('You do not have permission to install plugins.', 'fluent-cart'));
+            return new \WP_Error('permission_denied', __('You do not have permission to install plugins.', 'webmakerr-cart'));
         }
 
         $allowedAddons = webmakerr_apply_filters('webmakerr_cart/payment_addons', [
@@ -39,7 +39,7 @@ class PaymentAddonManager
         ]);
 
         if (!in_array($pluginSlug, $allowedAddons)) {
-            return new \WP_Error('invalid_addon', __('Invalid payment addon selected.', 'fluent-cart'));
+            return new \WP_Error('invalid_addon', __('Invalid payment addon selected.', 'webmakerr-cart'));
         }
 
         if ($sourceType === 'wordpress') {
@@ -47,7 +47,7 @@ class PaymentAddonManager
         } else if ($sourceType === 'github') {
             $result = $this->installFromGithub($sourceLink, $pluginSlug);
         } else {
-            return new \WP_Error('invalid_source', __('Invalid addon source type.', 'fluent-cart'));
+            return new \WP_Error('invalid_source', __('Invalid addon source type.', 'webmakerr-cart'));
         }
 
         if (is_wp_error($result)) {
@@ -147,7 +147,7 @@ class PaymentAddonManager
         preg_match('#github\.com/([^/]+)/([^/]+)/releases#', $releasesUrl, $matches);
         
         if (empty($matches[1]) || empty($matches[2])) {
-            return new \WP_Error('invalid_url', __('Invalid GitHub releases URL', 'fluent-cart'));
+            return new \WP_Error('invalid_url', __('Invalid GitHub releases URL', 'webmakerr-cart'));
         }
 
         $owner = $matches[1];
@@ -187,7 +187,7 @@ class PaymentAddonManager
     public function activateAddon($pluginFile)
     {
         if (!current_user_can('activate_plugins')) {
-            return new \WP_Error('permission_denied', __('You do not have permission to activate plugins.', 'fluent-cart'));
+            return new \WP_Error('permission_denied', __('You do not have permission to activate plugins.', 'webmakerr-cart'));
         }
 
         if (!function_exists('activate_plugin')) {
@@ -203,4 +203,3 @@ class PaymentAddonManager
         return true;
     }
 }
-

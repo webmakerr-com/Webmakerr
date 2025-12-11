@@ -99,7 +99,7 @@ class SubscriptionFilter extends BaseFilter
         return [
             'id' => [
                 'column'      => 'ID',
-                'description' => __('Subscription ID', 'fluent-cart'),
+                'description' => __('Subscription ID', 'webmakerr-cart'),
                 'type'        => 'numeric'
             ]
         ];
@@ -112,31 +112,31 @@ class SubscriptionFilter extends BaseFilter
         $paymentMethodOptions = array_merge(
             $paymentMethodOptions,
             [
-                'stripe' => __('Stripe', 'fluent-cart'),
-                'paypal' => __('PayPal', 'fluent-cart')
+                'stripe' => __('Stripe', 'webmakerr-cart'),
+                'paypal' => __('PayPal', 'webmakerr-cart')
             ]
         );
         $filters = [
             'subscription' => [
-                'label'    => __('Subscription', 'fluent-cart'),
+                'label'    => __('Subscription', 'webmakerr-cart'),
                 'value'    => 'subscription',
                 'children' => [
                     [
-                        'label'       => __('Subscription ID', 'fluent-cart'),
+                        'label'       => __('Subscription ID', 'webmakerr-cart'),
                         'value'       => 'vendor_subscription_id',
                         'type'        => 'text',
                         'filter_type' => 'column',
                         'column'      => 'vendor_subscription_id',
                     ],
                     [
-                        'label'       => __('Status', 'fluent-cart'),
+                        'label'       => __('Status', 'webmakerr-cart'),
                         'value'       => 'status',
                         'type'        => 'selections',
                         'options'     => Status::getSubscriptionStatuses(),
                         'is_multiple' => true,
                     ],
                     [
-                        'label'           => __('Order Items', 'fluent-cart'),
+                        'label'           => __('Order Items', 'webmakerr-cart'),
                         'value'           => 'variation',
                         'type'            => 'remote_tree_select',
                         'column'          => 'id',
@@ -146,38 +146,38 @@ class SubscriptionFilter extends BaseFilter
                         'limit'           => 10,
                     ],
                     [
-                        'label'       => __('Billing Interval', 'fluent-cart'),
+                        'label'       => __('Billing Interval', 'webmakerr-cart'),
                         'value'       => 'billing_interval',
                         'type'        => 'selections',
                         'options'     => [
-                            'yearly'      => __('Yearly', 'fluent-cart'),
-                            'half_yearly' => __('Half Yearly', 'fluent-cart'),
-                            'quarterly'   => __('Quarterly', 'fluent-cart'),
-                            'monthly'     => __('Monthly', 'fluent-cart'),
-                            'weekly'      => __('Weekly', 'fluent-cart'),
-                            'daily'       => __('Daily', 'fluent-cart'),
+                            'yearly'      => __('Yearly', 'webmakerr-cart'),
+                            'half_yearly' => __('Half Yearly', 'webmakerr-cart'),
+                            'quarterly'   => __('Quarterly', 'webmakerr-cart'),
+                            'monthly'     => __('Monthly', 'webmakerr-cart'),
+                            'weekly'      => __('Weekly', 'webmakerr-cart'),
+                            'daily'       => __('Daily', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                     ],
                     [
-                        'label'       => __('Created At', 'fluent-cart'),
+                        'label'       => __('Created At', 'webmakerr-cart'),
                         'value'       => 'created_at',
                         'type'        => 'dates',
                         'filter_type' => 'date',
                     ],
                     [
-                        'label'       => __('Next Billing Date', 'fluent-cart'),
+                        'label'       => __('Next Billing Date', 'webmakerr-cart'),
                         'value'       => 'next_billing_date',
                         'type'        => 'dates',
                         'filter_type' => 'date',
                     ],
                     [
-                        'label' => __('Bill Count', 'fluent-cart'),
+                        'label' => __('Bill Count', 'webmakerr-cart'),
                         'value' => 'bill_count',
                         'type'  => 'numeric',
                     ],
                     [
-                        'label'       => __('Status', 'fluent-cart'),
+                        'label'       => __('Status', 'webmakerr-cart'),
                         'value'       => 'status',
                         'type'        => 'selections',
                         'options'     => Status::getSubscriptionStatuses(),
@@ -186,11 +186,11 @@ class SubscriptionFilter extends BaseFilter
                 ],
             ],
             'transaction'  => [
-                'label'    => __('Transaction Property', 'fluent-cart'),
+                'label'    => __('Transaction Property', 'webmakerr-cart'),
                 'value'    => 'transaction',
                 'children' => [
                     [
-                        'label'       => __('Transaction Id', 'fluent-cart'),
+                        'label'       => __('Transaction Id', 'webmakerr-cart'),
                         'value'       => 'transaction_id',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -198,7 +198,7 @@ class SubscriptionFilter extends BaseFilter
                         'relation'    => 'transactions',
                     ],
                     [
-                        'label'       => __('Payment method', 'fluent-cart'),
+                        'label'       => __('Payment method', 'webmakerr-cart'),
                         'value'       => 'current_payment_method',
                         'type'        => 'selections',
                         'options'     => $paymentMethodOptions,
@@ -207,11 +207,11 @@ class SubscriptionFilter extends BaseFilter
                 ],
             ],
             'product'      => [
-                'label'    => __('Products', 'fluent-cart'),
+                'label'    => __('Products', 'webmakerr-cart'),
                 'value'    => 'product',
                 'children' => [
                     [
-                        'label'           => __('By Products', 'fluent-cart'),
+                        'label'           => __('By Products', 'webmakerr-cart'),
                         'value'           => 'product',
                         'type'            => 'remote_tree_select',
                         'column'          => 'variation_id',
@@ -226,11 +226,11 @@ class SubscriptionFilter extends BaseFilter
 
         if (ModuleSettings::isActive('license') && App::isProActive()) {
             $filters['license'] = [
-                'label'    => __('License Property', 'fluent-cart'),
+                'label'    => __('License Property', 'webmakerr-cart'),
                 'value'    => 'license',
                 'children' => [
                     [
-                        'label'       => __('License key', 'fluent-cart'),
+                        'label'       => __('License key', 'webmakerr-cart'),
                         'value'       => 'license_key',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -239,16 +239,16 @@ class SubscriptionFilter extends BaseFilter
                     ],
 
                     [
-                        'label'       => __('License Status', 'fluent-cart'),
+                        'label'       => __('License Status', 'webmakerr-cart'),
                         'value'       => 'license_status',
                         'type'        => 'selections',
                         'filter_type' => 'relation',
                         'column'      => 'status',
                         'relation'    => 'license',
                         'options'     => [
-                            Status::LICENSE_ACTIVE   => __('Active', 'fluent-cart'),
-                            Status::LICENSE_DISABLED => __('Disabled', 'fluent-cart'),
-                            Status::LICENSE_EXPIRED  => __('Expired', 'fluent-cart'),
+                            Status::LICENSE_ACTIVE   => __('Active', 'webmakerr-cart'),
+                            Status::LICENSE_DISABLED => __('Disabled', 'webmakerr-cart'),
+                            Status::LICENSE_EXPIRED  => __('Expired', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true

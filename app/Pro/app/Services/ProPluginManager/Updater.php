@@ -314,7 +314,7 @@ class Updater
         }
 
         if (!current_user_can('update_plugins')) {
-            wp_die(__('You do not have permission to install plugin updates', 'fluent-cart-pro'), __('Error', 'fluent-cart-pro'),
+            wp_die(__('You do not have permission to install plugin updates', 'webmakerr-cart-pro'), __('Error', 'webmakerr-cart-pro'),
                 array('response' => 403));
         }
 

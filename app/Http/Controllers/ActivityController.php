@@ -24,7 +24,7 @@ class ActivityController extends Controller
            ]);
        }
         return $this->sendSuccess([
-            'message' => __('Activity Deleted Successfully', 'fluent-cart')
+            'message' => __('Activity Deleted Successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -40,11 +40,11 @@ class ActivityController extends Controller
         }
         if ($status === 'read'){
             return $this->sendSuccess([
-                'message' => __('Activity Marked as Read', 'fluent-cart')
+                'message' => __('Activity Marked as Read', 'webmakerr-cart')
             ]);
         }else{
             return $this->sendSuccess([
-                'message' => __('Activity Marked as Unread', 'fluent-cart')
+                'message' => __('Activity Marked as Unread', 'webmakerr-cart')
             ]);
         }
 

@@ -19,7 +19,7 @@ class LifterLMSConnect extends BaseIntegrationManager
     {
         parent::__construct('LifterLMS', 'lifterlms', 20);
 
-        $this->description = __('Manage Course accesses with FluentCart + LifterLMS', 'fluent-cart-pro');
+        $this->description = __('Manage Course accesses with FluentCart + LifterLMS', 'webmakerr-cart-pro');
         $this->logo = Vite::getAssetUrl('images/integrations/lifterlms.svg');
 
         webmakerr_add_filter('webmakerr_cart/integration/integration_options_lifter_courses', [$this, 'getCourseOptions'], 10, 2);
@@ -48,17 +48,17 @@ class LifterLMSConnect extends BaseIntegrationManager
         $fields = [
             'name'                   => [
                 'key'         => 'name',
-                'label'       => __('Feed Title', 'fluent-cart-pro'),
+                'label'       => __('Feed Title', 'webmakerr-cart-pro'),
                 'required'    => true,
-                'placeholder' => __('Name', 'fluent-cart-pro'),
+                'placeholder' => __('Name', 'webmakerr-cart-pro'),
                 'component'   => 'text',
-                'inline_tip'  => __('Name of this feed, it will be used to identify this feed in the list of feeds', 'fluent-cart-pro')
+                'inline_tip'  => __('Name of this feed, it will be used to identify this feed in the list of feeds', 'webmakerr-cart-pro')
             ],
             'course_ids'             => [
                 'key'         => 'course_ids',
-                'label'       => __('Add to Courses', 'fluent-cart-pro'),
-                'placeholder' => __('Select LifterLMS Courses', 'fluent-cart-pro'),
-                'inline_tip'  => __('Select the LifterLMS Courses you would like to add.', 'fluent-cart-pro'),
+                'label'       => __('Add to Courses', 'webmakerr-cart-pro'),
+                'placeholder' => __('Select LifterLMS Courses', 'webmakerr-cart-pro'),
+                'inline_tip'  => __('Select the LifterLMS Courses you would like to add.', 'webmakerr-cart-pro'),
                 'component'   => 'rest_selector',
                 'is_multiple' => true,
                 'option_key'  => 'lifter_courses',
@@ -68,19 +68,19 @@ class LifterLMSConnect extends BaseIntegrationManager
             'membership_ids'         => [
                 'key'          => 'membership_ids',
                 'require_list' => false,
-                'label'        => __('Add to Memberships', 'fluent-cart-pro'),
-                'placeholder'  => __('Select Memberships', 'fluent-cart-pro'),
+                'label'        => __('Add to Memberships', 'webmakerr-cart-pro'),
+                'placeholder'  => __('Select Memberships', 'webmakerr-cart-pro'),
                 'is_multiple'  => true,
                 'component'    => 'rest_selector',
                 'cacheable'    => true,
                 'option_key'   => 'lifter_memberships',
-                'inline_tip'   => __('Select the memberships you would like to add the customer to', 'fluent-cart-pro')
+                'inline_tip'   => __('Select the memberships you would like to add the customer to', 'webmakerr-cart-pro')
             ],
             'watch_on_access_revoke' => [
                 'key'            => 'watch_on_access_revoke',
                 'component'      => 'yes-no-checkbox',
-                'checkbox_label' => __('Remove from selected Courses/Memberships on Refund or Subscription Access Expiration ', 'fluent-cart-pro'),
-                'inline_tip'     => __('If you enable this, on refund or subscription validity expiration, the selected memberships and courses will be removed from the customer.', 'fluent-cart-pro')
+                'checkbox_label' => __('Remove from selected Courses/Memberships on Refund or Subscription Access Expiration ', 'webmakerr-cart-pro'),
+                'inline_tip'     => __('If you enable this, on refund or subscription validity expiration, the selected memberships and courses will be removed from the customer.', 'webmakerr-cart-pro')
             ]
         ];
 
@@ -91,7 +91,7 @@ class LifterLMSConnect extends BaseIntegrationManager
         return [
             'fields'              => $fields,
             'button_require_list' => false,
-            'integration_title'   => __('LifterLMS', 'fluent-cart-pro')
+            'integration_title'   => __('LifterLMS', 'webmakerr-cart-pro')
         ];
     }
 
@@ -164,7 +164,7 @@ class LifterLMSConnect extends BaseIntegrationManager
             }
 
             $order->addLog(
-                __('Accesses Removed from the connected student on order revoke', 'fluent-cart-pro'),
+                __('Accesses Removed from the connected student on order revoke', 'webmakerr-cart-pro'),
                 $userId->get_error_message(),
                 'info',
                 'LifterLMS Integration'
@@ -177,7 +177,7 @@ class LifterLMSConnect extends BaseIntegrationManager
             $userId = AuthService::createUserFromCustomer($customer);
             if (is_wp_error($userId)) {
                 $order->addLog(
-                    __('User creation failed from LifterLMS Integration', 'fluent-cart-pro'),
+                    __('User creation failed from LifterLMS Integration', 'webmakerr-cart-pro'),
                     $userId->get_error_message(),
                     'error',
                     'LifterLMS Integration'
@@ -201,8 +201,8 @@ class LifterLMSConnect extends BaseIntegrationManager
         }
 
         $order->addLog(
-            __('LifterLMS Integration Success', 'fluent-cart-pro'),
-            sprintf(__('User has been added to courses: %s and memberships: %s', 'fluent-cart-pro'), implode(', ', $courseIds), implode(', ', $membershipIds)),
+            __('LifterLMS Integration Success', 'webmakerr-cart-pro'),
+            sprintf(__('User has been added to courses: %s and memberships: %s', 'webmakerr-cart-pro'), implode(', ', $courseIds), implode(', ', $membershipIds)),
             'info',
             'LifterLMS Integration'
         );

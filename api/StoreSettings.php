@@ -40,12 +40,12 @@ class StoreSettings implements ArrayableInterface
     {
         $defaultSettings = [
             'store_name'                           => get_bloginfo('name'),
-            'note_for_user_account_creation'       => __('An user account will be created', 'fluent-cart'),
-            'checkout_button_text'                 => __('Checkout', 'fluent-cart'),
-            'view_cart_button_text'                => __('View Cart', 'fluent-cart'),
-            'cart_button_text'                     => __('Add To Cart', 'fluent-cart'),
-            'popup_button_text'                    => __('View Product', 'fluent-cart'),
-            'out_of_stock_button_text'             => __('Out of stock', 'fluent-cart'),
+            'note_for_user_account_creation'       => __('An user account will be created', 'webmakerr-cart'),
+            'checkout_button_text'                 => __('Checkout', 'webmakerr-cart'),
+            'view_cart_button_text'                => __('View Cart', 'webmakerr-cart'),
+            'cart_button_text'                     => __('Add To Cart', 'webmakerr-cart'),
+            'popup_button_text'                    => __('View Product', 'webmakerr-cart'),
+            'out_of_stock_button_text'             => __('Out of stock', 'webmakerr-cart'),
             'currency_position'                    => 'before',
             // 'thousand_separator'                   => 'comma',
             'decimal_separator'                    => 'dot',
@@ -112,7 +112,7 @@ class StoreSettings implements ArrayableInterface
                 'hide_tab_switch' => true,
                 'schema'          => [
                     'store_setup'          => [
-                        'title'           => __('Store Setup', 'fluent-cart'),
+                        'title'           => __('Store Setup', 'webmakerr-cart'),
                         'type'            => 'section',
                         'disable_nesting' => true,
                         'columns'         => [
@@ -130,8 +130,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'      => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Store Name', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __('Enter the public name of your online store.', 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Store Name', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __('Enter the public name of your online store.', 'webmakerr-cart') . '</div>'
                                     ],
                                     "store_name" => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -158,8 +158,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'      => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Store Logo', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Upload your brand's logo. Recommended width: 512 pixels minimum.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Store Logo', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Upload your brand's logo. Recommended width: 512 pixels minimum.", 'webmakerr-cart') . '</div>'
                                     ],
                                     "store_logo" => [
                                         "label"    => false,
@@ -197,8 +197,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'      => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Store Mode', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select your store's operating mode: `Test` for setup, `Live` for real transactions.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Store Mode', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select your store's operating mode: `Test` for setup, `Live` for real transactions.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'order_mode' => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -206,11 +206,11 @@ class StoreSettings implements ArrayableInterface
                                         "type"         => "radio",
                                         "options"      => [
                                             [
-                                                "label" => __('Live', 'fluent-cart'),
+                                                "label" => __('Live', 'webmakerr-cart'),
                                                 "value" => 'live',
                                             ],
                                             [
-                                                "label" => __('Test', 'fluent-cart'),
+                                                "label" => __('Test', 'webmakerr-cart'),
                                                 "value" => 'test',
                                             ],
                                         ],
@@ -234,8 +234,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'              => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Store Address', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Provide your physical business address details.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Store Address', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Provide your physical business address details.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'address_input_grid' => [
                                         'wrapperClass'    => 'fct-compact-form',
@@ -287,8 +287,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'    => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Checkout Currency', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select the primary currency for your store.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Checkout Currency', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select the primary currency for your store.", 'webmakerr-cart') . '</div>'
                                     ],
                                     "currency" => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -316,8 +316,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'             => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Number Format', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select the character used to separate thousands or decimals in prices.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Number Format', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select the character used to separate thousands or decimals in prices.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'decimal_separator' => [
                                         'wrapperClass' => 'col-span-2 flex items-start flex-col',
@@ -325,11 +325,11 @@ class StoreSettings implements ArrayableInterface
                                         "type"         => "radio",
                                         "options"      => [
                                             [
-                                                "label" => __('Comma & Dot (eg 10,000.00)', 'fluent-cart'),
+                                                "label" => __('Comma & Dot (eg 10,000.00)', 'webmakerr-cart'),
                                                 "value" => 'dot'
                                             ],
                                             [
-                                                "label" => __('Dot & Comma (eg 10.000,00)', 'fluent-cart'),
+                                                "label" => __('Dot & Comma (eg 10.000,00)', 'webmakerr-cart'),
                                                 "value" => 'comma'
                                             ],
                                         ],
@@ -353,8 +353,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'             => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Currency Formatting', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select how the currency should be formatted.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Currency Formatting', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select how the currency should be formatted.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'currency_position' => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -362,31 +362,31 @@ class StoreSettings implements ArrayableInterface
                                         "type"         => "select",
                                         "options"      => [
                                             [
-                                                "label" => __('Symbol before (eg: $100)', 'fluent-cart'),
+                                                "label" => __('Symbol before (eg: $100)', 'webmakerr-cart'),
                                                 "value" => 'before',
                                             ],
                                             [
-                                                "label" => __('Symbol after (eg: 100$)', 'fluent-cart'),
+                                                "label" => __('Symbol after (eg: 100$)', 'webmakerr-cart'),
                                                 "value" => 'after',
                                             ],
                                             [
-                                                "label" => __('ISO before (eg: USD 100)', 'fluent-cart'),
+                                                "label" => __('ISO before (eg: USD 100)', 'webmakerr-cart'),
                                                 "value" => 'iso_before',
                                             ],
                                             [
-                                                "label" => __('ISO after (eg: 100 USD)', 'fluent-cart'),
+                                                "label" => __('ISO after (eg: 100 USD)', 'webmakerr-cart'),
                                                 "value" => 'iso_after',
                                             ],
                                             [
-                                                "label" => __('Symbol & ISO (eg: $100 USD)', 'fluent-cart'),
+                                                "label" => __('Symbol & ISO (eg: $100 USD)', 'webmakerr-cart'),
                                                 "value" => 'symbool_before_iso',
                                             ],
                                             [
-                                                "label" => __('ISO & Symbol (eg: USD 100$)', 'fluent-cart'),
+                                                "label" => __('ISO & Symbol (eg: USD 100$)', 'webmakerr-cart'),
                                                 "value" => 'symbool_after_iso',
                                             ],
                                             [
-                                                "label" => __('ISO-Symbol (eg: USD $100)', 'fluent-cart'),
+                                                "label" => __('ISO-Symbol (eg: USD $100)', 'webmakerr-cart'),
                                                 "value" => 'symbool_and_iso',
                                             ],
                                         ],
@@ -410,8 +410,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'                 => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Payment View', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select how payment options are visually presented on checkout.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Payment View', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select how payment options are visually presented on checkout.", 'webmakerr-cart') . '</div>'
                                     ],
                                     "checkout_method_style" => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -424,7 +424,7 @@ class StoreSettings implements ArrayableInterface
                                                 "value" => 'logo',
                                             ],
                                             [
-                                                "label" => __('Label Selector', 'fluent-cart'),
+                                                "label" => __('Label Selector', 'webmakerr-cart'),
                                                 "value" => 'radio',
                                             ],
                                         ],
@@ -435,12 +435,12 @@ class StoreSettings implements ArrayableInterface
                         ],
                     ],
 //                    'button_setup'           => [
-//                        'title'           => __('Button Setup', 'fluent-cart'),
+//                        'title'           => __('Button Setup', 'webmakerr-cart'),
 //                        'type'            => 'tab-pane',
 //                        'disable_nesting' => true,
 //                        'schema'          => [
 //                            'button_setup_settings' => [
-//                                'title'           => __('Button Setup', 'fluent-cart'),
+//                                'title'           => __('Button Setup', 'webmakerr-cart'),
 //                                'type'            => 'section',
 //                                'disable_nesting' => true,
 //                                'columns'         => [
@@ -449,43 +449,43 @@ class StoreSettings implements ArrayableInterface
 //                                ],
 //                                'schema'          => [
 //                                    "checkout_button_text" => [
-//                                        "label" => __('Checkout Button Text', 'fluent-cart'),
+//                                        "label" => __('Checkout Button Text', 'webmakerr-cart'),
 //                                        "type"  => "input",
-//                                        "value" => __('Buy now', 'fluent-cart')
+//                                        "value" => __('Buy now', 'webmakerr-cart')
 //                                    ],
 //                                    "cart_button_text"     => [
-//                                        "label" => __('Cart Button Text', 'fluent-cart'),
+//                                        "label" => __('Cart Button Text', 'webmakerr-cart'),
 //                                        "type"  => "input",
-//                                        "value" => __('Add to cart', 'fluent-cart')
+//                                        "value" => __('Add to cart', 'webmakerr-cart')
 //                                    ],
 //
 //                                    "popup_button_text"        => [
-//                                        "label" => __('Popup Button Text', 'fluent-cart'),
+//                                        "label" => __('Popup Button Text', 'webmakerr-cart'),
 //                                        "type"  => "input",
-//                                        "value" => __('View Product', 'fluent-cart')
+//                                        "value" => __('View Product', 'webmakerr-cart')
 //                                    ],
 //                                    "out_of_stock_button_text" => [
-//                                        "label" => __('Out of Stock Button Text', 'fluent-cart'),
+//                                        "label" => __('Out of Stock Button Text', 'webmakerr-cart'),
 //                                        "type"  => "input",
-//                                        "value" => __('Out of stock', 'fluent-cart')
+//                                        "value" => __('Out of stock', 'webmakerr-cart')
 //                                    ],
 //                                    "view_cart_button_text"    => [
-//                                        "label" => __('View Cart Button Text', 'fluent-cart'),
+//                                        "label" => __('View Cart Button Text', 'webmakerr-cart'),
 //                                        "type"  => "input",
-//                                        "value" => __('View Cart', 'fluent-cart')
+//                                        "value" => __('View Cart', 'webmakerr-cart')
 //                                    ],
 //
 //                                    "note_for_user_account_creation" => [
-//                                        "label" => __('Note for User Account Creation,', 'fluent-cart'),
+//                                        "label" => __('Note for User Account Creation,', 'webmakerr-cart'),
 //                                        "type"  => "input",
-//                                        "value" => __('You have subscription product in your cart, an account will be created', 'fluent-cart')
+//                                        "value" => __('You have subscription product in your cart, an account will be created', 'webmakerr-cart')
 //                                    ],
 //                                ],
 //                            ]
 //                        ]
 //                    ],
                     'pages_setup'          => [
-                        'title'           => __('Pages Setup', 'fluent-cart'),
+                        'title'           => __('Pages Setup', 'webmakerr-cart'),
                         'type'            => 'section',
                         'disable_nesting' => true,
                         'columns'         => [
@@ -504,12 +504,12 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'        => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Select Shop Page', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select the page that showcases all of your products.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Select Shop Page', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select the page that showcases all of your products.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'shop_page_id' => [
                                         'wrapperClass' => 'col-span-2',
-                                        'page_title'   => __('Shop', 'fluent-cart'),
+                                        'page_title'   => __('Shop', 'webmakerr-cart'),
                                         'type'         => 'component',
                                         'component'    => 'StoreSettings/PageSelector',
                                         'page_key'     => 'shop_page_id',
@@ -519,7 +519,7 @@ class StoreSettings implements ArrayableInterface
                                         'value'        => '',
                                         'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_products]',
-                                            __('Products', 'fluent-cart')
+                                            __('Products', 'webmakerr-cart')
                                         ),
                                     ],
                                 ]
@@ -540,13 +540,13 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'                    => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Select Customer Profile Page', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select the page where customers will manage their profile, orders, and downloads.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Select Customer Profile Page', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select the page where customers will manage their profile, orders, and downloads.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'customer_profile_page_id' => [
                                         'wrapperClass' => 'col-span-2',
                                         'label'        => false,
-                                        'page_title'   => __('Account', 'fluent-cart'),
+                                        'page_title'   => __('Account', 'webmakerr-cart'),
                                         'type'         => 'component',
                                         'component'    => 'StoreSettings/PageSelector',
                                         'page_key'     => 'customer_profile_page_id',
@@ -556,7 +556,7 @@ class StoreSettings implements ArrayableInterface
                                         'value'        => '',
                                         'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_customer_profile]',
-                                            __('Account', 'fluent-cart')
+                                            __('Account', 'webmakerr-cart')
                                         ),
                                     ],
                                 ]
@@ -577,13 +577,13 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'        => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Select Cart Page', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select the page that will display customer's current shopping cart.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Select Cart Page', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select the page that will display customer's current shopping cart.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'cart_page_id' => [
                                         'wrapperClass' => 'col-span-2',
                                         'label'        => false,
-                                        'page_title'   => __('Cart', 'fluent-cart'),
+                                        'page_title'   => __('Cart', 'webmakerr-cart'),
                                         'type'         => 'component',
                                         'component'    => 'StoreSettings/PageSelector',
                                         'page_key'     => 'cart_page_id',
@@ -593,7 +593,7 @@ class StoreSettings implements ArrayableInterface
                                         'value'        => '',
                                         'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_cart]',
-                                            __('Cart', 'fluent-cart')
+                                            __('Cart', 'webmakerr-cart')
                                         ),
                                     ],
                                 ]
@@ -614,13 +614,13 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'           => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Select Receipt Page', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select the page that will display order summary after a successful purchase.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Select Receipt Page', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select the page that will display order summary after a successful purchase.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'receipt_page_id' => [
                                         'wrapperClass' => 'col-span-2',
                                         'label'        => false,
-                                        'page_title'   => __('Receipt', 'fluent-cart'),
+                                        'page_title'   => __('Receipt', 'webmakerr-cart'),
                                         'type'         => 'component',
                                         'component'    => 'StoreSettings/PageSelector',
                                         'page_key'     => 'receipt_page_id',
@@ -630,7 +630,7 @@ class StoreSettings implements ArrayableInterface
                                         'value'        => '',
                                         'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_receipt]',
-                                            __('Receipt', 'fluent-cart')
+                                            __('Receipt', 'webmakerr-cart')
                                         ),
                                     ],
                                 ]
@@ -651,13 +651,13 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'            => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Select Checkout Page', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Select the page where customers will finalize their purchase.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Select Checkout Page', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Select the page where customers will finalize their purchase.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'checkout_page_id' => [
                                         'wrapperClass' => 'col-span-2',
                                         'label'        => false,
-                                        'page_title'   => __('Checkout', 'fluent-cart'),
+                                        'page_title'   => __('Checkout', 'webmakerr-cart'),
                                         'type'         => 'component',
                                         'component'    => 'StoreSettings/PageSelector',
                                         'page_key'     => 'checkout_page_id',
@@ -667,7 +667,7 @@ class StoreSettings implements ArrayableInterface
                                         'value'        => '',
                                         'note'         => \Webmakerr\App\Helpers\Helper::getShortcodeInstructionString(
                                             '[webmakerr_checkout]',
-                                            __('Checkout', 'fluent-cart')
+                                            __('Checkout', 'webmakerr-cart')
                                         ),
                                     ],
                                 ]
@@ -675,7 +675,7 @@ class StoreSettings implements ArrayableInterface
                         ]
                     ],
                     'single_product_setup' => [
-                        'title'           => __('Product Page', 'fluent-cart'),
+                        'title'           => __('Product Page', 'webmakerr-cart'),
                         'type'            => 'section',
                         'disable_nesting' => true,
                         'columns'         => [
@@ -693,8 +693,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'  => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Single Product Setup', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Control the display of relevant information.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Single Product Setup', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Control the display of relevant information.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'fields' => [
                                         'type'            => 'grid',
@@ -705,12 +705,12 @@ class StoreSettings implements ArrayableInterface
                                         'disable_nesting' => true,
                                         'schema'          => [
                                             "show_relevant_product_in_single_page" => [
-                                                "label" => __('Show Relevant In Single Page', 'fluent-cart'),
+                                                "label" => __('Show Relevant In Single Page', 'webmakerr-cart'),
                                                 "type"  => "checkbox",
                                                 "value" => "yes"
                                             ],
                                             "show_relevant_product_in_modal"       => [
-                                                "label" => __('Show Relevant In Product Modal', 'fluent-cart'),
+                                                "label" => __('Show Relevant In Product Modal', 'webmakerr-cart'),
                                                 "type"  => "checkbox",
                                                 "value" => "no"
                                             ],
@@ -734,8 +734,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'  => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Image Zooming', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Enable Image zoom in single product.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Image Zooming', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Enable Image zoom in single product.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'fields' => [
                                         'type'            => 'grid',
@@ -746,12 +746,12 @@ class StoreSettings implements ArrayableInterface
                                         'disable_nesting' => true,
                                         'schema'          => [
                                             "enable_image_zoom_in_single_product" => [
-                                                "label" => __('Enable Zoom in Single Product', 'fluent-cart'),
+                                                "label" => __('Enable Zoom in Single Product', 'webmakerr-cart'),
                                                 "type"  => "checkbox",
                                                 "value" => "no"
                                             ],
                                             "enable_image_zoom_in_modal"          => [
-                                                "label" => __('Enable Zoom in Modal', 'fluent-cart'),
+                                                "label" => __('Enable Zoom in Modal', 'webmakerr-cart'),
                                                 "type"  => "checkbox",
                                                 "value" => "no"
                                             ],
@@ -776,8 +776,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'          => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Variation View', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Defines how product variations are visually presented to customers.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Variation View', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Defines how product variations are visually presented to customers.", 'webmakerr-cart') . '</div>'
                                     ],
                                     "variation_view" => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -785,15 +785,15 @@ class StoreSettings implements ArrayableInterface
                                         "type"         => "select",
                                         "options"      => [
                                             [
-                                                "label" => __('Image', 'fluent-cart'),
+                                                "label" => __('Image', 'webmakerr-cart'),
                                                 "value" => 'image',
                                             ],
                                             [
-                                                "label" => __('Text', 'fluent-cart'),
+                                                "label" => __('Text', 'webmakerr-cart'),
                                                 "value" => 'text',
                                             ],
                                             [
-                                                "label" => __('Image with Text', 'fluent-cart'),
+                                                "label" => __('Image with Text', 'webmakerr-cart'),
                                                 "value" => 'both',
                                             ],
                                         ],
@@ -816,8 +816,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'             => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Variation Columns', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Set the column layout for how product variations are displayed within product sections.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Variation Columns', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Set the column layout for how product variations are displayed within product sections.", 'webmakerr-cart') . '</div>'
                                     ],
                                     "variation_columns" => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -825,23 +825,23 @@ class StoreSettings implements ArrayableInterface
                                         "type"         => "select",
                                         "options"      => [
                                             [
-                                                "label" => __('One Column', 'fluent-cart'),
+                                                "label" => __('One Column', 'webmakerr-cart'),
                                                 "value" => 'one',
                                             ],
                                             [
-                                                "label" => __('Two Columns', 'fluent-cart'),
+                                                "label" => __('Two Columns', 'webmakerr-cart'),
                                                 "value" => 'two',
                                             ],
                                             [
-                                                "label" => __('Three Columns', 'fluent-cart'),
+                                                "label" => __('Three Columns', 'webmakerr-cart'),
                                                 "value" => 'three',
                                             ],
                                             [
-                                                "label" => __('Four Columns', 'fluent-cart'),
+                                                "label" => __('Four Columns', 'webmakerr-cart'),
                                                 "value" => 'four',
                                             ],
                                             [
-                                                "label" => __('Masonry', 'fluent-cart'),
+                                                "label" => __('Masonry', 'webmakerr-cart'),
                                                 "value" => 'masonry',
                                             ],
                                         ],
@@ -865,8 +865,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'        => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Product Slug', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Set Product Slug.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Product Slug', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Set Product Slug.", 'webmakerr-cart') . '</div>'
                                     ],
                                     "product_slug" => [
                                         'wrapperClass' => 'col-span-2 flex items-center',
@@ -880,7 +880,7 @@ class StoreSettings implements ArrayableInterface
                         ],
                     ],
                     'cart_and_checkout'    => [
-                        'title'           => __('Cart & checkout', 'fluent-cart'),
+                        'title'           => __('Cart & checkout', 'webmakerr-cart'),
                         'type'            => 'section',
                         'disable_nesting' => true,
                         'columns'         => [
@@ -889,17 +889,17 @@ class StoreSettings implements ArrayableInterface
                         ],
                         'schema'          => [
                             "show_cart_icon_in_body" => [
-                                "label" => __('Cart Icon In Body', 'fluent-cart'),
+                                "label" => __('Cart Icon In Body', 'webmakerr-cart'),
                                 "type"  => "checkbox",
                                 "value" => "yes",
                                 'note'  => sprintf(
                                 /* translators: %1$s: Display instruction text, %2$s: "Use this" text, %3$s: Copy to clipboard tooltip, %4$s: CSS class name, %5$s: CSS class description text */
                                     "<div class='pl-6'><p>%1\$s</p><p>%2\$s <code class='copyable-content' title='%3\$s'>%4\$s</code> %5\$s</p></div>",
-                                    __('Display the cart icon in the body of the website', 'fluent-cart'),
-                                    __('Use this', 'fluent-cart'),
-                                    __('Copy to clipboard', 'fluent-cart'),
+                                    __('Display the cart icon in the body of the website', 'webmakerr-cart'),
+                                    __('Use this', 'webmakerr-cart'),
+                                    __('Copy to clipboard', 'webmakerr-cart'),
                                     '[webmakerr_toggle_button]',
-                                    __('CSS class to display the cart link/icon anywhere else.', 'fluent-cart')
+                                    __('CSS class to display the cart link/icon anywhere else.', 'webmakerr-cart')
                                 )
                             ],
                             'hr2'                    => [
@@ -907,10 +907,10 @@ class StoreSettings implements ArrayableInterface
                                 'value' => '<hr class="settings-divider">'
                             ],
                             "require_logged_in"      => [
-                                "label"        => __('Require user to be logged in for checkout (Coming soon)', 'fluent-cart'),
+                                "label"        => __('Require user to be logged in for checkout (Coming soon)', 'webmakerr-cart'),
                                 "type"         => "checkbox",
                                 "value"        => "no",
-                                'note'         => "<div class='pl-6'>" . __('Enforce that customers must be logged into their account to complete a purchase.', 'fluent-cart') . "</div>",
+                                'note'         => "<div class='pl-6'>" . __('Enforce that customers must be logged into their account to complete a purchase.', 'webmakerr-cart') . "</div>",
                                 'wrapperClass' => 'disabled'
                             ],
                             'hr3'                    => [
@@ -928,8 +928,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'                   => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('User Account Creation Mode', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("User account will be created regardless of the mode if the order has a subscription.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('User Account Creation Mode', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("User account will be created regardless of the mode if the order has a subscription.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'user_account_input_grid' => [
                                         'type'            => 'grid',
@@ -943,21 +943,21 @@ class StoreSettings implements ArrayableInterface
                                                 "options"      => [
                                                     [
                                                         "label"        => __('Create User Account Automatically after payment
-', 'fluent-cart'),
+', 'webmakerr-cart'),
                                                         "value"        => 'all',
-                                                        'note'         => "<div class='my-[2px] form-note'>" . __('User account will be created automatically after payment.', 'fluent-cart') . "</div>",
+                                                        'note'         => "<div class='my-[2px] form-note'>" . __('User account will be created automatically after payment.', 'webmakerr-cart') . "</div>",
                                                         'option_class' => 'mb-2.5'
                                                     ],
                                                     [
-                                                        "label"        => __('Give checkbox to create account on checkout page', 'fluent-cart'),
+                                                        "label"        => __('Give checkbox to create account on checkout page', 'webmakerr-cart'),
                                                         "value"        => 'user_choice',
-                                                        'note'         => "<div class='my-[2px] form-note'>" . __('User will have an option to create an account during checkout.', 'fluent-cart') . "</div>",
+                                                        'note'         => "<div class='my-[2px] form-note'>" . __('User will have an option to create an account during checkout.', 'webmakerr-cart') . "</div>",
                                                         'option_class' => 'mb-2.5'
                                                     ],
                                                     [
-                                                        "label" => __('No need to create account for onetime purchases', 'fluent-cart'),
+                                                        "label" => __('No need to create account for onetime purchases', 'webmakerr-cart'),
                                                         "value" => 'only_subscription',
-                                                        'note'  => "<div class='my-[2px] form-note'>" . __('User account will not be created for onetime purchases.', 'fluent-cart') . "</div>",
+                                                        'note'  => "<div class='my-[2px] form-note'>" . __('User account will not be created for onetime purchases.', 'webmakerr-cart') . "</div>",
                                                     ],
                                                 ],
                                                 "value"        => "all"
@@ -969,13 +969,13 @@ class StoreSettings implements ArrayableInterface
 
 
 //                            "allow_checkout_signup"    => [
-//                                "label" => __('Allow customers to create account during one-time checkout', 'fluent-cart'),
+//                                "label" => __('Allow customers to create account during one-time checkout', 'webmakerr-cart'),
 //                                "type"  => "checkbox",
 //                                "value" => "no",
-//                                'note'  => "<div class='pl-6'>" . __('Provide an option for customers to create a user account during a single, non-recurring checkout process.', 'fluent-cart') . "</div>"
+//                                'note'  => "<div class='pl-6'>" . __('Provide an option for customers to create a user account during a single, non-recurring checkout process.', 'webmakerr-cart') . "</div>"
 //                            ],
 //                    "force_ssl" => [
-//                        "label" => __('Force page to SSL (https)', 'fluent-cart'),
+//                        "label" => __('Force page to SSL (https)', 'webmakerr-cart'),
 //                        "type" => "checkbox",
 //                        "value" => "no"
 //                    ],
@@ -984,10 +984,10 @@ class StoreSettings implements ArrayableInterface
                                 'value' => '<hr class="settings-divider">'
                             ],
                             "hide_coupon_field"               => [
-                                "label" => __('Hide coupon field on checkout', 'fluent-cart'),
+                                "label" => __('Hide coupon field on checkout', 'webmakerr-cart'),
                                 "type"  => "checkbox",
                                 "value" => "no",
-                                'note'  => "<div class='pl-6'>" . __('Hide the coupon code input field on the checkout page.', 'fluent-cart') . "</div>"
+                                'note'  => "<div class='pl-6'>" . __('Hide the coupon code input field on the checkout page.', 'webmakerr-cart') . "</div>"
                             ],
                             'hr6'                             => [
                                 'type'  => 'html',
@@ -1003,8 +1003,8 @@ class StoreSettings implements ArrayableInterface
                                 'schema'          => [
                                     'label'              => [
                                         'type'  => 'html',
-                                        'value' => '<span class="setting-label">' . __('Receipt Settings', 'fluent-cart') . '</span>
-                                                            <div class="form-note">' . __("Setup your receipt.", 'fluent-cart') . '</div>'
+                                        'value' => '<span class="setting-label">' . __('Receipt Settings', 'webmakerr-cart') . '</span>
+                                                            <div class="form-note">' . __("Setup your receipt.", 'webmakerr-cart') . '</div>'
                                     ],
                                     'invoice_input_grid' => [
                                         'type'            => 'grid',
@@ -1013,14 +1013,14 @@ class StoreSettings implements ArrayableInterface
                                         'schema'          => [
                                             "min_receipt_number" => [
                                                 'wrapperClass' => 'col-span-2 flex flex-col',
-                                                "label"        => __('Minimum Receipt Number', 'fluent-cart'),
+                                                "label"        => __('Minimum Receipt Number', 'webmakerr-cart'),
                                                 "type"         => "input",
                                                 "value"        => "",
                                                 'note'         => sprintf(
                                                     "<div class=''>%s</div>",
                                                     sprintf(
                                                     /* translators: %s is the next receipt number */
-                                                        __('Next Receipt Number: %s', 'fluent-cart'),
+                                                        __('Next Receipt Number: %s', 'webmakerr-cart'),
                                                         OrderService::getNextReceiptNumber()
                                                     )
                                                 ),
@@ -1028,7 +1028,7 @@ class StoreSettings implements ArrayableInterface
                                             ],
                                             "inv_prefix"         => [
                                                 'wrapperClass' => 'col-span-2 flex flex-col',
-                                                "label"        => __('Receipt Prefix', 'fluent-cart'),
+                                                "label"        => __('Receipt Prefix', 'webmakerr-cart'),
                                                 "type"         => "input",
                                                 "value"        => "",
                                             ],
@@ -1233,12 +1233,12 @@ class StoreSettings implements ArrayableInterface
 
     public function getBuyButtonText(): string
     {
-        return esc_html(Arr::get($this->storeSettings, 'checkout_button_text', __('Buy now', 'fluent-cart')));
+        return esc_html(Arr::get($this->storeSettings, 'checkout_button_text', __('Buy now', 'webmakerr-cart')));
     }
 
     public function getViewCartButtonText(): string
     {
-        return esc_html(Arr::get($this->storeSettings, 'view_cart_button_text', __('View Cart', 'fluent-cart')));
+        return esc_html(Arr::get($this->storeSettings, 'view_cart_button_text', __('View Cart', 'webmakerr-cart')));
     }
 
     /**
@@ -1248,7 +1248,7 @@ class StoreSettings implements ArrayableInterface
      */
     public function getCartButtonText(): string
     {
-        return esc_html(Arr::get($this->storeSettings, 'cart_button_text', __('Add to cart', 'fluent-cart')));
+        return esc_html(Arr::get($this->storeSettings, 'cart_button_text', __('Add to cart', 'webmakerr-cart')));
     }
 
     public function toArray(): array

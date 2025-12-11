@@ -29,7 +29,7 @@ abstract class Controller extends BaseController
         return $this->sendError([
             'data' => [
                 'message'    => $message,
-                'buttonText' => $buttonText ?? __('Back to Dashboard', 'fluent-cart'),
+                'buttonText' => $buttonText ?? __('Back to Dashboard', 'webmakerr-cart'),
                 'route'      => $route,
             ],
             'code' => 'fluent_cart_entity_not_found',

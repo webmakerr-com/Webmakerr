@@ -23,23 +23,23 @@ class AdminHelper
 
         $menuItems = webmakerr_apply_filters('webmakerr_cart/product_admin_items', [
             'product_edit'          => [
-                'label' => __('Edit Product', 'fluent-cart'),
+                'label' => __('Edit Product', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'products/' . $productId
             ],
             'product_upgrade_paths' => [
-                'label' => __('Upgrade Paths', 'fluent-cart'),
+                'label' => __('Upgrade Paths', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'products/' . $productId . '/upgrade-paths'
             ],
             'product_integrations' => [
-                'label' => __('Integrations', 'fluent-cart'),
+                'label' => __('Integrations', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'products/' . $productId . '/integrations'
             ],
             // 'product_pricing' => [
-            //     'label' => __('Pricing', 'fluent-cart'),
+            //     'label' => __('Pricing', 'webmakerr-cart'),
             //     'link' => $baseUrl . 'products/' . $productId . '/pricing'
             // ],
 //            'product_integrations' => [
-//                'label' => __('Integrations', 'fluent-cart'),
+//                'label' => __('Integrations', 'webmakerr-cart'),
 //                'link' => $baseUrl . 'products/' . $productId . '/integrations'
 //            ]
         ], [
@@ -50,7 +50,7 @@ class AdminHelper
         $request = App::request()->all();
         if (isset($request['action']) && $request['action'] == 'edit') {
             $menuItems['product_details'] = [
-                'label' => __('Edit Pricing', 'fluent-cart'),
+                'label' => __('Edit Pricing', 'webmakerr-cart'),
                 'link'  => admin_url('admin.php?page=webmakerr#/products/' . $productId)
             ];
         }
@@ -79,65 +79,65 @@ class AdminHelper
         $baseUrl = webmakerr_apply_filters('webmakerr_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
         $menuItems = webmakerr_apply_filters('webmakerr_cart/global_admin_menu_items', [
             'dashboard'    => [
-                'label' => __('Dashboard', 'fluent-cart'),
+                'label' => __('Dashboard', 'webmakerr-cart'),
                 'link'  => $baseUrl
             ],
             'orders'       => [
-                'label' => __('Orders', 'fluent-cart'),
+                'label' => __('Orders', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'orders',
                 'permission' => ['orders/view']
             ],
             'customers'    => [
-                'label' => __('Customers', 'fluent-cart'),
+                'label' => __('Customers', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'customers',
                 'permission' => ["customers/view", "customers/manage"]
             ],
             'products'     => [
-                'label' => __('Products', 'fluent-cart'),
+                'label' => __('Products', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'products',
                 'permission' => ['products/view']
             ],
 //            'integrations' => [
-//                'label' => __('Integrations', 'fluent-cart'),
+//                'label' => __('Integrations', 'webmakerr-cart'),
 //                'link'  => $baseUrl . 'integrations'
 //            ],
             'reports'      => [
-                'label' => __('Reports', 'fluent-cart'),
+                'label' => __('Reports', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'reports/overview',
                 'permission' => ['reports/view']
             ],
             // 'attributes' => [
-            //     'label' => __('Attributes', 'fluent-cart'),
+            //     'label' => __('Attributes', 'webmakerr-cart'),
             //     'link' => $baseUrl . 'attributes'
             // ],
         ], ['base_url' => $baseUrl]);
 
 //        $menuItems['settings'] = [
-//            'label' => __('Settings', 'fluent-cart'),
+//            'label' => __('Settings', 'webmakerr-cart'),
 //            'link'  => $baseUrl . 'settings',
 //        ];
 
         $menuItems['more'] = [
-            'label'    => __('More', 'fluent-cart'),
+            'label'    => __('More', 'webmakerr-cart'),
             'link'     => '#',
             'children' => []
         ];
         if (App::isProActive() && ModuleSettings::isActive('order_bump')) {
             $menuItems['more']['children']['order_bump'] = [
-                'label' => __('Order Bump', 'fluent-cart'),
+                'label' => __('Order Bump', 'webmakerr-cart'),
                 'link'  => $baseUrl . 'order_bump',
             ];
         }
         $menuItems['more']['children']['coupons'] = [
-            'label' => __('Coupons', 'fluent-cart'),
+            'label' => __('Coupons', 'webmakerr-cart'),
             'link'  => $baseUrl . 'coupons',
         ];
         $menuItems['more']['children']['logs'] = [
-            'label' => __('Logs', 'fluent-cart'),
+            'label' => __('Logs', 'webmakerr-cart'),
             'link'  => $baseUrl . 'logs',
         ];
         $menuItems['more']['children']['taxes'] = [
-            'label' => __('Taxes', 'fluent-cart'),
+            'label' => __('Taxes', 'webmakerr-cart'),
             'link'  => $baseUrl . 'taxes',
         ];
 
@@ -172,7 +172,6 @@ class AdminHelper
 
 
 }
-
 
 
 

@@ -52,7 +52,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if (!$customer) {
             return webmakerr_apply_filters('webmakerr_cart/customer_dashboard_data', [
-                'message'        => __('Success', 'fluent-cart'),
+                'message'        => __('Success', 'webmakerr-cart'),
                 'dashboard_data' => [
                     'orders' => []
                 ],
@@ -104,7 +104,7 @@ class CustomerProfileController extends BaseFrontendController
         });
 
         return webmakerr_apply_filters('webmakerr_cart/customer_dashboard_data', [
-            'message'        => __('Success', 'fluent-cart'),
+            'message'        => __('Success', 'webmakerr-cart'),
             'dashboard_data' => [
                 'orders' => $orders
             ],
@@ -133,7 +133,7 @@ class CustomerProfileController extends BaseFrontendController
 
 
             return $this->sendSuccess([
-                'message' => __('Success', 'fluent-cart'),
+                'message' => __('Success', 'webmakerr-cart'),
                 'data'    => [
                     'first_name'       => $currentUser->data->first_name,
                     'last_name'        => $currentUser->data->last_name,
@@ -165,7 +165,7 @@ class CustomerProfileController extends BaseFrontendController
         ]);
         // Combine the customer and WordPress user data in the response
         return $this->sendSuccess([
-            'message' => __('Success', 'fluent-cart'),
+            'message' => __('Success', 'webmakerr-cart'),
             'data'    => $userData
         ]);
     }
@@ -183,7 +183,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart')
+                'message' => __('Customer not found', 'webmakerr-cart')
             ]);
         }
 
@@ -201,7 +201,7 @@ class CustomerProfileController extends BaseFrontendController
         }
 
         return $this->sendSuccess([
-            'message' => __('Profile updated successfully', 'fluent-cart'),
+            'message' => __('Profile updated successfully', 'webmakerr-cart'),
         ]);
     }
 
@@ -223,7 +223,7 @@ class CustomerProfileController extends BaseFrontendController
 
             if ($emailExistsInWp && $emailExistsInWp->ID !== $userId) {
                 return $this->sendError([
-                    'message' => __('The email address is already in use in WordPress users.', 'fluent-cart')
+                    'message' => __('The email address is already in use in WordPress users.', 'webmakerr-cart')
                 ]);
             }
         }
@@ -233,7 +233,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if ($emailExistsInCustomer) {
             return $this->sendError([
-                'message' => __('The email address is already in use in the customer records.', 'fluent-cart')
+                'message' => __('The email address is already in use in the customer records.', 'webmakerr-cart')
             ]);
         }
 
@@ -290,7 +290,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if ($address->customer_id != $customer->id) {
             return $this->sendError([
-                'message' => __('You are not authorized to update this address', 'fluent-cart')
+                'message' => __('You are not authorized to update this address', 'webmakerr-cart')
             ]);
         }
 
@@ -328,7 +328,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if ($address->customer_id != $customer->id) {
             return $this->sendError([
-                'message' => __('You are not authorized to update this address', 'fluent-cart')
+                'message' => __('You are not authorized to update this address', 'webmakerr-cart')
             ]);
         }
 
@@ -360,7 +360,7 @@ class CustomerProfileController extends BaseFrontendController
         $id = $request->getSafe('addressId', 'intval');
         if (!$id) {
             return $this->sendError([
-                'message' => __('Address ID is required', 'fluent-cart')
+                'message' => __('Address ID is required', 'webmakerr-cart')
             ]);
         }
 
@@ -370,7 +370,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if ($address->customer_id != $customer->id) {
             return $this->sendError([
-                'message' => __('You are not authorized to update this address', 'fluent-cart')
+                'message' => __('You are not authorized to update this address', 'webmakerr-cart')
             ]);
         }
 
@@ -393,7 +393,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if ($errorResponse !== null) {
             return $this->sendSuccess([
-                'message'      => __('Success', 'fluent-cart'),
+                'message'      => __('Success', 'webmakerr-cart'),
                 'data'         => [],
                 'total'        => 0,
                 'per_page'     => $perPage,
@@ -455,7 +455,7 @@ class CustomerProfileController extends BaseFrontendController
         })->values();
 
         return $this->sendSuccess([
-            'message'   => __('Success', 'fluent-cart'),
+            'message'   => __('Success', 'webmakerr-cart'),
             'downloads' => [
                 'data'         => $data,
                 'total'        => $total,
@@ -475,7 +475,7 @@ class CustomerProfileController extends BaseFrontendController
         $currentCustomer = CustomerResource::getCurrentCustomer();
         if (!$currentCustomer) {
             return $this->sendError([
-                'message' => __('You must be logged in to view upgrade paths.', 'fluent-cart')
+                'message' => __('You must be logged in to view upgrade paths.', 'webmakerr-cart')
             ]);
         }
 
@@ -485,7 +485,7 @@ class CustomerProfileController extends BaseFrontendController
 
         if (!$order) {
             return $this->sendError([
-                'message' => __('Order not found or you do not have permission to view it.', 'fluent-cart')
+                'message' => __('Order not found or you do not have permission to view it.', 'webmakerr-cart')
             ]);
         }
 

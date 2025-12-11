@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 return array(
     'EU' => array(
-        'name'      => __( 'European Union', 'fluent-cart' ),
+        'name'      => __( 'European Union', 'webmakerr-cart' ),
         'countries' => array(
             'AT', // Austria
             'BE', // Belgium

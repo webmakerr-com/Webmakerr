@@ -61,14 +61,14 @@ class CartItemRenderer
                 </div>
             </div><!-- .fct_line_item_info -->
 
-            <div class="fct_line_item_price" aria-label="<?php esc_attr_e('Price information', 'fluent-cart'); ?>">
+            <div class="fct_line_item_price" aria-label="<?php esc_attr_e('Price information', 'webmakerr-cart'); ?>">
                 <?php webmakerr_do_action('webmakerr_cart/cart/line_item/before_total', $this->getEventInfo()); ?>
                 <?php if($promoPriceOriginal) : ?>
-                <div style="text-decoration: line-through;" class="fct_line_item_total fct_promo_price" aria-label="<?php esc_attr_e('Original price', 'fluent-cart'); ?>">
+                <div style="text-decoration: line-through;" class="fct_line_item_total fct_promo_price" aria-label="<?php esc_attr_e('Original price', 'webmakerr-cart'); ?>">
                     <?php echo esc_html(Helper::toDecimal($promoPriceOriginal)); ?>
                 </div>
                 <?php endif; ?>
-                <span class="fct_line_item_total" aria-label="<?php esc_attr_e('Total price', 'fluent-cart'); ?>">
+                <span class="fct_line_item_total" aria-label="<?php esc_attr_e('Total price', 'webmakerr-cart'); ?>">
                     <?php echo esc_html(Helper::toDecimal(Arr::get($this->item, 'subtotal', 0))); ?>
                 </span>
                 <?php webmakerr_do_action('webmakerr_cart/cart/line_item/after_total', $this->getEventInfo()); ?>
@@ -92,7 +92,7 @@ class CartItemRenderer
             <?php if ($quantity > 1): ?>
                 <span class="fct_item_quantity" aria-label="<?php echo esc_attr(sprintf(
                         /* translators: %d: quantity */
-                        __('Quantity %d', 'fluent-cart'), $quantity)); ?>">
+                        __('Quantity %d', 'webmakerr-cart'), $quantity)); ?>">
                     <?php echo esc_attr($quantity); ?> <span aria-hidden="true">x</span>
                 </span>
             <?php endif; ?>
@@ -101,7 +101,7 @@ class CartItemRenderer
                    href="<?php echo esc_url($href); ?>"
                    aria-label="<?php echo esc_attr(sprintf(
                            /* translators: %s: product title */
-                           __('View details for %s', 'fluent-cart'), $mainTitle)); ?>"
+                           __('View details for %s', 'webmakerr-cart'), $mainTitle)); ?>"
                 >
                     <?php echo wp_kses_post($mainTitle); ?>
                 </a>
@@ -110,7 +110,7 @@ class CartItemRenderer
             <?php endif; ?>
 
             <?php if ($mainTitle != $subtitle && $subtitle): ?>
-                <div class="fct_item_variant_title" aria-label="<?php esc_attr_e('Variant', 'fluent-cart'); ?>">
+                <div class="fct_item_variant_title" aria-label="<?php esc_attr_e('Variant', 'webmakerr-cart'); ?>">
                     - <?php echo wp_kses_post($subtitle); ?>
                 </div>
             <?php endif; ?>
@@ -130,7 +130,7 @@ class CartItemRenderer
         $href = Arr::get($this->item, 'view_url', '');
         $altText = sprintf(
                 /* translators: %s: product title */
-                __('Image of %s', 'fluent-cart'), Arr::get($this->item, 'title', __('product', 'fluent-cart')));
+                __('Image of %s', 'webmakerr-cart'), Arr::get($this->item, 'title', __('product', 'webmakerr-cart')));
         ?>
         <div class="fct_item_image">
             <?php if ($href): ?>
@@ -163,7 +163,7 @@ class CartItemRenderer
             $trialInfo = Helper::generateTrialInfo($otherInfo);
             ?>
             <div class="fct_item_payment_info">
-                <span class="sr-only"><?php esc_html_e('Payment information', 'fluent-cart'); ?></span>
+                <span class="sr-only"><?php esc_html_e('Payment information', 'webmakerr-cart'); ?></span>
 
                 <span> <?php echo esc_html($subscriptionInfo); ?> </span>
                 <?php if ($trialInfo): ?>
@@ -186,7 +186,7 @@ class CartItemRenderer
         <div class="fct_item_payment_info">
             <?php
             /* translators: %s is the item price */
-            printf(esc_html__('%s each', 'fluent-cart'), esc_html(Helper::toDecimal($itemPrice)));
+            printf(esc_html__('%s each', 'webmakerr-cart'), esc_html(Helper::toDecimal($itemPrice)));
             ?>
         </div>
         <?php

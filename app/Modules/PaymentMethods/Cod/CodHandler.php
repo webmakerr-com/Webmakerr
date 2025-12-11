@@ -28,7 +28,7 @@ class CodHandler {
         }
 
         if (!$settings['is_active'] === 'yes') {
-            throw new \Exception(esc_html__('Offline payment is not activated', 'fluent-cart'));
+            throw new \Exception(esc_html__('Offline payment is not activated', 'webmakerr-cart'));
         }
 
 
@@ -37,7 +37,7 @@ class CodHandler {
 
 
         if (!$order->id) {
-            throw new \Exception(esc_html__('Order not found!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Order not found!', 'webmakerr-cart'));
         }
 
         $paymentHelper = new PaymentHelper('offline_payment');

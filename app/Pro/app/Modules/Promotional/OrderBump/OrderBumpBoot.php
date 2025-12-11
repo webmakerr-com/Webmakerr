@@ -135,7 +135,7 @@ class OrderBumpBoot
             </style>
             <div class="fct_order_promotions_wrap fct_checkout_form_section">
                 <div class="fct_form_section_header">
-                    <h4 class="fct_form_section_header_label"><?php esc_html_e('Recommended', 'fluent-cart-pro'); ?></h4>
+                    <h4 class="fct_form_section_header_label"><?php esc_html_e('Recommended', 'webmakerr-cart-pro'); ?></h4>
                 </div>
                 <div class="fct_form_section_body">
                     <div class="fct_order_promotions">
@@ -170,7 +170,7 @@ class OrderBumpBoot
                                                 echo '<span class="fct_order_promotion_discounted_price" style="font-weight: 600; color: #000;">' . Helper::toDecimal($discountedPrice) . '</span>';
                                                 echo sprintf(
                                                     '<span class="fct_order_promotion_discount" style="color: #d9534f; margin-left: 8px;">(%s %s)</span>',
-                                                    esc_html__('Save', 'fluent-cart-pro'),
+                                                    esc_html__('Save', 'webmakerr-cart-pro'),
                                                     esc_html(Helper::toDecimal($discount))
                                                 );
                                             } else {
@@ -225,7 +225,7 @@ class OrderBumpBoot
             $cart->removeItem($objectId);
 
             return [
-                'message'          => __('Item has been removed from your cart', 'fluent-cart-pro'),
+                'message'          => __('Item has been removed from your cart', 'webmakerr-cart-pro'),
                 'shipping_changed' => $prevShippingRequired != $cart->requireShipping()
             ];
         }
@@ -289,7 +289,7 @@ class OrderBumpBoot
         }
 
         return [
-            'message'          => __('Item has been added to your cart', 'fluent-cart-pro'),
+            'message'          => __('Item has been added to your cart', 'webmakerr-cart-pro'),
             'shipping_changed' => $prevShippingRequired != $cart->requireShipping()
         ];
     }

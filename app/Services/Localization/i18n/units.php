@@ -12,16 +12,16 @@ defined( 'ABSPATH' ) || exit;
 
 return array(
 	'weight'     => array(
-		'kg'  => __( 'kg', 'fluent-cart' ),
-		'g'   => __( 'g', 'fluent-cart' ),
-		'lbs' => __( 'lbs', 'fluent-cart' ),
-		'oz'  => __( 'oz', 'fluent-cart' ),
+		'kg'  => __( 'kg', 'webmakerr-cart' ),
+		'g'   => __( 'g', 'webmakerr-cart' ),
+		'lbs' => __( 'lbs', 'webmakerr-cart' ),
+		'oz'  => __( 'oz', 'webmakerr-cart' ),
 	),
 	'dimensions' => array(
-		'm'  => __( 'm', 'fluent-cart' ),
-		'cm' => __( 'cm', 'fluent-cart' ),
-		'mm' => __( 'mm', 'fluent-cart' ),
-		'in' => __( 'in', 'fluent-cart' ),
-		'yd' => __( 'yd', 'fluent-cart' ),
+		'm'  => __( 'm', 'webmakerr-cart' ),
+		'cm' => __( 'cm', 'webmakerr-cart' ),
+		'mm' => __( 'mm', 'webmakerr-cart' ),
+		'in' => __( 'in', 'webmakerr-cart' ),
+		'yd' => __( 'yd', 'webmakerr-cart' ),
 	),
 );

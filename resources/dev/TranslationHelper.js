@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+const DEFAULT_TEXT_DOMAIN = 'webmakerr-cart';
+const LEGACY_TEXT_DOMAINS = ['fluent-cart'];
+const DEFAULT_POT_DIR = path.join(process.cwd(), 'language');
+
 
 function extractTranslatorComment(content, lineNumber) {
     const lines = content.split(/\r?\n/);
@@ -115,7 +119,7 @@ function extractTranslations(dir, translationRegex, excludeDirs, excludeFiles) {
 }
 
 
-function updatePhpTranslations(newTranslations, existingTranslations, filePath, includeSource, commentsArray) {
+function updatePhpTranslations(newTranslations, existingTranslations, filePath, includeSource, commentsArray, domain = DEFAULT_TEXT_DOMAIN) {
 
     let phpArray = {};
     Object.keys(newTranslations).forEach(t => {
@@ -138,12 +142,12 @@ function updatePhpTranslations(newTranslations, existingTranslations, filePath, 
             if (commentsArray.hasOwnProperty(key)) {
                 phpContent += (commentsArray[key] + `\n`);
             }
-            phpContent += `    '${escapedKey}' => __('${escapedKey}', 'fluent-cart'),\n`;
+            phpContent += `    '${escapedKey}' => __('${escapedKey}', '${domain}'),\n`;
         } else {
             if (commentsArray.hasOwnProperty(key)) {
                 phpContent += (commentsArray[key] + `\n`);
             }
-            phpContent += `    '${escapedKey}' => __('${escapedKey}', 'fluent-cart'),\n`;
+            phpContent += `    '${escapedKey}' => __('${escapedKey}', '${domain}'),\n`;
         }
 
 
@@ -161,10 +165,153 @@ function updatePhpTranslations(newTranslations, existingTranslations, filePath, 
     });
 }
 
+function formatPotDate() {
+    const now = new Date();
+    const year = now.getUTCFullYear();
+    const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(now.getUTCDate()).padStart(2, '0');
+    const hours = String(now.getUTCHours()).padStart(2, '0');
+    const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}+0000`;
+}
+
+function escapePotString(str) {
+    return str
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"')
+        .replace(/\n/g, '\\n');
+}
+
+function collectLegacyEntries(potPath) {
+    if (!fs.existsSync(potPath)) {
+        return [];
+    }
+
+    const lines = fs.readFileSync(potPath, 'utf8').split(/\r?\n/);
+    const entries = [];
+    let buffering = false;
+    let buffer = '';
+
+    lines.forEach(line => {
+        if (line.startsWith('msgid')) {
+            buffer = line.replace(/^msgid\s+/, '').trim();
+
+            if (buffer === '""') {
+                buffering = false;
+                buffer = '';
+                return;
+            }
+
+            buffer = buffer.replace(/^"/, '').replace(/"$/, '');
+            buffering = true;
+        } else if (buffering && line.startsWith('"')) {
+            buffer += line.slice(1, -1);
+        } else if (buffering && line.startsWith('msgstr')) {
+            if (buffer) {
+                entries.push(buffer);
+            }
+            buffering = false;
+            buffer = '';
+        }
+    });
+
+    return entries;
+}
+
+function normalizeTranslationsForPot(translations, commentsArray, domain, outputDir, legacyDomains) {
+    const translationMap = new Map();
+
+    Object.entries(translations).forEach(([key, locations]) => {
+        translationMap.set(key, locations.split(', '));
+    });
+
+    const existingFiles = [path.join(outputDir, `${domain}.pot`), ...legacyDomains.map(ld => path.join(outputDir, `${ld}.pot`))];
+
+    existingFiles.forEach(filePath => {
+        collectLegacyEntries(filePath).forEach(entry => {
+            if (!translationMap.has(entry)) {
+                translationMap.set(entry, []);
+            }
+        });
+    });
+
+    return translationMap;
+}
+
+function buildPotContent(translationMap, commentsArray, domain) {
+    let potContent = `msgid ""\n` +
+        `msgstr ""\n` +
+        `"Project-Id-Version: Webmakerr Cart\\n"\n` +
+        `"Report-Msgid-Bugs-To: \n"\n` +
+        `"POT-Creation-Date: ${formatPotDate()}\\n"\n` +
+        `"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"\n` +
+        `"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n"\n` +
+        `"Language-Team: \n"\n` +
+        `"Language: \n"\n` +
+        `"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\\n"\n` +
+        `"MIME-Version: 1.0\\n"\n` +
+        `"Content-Type: text/plain; charset=UTF-8\\n"\n` +
+        `"Content-Transfer-Encoding: 8bit\\n"\n` +
+        `"X-Domain: ${domain}\n"\n\n`;
+
+    Array.from(translationMap.keys()).sort().forEach(key => {
+        const escapedKey = escapePotString(key);
+        const locations = translationMap.get(key) || [];
+
+        locations.forEach(location => {
+            if (location) {
+                potContent += `#: ${location}\n`;
+            }
+        });
+
+        if (commentsArray && commentsArray.hasOwnProperty(key)) {
+            const normalizedComment = commentsArray[key]
+                .replace(/\/\*\s*/g, '')
+                .replace(/\s*\*\//g, '')
+                .trim();
+
+            if (normalizedComment) {
+                potContent += `#. ${normalizedComment}\n`;
+            }
+        }
+
+        potContent += `msgid "${escapedKey}"\n`;
+        potContent += `msgstr ""\n\n`;
+    });
+
+    return potContent;
+}
+
+function writePotFiles(translations, commentsArray = {}, options = {}) {
+    const domain = options.domain || DEFAULT_TEXT_DOMAIN;
+    const legacyDomains = options.legacyDomains || LEGACY_TEXT_DOMAINS;
+    const outputDir = options.outputDir || DEFAULT_POT_DIR;
+
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, {recursive: true});
+    }
+
+    const translationMap = normalizeTranslationsForPot(translations, commentsArray, domain, outputDir, legacyDomains);
+
+    const potContent = buildPotContent(translationMap, commentsArray, domain);
+    fs.writeFileSync(path.join(outputDir, `${domain}.pot`), potContent, 'utf8');
+    fs.writeFileSync(path.join(outputDir, `${domain}.po`), potContent, 'utf8');
+
+    legacyDomains.forEach(legacyDomain => {
+        const legacyContent = buildPotContent(translationMap, commentsArray, legacyDomain);
+        fs.writeFileSync(path.join(outputDir, `${legacyDomain}.pot`), legacyContent, 'utf8');
+    });
+}
+
 // CommonJS exports
 module.exports = {
+    DEFAULT_POT_DIR,
+    DEFAULT_TEXT_DOMAIN,
+    LEGACY_TEXT_DOMAINS,
     extractTranslatorComment,
     escapePhpString,
     extractTranslations,
-    updatePhpTranslations
+    updatePhpTranslations,
+    writePotFiles
 };

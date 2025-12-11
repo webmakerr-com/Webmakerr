@@ -63,7 +63,7 @@ class ProductCardShortCode extends ShortCode
         //ProductCardRender::
         $product = Arr::get($viewData, 'product');
         if (empty($product)) {
-            echo '<p>' . esc_html__('no content', 'fluent-cart') . '</p>';
+            echo '<p>' . esc_html__('no content', 'webmakerr-cart') . '</p>';
         } else {
             (new ProductCardRender($product, [
                 'price_format' => Arr::get($viewData, 'price_format'),

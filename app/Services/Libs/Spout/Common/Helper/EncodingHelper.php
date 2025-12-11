@@ -143,7 +143,7 @@ class EncodingHelper
             throw new EncodingConversionException(
                 sprintf(
                 /* translators: %1$s is the source encoding, %2$s is the target encoding */
-                    esc_html__('The conversion from %1$s to %2$s is not supported. Please install "iconv" or "PHP Intl".', 'fluent-cart'),
+                    esc_html__('The conversion from %1$s to %2$s is not supported. Please install "iconv" or "PHP Intl".', 'webmakerr-cart'),
                     esc_html($sourceEncoding),
                     esc_html($targetEncoding)
                 )
@@ -154,7 +154,7 @@ class EncodingHelper
             throw new EncodingConversionException(
                 sprintf(
                 /* translators: %1$s is the source encoding, %2$s is the target encoding */
-                    esc_html__('The conversion from %1$s to %2$s failed.', 'fluent-cart'),
+                    esc_html__('The conversion from %1$s to %2$s failed.', 'webmakerr-cart'),
                     esc_html($sourceEncoding),
                     esc_html($targetEncoding)
                 )

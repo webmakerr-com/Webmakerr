@@ -16,7 +16,7 @@ class CreatePageRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'page_name.required' => esc_html__('Page Name field is required.', 'fluent-cart'),
+            'page_name.required' => esc_html__('Page Name field is required.', 'webmakerr-cart'),
         ];
     }
 }

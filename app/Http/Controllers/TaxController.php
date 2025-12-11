@@ -23,7 +23,7 @@ class TaxController extends Controller
 
         if (empty($idsToMark)) {
             return $this->sendError([
-                'message' => __('No IDs provided to mark!', 'fluent-cart'),
+                'message' => __('No IDs provided to mark!', 'webmakerr-cart'),
             ], 400);
         }
 
@@ -37,6 +37,6 @@ class TaxController extends Controller
             return $result;
         }
 
-        return $this->sendSuccess(['message' => __('Taxes marked as filed successfully', 'fluent-cart')]);
+        return $this->sendSuccess(['message' => __('Taxes marked as filed successfully', 'webmakerr-cart')]);
     }
 }

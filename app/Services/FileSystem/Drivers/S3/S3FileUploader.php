@@ -70,13 +70,13 @@ class S3FileUploader
 
         if ($responseCode === 200) {
             return [
-                'message' => __('File Uploaded Successfully', 'fluent-cart'),
+                'message' => __('File Uploaded Successfully', 'webmakerr-cart'),
                 'driver'  => 's3',
                 'path'    => $this->s3FilePath
             ];
         }
 
-        return new WP_Error($responseCode, __('Failed To Upload File', 'fluent-cart'));
+        return new WP_Error($responseCode, __('Failed To Upload File', 'webmakerr-cart'));
     }
 
     public function getSignature(): string
@@ -107,7 +107,7 @@ class S3FileUploader
     private function getContentHash(): string
     {
         if (!file_exists($this->localFilePath)) {
-            throw new \Exception(esc_html__('File not found', 'fluent-cart'));
+            throw new \Exception(esc_html__('File not found', 'webmakerr-cart'));
         }
         return hash($this->hashAlgorithm, file_get_contents($this->localFilePath));
     }

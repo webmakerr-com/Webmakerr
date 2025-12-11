@@ -131,7 +131,7 @@ class FileBasedStrategy implements CachingStrategyInterface
             throw new SharedStringNotFoundException(
                 sprintf(
                 /* translators: %1$s is the temp file path, %2$s is the shared string index */
-                    esc_html__('Shared string temp file not found: %1$s ; for index: %2$s', 'fluent-cart'),
+                    esc_html__('Shared string temp file not found: %1$s ; for index: %2$s', 'webmakerr-cart'),
                     esc_html($tempFilePath),
                     esc_html($sharedStringIndex)
                 )
@@ -158,7 +158,7 @@ class FileBasedStrategy implements CachingStrategyInterface
             throw new SharedStringNotFoundException(
                 sprintf(
                 /* translators: %s is the shared string index */
-                    esc_html__('Shared string not found for index: %s', 'fluent-cart'),
+                    esc_html__('Shared string not found for index: %s', 'webmakerr-cart'),
                     esc_html($sharedStringIndex)
                 )
             );

@@ -26,7 +26,7 @@ class ShippingMethodsRender
             <div class="fct_checkout_form_section" aria-describedby="<?php echo esc_attr($errorId); ?>">
                 <div class="fct_form_section_header">
                     <h4 id="shipping-methods-title" class="fct_form_section_header_label">
-                        <?php echo esc_html('Shipping Options', 'fluent-cart') ?>
+                        <?php echo esc_html('Shipping Options', 'webmakerr-cart') ?>
                     </h4>
                 </div>
                 <div class="fct_form_section_body">
@@ -59,7 +59,7 @@ class ShippingMethodsRender
     {
         ?>
         <div class="fct-empty-state" role="alert">
-            <?php echo esc_html__('No shipping methods available for this address.', 'fluent-cart') ?>
+            <?php echo esc_html__('No shipping methods available for this address.', 'webmakerr-cart') ?>
         </div>
         <?php
     }
@@ -95,7 +95,7 @@ class ShippingMethodsRender
                         <?php echo esc_html($shippingMethod->title); ?>
                         <span class="shipping-method-amount" aria-label="<?php
                         /* translators: %s charge amount */
-                        printf(esc_attr__('Shipping cost: %s', 'fluent-cart'),
+                        printf(esc_attr__('Shipping cost: %s', 'webmakerr-cart'),
                                 esc_html(Helper::toDecimal($shippingMethod->charge_amount))); ?>"
                         >
                             <?php echo esc_html(Helper::toDecimal($shippingMethod->charge_amount)); ?>

@@ -152,13 +152,13 @@ class ProductAdminHelper
             ->get();
 
         $variationTitles = $variations->pluck('variation_title')
-            ->join(',', __(' and ', 'fluent-cart'));
+            ->join(',', __(' and ', 'webmakerr-cart'));
 
         if ($variations->count()) {
             fluent_cart_success_log(
                 sprintf(
                     /* translators: %s is the number of variations */
-                    __('%s Pricing deleted', 'fluent-cart'),
+                    __('%s Pricing deleted', 'webmakerr-cart'),
                     $variations->count()
                 ),
                 sprintf(

@@ -59,15 +59,15 @@ class Webhook
                 customer.subscription.updated, <br/>
                 <br/>
             </div>',
-            __('Webhook URL: ', 'fluent-cart'),                    // %1$s
+            __('Webhook URL: ', 'webmakerr-cart'),                    // %1$s
             $webhook_url,                                          // %2$s (reused)
-            __('You should configure your Stripe webhooks to get all updates of your payments remotely.', 'fluent-cart'), // %3$s
-            __('How to configure?', 'fluent-cart'),                // %4$s
-            __('In your Stripe account:', 'fluent-cart'),          // %5$s
-            __('Go to Developers > Webhooks >', 'fluent-cart'),    // %6$s
-            __('Add endpoint', 'fluent-cart'),                     // %7$s
-            __('Enter The Webhook URL:', 'fluent-cart'),           // %8$s
-            __('Select these events:', 'fluent-cart')              // %9$s
+            __('You should configure your Stripe webhooks to get all updates of your payments remotely.', 'webmakerr-cart'), // %3$s
+            __('How to configure?', 'webmakerr-cart'),                // %4$s
+            __('In your Stripe account:', 'webmakerr-cart'),          // %5$s
+            __('Go to Developers > Webhooks >', 'webmakerr-cart'),    // %6$s
+            __('Add endpoint', 'webmakerr-cart'),                     // %7$s
+            __('Enter The Webhook URL:', 'webmakerr-cart'),           // %8$s
+            __('Select these events:', 'webmakerr-cart')              // %9$s
         );
     }
 

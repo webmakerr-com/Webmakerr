@@ -189,25 +189,25 @@ class ReportingController extends Controller
             return [
                 'dashBoardStats' => [
                     'total_orders' => [
-                        'title' => __('All Orders', 'fluent-cart'),
+                        'title' => __('All Orders', 'webmakerr-cart'),
                         'icon' => 'AllOrdersIcon',
                         'current_count' => 0,
                         'compare_count' => 0,
                     ],
                     'paid_orders' => [
-                        'title' => __('Paid Orders', 'fluent-cart'),
+                        'title' => __('Paid Orders', 'webmakerr-cart'),
                         'icon' => 'Money',
                         'current_count' => 0,
                         'compare_count' => 0,
                     ],
                     'total_paid_order_items' => [
-                        'title' => __('Paid Order Items', 'fluent-cart'),
+                        'title' => __('Paid Order Items', 'webmakerr-cart'),
                         'icon' => 'OrderItemsIcon',
                         'current_count' => 0,
                         'compare_count' => 0,
                     ],
                     'total_paid_amounts' => [
-                        'title' => __('Order Value (Paid)', 'fluent-cart'),
+                        'title' => __('Order Value (Paid)', 'webmakerr-cart'),
                         'icon' => 'OrderValueIcon',
                         'current_count' => 0,
                         'compare_count' => 0,

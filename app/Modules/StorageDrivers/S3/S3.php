@@ -16,7 +16,7 @@ class S3 extends BaseStorageDriver
     public function __construct()
     {
         parent::__construct(
-            __('S3', 'fluent-cart'),
+            __('S3', 'webmakerr-cart'),
             's3',
             '#4f94d4'
         );
@@ -55,7 +55,7 @@ class S3 extends BaseStorageDriver
 
     public function getDescription()
     {
-        return esc_html__('S3 bucket allows to configure storage options and others for efficient and secure cloud-based file storage', 'fluent-cart');
+        return esc_html__('S3 bucket allows to configure storage options and others for efficient and secure cloud-based file storage', 'webmakerr-cart');
     }
 
     public function isEnabled(): bool
@@ -96,7 +96,7 @@ class S3 extends BaseStorageDriver
             $data['show_buckets'] = 'no';
             $cacheKey = 'fct_s3_region';
             \Webmakerr\App\Models\Meta::query()->where('meta_key', $cacheKey)->delete();
-            $message = __('S3 is deactivated successfully', 'fluent-cart');
+            $message = __('S3 is deactivated successfully', 'webmakerr-cart');
         }
 
 
@@ -120,9 +120,9 @@ class S3 extends BaseStorageDriver
 
         if (empty($message)) {
             if (Arr::get($data, 'is_active') === 'yes') {
-                $message = __('Your s3 storage is activated successfully', 'fluent-cart');
+                $message = __('Your s3 storage is activated successfully', 'webmakerr-cart');
             } else {
-                $message = __('S3 is configured successfully but not activated.', 'fluent-cart');
+                $message = __('S3 is configured successfully but not activated.', 'webmakerr-cart');
                 $shouldReload = true;
             }
         }
@@ -157,7 +157,7 @@ class S3 extends BaseStorageDriver
         }
 
         if (empty($secretKey) || empty($accessKey)) {
-            return new \WP_Error('invalid_credentials', __('Invalid credentials', 'fluent-cart'));
+            return new \WP_Error('invalid_credentials', __('Invalid credentials', 'webmakerr-cart'));
         }
         return S3ConnectionVerify::verify(
             $secretKey,
@@ -174,7 +174,7 @@ class S3 extends BaseStorageDriver
         $schema = [
             'is_active'  => [
                 'value'      => '',
-                'label'      => __('Enable s3 driver', 'fluent-cart'),
+                'label'      => __('Enable s3 driver', 'webmakerr-cart'),
                 'type'       => 'checkbox',
                 'attributes' => [
                     'disabled' => !$showBucket
@@ -189,9 +189,9 @@ class S3 extends BaseStorageDriver
                     ],
                 ],
                 'value'       => '',
-                'label'       => __('Access Key', 'fluent-cart'),
+                'label'       => __('Access Key', 'webmakerr-cart'),
                 'type'        => 'text',
-                'placeholder' => __('Enter access key', 'fluent-cart')
+                'placeholder' => __('Enter access key', 'webmakerr-cart')
             ],
             'secret_key' => [
                 'conditions'  => [
@@ -202,12 +202,12 @@ class S3 extends BaseStorageDriver
                     ],
                 ],
                 'value'       => '',
-                'label'       => __('Secret Key', 'fluent-cart'),
+                'label'       => __('Secret Key', 'webmakerr-cart'),
                 'type'        => 'text',
                 'attributes'  => [
                     'type' => 'password'
                 ],
-                'placeholder' => __('Enter secret key', 'fluent-cart')
+                'placeholder' => __('Enter secret key', 'webmakerr-cart')
             ],
         ];
 
@@ -232,12 +232,12 @@ class S3 extends BaseStorageDriver
                     ],
                 ],
                 'value'               => '',
-                'label'               => __('Buckets', 'fluent-cart'),
+                'label'               => __('Buckets', 'webmakerr-cart'),
                 'type'                => 'remote_select',
                 'remote_key'          => 's3_bucket_list',
                 'multiple'            => true,
                 'options'             => [],
-                'placeholder'         => __('Select bucket', 'fluent-cart'),
+                'placeholder'         => __('Select bucket', 'webmakerr-cart'),
                 'search_only_on_type' => false,
             ];
         }
@@ -245,14 +245,14 @@ class S3 extends BaseStorageDriver
         if ($usingDefineMode) {
             unset($schema['access_key'], $schema['secret_key']);
             $schema['is_using_define_mode'] = [
-                'value' => __('Using Define Mode', 'fluent-cart'),
+                'value' => __('Using Define Mode', 'webmakerr-cart'),
                 'type'  => 'html'
             ];
         }
 
         return [
             'view' => [
-                'title'           => __('S3 Settings', 'fluent-cart'),
+                'title'           => __('S3 Settings', 'webmakerr-cart'),
                 'type'            => 'section',
                 'disable_nesting' => true,
                 'columns'         => [

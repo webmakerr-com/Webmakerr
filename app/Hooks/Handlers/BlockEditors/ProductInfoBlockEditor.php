@@ -40,8 +40,8 @@ class ProductInfoBlockEditor extends BlockEditor
             $this->getLocalizationKey()     => [
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
-                'title'             => __('Product Info', 'fluent-cart'),
-                'description'       => __('This block will display the product information.', 'fluent-cart'),
+                'title'             => __('Product Info', 'webmakerr-cart'),
+                'description'       => __('This block will display the product information.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings(),

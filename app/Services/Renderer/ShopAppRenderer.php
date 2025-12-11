@@ -179,7 +179,7 @@ class ShopAppRenderer
             'data-default-filters'                   => wp_json_encode($this->defaultFilters)
         ];
         ?>
-        <div class="fct-products-wrapper" data-fluent-cart-shop-app data-fluent-cart-product-wrapper role="main" aria-label="<?php esc_attr_e('Products', 'fluent-cart'); ?>">
+        <div class="fct-products-wrapper" data-webmakerr-cart-shop-app data-webmakerr-cart-product-wrapper role="main" aria-label="<?php esc_attr_e('Products', 'webmakerr-cart'); ?>">
             <?php $this->renderViewSwitcher(); ?>
             <div <?php RenderHelper::renderAtts($wrapperAttributes); ?>>
                 <?php $this->renderFilter($renderer); ?>
@@ -187,7 +187,7 @@ class ShopAppRenderer
                 <div class="fct-products-container grid-columns-<?php echo esc_attr($this->productBoxGridSize); ?>"
                      data-fluent-cart-shop-app-product-list
                      role="list"
-                     aria-label="<?php esc_attr_e('Product list', 'fluent-cart'); ?>"
+                     aria-label="<?php esc_attr_e('Product list', 'webmakerr-cart'); ?>"
                 >
                     <?php
                     if ($this->products->count() !== 0) {
@@ -230,7 +230,7 @@ class ShopAppRenderer
         <div class="fct-shop-view-switcher">
             <button type="button" data-fluent-cart-shop-app-grid-view-button=""
                     class="<?php echo $this->viewMode === 'grid' ? 'active' : ''; ?>"
-                    title="<?php echo esc_attr__('Grid View', 'fluent-cart'); ?>">
+                    title="<?php echo esc_attr__('Grid View', 'webmakerr-cart'); ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path
                             d="M12.4059 1.59412C13.3334 2.52162 13.3334 4.0144 13.3334 6.99996C13.3334 9.98552 13.3334 11.4783 12.4059 12.4058C11.4784 13.3333 9.98564 13.3333 7.00008 13.3333C4.01452 13.3333 2.52174 13.3333 1.59424 12.4058C0.666748 11.4783 0.666748 9.98552 0.666748 6.99996C0.666748 4.0144 0.666748 2.52162 1.59424 1.59412C2.52174 0.666626 4.01452 0.666626 7.00008 0.666626C9.98564 0.666626 11.4784 0.666626 12.4059 1.59412Z"
@@ -241,7 +241,7 @@ class ShopAppRenderer
             </button>
             <button type="button" data-fluent-cart-shop-app-list-view-button=""
                     class="<?php echo $this->viewMode === 'list' ? 'active' : ''; ?>"
-                    title="<?php echo esc_attr__('List View', 'fluent-cart'); ?>">
+                    title="<?php echo esc_attr__('List View', 'webmakerr-cart'); ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path
                             d="M1.33325 7.60008C1.33325 6.8279 1.49441 6.66675 2.26659 6.66675H13.7333C14.5054 6.66675 14.6666 6.8279 14.6666 7.60008V8.40008C14.6666 9.17226 14.5054 9.33341 13.7333 9.33341H2.26659C1.49441 9.33341 1.33325 9.17226 1.33325 8.40008V7.60008Z"
@@ -260,7 +260,7 @@ class ShopAppRenderer
         <button type="button"
                 data-fluent-cart-shop-app-filter-toggle-button=""
                 class="fct-shop-filter-toggle-button hide" title="Toggle List">
-            <span><?php echo esc_html__('Filter', 'fluent-cart'); ?></span>
+            <span><?php echo esc_html__('Filter', 'webmakerr-cart'); ?></span>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                         d="M2.5 4C1.67157 4 1 3.32843 1 2.5C1 1.67157 1.67157 1 2.5 1C3.32843 1 4 1.67157 4 2.5C4 3.32843 3.32843 4 2.5 4Z"
@@ -290,7 +290,7 @@ class ShopAppRenderer
                     aria-expanded="false"
                     aria-controls="<?php echo esc_attr($dropdownId); ?>"
                     aria-haspopup="true">
-                <span class="fct-sorting-label"><?php echo esc_html__('Sort By', 'fluent-cart'); ?></span>
+                <span class="fct-sorting-label"><?php echo esc_html__('Sort By', 'webmakerr-cart'); ?></span>
 
                 <svg class="fct-sorting-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true" focusable="false">
                     <path d="M1.5 1.25L6.29289 6.04289C6.62623 6.37623 6.79289 6.54289 7 6.54289C7.20711 6.54289 7.37377 6.37623 7.70711 6.04289L12.5 1.25" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
@@ -302,10 +302,10 @@ class ShopAppRenderer
                     data-sort-dropdown
                     id="<?php echo esc_attr($dropdownId); ?>"
                     role="menu"
-                    aria-label="<?php echo esc_attr__('Sort products', 'fluent-cart'); ?>">
+                    aria-label="<?php echo esc_attr__('Sort products', 'webmakerr-cart'); ?>">
                 <fieldset class="fct-shop-sorting">
                     <legend class="screen-reader-text">
-                        <?php echo esc_html__('Sort products by', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Sort products by', 'webmakerr-cart'); ?>
                     </legend>
 
                     <div class="fct-shop-sorting-item" data-sort-item role="none">
@@ -315,10 +315,10 @@ class ShopAppRenderer
                                     name="sort_by"
                                     value="name-asc"
                                 <?php checked($currentSort, 'name-asc'); ?>
-                                    aria-label="<?php echo esc_attr__('Sort alphabetically A to Z', 'fluent-cart'); ?>">
+                                    aria-label="<?php echo esc_attr__('Sort alphabetically A to Z', 'webmakerr-cart'); ?>">
                             <span class="fct-sorting-radio" aria-hidden="true"></span>
                             <span class="fct-sorting-radio-label">
-                            <?php echo esc_html__('Alphabetical (A to Z)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Alphabetical (A to Z)', 'webmakerr-cart'); ?>
                         </span>
                         </label>
                     </div>
@@ -330,10 +330,10 @@ class ShopAppRenderer
                                     name="sort_by"
                                     value="name-desc"
                                 <?php checked($currentSort, 'name-desc'); ?>
-                                    aria-label="<?php echo esc_attr__('Sort alphabetically Z to A', 'fluent-cart'); ?>">
+                                    aria-label="<?php echo esc_attr__('Sort alphabetically Z to A', 'webmakerr-cart'); ?>">
                             <span class="fct-sorting-radio" aria-hidden="true"></span>
                             <span class="fct-sorting-radio-label">
-                            <?php echo esc_html__('Alphabetical (Z to A)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Alphabetical (Z to A)', 'webmakerr-cart'); ?>
                         </span>
                         </label>
                     </div>
@@ -345,10 +345,10 @@ class ShopAppRenderer
                                     name="sort_by"
                                     value="price-low"
                                 <?php checked($currentSort, 'price-low'); ?>
-                                    aria-label="<?php echo esc_attr__('Sort by price low to high', 'fluent-cart'); ?>">
+                                    aria-label="<?php echo esc_attr__('Sort by price low to high', 'webmakerr-cart'); ?>">
                             <span class="fct-sorting-radio" aria-hidden="true"></span>
                             <span class="fct-sorting-radio-label">
-                            <?php echo esc_html__('Price (Low to High)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Price (Low to High)', 'webmakerr-cart'); ?>
                         </span>
                         </label>
                     </div>
@@ -360,10 +360,10 @@ class ShopAppRenderer
                                     name="sort_by"
                                     value="price-high"
                                 <?php checked($currentSort, 'price-high'); ?>
-                                    aria-label="<?php echo esc_attr__('Sort by price high to low', 'fluent-cart'); ?>">
+                                    aria-label="<?php echo esc_attr__('Sort by price high to low', 'webmakerr-cart'); ?>">
                             <span class="fct-sorting-radio" aria-hidden="true"></span>
                             <span class="fct-sorting-radio-label">
-                            <?php echo esc_html__('Price (High to Low)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Price (High to Low)', 'webmakerr-cart'); ?>
                         </span>
                         </label>
                     </div>
@@ -375,10 +375,10 @@ class ShopAppRenderer
                                     name="sort_by"
                                     value="date-newest"
                                 <?php checked($currentSort, 'date-newest'); ?>
-                                    aria-label="<?php echo esc_attr__('Sort by date newest first', 'fluent-cart'); ?>">
+                                    aria-label="<?php echo esc_attr__('Sort by date newest first', 'webmakerr-cart'); ?>">
                             <span class="fct-sorting-radio" aria-hidden="true"></span>
                             <span class="fct-sorting-radio-label">
-                            <?php echo esc_html__('Date (Newest First)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Date (Newest First)', 'webmakerr-cart'); ?>
                         </span>
                         </label>
                     </div>
@@ -390,10 +390,10 @@ class ShopAppRenderer
                                     name="sort_by"
                                     value="date-oldest"
                                 <?php checked($currentSort, 'date-oldest'); ?>
-                                    aria-label="<?php echo esc_attr__('Sort by date oldest first', 'fluent-cart'); ?>">
+                                    aria-label="<?php echo esc_attr__('Sort by date oldest first', 'webmakerr-cart'); ?>">
                             <span class="fct-sorting-radio" aria-hidden="true"></span>
                             <span class="fct-sorting-radio-label">
-                            <?php echo esc_html__('Date (Oldest First)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Date (Oldest First)', 'webmakerr-cart'); ?>
                         </span>
                         </label>
                     </div>
@@ -410,18 +410,18 @@ class ShopAppRenderer
         }
         ?>
         <?php if ($this->isFilterEnabled) : ?>
-            <div class="fct-shop-filter-wrapper fluent-cart-shop-app-filter-wrapper" data-fluent-cart-shop-app-filter-wrapper role="search" aria-label="<?php esc_attr_e('Product filters', 'fluent-cart'); ?>">
+            <div class="fct-shop-filter-wrapper webmakerr-cart-shop-app-filter-wrapper" data-webmakerr-cart-shop-app-filter-wrapper role="search" aria-label="<?php esc_attr_e('Product filters', 'webmakerr-cart'); ?>">
                 <div class="fluent-cart-shop-app-filter-wrapper-inner">
 
                     <form class="fct-shop-filter-form" data-fluent-cart-product-filter-form role="search"
-                          aria-label="<?php esc_attr_e('Product filter form', 'fluent-cart'); ?>">
+                          aria-label="<?php esc_attr_e('Product filter form', 'webmakerr-cart'); ?>">
                         <?php $renderer->renderSearch(); ?>
                         <?php $renderer->renderOptions(); ?>
                         <?php if (!$this->liveFilter) : ?>
                         <div class="fct-shop-filter-item">
                             <div class="fct-shop-button-group">
                                 <button class="fct-shop-apply-filter-button wp-block-fluent-cart-shopapp-product-filter-apply-button">
-                                    <?php esc_html_e('Apply Filter', 'fluent-cart'); ?>
+                                    <?php esc_html_e('Apply Filter', 'webmakerr-cart'); ?>
                                 </button>
                                 <button class="fct-shop-reset-filter-button wp-block-fluent-cart-shopapp-product-filter-reset-button"
                                         data-fluent-cart-shop-app-reset-button="">
@@ -557,7 +557,7 @@ class ShopAppRenderer
         $to = min($total, $currentPage * $this->per_page);
         $perPage = $this->products->perPage();
         ?>
-        <div class="fct-shop-paginator-result-wrapper" aria-label="<?php echo esc_attr__('Pagination information', 'fluent-cart'); ?>">
+        <div class="fct-shop-paginator-result-wrapper" aria-label="<?php echo esc_attr__('Pagination information', 'webmakerr-cart'); ?>">
             <div
                 <?php echo !empty($atts) ? $atts : 'class="fct-shop-paginator-results wc-block-grid__fluent-cart-shop-app-paginator-results wp-block-fluent-cart-product-paginator-info"'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                     role="status"
@@ -566,7 +566,7 @@ class ShopAppRenderer
                 <?php
                 printf(
                 /* translators: 1: starting item number, 2: ending item number, 3: total number of items */
-                    esc_html__('Showing %1$s to %2$s of %3$s Items', 'fluent-cart'),
+                    esc_html__('Showing %1$s to %2$s of %3$s Items', 'webmakerr-cart'),
                     '<span class="fct-shop-paginator-from" data-fluent-cart-shop-app-paginator-info-pagination-from="">' . esc_html($from) . '</span>',
                     '<span class="fct-shop-paginator-to" data-fluent-cart-shop-app-paginator-info-pagination-to="">' . esc_html($to) . '</span>',
                     '<span class="fct-shop-paginator-total" data-fluent-cart-shop-app-paginator-info-pagination-total="">' . esc_html($total) . '</span>'
@@ -576,21 +576,21 @@ class ShopAppRenderer
 
             <div class="fct-shop-per-page-selector">
                 <label for="fct-per-page-select" class="screen-reader-text">
-                    <?php echo esc_html__('Items per page', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Items per page', 'webmakerr-cart'); ?>
                 </label>
                 <select
                         id="fct-per-page-select"
                         name="per_page"
                         data-fluent-cart-shop-app-paginator-per-page-selector=""
-                        aria-label="<?php echo esc_attr__('Select number of items per page', 'fluent-cart'); ?>">
+                        aria-label="<?php echo esc_attr__('Select number of items per page', 'webmakerr-cart'); ?>">
                     <option value="10" <?php selected($perPage, 10); ?>>
-                        <?php echo esc_html__('10 Per page', 'fluent-cart'); ?>
+                        <?php echo esc_html__('10 Per page', 'webmakerr-cart'); ?>
                     </option>
                     <option value="20" <?php selected($perPage, 20); ?>>
-                        <?php echo esc_html__('20 Per page', 'fluent-cart'); ?>
+                        <?php echo esc_html__('20 Per page', 'webmakerr-cart'); ?>
                     </option>
                     <option value="30" <?php selected($perPage, 30); ?>>
-                        <?php echo esc_html__('30 Per page', 'fluent-cart'); ?>
+                        <?php echo esc_html__('30 Per page', 'webmakerr-cart'); ?>
                     </option>
                 </select>
             </div>

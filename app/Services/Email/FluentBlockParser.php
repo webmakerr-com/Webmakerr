@@ -1129,57 +1129,57 @@ class FluentBlockParser
 
             $color_palette = [
                 [
-                    "name"  => __("Black", "fluent-cart"),
+                    "name"  => __("Black", "webmakerr-cart"),
                     "slug"  => "black",
                     "color" => "#000000"
                 ],
                 [
-                    "name"  => __("Cyan bluish gray", "fluent-cart"),
+                    "name"  => __("Cyan bluish gray", "webmakerr-cart"),
                     "slug"  => "cyan-bluish-gray",
                     "color" => "#abb8c3"
                 ],
                 [
-                    "name"  => __("White", "fluent-cart"),
+                    "name"  => __("White", "webmakerr-cart"),
                     "slug"  => "white",
                     "color" => "#ffffff"
                 ],
                 [
-                    "name"  => __("Pale pink", "fluent-cart"),
+                    "name"  => __("Pale pink", "webmakerr-cart"),
                     "slug"  => "pale-pink",
                     "color" => "#f78da7"
                 ],
                 [
-                    "name"  => __("Luminous vivid orange", "fluent-cart"),
+                    "name"  => __("Luminous vivid orange", "webmakerr-cart"),
                     "slug"  => "luminous-vivid-orange",
                     "color" => "#ff6900"
                 ],
                 [
-                    "name"  => __("Luminous vivid amber", "fluent-cart"),
+                    "name"  => __("Luminous vivid amber", "webmakerr-cart"),
                     "slug"  => "luminous-vivid-amber",
                     "color" => "#fcb900"
                 ],
                 [
-                    "name"  => __("Light green cyan", "fluent-cart"),
+                    "name"  => __("Light green cyan", "webmakerr-cart"),
                     "slug"  => "light-green-cyan",
                     "color" => "#7bdcb5"
                 ],
                 [
-                    "name"  => __("Vivid green cyan", "fluent-cart"),
+                    "name"  => __("Vivid green cyan", "webmakerr-cart"),
                     "slug"  => "vivid-green-cyan",
                     "color" => "#00d084"
                 ],
                 [
-                    "name"  => __("Pale cyan blue", "fluent-cart"),
+                    "name"  => __("Pale cyan blue", "webmakerr-cart"),
                     "slug"  => "pale-cyan-blue",
                     "color" => "#8ed1fc"
                 ],
                 [
-                    "name"  => __("Vivid cyan blue", "fluent-cart"),
+                    "name"  => __("Vivid cyan blue", "webmakerr-cart"),
                     "slug"  => "vivid-cyan-blue",
                     "color" => "#0693e3"
                 ],
                 [
-                    "name"  => __("Vivid purple", "fluent-cart"),
+                    "name"  => __("Vivid purple", "webmakerr-cart"),
                     "slug"  => "vivid-purple",
                     "color" => "#9b51e0"
                 ]
@@ -1187,25 +1187,25 @@ class FluentBlockParser
 
             $font_sizes = [
                 [
-                    'name'      => __('Small', 'fluent-cart'),
+                    'name'      => __('Small', 'webmakerr-cart'),
                     'shortName' => 'S',
                     'size'      => 14,
                     'slug'      => 'small'
                 ],
                 [
-                    'name'      => __('Medium', 'fluent-cart'),
+                    'name'      => __('Medium', 'webmakerr-cart'),
                     'shortName' => 'M',
                     'size'      => 18,
                     'slug'      => 'medium'
                 ],
                 [
-                    'name'      => __('Large', 'fluent-cart'),
+                    'name'      => __('Large', 'webmakerr-cart'),
                     'shortName' => 'L',
                     'size'      => 24,
                     'slug'      => 'large'
                 ],
                 [
-                    'name'      => __('Larger', 'fluent-cart'),
+                    'name'      => __('Larger', 'webmakerr-cart'),
                     'shortName' => 'XL',
                     'size'      => 32,
                     'slug'      => 'larger'
@@ -1346,57 +1346,57 @@ class FluentBlockParser
 
         $color_palette = [
             [
-                "name"  => __("Black", "fluent-cart"),
+                "name"  => __("Black", "webmakerr-cart"),
                 "slug"  => "black",
                 "color" => "#000000"
             ],
             [
-                "name"  => __("Cyan bluish gray", "fluent-cart"),
+                "name"  => __("Cyan bluish gray", "webmakerr-cart"),
                 "slug"  => "cyan-bluish-gray",
                 "color" => "#abb8c3"
             ],
             [
-                "name"  => __("White", "fluent-cart"),
+                "name"  => __("White", "webmakerr-cart"),
                 "slug"  => "white",
                 "color" => "#ffffff"
             ],
             [
-                "name"  => __("Pale pink", "fluent-cart"),
+                "name"  => __("Pale pink", "webmakerr-cart"),
                 "slug"  => "pale-pink",
                 "color" => "#f78da7"
             ],
             [
-                "name"  => __("Luminous vivid orange", "fluent-cart"),
+                "name"  => __("Luminous vivid orange", "webmakerr-cart"),
                 "slug"  => "luminous-vivid-orange",
                 "color" => "#ff6900"
             ],
             [
-                "name"  => __("Luminous vivid amber", "fluent-cart"),
+                "name"  => __("Luminous vivid amber", "webmakerr-cart"),
                 "slug"  => "luminous-vivid-amber",
                 "color" => "#fcb900"
             ],
             [
-                "name"  => __("Light green cyan", "fluent-cart"),
+                "name"  => __("Light green cyan", "webmakerr-cart"),
                 "slug"  => "light-green-cyan",
                 "color" => "#7bdcb5"
             ],
             [
-                "name"  => __("Vivid green cyan", "fluent-cart"),
+                "name"  => __("Vivid green cyan", "webmakerr-cart"),
                 "slug"  => "vivid-green-cyan",
                 "color" => "#00d084"
             ],
             [
-                "name"  => __("Pale cyan blue", "fluent-cart"),
+                "name"  => __("Pale cyan blue", "webmakerr-cart"),
                 "slug"  => "pale-cyan-blue",
                 "color" => "#8ed1fc"
             ],
             [
-                "name"  => __("Vivid cyan blue", "fluent-cart"),
+                "name"  => __("Vivid cyan blue", "webmakerr-cart"),
                 "slug"  => "vivid-cyan-blue",
                 "color" => "#0693e3"
             ],
             [
-                "name"  => __("Vivid purple", "fluent-cart"),
+                "name"  => __("Vivid purple", "webmakerr-cart"),
                 "slug"  => "vivid-purple",
                 "color" => "#9b51e0"
             ]

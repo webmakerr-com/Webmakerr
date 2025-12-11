@@ -192,7 +192,7 @@ class OrderTransaction extends Model
     public function acceptDispute($args = [])
     {
         if ($this->transaction_type !== Status::TRANSACTION_TYPE_DISPUTE) {
-            return new \WP_Error('No dispute found!', __('The selected transaction is not a dispute', 'fluent-cart'));
+            return new \WP_Error('No dispute found!', __('The selected transaction is not a dispute', 'webmakerr-cart'));
         }
 
         $gateway = GatewayManager::getInstance($this->payment_method);
@@ -231,7 +231,7 @@ class OrderTransaction extends Model
                 ]
             );
         } else {
-            return new \WP_Error('invalid_payment_method', __('This payment method does not support remote dispute management', 'fluent-cart'));
+            return new \WP_Error('invalid_payment_method', __('This payment method does not support remote dispute management', 'webmakerr-cart'));
         }
     }
 

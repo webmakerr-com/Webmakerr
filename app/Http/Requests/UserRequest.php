@@ -24,10 +24,10 @@ class UserRequest extends RequestGuard
     public function messages()
     {
         return [
-            'email.required'  => esc_html__('Email is required', 'fluent-cart'),
-            'email.email'     => esc_html__('Please enter a valid email address.', 'fluent-cart'),
-            'email.unique'    => esc_html__('This email is already registered.', 'fluent-cart'),
-            'full_name.required' => esc_html__('Full name is required', 'fluent-cart')
+            'email.required'  => esc_html__('Email is required', 'webmakerr-cart'),
+            'email.email'     => esc_html__('Please enter a valid email address.', 'webmakerr-cart'),
+            'email.unique'    => esc_html__('This email is already registered.', 'webmakerr-cart'),
+            'full_name.required' => esc_html__('Full name is required', 'webmakerr-cart')
         ];
     }
 

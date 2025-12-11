@@ -115,7 +115,7 @@ class CustomerOrderController extends BaseFrontendController
 
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart')
+                'message' => __('Customer not found', 'webmakerr-cart')
             ]);
         }
 
@@ -135,7 +135,7 @@ class CustomerOrderController extends BaseFrontendController
 
         if (!$order) {
             return $this->sendError([
-                'message' => __('Order not found', 'fluent-cart')
+                'message' => __('Order not found', 'webmakerr-cart')
             ]);
         }
 
@@ -147,7 +147,7 @@ class CustomerOrderController extends BaseFrontendController
 
             if ($parentOrder && $parentOrder->type == Status::ORDER_TYPE_SUBSCRIPTION) {
                 return $this->sendError([
-                    'message'      => __('This is a renewal order. Please check the parent order details.', 'fluent-cart'),
+                    'message'      => __('This is a renewal order. Please check the parent order details.', 'webmakerr-cart'),
                     'parent_order' => [
                         'uuid' => $parentOrder->uuid,
                     ]
@@ -168,7 +168,7 @@ class CustomerOrderController extends BaseFrontendController
 
             if ($item->payment_type == 'subscription' && $signupFee = Arr::get($item->other_info, 'signup_fee')) {
                 $metaLines[] = [
-                    'label' => Arr::get($item->other_info, 'signup_fee_name', __('Signup Fee', 'fluent-cart')),
+                    'label' => Arr::get($item->other_info, 'signup_fee_name', __('Signup Fee', 'webmakerr-cart')),
                     'value' => Helper::toDecimal($signupFee, true, $order->currency)
                 ];
                 $extraAmount = (int)$signupFee;
@@ -320,13 +320,13 @@ class CustomerOrderController extends BaseFrontendController
         if (empty($order) || empty($order->customer) || wp_get_current_user()->ID != $order->customer->user_id) {
 
             return $this->sendSuccess([
-                'message' => __('Success', 'fluent-cart'),
+                'message' => __('Success', 'webmakerr-cart'),
                 'data'    => []
             ]);
         }
 
         return $this->sendSuccess([
-            'message' => __('Success', 'fluent-cart'),
+            'message' => __('Success', 'webmakerr-cart'),
             'data'    => $order->getDownloads('customer-profile')
         ]);
     }
@@ -350,7 +350,7 @@ class CustomerOrderController extends BaseFrontendController
 
         if (empty($customer)) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart')
+                'message' => __('Customer not found', 'webmakerr-cart')
             ]);
         }
 
@@ -358,7 +358,7 @@ class CustomerOrderController extends BaseFrontendController
 
         if (empty($transaction)) {
             return $this->sendError([
-                'message' => __('Transaction not found', 'fluent-cart')
+                'message' => __('Transaction not found', 'webmakerr-cart')
             ]);
         }
 
@@ -366,7 +366,7 @@ class CustomerOrderController extends BaseFrontendController
 
         if (empty($order)) {
             return $this->sendError([
-                'message' => __('Order not found', 'fluent-cart')
+                'message' => __('Order not found', 'webmakerr-cart')
             ]);
         }
 
@@ -413,7 +413,7 @@ class CustomerOrderController extends BaseFrontendController
         ];
 
         return $this->sendSuccess([
-            'message' => __('Success', 'fluent-cart'),
+            'message' => __('Success', 'webmakerr-cart'),
             'data'    => $formatData
         ]);
     }
@@ -434,7 +434,7 @@ class CustomerOrderController extends BaseFrontendController
 
         if (empty($order)) {
             return $this->sendError([
-                'message' => __('Order not found', 'fluent-cart')
+                'message' => __('Order not found', 'webmakerr-cart')
             ]);
         }
 
@@ -490,7 +490,7 @@ class CustomerOrderController extends BaseFrontendController
             }
 
             return $this->sendSuccess([
-                'message'    => __('Billing address created successfully', 'fluent-cart'),
+                'message'    => __('Billing address created successfully', 'webmakerr-cart'),
                 'address_id' => $isCreated
             ]);
         }
@@ -500,13 +500,13 @@ class CustomerOrderController extends BaseFrontendController
 
         if (!$address->save()) {
             return $this->sendError([
-                'message' => __('Failed to update billing address', 'fluent-cart')
+                'message' => __('Failed to update billing address', 'webmakerr-cart')
             ]);
         }
 
 
         return $this->sendSuccess([
-            'message'           => __('Billing address updated successfully', 'fluent-cart'),
+            'message'           => __('Billing address updated successfully', 'webmakerr-cart'),
             'formatted_address' => $address->getAddressAsText()
         ]);
     }

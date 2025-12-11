@@ -14,7 +14,7 @@ class Local extends BaseStorageDriver
     public function __construct()
     {
         parent::__construct(
-            __('Local', 'fluent-cart'),
+            __('Local', 'webmakerr-cart'),
             'local',
             '#136196'
         );
@@ -33,7 +33,7 @@ class Local extends BaseStorageDriver
 
     public function getDescription(): string
     {
-        return esc_html__('Local allows to upload file in local file storage', 'fluent-cart');
+        return esc_html__('Local allows to upload file in local file storage', 'webmakerr-cart');
     }
 
     public function isEnabled(): bool
@@ -50,7 +50,7 @@ class Local extends BaseStorageDriver
     {
         return [
             'view' => [
-                'title'           => __('Local Settings', 'fluent-cart'),
+                'title'           => __('Local Settings', 'webmakerr-cart'),
                 'type'            => 'section',
                 'disable_nesting' => true,
                 'columns'         => [
@@ -61,7 +61,7 @@ class Local extends BaseStorageDriver
                 'schema'          => [
                     'is_active' => [
                         'value' => '',
-                        'label' => __('Enable local driver', 'fluent-cart'),
+                        'label' => __('Enable local driver', 'webmakerr-cart'),
                         'type'  => 'checkbox'
                     ]
                 ]

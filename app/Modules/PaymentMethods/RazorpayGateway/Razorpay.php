@@ -24,10 +24,10 @@ class Razorpay extends AbstractPaymentGateway
     public function meta(): array
     {
         return [
-            'title' => __('Razorpay', 'fluent-cart'),
+            'title' => __('Razorpay', 'webmakerr-cart'),
             'route' => 'razorpay',
             'slug' => 'razorpay',
-            'description' => __('Pay securely with Razorpay - UPI, Cards, NetBanking, and Wallets', 'fluent-cart'),
+            'description' => __('Pay securely with Razorpay - UPI, Cards, NetBanking, and Wallets', 'webmakerr-cart'),
             'logo' => Vite::getAssetUrl("images/payment-methods/razorpay-logo.svg"),
             'icon' => Vite::getAssetUrl("images/payment-methods/razorpay-logo.svg"),
             'brand_color' => '#3395ff',
@@ -119,26 +119,26 @@ class Razorpay extends AbstractPaymentGateway
                 <p>%8$s <code class="copyable-content">%2$s</code></p>
                 <p>%9$s</p>
             </div>',
-            __('Webhook URL: ', 'fluent-cart'),                    // %1$s
+            __('Webhook URL: ', 'webmakerr-cart'),                    // %1$s
             $webhook_url,                                          // %2$s (reused)
-            __('You should configure your Razorpay webhooks to get all updates of your payments remotely.', 'fluent-cart'), // %3$s
-            __('How to configure?', 'fluent-cart'),                // %4$s
-            __('In your Razorpay Dashboard:', 'fluent-cart'),      // %5$s
-            __('Go to Settings > Webhooks >', 'fluent-cart'),      // %6$s
-            __('Add webhook', 'fluent-cart'),                      // %7$s
-            __('Enter The Webhook URL: ', 'fluent-cart'),          // %8$s
-            __('Select payment events', 'fluent-cart')             // %9$s
+            __('You should configure your Razorpay webhooks to get all updates of your payments remotely.', 'webmakerr-cart'), // %3$s
+            __('How to configure?', 'webmakerr-cart'),                // %4$s
+            __('In your Razorpay Dashboard:', 'webmakerr-cart'),      // %5$s
+            __('Go to Settings > Webhooks >', 'webmakerr-cart'),      // %6$s
+            __('Add webhook', 'webmakerr-cart'),                      // %7$s
+            __('Enter The Webhook URL: ', 'webmakerr-cart'),          // %8$s
+            __('Select payment events', 'webmakerr-cart')             // %9$s
         );
 
         return array(
 //            'notice' => [
 //                'value' => $this->getStoreModeNotice(),
-//                'label' => __('Store Mode notice', 'fluent-cart'),
+//                'label' => __('Store Mode notice', 'webmakerr-cart'),
 //                'type' => 'notice'
 //            ],
             'upcoming' => [
                 'value' => $this->isUpcoming(),
-                'label' => __('Payment method is upcoming!', 'fluent-cart'),
+                'label' => __('Payment method is upcoming!', 'webmakerr-cart'),
                 'type' => 'upcoming'
             ],
             'payment_mode' => [
@@ -146,14 +146,14 @@ class Razorpay extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type' => 'tab',
-                        'label' => __('Test credentials', 'fluent-cart'),
+                        'label' => __('Test credentials', 'webmakerr-cart'),
                         'value' => 'test',
                         'schema' => [
                             'test_key_id' => array(
                                 'value' => '',
-                                'label' => __('Test Key ID', 'fluent-cart'),
+                                'label' => __('Test Key ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('rzp_test_xxxxxxxxxxxxxxxx', 'fluent-cart'),
+                                'placeholder' => __('rzp_test_xxxxxxxxxxxxxxxx', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -162,9 +162,9 @@ class Razorpay extends AbstractPaymentGateway
                             ),
                             'test_key_secret' => array(
                                 'value' => '',
-                                'label' => __('Test Key Secret', 'fluent-cart'),
+                                'label' => __('Test Key Secret', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('Your test key secret', 'fluent-cart'),
+                                'placeholder' => __('Your test key secret', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -175,14 +175,14 @@ class Razorpay extends AbstractPaymentGateway
                     ],
                     [
                         'type' => 'tab',
-                        'label' => __('Live credentials', 'fluent-cart'),
+                        'label' => __('Live credentials', 'webmakerr-cart'),
                         'value' => 'live',
                         'schema' => [
                             'live_key_id' => array(
                                 'value' => '',
-                                'label' => __('Live Key ID', 'fluent-cart'),
+                                'label' => __('Live Key ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('rzp_live_xxxxxxxxxxxxxxxx', 'fluent-cart'),
+                                'placeholder' => __('rzp_live_xxxxxxxxxxxxxxxx', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -191,9 +191,9 @@ class Razorpay extends AbstractPaymentGateway
                             ),
                             'live_key_secret' => array(
                                 'value' => '',
-                                'label' => __('Live Key Secret', 'fluent-cart'),
+                                'label' => __('Live Key Secret', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('Your live key secret', 'fluent-cart'),
+                                'placeholder' => __('Your live key secret', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -206,7 +206,7 @@ class Razorpay extends AbstractPaymentGateway
             ],
             'webhook_desc' => array(
                 'value' => $webhook_instructions,
-                'label' => __('Webhook URL', 'fluent-cart'),
+                'label' => __('Webhook URL', 'webmakerr-cart'),
                 'type' => 'html_attr'
             ),
         );
@@ -220,14 +220,14 @@ class Razorpay extends AbstractPaymentGateway
         if (empty($keyId) || empty($keySecret)) {
             return [
                 'status' => 'failed',
-                'message' => __('Key ID and Key Secret are required', 'fluent-cart')
+                'message' => __('Key ID and Key Secret are required', 'webmakerr-cart')
             ];
         }
 
         if (!str_starts_with($keyId, 'rzp_test_') && !str_starts_with($keyId, 'rzp_live_')) {
             return [
                 'status' => 'failed',
-                'message' => __('Invalid Razorpay Key ID format', 'fluent-cart')
+                'message' => __('Invalid Razorpay Key ID format', 'webmakerr-cart')
             ];
         }
 
@@ -236,7 +236,7 @@ class Razorpay extends AbstractPaymentGateway
             
             return [
                 'status' => 'success',
-                'message' => __('Razorpay settings validated successfully', 'fluent-cart')
+                'message' => __('Razorpay settings validated successfully', 'webmakerr-cart')
             ];
         } catch (\Exception $e) {
             return [
@@ -343,7 +343,7 @@ class Razorpay extends AbstractPaymentGateway
         }
 
         if (wp_remote_retrieve_response_code($response) !== 200) {
-            throw new \Exception(esc_html__('Invalid Razorpay credentials', 'fluent-cart'));
+            throw new \Exception(esc_html__('Invalid Razorpay credentials', 'webmakerr-cart'));
         }
 
         return true;

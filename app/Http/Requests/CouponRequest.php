@@ -37,7 +37,7 @@ class CouponRequest extends RequestGuard
                     }
 
                     if ($existing) {
-                        return sprintf(__('This coupon code is already in use.', 'fluent-cart'));
+                        return sprintf(__('This coupon code is already in use.', 'webmakerr-cart'));
                     }
                     return null;
                 }
@@ -63,7 +63,7 @@ class CouponRequest extends RequestGuard
                 'numeric',
                 function ($attribute, $value) {
                     if ($this->get("max_uses") < $this->get("max_per_customer")) {
-                        return sprintf(__("Max uses must be greater than or equal to max per customer.", 'fluent-cart'));
+                        return sprintf(__("Max uses must be greater than or equal to max per customer.", 'webmakerr-cart'));
                     }
                     return null;
                 },
@@ -74,7 +74,7 @@ class CouponRequest extends RequestGuard
                 'min:0',
                 function ($attribute, $value) {
                     if ($this->get("type") === 'percentage' && $value > 100) {
-                        return sprintf(__("For percentage type, the amount should not be greater than 100.", 'fluent-cart'));
+                        return sprintf(__("For percentage type, the amount should not be greater than 100.", 'webmakerr-cart'));
                     }
                     return null;
                 },
@@ -97,7 +97,7 @@ class CouponRequest extends RequestGuard
                         $endDateTime = strtotime(trim($endDate));
 
                         if ($endDateTime <= $startDateTime) {
-                            return sprintf(esc_html__("The end date must be after the start date.", 'fluent-cart'));
+                            return sprintf(esc_html__("The end date must be after the start date.", 'webmakerr-cart'));
                         }
                     }
                     return null;
@@ -112,14 +112,14 @@ class CouponRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'title.required'           => esc_html__('Title is required.', 'fluent-cart'),
-            'code.required'            => esc_html__('Code is required.', 'fluent-cart'),
-            'type.required'            => esc_html__('Type is required.', 'fluent-cart'),
-            'amount.required'          => esc_html__('Amount is required.', 'fluent-cart'),
-            'buy_quantity.required_if' => esc_html__('Buy quantity is required. ', 'fluent-cart'),
-            'start_date.required_if'   => esc_html__('Start date is required. ', 'fluent-cart'),
-            'end_date.required_if'     => esc_html__('End date is required. ', 'fluent-cart'),
-            'end_date.date'            => esc_html__('The end date type should be date.', 'fluent-cart'),
+            'title.required'           => esc_html__('Title is required.', 'webmakerr-cart'),
+            'code.required'            => esc_html__('Code is required.', 'webmakerr-cart'),
+            'type.required'            => esc_html__('Type is required.', 'webmakerr-cart'),
+            'amount.required'          => esc_html__('Amount is required.', 'webmakerr-cart'),
+            'buy_quantity.required_if' => esc_html__('Buy quantity is required. ', 'webmakerr-cart'),
+            'start_date.required_if'   => esc_html__('Start date is required. ', 'webmakerr-cart'),
+            'end_date.required_if'     => esc_html__('End date is required. ', 'webmakerr-cart'),
+            'end_date.date'            => esc_html__('The end date type should be date.', 'webmakerr-cart'),
         ];
     }
 

@@ -17,7 +17,7 @@ class PaymentItem
     public function setItemName(string $productName): self
     {
         if (empty($productName)) {
-            throw new \InvalidArgumentException(esc_html__("Item name cannot be empty.", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Item name cannot be empty.", 'webmakerr-cart'));
         }
         $this->itemName = $productName;
         return $this;
@@ -26,7 +26,7 @@ class PaymentItem
     public function setQuantity(int $quantity): self
     {
         if ($quantity <= 0) {
-            throw new \InvalidArgumentException(esc_html__("Quantity must be greater than 0.", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Quantity must be greater than 0.", 'webmakerr-cart'));
         }
         $this->quantity = $quantity;
         $this->updateLineTotal();
@@ -36,7 +36,7 @@ class PaymentItem
     public function setPrice(int $price): self
     {
         if ($price <= 0) {
-            throw new \InvalidArgumentException(esc_html__("Price must be greater than 0 and use in cent!.", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Price must be greater than 0 and use in cent!.", 'webmakerr-cart'));
         }
         $this->price = $price;
         $this->updateLineTotal();
@@ -47,7 +47,7 @@ class PaymentItem
     {
         $validPaymentTypes = ['onetime', 'subscription'];
         if (!in_array($paymentType, $validPaymentTypes, true)) {
-            throw new \InvalidArgumentException(esc_html__("Invalid payment type provided.", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Invalid payment type provided.", 'webmakerr-cart'));
         }
         $this->paymentType = $paymentType;
         return $this;
@@ -56,7 +56,7 @@ class PaymentItem
     public function setSubscriptionInfo(array $subscriptionInfo): self
     {
         if ($this->paymentType === 'onetime') {
-            throw new \InvalidArgumentException(esc_html__("Please set payment type subscription first!", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Please set payment type subscription first!", 'webmakerr-cart'));
         }
 
         $requiredKeys = ['signup_fee', 'times', 'repeat_interval'];
@@ -65,7 +65,7 @@ class PaymentItem
                 throw new \InvalidArgumentException(
                     sprintf(
                     /* translators: %s is the required key name */
-                        esc_html__('Missing required subscription info key: %s.', 'fluent-cart'),
+                        esc_html__('Missing required subscription info key: %s.', 'webmakerr-cart'),
                         esc_html($key)
                     )
                 );
@@ -73,15 +73,15 @@ class PaymentItem
         }
 
         if (!is_numeric($subscriptionInfo['signup_fee']) || $subscriptionInfo['signup_fee'] < 0) {
-            throw new \InvalidArgumentException(esc_html__("Invalid signup fee. It must be a non-negative number.", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Invalid signup fee. It must be a non-negative number.", 'webmakerr-cart'));
         }
 
         if (!is_int($subscriptionInfo['times']) || $subscriptionInfo['times'] < 0) {
-            throw new \InvalidArgumentException(esc_html__("Invalid times. It must be a non-negative integer.", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Invalid times. It must be a non-negative integer.", 'webmakerr-cart'));
         }
 
         if (!is_string($subscriptionInfo['repeat_interval']) || empty($subscriptionInfo['repeat_interval'])) {
-            throw new \InvalidArgumentException(esc_html__("Invalid repeat interval. It must be a non-empty string ie. daily, monthly, yearly..)", 'fluent-cart'));
+            throw new \InvalidArgumentException(esc_html__("Invalid repeat interval. It must be a non-empty string ie. daily, monthly, yearly..)", 'webmakerr-cart'));
         }
 
         $this->subscriptionInfo = $subscriptionInfo;
@@ -91,15 +91,15 @@ class PaymentItem
     public function getItem(): array
     {
         if (empty($this->itemName)) {
-            throw new \RuntimeException(esc_html__("Item name is not set.", 'fluent-cart'));
+            throw new \RuntimeException(esc_html__("Item name is not set.", 'webmakerr-cart'));
         }
 
         if (empty($this->price)) {
-            throw new \RuntimeException(esc_html__("price is not set.", 'fluent-cart'));
+            throw new \RuntimeException(esc_html__("price is not set.", 'webmakerr-cart'));
         }
 
         if ($this->paymentType === 'subscription' && empty($this->subscriptionInfo)) {
-            throw new \InvalidArgumentException(esc_html__("Please set subscription required infos ['signup_fee', 'times', 'repeat_interval'].", 'fluent-cart') );
+            throw new \InvalidArgumentException(esc_html__("Please set subscription required infos ['signup_fee', 'times', 'repeat_interval'].", 'webmakerr-cart') );
         }
 
         $otherInfo = array_merge(

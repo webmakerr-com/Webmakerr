@@ -160,21 +160,21 @@ class ProductDetail extends Model
         if (!$this->manage_stock) {
             $availability = [
                 'manage_stock'       => false,
-                'availability'       => __('In Stock', 'fluent-cart'),
+                'availability'       => __('In Stock', 'webmakerr-cart'),
                 'class'              => 'in-stock',
                 'available_quantity' => null
             ];
         } else if ($this->stock_availability) {
             $availability = [
                 'manage_stock'       => true,
-                'availability'       => __('In Stock', 'fluent-cart'),
+                'availability'       => __('In Stock', 'webmakerr-cart'),
                 'class'              => 'in-stock',
                 'available_quantity' => $this->stock_availability
             ];
         } else {
             $availability = [
                 'manage_stock'       => true,
-                'availability'       => __('Out of Stock', 'fluent-cart'),
+                'availability'       => __('Out of Stock', 'webmakerr-cart'),
                 'class'              => 'out-of-stock',
                 'available_quantity' => $this->stock_availability
             ];

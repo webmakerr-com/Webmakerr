@@ -44,7 +44,7 @@ class StringHandler implements HandlerInterface
             throw new InternalErrorException(
                 sprintf(
                     /* translators: %d: The position in the reader where the match was expected. */
-                    esc_html__('Should have found at least an empty match at %d.', 'fluent-cart'),
+                    esc_html__('Should have found at least an empty match at %d.', 'webmakerr-cart'),
                     esc_html($reader->getPosition())
                 )
             );

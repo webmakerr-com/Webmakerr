@@ -23,10 +23,10 @@ class Square extends AbstractPaymentGateway
     public function meta(): array
     {
         return [
-            'title' => __('Square', 'fluent-cart'),
+            'title' => __('Square', 'webmakerr-cart'),
             'route' => 'square',
             'slug' => 'square',
-            'description' => __('Pay securely with Square - Credit and Debit Cards', 'fluent-cart'),
+            'description' => __('Pay securely with Square - Credit and Debit Cards', 'webmakerr-cart'),
             'logo' => Vite::getAssetUrl("images/payment-methods/square-logo.svg"),
             'icon' => Vite::getAssetUrl("images/payment-methods/square-logo.svg"),
             'brand_color' => '#3e4348',
@@ -110,26 +110,26 @@ class Square extends AbstractPaymentGateway
                 <p>%8$s <code class="copyable-content">%2$s</code></p>
                 <p>%9$s</p>
             </div>',
-            __('Webhook URL: ', 'fluent-cart'),                    // %1$s
+            __('Webhook URL: ', 'webmakerr-cart'),                    // %1$s
             $webhook_url,                                          // %2$s (reused)
-            __('You should configure your Square webhooks to get all updates of your payments remotely.', 'fluent-cart'), // %3$s
-            __('How to configure?', 'fluent-cart'),                // %4$s
-            __('In your Square Dashboard:', 'fluent-cart'),        // %5$s
-            __('Go to Developer > Webhooks >', 'fluent-cart'),     // %6$s
-            __('Add webhook', 'fluent-cart'),                      // %7$s
-            __('Enter The Webhook URL: ', 'fluent-cart'),          // %8$s
-            __('Select payment events', 'fluent-cart')             // %9$s
+            __('You should configure your Square webhooks to get all updates of your payments remotely.', 'webmakerr-cart'), // %3$s
+            __('How to configure?', 'webmakerr-cart'),                // %4$s
+            __('In your Square Dashboard:', 'webmakerr-cart'),        // %5$s
+            __('Go to Developer > Webhooks >', 'webmakerr-cart'),     // %6$s
+            __('Add webhook', 'webmakerr-cart'),                      // %7$s
+            __('Enter The Webhook URL: ', 'webmakerr-cart'),          // %8$s
+            __('Select payment events', 'webmakerr-cart')             // %9$s
         );
 
         return array(
 //            'notice' => [
 //                'value' => $this->getStoreModeNotice(),
-//                'label' => __('Store Mode notice', 'fluent-cart'),
+//                'label' => __('Store Mode notice', 'webmakerr-cart'),
 //                'type' => 'notice'
 //            ],
             'upcoming' => [
                 'value' => $this->isUpcoming(),
-                'label' => __('Payment method is upcoming!', 'fluent-cart'),
+                'label' => __('Payment method is upcoming!', 'webmakerr-cart'),
                 'type' => 'upcoming'
             ],
             'payment_mode' => [
@@ -137,14 +137,14 @@ class Square extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type' => 'tab',
-                        'label' => __('Test credentials', 'fluent-cart'),
+                        'label' => __('Test credentials', 'webmakerr-cart'),
                         'value' => 'test',
                         'schema' => [
                             'test_access_token' => array(
                                 'value' => '',
-                                'label' => __('Test Access Token', 'fluent-cart'),
+                                'label' => __('Test Access Token', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('EAAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'fluent-cart'),
+                                'placeholder' => __('EAAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -153,9 +153,9 @@ class Square extends AbstractPaymentGateway
                             ),
                             'test_application_id' => array(
                                 'value' => '',
-                                'label' => __('Test Application ID', 'fluent-cart'),
+                                'label' => __('Test Application ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('sandbox-sq0idb-xxxxxxxxxxxxxxxxxxxxxxxx', 'fluent-cart'),
+                                'placeholder' => __('sandbox-sq0idb-xxxxxxxxxxxxxxxxxxxxxxxx', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -166,14 +166,14 @@ class Square extends AbstractPaymentGateway
                     ],
                     [
                         'type' => 'tab',
-                        'label' => __('Live credentials', 'fluent-cart'),
+                        'label' => __('Live credentials', 'webmakerr-cart'),
                         'value' => 'live',
                         'schema' => [
                             'live_access_token' => array(
                                 'value' => '',
-                                'label' => __('Live Access Token', 'fluent-cart'),
+                                'label' => __('Live Access Token', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('EAAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'fluent-cart'),
+                                'placeholder' => __('EAAAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -182,9 +182,9 @@ class Square extends AbstractPaymentGateway
                             ),
                             'live_application_id' => array(
                                 'value' => '',
-                                'label' => __('Live Application ID', 'fluent-cart'),
+                                'label' => __('Live Application ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('sq0idb-xxxxxxxxxxxxxxxxxxxxxxxx', 'fluent-cart'),
+                                'placeholder' => __('sq0idb-xxxxxxxxxxxxxxxxxxxxxxxx', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -197,7 +197,7 @@ class Square extends AbstractPaymentGateway
             ],
             'webhook_desc' => array(
                 'value' => $webhook_instructions,
-                'label' => __('Webhook URL', 'fluent-cart'),
+                'label' => __('Webhook URL', 'webmakerr-cart'),
                 'type' => 'html_attr'
             ),
         );
@@ -212,7 +212,7 @@ class Square extends AbstractPaymentGateway
         if (empty($applicationId) || empty($accessToken) || empty($locationId)) {
             return [
                 'status' => 'failed',
-                'message' => __('Application ID, Access Token, and Location ID are required', 'fluent-cart')
+                'message' => __('Application ID, Access Token, and Location ID are required', 'webmakerr-cart')
             ];
         }
 
@@ -221,7 +221,7 @@ class Square extends AbstractPaymentGateway
             
             return [
                 'status' => 'success',
-                'message' => __('Square settings validated successfully', 'fluent-cart')
+                'message' => __('Square settings validated successfully', 'webmakerr-cart')
             ];
         } catch (\Exception $e) {
             return [
@@ -329,7 +329,7 @@ class Square extends AbstractPaymentGateway
         $data = json_decode($body, true);
 
         if (wp_remote_retrieve_response_code($response) !== 200 || isset($data['errors'])) {
-            throw new \Exception(esc_html__('Invalid Square credentials or location ID', 'fluent-cart'));
+            throw new \Exception(esc_html__('Invalid Square credentials or location ID', 'webmakerr-cart'));
         }
 
         return true;

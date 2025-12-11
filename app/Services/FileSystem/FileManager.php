@@ -86,7 +86,7 @@ class FileManager
         $storage = Arr::get($storages, $driver.'.instance');
 
         if(empty($storage)){
-            throw new \Exception(esc_html__('Invalid driver', 'fluent-cart'));
+            throw new \Exception(esc_html__('Invalid driver', 'webmakerr-cart'));
         }
 
         $driverClass = $storage->getDriverClass();

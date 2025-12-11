@@ -435,7 +435,7 @@ class CartCheckoutHelper implements ArrayableInterface
         if (empty(Arr::get($getCart, 'checkout_data.form_data.' . $type . '_state'))) {
             $states = [
                 [
-                    'name'  => __('Select an option', 'fluent-cart'),
+                    'name'  => __('Select an option', 'webmakerr-cart'),
                     'value' => ''
                 ]
             ];
@@ -447,10 +447,10 @@ class CartCheckoutHelper implements ArrayableInterface
             $addressLocale = LocalizationManager::getInstance()->addressLocales($selectedCountry);
         }
 
-        $stateLabel = Arr::get($addressLocale, 'state.label', __('State', 'fluent-cart'));
+        $stateLabel = Arr::get($addressLocale, 'state.label', __('State', 'webmakerr-cart'));
         $countries = [
             [
-                'name'  => __('Select a Country', 'fluent-cart'),
+                'name'  => __('Select a Country', 'webmakerr-cart'),
                 'value' => ''
             ]
         ];
@@ -483,7 +483,7 @@ class CartCheckoutHelper implements ArrayableInterface
         return [
             'address_section' => [
                 'type'   => 'section',
-                'title'  => __('Address', 'fluent-cart'),
+                'title'  => __('Address', 'webmakerr-cart'),
                 'schema' => [
                     'label'     => [
                         'type'         => 'text',
@@ -493,7 +493,7 @@ class CartCheckoutHelper implements ArrayableInterface
                         'autocomplete' => 'label',
                         'value'        => '',
                         'maxlength'    => 15,
-                        'placeholder'  => esc_attr__('e.g Home, Office', 'fluent-cart'),
+                        'placeholder'  => esc_attr__('e.g Home, Office', 'webmakerr-cart'),
                     ],
                     'name'      => [
                         'type'         => 'text',
@@ -501,7 +501,7 @@ class CartCheckoutHelper implements ArrayableInterface
                         'label'        => '',
                         'required'     => 'no',
                         'autocomplete' => 'name',
-                        'placeholder'  => esc_attr__('Name', 'fluent-cart'),
+                        'placeholder'  => esc_attr__('Name', 'webmakerr-cart'),
                     ],
                     'country'   => [
                         'type'         => 'select',
@@ -510,7 +510,7 @@ class CartCheckoutHelper implements ArrayableInterface
                         'label'        => '',
                         'required'     => 'yes',
                         'autocomplete' => 'country',
-                        'placeholder'  => esc_attr__('Country / Region', 'fluent-cart'),
+                        'placeholder'  => esc_attr__('Country / Region', 'webmakerr-cart'),
                         'value'        => $selectedCountry,
                     ],
                     'address_1' => [
@@ -518,7 +518,7 @@ class CartCheckoutHelper implements ArrayableInterface
                         'data-type'    => 'text',
                         'label'        => '',
                         /* translators: use local order of street name and house number. */
-                        'placeholder'  => esc_attr__('Street Address', 'fluent-cart'),
+                        'placeholder'  => esc_attr__('Street Address', 'webmakerr-cart'),
                         'required'     => 'yes',
                         'autocomplete' => 'address-line1',
                         'value'        => Arr::get($getCart, 'checkout_data.form_data.' . $type . '_address_1'),
@@ -528,7 +528,7 @@ class CartCheckoutHelper implements ArrayableInterface
                         'data-type'    => 'text',
                         'label'        => '',
                         'label_class'  => array(''),
-                        'placeholder'  => esc_attr__('Apt, suite, unit', 'fluent-cart'),
+                        'placeholder'  => esc_attr__('Apt, suite, unit', 'webmakerr-cart'),
                         'autocomplete' => 'address-line2',
                         'value'        => Arr::get($getCart, 'checkout_data.form_data.' . $type . '_address_2', ''),
                     ],
@@ -542,7 +542,7 @@ class CartCheckoutHelper implements ArrayableInterface
                                 'label'        => '',
                                 'required'     => 'yes',
                                 'autocomplete' => 'address-level2',
-                                'placeholder'  => esc_attr__('Town / City', 'fluent-cart'),
+                                'placeholder'  => esc_attr__('Town / City', 'webmakerr-cart'),
                                 'value'        => Arr::get($getCart, 'checkout_data.form_data.' . $type . '_city'),
                             ],
                             'postcode' => [
@@ -552,7 +552,7 @@ class CartCheckoutHelper implements ArrayableInterface
                                 'required'     => 'yes',
                                 'validate'     => array('postcode'),
                                 'autocomplete' => 'postal-code',
-                                'placeholder'  => esc_attr__('Postcode / ZIP', 'fluent-cart'),
+                                'placeholder'  => esc_attr__('Postcode / ZIP', 'webmakerr-cart'),
                                 'value'        => Arr::get($getCart, 'checkout_data.form_data.' . $type . '_postcode'),
                             ],
                         ]
@@ -594,7 +594,7 @@ class CartCheckoutHelper implements ArrayableInterface
                     'data-type'    => 'text',
                     'label'        => '',
                     'autocomplete' => 'organization',
-                    'placeholder'  => esc_attr__('Company Name', 'fluent-cart'),
+                    'placeholder'  => esc_attr__('Company Name', 'webmakerr-cart'),
                     'value'        => Arr::get($getCart, 'checkout_data.form_data.' . $type . '_company_name'),
                 ],
                 'phone'        => [
@@ -603,7 +603,7 @@ class CartCheckoutHelper implements ArrayableInterface
                     'data-type'   => 'text',
                     'label'       => '',
                     'disabled'    => false,
-                    'placeholder' => esc_attr__('Phone', 'fluent-cart'),
+                    'placeholder' => esc_attr__('Phone', 'webmakerr-cart'),
                     'value'       => Arr::get($getCart, 'checkout_data.form_data.' . $type . '_phone'),
                 ]
             ];
@@ -616,8 +616,8 @@ class CartCheckoutHelper implements ArrayableInterface
         }
 
         $addressLabel = $type === 'billing' ?
-            __('Billing Address', 'fluent-cart') :
-            __('Shipping Address', 'fluent-cart');
+            __('Billing Address', 'webmakerr-cart') :
+            __('Shipping Address', 'webmakerr-cart');
 
         $requiredOnLoggedIn = [
             'address' => [
@@ -662,7 +662,7 @@ class CartCheckoutHelper implements ArrayableInterface
                         'required'     => 'yes',
                         'autocomplete' => 'given-name',
                         'value'        => $customerName,
-                        'placeholder'  => esc_attr__('Full Name', 'fluent-cart'),
+                        'placeholder'  => esc_attr__('Full Name', 'webmakerr-cart'),
                     ],
                     'email'     => [
                         'id'           => 'email',
@@ -673,7 +673,7 @@ class CartCheckoutHelper implements ArrayableInterface
                         'autocomplete' => 'email username',
                         'value'        => $customerEmail,
                         'disabled'     => is_user_logged_in(),
-                        'placeholder'  => esc_attr__('Email address', 'fluent-cart'),
+                        'placeholder'  => esc_attr__('Email address', 'webmakerr-cart'),
                     ]
                 ]
             ],
@@ -697,11 +697,11 @@ class CartCheckoutHelper implements ArrayableInterface
         $labels = Arr::get($viewData, 'labels', []);
         $fields = $this->getAddressFields();
         $allowCreateAccount = Arr::get($viewData, 'block_allow_create_account', []);
-        $label = Arr::get($allowCreateAccount, 'label', __('Create My Account', 'fluent-cart'));
+        $label = Arr::get($allowCreateAccount, 'label', __('Create My Account', 'webmakerr-cart'));
         $customer = CustomerResource::getCurrentCustomer();
 
         if (isset($fields['address_section'])) {
-            $fields['address_section']['title'] = $labels['billing_address'] ?? __('Billing Address', 'fluent-cart');
+            $fields['address_section']['title'] = $labels['billing_address'] ?? __('Billing Address', 'webmakerr-cart');
         }
 
         if ((new StoreSettings())->get('user_account_creation_mode') === 'user_choice') {
@@ -743,7 +743,7 @@ class CartCheckoutHelper implements ArrayableInterface
 
         if (isset($fields['address_section'])) {
             $addressSchema = $fields['address_section']['schema'];
-            $fields['address_section']['title'] = $labels['shipping_address'] ?? __('Shipping Address', 'fluent-cart');
+            $fields['address_section']['title'] = $labels['shipping_address'] ?? __('Shipping Address', 'webmakerr-cart');
         }
 
         // Remove email field
@@ -818,28 +818,28 @@ class CartCheckoutHelper implements ArrayableInterface
                 'id'           => 'full_name',
                 'type'         => 'text',
                 'data-type'    => 'text',
-                'label'        => __('Full Name', 'fluent-cart'),
+                'label'        => __('Full Name', 'webmakerr-cart'),
                 'required'     => 'yes',
                 'autocomplete' => 'given-name',
-                'placeholder'  => esc_attr__('e.g. James Brown', 'fluent-cart'),
+                'placeholder'  => esc_attr__('e.g. James Brown', 'webmakerr-cart'),
             ),
             'email'     => array(
                 'id'           => 'billing_email',
                 'type'         => 'text',
                 'data-type'    => 'email',
                 'required'     => 'yes',
-                'label'        => __('Email Address', 'fluent-cart'),
+                'label'        => __('Email Address', 'webmakerr-cart'),
                 'autocomplete' => 'email username',
-                'placeholder'  => esc_attr__('e.g. name@domain.com', 'fluent-cart'),
+                'placeholder'  => esc_attr__('e.g. name@domain.com', 'webmakerr-cart'),
             ),
             'password'  => array(
                 'id'           => 'password',
                 'type'         => 'text',
                 'data-type'    => 'password',
                 'required'     => 'no',
-                'label'        => __('Password', 'fluent-cart'),
+                'label'        => __('Password', 'webmakerr-cart'),
                 'autocomplete' => 'current-password',
-                'placeholder'  => esc_attr__('Enter Strong password', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Enter Strong password', 'webmakerr-cart'),
             ),
         );
 
@@ -854,18 +854,18 @@ class CartCheckoutHelper implements ArrayableInterface
                 'type'         => 'text',
                 'data-type'    => 'text',
                 'required'     => 'yes',
-                'label'        => __('Username or Email Address', 'fluent-cart'),
+                'label'        => __('Username or Email Address', 'webmakerr-cart'),
                 'autocomplete' => 'email username',
-                'placeholder'  => esc_attr__('e.g. name@domain.com or username', 'fluent-cart'),
+                'placeholder'  => esc_attr__('e.g. name@domain.com or username', 'webmakerr-cart'),
             ),
             'password'   => array(
                 'id'           => 'password',
                 'type'         => 'text',
                 'data-type'    => 'password',
                 'required'     => 'yes',
-                'label'        => __('Password', 'fluent-cart'),
+                'label'        => __('Password', 'webmakerr-cart'),
                 'autocomplete' => 'current-password',
-                'placeholder'  => esc_attr__('Enter password', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Enter password', 'webmakerr-cart'),
             ),
         );
 
@@ -913,7 +913,7 @@ class CartCheckoutHelper implements ArrayableInterface
                 'data-type'   => 'text',
                 'label'       => '',
                 'required'    => 'no',
-                'placeholder' => __('Apply Here', 'fluent-cart'),
+                'placeholder' => __('Apply Here', 'webmakerr-cart'),
             ),
             'applied_coupons' => array(
                 'type'      => 'hidden',

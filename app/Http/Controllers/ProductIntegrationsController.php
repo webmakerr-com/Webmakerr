@@ -49,14 +49,14 @@ class ProductIntegrationsController extends Controller
 
         if (!isset($allIntegrations[$integration_name])) {
             return $this->sendError([
-                'message' => __('Integration not found', 'fluent-cart')
+                'message' => __('Integration not found', 'webmakerr-cart')
             ]);
         }
 
         $baseAddon = $allIntegrations[$integration_name];
         if (!in_array('product', Arr::get($baseAddon, 'scopes', [])) || !$baseAddon['enabled']) {
             return $this->sendError([
-                'message' => __('This integration is not available for products or not enabled', 'fluent-cart')
+                'message' => __('This integration is not available for products or not enabled', 'webmakerr-cart')
             ]);
         }
 
@@ -70,7 +70,7 @@ class ProductIntegrationsController extends Controller
 
             if (!$integrationMeta) {
                 return $this->sendError([
-                    'message' => __('Integration not found', 'fluent-cart')
+                    'message' => __('Integration not found', 'webmakerr-cart')
                 ]);
             }
         }
@@ -115,7 +115,7 @@ class ProductIntegrationsController extends Controller
         $product = Product::find($product_id);
         if (!$product) {
             return $this->sendError([
-                'message' => __('Product not found', 'fluent-cart')
+                'message' => __('Product not found', 'webmakerr-cart')
             ]);
         }
 
@@ -130,7 +130,7 @@ class ProductIntegrationsController extends Controller
 
             if (!$integrationMeta) {
                 return $this->sendError([
-                    'message' => __('Integration not found', 'fluent-cart')
+                    'message' => __('Integration not found', 'webmakerr-cart')
                 ]);
             }
         }
@@ -169,7 +169,7 @@ class ProductIntegrationsController extends Controller
         webmakerr_do_action('webmakerr_cart/reindex_integration_feeds', []);
 
         return [
-            'message'          => __('Integration has been successfully saved', 'fluent-cart'),
+            'message'          => __('Integration has been successfully saved', 'webmakerr-cart'),
             'integration_id'   => $integrationId,
             'integration_name' => $provider,
             'created'          => $integrationMeta->wasRecentlyCreated,
@@ -184,7 +184,7 @@ class ProductIntegrationsController extends Controller
 
         if (!$productId || !$notificationId) {
             return $this->sendError([
-                'message' => __('Product ID and Notification ID are required', 'fluent-cart')
+                'message' => __('Product ID and Notification ID are required', 'webmakerr-cart')
             ]);
         }
 
@@ -196,7 +196,7 @@ class ProductIntegrationsController extends Controller
 
         if (!$notification) {
             return $this->sendError([
-                'message' => __('Notification not found', 'fluent-cart')
+                'message' => __('Notification not found', 'webmakerr-cart')
             ]);
         }
 
@@ -207,7 +207,7 @@ class ProductIntegrationsController extends Controller
         $notification->save();
 
         return [
-            'message' => __('Integration status has been updated', 'fluent-cart')
+            'message' => __('Integration status has been updated', 'webmakerr-cart')
         ];
     }
 
@@ -223,7 +223,7 @@ class ProductIntegrationsController extends Controller
             ->delete();
 
         return [
-            'message' => __('Integration deleted successfully', 'fluent-cart')
+            'message' => __('Integration deleted successfully', 'webmakerr-cart')
         ];
     }
 

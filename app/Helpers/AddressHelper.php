@@ -304,7 +304,7 @@ class AddressHelper
             return [
                 'status'     => false,
                 'error_type' => 'no_country',
-                'message'    => __('Please provide your address to view shipping options', 'fluent-cart')
+                'message'    => __('Please provide your address to view shipping options', 'webmakerr-cart')
             ];
         }
 
@@ -312,12 +312,12 @@ class AddressHelper
 
         if (!$availableShippingMethods || $availableShippingMethods->isEmpty()) {
             $settingView = '<div class="fct-empty-state">'
-                . esc_html__('No shipping methods available for this address.', 'fluent-cart');
+                . esc_html__('No shipping methods available for this address.', 'webmakerr-cart');
 
             if (current_user_can('manage_options')) {
                 $settingsPageUrl = admin_url('admin.php?page=webmakerr#/settings/shipping');
 
-                $settingsLink = '<a href="' . esc_url($settingsPageUrl ?? '') . '" target="_blank">' . esc_html__('Activate from settings.', 'fluent-cart') . '</a>';
+                $settingsLink = '<a href="' . esc_url($settingsPageUrl ?? '') . '" target="_blank">' . esc_html__('Activate from settings.', 'webmakerr-cart') . '</a>';
 
                 $settingView .= ' ' . $settingsLink;
             }
@@ -344,7 +344,7 @@ class AddressHelper
         }
 
         if (!$country) {
-            return new \WP_Error('no_country', __('Please provide your shipping address to get shipping options', 'fluent-cart'));
+            return new \WP_Error('no_country', __('Please provide your shipping address to get shipping options', 'webmakerr-cart'));
         }
 
         $shippingMethods = ShippingMethod::applicableToCountry($country, $state)
@@ -374,11 +374,11 @@ class AddressHelper
         }
 
         if (!$formattedMethods && $requireState) {
-            return new \WP_Error('require_state', __('Enter your shipping address to view available shipping methods. Billing and shipping address is the same by default unless you ship to a different address.', 'fluent-cart'));
+            return new \WP_Error('require_state', __('Enter your shipping address to view available shipping methods. Billing and shipping address is the same by default unless you ship to a different address.', 'webmakerr-cart'));
         }
 
         if (!$formattedMethods) {
-            return new \WP_Error('no_shipping_methods', __('No shipping options available for the provided address', 'fluent-cart'));
+            return new \WP_Error('no_shipping_methods', __('No shipping options available for the provided address', 'webmakerr-cart'));
         }
 
         return $formattedMethods;

@@ -133,11 +133,11 @@ class ProductController extends Controller
                     'variant'         => $variation,
                     'product_details' => Arr::get($createdProductDetail, 'data'),
                 ],
-                'message' => __('Product has been created successfully', 'fluent-cart')
+                'message' => __('Product has been created successfully', 'webmakerr-cart')
             ]);
         }
 
-        return $this->sendError(['code' => 400, 'message' => __('Product creation failed!', 'fluent-cart')]);
+        return $this->sendError(['code' => 400, 'message' => __('Product creation failed!', 'webmakerr-cart')]);
 
     }
 
@@ -162,7 +162,7 @@ class ProductController extends Controller
         ) {
             return $this->sendError(
                 [
-                    'message' => __('Variation info is not present', 'fluent-cart')
+                    'message' => __('Variation info is not present', 'webmakerr-cart')
                 ]
             );
         }
@@ -197,7 +197,7 @@ class ProductController extends Controller
 
         if (!$productDetail) {
             return $this->sendError([
-                'message' => __('Product not found', 'fluent-cart')
+                'message' => __('Product not found', 'webmakerr-cart')
             ]);
         }
 
@@ -211,12 +211,12 @@ class ProductController extends Controller
 
         if (!$isUpdated) {
             return $this->sendError([
-                'message' => __('Failed to update editor mode', 'fluent-cart')
+                'message' => __('Failed to update editor mode', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendSuccess([
-            'message' => __('Editor mode updated successfully', 'fluent-cart')
+            'message' => __('Editor mode updated successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -229,7 +229,7 @@ class ProductController extends Controller
 
         if (empty($taxClass)) {
             return $this->sendError([
-                'message' => __('Tax Class not found', 'fluent-cart')
+                'message' => __('Tax Class not found', 'webmakerr-cart')
             ]);
         }
 
@@ -237,7 +237,7 @@ class ProductController extends Controller
 
         if (empty($productDetail)) {
             return $this->sendError([
-                'message' => __('Product not found', 'fluent-cart')
+                'message' => __('Product not found', 'webmakerr-cart')
             ]);
         }
 
@@ -251,7 +251,7 @@ class ProductController extends Controller
         ]);
 
         return $this->sendSuccess([
-            'message' => __('Tax Class updated successfully', 'fluent-cart')
+            'message' => __('Tax Class updated successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -260,7 +260,7 @@ class ProductController extends Controller
         $productDetail = ProductDetail::query()->where('post_id', $postId)->first();
         if (empty($productDetail)) {
             return $this->sendError([
-                'message' => __('Product not found', 'fluent-cart')
+                'message' => __('Product not found', 'webmakerr-cart')
             ]);
         }
         $otherInfo = $productDetail->other_info;
@@ -269,7 +269,7 @@ class ProductController extends Controller
             'other_info' => $otherInfo
         ]);
         return $this->sendSuccess([
-            'message' => __('Tax Class removed successfully', 'fluent-cart')
+            'message' => __('Tax Class removed successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -291,8 +291,8 @@ class ProductController extends Controller
 
         if (empty($product)) {
             return $this->entityNotFoundError(
-                __('Product not found', 'fluent-cart'),
-                __('Back to Product List', 'fluent-cart'),
+                __('Product not found', 'webmakerr-cart'),
+                __('Back to Product List', 'webmakerr-cart'),
                 '/products'
             );
         }
@@ -346,7 +346,7 @@ class ProductController extends Controller
             ]);
         } else {
             return $this->sendError([
-                'message' => __('Something went wrong', 'fluent-cart'),
+                'message' => __('Something went wrong', 'webmakerr-cart'),
             ]);
         }
         //return ProductResource::find($postId);
@@ -374,13 +374,13 @@ class ProductController extends Controller
         if ($isSaved) {
             return $this->sendSuccess(
                 [
-                    'message' => __('Settings saved successfully', 'fluent-cart')
+                    'message' => __('Settings saved successfully', 'webmakerr-cart')
                 ]
             );
         } else {
             return $this->sendError(
                 [
-                    'message' => __('Failed to save settings', 'fluent-cart')
+                    'message' => __('Failed to save settings', 'webmakerr-cart')
                 ]
             );
         }
@@ -393,13 +393,13 @@ class ProductController extends Controller
         if ($isDeleted) {
             return $this->sendSuccess(
                 [
-                    'message' => __('Path deleted successfully', 'fluent-cart')
+                    'message' => __('Path deleted successfully', 'webmakerr-cart')
                 ]
             );
         } else {
             return $this->sendError(
                 [
-                    'message' => __('Failed to delete path', 'fluent-cart')
+                    'message' => __('Failed to delete path', 'webmakerr-cart')
                 ]
             );
         }
@@ -416,13 +416,13 @@ class ProductController extends Controller
         if ($isUpdated) {
             return $this->sendSuccess(
                 [
-                    'message' => __('Settings updated successfully', 'fluent-cart')
+                    'message' => __('Settings updated successfully', 'webmakerr-cart')
                 ]
             );
         } else {
             return $this->sendError(
                 [
-                    'message' => __('Failed to update settings', 'fluent-cart')
+                    'message' => __('Failed to update settings', 'webmakerr-cart')
                 ]
             );
         }
@@ -449,9 +449,9 @@ class ProductController extends Controller
     {
         $thisMonthKey = '-' . gmdate('d') . ' days';
         $ranges = [
-            'all_time'    => __('All time', 'fluent-cart'),
-            '-30 days'    => __('Last 30 days', 'fluent-cart'),
-            $thisMonthKey => __('This month', 'fluent-cart'),
+            'all_time'    => __('All time', 'webmakerr-cart'),
+            '-30 days'    => __('Last 30 days', 'webmakerr-cart'),
+            $thisMonthKey => __('This month', 'webmakerr-cart'),
         ];
 
         $stats = ProductReport::getStatByProductIds([$productId], array_keys($ranges));
@@ -471,7 +471,7 @@ class ProductController extends Controller
 
         $widgets = [
             [
-                'title' => __('Quick Sales Overview', 'fluent-cart'),
+                'title' => __('Quick Sales Overview', 'webmakerr-cart'),
                 'body'  => $html,
             ],
         ];
@@ -592,7 +592,7 @@ class ProductController extends Controller
             ]);
         } else {
             $this->response->json([
-                'message' => __('Unable To Create Term/s', 'fluent-cart'),
+                'message' => __('Unable To Create Term/s', 'webmakerr-cart'),
             ], 423);
         }
 
@@ -643,7 +643,7 @@ class ProductController extends Controller
     {
         return apply_filters('fluent_support/mime_groups', [
             'images'    => [
-                'title' => __('Photos', 'fluent-cart'),
+                'title' => __('Photos', 'webmakerr-cart'),
                 'mimes' => [
                     'image/gif',
                     'image/ief',
@@ -655,7 +655,7 @@ class ProductController extends Controller
                 ],
             ],
             'csv'       => [
-                'title' => __('CSV', 'fluent-cart'),
+                'title' => __('CSV', 'webmakerr-cart'),
                 'mimes' => [
                     'application/csv',
                     'application/txt',
@@ -666,7 +666,7 @@ class ProductController extends Controller
                 ],
             ],
             'documents' => [
-                'title' => __('PDF/Docs', 'fluent-cart'),
+                'title' => __('PDF/Docs', 'webmakerr-cart'),
                 'mimes' => [
                     'application/excel',
                     'application/vnd.ms-excel',
@@ -678,13 +678,13 @@ class ProductController extends Controller
                 ],
             ],
             'zip'       => [
-                'title' => __('Zip', 'fluent-cart'),
+                'title' => __('Zip', 'webmakerr-cart'),
                 'mimes' => [
                     'application/zip',
                 ],
             ],
             'json'      => [
-                'title' => __('JSON', 'fluent-cart'),
+                'title' => __('JSON', 'webmakerr-cart'),
                 'mimes' => [
                     'application/json',
                     'application/jsonml+json',

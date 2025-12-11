@@ -123,7 +123,7 @@ class WorkbookRelationshipsManager
                 throw new IOException(
                     sprintf(
                     /* translators: %s is the file path */
-                        esc_html__('Could not open "%s".', 'fluent-cart'),
+                        esc_html__('Could not open "%s".', 'webmakerr-cart'),
                         esc_html(self::WORKBOOK_RELS_XML_FILE_PATH)
                     )
                 );

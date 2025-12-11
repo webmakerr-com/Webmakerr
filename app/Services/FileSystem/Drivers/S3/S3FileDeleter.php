@@ -53,12 +53,12 @@ class S3FileDeleter
 
         if ($responseCode == 204) {
             return [
-                'message' => __('File Deleted Successfully', 'fluent-cart'),
+                'message' => __('File Deleted Successfully', 'webmakerr-cart'),
                 'driver'  => 's3',
                 'path'    => $this->s3FilePath
             ];
         } else {
-            return new \WP_Error($responseCode, __('Failed To Delete File', 'fluent-cart'));
+            return new \WP_Error($responseCode, __('Failed To Delete File', 'webmakerr-cart'));
         }
     }
 

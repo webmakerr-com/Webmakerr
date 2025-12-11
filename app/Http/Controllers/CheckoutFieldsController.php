@@ -27,7 +27,7 @@ class CheckoutFieldsController extends Controller
         fluent_cart_update_option('_fc_checkout_fields', $settings);
 
         return [
-            'message' => __('Checkout fields has been updated successfully.', 'fluent-cart'),
+            'message' => __('Checkout fields has been updated successfully.', 'webmakerr-cart'),
         ];
     }
 

@@ -67,7 +67,7 @@ class InMemoryStrategy implements CachingStrategyInterface
             throw new SharedStringNotFoundException(
                 sprintf(
                 /* translators: %s is the shared string index */
-                    esc_html__('Shared string not found for index: %s', 'fluent-cart'),
+                    esc_html__('Shared string not found for index: %s', 'webmakerr-cart'),
                     esc_html($sharedStringIndex)
                 )
             );

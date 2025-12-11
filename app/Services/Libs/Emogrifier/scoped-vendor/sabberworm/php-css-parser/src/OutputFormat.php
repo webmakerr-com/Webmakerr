@@ -208,7 +208,7 @@ class OutputFormat
             throw new \Exception(
                 sprintf(
                     /* translators: %s: The name of the unknown OutputFormat method. */
-                    esc_html__('Unknown OutputFormat method called: %s', 'fluent-cart'),
+                    esc_html__('Unknown OutputFormat method called: %s', 'webmakerr-cart'),
                     esc_html($sMethodName)
                 )
             );

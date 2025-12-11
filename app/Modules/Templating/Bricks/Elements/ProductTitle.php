@@ -12,13 +12,13 @@ class ProductTitle extends Element {
     public $tag      = 'h1';
 
     public function get_label() {
-        return esc_html__( 'Product title (FluentCart)', 'fluent-cart' );
+        return esc_html__( 'Product title (FluentCart)', 'webmakerr-cart' );
     }
 
     public function set_controls() {
         $this->controls['tag'] = [
             'tab'         => 'content',
-            'label'       => esc_html__( 'HTML tag', 'fluent-cart' ),
+            'label'       => esc_html__( 'HTML tag', 'webmakerr-cart' ),
             'type'        => 'select',
             'options'     => [
                 'h1' => 'h1',
@@ -34,14 +34,14 @@ class ProductTitle extends Element {
 
         $this->controls['prefix'] = [
             'tab'    => 'content',
-            'label'  => esc_html__( 'Prefix', 'fluent-cart' ),
+            'label'  => esc_html__( 'Prefix', 'webmakerr-cart' ),
             'type'   => 'text',
             'inline' => true,
         ];
 
         $this->controls['prefixBlock'] = [
             'tab'      => 'content',
-            'label'    => esc_html__( 'Prefix block', 'fluent-cart' ),
+            'label'    => esc_html__( 'Prefix block', 'webmakerr-cart' ),
             'type'     => 'checkbox',
             'inline'   => true,
             'required' => [ 'prefix', '!=', '' ],
@@ -49,14 +49,14 @@ class ProductTitle extends Element {
 
         $this->controls['suffix'] = [
             'tab'    => 'content',
-            'label'  => esc_html__( 'Suffix', 'fluent-cart' ),
+            'label'  => esc_html__( 'Suffix', 'webmakerr-cart' ),
             'type'   => 'text',
             'inline' => true,
         ];
 
         $this->controls['suffixBlock'] = [
             'tab'      => 'content',
-            'label'    => esc_html__( 'Suffix block', 'fluent-cart' ),
+            'label'    => esc_html__( 'Suffix block', 'webmakerr-cart' ),
             'type'     => 'checkbox',
             'inline'   => true,
             'required' => [ 'suffix', '!=', '' ],
@@ -64,7 +64,7 @@ class ProductTitle extends Element {
 
         $this->controls['linkToProduct'] = [
             'tab'   => 'content',
-            'label' => esc_html__( 'Link to product', 'fluent-cart' ),
+            'label' => esc_html__( 'Link to product', 'webmakerr-cart' ),
             'type'  => 'checkbox',
         ];
     }

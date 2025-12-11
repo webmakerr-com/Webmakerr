@@ -29,7 +29,7 @@ class PaddleHelper
 
         $paddleTransactionId = $transaction->vendor_charge_id;
         if (!$paddleTransactionId) {
-            return new \WP_Error('invalid_refund', __('Invalid transaction ID for refund.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_refund', __('Invalid transaction ID for refund.', 'webmakerr-cart-pro'));
         }
 
         $type = Arr::get($args, 'type', 'partial');
@@ -57,21 +57,21 @@ class PaddleHelper
         }
 
         if ($totalRefundableAmountFromItems < $amount && !empty($itemIds)) {
-            return new \WP_Error('invalid_refund', __('Invalid refund amount. Please check the items available refund amounts.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_refund', __('Invalid refund amount. Please check the items available refund amounts.', 'webmakerr-cart-pro'));
         } else if ($totalRefundableAmountFromItems < $amount && empty($itemIds)){
             $type = 'full';
         }
 
         if ($type == 'partial' && (empty($mappedPaddleItemIds) || !$itemsWithProportionalAmount)) {
-            return new \WP_Error('invalid_refund', __('Partial refund not allowed without any items selected.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_refund', __('Partial refund not allowed without any items selected.', 'webmakerr-cart-pro'));
         }
 
         if ($type == 'partial' && $totalRefundableAmountFromItems < $amount) {
-            return new \WP_Error('invalid_refund', __('Invalid refund amount. Please check the items available refund amounts.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_refund', __('Invalid refund amount. Please check the items available refund amounts.', 'webmakerr-cart-pro'));
         }
 
         if ($type == 'full' && $amount < ($order->total_paid  - $order->total_refund) ) {
-            return new \WP_Error('invalid_refund', __('Partial refund not allowed without any items selected.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_refund', __('Partial refund not allowed without any items selected.', 'webmakerr-cart-pro'));
         }
 
         $refundData = [
@@ -108,7 +108,7 @@ class PaddleHelper
 
         $acceptedStatus = ['approved', 'pending_approval'];
         if (!in_array($status, $acceptedStatus)) {
-            return new \WP_Error('refund_failed', __('Refund could not be processed in paddle. Please check on your paddle account', 'fluent-cart-pro'));
+            return new \WP_Error('refund_failed', __('Refund could not be processed in paddle. Please check on your paddle account', 'webmakerr-cart-pro'));
         }
 
         if ($status == 'approved') {

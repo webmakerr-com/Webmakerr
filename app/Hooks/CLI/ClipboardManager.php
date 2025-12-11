@@ -22,7 +22,7 @@ class ClipboardManager
                 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 echo \WP_CLI::colorize( PHP_EOL."%GConfig Keys Copied To Clipboard%n".PHP_EOL );
             }else{
-                echo esc_html__('Config Keys Copied To Clipboard', 'fluent-cart');
+                echo esc_html__('Config Keys Copied To Clipboard', 'webmakerr-cart');
             }
 
             return true;

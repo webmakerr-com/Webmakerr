@@ -132,7 +132,7 @@ class ProductModalTemplatePart
      */
     public function getTitle()
     {
-        return _x('Product Modal', 'Template part name', 'fluent-cart');
+        return _x('Product Modal', 'Template part name', 'webmakerr-cart');
     }
 
     /**
@@ -142,7 +142,7 @@ class ProductModalTemplatePart
      */
     public function getDescription()
     {
-        return __('Editable template part for Single Product Modal.', 'fluent-cart');
+        return __('Editable template part for Single Product Modal.', 'webmakerr-cart');
     }
 
     /**
@@ -337,7 +337,7 @@ class ProductModalTemplatePart
     public function import($content)
     {
         if (empty($content)) {
-            return new \WP_Error('empty_content', __('Template content cannot be empty.', 'fluent-cart'));
+            return new \WP_Error('empty_content', __('Template content cannot be empty.', 'webmakerr-cart'));
         }
 
         // Delete existing customization

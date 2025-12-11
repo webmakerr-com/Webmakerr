@@ -18,7 +18,7 @@ class UserController
     {
         if (!wp_verify_nonce($request->get_header('X-WP-Nonce'), 'wp_rest')) {
             wp_send_json([
-                'message' => __('Invalid security token. Please refresh the page and try again.', 'fluent-cart'),
+                'message' => __('Invalid security token. Please refresh the page and try again.', 'webmakerr-cart'),
                 'code' => 'invalid_nonce'
             ], 403);
         }

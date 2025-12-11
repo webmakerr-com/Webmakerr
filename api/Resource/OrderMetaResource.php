@@ -76,12 +76,12 @@ class OrderMetaResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Created successfully!', 'fluent-cart')
+                __('Created successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to create.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to create.', 'webmakerr-cart')]
         ]);
     }
 
@@ -109,12 +109,12 @@ class OrderMetaResource extends BaseResourceApi
 
             return static::makeSuccessResponse(
                 $existingMeta,
-                __('Updated successfully', 'fluent-cart')
+                __('Updated successfully', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to update', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to update', 'webmakerr-cart')]
         ]);
     }
 
@@ -129,7 +129,7 @@ class OrderMetaResource extends BaseResourceApi
     {
         if (!$id) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Please use a valid ID!', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Please use a valid ID!', 'webmakerr-cart')]
             ]);
         }
 
@@ -141,20 +141,20 @@ class OrderMetaResource extends BaseResourceApi
             if ($orderMeta->delete()) {
                 static::makeSuccessResponse('', sprintf(
                     /* translators: %s is the meta key */
-                    __("%s successfully deleted.", 'fluent-cart'), $metaKey));
+                    __("%s successfully deleted.", 'webmakerr-cart'), $metaKey));
             }
 
             return static::makeErrorResponse([
                 ['code' => 400, 'message' => sprintf(
                     /* translators: %s is the meta key */
-                    __('%s deletion failed!', 'fluent-cart'), $metaKey)]
+                    __('%s deletion failed!', 'webmakerr-cart'), $metaKey)]
             ]);
         }
 
         return static::makeErrorResponse([
             ['code' => 404, 'message' => sprintf(
                 /* translators: %s is the meta key */
-                __('%s not found in database, failed to remove.', 'fluent-cart'), $metaKey)]
+                __('%s not found in database, failed to remove.', 'webmakerr-cart'), $metaKey)]
         ]);
     }
 

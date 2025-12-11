@@ -57,7 +57,7 @@ class TaxRateController extends Controller
 
         if (!$isUpdated) {
             return $this->sendError([
-                'message' => __('Failed to update tax rate', 'fluent-cart')
+                'message' => __('Failed to update tax rate', 'webmakerr-cart')
             ]);
         }
         $taxClass = TaxClass::query()->select('id', 'title')->find($taxRate->class_id);
@@ -71,7 +71,7 @@ class TaxRateController extends Controller
 
         return $this->sendSuccess([
             'tax_rate' => $taxRate,
-            'message'  => __('Tax rate has been updated successfully', 'fluent-cart')
+            'message'  => __('Tax rate has been updated successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -83,7 +83,7 @@ class TaxRateController extends Controller
 
         if (!$classId) {
             return $this->sendError([
-                'message' => __('Tax class is required', 'fluent-cart')
+                'message' => __('Tax class is required', 'webmakerr-cart')
             ]);
         }
 
@@ -92,7 +92,7 @@ class TaxRateController extends Controller
 
         if (!$taxRate) {
             return $this->sendError([
-                'message' => __('Failed to create tax rate', 'fluent-cart')
+                'message' => __('Failed to create tax rate', 'webmakerr-cart')
             ]);
         }
 
@@ -107,7 +107,7 @@ class TaxRateController extends Controller
 
         return $this->sendSuccess([
             'tax_rate' => $taxRate,
-            'message'  => __('Tax rate has been created successfully', 'fluent-cart')
+            'message'  => __('Tax rate has been created successfully', 'webmakerr-cart')
         ]);
 
     }
@@ -119,12 +119,12 @@ class TaxRateController extends Controller
 
         if (!$isDeleted) {
             return $this->sendError([
-                'message' => __('Failed to delete tax rate', 'fluent-cart')
+                'message' => __('Failed to delete tax rate', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendSuccess([
-            'message' => __('Tax rate has been deleted successfully', 'fluent-cart')
+            'message' => __('Tax rate has been deleted successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -136,12 +136,12 @@ class TaxRateController extends Controller
 
         if (!$taxRates) {
             return $this->sendError([
-                'message' => __('Failed to delete country', 'fluent-cart')
+                'message' => __('Failed to delete country', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendSuccess([
-            'message' => __('Country has been deleted successfully', 'fluent-cart')
+            'message' => __('Country has been deleted successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -197,7 +197,7 @@ class TaxRateController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Tax ID has been saved successfully', 'fluent-cart')
+            'message' => __('Tax ID has been saved successfully', 'webmakerr-cart')
         ]);
 
     }
@@ -209,7 +209,7 @@ class TaxRateController extends Controller
         $taxRate->save();
 
         return $this->sendSuccess([
-            'message' => __('Shipping override has been deleted successfully', 'fluent-cart')
+            'message' => __('Shipping override has been deleted successfully', 'webmakerr-cart')
         ]);
     }
     
@@ -220,7 +220,7 @@ class TaxRateController extends Controller
 
         if (!$taxRate) {
             return $this->sendError([
-                'message' => __('Tax rate not found', 'fluent-cart')
+                'message' => __('Tax rate not found', 'webmakerr-cart')
             ]);
         }
 
@@ -228,7 +228,7 @@ class TaxRateController extends Controller
         $taxRate->save();
 
         return $this->sendSuccess([
-            'message' => __('Tax override has been saved successfully', 'fluent-cart')
+            'message' => __('Tax override has been saved successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -238,20 +238,20 @@ class TaxRateController extends Controller
         $taxClassId = intval($request->get('class_id'));
         if (!$countryCode) {
             return $this->sendError([
-                'message' => __('Country code is required', 'fluent-cart')
+                'message' => __('Country code is required', 'webmakerr-cart')
             ]);
         }
 
         if (!$taxClassId) {
             return $this->sendError([
-                'message' => __('Tax class is required', 'fluent-cart')
+                'message' => __('Tax class is required', 'webmakerr-cart')
             ]);
         }
 
         $taxClass = TaxClass::query()->select('id')->find($taxClassId);
         if (!$taxClass) {
             return $this->sendError([
-                'message' => __('Tax class not found', 'fluent-cart')
+                'message' => __('Tax class not found', 'webmakerr-cart')
             ]);
         }
 
@@ -266,12 +266,12 @@ class TaxRateController extends Controller
 
         if (!$taxRate) {
             return $this->sendError([
-                'message' => __('Failed to add country', 'fluent-cart')
+                'message' => __('Failed to add country', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendSuccess([
-            'message' => __('Country has been added successfully', 'fluent-cart')
+            'message' => __('Country has been added successfully', 'webmakerr-cart')
         ]);
     }
 

@@ -50,3 +50,4 @@ let commentsArray = {};
 const {translations, comments} = TranslationHelper.extractTranslations(resourcesDir, translationRegex, excludeDirs, excludeFiles);
 commentsArray = comments;
 TranslationHelper.updatePhpTranslations(translations, {}, phpFile, includeSource, comments);
+TranslationHelper.writePotFiles(translations, commentsArray);

@@ -161,7 +161,7 @@ class InstalledVersions
         throw new \OutOfBoundsException(
             sprintf(
             /* translators: %s is the package name */
-                esc_html__('Package "%s" is not installed', 'fluent-cart'),
+                esc_html__('Package "%s" is not installed', 'webmakerr-cart'),
                 esc_html($packageName)
             )
         );
@@ -188,7 +188,7 @@ class InstalledVersions
         throw new \OutOfBoundsException(
             sprintf(
             /* translators: %s is the package name */
-                esc_html__('Package "%s" is not installed', 'fluent-cart'),
+                esc_html__('Package "%s" is not installed', 'webmakerr-cart'),
                 esc_html($packageName)
             )
         );
@@ -215,7 +215,7 @@ class InstalledVersions
         throw new \OutOfBoundsException(
             sprintf(
             /* translators: %s is the package name */
-                esc_html__('Package "%s" is not installed', 'fluent-cart'),
+                esc_html__('Package "%s" is not installed', 'webmakerr-cart'),
                 esc_html($packageName)
             )
         );
@@ -242,7 +242,7 @@ class InstalledVersions
         throw new \OutOfBoundsException(
             sprintf(
             /* translators: %s is the package name */
-                esc_html__('Package "%s" is not installed', 'fluent-cart'),
+                esc_html__('Package "%s" is not installed', 'webmakerr-cart'),
                 esc_html($packageName)
             )
         );
@@ -265,7 +265,7 @@ class InstalledVersions
         throw new \OutOfBoundsException(
             sprintf(
             /* translators: %s is the package name */
-                esc_html__('Package "%s" is not installed', 'fluent-cart'),
+                esc_html__('Package "%s" is not installed', 'webmakerr-cart'),
                 esc_html($packageName)
             )
         );

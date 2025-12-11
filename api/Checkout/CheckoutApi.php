@@ -46,7 +46,7 @@ class CheckoutApi
         if (!$cart || !$cart->cart_data || $cart->stage === 'completed') {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Cart is empty or already completed', 'fluent-cart'),
+                'message' => __('Cart is empty or already completed', 'webmakerr-cart'),
             ]);
         }
 
@@ -68,7 +68,7 @@ class CheckoutApi
         ) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('You have already completed this order.', 'fluent-cart'),
+                'message' => __('You have already completed this order.', 'webmakerr-cart'),
             ]);
         }
 
@@ -293,7 +293,7 @@ class CheckoutApi
         if (!$gateway) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Payment method not found!', 'fluent-cart'),
+                'message' => __('Payment method not found!', 'webmakerr-cart'),
                 'data'    => []
             ], 404);
         }
@@ -563,7 +563,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: %s attribute name */
-                        __('%s is required.', 'fluent-cart'), $titledKey);
+                        __('%s is required.', 'webmakerr-cart'), $titledKey);
                     continue;
                 }
 
@@ -573,7 +573,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['invalid'] = sprintf(
                         /* translators: %s attribute name */
-                        __('%s is invalid.', 'fluent-cart'), $titledKey);
+                        __('%s is invalid.', 'webmakerr-cart'), $titledKey);
                     continue;
                 }
             }
@@ -595,7 +595,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: %s attribute name */
-                        __('%s is required.', 'fluent-cart'), $titledKey);
+                        __('%s is required.', 'webmakerr-cart'), $titledKey);
                     continue;
                 }
 
@@ -605,7 +605,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['invalid'] = sprintf(
                         /* translators: %s attribute name */
-                        __('%s is invalid.', 'fluent-cart'), $titledKey);
+                        __('%s is invalid.', 'webmakerr-cart'), $titledKey);
 
                     continue;
                 }
@@ -617,7 +617,7 @@ class CheckoutApi
                 }
                 $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: %s attribute name */
-                    __('%s is required.', 'fluent-cart'), $titledKey);
+                    __('%s is required.', 'webmakerr-cart'), $titledKey);
             }
         }
 
@@ -636,7 +636,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: %s attribute name */
-                        __('%s is required.', 'fluent-cart'), $titledKey);
+                        __('%s is required.', 'webmakerr-cart'), $titledKey);
 
                     continue;
                 }
@@ -647,7 +647,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['invalid'] = sprintf(
                         /* translators: %s attribute name */
-                        __('%s is invalid.', 'fluent-cart'), $titledKey);
+                        __('%s is invalid.', 'webmakerr-cart'), $titledKey);
                     continue;
                 }
             }
@@ -669,7 +669,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: %s attribute name */
-                        __('%s is required.', 'fluent-cart'), $titledKey);
+                        __('%s is required.', 'webmakerr-cart'), $titledKey);
 
                     continue;
                 }
@@ -680,7 +680,7 @@ class CheckoutApi
                     }
                     $errors[$prefixedKey]['invalid'] = sprintf(
                         /* translators: %s attribute name */
-                        __('%s is invalid.', 'fluent-cart'), $titledKey);
+                        __('%s is invalid.', 'webmakerr-cart'), $titledKey);
 
                     continue;
                 }
@@ -692,7 +692,7 @@ class CheckoutApi
                 }
                 $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: %s attribute name */
-                    __('%s is required.', 'fluent-cart'), $titledKey);
+                    __('%s is required.', 'webmakerr-cart'), $titledKey);
             }
         }
 
@@ -706,22 +706,22 @@ class CheckoutApi
                 if (empty($value)) {
                     Arr::set($errors, $fieldName . '.required', sprintf(
                         /* translators: %s attribute name */
-                        __('%s is required.', 'fluent-cart'), Arr::get($field, 'aria-label')));
+                        __('%s is required.', 'webmakerr-cart'), Arr::get($field, 'aria-label')));
                 }
             }
         }
 
         if (empty($data['agree_terms']) && $agreeTermsRequired) {
-            $errors['agree_terms']['required'] = __('You must agree to the terms and conditions.', 'fluent-cart');
+            $errors['agree_terms']['required'] = __('You must agree to the terms and conditions.', 'webmakerr-cart');
         }
 
         if (empty($data['billing_email']) || !is_email($data['billing_email'])) {
-            $errors['billing_email']['invalid'] = __('Email must be a valid email address.', 'fluent-cart');
+            $errors['billing_email']['invalid'] = __('Email must be a valid email address.', 'webmakerr-cart');
         }
 
 
         if (empty($data['billing_full_name'])) {
-            $errors['billing_full_name']['required'] = __('Full name is required.', 'fluent-cart');
+            $errors['billing_full_name']['required'] = __('Full name is required.', 'webmakerr-cart');
         }
 
         if ($cart->requireShipping()) {
@@ -740,7 +740,7 @@ class CheckoutApi
 
 
                 if (empty($availableShippingMethods) || is_wp_error($availableShippingMethods)) {
-                    $errors['shipping_method']['unavailable'] = __('We dont ship to this address. Please select a different address.', 'fluent-cart');
+                    $errors['shipping_method']['unavailable'] = __('We dont ship to this address. Please select a different address.', 'webmakerr-cart');
                 } else {
                     $found = false;
                     foreach ($availableShippingMethods as $shippingMethod) {
@@ -751,13 +751,13 @@ class CheckoutApi
                     }
 
                     if (!$found) {
-                        $errors['shipping_method']['invalid'] = __('The selected shipping method is not available.', 'fluent-cart');
+                        $errors['shipping_method']['invalid'] = __('The selected shipping method is not available.', 'webmakerr-cart');
                     }
                 }
 
 
             } else {
-                $errors['shipping_method']['required'] = __('You must select a shipping method.', 'fluent-cart');
+                $errors['shipping_method']['required'] = __('You must select a shipping method.', 'webmakerr-cart');
             }
         }
 
@@ -808,20 +808,20 @@ class CheckoutApi
     public static function messages(): array
     {
         return [
-            'billing_full_name.required'  => esc_html__('Full name field is required.', 'fluent-cart'),
-            'billing_email.required'      => esc_html__('Email field is required.', 'fluent-cart'),
-            'billing_email.email'         => esc_html__('Email must be a valid email address.', 'fluent-cart'),
-            'billing_address.required'    => esc_html__('Address field is required.', 'fluent-cart'),
-            'billing_country.required'    => esc_html__('Country field is required.', 'fluent-cart'),
-            'billing_address_1.required'  => esc_html__('Address field is required.', 'fluent-cart'),
-            'billing_city.required'       => esc_html__('City field is required.', 'fluent-cart'),
-            'billing_postcode.required'   => esc_html__('Postcode field is required.', 'fluent-cart'),
-            'shipping_full_name.required' => esc_html__('Full name field is required.', 'fluent-cart'),
-            // 'shipping_email.required' => esc_html__('Email field is required.', 'fluent-cart'),
-            // 'shipping_email.email' => esc_html__('Email must be a valid email address.', 'fluent-cart'),
-            'shipping_address.required'   => esc_html__('Address field is required.', 'fluent-cart'),
-            'shipping_city.required'      => esc_html__('City field is required.', 'fluent-cart'),
-            'shipping_postcode.required'  => esc_html__('Postcode field is required.', 'fluent-cart'),
+            'billing_full_name.required'  => esc_html__('Full name field is required.', 'webmakerr-cart'),
+            'billing_email.required'      => esc_html__('Email field is required.', 'webmakerr-cart'),
+            'billing_email.email'         => esc_html__('Email must be a valid email address.', 'webmakerr-cart'),
+            'billing_address.required'    => esc_html__('Address field is required.', 'webmakerr-cart'),
+            'billing_country.required'    => esc_html__('Country field is required.', 'webmakerr-cart'),
+            'billing_address_1.required'  => esc_html__('Address field is required.', 'webmakerr-cart'),
+            'billing_city.required'       => esc_html__('City field is required.', 'webmakerr-cart'),
+            'billing_postcode.required'   => esc_html__('Postcode field is required.', 'webmakerr-cart'),
+            'shipping_full_name.required' => esc_html__('Full name field is required.', 'webmakerr-cart'),
+            // 'shipping_email.required' => esc_html__('Email field is required.', 'webmakerr-cart'),
+            // 'shipping_email.email' => esc_html__('Email must be a valid email address.', 'webmakerr-cart'),
+            'shipping_address.required'   => esc_html__('Address field is required.', 'webmakerr-cart'),
+            'shipping_city.required'      => esc_html__('City field is required.', 'webmakerr-cart'),
+            'shipping_postcode.required'  => esc_html__('Postcode field is required.', 'webmakerr-cart'),
         ];
     }
 

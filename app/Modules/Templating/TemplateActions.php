@@ -63,12 +63,12 @@ class TemplateActions
             }
 
             if (!$productId) {
-                return __('Product ID not found', 'fluent-cart');
+                return __('Product ID not found', 'webmakerr-cart');
             }
 
             $product = ProductDataSetup::getProductModel($productId);
             if (!$product || !$product->detail) {
-                return __('Product not found', 'fluent-cart');
+                return __('Product not found', 'webmakerr-cart');
             }
 
 
@@ -80,7 +80,7 @@ class TemplateActions
             ob_start();
             (new ProductListRenderer(
                 $products['products'],
-                __('Related Products', 'fluent-cart'),
+                __('Related Products', 'webmakerr-cart'),
                 'fct-similar-product-list-container'
             ))->render();
 
@@ -242,7 +242,7 @@ class TemplateActions
             ob_start();
             (new ProductListRenderer(
                   Arr::get($products, 'products', []),
-                __('Related Products', 'fluent-cart'),
+                __('Related Products', 'webmakerr-cart'),
                 'fct-similar-product-list-container'
             ))->render();
 
@@ -272,7 +272,7 @@ class TemplateActions
         ob_start();
         ?>
         <div class="fct-product-disclaimer">
-            <h3 class="fct-product-disclaimer__title"><?php esc_html_e('Disclaimer', 'fluent-cart'); ?></h3>
+            <h3 class="fct-product-disclaimer__title"><?php esc_html_e('Disclaimer', 'webmakerr-cart'); ?></h3>
             <div class="fct-product-disclaimer__text"><?php echo $formattedDisclaimer; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
         </div>
         <?php

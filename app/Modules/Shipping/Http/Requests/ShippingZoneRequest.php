@@ -34,7 +34,7 @@ class ShippingZoneRequest extends RequestGuard
                     }
                     $zone = $zone->first();
                     if ($zone) {
-                        return __('Only one "Whole World" shipping zone is allowed.', 'fluent-cart');
+                        return __('Only one "Whole World" shipping zone is allowed.', 'webmakerr-cart');
                     }
                 }
                 return null;
@@ -50,9 +50,9 @@ class ShippingZoneRequest extends RequestGuard
     public function messages()
     {
         return [
-            'name.required'   => esc_html__('Shipping name is required.', 'fluent-cart'),
-            'name.max'        => esc_html__('Shipping name cannot exceed 192 characters.', 'fluent-cart'),
-            'region.required' => esc_html__('Shipping country region is required.', 'fluent-cart')
+            'name.required'   => esc_html__('Shipping name is required.', 'webmakerr-cart'),
+            'name.max'        => esc_html__('Shipping name cannot exceed 192 characters.', 'webmakerr-cart'),
+            'region.required' => esc_html__('Shipping country region is required.', 'webmakerr-cart')
         ];
     }
 

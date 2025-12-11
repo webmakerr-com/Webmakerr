@@ -113,7 +113,7 @@ class Confirmations
             $transaction->status = Status::TRANSACTION_SUCCEEDED;
             $transaction->save();
 
-            fluent_cart_add_log(__('Mollie Payment Confirmation', 'fluent-cart-pro'), __('Payment confirmation received from Mollie for previously authorized payment. Transaction ID: ', 'fluent-cart-pro')  . $vendorChargeId, 'info', [
+            fluent_cart_add_log(__('Mollie Payment Confirmation', 'webmakerr-cart-pro'), __('Payment confirmation received from Mollie for previously authorized payment. Transaction ID: ', 'webmakerr-cart-pro')  . $vendorChargeId, 'info', [
                 'module_name' => 'order',
                 'module_id'   => $order->id,
             ]);
@@ -156,7 +156,7 @@ class Confirmations
             ]);
         }
 
-        fluent_cart_add_log(__('Mollie Payment Confirmation', 'fluent-cart-pro'), __('Payment confirmation received from Mollie. Transaction ID: ', 'fluent-cart-pro')  . $vendorChargeId, 'info', [
+        fluent_cart_add_log(__('Mollie Payment Confirmation', 'webmakerr-cart-pro'), __('Payment confirmation received from Mollie. Transaction ID: ', 'webmakerr-cart-pro')  . $vendorChargeId, 'info', [
             'module_name' => 'order',
             'module_id'   => $order->id,
         ]);
@@ -210,7 +210,7 @@ class Confirmations
         $transaction->fill($transactionUpdateData);
         $transaction->save();
 
-        fluent_cart_add_log(__('Mollie Payment Authorized', 'fluent-cart-pro'), __('Payment Authorized in Mollie. Transaction ID: ', 'fluent-cart-pro')  . $vendorChargeId, 'info', [
+        fluent_cart_add_log(__('Mollie Payment Authorized', 'webmakerr-cart-pro'), __('Payment Authorized in Mollie. Transaction ID: ', 'webmakerr-cart-pro')  . $vendorChargeId, 'info', [
             'module_name' => 'order',
             'module_id'   => $order->id,
         ]);
@@ -350,7 +350,7 @@ class Confirmations
         if (is_wp_error($mollieSubscription)) {
 
             // log the error message
-            fluent_cart_add_log(__('Mollie Subscription Creation Failed', 'fluent-cart-pro'), __('Failed to create subscription in Mollie. Error: ', 'fluent-cart-pro')  . $mollieSubscription->get_error_message(), 'error', [
+            fluent_cart_add_log(__('Mollie Subscription Creation Failed', 'webmakerr-cart-pro'), __('Failed to create subscription in Mollie. Error: ', 'webmakerr-cart-pro')  . $mollieSubscription->get_error_message(), 'error', [
                 'module_name' => 'order',
                 'module_id'   => $order->id,
             ]);

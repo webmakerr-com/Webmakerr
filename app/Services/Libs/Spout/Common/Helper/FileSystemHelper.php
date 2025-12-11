@@ -137,7 +137,7 @@ class FileSystemHelper implements FileSystemHelperInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the base folder path */
-                    esc_html__('The base folder path is invalid: %s', 'fluent-cart'),
+                    esc_html__('The base folder path is invalid: %s', 'webmakerr-cart'),
                     esc_html($this->baseFolderRealPath)
                 )
             );
@@ -147,7 +147,7 @@ class FileSystemHelper implements FileSystemHelperInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the base folder path */
-                    esc_html__('Cannot perform I/O operation outside of the base folder: %s', 'fluent-cart'),
+                    esc_html__('Cannot perform I/O operation outside of the base folder: %s', 'webmakerr-cart'),
                     esc_html($this->baseFolderRealPath)
                 )
             );

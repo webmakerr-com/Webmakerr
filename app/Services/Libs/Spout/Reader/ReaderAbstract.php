@@ -112,7 +112,7 @@ abstract class ReaderAbstract implements ReaderInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the file path */
-                    esc_html__('Could not open %s for reading! Stream wrapper used is not supported for this type of file.', 'fluent-cart'),
+                    esc_html__('Could not open %s for reading! Stream wrapper used is not supported for this type of file.', 'webmakerr-cart'),
                     esc_html($filePath)
                 )
             );
@@ -124,7 +124,7 @@ abstract class ReaderAbstract implements ReaderInterface
                 throw new IOException(
                     sprintf(
                     /* translators: %s is the file path */
-                        esc_html__('Could not open %s for reading! File does not exist.', 'fluent-cart'),
+                        esc_html__('Could not open %s for reading! File does not exist.', 'webmakerr-cart'),
                         esc_html($filePath)
                     )
                 );
@@ -133,7 +133,7 @@ abstract class ReaderAbstract implements ReaderInterface
                 throw new IOException(
                     sprintf(
                         /* translators: %s is the file path */
-                        esc_html__('Could not open %s for reading! File is not readable.', 'fluent-cart'),
+                        esc_html__('Could not open %s for reading! File is not readable.', 'webmakerr-cart'),
                         esc_html($filePath)
                     )
                 );
@@ -148,7 +148,7 @@ abstract class ReaderAbstract implements ReaderInterface
             throw new IOException(
                 sprintf(
                 /* translators: %1$s is the file path, %2$s is the error message */
-                    esc_html__('Could not open %1$s for reading! (%2$s)', 'fluent-cart'),
+                    esc_html__('Could not open %1$s for reading! (%2$s)', 'webmakerr-cart'),
                     esc_html($filePath),
                     esc_html($exception->getMessage())
                 )

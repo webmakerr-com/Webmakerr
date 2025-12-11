@@ -143,7 +143,7 @@ class UpgradeHandler
                     'type'    => 'info',
                     'content' => sprintf(
                         /* translators: %1$s Item Title, %2$s Variation Title */
-                        __('You are upgrading your plan from %1$s to %2$s.','fluent-cart-pro'),
+                        __('You are upgrading your plan from %1$s to %2$s.','webmakerr-cart-pro'),
                         $originalItem->title,
                         $upgradeToItem->variation_title
                     ),
@@ -151,7 +151,7 @@ class UpgradeHandler
             ],
             'manual_discount'                 => [
                 'amount' => $totalCredit,
-                'title'  => __('Upgrade Discount', 'fluent-cart-pro')
+                'title'  => __('Upgrade Discount', 'webmakerr-cart-pro')
             ]
         ];
 

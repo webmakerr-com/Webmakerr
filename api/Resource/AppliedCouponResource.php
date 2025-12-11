@@ -66,12 +66,12 @@ class AppliedCouponResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Created successfully!', 'fluent-cart')
+                __('Created successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Falied to create.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Falied to create.', 'webmakerr-cart')]
         ]);
     }
 
@@ -92,12 +92,12 @@ class AppliedCouponResource extends BaseResourceApi
         if ($isUpdate) {
             return static::makeSuccessResponse(
                 $isUpdate,
-                __('Coupon updated.', 'fluent-cart')
+                __('Coupon updated.', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Coupon failed to update!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Coupon failed to update!', 'webmakerr-cart')]
         ]);
     }
 

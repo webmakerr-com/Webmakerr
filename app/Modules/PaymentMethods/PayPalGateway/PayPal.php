@@ -46,7 +46,7 @@ class PayPal extends AbstractPaymentGateway
             'route'       => 'paypal',
             'slug'        => 'paypal',
             'label'       => 'PayPal',
-            'description' => __('PayPal is the faster, safer way to send and receive money or make an online payment. Get started or create a merchant account to accept payments.', 'fluent-cart'),
+            'description' => __('PayPal is the faster, safer way to send and receive money or make an online payment. Get started or create a merchant account to accept payments.', 'webmakerr-cart'),
             'logo'        => Vite::getAssetUrl("images/payment-methods/paypal-icon.svg"),
             'icon'        => Vite::getAssetUrl("images/payment-methods/paypal-icon.svg"),
             'brand_color' => '#4f94d4',
@@ -95,7 +95,7 @@ class PayPal extends AbstractPaymentGateway
         if (empty(App::request()->get('payId')) || empty(App::request()->get('ref_id'))) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('No payId ID!', 'fluent-cart')
+                'message' => __('No payId ID!', 'webmakerr-cart')
             ], 422);
         }
 
@@ -131,7 +131,7 @@ class PayPal extends AbstractPaymentGateway
         if (!$transaction) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Transaction not found!', 'fluent-cart')
+                'message' => __('Transaction not found!', 'webmakerr-cart')
             ], 423);
         }
 
@@ -140,7 +140,7 @@ class PayPal extends AbstractPaymentGateway
         if (!$isPaid) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Payment not completed!', 'fluent-cart')
+                'message' => __('Payment not completed!', 'webmakerr-cart')
             ], 422);
         }
 
@@ -152,7 +152,7 @@ class PayPal extends AbstractPaymentGateway
         if ($paidAmount != $transaction->total) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Paid amount does not match with transaction amount!', 'fluent-cart')
+                'message' => __('Paid amount does not match with transaction amount!', 'webmakerr-cart')
             ], 422);
         }
 
@@ -177,7 +177,7 @@ class PayPal extends AbstractPaymentGateway
             'order'        => [
                 'uuid' => $transaction->order->uuid
             ],
-            'message'      => __('Payment has been paid successfully! Redirecting...', 'fluent-cart')
+            'message'      => __('Payment has been paid successfully! Redirecting...', 'webmakerr-cart')
         ]);
     }
 
@@ -186,7 +186,7 @@ class PayPal extends AbstractPaymentGateway
         if (empty(App::request()->get('subscription_id')) || empty(App::request()->get('ref_id'))) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('No Subscription ID!', 'fluent-cart')
+                'message' => __('No Subscription ID!', 'webmakerr-cart')
             ], 423);
         }
 
@@ -207,7 +207,7 @@ class PayPal extends AbstractPaymentGateway
         if ($status != 'ACTIVE') {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Subscription is not active', 'fluent-cart')
+                'message' => __('Subscription is not active', 'webmakerr-cart')
             ], 423);
         }
 
@@ -216,7 +216,7 @@ class PayPal extends AbstractPaymentGateway
         if (!$transaction) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Transaction not found!', 'fluent-cart')
+                'message' => __('Transaction not found!', 'webmakerr-cart')
             ], 404);
         }
 
@@ -224,7 +224,7 @@ class PayPal extends AbstractPaymentGateway
 
         wp_send_json([
             'status'       => 'success',
-            'message'      => __('Subscription has been activated successfully!', 'fluent-cart'),
+            'message'      => __('Subscription has been activated successfully!', 'webmakerr-cart'),
             'redirect_url' => $transaction->getReceiptPageUrl(true),
             'order'        => [
                 'uuid' => $transaction->order->uuid
@@ -321,10 +321,10 @@ class PayPal extends AbstractPaymentGateway
 
         $webhookInfo = '';
         if ($webhookId) {
-            $webhookInfo .= '<p><b>' . __('Webhook (No further setup needed) :', 'fluent-cart') . '</b><span style="color:green;">Your webhook <code class="copyable-content">' . $webhookId . '</code> is connected!</span> </p>';
+            $webhookInfo .= '<p><b>' . __('Webhook (No further setup needed) :', 'webmakerr-cart') . '</b><span style="color:green;">Your webhook <code class="copyable-content">' . $webhookId . '</code> is connected!</span> </p>';
         }
         if ($webhookEvents) {
-            $webhookInfo .= '<p>' . __('and now watching for Webhook Events listed bellow:', 'fluent-cart') . '</p><p style="word-wrap: break-word;
+            $webhookInfo .= '<p>' . __('and now watching for Webhook Events listed bellow:', 'webmakerr-cart') . '</p><p style="word-wrap: break-word;
                 font-size: 12px;" class="copyable-content">';
             foreach ($webhookEvents as $event) {
                 $webhookInfo .= $event['name'] . ' | ';
@@ -340,9 +340,9 @@ class PayPal extends AbstractPaymentGateway
         $testSchema = [
             'test_client_id'      => [
                 'value'       => '',
-                'placeholder' => __('PayPal sandbox client ID', 'fluent-cart'),
+                'placeholder' => __('PayPal sandbox client ID', 'webmakerr-cart'),
                 'required'    => true,
-                'label'       => __('Test Client ID', 'fluent-cart'),
+                'label'       => __('Test Client ID', 'webmakerr-cart'),
                 'type'        => 'text',
                 'dependency'  => [
                     'depends_on' => 'payment_mode',
@@ -352,9 +352,9 @@ class PayPal extends AbstractPaymentGateway
             ],
             'test_client_secret'  => [
                 'value'       => '',
-                'placeholder' => __('PayPal sandbox client secret', 'fluent-cart'),
+                'placeholder' => __('PayPal sandbox client secret', 'webmakerr-cart'),
                 'required'    => true,
-                'label'       => __('Test Client Secret', 'fluent-cart'),
+                'label'       => __('Test Client Secret', 'webmakerr-cart'),
                 'type'        => 'password',
                 'dependency'  => [
                     'depends_on' => 'payment_mode',
@@ -364,14 +364,14 @@ class PayPal extends AbstractPaymentGateway
             ],
             'webhook_instruction' => [
                 'value' => Webhook::webhookInstruction(),
-                'label' => __('Webhook Setup', 'fluent-cart'),
+                'label' => __('Webhook Setup', 'webmakerr-cart'),
                 'type'  => 'html_attr'
             ],
             'test_webhook_id'     => [
                 'value'       => '',
-                'placeholder' => __('Sandbox webhook ID', 'fluent-cart'),
+                'placeholder' => __('Sandbox webhook ID', 'webmakerr-cart'),
                 'required'    => true,
-                'label'       => __('Test Webhook ID (Copy the webhook id and paste bellow)', 'fluent-cart'),
+                'label'       => __('Test Webhook ID (Copy the webhook id and paste bellow)', 'webmakerr-cart'),
                 'type'        => 'text',
                 'dependency'  => [
                     'depends_on' => 'payment_mode',
@@ -384,9 +384,9 @@ class PayPal extends AbstractPaymentGateway
         $liveSchema = [
             'live_client_id'      => [
                 'value'       => '',
-                'placeholder' => __('PayPal live client ID', 'fluent-cart'),
+                'placeholder' => __('PayPal live client ID', 'webmakerr-cart'),
                 'required'    => true,
-                'label'       => __('Live Client ID', 'fluent-cart'),
+                'label'       => __('Live Client ID', 'webmakerr-cart'),
                 'type'        => 'text',
                 'dependency'  => [
                     'depends_on' => 'payment_mode',
@@ -396,9 +396,9 @@ class PayPal extends AbstractPaymentGateway
             ],
             'live_client_secret'  => [
                 'value'       => '',
-                'placeholder' => __('PayPal live client secret', 'fluent-cart'),
+                'placeholder' => __('PayPal live client secret', 'webmakerr-cart'),
                 'required'    => true,
-                'label'       => __('Live Client Secret', 'fluent-cart'),
+                'label'       => __('Live Client Secret', 'webmakerr-cart'),
                 'type'        => 'password',
                 'dependency'  => [
                     'depends_on' => 'payment_mode',
@@ -408,14 +408,14 @@ class PayPal extends AbstractPaymentGateway
             ],
             'webhook_instruction' => [
                 'value' => Webhook::webhookInstruction(),
-                'label' => __('Webhook Setup', 'fluent-cart'),
+                'label' => __('Webhook Setup', 'webmakerr-cart'),
                 'type'  => 'html_attr'
             ],
             'live_webhook_id'     => [
                 'value'       => '',
-                'placeholder' => __('Live webhook ID', 'fluent-cart'),
+                'placeholder' => __('Live webhook ID', 'webmakerr-cart'),
                 'required'    => true,
-                'label'       => __('Live Webhook ID (Copy the webhook id and paste bellow)', 'fluent-cart'),
+                'label'       => __('Live Webhook ID (Copy the webhook id and paste bellow)', 'webmakerr-cart'),
                 'type'        => 'text',
                 'dependency'  => [
                     'depends_on' => 'payment_mode',
@@ -434,7 +434,7 @@ class PayPal extends AbstractPaymentGateway
         $payPalFields = array(
             'notice'            => [
                 'value' => $this->renderStoreModeNotice(),
-                'label' => __('PayPal', 'fluent-cart'),
+                'label' => __('PayPal', 'webmakerr-cart'),
                 'type'  => 'notice'
             ],
             'payment_mode'      => [
@@ -442,13 +442,13 @@ class PayPal extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type'   => 'tab',
-                        'label'  => __('Live credentials', 'fluent-cart'),
+                        'label'  => __('Live credentials', 'webmakerr-cart'),
                         'value'  => 'live',
                         'schema' => $liveSchema
                     ],
                     [
                         'type'   => 'tab',
-                        'label'  => __('Test credentials', 'fluent-cart'),
+                        'label'  => __('Test credentials', 'webmakerr-cart'),
                         'value'  => 'test',
                         'schema' => $testSchema
                     ]
@@ -456,24 +456,24 @@ class PayPal extends AbstractPaymentGateway
             ],
             'provider'          => array(
                 'value' => $this->settings->getProviderType(),
-                'label' => __('Provider', 'fluent-cart'),
+                'label' => __('Provider', 'webmakerr-cart'),
                 'type'  => 'provider'
             ),
             'webhook_info_test' => array(
                 'info' => $this->getWebhookInfo('test'),
-                'label' => __('Webhook Info', 'fluent-cart'),
+                'label' => __('Webhook Info', 'webmakerr-cart'),
                 'type' => 'webhook_info',
                 'mode' => 'test'
             ),
             'webhook_info_live' => array(
                 'info'  => $this->getWebhookInfo('live'),
-                'label' => __('Webhook Info', 'fluent-cart'),
+                'label' => __('Webhook Info', 'webmakerr-cart'),
                 'type'  => 'webhook_info',
                 'mode'  => 'live'
             ),
             'is_pro_item'       => array(
                 'value' => 'no',
-                'label' => __('PayPal', 'fluent-cart'),
+                'label' => __('PayPal', 'webmakerr-cart'),
                 'type'  => 'validate'
             ),
         );
@@ -510,13 +510,13 @@ class PayPal extends AbstractPaymentGateway
         if (!$clientId || !$clientSecret) {
             return [
                 'status'  => 'failed',
-                'message' => $mode === 'live' ? __('PayPal live credentials is required!', 'fluent-cart') : __('PayPal test credentials is required!!', 'fluent-cart'),
+                'message' => $mode === 'live' ? __('PayPal live credentials is required!', 'webmakerr-cart') : __('PayPal test credentials is required!!', 'webmakerr-cart'),
             ];
         }
 
         return [
             'status'  => 'success',
-            'message' => __('Credentials are valid!', 'fluent-cart')
+            'message' => __('Credentials are valid!', 'webmakerr-cart')
         ];
 
     }
@@ -534,7 +534,7 @@ class PayPal extends AbstractPaymentGateway
 
         return [
             'status'  => 'success',
-            'message' => __('Credentials are valid!', 'fluent-cart')
+            'message' => __('Credentials are valid!', 'webmakerr-cart')
         ];
 
     }
@@ -585,16 +585,16 @@ class PayPal extends AbstractPaymentGateway
         return [
             'fct_paypal_data' => [
                 'translations' => [
-                    'uuid not found' => __('uuid not found', 'fluent-cart'),
-                    'Choose any option to continue' => __('Choose any option to continue', 'fluent-cart'),
-                    'An unknown error occurred' => __('An unknown error occurred', 'fluent-cart'),
-                    'An error occurred while loading PayPal.' => __('An error occurred while loading PayPal.', 'fluent-cart'),
-                    'Loading Payment Processor...' => __('Loading Payment Processor...', 'fluent-cart'),
-                    'Order creation failed' => __('Order creation failed', 'fluent-cart'),
-                    'Not proper order handler' => __('Not proper order handler', 'fluent-cart'),
-                    'No Subscription ID' => __('No Subscription ID', 'fluent-cart'),
-                    'no processing' => __('no processing', 'fluent-cart'),
-                    'not proper order handler' => __('not proper order handler', 'fluent-cart'),
+                    'uuid not found' => __('uuid not found', 'webmakerr-cart'),
+                    'Choose any option to continue' => __('Choose any option to continue', 'webmakerr-cart'),
+                    'An unknown error occurred' => __('An unknown error occurred', 'webmakerr-cart'),
+                    'An error occurred while loading PayPal.' => __('An error occurred while loading PayPal.', 'webmakerr-cart'),
+                    'Loading Payment Processor...' => __('Loading Payment Processor...', 'webmakerr-cart'),
+                    'Order creation failed' => __('Order creation failed', 'webmakerr-cart'),
+                    'Not proper order handler' => __('Not proper order handler', 'webmakerr-cart'),
+                    'No Subscription ID' => __('No Subscription ID', 'webmakerr-cart'),
+                    'no processing' => __('no processing', 'webmakerr-cart'),
+                    'not proper order handler' => __('not proper order handler', 'webmakerr-cart'),
                 ]
             ]
         ];
@@ -605,7 +605,7 @@ class PayPal extends AbstractPaymentGateway
         if (!$amount) {
             return new \WP_Error(
                 'fluent_cart_stripe_refund_error',
-                __('Refund amount is required.', 'fluent-cart')
+                __('Refund amount is required.', 'webmakerr-cart')
             );
         }
 
@@ -631,11 +631,11 @@ class PayPal extends AbstractPaymentGateway
         $clientId = $this->settings->getPublicKey();
 
         if (empty($clientId)) {
-            $message = __('Please provide a valid Client Id!', 'fluent-cart');
+            $message = __('Please provide a valid Client Id!', 'webmakerr-cart');
             fluent_cart_add_log('PayPal Credential Validation', $message, 'error', ['log_type' => 'payment']);
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('No valid Client ID found!', 'fluent-cart')
+                'message' => __('No valid Client ID found!', 'webmakerr-cart')
             ], 422);
         }
 
@@ -657,7 +657,7 @@ class PayPal extends AbstractPaymentGateway
             [
                 'data'         => [],
                 'payment_args' => $paymentArgs,
-                'message'      => __('Order info retrieved!', 'fluent-cart'),
+                'message'      => __('Order info retrieved!', 'webmakerr-cart'),
                 'intent'       => $paymentDetails,
             ],
             200
@@ -672,7 +672,7 @@ class PayPal extends AbstractPaymentGateway
         if (!in_array(strtoupper($currency), self::getPaypalSupportedCurrency())) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('PayPal does not support the currency you are using!', 'fluent-cart')
+                'message' => __('PayPal does not support the currency you are using!', 'webmakerr-cart')
             ], 422);
         }
     }
@@ -699,7 +699,7 @@ class PayPal extends AbstractPaymentGateway
             $dispute = (new API())->getResource('customer/disputes/'. $disputeId);
 
             if (is_wp_error($dispute) || empty($dispute['dispute_id'])) {
-                new \WP_Error('No dispute ID found!', __('Please check PayPal if the dispute is already accepted or not!', 'fluent-cart'));
+                new \WP_Error('No dispute ID found!', __('Please check PayPal if the dispute is already accepted or not!', 'webmakerr-cart'));
             }
 
             $disputeId = Arr::get($dispute, 'dispute_id');

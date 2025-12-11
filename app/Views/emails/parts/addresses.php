@@ -23,14 +23,14 @@ if(!$billingAddress && !$shippingAddress) {
                 <tr style="width:100%">
                     <td style="width:50%;padding-left: 0;padding-right: 10px;">
                         <p style="font-size:12px;color:rgb(127,140,141);margin:0px;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                            <?php echo esc_html('Billing Address', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Billing Address', 'webmakerr-cart'); ?>
                         </p>
                         <p style="font-size:14px;color:rgb(44,62,80);margin:0px;line-height:1.4;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
                             <?php
                             if ($order->billing_address) {
                                 echo esc_html($order->billing_address->getAddressAsText());
                             } else {
-                                echo esc_html__('n/a', 'fluent-cart');
+                                echo esc_html__('n/a', 'webmakerr-cart');
                             }
                             ?>
                         </p>
@@ -67,7 +67,7 @@ if(!$billingAddress && !$shippingAddress) {
                                 if ($vatNumber !== '') :
                                 ?>
                                     <p style="font-size:12px;margin:0px;margin-top:8px;text-transform:uppercase;letter-spacing:1px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                                        <?php echo esc_html__('EU VAT', 'fluent-cart') . ': ' . esc_html($vatNumber); ?>
+                                        <?php echo esc_html__('EU VAT', 'webmakerr-cart') . ': ' . esc_html($vatNumber); ?>
                                     </p>
                                 <?php
                                 endif;
@@ -77,14 +77,14 @@ if(!$billingAddress && !$shippingAddress) {
                     <td style="width:50%;padding-right: 0;padding-left: 10px;">
                         <?php if ($order->fulfillment_type !== 'digital'): ?>
                             <p style="font-size:12px;color:rgb(127,140,141);margin:0px;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;line-height:24px;margin-top:0px;margin-left:0px;margin-right:0px">
-                                <?php echo esc_html('Shipping Address', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Shipping Address', 'webmakerr-cart'); ?>
                             </p>
                             <p style="font-size:14px;color:rgb(44,62,80);margin:0px;line-height:1.4;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
                                 <?php
                                 if ($order->shipping_address) {
                                     echo esc_html($order->shipping_address->getAddressAsText());
                                 } else {
-                                    echo esc_html__('n/a', 'fluent-cart');
+                                    echo esc_html__('n/a', 'webmakerr-cart');
                                 }
                                 $phone = Arr::get($order->shipping_address->meta ?? [], 'other_data.phone', '');
                                 if ($phone !== ''):

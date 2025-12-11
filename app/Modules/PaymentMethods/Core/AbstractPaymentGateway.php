@@ -118,7 +118,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
         if ($this->isUpcoming()) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Payment method is upcoming! Not available for right now!', 'fluent-cart')
+                'message' => __('Payment method is upcoming! Not available for right now!', 'webmakerr-cart')
             ], 422);
         }
 
@@ -133,7 +133,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
                 wp_send_json(
                     [
                         'status'  => 'failed',
-                        'message' => $response['message'] ? $response['message'] : __('Invalid credentials!', 'fluent-cart'),
+                        'message' => $response['message'] ? $response['message'] : __('Invalid credentials!', 'webmakerr-cart'),
                         'data'    => []
                     ],
                     422
@@ -174,7 +174,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
         $trx_hash = $request->getSafe('trx_hash', 'sanitize_text_field');
         $transaction = OrderTransaction::query()->where('uuid', $trx_hash)->first();
         if (!$transaction) {
-            return __('Transaction not found!', 'fluent-cart');
+            return __('Transaction not found!', 'webmakerr-cart');
         }
 
         $order = (new Orders())->getById($transaction->order_id);
@@ -183,7 +183,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
             return '';
         }
 
-        $failedtitle = __('Payment Failed', 'fluent-cart');
+        $failedtitle = __('Payment Failed', 'webmakerr-cart');
         $hasLog = ActivityResource::getQuery()->where('module_id', $order->id)
             ->where('module_name', 'Order')
             ->where('status', 'error')
@@ -224,7 +224,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
         if ($hasSubscription && !$this->has('subscriptions')) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Subscription payment is not avalable for this gateway. Please choose another payment method!', 'fluent-cart')
+                'message' => __('Subscription payment is not avalable for this gateway. Please choose another payment method!', 'webmakerr-cart')
             ], 422);
         }
         return $hasSubscription;
@@ -238,7 +238,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
                 'isValid' => false,
                 'reason'  => sprintf(
                     /* translators: %s is the payment method name */
-                    __('Selected payment method %s is not active!', 'fluent-cart'),
+                    __('Selected payment method %s is not active!', 'webmakerr-cart'),
                     $this->getMeta('route')
                 )
             ];
@@ -250,7 +250,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
                 'isValid' => false,
                 'reason'  => sprintf(
                     /* translators: %s is the payment method name */
-                    __('Subscription is not active for Selected payment method %s!', 'fluent-cart'),
+                    __('Subscription is not active for Selected payment method %s!', 'webmakerr-cart'),
                     $this->getMeta('route')
                 )
             ];
@@ -306,9 +306,9 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
     public function renderStoreModeNotice(): string
     {
         if ((new StoreSettings())->get('order_mode') == 'test') {
-            return '<div class="mt-5"><span class="text-warning-500">' . __('Your Store is in Test mode, Change Store\'s \'Order Mode\' to \'Live\' and update related settings to enable Live payment !!', 'fluent-cart') . '</span></div>';
+            return '<div class="mt-5"><span class="text-warning-500">' . __('Your Store is in Test mode, Change Store\'s \'Order Mode\' to \'Live\' and update related settings to enable Live payment !!', 'webmakerr-cart') . '</span></div>';
         }
-        return '<div class="mt-5"><span class="text-success-500">' . __('Your Store is in Live mode', 'fluent-cart') . '</span></div>';
+        return '<div class="mt-5"><span class="text-success-500">' . __('Your Store is in Live mode', 'webmakerr-cart') . '</span></div>';
     }
 
     public function beforeRenderPaymentMethod($hasSubscription): void
@@ -343,7 +343,7 @@ abstract class AbstractPaymentGateway implements PaymentGatewayInterface
 
     public function processRefund($transaction, $amount, $args)
     {
-        return new \WP_Error('not_implemented', __('Refund process is not implemented for this payment gateway.', 'fluent-cart'));
+        return new \WP_Error('not_implemented', __('Refund process is not implemented for this payment gateway.', 'webmakerr-cart'));
     }
 
     public function enqueue($hasSubscription): void

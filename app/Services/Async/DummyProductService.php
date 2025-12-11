@@ -16,7 +16,7 @@ class DummyProductService
         if (!file_exists($filePath)) {
             return new \WP_Error(
                 400,
-                __('Products for this category is not found', 'fluent-cart'),
+                __('Products for this category is not found', 'webmakerr-cart'),
             );
         }
         $json = file_get_contents($filePath);
@@ -27,7 +27,7 @@ class DummyProductService
             if (empty($product)) {
                 return new \WP_Error(
                     404,
-                    __('Product Not Found', 'fluent-cart'),
+                    __('Product Not Found', 'webmakerr-cart'),
                 );
             }
             $instance->insert($product);
@@ -37,7 +37,7 @@ class DummyProductService
         } catch (\Exception $exception) {
             return new \WP_Error(
                 400,
-                __('Products for this category is not found', 'fluent-cart'),
+                __('Products for this category is not found', 'webmakerr-cart'),
             );
         }
     }
@@ -49,7 +49,7 @@ class DummyProductService
         if (!file_exists($filePath)) {
             return new \WP_Error(
                 400,
-                __('Products for this category is not found', 'fluent-cart'),
+                __('Products for this category is not found', 'webmakerr-cart'),
             );
         }
         $json = file_get_contents($filePath);
@@ -63,7 +63,7 @@ class DummyProductService
         } catch (\Exception $exception) {
             return new \WP_Error(
                 400,
-                __('Products for this category is not found', 'fluent-cart'),
+                __('Products for this category is not found', 'webmakerr-cart'),
             );
         }
     }

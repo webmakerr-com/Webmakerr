@@ -56,22 +56,22 @@ class OrdersReport
 
         return [
             'total_orders' => [
-                'title' => __('All Orders', 'fluent-cart'),
+                'title' => __('All Orders', 'webmakerr-cart'),
                 'current_count' => $currentOrders,
                 'compare_count' => ($withCompare) ? $prevCurrentOrders : null
             ],
             'paid_orders' => [
-                'title' => __('Paid Orders', 'fluent-cart'),
+                'title' => __('Paid Orders', 'webmakerr-cart'),
                 'current_count' => $paidOrders,
                 'compare_count' => ($withCompare) ? $prevPaidOrders : null
             ],
             'total_paid_order_items' => [
-                'title' => __('Paid Order Items', 'fluent-cart'),
+                'title' => __('Paid Order Items', 'webmakerr-cart'),
                 'current_count' => $paidOrderItems,
                 'compare_count' => ($withCompare) ? $prevPaidOrderItems : null
             ],
             'total_paid_amounts' => [
-                'title' => __('Order Value (Paid)', 'fluent-cart'),
+                'title' => __('Order Value (Paid)', 'webmakerr-cart'),
                 'current_count' => $paidAmounts,
                 'compare_count' => ($withCompare) ? $prevPaidAmounts : null,
                 'is_cents' => true

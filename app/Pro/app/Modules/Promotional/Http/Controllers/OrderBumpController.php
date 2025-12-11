@@ -48,7 +48,7 @@ class OrderBumpController extends Controller
 
         if (empty($title) || empty($srcObjectId)) {
             return $this->sendError([
-                'message' => __('Title and source object id are required', 'fluent-cart-pro')
+                'message' => __('Title and source object id are required', 'webmakerr-cart-pro')
             ], 400);
         }
 
@@ -62,12 +62,12 @@ class OrderBumpController extends Controller
 
         if (!$isCreated) {
             return $this->sendError([
-                'message' => __('Failed to create order bump', 'fluent-cart-pro')
+                'message' => __('Failed to create order bump', 'webmakerr-cart-pro')
             ], 400);
         }
 
         return [
-            'message' => __('Order bump created successfully', 'fluent-cart-pro'),
+            'message' => __('Order bump created successfully', 'webmakerr-cart-pro'),
             'id'      => $isCreated->id
         ];
     }
@@ -81,7 +81,7 @@ class OrderBumpController extends Controller
 
         if (!$orderBump) {
             return $this->sendError([
-                'message' => __('Order bump not found', 'fluent-cart-pro')
+                'message' => __('Order bump not found', 'webmakerr-cart-pro')
             ], 404);
         }
 
@@ -120,12 +120,12 @@ class OrderBumpController extends Controller
 
         if (!$isUpdated) {
             return $this->sendError([
-                'message' => __('Failed to update order bump', 'fluent-cart-pro')
+                'message' => __('Failed to update order bump', 'webmakerr-cart-pro')
             ], 400);
         }
 
         return [
-            'message' => __('Order bump updated successfully', 'fluent-cart-pro')
+            'message' => __('Order bump updated successfully', 'webmakerr-cart-pro')
         ];
     }
 
@@ -135,12 +135,12 @@ class OrderBumpController extends Controller
 
         if (!$isDeleted) {
             return $this->sendError([
-                'message' => __('Failed to delete order bump', 'fluent-cart-pro')
+                'message' => __('Failed to delete order bump', 'webmakerr-cart-pro')
             ], 400);
         }
 
         return [
-            'message' => __('Order bump deleted successfully', 'fluent-cart-pro')
+            'message' => __('Order bump deleted successfully', 'webmakerr-cart-pro')
         ];
     }
 

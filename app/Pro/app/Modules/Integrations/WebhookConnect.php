@@ -17,9 +17,9 @@ class WebhookConnect extends BaseIntegrationManager
 
     public function __construct()
     {
-        parent::__construct(__('Webhook', 'fluent-cart-pro'), 'webhook', 10);
+        parent::__construct(__('Webhook', 'webmakerr-cart-pro'), 'webhook', 10);
 
-        $this->description = __('Send data anywhere via webhook', 'fluent-cart-pro');
+        $this->description = __('Send data anywhere via webhook', 'webmakerr-cart-pro');
         $this->logo = Vite::getAssetUrl('images/integrations/webhook.svg');
         $this->disableGlobalSettings = true;
     }
@@ -74,61 +74,61 @@ class WebhookConnect extends BaseIntegrationManager
         $fields = [
             'name'            => [
                 'key'         => 'name',
-                'label'       => __('Integration Title', 'fluent-cart-pro'),
+                'label'       => __('Integration Title', 'webmakerr-cart-pro'),
                 'required'    => true,
-                'placeholder' => __('Name', 'fluent-cart-pro'),
+                'placeholder' => __('Name', 'webmakerr-cart-pro'),
                 'component'   => 'text',
-                'inline_tip'  => __('Name of this feed, it will be used to identify this integration in the list of integrations', 'fluent-cart-pro')
+                'inline_tip'  => __('Name of this feed, it will be used to identify this integration in the list of integrations', 'webmakerr-cart-pro')
             ],
             'request_url'     => [
                 'key'         => 'request_url',
-                'label'       => __('Request URL', 'fluent-cart-pro'),
+                'label'       => __('Request URL', 'webmakerr-cart-pro'),
                 'required'    => true,
-                'placeholder' => __('https://example.com/webhook-endpoint', 'fluent-cart-pro'),
+                'placeholder' => __('https://example.com/webhook-endpoint', 'webmakerr-cart-pro'),
                 'component'   => 'text',
-                'inline_tip'  => __('The URL to which the webhook request will be sent', 'fluent-cart-pro')
+                'inline_tip'  => __('The URL to which the webhook request will be sent', 'webmakerr-cart-pro')
             ],
             'request_method'  => [
                 'key'        => 'request_method',
-                'label'      => __('Request Method', 'fluent-cart-pro'),
+                'label'      => __('Request Method', 'webmakerr-cart-pro'),
                 'required'   => true,
                 'component'  => 'select',
                 'options'    => [
-                    'post'   => __('POST', 'fluent-cart-pro'),
-                    'get'    => __('GET', 'fluent-cart-pro'),
-                    'put'    => __('PUT', 'fluent-cart-pro'),
-                    'patch'  => __('PATCH', 'fluent-cart-pro'),
-                    'delete' => __('DELETE', 'fluent-cart-pro'),
+                    'post'   => __('POST', 'webmakerr-cart-pro'),
+                    'get'    => __('GET', 'webmakerr-cart-pro'),
+                    'put'    => __('PUT', 'webmakerr-cart-pro'),
+                    'patch'  => __('PATCH', 'webmakerr-cart-pro'),
+                    'delete' => __('DELETE', 'webmakerr-cart-pro'),
                 ],
-                'inline_tip' => __('The HTTP method to use for the webhook request', 'fluent-cart-pro')
+                'inline_tip' => __('The HTTP method to use for the webhook request', 'webmakerr-cart-pro')
             ],
             'request_format'  => [
                 'key'        => 'request_format',
-                'label'      => __('Request Format', 'fluent-cart-pro'),
+                'label'      => __('Request Format', 'webmakerr-cart-pro'),
                 'required'   => true,
                 'component'  => 'select',
                 'options'    => [
-                    'json'      => __('JSON', 'fluent-cart-pro'),
-                    'form_data' => __('Form Data', 'fluent-cart-pro'),
+                    'json'      => __('JSON', 'webmakerr-cart-pro'),
+                    'form_data' => __('Form Data', 'webmakerr-cart-pro'),
                 ],
-                'inline_tip' => __('The format in which the data will be sent', 'fluent-cart-pro')
+                'inline_tip' => __('The format in which the data will be sent', 'webmakerr-cart-pro')
             ],
             'request_headers' => [
                 'key'             => 'request_headers',
-                'label'           => __('Request Headers', 'fluent-cart-pro'),
+                'label'           => __('Request Headers', 'webmakerr-cart-pro'),
                 'required'        => true,
                 'component'       => 'custom_component',
                 'render_template' => $this->getHeaderComponent($settings),
-                'inline_tip'      => __('Custom headers to include in the webhook request', 'fluent-cart-pro')
+                'inline_tip'      => __('Custom headers to include in the webhook request', 'webmakerr-cart-pro')
             ],
             'request_body'    => [
                 'key'               => 'request_body',
-                'label'             => __('Request Body', 'fluent-cart-pro'),
+                'label'             => __('Request Body', 'webmakerr-cart-pro'),
                 'required'          => true,
                 'component'         => 'custom_component',
                 'render_template'   => $this->getBodyComponent($settings),
                 'smartcode_options' => $bodyOptions,
-                'inline_tip'        => __('The data sent in the request body.', 'fluent-cart-pro')
+                'inline_tip'        => __('The data sent in the request body.', 'webmakerr-cart-pro')
             ],
         ];
 
@@ -138,7 +138,7 @@ class WebhookConnect extends BaseIntegrationManager
         return [
             'fields'              => $fields,
             'button_require_list' => false,
-            'integration_title'   => __('Webhook', 'fluent-cart-pro')
+            'integration_title'   => __('Webhook', 'webmakerr-cart-pro')
         ];
     }
 
@@ -149,22 +149,22 @@ class WebhookConnect extends BaseIntegrationManager
         <div class="fct_webhook_header_config">
             <div class="fc-setting-form-fields self-center">
                 <el-radio-group v-model="settings.request_headers.type">
-                    <el-radio value="no_headers"><?php esc_attr_e('No Headers', 'fluent-cart-pro'); ?></el-radio>
-                    <el-radio value="custom_headers"><?php esc_attr_e('With Headers', 'fluent-cart-pro'); ?></el-radio>
+                    <el-radio value="no_headers"><?php esc_attr_e('No Headers', 'webmakerr-cart-pro'); ?></el-radio>
+                    <el-radio value="custom_headers"><?php esc_attr_e('With Headers', 'webmakerr-cart-pro'); ?></el-radio>
                 </el-radio-group>
 
                 <div v-if="settings.request_headers.type === 'custom_headers'" class="mt-4">
-                    <div class="mb-2 font-medium"><?php esc_attr_e('Custom Headers', 'fluent-cart-pro'); ?></div>
+                    <div class="mb-2 font-medium"><?php esc_attr_e('Custom Headers', 'webmakerr-cart-pro'); ?></div>
                     <div v-for="(field, index) in settings.request_headers.data" :key="index"
                          class="flex items-center gap-2 mb-2">
-                        <el-input size="small" v-model="field.name" placeholder="<?php esc_attr_e('Header Name', 'fluent-cart-pro'); ?>"></el-input>
-                        <el-input size="small" v-model="field.value" placeholder="<?php esc_attr_e('Header Value', 'fluent-cart-pro'); ?>"></el-input>
+                        <el-input size="small" v-model="field.name" placeholder="<?php esc_attr_e('Header Name', 'webmakerr-cart-pro'); ?>"></el-input>
+                        <el-input size="small" v-model="field.value" placeholder="<?php esc_attr_e('Header Value', 'webmakerr-cart-pro'); ?>"></el-input>
                         <el-button size="small" :disabled="settings.request_headers.data.length === 1" type="danger"
                                    @click="settings.request_headers.data.splice(index, 1)">-
                         </el-button>
                     </div>
                     <el-button @click="settings.request_headers.data.push({ name: '', value: '' })">
-                        <?php esc_html_e('+ Add more', 'fluent-cart-pro'); ?>
+                        <?php esc_html_e('+ Add more', 'webmakerr-cart-pro'); ?>
                     </el-button>
                 </div>
             </div>
@@ -181,16 +181,16 @@ class WebhookConnect extends BaseIntegrationManager
         <div class="fct_webhook_header_config">
             <div class="fc-setting-form-fields self-center">
                 <el-radio-group v-model="settings.request_body.type">
-                    <el-radio value="all_data"><?php esc_attr_e('All Data', 'fluent-cart-pro'); ?></el-radio>
-                    <el-radio value="selected_fields"><?php esc_attr_e('Selected Fields', 'fluent-cart-pro'); ?></el-radio>
+                    <el-radio value="all_data"><?php esc_attr_e('All Data', 'webmakerr-cart-pro'); ?></el-radio>
+                    <el-radio value="selected_fields"><?php esc_attr_e('Selected Fields', 'webmakerr-cart-pro'); ?></el-radio>
                 </el-radio-group>
 
                 <div v-if="settings.request_body.type === 'selected_fields'" class="mt-4">
-                    <div class="mb-2 font-medium"><?php esc_attr_e('Map Payload Data', 'fluent-cart-pro'); ?></div>
+                    <div class="mb-2 font-medium"><?php esc_attr_e('Map Payload Data', 'webmakerr-cart-pro'); ?></div>
                     <div v-for="(dataGroup, index) in settings.request_body.data" :key="index"
                          class="flex items-center gap-2 mb-2">
-                        <el-input size="small" v-model="dataGroup.name" placeholder="<?php esc_attr_e('Payload Key', 'fluent-cart-pro'); ?>"></el-input>
-                        <el-select size="small" v-model="dataGroup.value" placeholder="<?php esc_attr_e('Select Value', 'fluent-cart-pro'); ?>" filterable>
+                        <el-input size="small" v-model="dataGroup.name" placeholder="<?php esc_attr_e('Payload Key', 'webmakerr-cart-pro'); ?>"></el-input>
+                        <el-select size="small" v-model="dataGroup.value" placeholder="<?php esc_attr_e('Select Value', 'webmakerr-cart-pro'); ?>" filterable>
                             <el-option-group v-for="optionGroup in app.field.smartcode_options" :key="optionGroup.key"
                                              :label="optionGroup.title">
                                 <el-option v-for="(option, optionKey) in optionGroup.shortcodes" :key="optionKey"
@@ -203,7 +203,7 @@ class WebhookConnect extends BaseIntegrationManager
                         </el-button>
                     </div>
                     <el-button @click="settings.request_body.data.push({ name: '', value: '' })">
-                        <?php esc_attr_e('+ Add more', 'fluent-cart-pro'); ?>
+                        <?php esc_attr_e('+ Add more', 'webmakerr-cart-pro'); ?>
                     </el-button>
                 </div>
             </div>
@@ -276,7 +276,7 @@ class WebhookConnect extends BaseIntegrationManager
 
         if (is_wp_error($response)) {
             $order->addLog(
-                __('Webhook Request Failed', 'fluent-cart-pro'),
+                __('Webhook Request Failed', 'webmakerr-cart-pro'),
                 'Integration: ' . Arr::get($feedConfig, 'name', '') . ' failed. Error: ' . $response->get_error_message(),
                 'error',
                 'Webhook Integration'
@@ -287,7 +287,7 @@ class WebhookConnect extends BaseIntegrationManager
         $responseCode = wp_remote_retrieve_response_code($response);
         if ($responseCode < 200 || $responseCode >= 300) {
             $order->addLog(
-                __('Webhook Request Failed', 'fluent-cart-pro'),
+                __('Webhook Request Failed', 'webmakerr-cart-pro'),
                 'Integration: ' . Arr::get($feedConfig, 'name', '') . ' failed. Response Code: ' . $responseCode,
                 'error',
                 'Webhook Integration'
@@ -296,7 +296,7 @@ class WebhookConnect extends BaseIntegrationManager
         }
 
         $order->addLog(
-            __('Webhook Request Sent', 'fluent-cart-pro'),
+            __('Webhook Request Sent', 'webmakerr-cart-pro'),
             'Integration: ' . Arr::get($feedConfig, 'name', '') . ' sent successfully. Response Code: ' . $responseCode,
             'info',
             'Webhook Integration'

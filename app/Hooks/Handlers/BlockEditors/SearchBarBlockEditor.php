@@ -32,7 +32,7 @@ class SearchBarBlockEditor extends BlockEditor
             $this->getLocalizationKey()      => [
                 'slug'  => $this->slugPrefix,
                 'name'  => static::getEditorName(),
-                'title' => __('Product Search', 'fluent-cart'),
+                'title' => __('Product Search', 'webmakerr-cart'),
             ],
             'fluent_cart_block_editor_asset' => [
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),

@@ -10,7 +10,7 @@ class WebhookVerifier
     public function __construct(string $secretKey, int $timestampTolerance = 300)
     {
         if (empty($secretKey)) {
-            new \WP_Error('paddle_webhook_secret_missing', __('Paddle webhook secret is missing', 'fluent-cart-pro'));
+            new \WP_Error('paddle_webhook_secret_missing', __('Paddle webhook secret is missing', 'webmakerr-cart-pro'));
         }
 
         $this->secretKey = $secretKey;
@@ -62,7 +62,7 @@ class WebhookVerifier
         }
 
         if (empty($signature)) {
-            new \WP_Error('paddle_webhook_signature_invalid', __('Invalid webhook signature', 'fluent-cart-pro'));
+            new \WP_Error('paddle_webhook_signature_invalid', __('Invalid webhook signature', 'webmakerr-cart-pro'));
         }
 
         return $this->verify($signature, $rawBody);
@@ -104,11 +104,11 @@ class WebhookVerifier
         }
 
         if ($timestamp === null || $signatureHash === null) {
-           new \WP_Error('paddle_webhook_signature_invalid', __('Invalid webhook signature', 'fluent-cart-pro'));
+           new \WP_Error('paddle_webhook_signature_invalid', __('Invalid webhook signature', 'webmakerr-cart-pro'));
         }
 
         if (!is_numeric($timestamp)) {
-            new \WP_Error('paddle_webhook_signature_invalid', __('Invalid webhook signature', 'fluent-cart-pro'));
+            new \WP_Error('paddle_webhook_signature_invalid', __('Invalid webhook signature', 'webmakerr-cart-pro'));
         }
 
         return [

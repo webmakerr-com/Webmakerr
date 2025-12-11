@@ -19,11 +19,11 @@ class NotesController extends Controller
 
         if ($order->update()) {
             return $this->sendSuccess([
-                'message' => __('Order Note Updated successfully.', 'fluent-cart'),
+                'message' => __('Order Note Updated successfully.', 'webmakerr-cart'),
             ]);
         }
         return $this->sendError([
-            'message' => __('Failed to update order note.', 'fluent-cart'),
+            'message' => __('Failed to update order note.', 'webmakerr-cart'),
         ]);
     }
 }

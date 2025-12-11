@@ -22,11 +22,11 @@ class EmailSettingsRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'from_name.required'   => __('From Name field is required.', 'fluent-cart'),
-            'from_email.required'  => __('From Email field is required.', 'fluent-cart'),
-            'from_email.email'     => __('From Email must be a valid email address.', 'fluent-cart'),
-            'reply_to_email.email' => __('Reply To Email must be a valid email address.', 'fluent-cart'),
-            'admin_email.required' => __('Admin Email field is required.', 'fluent-cart')
+            'from_name.required'   => __('From Name field is required.', 'webmakerr-cart'),
+            'from_email.required'  => __('From Email field is required.', 'webmakerr-cart'),
+            'from_email.email'     => __('From Email must be a valid email address.', 'webmakerr-cart'),
+            'reply_to_email.email' => __('Reply To Email must be a valid email address.', 'webmakerr-cart'),
+            'admin_email.required' => __('Admin Email field is required.', 'webmakerr-cart')
         ];
     }
 

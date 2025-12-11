@@ -27,7 +27,7 @@ class ProductGallery extends Element
 
     public function get_label()
     {
-        return esc_html__('Product gallery', 'fluent-cart');
+        return esc_html__('Product gallery', 'webmakerr-cart');
     }
 
     public function set_controls()
@@ -38,7 +38,7 @@ class ProductGallery extends Element
 
         $this->controls['productImageSize'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Product', 'fluent-cart') . ': ' . esc_html__('Image size', 'fluent-cart'),
+            'label'       => esc_html__('Product', 'webmakerr-cart') . ': ' . esc_html__('Image size', 'webmakerr-cart'),
             'type'        => 'select',
             'options'     => Setup::get_image_sizes_options(),
             'placeholder' => 'image_size',
@@ -46,7 +46,7 @@ class ProductGallery extends Element
 
         $this->controls['thumbnailImageSize'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Thumbnail', 'fluent-cart') . ': ' . esc_html__('Image size', 'fluent-cart'),
+            'label'       => esc_html__('Thumbnail', 'webmakerr-cart') . ': ' . esc_html__('Image size', 'webmakerr-cart'),
             'type'        => 'select',
             'options'     => Setup::get_image_sizes_options(),
             'placeholder' => 'thumbnail',
@@ -54,7 +54,7 @@ class ProductGallery extends Element
 
         $this->controls['lightboxImageSize'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Lightbox', 'fluent-cart') . ': ' . esc_html__('Image size', 'fluent-cart'),
+            'label'       => esc_html__('Lightbox', 'webmakerr-cart') . ': ' . esc_html__('Image size', 'webmakerr-cart'),
             'type'        => 'select',
             'options'     => Setup::get_image_sizes_options(),
             'placeholder' => 'full',
@@ -64,27 +64,27 @@ class ProductGallery extends Element
 
         $this->controls['thumbnailSep'] = [
             'tab'   => 'content',
-            'label' => esc_html__('Thumbnail navigation', 'fluent-cart'),
+            'label' => esc_html__('Thumbnail navigation', 'webmakerr-cart'),
             'type'  => 'separator',
         ];
 
         $this->controls['thumbnailPosition'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Position', 'fluent-cart'),
+            'label'       => esc_html__('Position', 'webmakerr-cart'),
             'type'        => 'select',
             'inline'      => true,
             'options'     => [
-                'top'    => esc_html__('Top', 'fluent-cart'),
-                'right'  => esc_html__('Right', 'fluent-cart'),
-                'bottom' => esc_html__('Bottom', 'fluent-cart'),
-                'left'   => esc_html__('Left', 'fluent-cart'),
+                'top'    => esc_html__('Top', 'webmakerr-cart'),
+                'right'  => esc_html__('Right', 'webmakerr-cart'),
+                'bottom' => esc_html__('Bottom', 'webmakerr-cart'),
+                'left'   => esc_html__('Left', 'webmakerr-cart'),
             ],
-            'placeholder' => esc_html__('Bottom', 'fluent-cart'),
+            'placeholder' => esc_html__('Bottom', 'webmakerr-cart'),
         ];
 
         $this->controls['itemWidth'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Item width', 'fluent-cart') . ' (px)',
+            'label'       => esc_html__('Item width', 'webmakerr-cart') . ' (px)',
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -98,7 +98,7 @@ class ProductGallery extends Element
         ];
         $this->controls['itemHeight'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Item Height', 'fluent-cart') . ' (px)',
+            'label'       => esc_html__('Item Height', 'webmakerr-cart') . ' (px)',
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -113,7 +113,7 @@ class ProductGallery extends Element
 
         $this->controls['gap'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Gap', 'fluent-cart'),
+            'label'       => esc_html__('Gap', 'webmakerr-cart'),
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -128,7 +128,7 @@ class ProductGallery extends Element
 
         $this->controls['thumbnailOpacity'] = [
             'tab'         => 'content',
-            'label'       => esc_html__('Opacity', 'fluent-cart'),
+            'label'       => esc_html__('Opacity', 'webmakerr-cart'),
             'type'        => 'number',
             'step'        => 0.1,
             'css'         => [
@@ -142,7 +142,7 @@ class ProductGallery extends Element
 
         $this->controls['thumbnailActiveOpacity'] = [
             'tab'   => 'content',
-            'label' => esc_html__('Opacity', 'fluent-cart') . ' (' . esc_html__('Active', 'fluent-cart') . ')',
+            'label' => esc_html__('Opacity', 'webmakerr-cart') . ' (' . esc_html__('Active', 'webmakerr-cart') . ')',
             'type'  => 'number',
             'step'  => 0.1,
             'css'   => [
@@ -155,7 +155,7 @@ class ProductGallery extends Element
 
         $this->controls['thumbnailBorder'] = [
             'tab'   => 'content',
-            'label' => esc_html__('Border', 'fluent-cart'),
+            'label' => esc_html__('Border', 'webmakerr-cart'),
             'type'  => 'border',
             'css'   => [
                 [
@@ -167,7 +167,7 @@ class ProductGallery extends Element
 
         $this->controls['thumbnailActiveBorder'] = [
             'tab'   => 'content',
-            'label' => esc_html__('Border', 'fluent-cart') . ' (' . esc_html__('Active', 'fluent-cart') . ')',
+            'label' => esc_html__('Border', 'webmakerr-cart') . ' (' . esc_html__('Active', 'webmakerr-cart') . ')',
             'type'  => 'border',
             'css'   => [
                 [
@@ -185,8 +185,8 @@ class ProductGallery extends Element
         if (empty($product)) {
             return $this->render_element_placeholder(
                 [
-                    'title'       => esc_html__('For better preview select content to show.', 'fluent-cart'),
-                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'fluent-cart'),
+                    'title'       => esc_html__('For better preview select content to show.', 'webmakerr-cart'),
+                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'webmakerr-cart'),
                 ]
             );
         }

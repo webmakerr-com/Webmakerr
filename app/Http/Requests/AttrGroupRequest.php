@@ -36,10 +36,10 @@ class AttrGroupRequest extends RequestGuard
     public function messages()
     {
         return [
-            'title' => esc_html__('Group title can not be empty and must be unique.', 'fluent-cart'),
-            'slug' => esc_html__('Group slug can not be empty and must be unique.', 'fluent-cart'),
-            'description' => esc_html__('Group description should be long text.', 'fluent-cart'),
-            'settings' => esc_html__('Group settings should be long text.', 'fluent-cart'),
+            'title' => esc_html__('Group title can not be empty and must be unique.', 'webmakerr-cart'),
+            'slug' => esc_html__('Group slug can not be empty and must be unique.', 'webmakerr-cart'),
+            'description' => esc_html__('Group description should be long text.', 'webmakerr-cart'),
+            'settings' => esc_html__('Group settings should be long text.', 'webmakerr-cart'),
         ];
     }
 

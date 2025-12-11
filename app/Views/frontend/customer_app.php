@@ -12,7 +12,7 @@
          style="position: relative; min-height: 700px; <?php echo esc_attr($colors); ?>"
          aria-busy="true"
          role="main"
-         aria-label="<?php esc_attr_e('Customer profile', 'fluent-cart'); ?>"
+         aria-label="<?php esc_attr_e('Customer profile', 'webmakerr-cart'); ?>"
     >
         <div id="fct-customer-loader"
              style="position: absolute; left: 0;top: 0;width: 100%;height: 100%;z-index: 4;background: #ffffff;display: flex;gap: 16px;" aria-hidden="true">

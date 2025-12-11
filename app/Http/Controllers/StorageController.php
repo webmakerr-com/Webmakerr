@@ -23,13 +23,13 @@ class StorageController extends Controller
         $driver = (new FileManager($driver,null, null, true))->getDriver();
         if (empty($driver)) {
             return $this->sendError([
-                'message' => __('Invalid driver', 'fluent-cart')
+                'message' => __('Invalid driver', 'webmakerr-cart')
             ], 404);
         }
 
         $data = $driver->getStorageDriver()->saveSettings($data);
 
-        $message = Arr::get($data, 'message', __('Settings saved successfully', 'fluent-cart'));
+        $message = Arr::get($data, 'message', __('Settings saved successfully', 'webmakerr-cart'));
 
         if (is_wp_error($data)) {
             return $this->sendError([
@@ -66,7 +66,7 @@ class StorageController extends Controller
         $driver = (new FileManager($driver))->getDriver();
         if (empty($driver)) {
             return $this->sendError([
-                'message' => __('Invalid driver', 'fluent-cart')
+                'message' => __('Invalid driver', 'webmakerr-cart')
             ], 404);
         }
         $isVerified = $driver->getStorageDriver()->verifyConnectInfo($data);
@@ -76,7 +76,7 @@ class StorageController extends Controller
             ], 401);
         } else {
             return $this->sendSuccess([
-                'message' => Arr::get($isVerified, 'message', __('Connection verified successfully', 'fluent-cart'))
+                'message' => Arr::get($isVerified, 'message', __('Connection verified successfully', 'webmakerr-cart'))
             ]);
         }
     }

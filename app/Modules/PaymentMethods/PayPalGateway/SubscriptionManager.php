@@ -24,14 +24,14 @@ class SubscriptionManager
     public function pauseSubscription($data, $order, $subscription)
     {
         if (!current_user_can('manage_options')) {
-            throw new \Exception(esc_html__('Sorry, You do not have permission to pause subscription!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Sorry, You do not have permission to pause subscription!', 'webmakerr-cart'));
         }
 
         $vendorSubscriptionId = Arr::get($data, 'vendor_subscription_id');
         $reason = Arr::get($data, 'reason');
 
         if (!$vendorSubscriptionId || !$subscription) {
-            throw new \Exception(esc_html__('Sorry, Subscription not found!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Sorry, Subscription not found!', 'webmakerr-cart'));
         }
 
         try {
@@ -49,7 +49,7 @@ class SubscriptionManager
         }
 
         wp_send_json(array(
-            'message' => __('Subscription has been paused successfully', 'fluent-cart')
+            'message' => __('Subscription has been paused successfully', 'webmakerr-cart')
         ), 200);
     }
 
@@ -59,14 +59,14 @@ class SubscriptionManager
     public function resumeSubscription($data, $order, $subscription)
     {
         if (!current_user_can('manage_options')) {
-            throw new \Exception(esc_html__('Sorry, You do not have permission to resume subscription!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Sorry, You do not have permission to resume subscription!', 'webmakerr-cart'));
         }
 
         $vendorSubscriptionId = Arr::get($data, 'vendor_subscription_id');
         $reason = Arr::get($data, 'reason');
 
         if (!$vendorSubscriptionId || !$subscription) {
-            throw new \Exception(esc_html__('Sorry, Subscription not found!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Sorry, Subscription not found!', 'webmakerr-cart'));
         }
 
         $response = (new API())->makeRequest('billing/subscriptions/' . $vendorSubscriptionId . '/activate', 'v1', 'POST', [
@@ -84,7 +84,7 @@ class SubscriptionManager
         }
 
         wp_send_json(array(
-            'message' => __('Subscription has been resumed successfully', 'fluent-cart')
+            'message' => __('Subscription has been resumed successfully', 'webmakerr-cart')
         ), 200);
 
     }
@@ -96,7 +96,7 @@ class SubscriptionManager
     {
         if (!$subscriptionId) {
             wp_send_json([
-                'message' => __('Sorry, Subscription ID is not available!', 'fluent-cart'),
+                'message' => __('Sorry, Subscription ID is not available!', 'webmakerr-cart'),
             ], 423);
         }
 
@@ -104,7 +104,7 @@ class SubscriptionManager
         $order = Order::query()->where('id', $subscriptionModel->parent_order_id)->with('order_items')->first();
         if (!$subscriptionModel || !$order) {
             wp_send_json([
-                'message' => __('Sorry, Subscription or Order not found!', 'fluent-cart'),
+                'message' => __('Sorry, Subscription or Order not found!', 'webmakerr-cart'),
             ], 423);
         }
 
@@ -148,7 +148,7 @@ class SubscriptionManager
         if (!$newVendorSubscriptionId || !$vendorOrderId) {
             wp_send_json([
                 'status'  => 'error',
-                'message' => __('Sorry, New Subscription ID or Vendor Order ID is not available!', 'fluent-cart'),
+                'message' => __('Sorry, New Subscription ID or Vendor Order ID is not available!', 'webmakerr-cart'),
             ], 422);
         }
 
@@ -158,7 +158,7 @@ class SubscriptionManager
         if (is_wp_error($paypalSubscription)) {
             // log that subscription was created but not found in paypal or connecting issue
             fluent_cart_error_log(
-                __('Subscription was created but not found in paypal or connecting issue', 'fluent-cart'),
+                __('Subscription was created but not found in paypal or connecting issue', 'webmakerr-cart'),
                 $paypalSubscription->get_error_message(),
                 [
                     'module_name' => 'Subscription',
@@ -216,7 +216,7 @@ class SubscriptionManager
             $gateway->subscriptions->cancel(
                 $oldVendorSubscriptionId,
                 [
-                    'reason' => __('Subscription switched to PayPal', 'fluent-cart'),
+                    'reason' => __('Subscription switched to PayPal', 'webmakerr-cart'),
                     'mode'   => $order->mode
                 ]
             );
@@ -246,7 +246,7 @@ class SubscriptionManager
 
         wp_send_json([
             'status'  => 'success',
-            'message' => __('Subscription updated successfully', 'fluent-cart'),
+            'message' => __('Subscription updated successfully', 'webmakerr-cart'),
             'data'    => $vendorSubscriptionId
         ], 200);
 

@@ -63,7 +63,7 @@ class PaymentHelper
         if (!GatewayManager::has($paymentMethod)) {
             wp_send_json([
                     'status'  => 'failed',
-                    'message' => __('No valid payment method found!', 'fluent-cart'),
+                    'message' => __('No valid payment method found!', 'webmakerr-cart'),
                     'data'    => []
                 ], 423
             );
@@ -72,7 +72,7 @@ class PaymentHelper
         $gateway = GatewayManager::getInstance($paymentMethod);
         $status = $gateway->validatePaymentMethod([
             'isValid'       => false,
-            'reason'        => __('No payment method found!', 'fluent-cart'),
+            'reason'        => __('No payment method found!', 'webmakerr-cart'),
             'isZeroPayment' => $isZeroPayment
         ]);
 

@@ -114,15 +114,45 @@ class Application implements ArrayAccess
     protected function registerTextdomain()
     {
         $this->app->addAction('init', function() {
-            load_plugin_textdomain(
-                $this->config->get('app.text_domain'), false, $this->textDomainPath()
-            );
+            $domain = $this->config->get('app.text_domain');
+            $domainPath = $this->textDomainPath();
+
+            load_plugin_textdomain($domain, false, $domainPath);
+
+            foreach ((array)$this->config->get('app.legacy_text_domains', []) as $legacyDomain) {
+                load_plugin_textdomain($legacyDomain, false, $domainPath);
+
+                if ($legacyMofile = $this->locateLegacyMofile($legacyDomain)) {
+                    load_textdomain($domain, $legacyMofile);
+                }
+            }
         });
     }
 
     protected function textDomainPath()
     {
         return basename($this->bindings['path']) . $this->config->get('app.domain_path');
+    }
+
+    protected function locateLegacyMofile($legacyDomain)
+    {
+        $locale = function_exists('determine_locale') ? determine_locale() : get_locale();
+
+        $pluginLanguagesDir = trailingslashit($this->bindings['path']) . ltrim($this->config->get('app.domain_path'), '/');
+        $legacyMofileName = $legacyDomain . '-' . $locale . '.mo';
+        $pluginMofilePath = trailingslashit($pluginLanguagesDir) . $legacyMofileName;
+
+        if (is_readable($pluginMofilePath)) {
+            return $pluginMofilePath;
+        }
+
+        $globalMofilePath = trailingslashit(WP_LANG_DIR) . 'plugins/' . $legacyDomain . '-' . $locale . '.mo';
+
+        if (is_readable($globalMofilePath)) {
+            return $globalMofilePath;
+        }
+
+        return '';
     }
 
     protected function requireCommonFiles($app)

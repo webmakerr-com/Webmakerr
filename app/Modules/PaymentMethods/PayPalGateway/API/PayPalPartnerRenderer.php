@@ -16,7 +16,7 @@ class PayPalPartnerRenderer
     public function __construct($mode)
     {
         if (!$mode) {
-            echo '<div class="fct_message fct_message_error">' . esc_html__('Invalid PayPal payment mode. Please try configuring paypal payment gateway again expected mode test or live !', 'fluent-cart') . '</div>';
+            echo '<div class="fct_message fct_message_error">' . esc_html__('Invalid PayPal payment mode. Please try configuring paypal payment gateway again expected mode test or live !', 'webmakerr-cart') . '</div>';
             die();
         }
 
@@ -56,11 +56,11 @@ class PayPalPartnerRenderer
 
             if (is_wp_error($redirectUrl)) {
                 FrontendView::renderNotFoundPage(
-                    __('Error', 'fluent-cart'),
-                    __('Error', 'fluent-cart'),
-                    __('Please setup your store country and currency first. ', 'fluent-cart') . '<a href="' . admin_url('admin.php?page=webmakerr#/settings/store-settings/') . '">' . __('Settings', 'fluent-cart') . '</a>',
+                    __('Error', 'webmakerr-cart'),
+                    __('Error', 'webmakerr-cart'),
+                    __('Please setup your store country and currency first. ', 'webmakerr-cart') . '<a href="' . admin_url('admin.php?page=webmakerr#/settings/store-settings/') . '">' . __('Settings', 'webmakerr-cart') . '</a>',
 
-                    __('Go Back to the Store', 'fluent-cart'),
+                    __('Go Back to the Store', 'webmakerr-cart'),
                     null,
                     admin_url('admin.php?page=webmakerr#/settings/payments')
                 );
@@ -69,9 +69,9 @@ class PayPalPartnerRenderer
 
         } catch (\Exception $exception) {
             FrontendView::renderNotFoundPage(
-                __('Unable To connect with PayPal.', 'fluent-cart'),
-                __('Please try again in a moment.', 'fluent-cart'), '',
-                __('Go Back to the Store', 'fluent-cart'),
+                __('Unable To connect with PayPal.', 'webmakerr-cart'),
+                __('Please try again in a moment.', 'webmakerr-cart'), '',
+                __('Go Back to the Store', 'webmakerr-cart'),
                 null,
                 admin_url('admin.php?page=webmakerr#/settings/payments')
             );

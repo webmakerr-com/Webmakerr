@@ -18,8 +18,8 @@ class Licensing
 
         $app->addFilter('fluent_cart/module_setting/fields', function ($fields, $args) {
             $fields['license'] = [
-                'title'       => __('Product Licensing', 'fluent-cart-pro'),
-                'description' => __('Sale Licenses of your products easier than ever!', 'fluent-cart-pro'),
+                'title'       => __('Product Licensing', 'webmakerr-cart-pro'),
+                'description' => __('Sale Licenses of your products easier than ever!', 'webmakerr-cart-pro'),
                 'type'        => 'component',
                 'component'   => 'ModuleSettings',
             ];
@@ -58,7 +58,7 @@ class Licensing
 
         if (PermissionManager::hasPermission(['store/sensitive'])) {
             $items['licenses'] = [
-                'label' => __('Licenses', 'fluent-cart-pro'),
+                'label' => __('Licenses', 'webmakerr-cart-pro'),
                 'link'  => $baseUrl . 'licenses'
             ];
         }
@@ -72,7 +72,7 @@ class Licensing
         $productId = Arr::get($args, 'product_id');
 
         $items['license_settings'] = [
-            'label' => __('License Settings', 'fluent-cart-pro'),
+            'label' => __('License Settings', 'webmakerr-cart-pro'),
             'link'  => $baseUrl . 'products/' . $productId . '/license_settings'
         ];
 

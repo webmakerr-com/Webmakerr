@@ -54,7 +54,7 @@ class S3BucketList
         } else {
             return new \WP_Error(
                 $responseCode,
-                __('Invalid Credential', 'fluent-cart')
+                __('Invalid Credential', 'webmakerr-cart')
             );
         }
     }

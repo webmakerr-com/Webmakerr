@@ -41,7 +41,7 @@ class CustomerRequest extends RequestGuard
                     })
                     ->where('email', $value)->first();
                 if ($customer) {
-                    return __('Email already exists.', 'fluent-cart');
+                    return __('Email already exists.', 'webmakerr-cart');
                 }
                 return null;
             }],
@@ -54,9 +54,9 @@ class CustomerRequest extends RequestGuard
     public function messages()
     {
         return [
-            'full_name.required' => esc_html__('Full Name field is required.', 'fluent-cart'),
-            'email.required'     => esc_html__('Email field is required.', 'fluent-cart'),
-            'email.email'        => esc_html__('Email must be a valid email address.', 'fluent-cart'),
+            'full_name.required' => esc_html__('Full Name field is required.', 'webmakerr-cart'),
+            'email.required'     => esc_html__('Email field is required.', 'webmakerr-cart'),
+            'email.email'        => esc_html__('Email must be a valid email address.', 'webmakerr-cart'),
         ];
     }
 

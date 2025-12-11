@@ -470,7 +470,7 @@ class Subscription extends Model
             }
         }
 
-        return new \WP_Error('invalid_payment_method', __('This payment method does not support remote resync', 'fluent-cart'));
+        return new \WP_Error('invalid_payment_method', __('This payment method does not support remote resync', 'webmakerr-cart'));
     }
 
     public function cancelRemoteSubscription($args = [])
@@ -482,7 +482,7 @@ class Subscription extends Model
         ]);
 
         if ($this->status === Status::SUBSCRIPTION_CANCELED) {
-            return new \WP_Error('subscription_already_cancelled', __('This subscription is already cancelled.', 'fluent-cart'));
+            return new \WP_Error('subscription_already_cancelled', __('This subscription is already cancelled.', 'webmakerr-cart'));
         }
 
         $gateway = App::gateway($this->current_payment_method);
@@ -498,7 +498,7 @@ class Subscription extends Model
                 $updateData = array_filter($vendorCanceled);
             }
         } else {
-            $vendorCanceled = new \WP_Error('invalid_payment_method', __('This payment method does not support remote subscription cancel', 'fluent-cart'));
+            $vendorCanceled = new \WP_Error('invalid_payment_method', __('This payment method does not support remote subscription cancel', 'webmakerr-cart'));
             $updateData = [
                 'canceled_at' => gmdate('Y-m-d H:i:s', time())
             ];

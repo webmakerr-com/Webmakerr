@@ -69,12 +69,12 @@ class LabelResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Label created successfully!', 'fluent-cart')
+                __('Label created successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Label creation failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Label creation failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -99,12 +99,12 @@ class LabelResource extends BaseResourceApi
 
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Label created successfully!', 'fluent-cart')
+                __('Label created successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Label creation failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Label creation failed.', 'webmakerr-cart')]
         ]);
     }
 

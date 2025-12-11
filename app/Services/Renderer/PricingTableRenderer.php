@@ -64,7 +64,7 @@ class PricingTableRenderer
 
         ?>
         <div class="fluent-cart-pricing-table" data-fluent-cart-pricing-table role="region"
-             aria-label="<?php esc_attr_e('Pricing table', 'fluent-cart'); ?>">
+             aria-label="<?php esc_attr_e('Pricing table', 'webmakerr-cart'); ?>">
             <div class="fluent-cart-pricing-table-variants-iterator" role="list">
                 <?php $this->renderVariant(); ?>
             </div>
@@ -120,10 +120,10 @@ class PricingTableRenderer
                                 aria-label="<?php
                                 printf(
                                     /* translators: 1: Currency sign, 2: Item price, 3: Billing interval or unit */
-                                        esc_attr__('Price: %1$s%2$s per %3$s', 'fluent-cart'),
+                                        esc_attr__('Price: %1$s%2$s per %3$s', 'webmakerr-cart'),
                                         esc_attr($this->sign),
                                         esc_attr($this->itemPrice),
-                                        esc_attr($this->repeatInterval ?? __('unit', 'fluent-cart'))
+                                        esc_attr($this->repeatInterval ?? __('unit', 'webmakerr-cart'))
                                 );
                                 ?>">
                             <sup><?php echo esc_html($this->sign) ?></sup>
@@ -143,7 +143,7 @@ class PricingTableRenderer
                             <?php
                             $aria_label = sprintf(
                                 /* translators: 1: Currency sign, 2: Compare price */
-                                    esc_attr__('Compare at: %1$s%2$s', 'fluent-cart'),
+                                    esc_attr__('Compare at: %1$s%2$s', 'webmakerr-cart'),
                                     $this->sign,
                                     $this->comparePrice
                             );
@@ -157,7 +157,7 @@ class PricingTableRenderer
                     <div class="fluent-cart-pricing-table-variant-payment-type">
                         <span> <?php echo esc_html($this->paymentInfo); ?> </span>
                         <span class="setup-fee"
-                              aria-label="<?php esc_attr_e('Setup fee information', 'fluent-cart'); ?>">
+                              aria-label="<?php esc_attr_e('Setup fee information', 'webmakerr-cart'); ?>">
                             <?php echo esc_html($this->setupFeeInfo); ?> 
                         </span>
                     </div>
@@ -227,7 +227,7 @@ class PricingTableRenderer
     {
         $buttonOptions = Arr::get($this->viewData, 'button_options', '');
         $buttonValues = self::stringToAssocArray($buttonOptions);
-        $buttonText = !empty($buttonValues['cartButtonText']) ? $buttonValues['cartButtonText'] : __('Add To Cart', 'fluent-cart');
+        $buttonText = !empty($buttonValues['cartButtonText']) ? $buttonValues['cartButtonText'] : __('Add To Cart', 'webmakerr-cart');
 
         if ($variant['stock_status'] === Helper::IN_STOCK) {
             $data = [
@@ -255,14 +255,14 @@ class PricingTableRenderer
                 aria-disabled="true"
                 aria-label="<?php
                 /* translators: Button aria-label shown when a product is out of stock */
-                esc_attr_e('This item is out of stock and cannot be added to cart', 'fluent-cart');
+                esc_attr_e('This item is out of stock and cannot be added to cart', 'webmakerr-cart');
                 ?>"
         >
             <?php
             echo esc_html(
                 $this->storeSettings->get(
                     'out_of_stock_button_text',
-                    __('Out of stock', 'fluent-cart')
+                    __('Out of stock', 'webmakerr-cart')
                 )
             );
             ?>
@@ -273,7 +273,7 @@ class PricingTableRenderer
 
     public function renderDirectCheckoutButton($variant)
     {
-        $directCheckoutButtonText = $this->storeSettings->get('direct_checkout_button_text', __('Buy Now', 'fluent-cart'));
+        $directCheckoutButtonText = $this->storeSettings->get('direct_checkout_button_text', __('Buy Now', 'webmakerr-cart'));
 
         $buttonOptions = Arr::get($this->viewData, 'button_options', '');
         $buttonValues = self::stringToAssocArray($buttonOptions);

@@ -37,7 +37,7 @@ class IntegrationController extends Controller
 
             if (!$integrationMeta) {
                 return $this->sendError([
-                    'message' => __('Integration not found', 'fluent-cart')
+                    'message' => __('Integration not found', 'webmakerr-cart')
                 ]);
             }
         }
@@ -73,7 +73,7 @@ class IntegrationController extends Controller
         webmakerr_do_action('webmakerr_cart/reindex_integration_feeds', []);
 
         return [
-            'message'          => __('Integration has been successfully saved', 'fluent-cart'),
+            'message'          => __('Integration has been successfully saved', 'webmakerr-cart'),
             'integration_id'   => $integrationId,
             'integration_name' => $provider,
             'created'          => $integrationMeta->wasRecentlyCreated,
@@ -139,7 +139,7 @@ class IntegrationController extends Controller
         $integration->save();
 
         return [
-            'message' => __('Integration status updated successfully.', 'fluent-cart'),
+            'message' => __('Integration status updated successfully.', 'webmakerr-cart'),
             'meta'    => $meta
         ];
     }
@@ -151,14 +151,14 @@ class IntegrationController extends Controller
 
         if (!isset($allIntegrations[$integration_name])) {
             return $this->sendError([
-                'message' => __('Integration not found', 'fluent-cart')
+                'message' => __('Integration not found', 'webmakerr-cart')
             ]);
         }
 
         $baseAddon = $allIntegrations[$integration_name];
         if (!in_array('global', Arr::get($baseAddon, 'scopes', [])) || !$baseAddon['enabled']) {
             return $this->sendError([
-                'message' => __('This integration is not available for global scope or not enabled', 'fluent-cart')
+                'message' => __('This integration is not available for global scope or not enabled', 'webmakerr-cart')
             ]);
         }
 
@@ -172,7 +172,7 @@ class IntegrationController extends Controller
 
             if (!$integrationMeta) {
                 return $this->sendError([
-                    'message' => __('Integration not found', 'fluent-cart')
+                    'message' => __('Integration not found', 'webmakerr-cart')
                 ]);
             }
         }
@@ -198,7 +198,7 @@ class IntegrationController extends Controller
         $integration->delete();
 
         return [
-            'message' => __('Integration has been deleted successfully.', 'fluent-cart'),
+            'message' => __('Integration has been deleted successfully.', 'webmakerr-cart'),
             'id'      => $integrationId
         ];
     }

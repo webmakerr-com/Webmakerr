@@ -87,12 +87,12 @@ class LabelController extends Controller
                 ]);
                 if ($isAttached) {
                     return $this->sendSuccess([
-                        'message' => __('Labels Updated Successfully', 'fluent-cart')
+                        'message' => __('Labels Updated Successfully', 'webmakerr-cart')
                     ]);
                 }
 
                 return $this->sendError([
-                    'message' => __('Failed To Update Labels', 'fluent-cart')
+                    'message' => __('Failed To Update Labels', 'webmakerr-cart')
                 ]);
 
             }

@@ -17,24 +17,24 @@ class ProductStock extends Element
 
     public function get_label()
     {
-        return esc_html__('Product stock', 'fluent-cart');
+        return esc_html__('Product stock', 'webmakerr-cart');
     }
 
     public function set_control_groups()
     {
         $this->control_groups['inStock'] = [
-            'title' => esc_html__('In stock', 'fluent-cart'),
+            'title' => esc_html__('In stock', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
 
 //
 //        $this->control_groups['lowStock'] = [
-//            'title' => esc_html__('Low stock', 'fluent-cart') . '/' . esc_html__('On backorder', 'fluent-cart'),
+//            'title' => esc_html__('Low stock', 'webmakerr-cart') . '/' . esc_html__('On backorder', 'webmakerr-cart'),
 //            'tab'   => 'content',
 //        ];
 
         $this->control_groups['outOfStock'] = [
-            'title' => esc_html__('Out of stock', 'fluent-cart'),
+            'title' => esc_html__('Out of stock', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
     }
@@ -48,13 +48,13 @@ class ProductStock extends Element
             'group'          => 'inStock',
             'type'           => 'text',
             'hasDynamicData' => 'text',
-            'placeholder'    => esc_html__('Custom text', 'fluent-cart'),
+            'placeholder'    => esc_html__('Custom text', 'webmakerr-cart'),
         ];
 
         $this->controls['inStockTypography'] = [
             'tab'   => 'content',
             'group' => 'inStock',
-            'label' => esc_html__('Typography', 'fluent-cart'),
+            'label' => esc_html__('Typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -67,7 +67,7 @@ class ProductStock extends Element
         $this->controls['inStockBackgroundColor'] = [
             'tab'   => 'style',
             'group' => 'inStock',
-            'label' => esc_html__('Background color', 'fluent-cart'),
+            'label' => esc_html__('Background color', 'webmakerr-cart'),
             'type'  => 'color',
             'css'   => [
                 [
@@ -84,13 +84,13 @@ class ProductStock extends Element
                 'group'          => 'lowStock',
                 'type'           => 'text',
                 'hasDynamicData' => 'text',
-                'placeholder'    => esc_html__('Custom text', 'fluent-cart'),
+                'placeholder'    => esc_html__('Custom text', 'webmakerr-cart'),
             ];
 
             $this->controls['lowStockTypography'] = [
                 'tab'   => 'content',
                 'group' => 'lowStock',
-                'label' => esc_html__('Typography', 'fluent-cart'),
+                'label' => esc_html__('Typography', 'webmakerr-cart'),
                 'type'  => 'typography',
                 'css'   => [
                     [
@@ -103,7 +103,7 @@ class ProductStock extends Element
             $this->controls['lowStockBackgroundColor'] = [
                 'tab'   => 'style',
                 'group' => 'lowStock',
-                'label' => esc_html__('Background color', 'fluent-cart'),
+                'label' => esc_html__('Background color', 'webmakerr-cart'),
                 'type'  => 'color',
                 'css'   => [
                     [
@@ -120,13 +120,13 @@ class ProductStock extends Element
             'group'          => 'outOfStock',
             'type'           => 'text',
             'hasDynamicData' => 'text',
-            'placeholder'    => esc_html__('Custom text', 'fluent-cart'),
+            'placeholder'    => esc_html__('Custom text', 'webmakerr-cart'),
         ];
 
         $this->controls['outOfStockTypography'] = [
             'tab'   => 'content',
             'group' => 'outOfStock',
-            'label' => esc_html__('Typography', 'fluent-cart'),
+            'label' => esc_html__('Typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -139,7 +139,7 @@ class ProductStock extends Element
         $this->controls['outOfStockBackgroundColor'] = [
             'tab'   => 'style',
             'group' => 'outOfStock',
-            'label' => esc_html__('Background color', 'fluent-cart'),
+            'label' => esc_html__('Background color', 'webmakerr-cart'),
             'type'  => 'color',
             'css'   => [
                 [
@@ -158,8 +158,8 @@ class ProductStock extends Element
         if (empty($product)) {
             return $this->render_element_placeholder(
                 [
-                    'title'       => esc_html__('For better preview select content to show.', 'fluent-cart'),
-                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'fluent-cart'),
+                    'title'       => esc_html__('For better preview select content to show.', 'webmakerr-cart'),
+                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'webmakerr-cart'),
                 ]
             );
         }
@@ -176,7 +176,7 @@ class ProductStock extends Element
         if (!$stock_html) {
             return $this->render_element_placeholder(
                 [
-                    'title' => esc_html__('Stock management not enabled for this product.', 'fluent-cart'),
+                    'title' => esc_html__('Stock management not enabled for this product.', 'webmakerr-cart'),
                 ]
             );
         }

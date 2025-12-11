@@ -32,10 +32,10 @@ class DynamicData
     public function getTagsPairs()
     {
         return [
-            'fct_product_title:linked' => __('Product Title', 'fluent-cart'),
-            'fct_product_image'        => __('Product Image', 'fluent-cart'),
-            'fct_product_price'        => __('Product Price', 'fluent-cart'),
-            'fct_product_view_button'  => __('Product Link Button', 'fluent-cart'),
+            'fct_product_title:linked' => __('Product Title', 'webmakerr-cart'),
+            'fct_product_image'        => __('Product Image', 'webmakerr-cart'),
+            'fct_product_price'        => __('Product Price', 'webmakerr-cart'),
+            'fct_product_view_button'  => __('Product Link Button', 'webmakerr-cart'),
         ];
     }
 

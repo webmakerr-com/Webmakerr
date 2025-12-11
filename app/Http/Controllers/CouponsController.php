@@ -61,10 +61,10 @@ class CouponsController extends Controller
         $createdId = Arr::get($isCreated, 'data.id');
         if ($createdId) {
             \fluent_cart_add_log(
-                __('Coupon Created', 'fluent-cart'),
+                __('Coupon Created', 'webmakerr-cart'),
                 sprintf(
                     /* translators: 1: coupon title, 2: user display name */
-                    __('Coupon "%1$s" created by %2$s', 'fluent-cart'), Arr::get($isCreated, 'data.title', ''), wp_get_current_user()->display_name ?? 'FCT-BOT'),
+                    __('Coupon "%1$s" created by %2$s', 'webmakerr-cart'), Arr::get($isCreated, 'data.title', ''), wp_get_current_user()->display_name ?? 'FCT-BOT'),
                 'success',
                 [
                     'module_name' => 'coupon',
@@ -110,10 +110,10 @@ class CouponsController extends Controller
         $updatedId = Arr::get($isUpdated, 'data.id', $id);
         if ($updatedId) {
             \fluent_cart_add_log(
-                __('Coupon Updated', 'fluent-cart'),
+                __('Coupon Updated', 'webmakerr-cart'),
                 sprintf(
                 /* translators: 1: coupon title, 2: user display name */
-                    __('Coupon "%1$s" updated by %2$s', 'fluent-cart'), Arr::get($isUpdated, 'data.title', ''), wp_get_current_user()->display_name ?? 'FCT-BOT'),
+                    __('Coupon "%1$s" updated by %2$s', 'webmakerr-cart'), Arr::get($isUpdated, 'data.title', ''), wp_get_current_user()->display_name ?? 'FCT-BOT'),
                 'info',
                 [
                     'module_name' => 'coupon',

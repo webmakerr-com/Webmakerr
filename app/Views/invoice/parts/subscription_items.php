@@ -2,7 +2,7 @@
 <?php if ($subscriptions->count() > 0): ?>
 
 <div style="font-size:16px;font-weight:600;color:rgb(44,62,80);margin: 16px 0 0 0;line-height:24px;">
-    <?php echo esc_html__('Subscription Details', 'fluent-cart'); ?>
+    <?php echo esc_html__('Subscription Details', 'webmakerr-cart'); ?>
 </div>
 
 <div style="padding: 6px 0 0 10px; display: flex; flex-direction: column;gap:12px;font-size: 14px;color:#4b5563;">
@@ -34,7 +34,7 @@
                                 <?php
                                 printf(
                                     /* translators: %s is the auto-renewal date and time */
-                                    esc_html__('- Auto renews on %s', 'fluent-cart'),
+                                    esc_html__('- Auto renews on %s', 'webmakerr-cart'),
                                     esc_html(
                                         \Webmakerr\App\Services\DateTime\DateTime::anyTimeToGmt($subs->next_billing_date)->format('M d, Y h:i A')
                                     )

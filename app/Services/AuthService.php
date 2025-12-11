@@ -30,21 +30,21 @@ class AuthService
 
         // Check the username.
         if ('' === $sanitized_user_login) {
-            $errors->add('empty_username', __('<strong>Error</strong>: Please enter a username.', 'fluent-cart'));
+            $errors->add('empty_username', __('<strong>Error</strong>: Please enter a username.', 'webmakerr-cart'));
         } elseif (username_exists($sanitized_user_login)) {
-            $errors->add('username_exists', __('<strong>Error</strong>: This username is already registered. Please choose another one.', 'fluent-cart'));
+            $errors->add('username_exists', __('<strong>Error</strong>: This username is already registered. Please choose another one.', 'webmakerr-cart'));
         }
 
         // Check the email address.
         if ('' === $user_email) {
-            $errors->add('empty_email', __('<strong>Error</strong>: Please type your email address.', 'fluent-cart'));
+            $errors->add('empty_email', __('<strong>Error</strong>: Please type your email address.', 'webmakerr-cart'));
         } elseif (!is_email($user_email)) {
-            $errors->add('invalid_email', __('<strong>Error</strong>: The email address is not correct.', 'fluent-cart'));
+            $errors->add('invalid_email', __('<strong>Error</strong>: The email address is not correct.', 'webmakerr-cart'));
             $user_email = '';
         } elseif (email_exists($user_email)) {
             $errors->add(
                 'email_exists',
-                __('<strong>Error:</strong> This email address is already registered. Please login or try resetting your password.', 'fluent-cart')
+                __('<strong>Error:</strong> This email address is already registered. Please login or try resetting your password.', 'webmakerr-cart')
             );
         }
 
@@ -99,7 +99,7 @@ class AuthService
         $user_id = wp_insert_user($data);
 
         if (!$user_id || is_wp_error($user_id)) {
-            $errors->add('registerfail', __('<strong>Error</strong>: Could not register you. Please contact the site admin!', 'fluent-cart'));
+            $errors->add('registerfail', __('<strong>Error</strong>: Could not register you. Please contact the site admin!', 'webmakerr-cart'));
             return $errors;
         }
 

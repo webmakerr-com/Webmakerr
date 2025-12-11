@@ -775,7 +775,7 @@ class EmogrifierPhp7
             throw new \InvalidArgumentException(
                 sprintf(
                 /* translators: %s is the cache key */
-                    esc_html__('Invalid cache key: %s', 'fluent-cart'),
+                    esc_html__('Invalid cache key: %s', 'webmakerr-cart'),
                     esc_html($key)
                 ),
                 1391822035
@@ -1817,7 +1817,7 @@ class EmogrifierPhp7
             throw new \InvalidArgumentException(
                 sprintf(
                 /* translators: %1$s is the error message, %2$s is the selector, %3$s is the file name, %4$u is the line number */
-                    esc_html__('%1$s in selector >> %2$s << in %3$s on line %4$u', 'fluent-cart'),
+                    esc_html__('%1$s in selector >> %2$s << in %3$s on line %4$u', 'webmakerr-cart'),
                     esc_html($message),
                     esc_html($selector),
                     esc_html($file),
@@ -1832,7 +1832,7 @@ class EmogrifierPhp7
             throw new \RuntimeException(
                 sprintf(
                 /* translators: %1$s is the error message, %2$s is the file name, %3$u is the line number */
-                    esc_html__('%1$s in %2$s on line %3$u', 'fluent-cart'),
+                    esc_html__('%1$s in %2$s on line %3$u', 'webmakerr-cart'),
                     esc_html($message),
                     esc_html($file),
                     absint($line)

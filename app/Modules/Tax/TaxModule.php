@@ -74,7 +74,7 @@ class TaxModule
                     // Build the label with compound indicator if needed
                     $displayLabel = $rateLabel;
                     if ($isCompound) {
-                        $displayLabel .= ' (' . __('Compound', 'fluent-cart') . ')';
+                        $displayLabel .= ' (' . __('Compound', 'webmakerr-cart') . ')';
                     }
                     
                     // Add calculation details if available
@@ -85,9 +85,9 @@ class TaxModule
                     <li>
                         <span class="fct_summary_label">
                             <?php if ($isInclusive) : ?>
-                                <?php echo esc_html($displayLabel . ' (' . __('Included', 'fluent-cart') . ')'); ?>
+                                <?php echo esc_html($displayLabel . ' (' . __('Included', 'webmakerr-cart') . ')'); ?>
                             <?php else : ?>
-                                <?php echo esc_html($displayLabel . ' (' . __('Excluded', 'fluent-cart') . ')'); ?>
+                                <?php echo esc_html($displayLabel . ' (' . __('Excluded', 'webmakerr-cart') . ')'); ?>
                             <?php endif; ?>
                         </span>
                         <span class="fct_summary_value"><?php echo esc_html(Helper::toDecimal($rateTaxAmount)); ?></span>
@@ -100,11 +100,11 @@ class TaxModule
                 <li>
                     <span class="fct_summary_label">
                         <?php if ($isReverseCharge && $taxAmount == 0): ?>
-                            <?php echo esc_html__('Reverse Charge (No Tax)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Reverse Charge (No Tax)', 'webmakerr-cart'); ?>
                         <?php elseif ($isInclusive) : ?>
-                            <?php echo esc_html__('Tax Estimate (Included)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Tax Estimate (Included)', 'webmakerr-cart'); ?>
                         <?php else : ?>
-                            <?php echo esc_html__('Tax Estimate (Excluded)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Tax Estimate (Excluded)', 'webmakerr-cart'); ?>
                         <?php endif; ?>
                     </span>
                     <span class="fct_summary_value"><?php echo esc_html(Helper::toDecimal($taxAmount)); ?></span>
@@ -117,9 +117,9 @@ class TaxModule
                     <!-- shipping tax -->
                     <span class="fct_summary_label">
                         <?php if ($isInclusive) : ?>
-                            <?php echo esc_html__('Shipping Tax (Included)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Shipping Tax (Included)', 'webmakerr-cart'); ?>
                         <?php else : ?>
-                            <?php echo esc_html__('Shipping Tax (Excluded)', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Shipping Tax (Excluded)', 'webmakerr-cart'); ?>
                         <?php endif; ?>
                     </span>
                     <span class="fct_summary_value"><?php echo esc_html(Helper::toDecimal($shippingTax)); ?></span>
@@ -433,7 +433,7 @@ class TaxModule
             <?php if ($isEuVatRcAvailable): ?>
                 <div class="fct_checkout_form_section">
                     <div class="fct_form_section_header">
-                        <h4 class="fct_form_section_header_label"><?php echo esc_html__('EU VAT', 'fluent-cart'); ?></h4>
+                        <h4 class="fct_form_section_header_label"><?php echo esc_html__('EU VAT', 'webmakerr-cart'); ?></h4>
                     </div>
 
                     <div class="fct_form_section_body">
@@ -445,13 +445,13 @@ class TaxModule
                                     type="text"
                                     name="fct_billing_tax_id"
                                     autocomplete="tax-id"
-                                    placeholder="<?php echo esc_html__('Enter Tax ID', 'fluent-cart'); ?>"
+                                    placeholder="<?php echo esc_html__('Enter Tax ID', 'webmakerr-cart'); ?>"
                                     id="fct_billing_tax_id"
                                     value="<?php echo esc_attr($vatNumber) ?? ''; ?>"
                                 />
 
                                 <button data-fluent-cart-checkout-page-tax-apply-btn>
-                                    <?php echo esc_html__('Apply', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Apply', 'webmakerr-cart'); ?>
                                 </button>
                             </div>
                         </div>
@@ -495,12 +495,12 @@ class TaxModule
 
                 <?php if (Arr::get($checkoutData, 'tax_data.tax_total') != 0): ?>
                     <span class="ml-2" style="color: #ffa500;">
-                        <?php echo esc_html__('(Reverse Charge not Applied)', 'fluent-cart'); ?>
+                        <?php echo esc_html__('(Reverse Charge not Applied)', 'webmakerr-cart'); ?>
                     </span>
                 <?php endif; ?>
 
             <button data-fluent-cart-tax-remove-btn>
-                <?php echo esc_html__('Remove', 'fluent-cart'); ?>
+                <?php echo esc_html__('Remove', 'webmakerr-cart'); ?>
             </button>
         </div>
 
@@ -512,11 +512,11 @@ class TaxModule
         nocache_headers();
 
         if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])), 'fluentcart')) {
-            wp_send_json(['message' => __('Security check failed', 'fluent-cart')], 403);
+            wp_send_json(['message' => __('Security check failed', 'webmakerr-cart')], 403);
         }
 
         if (Arr::get($this->taxSettings, 'eu_vat_settings.require_vat_number', 'yes') !== 'yes') {
-            wp_send_json(['message' => __('EU VAT reverse charge is not enabled!', 'fluent-cart')], 422);
+            wp_send_json(['message' => __('EU VAT reverse charge is not enabled!', 'webmakerr-cart')], 422);
         }
 
         $cart = CartHelper::getCart();
@@ -539,7 +539,7 @@ class TaxModule
         }
 
         if (!$countryCode || !$vatNumber) {
-            wp_send_json(['message' => __('Missing required data', 'fluent-cart')], 422);
+            wp_send_json(['message' => __('Missing required data', 'webmakerr-cart')], 422);
         }
 
         // check if the $vatNumber contains any EU country code prefix remove it and get only vat number
@@ -560,7 +560,7 @@ class TaxModule
         }
 
         if (!Arr::get($taxData, 'valid')) {
-            wp_send_json(['message' => __('VAT number is not valid!', 'fluent-cart')], 422);
+            wp_send_json(['message' => __('VAT number is not valid!', 'webmakerr-cart')], 422);
         }
 
         // if there is any excluded category in the cart, then don't apply VAT reverse charge
@@ -604,7 +604,7 @@ class TaxModule
 
         wp_send_json([
             'success'   => true,
-            'message'   => __('VAT has been applied successfully', 'fluent-cart'),
+            'message'   => __('VAT has been applied successfully', 'webmakerr-cart'),
             'tax_data'  => $taxData,
             'fragments' => [
                 [
@@ -626,7 +626,7 @@ class TaxModule
         nocache_headers();
 
         if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])), 'fluentcart')) {
-            wp_send_json(['message' => __('Security check failed', 'fluent-cart')], 403);
+            wp_send_json(['message' => __('Security check failed', 'webmakerr-cart')], 403);
         }
 
         if (isset($_REQUEST['fct_cart_hash'])) {
@@ -660,7 +660,7 @@ class TaxModule
 
         wp_send_json([
             'success'       => true,
-            'message'       => __('VAT has been removed successfully', 'fluent-cart'),
+            'message'       => __('VAT has been removed successfully', 'webmakerr-cart'),
             'checkout_data' => [],
             'fragments'     => [
                 [
@@ -700,7 +700,7 @@ class TaxModule
             $wsdl = "https://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl";
 
             if (!class_exists('\\SoapClient')) {
-                throw new \Exception(__('SOAP is not available on the server.', 'fluent-cart'));
+                throw new \Exception(__('SOAP is not available on the server.', 'webmakerr-cart'));
             }
 
             $client = new \SoapClient($wsdl, [
@@ -719,7 +719,7 @@ class TaxModule
                 throw new \Exception(
                     sprintf(
                         /* translators: %s is the country code */
-                        __('Invalid VAT number for country %s!', 'fluent-cart'),
+                        __('Invalid VAT number for country %s!', 'webmakerr-cart'),
                         $countryCode
                     )
                 );

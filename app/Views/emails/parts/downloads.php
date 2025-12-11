@@ -36,7 +36,7 @@ if (isset($heading)): ?>
                                             <td style="width: 20%;text-align:right;vertical-align: middle;border:none;padding: 1px 0;">
                                                 <a style="display: inline-block;font-size: 14px;color:#000;line-height: 1;"
                                                    href="<?php echo esc_url($download['download_url'] ?? ''); ?>">
-                                                    <?php echo esc_html__('Download','fluent-cart'); ?>
+                                                    <?php echo esc_html__('Download','webmakerr-cart'); ?>
                                                 </a>
                                             </td>
                                         </tr>

@@ -27,7 +27,7 @@
 \Webmakerr\App\App::make('view')->render('emails.parts.items_table', [
     'order'          => $order,
     'formattedItems' => $order->order_items,
-    'heading'        => __('Summary', 'fluent-cart'),
+    'heading'        => __('Summary', 'webmakerr-cart'),
     'is_refund'      => true,
 ]);
 
@@ -35,7 +35,7 @@
 echo '<hr />';
 
 \Webmakerr\App\App::make('view')->render('emails.parts.call_to_action_box', [
-    'content'     => __('View the details of this refund on the order details page.', 'fluent-cart'),
+    'content'     => __('View the details of this refund on the order details page.', 'webmakerr-cart'),
     'link'        => $order->getViewUrl('customer'),
-    'button_text' => __('View Details', 'fluent-cart')
+    'button_text' => __('View Details', 'webmakerr-cart')
 ]);

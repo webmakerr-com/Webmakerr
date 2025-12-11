@@ -21,7 +21,7 @@ class MollieHelper
         if (!$paymentId) {
             return new \WP_Error(
                 'mollie_refund_error',
-                __('Payment ID not found for refund', 'fluent-cart-pro')
+                __('Payment ID not found for refund', 'webmakerr-cart-pro')
             );
         }
 
@@ -40,7 +40,7 @@ class MollieHelper
             return new \WP_Error(
                 'mollie_refund_error',
                 sprintf(
-                    __('Refund amount %s exceeds available amount %s', 'fluent-cart-pro'),
+                    __('Refund amount %s exceeds available amount %s', 'webmakerr-cart-pro'),
                     $refundAmount,
                     $amountAvailable
                 )
@@ -77,7 +77,7 @@ class MollieHelper
         $status = Arr::get($refund, 'status');
         $acceptedStatus = ['queued', 'pending', 'processing', 'refunded'];
         if (!in_array($status, $acceptedStatus)) {
-            return new \WP_Error('refund_failed', __('Refund could not be processed with Mollie. Please check your Mollie account', 'fluent-cart-pro'));
+            return new \WP_Error('refund_failed', __('Refund could not be processed with Mollie. Please check your Mollie account', 'webmakerr-cart-pro'));
         }
 
         return Arr::get($refund, 'id');
@@ -206,11 +206,11 @@ class MollieHelper
         $description = $subscriptionModel->item_name . ' - ' . self::formatAmountForMollie($recurringTotal, $currency) . ' every ' . $intervalMap[$subscriptionModel->billing_interval];
 
         if ($initialTrial > 0 && Arr::get($subscriptionModel->config, 'is_trial_days_simulated', 'no') != 'yes') {
-            $description .= ' ( ' . __(' after', 'fluent-cart-pro') . ' ' . $initialTrial . ' ' . __('day', 'fluent-cart-pro') . ' ' . __('trial', 'fluent-cart-pro') . ' )';
+            $description .= ' ( ' . __(' after', 'webmakerr-cart-pro') . ' ' . $initialTrial . ' ' . __('day', 'webmakerr-cart-pro') . ' ' . __('trial', 'webmakerr-cart-pro') . ' )';
         }
 
         if ($signUpfee > 0) {
-            $description .= ' ' . __(' with', 'fluent-cart-pro') . self::formatAmountForMollie($signUpfee, $currency) . __(' sign-up fee', 'fluent-cart-pro');
+            $description .= ' ' . __(' with', 'webmakerr-cart-pro') . self::formatAmountForMollie($signUpfee, $currency) . __(' sign-up fee', 'webmakerr-cart-pro');
         }
 
         return $description;
@@ -312,4 +312,3 @@ class MollieHelper
         return 'https://www.mollie.com/dashboard/customers/' . $subscriptionModel->vendor_customer_id;
     }
 }
-

@@ -50,7 +50,7 @@ ul.fc_full_listed>li span.fc_list_value {
         }
 
         $widgets['fluent_cart_purchases'] = [
-            'header'    => __('Purchases', 'fluent-cart'),
+            'header'    => __('Purchases', 'webmakerr-cart'),
             'body_html' => $html,
         ];
         return $widgets;

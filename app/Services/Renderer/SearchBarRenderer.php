@@ -51,7 +51,7 @@ class SearchBarRenderer
         
             <div class="fluent-cart-search-bar-app-wrapper-select-container" style="display: inline;">
                 <label for="fluent-cart-search-category" class="sr-only">
-                    <?php esc_html_e('Select Category', 'fluent-cart'); ?>
+                    <?php esc_html_e('Select Category', 'webmakerr-cart'); ?>
                 </label>
 
                 <select
@@ -62,7 +62,7 @@ class SearchBarRenderer
                     aria-describedby="category-help"
                 >
                     <option selected value="">
-                        <?php echo esc_html__('Select Category', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Select Category', 'webmakerr-cart'); ?>
                     </option>
 
                     <?php if (Arr::get($this->config, 'termData', [])): ?>
@@ -76,7 +76,7 @@ class SearchBarRenderer
                 </select>
 
                 <small id="category-help" class="sr-only">
-                    <?php esc_html_e('Filter search results by category', 'fluent-cart'); ?>
+                    <?php esc_html_e('Filter search results by category', 'webmakerr-cart'); ?>
                 </small>
             </div>
 
@@ -88,7 +88,7 @@ class SearchBarRenderer
 
             <div class="fluent-cart-search-bar-app-input-wrap">
                 <label for="fluent-cart-search-input" class="sr-only">
-                    <?php esc_html_e('Search Products', 'fluent-cart'); ?>
+                    <?php esc_html_e('Search Products', 'webmakerr-cart'); ?>
                 </label>
 
                 <div class="fluent-cart-search-bar-app-input-search">
@@ -103,16 +103,16 @@ class SearchBarRenderer
                     class="fluent-cart-search-bar-app-input"
                     data-fluent-cart-search-bar
                     type="text"
-                    placeholder="<?php echo esc_attr(__('Search Products...', 'fluent-cart')) ?>"
+                    placeholder="<?php echo esc_attr(__('Search Products...', 'webmakerr-cart')) ?>"
                     aria-describedby="search-help"
                 />
                 
                 <button
                         class="fluent-cart-search-bar-app-input-clear"
                         data-fluent-cart-search-clear
-                        title="<?php echo esc_attr(__('Clear search', 'fluent-cart')); ?>"
+                        title="<?php echo esc_attr(__('Clear search', 'webmakerr-cart')); ?>"
                         type="button"
-                        aria-label="<?php esc_attr_e('Clear search', 'fluent-cart'); ?>"
+                        aria-label="<?php esc_attr_e('Clear search', 'webmakerr-cart'); ?>"
                         aria-controls="fluent-cart-search-input"
                 >
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18" fill="none">
@@ -122,7 +122,7 @@ class SearchBarRenderer
                 </button>
 
                 <small id="search-help" class="sr-only">
-                    <?php esc_html_e('Type to search products', 'fluent-cart'); ?>
+                    <?php esc_html_e('Type to search products', 'webmakerr-cart'); ?>
                 </small>
             </div>
 
@@ -133,7 +133,7 @@ class SearchBarRenderer
         ?>
 
             <div class="fluent-cart-search-bar-app-wrapper-result-wrap">
-                 <h5 id="search-suggestions-heading"><?php esc_html_e('Suggestions', 'fluent-cart'); ?></h5>
+                 <h5 id="search-suggestions-heading"><?php esc_html_e('Suggestions', 'webmakerr-cart'); ?></h5>
 
                  <ul
                     id="search-suggestions-list"
@@ -158,7 +158,7 @@ class SearchBarRenderer
             $productUrl = Arr::get($product, 'guid', '');
             $aria_label = sprintf(
                     /* translators: 1: Product title */
-                    esc_attr__('View product: %1$s', 'fluent-cart'),
+                    esc_attr__('View product: %1$s', 'webmakerr-cart'),
                     esc_html($productTitle)
             );
             ?>

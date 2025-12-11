@@ -31,7 +31,7 @@ class ShippingZoneController extends Controller
 
         return $this->sendSuccess([
             'shipping_zone' => $shippingZone,
-            'message'       => __('Shipping zone has been created successfully', 'fluent-cart')
+            'message'       => __('Shipping zone has been created successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -55,7 +55,7 @@ class ShippingZoneController extends Controller
 
         return $this->sendSuccess([
             'shipping_zone' => $shippingZone,
-            'message'       => __('Shipping zone has been updated successfully', 'fluent-cart'),
+            'message'       => __('Shipping zone has been updated successfully', 'webmakerr-cart'),
         ]);
     }
 
@@ -70,7 +70,7 @@ class ShippingZoneController extends Controller
         $shippingZone->delete();
 
         return $this->sendSuccess([
-            'message' => __('Shipping zone has been deleted successfully', 'fluent-cart')
+            'message' => __('Shipping zone has been deleted successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -80,7 +80,7 @@ class ShippingZoneController extends Controller
 
         if (!$zones || !is_array($zones)) {
             return $this->sendError([
-                'message' => __('Invalid data provided', 'fluent-cart')
+                'message' => __('Invalid data provided', 'webmakerr-cart')
             ]);
         }
 
@@ -89,7 +89,7 @@ class ShippingZoneController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Shipping zones order has been updated', 'fluent-cart')
+            'message' => __('Shipping zones order has been updated', 'webmakerr-cart')
         ]);
     }
 

@@ -48,7 +48,7 @@ class DashboardWidget extends BaseWidget
                 
         return [
             [
-                'title'         => __('Total Products', 'fluent-cart'),
+                'title'         => __('Total Products', 'webmakerr-cart'),
                 'current_count' => $counts->total_products,
                 'icon'          => 'Frame',
                 'url'           => URL::getDashboardUrl('products', [
@@ -56,20 +56,20 @@ class DashboardWidget extends BaseWidget
                 ]),
             ],
             [
-                'title'         => __('Orders', 'fluent-cart'),
+                'title'         => __('Orders', 'webmakerr-cart'),
                 'current_count' => $sales->orders,
                 'icon'          => 'AllOrdersIcon',
                 'url'           => URL::getDashboardUrl('orders'),
             ],
             [
-                'title'         => __('Revenue', 'fluent-cart'),
+                'title'         => __('Revenue', 'webmakerr-cart'),
                 'current_count' => $sales->net_revenue,
                 'icon'          => 'Currency',
                 'url'           => URL::getDashboardUrl('reports/revenue'),
                 'has_currency'  => true,
             ],
             [
-                'title'         => __('Refund', 'fluent-cart'),
+                'title'         => __('Refund', 'webmakerr-cart'),
                 'current_count' => $sales->total_refunds,
                 'icon'          => 'Failed',
                 'url'           => URL::getDashboardUrl('reports/refunds'),

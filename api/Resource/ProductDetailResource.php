@@ -53,12 +53,12 @@ class ProductDetailResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Product has been created successfully', 'fluent-cart')
+                __('Product has been created successfully', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Product creation failed!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Product creation failed!', 'webmakerr-cart')]
         ]);
     }
 
@@ -86,7 +86,7 @@ class ProductDetailResource extends BaseResourceApi
 
         if (!$id) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Please edit a valid product!', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Please edit a valid product!', 'webmakerr-cart')]
             ]);
         }
 
@@ -94,7 +94,7 @@ class ProductDetailResource extends BaseResourceApi
 
         if (!$detail) {
             return static::makeErrorResponse([
-                ['code' => 404, 'message' => __('Product not found, please reload the page and try again!', 'fluent-cart')]
+                ['code' => 404, 'message' => __('Product not found, please reload the page and try again!', 'webmakerr-cart')]
             ]);
         }
 
@@ -142,11 +142,11 @@ class ProductDetailResource extends BaseResourceApi
 
 
         if ($isUpdated) {
-            return static::makeSuccessResponse($isUpdated, __('Product pricing has been changed!', 'fluent-cart'));
+            return static::makeSuccessResponse($isUpdated, __('Product pricing has been changed!', 'webmakerr-cart'));
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Product update failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Product update failed.', 'webmakerr-cart')]
         ]);
     }
 

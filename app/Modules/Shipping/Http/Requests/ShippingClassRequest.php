@@ -34,9 +34,9 @@ class ShippingClassRequest extends RequestGuard
     public function messages()
     {
         return [
-            'name.required' => esc_html__('Shipping class name is required.', 'fluent-cart'),
-            'cost.required' => esc_html__('Shipping class cost is required.', 'fluent-cart'),
-            'type.required' => esc_html__('Shipping class type is required.', 'fluent-cart')
+            'name.required' => esc_html__('Shipping class name is required.', 'webmakerr-cart'),
+            'cost.required' => esc_html__('Shipping class cost is required.', 'webmakerr-cart'),
+            'type.required' => esc_html__('Shipping class type is required.', 'webmakerr-cart')
         ];
     }
 

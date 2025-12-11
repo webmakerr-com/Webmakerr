@@ -23,7 +23,7 @@ class RoleRequest extends RequestGuard
                     $userId = absint($value);
                     $user = User::query()->find($userId);
                     if (empty($user)) {
-                        return __('User not found.', 'fluent-cart-pro');
+                        return __('User not found.', 'webmakerr-cart-pro');
                     }
                     return null;
                 }
@@ -35,7 +35,7 @@ class RoleRequest extends RequestGuard
                 function ($attribute, $value) {
                     $validRoles = array_keys(PermissionManager::getAllRoles());
                     if (!in_array($value, $validRoles)) {
-                        return (__('Invalid role.', 'fluent-cart-pro'));
+                        return (__('Invalid role.', 'webmakerr-cart-pro'));
                     }
                     return null;
                 }
@@ -49,8 +49,8 @@ class RoleRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'user_id.required'  => esc_html__('Title is required.', 'fluent-cart-pro'),
-            'role_key.required' => esc_html__('Key is required.', 'fluent-cart-pro'),
+            'user_id.required'  => esc_html__('Title is required.', 'webmakerr-cart-pro'),
+            'role_key.required' => esc_html__('Key is required.', 'webmakerr-cart-pro'),
         ];
     }
 

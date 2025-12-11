@@ -33,7 +33,7 @@ class CartRenderer
 
         <section class="fct-cart-page" aria-labelledby="fct-cart-page-title" role="region">
             <h2 id="fct-cart-page-title" class="screen-reader-text">
-                <?php esc_html_e('Your Shopping Cart', 'fluent-cart'); ?>
+                <?php esc_html_e('Your Shopping Cart', 'webmakerr-cart'); ?>
             </h2>
 
             <?php $this->renderItems(); ?>
@@ -138,7 +138,7 @@ class CartRenderer
     public function renderImage()
     {
         $image = Arr::get($this->cartItem, 'featured_media');
-        $title = Arr::get($this->cartItem, 'title', __('Product Image', 'fluent-cart'));
+        $title = Arr::get($this->cartItem, 'title', __('Product Image', 'webmakerr-cart'));
 
         if (!$image) {
             $image = Vite::getAssetUrl('images/placeholder.svg');
@@ -165,7 +165,7 @@ class CartRenderer
         ?>
 
         <div class="fct-cart-item-details" role="group"
-             aria-label="<?php esc_attr_e('Product Details', 'fluent-cart'); ?>">
+             aria-label="<?php esc_attr_e('Product Details', 'webmakerr-cart'); ?>">
             <?php $this->renderTitles(); ?>
             <?php $this->renderItemPrice(); ?>
             <?php $this->renderQuantity(); ?>
@@ -181,7 +181,7 @@ class CartRenderer
 
         $aria_label = sprintf(
         /* translators: 1: Post or product title */
-                esc_attr__('View %1$s', 'fluent-cart'),
+                esc_attr__('View %1$s', 'webmakerr-cart'),
                 esc_attr($postTitle)
         );
 
@@ -212,7 +212,7 @@ class CartRenderer
 
         ?>
         <div class="fct-cart-item-price">
-            <span><?php esc_html_e('Price:', 'fluent-cart'); ?></span>
+            <span><?php esc_html_e('Price:', 'webmakerr-cart'); ?></span>
             <span data-fluent-cart-cart-list-item-price aria-live="polite">
                 <?php echo esc_html($price); ?>
             </span>
@@ -241,15 +241,15 @@ class CartRenderer
         <div class="fct-cart-item-quantity"
              data-fluent-cart-cart-list-item-quantity-wrapper
              role="group"
-             aria-label="<?php esc_attr_e('Change Quantity', 'fluent-cart'); ?>"
+             aria-label="<?php esc_attr_e('Change Quantity', 'webmakerr-cart'); ?>"
         >
 
             <button
                     class="qty-btn decrease-btn"
                     data-item-id="<?php echo esc_attr($this->cartItem['object_id']); ?>"
                     data-fluent-cart-cart-list-item-decrease-button
-                    title="<?php esc_attr_e('Decrease Quantity', 'fluent-cart'); ?>"
-                    aria-label="<?php esc_attr_e('Decrease Quantity', 'fluent-cart'); ?>"
+                    title="<?php esc_attr_e('Decrease Quantity', 'webmakerr-cart'); ?>"
+                    aria-label="<?php esc_attr_e('Decrease Quantity', 'webmakerr-cart'); ?>"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2" fill="none">
                     <path d="M11.3333 1L0.666662 1" stroke="currentColor" stroke-linecap="round"
@@ -263,7 +263,7 @@ class CartRenderer
                     data-item-id="<?php echo esc_attr($this->cartItem['object_id']); ?>"
                     data-fluent-cart-cart-list-item-quantity-input
                     value="<?php echo esc_attr($quantity); ?>"
-                    aria-label="<?php esc_attr_e('Product Quantity', 'fluent-cart'); ?>"
+                    aria-label="<?php esc_attr_e('Product Quantity', 'webmakerr-cart'); ?>"
                     aria-live="polite"
             />
 
@@ -271,8 +271,8 @@ class CartRenderer
                     class="qty-btn increase-btn"
                     data-fluent-cart-cart-list-item-increase-button
                     data-item-id="<?php echo esc_attr($this->cartItem['object_id']); ?>"
-                    title="<?php esc_attr_e('Increase Quantity', 'fluent-cart'); ?>"
-                    aria-label="<?php esc_attr_e('Increase Quantity', 'fluent-cart'); ?>"
+                    title="<?php esc_attr_e('Increase Quantity', 'webmakerr-cart'); ?>"
+                    aria-label="<?php esc_attr_e('Increase Quantity', 'webmakerr-cart'); ?>"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path d="M6 0.666748L6 11.3334M11.3333 6.00008L0.666672 6.00008" stroke="currentColor"
@@ -289,7 +289,7 @@ class CartRenderer
     {
         ?>
         <div class="fct-cart-item-summary" role="group"
-             aria-label="<?php esc_attr_e('Cart Item Summary', 'fluent-cart'); ?>">
+             aria-label="<?php esc_attr_e('Cart Item Summary', 'webmakerr-cart'); ?>">
             <?php $this->renderItemTotal(); ?>
             <?php $this->renderRemove(); ?>
         </div>
@@ -317,7 +317,7 @@ class CartRenderer
         $totalPrice = Helper::toDecimal($totalPrice);
         $aria_label = sprintf(
         /* translators: 1: Total price */
-                __('Total price for this item: %1$s', 'fluent-cart'),
+                __('Total price for this item: %1$s', 'webmakerr-cart'),
                 $totalPrice
         );
 
@@ -341,7 +341,7 @@ class CartRenderer
         $subtotal = CartCheckoutHelper::make()->getItemsAmountSubtotal(true, true);
         $aria_label = sprintf(
         /* translators: 1: Total price */
-                __('Total cart price: %1$s', 'fluent-cart'),
+                __('Total cart price: %1$s', 'webmakerr-cart'),
                 esc_attr($subtotal)
         );
         ?>
@@ -350,9 +350,9 @@ class CartRenderer
                 data-fluent-cart-cart-total-wrapper
                 class="fct-cart-total-wrapper"
                 role="region"
-                aria-label="<?php esc_attr_e('Cart Total', 'fluent-cart'); ?>"
+                aria-label="<?php esc_attr_e('Cart Total', 'webmakerr-cart'); ?>"
         >
-            <span><?php echo esc_html__('Total', 'fluent-cart'); ?>:</span>
+            <span><?php echo esc_html__('Total', 'webmakerr-cart'); ?>:</span>
             <span
                     data-fluent-cart-cart-total-price
                     aria-live="polite"
@@ -376,8 +376,8 @@ class CartRenderer
                     class="fct-cart-item-delete-button"
                     data-fluent-cart-cart-list-item-delete-button
                     data-item-id="<?php echo esc_attr($this->cartItem['object_id']); ?>"
-                    aria-label="<?php esc_attr_e('Remove this item from cart', 'fluent-cart'); ?>"
-                    title="<?php esc_attr_e('Remove From Cart', 'fluent-cart'); ?>"
+                    aria-label="<?php esc_attr_e('Remove this item from cart', 'webmakerr-cart'); ?>"
+                    title="<?php esc_attr_e('Remove From Cart', 'webmakerr-cart'); ?>"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
                     <path d="M12 3.6665L11.5868 10.3499C11.4813 12.0575 11.4285 12.9113 11.0005 13.5251C10.7889 13.8286 10.5164 14.0847 10.2005 14.2772C9.56141 14.6665 8.70599 14.6665 6.99516 14.6665C5.28208 14.6665 4.42554 14.6665 3.78604 14.2765C3.46987 14.0836 3.19733 13.827 2.98579 13.5231C2.55792 12.9082 2.5063 12.0532 2.40307 10.3433L2 3.6665"
@@ -400,8 +400,8 @@ class CartRenderer
         <a class="checkout-button"
            href="<?php echo esc_attr($this->storeSettings->getCheckoutPage()); ?>"
            role="button"
-           aria-label="<?php esc_attr_e('Go to checkout page', 'fluent-cart'); ?>">
-            <?php esc_html_e('Go to Checkout', 'fluent-cart'); ?>
+           aria-label="<?php esc_attr_e('Go to checkout page', 'webmakerr-cart'); ?>">
+            <?php esc_html_e('Go to Checkout', 'webmakerr-cart'); ?>
         </a>
 
         <?php
@@ -416,8 +416,8 @@ class CartRenderer
         <a class="view-cart-button"
            href="<?php echo esc_attr($this->storeSettings->getCartPage()); ?>"
            role="button"
-           aria-label="<?php esc_attr_e('View your shopping cart', 'fluent-cart'); ?>">
-            <?php esc_html_e('View Cart', 'fluent-cart'); ?>
+           aria-label="<?php esc_attr_e('View your shopping cart', 'webmakerr-cart'); ?>">
+            <?php esc_html_e('View Cart', 'webmakerr-cart'); ?>
         </a>
 
         <?php
@@ -512,7 +512,7 @@ class CartRenderer
 
     public function renderEmpty($emptyMessage = null, $continueShoppingUrl = null, $continueShoppingLabel = null, $continueShoppingAriaLabel = null)
     {
-        $emptyMessage ??= __('Your cart is empty.', 'fluent-cart');
+        $emptyMessage ??= __('Your cart is empty.', 'webmakerr-cart');
         ?>
 
         <div
@@ -543,10 +543,10 @@ class CartRenderer
             $continueShoppingAriaLabel = null
     )
     {
-        $emptyMessage ??= __('Your cart is empty.', 'fluent-cart');
+        $emptyMessage ??= __('Your cart is empty.', 'webmakerr-cart');
         $continueShoppingUrl ??= $this->storeSettings->getShopPage();
-        $continueShoppingLabel ??= __('Continue Shopping', 'fluent-cart');
-        $continueShoppingAriaLabel ??= __('Browse products and continue shopping', 'fluent-cart');
+        $continueShoppingLabel ??= __('Continue Shopping', 'webmakerr-cart');
+        $continueShoppingAriaLabel ??= __('Browse products and continue shopping', 'webmakerr-cart');
         ?>
         <div class="fluent-cart-cart-empty-content-text">
             <?php echo esc_html($emptyMessage); ?>

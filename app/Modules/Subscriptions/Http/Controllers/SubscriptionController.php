@@ -36,8 +36,8 @@ class SubscriptionController extends Controller
 
         if (is_wp_error($subscription) || empty($subscription)) {
             return $this->entityNotFoundError(
-                __('Subscription not found', 'fluent-cart'),
-                __('Back to Subscription list', 'fluent-cart'),
+                __('Subscription not found', 'webmakerr-cart'),
+                __('Back to Subscription list', 'webmakerr-cart'),
                 '/subscriptions'
             );
         }
@@ -62,7 +62,7 @@ class SubscriptionController extends Controller
     public function validateSubscription($subscription)
     {
         if (!$subscription) {
-            $this->sendError(['message' => __('Subscription not found!', 'fluent-cart')], 404);
+            $this->sendError(['message' => __('Subscription not found!', 'webmakerr-cart')], 404);
         }
     }
 
@@ -72,7 +72,7 @@ class SubscriptionController extends Controller
 
         if (empty($request->getSafe('cancel_reason', 'sanitize_text_field'))) {
             return $this->sendError([
-                'message' => __('Please select cancel reason!', 'fluent-cart')
+                'message' => __('Please select cancel reason!', 'webmakerr-cart')
             ]);
         }
 
@@ -95,7 +95,7 @@ class SubscriptionController extends Controller
         }
 
         return $this->sendSuccess([
-            'message'      => __('Subscription has been cancelled successfully!', 'fluent-cart'),
+            'message'      => __('Subscription has been cancelled successfully!', 'webmakerr-cart'),
             'subscription' => Subscription::query()->find($subscription->id)
         ]);
     }
@@ -103,7 +103,7 @@ class SubscriptionController extends Controller
     public function reactivateSubscription(Request $request, Order $order, Subscription $subscription)
     {
         return $this->sendError([
-            'message' => __('Not available yet', 'fluent-cart')
+            'message' => __('Not available yet', 'webmakerr-cart')
         ]);
     }
 
@@ -118,7 +118,7 @@ class SubscriptionController extends Controller
         }
 
         return $this->sendSuccess([
-            'message'      => __('Subscription fetched successfully from remote payment gateway!', 'fluent-cart'),
+            'message'      => __('Subscription fetched successfully from remote payment gateway!', 'webmakerr-cart'),
             'subscription' => $result
         ]);
     }
@@ -126,7 +126,7 @@ class SubscriptionController extends Controller
     public function pauseSubscription(Request $request, Order $order, Subscription $subscription)
     {
         return $this->sendError([
-            'message' => __('Not available yet', 'fluent-cart')
+            'message' => __('Not available yet', 'webmakerr-cart')
         ]);
 
     }
@@ -134,7 +134,7 @@ class SubscriptionController extends Controller
     public function resumeSubscription(Request $request, Order $order, Subscription $subscription)
     {
         return $this->sendError([
-            'message' => __('Not available yet', 'fluent-cart')
+            'message' => __('Not available yet', 'webmakerr-cart')
         ]);
     }
 }

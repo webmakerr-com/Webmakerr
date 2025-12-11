@@ -61,7 +61,7 @@ class MollieProcessor
             $description .= ' + Shipping';
             $lines[] = [
                 'type' => 'shipping_fee',
-                'description' => __('Shipping', 'fluent-cart-pro'),
+                'description' => __('Shipping', 'webmakerr-cart-pro'),
                 'quantity' => 1,
                 'unitPrice' => [
                     'currency' => $transaction->currency,
@@ -80,7 +80,7 @@ class MollieProcessor
             $description .= ' + Tax';
             $lines[] = [
                 'type' => 'surcharge',
-                'description' => __('Total Tax', 'fluent-cart-pro'),
+                'description' => __('Total Tax', 'webmakerr-cart-pro'),
                 'quantity' => 1,
                 'unitPrice' => [
                     'currency' => $transaction->currency,
@@ -181,7 +181,7 @@ class MollieProcessor
         if (!$checkoutUrl) {
             return new \WP_Error(
                 'mollie_checkout_error',
-                __('Unable to get checkout URL from Mollie', 'fluent-cart-pro')
+                __('Unable to get checkout URL from Mollie', 'webmakerr-cart-pro')
             );
         }
 
@@ -189,7 +189,7 @@ class MollieProcessor
             'status'       => 'success',
             'nextAction'   => 'mollie',
             'actionName'   => 'redirect',
-            'message'      => __('Redirecting to Mollie payment page...', 'fluent-cart-pro'),
+            'message'      => __('Redirecting to Mollie payment page...', 'webmakerr-cart-pro'),
             'response'     => $payment,
             'payment_args' => array_merge($paymentArgs, [
                 'checkout_url' => $checkoutUrl,
@@ -308,7 +308,7 @@ class MollieProcessor
             'status' => 'success',
             'nextAction' => 'mollie',
             'actionName' => 'redirect',
-            'message' => __('Redirecting to Mollie payment page...', 'fluent-cart-pro'),
+            'message' => __('Redirecting to Mollie payment page...', 'webmakerr-cart-pro'),
             'response' => $payment,
             'payment_args' => array_merge($paymentArgs, [
                 'checkout_url' => Arr::get($payment, '_links.checkout.href'),
@@ -361,4 +361,3 @@ class MollieProcessor
         return $response;
     }
 }
-

@@ -35,7 +35,7 @@ class ProductModalTemplate
      */
     public function getTitle()
     {
-        return _x('Single Product Modal', 'Template name', 'fluent-cart');
+        return _x('Single Product Modal', 'Template name', 'webmakerr-cart');
     }
 
     /**
@@ -45,7 +45,7 @@ class ProductModalTemplate
      */
     public function getDescription()
     {
-        return __('Template for Single Product Modal.', 'fluent-cart');
+        return __('Template for Single Product Modal.', 'webmakerr-cart');
     }
 
 

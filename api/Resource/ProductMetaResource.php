@@ -75,12 +75,12 @@ class ProductMetaResource extends BaseResourceApi
         if($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Thumbnail set successfully', 'fluent-cart')
+                __('Thumbnail set successfully', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Failed to set thumbnail!', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Failed to set thumbnail!', 'webmakerr-cart') ]
         ]);
     }
 
@@ -111,12 +111,12 @@ class ProductMetaResource extends BaseResourceApi
         if($isUpdated) {
             return static::makeSuccessResponse(
                 $isUpdated,
-                __('Thumbnail set successfully!', 'fluent-cart')
+                __('Thumbnail set successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Failed to set thumbnail!', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Failed to set thumbnail!', 'webmakerr-cart') ]
         ]);
     }
 
@@ -138,12 +138,12 @@ class ProductMetaResource extends BaseResourceApi
             $productMeta->delete();
             return static::makeSuccessResponse(
                 '',
-                __('Thumbnail has been deleted successfully!', 'fluent-cart')
+                __('Thumbnail has been deleted successfully!', 'webmakerr-cart')
             );
         }
         
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Failed to delete!', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Failed to delete!', 'webmakerr-cart') ]
         ]);
     }
 

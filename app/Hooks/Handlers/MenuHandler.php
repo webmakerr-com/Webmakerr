@@ -84,11 +84,11 @@ class MenuHandler
 
 
         $targetKeys = [
-            'checkout_page_id'         => __('Checkout Page', 'fluent-cart'),
-            'cart_page_id'             => __('Cart Page', 'fluent-cart'),
-            'receipt_page_id'          => __('Receipt Page', 'fluent-cart'),
-            'shop_page_id'             => __('Shop Page', 'fluent-cart'),
-            'customer_profile_page_id' => __('Customer Profile Page', 'fluent-cart'),
+            'checkout_page_id'         => __('Checkout Page', 'webmakerr-cart'),
+            'cart_page_id'             => __('Cart Page', 'webmakerr-cart'),
+            'receipt_page_id'          => __('Receipt Page', 'webmakerr-cart'),
+            'shop_page_id'             => __('Shop Page', 'webmakerr-cart'),
+            'customer_profile_page_id' => __('Customer Profile Page', 'webmakerr-cart'),
         ];
 
         $pagesConfig = (new StoreSettings())->getPagesSettings();
@@ -184,7 +184,7 @@ class MenuHandler
         );
 
         $submenu['webmakerr']['dashboard'] = array(
-            __('Dashboard', 'fluent-cart'),
+            __('Dashboard', 'webmakerr-cart'),
             $capability,
             'admin.php?page=webmakerr#/',
             '',
@@ -193,7 +193,7 @@ class MenuHandler
 
         if (PermissionManager::hasPermission(["orders/view"])) {
             $submenu['webmakerr']['orders'] = array(
-                __('Orders', 'fluent-cart'),
+                __('Orders', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/orders',
                 '',
@@ -204,7 +204,7 @@ class MenuHandler
 
         if (PermissionManager::hasPermission(["customers/view", "customers/manage"])) {
             $submenu['webmakerr']['customers'] = array(
-                __('Customers', 'fluent-cart'),
+                __('Customers', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/customers',
                 '',
@@ -214,7 +214,7 @@ class MenuHandler
 
         if (PermissionManager::hasPermission(['products/view'])) {
             $submenu['webmakerr']['products'] = array(
-                __('Products', 'fluent-cart'),
+                __('Products', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/products',
                 '',
@@ -224,7 +224,7 @@ class MenuHandler
 
         if (PermissionManager::userCan('is_super_admin')) {
             $submenu['webmakerr']['integrations'] = array(
-                __('Integrations', 'fluent-cart'),
+                __('Integrations', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/integrations',
                 '',
@@ -234,7 +234,7 @@ class MenuHandler
 
         if (PermissionManager::hasPermission(['reports/view'])) {
             $submenu['webmakerr']['reports'] = array(
-                __('Reports', 'fluent-cart'),
+                __('Reports', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/reports/overview',
                 '',
@@ -244,7 +244,7 @@ class MenuHandler
 
         if (PermissionManager::hasPermission(["store/settings", 'store/sensitive'])) {
             $submenu['webmakerr']['settings'] = array(
-                __('Settings', 'fluent-cart'),
+                __('Settings', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/settings/store-settings/',
                 '',
@@ -254,7 +254,7 @@ class MenuHandler
 
         if (PermissionManager::hasPermission(['coupons/manage', 'coupons/view'])) {
             $submenu['webmakerr']['coupons'] = array(
-                __('Coupons', 'fluent-cart'),
+                __('Coupons', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/coupons',
                 '',
@@ -264,7 +264,7 @@ class MenuHandler
 
         if (PermissionManager::userCan('is_super_admin')) {
             $submenu['webmakerr']['logs'] = array(
-                __('Logs', 'fluent-cart'),
+                __('Logs', 'webmakerr-cart'),
                 $capability,
                 'admin.php?page=webmakerr#/logs',
                 '',
@@ -393,7 +393,7 @@ class MenuHandler
         } else {
             $filterOptions['license_filter_options'] = [
                 'locked'  => true,
-                'message' => ProFeatureManager::instance()->getLockedMessage(__('License filters', 'fluent-cart')),
+                'message' => ProFeatureManager::instance()->getLockedMessage(__('License filters', 'webmakerr-cart')),
             ];
         }
         $filterOptions = webmakerr_apply_filters('webmakerr_cart/admin_filter_options', $filterOptions, []);
@@ -542,4 +542,3 @@ class MenuHandler
     }
 
 }
-

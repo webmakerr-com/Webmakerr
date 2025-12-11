@@ -82,7 +82,7 @@ class WebRoutes
                     $cart->get_error_message()
                 );
                 $view = ob_get_clean();
-                FrontendView::make(__('Product Not Found', 'fluent-cart'), $view);
+                FrontendView::make(__('Product Not Found', 'webmakerr-cart'), $view);
                 die();
             }
 
@@ -170,7 +170,7 @@ class WebRoutes
                 ]);
 
                 FrontendView::make(
-                    __('Order Receipt', 'fluent-cart'),
+                    __('Order Receipt', 'webmakerr-cart'),
                     $view,
                     [
                         'styles'         => [

@@ -103,7 +103,7 @@ class InnerBlocks
     {
         return [
                 [
-                        'title'     => __('Product Title', 'fluent-cart'),
+                        'title'     => __('Product Title', 'webmakerr-cart'),
                         'slug'      => 'fluent-cart/shopapp-product-title',
                         'callback'  => [$this, 'renderTitle'],
                         'component' => 'ProductTitleBlock',
@@ -117,7 +117,7 @@ class InnerBlocks
                 ],
 
                 [
-                    'title'     => __('Product Excerpt', 'fluent-cart'),
+                    'title'     => __('Product Excerpt', 'webmakerr-cart'),
                     'slug'      => 'fluent-cart/shopapp-product-excerpt',
                     'callback'  => [$this, 'renderExcerpt'],
                     'component' => 'ProductExcerptBlock',
@@ -130,7 +130,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'     => __('Product Price', 'fluent-cart'),
+                        'title'     => __('Product Price', 'webmakerr-cart'),
                         'slug'      => 'fluent-cart/shopapp-product-price',
                         'callback'  => [$this, 'renderPrice'],
                         'parent'    => [
@@ -148,7 +148,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'     => __('Product Image', 'fluent-cart'),
+                        'title'     => __('Product Image', 'webmakerr-cart'),
                         'slug'      => 'fluent-cart/shopapp-product-image',
                         'parent'    => [
                                 'fluent-cart/shopapp-product-loop',
@@ -159,7 +159,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'     => __('Product Button', 'fluent-cart'),
+                        'title'     => __('Product Button', 'webmakerr-cart'),
                         'slug'      => 'fluent-cart/shopapp-product-buttons',
                         'callback'  => [$this, 'renderButtons'],
                         'component' => 'ProductButtonBlock',
@@ -194,7 +194,7 @@ class InnerBlocks
 
             //Product container -> filter, loop
                 [
-                        'title'        => __('Product Container', 'fluent-cart'),
+                        'title'        => __('Product Container', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-container',
                         'callback'     => [$this, 'renderProductContainer'],
                         'component'    => 'ProductContainerBlock',
@@ -227,7 +227,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'        => __('Product Filter', 'fluent-cart'),
+                        'title'        => __('Product Filter', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-filter',
                         'callback'     => [$this, 'renderFilter'],
                         'component'    => 'ProductFilterBlock',
@@ -249,7 +249,7 @@ class InnerBlocks
                         ],
                 ],
                 [
-                        'title'        => __('Product View Switcher', 'fluent-cart'),
+                        'title'        => __('Product View Switcher', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-view-switcher',
                         'callback'     => [$this, 'renderFilterViewSwitcher'],
                         'component'    => 'ProductFilterViewSwitcherBlock',
@@ -263,7 +263,7 @@ class InnerBlocks
                         ]
                 ],
                 [
-                    'title'        => __('Filter Sort By', 'fluent-cart'),
+                    'title'        => __('Filter Sort By', 'webmakerr-cart'),
                     'slug'         => 'fluent-cart/shopapp-product-filter-sort-by',
                     'callback'     => [$this, 'renderFilterSortBy'],
                     'component'    => 'ProductFilterSortByBlock',
@@ -277,7 +277,7 @@ class InnerBlocks
                     ]
                 ],
                 [
-                    'title'        => __('Product Action Container', 'fluent-cart'),
+                    'title'        => __('Product Action Container', 'webmakerr-cart'),
                     'slug'         => 'fluent-cart/shopapp-product-action-container',
                     'callback'     => [$this, 'renderProductActionContainer'],
                     'component'    => 'ProductActionContainerBlock',
@@ -290,7 +290,7 @@ class InnerBlocks
                     ]
                 ],
                 [
-                        'title'        => __('Product No Result', 'fluent-cart'),
+                        'title'        => __('Product No Result', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-no-result',
                         'callback'     => [$this, 'renderNoResultBlock'],
                         'component'    => 'ProductNoResultBlock',
@@ -318,7 +318,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'        => __('Product Filter Search Box', 'fluent-cart'),
+                        'title'        => __('Product Filter Search Box', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-filter-search-box',
                         'callback'     => [$this, 'renderFilterSearchBox'],
                         'component'    => 'ProductFilterSearchBlock',
@@ -341,7 +341,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'     => __('Product Filter Filters', 'fluent-cart'),
+                        'title'     => __('Product Filter Filters', 'webmakerr-cart'),
                         'slug'      => 'fluent-cart/shopapp-product-filter-filters',
                         'callback'  => [$this, 'renderFilterFilters'],
                         'component' => 'ProductFilterFilters',
@@ -349,7 +349,7 @@ class InnerBlocks
                         'parent'    => ['fluent-cart/shopapp-product-filter']
                 ],
                 [
-                        'title'        => __('Product Filter Button', 'fluent-cart'),
+                        'title'        => __('Product Filter Button', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-filter-button',
                         'callback'     => [$this, 'renderFilterButton'],
                         'component'    => 'ProductFilterButtonBlock',
@@ -360,7 +360,7 @@ class InnerBlocks
                         ]
                 ],
                 [
-                        'title'     => __('Product Filter Apply Button', 'fluent-cart'),
+                        'title'     => __('Product Filter Apply Button', 'webmakerr-cart'),
                         'slug'      => 'fluent-cart/shopapp-product-filter-apply-button',
                         'callback'  => [$this, 'renderFilterApplyButton'],
                         'component' => 'ProductFilterApplyButtonBlock',
@@ -369,7 +369,7 @@ class InnerBlocks
                         'supports'  => static::textBlockSupport()
                 ],
                 [
-                        'title'     => __('Product Filter Reset Button', 'fluent-cart'),
+                        'title'     => __('Product Filter Reset Button', 'webmakerr-cart'),
                         'slug'      => 'fluent-cart/shopapp-product-filter-reset-button',
                         'callback'  => [$this, 'renderFilterResetButton'],
                         'component' => 'ProductFilterResetButtonBlock',
@@ -379,7 +379,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'        => __('Product Loop', 'fluent-cart'),
+                        'title'        => __('Product Loop', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-loop',
                         'callback'     => [$this, 'renderProductLoop'],
                         'component'    => 'ProductLoopBlock',
@@ -412,7 +412,7 @@ class InnerBlocks
                 ],
 
                 [
-                        'title'        => __('Product Paginator', 'fluent-cart'),
+                        'title'        => __('Product Paginator', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/product-paginator',
                         'callback'     => [$this, 'renderProductPaginator'],
                         'component'    => 'InnerBlocks',
@@ -424,7 +424,7 @@ class InnerBlocks
                         ]
                 ],
                 [
-                        'title'        => __('Product Paginator Info', 'fluent-cart'),
+                        'title'        => __('Product Paginator Info', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/product-paginator-info',
                         'callback'     => [$this, 'renderProductPaginatorInfo'],
                         'parent'       => [
@@ -449,7 +449,7 @@ class InnerBlocks
                         ],
                 ],
                 [
-                        'title'        => __('Product Paginator Number', 'fluent-cart'),
+                        'title'        => __('Product Paginator Number', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/product-paginator-number',
                         'callback'     => [$this, 'renderProductPaginatorNumber'],
                         'parent'       => [
@@ -474,7 +474,7 @@ class InnerBlocks
                         ],
                 ],
                 [
-                        'title'        => __('Product Loader', 'fluent-cart'),
+                        'title'        => __('Product Loader', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-loader',
                         'callback'     => [$this, 'renderProductLoaderBlock'],
                         'component'    => 'ProductLoaderBlock',
@@ -487,7 +487,7 @@ class InnerBlocks
                         ],
                 ],
                 [
-                        'title'        => __('Product Spinner', 'fluent-cart'),
+                        'title'        => __('Product Spinner', 'webmakerr-cart'),
                         'slug'         => 'fluent-cart/shopapp-product-spinner',
                         'callback'     => [$this, 'renderProductSpinnerBlock'],
                         'component'    => 'ProductSpinnerBlock',
@@ -654,7 +654,7 @@ class InnerBlocks
 
         return sprintf('<button %s>%s</button>',
                 $wrapper_attribute,
-                esc_html__('Apply Filter', 'fluent-cart')
+                esc_html__('Apply Filter', 'webmakerr-cart')
         );
     }
 
@@ -990,9 +990,9 @@ class InnerBlocks
         )->with([
                 'fluentcart_single_product_vars' => [
                         'trans'                      => TransStrings::singleProductPageString(),
-                        'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
-                        // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
-                        'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
+                        'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'webmakerr-cart'), []),
+                        // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'webmakerr-cart')),
+                        'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'webmakerr-cart')),
                         'in_stock_status'            => Helper::IN_STOCK,
                         'out_of_stock_status'        => Helper::OUT_OF_STOCK,
                         'enable_image_zoom'          => (new StoreSettings())->get('enable_image_zoom_in_single_product'),
@@ -1068,9 +1068,9 @@ class InnerBlocks
                 ],
                 'fluentcart_single_product_vars' => [
                         'trans'                      => TransStrings::singleProductPageString(),
-                        'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'fluent-cart'), []),
-                        // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'fluent-cart')),
-                        'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'fluent-cart')),
+                        'cart_button_text'           => webmakerr_apply_filters('webmakerr_cart/product/add_to_cart_text', __('Add To Cart', 'webmakerr-cart'), []),
+                        // App::storeSettings()->get('cart_button_text', __('Add to Cart', 'webmakerr-cart')),
+                        'out_of_stock_button_text'   => App::storeSettings()->get('out_of_stock_button_text', __('Out of Stock', 'webmakerr-cart')),
                         'in_stock_status'            => Helper::IN_STOCK,
                         'out_of_stock_status'        => Helper::OUT_OF_STOCK,
                         'enable_image_zoom'          => (new StoreSettings())->get('enable_image_zoom_in_single_product'),
@@ -1201,9 +1201,9 @@ class InnerBlocks
                 $total,
 
                 // %s (5, 6, 7): The translated "Per page" strings
-                esc_html__('10 Per page', 'fluent-cart'),
-                esc_html__('20 Per page', 'fluent-cart'),
-                esc_html__('30 Per page', 'fluent-cart')
+                esc_html__('10 Per page', 'webmakerr-cart'),
+                esc_html__('20 Per page', 'webmakerr-cart'),
+                esc_html__('30 Per page', 'webmakerr-cart')
         );
 
         return $html;

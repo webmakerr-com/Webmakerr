@@ -148,12 +148,12 @@ class ShortcodeParser
                 $user_login = $user_data->user_login;
                 $key = get_password_reset_key($user_data);
                 if (is_wp_error($key)) {
-                    return __("Error generating password reset key", 'fluent-cart');
+                    return __("Error generating password reset key", 'webmakerr-cart');
                 }
 
                 $locale = get_user_locale($user_data);
 
-                return '<a href="' . network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . '&wp_lang=' . $locale . '"> ' . __('Reset', 'fluent-cart') . ' </a>';
+                return '<a href="' . network_site_url("wp-login.php?action=rp&key=$key&login=" . rawurlencode($user_login), 'login') . '&wp_lang=' . $locale . '"> ' . __('Reset', 'webmakerr-cart') . ' </a>';
 
             }
         ];

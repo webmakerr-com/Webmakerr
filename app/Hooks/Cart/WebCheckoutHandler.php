@@ -183,7 +183,7 @@ class WebCheckoutHandler
         $cart = CartHelper::getCart(null, false);
 
         if (!$cart) {
-            return new \WP_Error('no_cart', __('No active cart found', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No active cart found', 'webmakerr-cart'));
         }
 
         $result = $cart->applyCoupon($couponCode);
@@ -220,7 +220,7 @@ class WebCheckoutHandler
         $cart = CartHelper::getCart(null, false);
 
         if (!$cart) {
-            return new \WP_Error('no_cart', __('No active cart found', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No active cart found', 'webmakerr-cart'));
         }
 
         $cart = $cart->removeCoupon($couponCode);
@@ -254,7 +254,7 @@ class WebCheckoutHandler
     {
         $cart = CartHelper::getCart(null, false);
         if (!$cart) {
-            return new \WP_Error('no_cart', __('No active cart found', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No active cart found', 'webmakerr-cart'));
         }
 
         $cart = $cart->reValidateCoupons();
@@ -338,7 +338,7 @@ class WebCheckoutHandler
 
         if (!$address) {
             return [
-                'message' => __('Address not found', 'fluent-cart')
+                'message' => __('Address not found', 'webmakerr-cart')
             ];
         }
 
@@ -371,7 +371,7 @@ class WebCheckoutHandler
         $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return [
-                'message' => __('You are not authorized to view this address', 'fluent-cart')
+                'message' => __('You are not authorized to view this address', 'webmakerr-cart')
             ];
         }
 
@@ -409,7 +409,7 @@ class WebCheckoutHandler
         $newShippingCharge = Arr::get($cart->checkout_data, 'shipping_data.shipping_charge', 0);
 
         $checkoutData = [
-            'message'                 => __('Address Attached', 'fluent-cart'),
+            'message'                 => __('Address Attached', 'webmakerr-cart'),
             'fragments'               => [
                 [
                     'selector' => '[data-fluent-cart-checkout-page-cart-items-wrapper]',
@@ -474,7 +474,7 @@ class WebCheckoutHandler
         $cart = CartHelper::getCart();
 
         if (!$cart) {
-            return new \WP_Error('no_cart', __('No active cart found', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No active cart found', 'webmakerr-cart'));
         }
 
         $availableShippingMethods = AddressHelper::getShippingMethods($data['country_code'], $data['state'], $data['timezone']);
@@ -607,7 +607,7 @@ class WebCheckoutHandler
 
 
         return [
-            'message'   => __('Cart updated successfully', 'fluent-cart'),
+            'message'   => __('Cart updated successfully', 'webmakerr-cart'),
             'data'      => webmakerr_apply_filters('webmakerr_cart/checkout/cart_updated', [
                 'cart' => $cart,
             ]),
@@ -619,7 +619,7 @@ class WebCheckoutHandler
     {
         $cart = CartHelper::getCart();
         if (!$cart) {
-            return new \WP_Error('no_cart', __('No active cart found', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No active cart found', 'webmakerr-cart'));
         }
 
         $allData = App::request()->all();
@@ -685,7 +685,7 @@ class WebCheckoutHandler
 
         if (!$normalizeData) {
             return [
-                'message' => __('No changes detected', 'fluent-cart')
+                'message' => __('No changes detected', 'webmakerr-cart')
             ];
         }
 
@@ -808,7 +808,7 @@ class WebCheckoutHandler
         ]);
 
         return [
-            'message'   => __('Data saved successfully', 'fluent-cart'),
+            'message'   => __('Data saved successfully', 'webmakerr-cart'),
             'changes'   => $normalizeData,
             'fragments' => $fragments,
             'cart'      => $cart
@@ -823,7 +823,7 @@ class WebCheckoutHandler
 
         $cart = CartHelper::getCart();
         if (!$cart) {
-            return new \WP_Error('no_cart', __('No active cart found', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No active cart found', 'webmakerr-cart'));
         }
 
         $addressFieldKeys = [
@@ -853,7 +853,7 @@ class WebCheckoutHandler
         }
 
         if (!isset($validKeys[$key])) {
-            return new \WP_Error('invalid_key', __('Invalid data key', 'fluent-cart'));
+            return new \WP_Error('invalid_key', __('Invalid data key', 'webmakerr-cart'));
         }
 
         $checkoutData = Arr::wrap($cart->checkout_data);
@@ -861,7 +861,7 @@ class WebCheckoutHandler
         $prevValue = Arr::get($checkoutData, $validKeys[$key], '');
         if ($prevValue === $value) {
             return [
-                'message' => __('Updated', 'fluent-cart')
+                'message' => __('Updated', 'webmakerr-cart')
             ];
         }
 
@@ -915,7 +915,7 @@ class WebCheckoutHandler
 
         return [
             'fragments'               => $fragments,
-            'message'                 => __('Data saved successfully', 'fluent-cart'),
+            'message'                 => __('Data saved successfully', 'webmakerr-cart'),
             'tax_total_Changes'       => Arr::get($changes, 'tax', false),
             'shipping_charge_changes' => Arr::get($changes, 'shipping', false),
             'notify'                  => false,
@@ -1010,7 +1010,7 @@ class WebCheckoutHandler
 
             $checkoutData = [
                 'fragments'               => $fragments,
-                'message'                 => __('Data saved successfully', 'fluent-cart'),
+                'message'                 => __('Data saved successfully', 'webmakerr-cart'),
                 'tax_total_Changes'       => $oldTaxTotal != $newTaxTotal,
                 'shipping_charge_changes' => $oldShippingCharge != $newShippingCharge,
                 'notify'                  => false
@@ -1020,7 +1020,7 @@ class WebCheckoutHandler
         }
 
         return [
-            'message' => __('Failed to save data', 'fluent-cart'),
+            'message' => __('Failed to save data', 'webmakerr-cart'),
             'notify'  => false
         ];
     }
@@ -1031,12 +1031,12 @@ class WebCheckoutHandler
 
         $cart = CartHelper::getCart();
         if (!$cart) {
-            return new \WP_Error('no_cart', __('No active cart found', 'fluent-cart'));
+            return new \WP_Error('no_cart', __('No active cart found', 'webmakerr-cart'));
         }
 
         $checkoutData = $cart->checkout_data;
         if (!empty($checkoutData['upgrade_data']) || !empty($checkoutData['is_locked'])) {
-            return new \WP_Error('invalid_request', __('This cart is locked or already has an upgrade applied.', 'fluent-cart'));
+            return new \WP_Error('invalid_request', __('This cart is locked or already has an upgrade applied.', 'webmakerr-cart'));
         }
 
         $upgradeFromVariationId = (int)Arr::get($requestData, 'upgrade_form', 0);
@@ -1044,7 +1044,7 @@ class WebCheckoutHandler
         $bumpId = (int)Arr::get($requestData, 'bump_id', 0);
 
         if ($bumpId) {
-            $response = new \WP_Error('invalid_bump', __('Could not apply item at this time.', 'fluent-cart'));
+            $response = new \WP_Error('invalid_bump', __('Could not apply item at this time.', 'webmakerr-cart'));
             return webmakerr_apply_filters('webmakerr_cart/apply_order_bump', $response, [
                 'bump_id'      => $bumpId,
                 'cart'         => $cart,
@@ -1053,13 +1053,13 @@ class WebCheckoutHandler
         }
 
         if (!$upgradeFromVariationId || !$targetVariationId) {
-            return new \WP_Error('invalid_request', __('Invalid upgrade request.', 'fluent-cart'));
+            return new \WP_Error('invalid_request', __('Invalid upgrade request.', 'webmakerr-cart'));
         }
 
         $productVariation = ProductVariation::query()->find($targetVariationId);
 
         if (!$productVariation || !$productVariation->canPurchase()) {
-            return new \WP_Error('invalid_variation', __('The selected product variation is not available for purchase.', 'fluent-cart'));
+            return new \WP_Error('invalid_variation', __('The selected product variation is not available for purchase.', 'webmakerr-cart'));
         }
 
         $cart->removeItem($upgradeFromVariationId);
@@ -1113,7 +1113,7 @@ class WebCheckoutHandler
         ]);
 
         return [
-            'message' => $isUpgraded ? __('Item has been applied successfully', 'fluent-cart') : __('Item has been reverted successfully', 'fluent-cart')
+            'message' => $isUpgraded ? __('Item has been applied successfully', 'webmakerr-cart') : __('Item has been reverted successfully', 'webmakerr-cart')
         ];
     }
 
@@ -1138,7 +1138,7 @@ class WebCheckoutHandler
                 $states = LocalizationManager::getInstance()->statesOptions($billingCountry);
                 $countryStates = array_values(array_column($states, 'value'));
                 if (!empty($states) && !in_array($dataValue, $countryStates)) {
-                    $errors[$dataKey] = __('Invalid state code.', 'fluent-cart');
+                    $errors[$dataKey] = __('Invalid state code.', 'webmakerr-cart');
                     $sanitizedData[$dataKey] = null;
                 } else {
                     $sanitizedData[$dataKey] = $dataValue;
@@ -1148,7 +1148,7 @@ class WebCheckoutHandler
                 $shippingCountry = $shipToDifferent ? Arr::get($allData, 'shipping_country') : Arr::get($allData, 'billing_country');
                 $states = LocalizationManager::getInstance()->statesOptions($shippingCountry);
                 if (!empty($states) && !in_array($dataValue, array_column($states, 'value'))) {
-                    $errors[$dataKey] = __('Invalid state code.', 'fluent-cart');
+                    $errors[$dataKey] = __('Invalid state code.', 'webmakerr-cart');
                     $sanitizedData[$dataKey] = null;
                 } else {
                     $sanitizedData[$dataKey] = $dataValue;
@@ -1159,7 +1159,7 @@ class WebCheckoutHandler
                 $methods = array_column($methods, 'route');
                 if (!in_array($value, $methods)) {
                     $value = null;
-                    $errors[$dataKey] = __('Invalid payment method.', 'fluent-cart');
+                    $errors[$dataKey] = __('Invalid payment method.', 'webmakerr-cart');
                 }
                 $sanitizedData[$dataKey] = $value;
             } else if ($dataKey === 'shipping_method_id') {
@@ -1179,7 +1179,7 @@ class WebCheckoutHandler
                 }
 
                 if (!$found) {
-                    $errors[$dataKey] = __('Invalid shipping method.', 'fluent-cart');
+                    $errors[$dataKey] = __('Invalid shipping method.', 'webmakerr-cart');
                     $sanitizedData[$dataKey] = null;
                 } else {
                     $sanitizedData[$dataKey] = sanitize_text_field($dataValue);
@@ -1204,7 +1204,7 @@ class WebCheckoutHandler
 
         if (!$product) {
             return $this->sendError([
-                'message' => __('Product not found', 'fluent-cart')
+                'message' => __('Product not found', 'webmakerr-cart')
             ]);
         }
         ob_start();

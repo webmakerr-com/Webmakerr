@@ -88,7 +88,7 @@ class MollieAPI
                 $message = Arr::get($responseArray, 'title');
             }
             if (!$message) {
-                $message = __('Unknown Mollie API request error', 'fluent-cart');
+                $message = __('Unknown Mollie API request error', 'webmakerr-cart');
             }
 
             return new \WP_Error('api_error', $message, $responseArray);
@@ -120,7 +120,7 @@ class MollieAPI
             ];
         }
 
-        return new \WP_Error('invalid_data', __('Invalid data received from Mollie', 'fluent-cart'));
+        return new \WP_Error('invalid_data', __('Invalid data received from Mollie', 'webmakerr-cart'));
     }
 
     public function getApiKey($mode = 'current')
@@ -149,7 +149,7 @@ class MollieAPI
         if ($statusCode !== 200) {
             $body = wp_remote_retrieve_body($response);
             $data = json_decode($body, true);
-            $error = Arr::get($data, 'detail', __('Invalid API credentials', 'fluent-cart'));
+            $error = Arr::get($data, 'detail', __('Invalid API credentials', 'webmakerr-cart'));
             throw new \Exception($error);
         }
 

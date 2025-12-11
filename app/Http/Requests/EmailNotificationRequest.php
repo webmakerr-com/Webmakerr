@@ -26,7 +26,7 @@ class EmailNotificationRequest extends RequestGuard
     public function messages()
     {
         return [
-            'settings.subject.required' => esc_html__('Subject field is required.', 'fluent-cart'),
+            'settings.subject.required' => esc_html__('Subject field is required.', 'webmakerr-cart'),
         ];
     }
 

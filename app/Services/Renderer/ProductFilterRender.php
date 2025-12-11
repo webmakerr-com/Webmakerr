@@ -34,7 +34,7 @@ class ProductFilterRender
     {
         ?>
         <form class="fct-shop-filter-form" data-fluent-cart-product-filter-form role="search"
-              aria-label="<?php esc_attr_e('Product filter form', 'fluent-cart'); ?>">
+              aria-label="<?php esc_attr_e('Product filter form', 'webmakerr-cart'); ?>">
             <?php $this->renderSearch(); ?>
             <?php $this->renderOptions(); ?>
         </form>
@@ -46,7 +46,7 @@ class ProductFilterRender
         ?>
         <div class="fct-shop-product-search" role="searchbox">
             <label for="fct-shop-search-input" class="sr-only">
-                <?php esc_html_e('Search products', 'fluent-cart'); ?>
+                <?php esc_html_e('Search products', 'webmakerr-cart'); ?>
             </label>
 
             <div class="fct-search-icon">
@@ -65,16 +65,16 @@ class ProductFilterRender
                     data-fluent-cart-search-bar
                     type="text"
                     name="wildcard"
-                    placeholder="<?php echo esc_attr__('Search Products...', 'fluent-cart') ?>"
-                    aria-label="<?php esc_attr_e('Search products', 'fluent-cart'); ?>"
+                    placeholder="<?php echo esc_attr__('Search Products...', 'webmakerr-cart') ?>"
+                    aria-label="<?php esc_attr_e('Search products', 'webmakerr-cart'); ?>"
             />
 
             <div
                     class="fct-search-clear hide"
                     data-fluent-cart-search-clear
-                    title="<?php echo esc_attr__('Clear search', 'fluent-cart'); ?>"
+                    title="<?php echo esc_attr__('Clear search', 'webmakerr-cart'); ?>"
                     type="button"
-                    aria-label="<?php esc_attr_e('Clear search', 'fluent-cart'); ?>"
+                    aria-label="<?php esc_attr_e('Clear search', 'webmakerr-cart'); ?>"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 18 18" fill="none">
                     <path d="M11.4995 11.5L6.5 6.5M6.50053 11.5L11.5 6.5" stroke="currentColor" stroke-width="1.2"
@@ -106,7 +106,7 @@ class ProductFilterRender
                         <h3 class="item-heading"><?php echo esc_html($filter['label']); ?></h3>
 
                         <button type="button" class="toggle-icon"
-                                aria-label="<?php echo esc_attr__('Toggle filter', 'fluent-cart'); ?>">
+                                aria-label="<?php echo esc_attr__('Toggle filter', 'webmakerr-cart'); ?>">
                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="7"
                                  viewBox="0 0 12 7" fill="none">
                                 <path d="M11 1.5L6.70711 5.79289C6.37377 6.12623 6.20711 6.29289 6 6.29289C5.79289 6.29289 5.62623 6.12623 5.29289 5.79289L1 1.5"
@@ -200,7 +200,7 @@ class ProductFilterRender
                 <div class="fct-shop-price-range-wrap">
                     <div class="fct-shop-price-range">
                         <label for="price-range-from" class="sr-only">
-                            <?php esc_html_e('Minimum price', 'fluent-cart'); ?>
+                            <?php esc_html_e('Minimum price', 'webmakerr-cart'); ?>
                         </label>
 
                         <div class="fct-shop-currency-sign" aria-hidden="true">
@@ -213,7 +213,7 @@ class ProductFilterRender
                                 type="text"
                                 value="<?php echo esc_attr($minPrice / 100); ?>"
                                 name="price_range_from"
-                                placeholder="<?php echo esc_html__('e.g 100', 'fluent-cart'); ?>"
+                                placeholder="<?php echo esc_html__('e.g 100', 'webmakerr-cart'); ?>"
                                 data-range-slider-from-value
                                 data-value="<?php echo esc_attr($minPrice / 100); ?>"
                                 aria-describedby="price-range-help"
@@ -222,7 +222,7 @@ class ProductFilterRender
 
                     <div class="fct-shop-price-range">
                         <label for="price-range-to" class="sr-only">
-                            <?php esc_html_e('Maximum price', 'fluent-cart'); ?>
+                            <?php esc_html_e('Maximum price', 'webmakerr-cart'); ?>
                         </label>
 
                         <div class="fct-shop-currency-sign" aria-hidden="true">
@@ -235,7 +235,7 @@ class ProductFilterRender
                                 type="text"
                                 value="<?php echo esc_attr($maxPrice / 100); ?>"
                                 name="price_range_to"
-                                placeholder="<?php echo esc_html__('e.g 500', 'fluent-cart'); ?>"
+                                placeholder="<?php echo esc_html__('e.g 500', 'webmakerr-cart'); ?>"
                                 data-range-slider-to-value
                                 data-value="<?php echo esc_attr($maxPrice / 100); ?>"
                                 aria-describedby="price-range-help"
@@ -247,7 +247,7 @@ class ProductFilterRender
                 <small id="price-range-help" class="sr-only">
                     <?php
                     /* translators: %s is the currency symbol (e.g., $, €, £) */
-                    printf(esc_html__('Price range in %s', 'fluent-cart'), esc_html($currencySign));
+                    printf(esc_html__('Price range in %s', 'webmakerr-cart'), esc_html($currencySign));
                     ?>
                 </small>
             </div>
@@ -325,12 +325,12 @@ class ProductFilterRender
         <div data-fluent-cart-shop-app-responsive-filter-wrapper class="fct-shop-responsive-filter-wrapper">
             <div data-fluent-cart-shop-app-responsive-filter-container class="fct-shop-responsive-filter-container">
                 <div class="fct-shop-responsive-filter-header">
-                    <h3><?php echo esc_html__('Filters', 'fluent-cart'); ?></h3>
+                    <h3><?php echo esc_html__('Filters', 'webmakerr-cart'); ?></h3>
                     <button
                             data-fluent-cart-shop-app-responsive-filter-close-button
                             class="fct-shop-responsive-filter-close-button"
                             type="button"
-                            aria-label="<?php esc_attr_e('Close filter menu', 'fluent-cart'); ?>"
+                            aria-label="<?php esc_attr_e('Close filter menu', 'webmakerr-cart'); ?>"
                     >
                         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                              width="14" height="14" viewBox="0 0 14 14" fill="none">

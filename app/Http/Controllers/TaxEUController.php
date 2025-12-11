@@ -17,7 +17,7 @@ class TaxEUController extends Controller
             return $this->euCrossBorderSettings($request);
         } else {
             return $this->sendError([
-                'message' => __('Invalid method', 'fluent-cart')
+                'message' => __('Invalid method', 'webmakerr-cart')
             ], 423);
         }
     }
@@ -45,12 +45,12 @@ class TaxEUController extends Controller
 
         $errors = [];
         if (!$countryCode) {
-            $errors['country_code'] = __('Select country of OSS registration', 'fluent-cart');
+            $errors['country_code'] = __('Select country of OSS registration', 'webmakerr-cart');
         }
 
         if ($errors) {
             return $this->sendError([
-                'message' => __('Validation failed for OSS tax override', 'fluent-cart'),
+                'message' => __('Validation failed for OSS tax override', 'webmakerr-cart'),
                 'errors'  => $errors
             ], 423);
         }
@@ -87,7 +87,7 @@ class TaxEUController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('OSS tax override saved successfully', 'fluent-cart')
+            'message' => __('OSS tax override saved successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -98,12 +98,12 @@ class TaxEUController extends Controller
 
         $errors = [];
         if (!$countryCode) {
-            $errors['country_code'] = __('Select country of OSS registration', 'fluent-cart');
+            $errors['country_code'] = __('Select country of OSS registration', 'webmakerr-cart');
         }
 
         if ($errors) {
             return $this->sendError([
-                'message' => __('Validation failed for OSS tax override', 'fluent-cart'),
+                'message' => __('Validation failed for OSS tax override', 'webmakerr-cart'),
                 'errors'  => $errors
             ], 423);
         }
@@ -141,7 +141,7 @@ class TaxEUController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('OSS tax override saved successfully', 'fluent-cart')
+            'message' => __('OSS tax override saved successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -152,7 +152,7 @@ class TaxEUController extends Controller
 
         if (!$countryCode) {
             return $this->sendError([
-                'message' => __('Country code is required', 'fluent-cart')
+                'message' => __('Country code is required', 'webmakerr-cart')
             ], 423);
         }
 
@@ -166,12 +166,12 @@ class TaxEUController extends Controller
 
         if (!$deleted) {
             return $this->sendError([
-                'message' => __('No matching OSS tax override found to delete', 'fluent-cart')
+                'message' => __('No matching OSS tax override found to delete', 'webmakerr-cart')
             ], 423);
         }
 
         return $this->sendSuccess([
-            'message' => __('OSS tax override deleted successfully', 'fluent-cart')
+            'message' => __('OSS tax override deleted successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -182,7 +182,7 @@ class TaxEUController extends Controller
 
         if (!$countryCode) {
             return $this->sendError([
-                'message' => __('Country code is required', 'fluent-cart')
+                'message' => __('Country code is required', 'webmakerr-cart')
             ], 423);
         }
 
@@ -196,12 +196,12 @@ class TaxEUController extends Controller
 
         if (!$deleted) {
             return $this->sendError([
-                'message' => __('No matching OSS shipping override found to delete', 'fluent-cart')
+                'message' => __('No matching OSS shipping override found to delete', 'webmakerr-cart')
             ], 423);
         }
 
         return $this->sendSuccess([
-            'message' => __('OSS shipping override deleted successfully', 'fluent-cart')
+            'message' => __('OSS shipping override deleted successfully', 'webmakerr-cart')
         ]);
     }
     
@@ -213,20 +213,20 @@ class TaxEUController extends Controller
         $errors = [];
 
         if (!in_array($method, ['oss', 'home', 'specific'], true)) {
-            $errors['method'] = __('Select a cross-border registration type', 'fluent-cart');
+            $errors['method'] = __('Select a cross-border registration type', 'webmakerr-cart');
         } else if ($method === 'oss') {
             if (!Arr::get($sanitizedEuVatSettings, 'oss_country')) {
-                $errors['oss_country'] = __('Select country of OSS registration', 'fluent-cart');
+                $errors['oss_country'] = __('Select country of OSS registration', 'webmakerr-cart');
             }
         } else if ($method === 'home') {
             if (!Arr::get($sanitizedEuVatSettings, 'home_country')) {
-                $errors['home_country'] = __('Select home country of registration', 'fluent-cart');
+                $errors['home_country'] = __('Select home country of registration', 'webmakerr-cart');
             }
         }
 
         if ($errors) {
             return $this->sendError([
-                'message' => __('Validation failed for EU VAT settings', 'fluent-cart'),
+                'message' => __('Validation failed for EU VAT settings', 'webmakerr-cart'),
                 'errors'  => $errors
             ], 423);
         }
@@ -244,7 +244,7 @@ class TaxEUController extends Controller
         update_option('fluent_cart_tax_configuration_settings', $currentSettings, true);
 
         return $this->sendSuccess([
-            'message' => __('EU VAT settings saved successfully', 'fluent-cart')
+            'message' => __('EU VAT settings saved successfully', 'webmakerr-cart')
         ]);
 
     }

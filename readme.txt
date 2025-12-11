@@ -1,4 +1,4 @@
-=== FluentCart A New Era of eCommerce - Faster, Lighter, and Simpler ===
+=== Webmakerr Cart – Webmakerr makes eCommerce, bookings, and service selling fast and effortless. ===
 Contributors: wpmanageninja, techjewel
 Tags: ecommerce, cart, checkout, subscriptions, payments
 Requires at least: 6.7

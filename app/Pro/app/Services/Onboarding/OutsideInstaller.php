@@ -31,7 +31,7 @@ class OutsideInstaller
                 wp_send_json_success(
                     [
                         'message'  => sprintf(
-                            __('Successfully enabled', 'fluent-cart-pro'),
+                            __('Successfully enabled', 'webmakerr-cart-pro'),
                             $title
                         ),
                         'redirect_url' => self_admin_url('admin.php?page=webmakerr#/beta')
@@ -49,7 +49,7 @@ class OutsideInstaller
     {
         $plugin_url = $url;
         if ('' == $plugin_url) {
-            wp_send_json_error(['message' => __('No valid url provided to install!', 'fluent-cart-pro')], 423);
+            wp_send_json_error(['message' => __('No valid url provided to install!', 'webmakerr-cart-pro')], 423);
         }
         $response = wp_remote_get($plugin_url, array(
             'timeout' => 30 // Increase to 30 seconds (adjust as needed)
@@ -59,7 +59,7 @@ class OutsideInstaller
             wp_send_json_error(
                 [
                     'message' => sprintf(
-                        __('Error downloading plugin', 'fluent-cart-pro'),
+                        __('Error downloading plugin', 'webmakerr-cart-pro'),
                         $response->get_error_message()
                     )
                 ],

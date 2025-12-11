@@ -23,8 +23,8 @@ class LabelRequest extends RequestGuard
     public function messages()
     {
         return [
-            'value.required' => esc_html__('Label field is required.', 'fluent-cart'),
-            'value.unique'   => esc_html__('Label must be unique.', 'fluent-cart'),
+            'value.required' => esc_html__('Label field is required.', 'webmakerr-cart'),
+            'value.unique'   => esc_html__('Label must be unique.', 'webmakerr-cart'),
         ];
     }
 

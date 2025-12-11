@@ -109,7 +109,7 @@ class OrderFilter extends BaseFilter
         $fields = [
             'id'      => [
                 'column'      => 'id',
-                'description' => __('Order Id', 'fluent-cart'),
+                'description' => __('Order Id', 'webmakerr-cart'),
                 'type'        => 'numeric',
                 'examples'    => [
                     'id = 1',
@@ -119,7 +119,7 @@ class OrderFilter extends BaseFilter
             ],
             'status'  => [
                 'column'      => 'status',
-                'description' => __('Search by order status e.g., completed, processing, on-hold, canceled, failed', 'fluent-cart'),
+                'description' => __('Search by order status e.g., completed, processing, on-hold, canceled, failed', 'webmakerr-cart'),
                 'type'        => 'string',
                 'examples'    => [
                     'status = completed',
@@ -127,13 +127,13 @@ class OrderFilter extends BaseFilter
             ],
             'invoice' => [
                 'column'      => 'status',
-                'description' => __('Invoice Number', 'fluent-cart'),
+                'description' => __('Invoice Number', 'webmakerr-cart'),
                 'type'        => 'string'
             ],
 
             'payment'    => [
                 'column'      => 'payment_status',
-                'description' => __('Search by payment status e.g., paid, pending, partially_paid, refunded, partially_refunded', 'fluent-cart'),
+                'description' => __('Search by payment status e.g., paid, pending, partially_paid, refunded, partially_refunded', 'webmakerr-cart'),
                 'type'        => 'string',
                 'examples'    => [
                     'payment = paid',
@@ -143,7 +143,7 @@ class OrderFilter extends BaseFilter
             ],
             'payment_by' => [
                 'column'      => 'payment_method',
-                'description' => __('Search by payment method e.g., stripe, PayPal, offline_payment', 'fluent-cart'),
+                'description' => __('Search by payment method e.g., stripe, PayPal, offline_payment', 'webmakerr-cart'),
                 'type'        => 'string',
                 'examples'    => [
                     'payment_by = stripe',
@@ -152,8 +152,8 @@ class OrderFilter extends BaseFilter
             ],
 
             'customer' => [
-                'description' => __('Search by customer name or email', 'fluent-cart'),
-                'note'        => __("only supports '=' operator", 'fluent-cart'),
+                'description' => __('Search by customer name or email', 'webmakerr-cart'),
+                'note'        => __("only supports '=' operator", 'webmakerr-cart'),
                 'type'        => 'custom',
                 'callback'    => function ($query, $search) {
                     $query->whereHas('customer', function ($query) use ($search) {
@@ -170,8 +170,8 @@ class OrderFilter extends BaseFilter
 
         if (class_exists(License::class)) {
             $fields['license'] = [
-                'description' => __('Search by license key', 'fluent-cart'),
-                'note'        => __("only supports '=' operator", 'fluent-cart'),
+                'description' => __('Search by license key', 'webmakerr-cart'),
+                'note'        => __("only supports '=' operator", 'webmakerr-cart'),
                 'type'        => 'custom',
                 'callback'    => function ($query, $search) {
                     $query->whereHas('licenses', function ($query) use ($search) {
@@ -191,11 +191,11 @@ class OrderFilter extends BaseFilter
     {
         $filters = [
             'order'        => [
-                'label'    => __('Order Property', 'fluent-cart'),
+                'label'    => __('Order Property', 'webmakerr-cart'),
                 'value'    => 'order',
                 'children' => [
                     [
-                        'label'           => __('By Order Items', 'fluent-cart'),
+                        'label'           => __('By Order Items', 'webmakerr-cart'),
                         'value'           => 'order_items',
                         'column'          => 'object_id',
                         'filter_type'     => 'relation',
@@ -205,79 +205,79 @@ class OrderFilter extends BaseFilter
                         'limit'           => 10,
                     ],
                     [
-                        'label'       => __('Order Status', 'fluent-cart'),
+                        'label'       => __('Order Status', 'webmakerr-cart'),
                         'value'       => 'status',
                         'type'        => 'selections',
                         'options'     => [
-                            'completed'  => __('Completed', 'fluent-cart'),
-                            'processing' => __('Processing', 'fluent-cart'),
-                            'on-hold'    => __('On Hold', 'fluent-cart'),
-                            'canceled'   => __('Canceled', 'fluent-cart')
+                            'completed'  => __('Completed', 'webmakerr-cart'),
+                            'processing' => __('Processing', 'webmakerr-cart'),
+                            'on-hold'    => __('On Hold', 'webmakerr-cart'),
+                            'canceled'   => __('Canceled', 'webmakerr-cart')
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
                     ],
                     [
-                        'label'       => __('Payment Status', 'fluent-cart'),
+                        'label'       => __('Payment Status', 'webmakerr-cart'),
                         'value'       => 'payment_status',
                         'type'        => 'selections',
                         'options'     => [
-                            'paid'               => __('Paid', 'fluent-cart'),
-                            'pending'            => __('Pending', 'fluent-cart'),
-                            'partially_paid'     => __('Partially Paid', 'fluent-cart'),
-                            'refunded'           => __('Refunded', 'fluent-cart'),
-                            'partially_refunded' => __('Partially Refunded', 'fluent-cart'),
-                            //'authorized'         => __('Authorized', 'fluent-cart')
+                            'paid'               => __('Paid', 'webmakerr-cart'),
+                            'pending'            => __('Pending', 'webmakerr-cart'),
+                            'partially_paid'     => __('Partially Paid', 'webmakerr-cart'),
+                            'refunded'           => __('Refunded', 'webmakerr-cart'),
+                            'partially_refunded' => __('Partially Refunded', 'webmakerr-cart'),
+                            //'authorized'         => __('Authorized', 'webmakerr-cart')
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
                     ],
 //                    [
-//                        'label'       => __('Shipping Status', 'fluent-cart'),
+//                        'label'       => __('Shipping Status', 'webmakerr-cart'),
 //                        'value'       => 'shipping_status',
 //                        'type'        => 'selections',
 //                        'options'     => [
-//                            'fulfilled'   => __('Fulfilled', 'fluent-cart'),
-//                            'unfulfilled' => __('Unfulfilled', 'fluent-cart'),
-//                            'on_hold'     => __('On Hold', 'fluent-cart')
+//                            'fulfilled'   => __('Fulfilled', 'webmakerr-cart'),
+//                            'unfulfilled' => __('Unfulfilled', 'webmakerr-cart'),
+//                            'on_hold'     => __('On Hold', 'webmakerr-cart')
 //                        ],
 //                        'is_multiple' => true,
 //                        'is_only_in'  => true
 //                    ],
                     [
-                        'label'       => __('Order Type', 'fluent-cart'),
+                        'label'       => __('Order Type', 'webmakerr-cart'),
                         'value'       => 'type',
                         'type'        => 'selections',
                         'options'     => [
-                            'payment'      => __('Single Payment', 'fluent-cart'),
-                            'subscription' => __('Subscription', 'fluent-cart'),
-                            'renewal'      => __('Renewal', 'fluent-cart'),
+                            'payment'      => __('Single Payment', 'webmakerr-cart'),
+                            'subscription' => __('Subscription', 'webmakerr-cart'),
+                            'renewal'      => __('Renewal', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
                     ],
                     [
-                        'label'       => __('Payment Method', 'fluent-cart'),
+                        'label'       => __('Payment Method', 'webmakerr-cart'),
                         'value'       => 'payment_method',
                         'type'        => 'selections',
                         'column'      => 'payment_method',
                         'relation'    => 'transactions',
                         'filter_type' => 'relation',
                         'options'     => [
-                            'stripe'          => __('Stripe', 'fluent-cart'),
-                            'paypal'          => __('PayPal', 'fluent-cart'),
-                            'offline_payment' => __('Cash on Delivery', 'fluent-cart'),
+                            'stripe'          => __('Stripe', 'webmakerr-cart'),
+                            'paypal'          => __('PayPal', 'webmakerr-cart'),
+                            'offline_payment' => __('Cash on Delivery', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
                     ],
                     [
-                        'label' => __('Order Amount', 'fluent-cart'),
+                        'label' => __('Order Amount', 'webmakerr-cart'),
                         'value' => 'total_amount',
                         'type'  => 'numeric',
                     ],
                     [
-                        'label'       => __('Order Date', 'fluent-cart'),
+                        'label'       => __('Order Date', 'webmakerr-cart'),
                         'value'       => 'created_at',
                         'type'        => 'dates',
                         'filter_type' => 'date',
@@ -285,20 +285,20 @@ class OrderFilter extends BaseFilter
                 ],
             ],
             'customer'     => [
-                'label' => __('Customer Property', 'fluent-cart'),
+                'label' => __('Customer Property', 'webmakerr-cart'),
                 'value' => 'customer',
 
                 'children' => [
                     [
-                        'label'       => __('Customer Name', 'fluent-cart'),
+                        'label'       => __('Customer Name', 'webmakerr-cart'),
                         'value'       => 'customer_full_name',
                         'type'        => 'text',
                         'filter_type' => 'custom',
                         'operators'   => [
-                            'like_all'    => __('Contains', 'fluent-cart'),
-                            'starts_with' => __('Starts With', 'fluent-cart'),
-                            'ends_with'   => __('Ends With', 'fluent-cart'),
-                            'not_like'    => __('Not Contains', 'fluent-cart'),
+                            'like_all'    => __('Contains', 'webmakerr-cart'),
+                            'starts_with' => __('Starts With', 'webmakerr-cart'),
+                            'ends_with'   => __('Ends With', 'webmakerr-cart'),
+                            'not_like'    => __('Not Contains', 'webmakerr-cart'),
                         ],
                         'callback'    => function ($query, $data) {
                             $query->whereHas('customer', function ($query) use ($data) {
@@ -308,7 +308,7 @@ class OrderFilter extends BaseFilter
                     ],
 
                     [
-                        'label'       => __('Customer Email', 'fluent-cart'),
+                        'label'       => __('Customer Email', 'webmakerr-cart'),
                         'value'       => 'customer_email',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -318,12 +318,12 @@ class OrderFilter extends BaseFilter
                 ],
             ],
             'transactions' => [
-                'label' => __('Transactions Property', 'fluent-cart'),
+                'label' => __('Transactions Property', 'webmakerr-cart'),
                 'value' => 'transactions',
 
                 'children' => [
                     [
-                        'label'       => __('Transaction Id', 'fluent-cart'),
+                        'label'       => __('Transaction Id', 'webmakerr-cart'),
                         'value'       => 'transaction_id',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -331,38 +331,38 @@ class OrderFilter extends BaseFilter
                         'relation'    => 'transactions',
                     ],
                     [
-                        'label'       => __('Transaction Status', 'fluent-cart'),
+                        'label'       => __('Transaction Status', 'webmakerr-cart'),
                         'value'       => 'transaction_status',
                         'type'        => 'selections',
                         'filter_type' => 'relation',
                         'column'      => 'status',
                         'relation'    => 'transactions',
                         'options'     => [
-                            Status::TRANSACTION_SUCCEEDED => __('Succeeded', 'fluent-cart'),
-                            Status::TRANSACTION_PENDING   => __('Pending', 'fluent-cart'),
-                            Status::TRANSACTION_REFUNDED  => __('Refunded', 'fluent-cart'),
-                            Status::TRANSACTION_FAILED    => __('Failed', 'fluent-cart'),
+                            Status::TRANSACTION_SUCCEEDED => __('Succeeded', 'webmakerr-cart'),
+                            Status::TRANSACTION_PENDING   => __('Pending', 'webmakerr-cart'),
+                            Status::TRANSACTION_REFUNDED  => __('Refunded', 'webmakerr-cart'),
+                            Status::TRANSACTION_FAILED    => __('Failed', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
                     ],
                     [
-                        'label'       => __('Transaction Type', 'fluent-cart'),
+                        'label'       => __('Transaction Type', 'webmakerr-cart'),
                         'value'       => 'transaction_type',
                         'type'        => 'selections',
                         'filter_type' => 'relation',
                         'column'      => 'transaction_type',
                         'relation'    => 'transactions',
                         'options'     => [
-                            Status::TRANSACTION_TYPE_CHARGE  => __('Charge', 'fluent-cart'),
-                            Status::TRANSACTION_TYPE_REFUND  => __('Refunded', 'fluent-cart'),
-                            Status::TRANSACTION_TYPE_DISPUTE => __('Dispute', 'fluent-cart'),
+                            Status::TRANSACTION_TYPE_CHARGE  => __('Charge', 'webmakerr-cart'),
+                            Status::TRANSACTION_TYPE_REFUND  => __('Refunded', 'webmakerr-cart'),
+                            Status::TRANSACTION_TYPE_DISPUTE => __('Dispute', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
                     ],
                     [
-                        'label'       => __('Card last 4', 'fluent-cart'),
+                        'label'       => __('Card last 4', 'webmakerr-cart'),
                         'value'       => 'transaction_card_last',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -370,7 +370,7 @@ class OrderFilter extends BaseFilter
                         'relation'    => 'transactions',
                     ],
                     [
-                        'label'       => __('Card Brand', 'fluent-cart'),
+                        'label'       => __('Card Brand', 'webmakerr-cart'),
                         'value'       => 'transaction_card_brand',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -378,16 +378,16 @@ class OrderFilter extends BaseFilter
                         'relation'    => 'transactions',
                     ],
                     [
-                        'label'       => __('Payer email', 'fluent-cart'),
+                        'label'       => __('Payer email', 'webmakerr-cart'),
                         'value'       => 'payer_email',
                         'type'        => 'text',
                         'filter_type' => 'custom',
                         'operators'   => [
-                            'equals'      => __('Equals', 'fluent-cart'),
-                            'contains'    => __('Contains', 'fluent-cart'),
-                            'starts_with' => __('Starts With', 'fluent-cart'),
-                            'ends_with'   => __('Ends With', 'fluent-cart'),
-                            'not_like'    => __('Not Contains', 'fluent-cart')
+                            'equals'      => __('Equals', 'webmakerr-cart'),
+                            'contains'    => __('Contains', 'webmakerr-cart'),
+                            'starts_with' => __('Starts With', 'webmakerr-cart'),
+                            'ends_with'   => __('Ends With', 'webmakerr-cart'),
+                            'not_like'    => __('Not Contains', 'webmakerr-cart')
                         ],
                         'callback'    => function ($query, $data) {
                             $query->whereHas('transactions', function ($query) use ($data) {
@@ -404,11 +404,11 @@ class OrderFilter extends BaseFilter
 
         if (ModuleSettings::isActive('license') && App::isProActive()) {
             $filters['license'] = [
-                'label'    => __('License Property', 'fluent-cart'),
+                'label'    => __('License Property', 'webmakerr-cart'),
                 'value'    => 'license',
                 'children' => [
                     [
-                        'label'       => __('License key', 'fluent-cart'),
+                        'label'       => __('License key', 'webmakerr-cart'),
                         'value'       => 'license_key',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -416,16 +416,16 @@ class OrderFilter extends BaseFilter
                         'relation'    => 'licenses',
                     ],
                     [
-                        'label'       => __('License Status', 'fluent-cart'),
+                        'label'       => __('License Status', 'webmakerr-cart'),
                         'value'       => 'license_status',
                         'type'        => 'selections',
                         'filter_type' => 'relation',
                         'column'      => 'status',
                         'relation'    => 'licenses',
                         'options'     => [
-                            Status::LICENSE_ACTIVE   => __('Active', 'fluent-cart'),
-                            Status::LICENSE_DISABLED => __('Disabled', 'fluent-cart'),
-                            Status::LICENSE_EXPIRED  => __('Expired', 'fluent-cart'),
+                            Status::LICENSE_ACTIVE   => __('Active', 'webmakerr-cart'),
+                            Status::LICENSE_DISABLED => __('Disabled', 'webmakerr-cart'),
+                            Status::LICENSE_EXPIRED  => __('Expired', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
@@ -435,13 +435,13 @@ class OrderFilter extends BaseFilter
         }
 
         $utmFilters = [
-            'utm_campaign' => __('Utm Campaign', 'fluent-cart'),
-            'utm_term'     => __('Utm Term', 'fluent-cart'),
-            'utm_source'   => __('Utm Source', 'fluent-cart'),
-            'utm_medium'   => __('Utm Medium', 'fluent-cart'),
-            'utm_content'  => __('Utm Content', 'fluent-cart'),
-            'utm_id'       => __('Utm Id', 'fluent-cart'),
-            'refer_url'    => __('Refer Url', 'fluent-cart'),
+            'utm_campaign' => __('Utm Campaign', 'webmakerr-cart'),
+            'utm_term'     => __('Utm Term', 'webmakerr-cart'),
+            'utm_source'   => __('Utm Source', 'webmakerr-cart'),
+            'utm_medium'   => __('Utm Medium', 'webmakerr-cart'),
+            'utm_content'  => __('Utm Content', 'webmakerr-cart'),
+            'utm_id'       => __('Utm Id', 'webmakerr-cart'),
+            'refer_url'    => __('Refer Url', 'webmakerr-cart'),
         ];
 
         $utmChildren = [];
@@ -457,7 +457,7 @@ class OrderFilter extends BaseFilter
         }
 
         $filters['utm'] = [
-            'label' => __('Utm Property', 'fluent-cart'),
+            'label' => __('Utm Property', 'webmakerr-cart'),
             'value' => 'utm',
 
             'children' => $utmChildren

@@ -35,7 +35,7 @@ class CartSummaryRender
                             aria-expanded="true"
                             aria-controls="order_summary_panel"
                         >
-                            <h4 id="order_summary_label"><?php echo esc_html__('Order summary', 'fluent-cart'); ?></h4>
+                            <h4 id="order_summary_label"><?php echo esc_html__('Order summary', 'webmakerr-cart'); ?></h4>
                             <div class="fct_toggle_icon" aria-hidden="true">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"
                                         fill="none">
@@ -99,7 +99,7 @@ class CartSummaryRender
         <div class="fct_summary_items">
             <ul class="fct_summary_items_list">
                 <li>
-                    <span class="fct_summary_label"> <?php esc_html_e('Subtotal', 'fluent-cart'); ?></span>
+                    <span class="fct_summary_label"> <?php esc_html_e('Subtotal', 'webmakerr-cart'); ?></span>
                     <span class="fct_summary_value" data-fluent-cart-checkout-subtotal>
                          <?php echo esc_html(Helper::toDecimal($this->cart->getItemsSubtotal())); ?>
                     </span>
@@ -109,7 +109,7 @@ class CartSummaryRender
 
                 <?php if ($this->cart->requireShipping()): ?>
                     <li class="<?php echo $this->cart->getShippingTotal() === 0 ? 'shipping-charge-hidden' : ''; ?>" data-fluent-cart-checkout-shipping-amount-wrapper>
-                        <span class="fct_summary_label"><?php esc_html_e('Shipping', 'fluent-cart'); ?></span>
+                        <span class="fct_summary_label"><?php esc_html_e('Shipping', 'webmakerr-cart'); ?></span>
                         <span class="fct_summary_value" data-fluent-cart-checkout-shipping-amount data-shipping-method-id="">
                             <?php
                             echo esc_html(Helper::toDecimal($this->cart->getShippingTotal()));
@@ -134,7 +134,7 @@ class CartSummaryRender
 
                 <li class="fct_summary_items_total"
                     data-fluent-cart-checkout-page-current-total>
-                    <span class="fct_summary_label"><?php echo esc_html__('Total','fluent-cart'); ?></span>
+                    <span class="fct_summary_label"><?php echo esc_html__('Total','webmakerr-cart'); ?></span>
                     <span class="fct_summary_value" data-fluent-cart-checkout-estimated-total>
                         <?php
                         echo esc_html(Helper::toDecimal($this->cart->getEstimatedTotal()));
@@ -165,7 +165,7 @@ class CartSummaryRender
         ?>
         <?php if ($customerDiscountAmount): ?>
         <li>
-            <span class="fct_summary_label"> <?php esc_html_e('Discount', 'fluent-cart'); ?></span>
+            <span class="fct_summary_label"> <?php esc_html_e('Discount', 'webmakerr-cart'); ?></span>
             <span class="fct_summary_value" data-fluent-cart-checkout-subtotal>
                  -<?php echo esc_html($formattedCustomDiscountAmount); ?>
             </span>
@@ -174,7 +174,7 @@ class CartSummaryRender
         <?php if ($customShippingAmount && !$shippingCharge): ?>
             <li>
                 <span class="fct_summary_label"> <?php esc_html_e('Shipping
-                ', 'fluent-cart'); ?></span>
+                ', 'webmakerr-cart'); ?></span>
                 <span class="fct_summary_value" data-fluent-cart-checkout-subtotal>
                     <?php echo esc_html($formattedCustomShippingAmount); ?>
                 </span>
@@ -216,7 +216,7 @@ class CartSummaryRender
                             data-remove-coupon
                             data-coupon="<?php echo esc_attr($couponCode); ?>"
                         >
-                            <?php echo esc_html('Remove', 'fluent-cart'); ?>
+                            <?php echo esc_html('Remove', 'webmakerr-cart'); ?>
                         </a>
                     </div>
                     <div class="fct_coupon_price">
@@ -237,7 +237,7 @@ class CartSummaryRender
             return;
         }
 
-        $title = Arr::get($manualDiscount, 'title', __('Manual Discount', 'fluent-cart'));
+        $title = Arr::get($manualDiscount, 'title', __('Manual Discount', 'webmakerr-cart'));
         $amount = Arr::get($manualDiscount, 'amount', 0);
         $formattedAmount = Helper::toDecimal($amount);
         ?>
@@ -261,7 +261,7 @@ class CartSummaryRender
                     href="#"
                     data-fluent-cart-checkout-page-coupon-field-toggle
                 >
-                    <?php echo esc_html__('Have a Coupon?', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Have a Coupon?', 'webmakerr-cart'); ?>
                 </a>
             </div>
 
@@ -271,10 +271,10 @@ class CartSummaryRender
                 hidden
                 data-fluent-cart-checkout-page-coupon-container
                 role="region"
-                aria-label="<?php esc_attr_e('Coupon entry area', 'fluent-cart'); ?>"
+                aria-label="<?php esc_attr_e('Coupon entry area', 'webmakerr-cart'); ?>"
             >
                 <label for="coupon" class="sr-only">
-                    <?php echo esc_html__('Enter coupon code', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Enter coupon code', 'webmakerr-cart'); ?>
                 </label>
 
                 <span class="fct_coupon_icon" aria-hidden="true">
@@ -302,7 +302,7 @@ class CartSummaryRender
                         class="fct_coupon_input"
                         type=text 
                         name=coupon 
-                        placeholder="<?php esc_attr_e('Apply Here', 'fluent-cart'); ?>"
+                        placeholder="<?php esc_attr_e('Apply Here', 'webmakerr-cart'); ?>"
                         data-required=no 
                         data-type=input 
                         id=coupon
@@ -311,7 +311,7 @@ class CartSummaryRender
                 </div>
 
                 <button type='submit' data-fluent-cart-checkout-page-coupon-validate>
-                    <?php echo esc_html__('Apply', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Apply', 'webmakerr-cart'); ?>
                 </button>
             </div>
         </div>

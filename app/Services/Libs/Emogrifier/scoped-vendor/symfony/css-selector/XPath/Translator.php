@@ -107,7 +107,7 @@ class Translator implements TranslatorInterface
             throw new ExpressionErrorException(
                 sprintf(
                     /* translators: %s: The name of the extension that is not registered. */
-                    esc_html__('Extension "%s" not registered.', 'fluent-cart'),
+                    esc_html__('Extension "%s" not registered.', 'webmakerr-cart'),
                     esc_html($name)
                 )
             );
@@ -132,7 +132,7 @@ class Translator implements TranslatorInterface
             throw new ExpressionErrorException(
                 sprintf(
                     /* translators: %s: The name of the unsupported node. */
-                    esc_html__('Node "%s" not supported.', 'fluent-cart'),
+                    esc_html__('Node "%s" not supported.', 'webmakerr-cart'),
                     esc_html($node->getNodeName())
                 )
             );
@@ -148,7 +148,7 @@ class Translator implements TranslatorInterface
             throw new ExpressionErrorException(
                 sprintf(
                     /* translators: %s: The name of the unsupported combiner. */
-                    esc_html__('Combiner "%s" not supported.', 'fluent-cart'),
+                    esc_html__('Combiner "%s" not supported.', 'webmakerr-cart'),
                     esc_html($combiner)
                 )
             );
@@ -165,7 +165,7 @@ class Translator implements TranslatorInterface
             throw new ExpressionErrorException(
                 sprintf(
                     /* translators: %s: The name of the unsupported function. */
-                    esc_html__('Function "%s" not supported.', 'fluent-cart'),
+                    esc_html__('Function "%s" not supported.', 'webmakerr-cart'),
                     esc_html($function->getName())
                 )
             );
@@ -182,7 +182,7 @@ class Translator implements TranslatorInterface
             throw new ExpressionErrorException(
                 sprintf(
                     /* translators: %s: The name of the unsupported pseudo-class. */
-                    esc_html__('Pseudo-class "%s" not supported.', 'fluent-cart'),
+                    esc_html__('Pseudo-class "%s" not supported.', 'webmakerr-cart'),
                     esc_html($pseudoClass)
                 )
             );
@@ -199,7 +199,7 @@ class Translator implements TranslatorInterface
             throw new ExpressionErrorException(
                 sprintf(
                     /* translators: %s: The unsupported attribute matcher operator. */
-                    esc_html__('Attribute matcher operator "%s" not supported.', 'fluent-cart'),
+                    esc_html__('Attribute matcher operator "%s" not supported.', 'webmakerr-cart'),
                     esc_html($operator)
                 )
             );

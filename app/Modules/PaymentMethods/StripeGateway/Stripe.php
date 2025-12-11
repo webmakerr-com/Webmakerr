@@ -58,7 +58,7 @@ class Stripe extends AbstractPaymentGateway
             'slug'               => 'stripe',
             'label'              => 'Stripe',
             'admin_title'        => 'Stripe',
-            'description'        => __("Stripe's payments platform lets you accept credit cards, debit cards, and popular payment methods around the world all with a single integration.", "fluent-cart"),
+            'description'        => __("Stripe's payments platform lets you accept credit cards, debit cards, and popular payment methods around the world all with a single integration.", "webmakerr-cart"),
             'logo'               => Vite::getAssetUrl('images/payment-methods/card.svg'),
             'icon'               => Vite::getAssetUrl('images/payment-methods/stripe-icon.svg'),
             'status'             => $this->settings->get('is_active') === 'yes',
@@ -96,7 +96,7 @@ class Stripe extends AbstractPaymentGateway
         if (!$amount) {
             return new \WP_Error(
                 'fluent_cart_stripe_refund_error',
-                __('Refund amount is required.', 'fluent-cart')
+                __('Refund amount is required.', 'webmakerr-cart')
             );
         }
 
@@ -137,15 +137,15 @@ class Stripe extends AbstractPaymentGateway
         return [
             'fct_stripe_data' => [
                 'translations' => [
-                    'Payment module not available to checkout! Please reload again, or contact admin!' => __('Payment module not available to checkout! Please reload again, or contact admin!', 'fluent-cart'),
-                    'See Errors' => __('See Errors', 'fluent-cart'),
-                    'Pay Now' => __('Pay Now', 'fluent-cart'),
-                    'Place Order' => __('Place Order', 'fluent-cart'),
-                    'Card details are not valid!' => __('Card details are not valid!', 'fluent-cart'),
-                    'Total amount is not valid, please add some items to cart!' => __('Total amount is not valid, please add some items to cart!', 'fluent-cart'),
-                    'An error occurred while parsing the response.' => __('An error occurred while parsing the response.', 'fluent-cart'),
-                    'Loading Payment Processor...' => __('Loading Payment Processor...', 'fluent-cart'),
-                    'redirecting for action' => __('redirecting for action', 'fluent-cart'),
+                    'Payment module not available to checkout! Please reload again, or contact admin!' => __('Payment module not available to checkout! Please reload again, or contact admin!', 'webmakerr-cart'),
+                    'See Errors' => __('See Errors', 'webmakerr-cart'),
+                    'Pay Now' => __('Pay Now', 'webmakerr-cart'),
+                    'Place Order' => __('Place Order', 'webmakerr-cart'),
+                    'Card details are not valid!' => __('Card details are not valid!', 'webmakerr-cart'),
+                    'Total amount is not valid, please add some items to cart!' => __('Total amount is not valid, please add some items to cart!', 'webmakerr-cart'),
+                    'An error occurred while parsing the response.' => __('An error occurred while parsing the response.', 'webmakerr-cart'),
+                    'Loading Payment Processor...' => __('Loading Payment Processor...', 'webmakerr-cart'),
+                    'redirecting for action' => __('redirecting for action', 'webmakerr-cart'),
                 ]
             ]
         ];
@@ -183,19 +183,19 @@ class Stripe extends AbstractPaymentGateway
         if (empty($sk)) {
             return [
                 'status'  => 'failed',
-                'message' => __('Please provide a valid secret key!', 'fluent-cart')
+                'message' => __('Please provide a valid secret key!', 'webmakerr-cart')
             ];
         }
 
         if ($mode === 'live' && !str_contains($sk, 'sk_live')) {
             return [
                 'status'  => 'failed',
-                'message' => __('Please provide a valid LIVE secret key!', 'fluent-cart')
+                'message' => __('Please provide a valid LIVE secret key!', 'webmakerr-cart')
             ];
         } else if ($mode === 'test' && !str_contains($sk, 'sk_test')) {
             return [
                 'status'  => 'failed',
-                'message' => __('Please provide a valid TEST secret key!', 'fluent-cart')
+                'message' => __('Please provide a valid TEST secret key!', 'webmakerr-cart')
             ];
         }
 
@@ -204,20 +204,20 @@ class Stripe extends AbstractPaymentGateway
         if (isset($response['error'])) {
             return [
                 'status'  => 'failed',
-                'message' => $response['error']['message'] ? $response['error']['message'] : __('Invalid credentials!', 'fluent-cart')
+                'message' => $response['error']['message'] ? $response['error']['message'] : __('Invalid credentials!', 'webmakerr-cart')
             ];
         }
 
         if (!isset($response['id'])) {
             return [
                 'status'  => 'failed',
-                'message' => $response['error']['message'] ? $response['error']['message'] : __('Invalid credentials!', 'fluent-cart')
+                'message' => $response['error']['message'] ? $response['error']['message'] : __('Invalid credentials!', 'webmakerr-cart')
             ];
         }
 
         return [
             'status'  => 'success',
-            'message' => __('Stripe account verified!', 'fluent-cart')
+            'message' => __('Stripe account verified!', 'webmakerr-cart')
         ];
     }
 
@@ -226,7 +226,7 @@ class Stripe extends AbstractPaymentGateway
         return array(
             'notice'              => [
                 'value' => $this->renderStoreModeNotice(),
-                'label' => __('Store Mode notice', 'fluent-cart'),
+                'label' => __('Store Mode notice', 'webmakerr-cart'),
                 'type'  => 'notice'
             ],
             'payment_mode'        => [
@@ -234,14 +234,14 @@ class Stripe extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type'   => 'tab',
-                        'label'  => __('Live credentials', 'fluent-cart'),
+                        'label'  => __('Live credentials', 'webmakerr-cart'),
                         'value'  => 'live',
                         'schema' => [
                             'live_publishable_key' => [
                                 'value'       => '',
-                                'label'       => __('Live Publishable Key', 'fluent-cart'),
+                                'label'       => __('Live Publishable Key', 'webmakerr-cart'),
                                 'type'        => 'text',
-                                'placeholder' => __('pk_live_****************', 'fluent-cart'),
+                                'placeholder' => __('pk_live_****************', 'webmakerr-cart'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -250,9 +250,9 @@ class Stripe extends AbstractPaymentGateway
                             ],
                             'live_secret_key'      => [
                                 'value'       => '',
-                                'label'       => __('Live Secret Key', 'fluent-cart'),
+                                'label'       => __('Live Secret Key', 'webmakerr-cart'),
                                 'type'        => 'password',
-                                'placeholder' => __('sk_live_****************', 'fluent-cart'),
+                                'placeholder' => __('sk_live_****************', 'webmakerr-cart'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -261,9 +261,9 @@ class Stripe extends AbstractPaymentGateway
                             ],
                             'live_webhook_secret'  => [
                                 'value'       => '',
-                                'label'       => __('Live Webhook Signing Secret', 'fluent-cart'),
+                                'label'       => __('Live Webhook Signing Secret', 'webmakerr-cart'),
                                 'type'        => 'password',
-                                'placeholder' => __('whsec_****************', 'fluent-cart'),
+                                'placeholder' => __('whsec_****************', 'webmakerr-cart'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -274,14 +274,14 @@ class Stripe extends AbstractPaymentGateway
                     ],
                     [
                         'type'   => 'tab',
-                        'label'  => __('Test credentials', 'fluent-cart'),
+                        'label'  => __('Test credentials', 'webmakerr-cart'),
                         'value'  => 'test',
                         'schema' => [
                             'test_publishable_key' => [
                                 'value'       => '',
-                                'label'       => __('Test Publishable Key', 'fluent-cart'),
+                                'label'       => __('Test Publishable Key', 'webmakerr-cart'),
                                 'type'        => 'text',
-                                'placeholder' => __('pk_test_****************', 'fluent-cart'),
+                                'placeholder' => __('pk_test_****************', 'webmakerr-cart'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -290,9 +290,9 @@ class Stripe extends AbstractPaymentGateway
                             ],
                             'test_secret_key'      => [
                                 'value'       => '',
-                                'label'       => __('Test Secret Key', 'fluent-cart'),
+                                'label'       => __('Test Secret Key', 'webmakerr-cart'),
                                 'type'        => 'password',
-                                'placeholder' => __('sk_test_****************', 'fluent-cart'),
+                                'placeholder' => __('sk_test_****************', 'webmakerr-cart'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -301,9 +301,9 @@ class Stripe extends AbstractPaymentGateway
                             ],
                             'test_webhook_secret'  => [
                                 'value'       => '',
-                                'label'       => __('Test Webhook Signing Secret', 'fluent-cart'),
+                                'label'       => __('Test Webhook Signing Secret', 'webmakerr-cart'),
                                 'type'        => 'password',
-                                'placeholder' => __('whsec_****************', 'fluent-cart'),
+                                'placeholder' => __('whsec_****************', 'webmakerr-cart'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -316,28 +316,28 @@ class Stripe extends AbstractPaymentGateway
             ],
             'provider'            => array(
                 'value' => 'api_keys',
-                'label' => __('Provider', 'fluent-cart'),
+                'label' => __('Provider', 'webmakerr-cart'),
                 'type'  => 'provider'
             ),
             'setup_guide'         => array(
-                'value'   => '<h4>' . __('Enter your Stripe API keys to enable payments.', 'fluent-cart') . '</h4><hr/>',
-                'label'   => __('Manual API setup', 'fluent-cart'),
+                'value'   => '<h4>' . __('Enter your Stripe API keys to enable payments.', 'webmakerr-cart') . '</h4><hr/>',
+                'label'   => __('Manual API setup', 'webmakerr-cart'),
                 'type'    => 'html_attr',
                 'visible' => 'no'
             ),
             'webhook_desc'        => array(
                 'value' => Webhook::webhookInstruction(),
-                'label' => __('Webhook URL', 'fluent-cart'),
+                'label' => __('Webhook URL', 'webmakerr-cart'),
                 'type'  => 'html_attr'
             ),
             'test_active_methods' => [
                 'value' => (new API())->getActivatedPaymentMethodsConfigs('test'),
-                'label' => __('Activated Methods', 'fluent-cart'),
+                'label' => __('Activated Methods', 'webmakerr-cart'),
                 'type'  => 'active_methods'
             ],
             'live_active_methods' => [
                 'value' => (new API())->getActivatedPaymentMethodsConfigs('live'),
-                'label' => __('Activated Methods', 'fluent-cart'),
+                'label' => __('Activated Methods', 'webmakerr-cart'),
                 'type'  => 'active_methods'
             ],
         );
@@ -390,7 +390,7 @@ class Stripe extends AbstractPaymentGateway
         $publicKey = $stripeSettings->getPublicKey();
 
         if (empty($publicKey)) {
-            $message = __('No Valid public key is not found!', 'fluent-cart');
+            $message = __('No Valid public key is not found!', 'webmakerr-cart');
             fluent_cart_add_log('Stripe Credential Validation', $message, 'error', ['log_type' => 'payment']);
             wp_send_json([
                 'status'  => 'failed',
@@ -417,7 +417,7 @@ class Stripe extends AbstractPaymentGateway
         wp_send_json(
             [
                 'status'       => 'success',
-                'message'      => __('Order info retrieved!', 'fluent-cart'),
+                'message'      => __('Order info retrieved!', 'webmakerr-cart'),
                 'data'         => [],
                 'payment_args' => $paymentArgs,
                 'intent'       => $intentData,
@@ -452,7 +452,7 @@ class Stripe extends AbstractPaymentGateway
             $charge = (new API())->getStripeObject('payment_intents/' . $transaction->vendor_charge_id, ['expand' => ['latest_charge']]);
 
             if (is_wp_error($charge) || empty($charge['dispute'])) {
-                new \WP_Error('No dispute ID found!', __('Please check stripe if the dispute is already accepted or not!', 'fluent-cart'));
+                new \WP_Error('No dispute ID found!', __('Please check stripe if the dispute is already accepted or not!', 'webmakerr-cart'));
             }
 
             $disputeId = Arr::get($charge, 'dispute', '');

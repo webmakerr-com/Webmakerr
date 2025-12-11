@@ -76,7 +76,7 @@ class CustomerHelper
 
         $customerIds = array_filter($customerIds);
         if (!$customerIds) {
-            throw new \Exception(__('Customers selection is required', 'fluent-cart'));
+            throw new \Exception(__('Customers selection is required', 'webmakerr-cart'));
         }
 
         $customersApi = new Customers();
@@ -89,7 +89,7 @@ class CustomerHelper
             return $customersApi->updateStatus($selected);
         }
 
-        throw new \Exception(__('Selected action is invalid', 'fluent-cart'));
+        throw new \Exception(__('Selected action is invalid', 'webmakerr-cart'));
     }*/
 
     public static function getRepeatCustomerBySearch($params)
@@ -118,7 +118,7 @@ class CustomerHelper
     public static function checkDownloadPermissionAndStoreLog($params)
     {
         if (!is_user_logged_in()) {
-            wp_send_json(['message' => __('You are not logged in', 'fluent-cart')], 422);
+            wp_send_json(['message' => __('You are not logged in', 'webmakerr-cart')], 422);
         }
 
         $orderUuid = Arr::get($params, 'order');
@@ -129,7 +129,7 @@ class CustomerHelper
         if (!empty($order)) {
 
             if (empty($order->customer) || wp_get_current_user()->ID != $order->customer->user_id) {
-                wp_send_json(['message' => __('Sorry, This is not your order', 'fluent-cart')], 422);
+                wp_send_json(['message' => __('Sorry, This is not your order', 'webmakerr-cart')], 422);
             }
 
             $orderId = Arr::get($order, 'id');
@@ -156,11 +156,11 @@ class CustomerHelper
                 $currentDate = gmdate('Y-m-d H:i:s', current_time('timestamp'));
 
                 if ($productDownloadExpiry !== '' && $currentDate > $downloadExpiryDate) {
-                    wp_send_json(['message' => __('Download date has been expired', 'fluent-cart')], 422);
+                    wp_send_json(['message' => __('Download date has been expired', 'webmakerr-cart')], 422);
                 }
 
                 if($productDownloadLimit !== '' && $totalDownloads >= $productDownloadLimit) {
-                    wp_send_json(['message' => __('You have crossed download limit', 'fluent-cart')], 422);
+                    wp_send_json(['message' => __('You have crossed download limit', 'webmakerr-cart')], 422);
                 }
 
                 if(($totalDownloads < $productDownloadLimit && $currentDate <= $downloadExpiryDate) || ($productDownloadLimit === '' && $productDownloadExpiry === '') || ($productDownloadLimit === '' && $currentDate <= $downloadExpiryDate) || (($totalDownloads < $productDownloadLimit && $productDownloadExpiry === ''))) {
@@ -177,9 +177,9 @@ class CustomerHelper
                 }
 
             }
-            wp_send_json(['message' => __('File not found', 'fluent-cart')], 422);
+            wp_send_json(['message' => __('File not found', 'webmakerr-cart')], 422);
         }
-        wp_send_json(['message' => __('Order not found', 'fluent-cart')], 422);
+        wp_send_json(['message' => __('Order not found', 'webmakerr-cart')], 422);
     }
 
     private static function storeDownloadLog(OrderDownloadPermission $orderDownloadPermission = null, $data)
@@ -193,7 +193,7 @@ class CustomerHelper
     // public static function storeDownloadLog($params)
     // {
     //     if (!is_user_logged_in()) {
-    //         wp_send_json_error(['message' => __('You are not logged in', 'fluent-cart')], 423);
+    //         wp_send_json_error(['message' => __('You are not logged in', 'webmakerr-cart')], 423);
     //     }
 
     //     $order = Arr::get($params, 'order');
@@ -213,7 +213,7 @@ class CustomerHelper
     //     if ($order) {
 
     //         if (empty($order->customer) || wp_get_current_user()->ID != $order->customer->user_id) {
-    //             wp_send_json_error(['message' => __('Sorry, This is not your order', 'fluent-cart')], 423);
+    //             wp_send_json_error(['message' => __('Sorry, This is not your order', 'webmakerr-cart')], 423);
     //         }
     //         $orderId = Arr::get($order, 'id');
     //         $orderItem = $order->order_items->first(); 

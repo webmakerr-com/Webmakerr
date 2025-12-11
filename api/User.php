@@ -26,11 +26,11 @@ class User
         $rememberMe = Arr::get($data, 'remember_me', false) === 'on';
 
         if (!$userLogin) {
-            return $this->sendError(__('Email or username is required', 'fluent-cart'), 'missing_login');
+            return $this->sendError(__('Email or username is required', 'webmakerr-cart'), 'missing_login');
         }
 
         if (!$password) {
-            return $this->sendError(__('Password is required', 'fluent-cart'), 'missing_password');
+            return $this->sendError(__('Password is required', 'webmakerr-cart'), 'missing_password');
         }
 
         $credentials = [
@@ -52,7 +52,7 @@ class User
         $redirectUrl = (new StoreSettings())->getCustomerProfilePage() . '#/profile';
 
         return $this->sendSuccess([
-            'message' => __('Login successful', 'fluent-cart'),
+            'message' => __('Login successful', 'webmakerr-cart'),
             'redirect_url' => $redirectUrl
         ]);
     }
@@ -62,15 +62,15 @@ class User
         $email = sanitize_email(Arr::get($data, 'email', ''));
 
         if (get_current_user_id()) {
-            return $this->sendError(__('You are already logged in', 'fluent-cart'), 'already_logged_in');
+            return $this->sendError(__('You are already logged in', 'webmakerr-cart'), 'already_logged_in');
         }
 
         if (!is_email($email)) {
-            return $this->sendError(__('Please enter a valid email address', 'fluent-cart'), 'invalid_email');
+            return $this->sendError(__('Please enter a valid email address', 'webmakerr-cart'), 'invalid_email');
         }
 
         if (email_exists($email)) {
-            return $this->sendError(__('Email already exists', 'fluent-cart'), 'email_exists');
+            return $this->sendError(__('Email already exists', 'webmakerr-cart'), 'email_exists');
         }
 
         $fullName = sanitize_text_field(Arr::get($data, 'full_name'));
@@ -124,7 +124,7 @@ class User
         $checkoutPage = (new StoreSettings())->getCustomerProfilePage() . '#/profile';
 
         return $this->sendSuccess([
-            'message' => __('User created successfully! You are now logged in.', 'fluent-cart'),
+            'message' => __('User created successfully! You are now logged in.', 'webmakerr-cart'),
             'code' => 'user_created',
             'redirect_url' => $checkoutPage
         ]);

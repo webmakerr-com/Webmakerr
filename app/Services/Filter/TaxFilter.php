@@ -70,11 +70,11 @@ class TaxFilter extends BaseFilter
     {
         return [
             'tax_rates' => [
-                'label'    => __('Tax Property', 'fluent-cart'),
+                'label'    => __('Tax Property', 'webmakerr-cart'),
                 'value'    => 'tax_rates',
                 'children' => [
                     [
-                        'label'           => __('Country', 'fluent-cart'),
+                        'label'           => __('Country', 'webmakerr-cart'),
                         'value'           => 'country',
                         'column'          => 'country',
                         'filter_type'     => 'relation',
@@ -85,7 +85,7 @@ class TaxFilter extends BaseFilter
                         'options'         => TaxFilter::getCountriesOptions(),
                     ],
                     [
-                        'label'           => __('Region', 'fluent-cart'),
+                        'label'           => __('Region', 'webmakerr-cart'),
                         'value'           => 'region',
                         'column'          => 'state',
                         'filter_type'     => 'relation',
@@ -97,7 +97,7 @@ class TaxFilter extends BaseFilter
                         'limit'           => 10,
                     ],
                     [
-                        'label'       => __('Tax Name', 'fluent-cart'),
+                        'label'       => __('Tax Name', 'webmakerr-cart'),
                         'value'       => 'name',
                         'column'      => 'name',
                         'filter_type' => 'relation',
@@ -105,14 +105,14 @@ class TaxFilter extends BaseFilter
                         'type'        => 'text',
                     ],
                     [
-                        'label'       => __('Filed', 'fluent-cart'),
+                        'label'       => __('Filed', 'webmakerr-cart'),
                         'value'       => 'filed',
                         'column'      => 'filed_at',
                         'filter_type' => 'custom',
                         'type'        => 'selections',
                         'options'     => [
-                            'filed'     => __('Filed', 'fluent-cart'),
-                            'not_filed' => __('Not Filed', 'fluent-cart'),
+                            'filed'     => __('Filed', 'webmakerr-cart'),
+                            'not_filed' => __('Not Filed', 'webmakerr-cart'),
                         ],
                         'callback' => function ($query, $data) {
                             if ($data === 'filed') {

@@ -50,7 +50,7 @@ class SheetManager
             throw new InvalidSheetNameException(
                 sprintf(
                 /* translators: %s is the actual variable type */
-                    esc_html__('The sheet\'s name is invalid. It must be a string (%s given).', 'fluent-cart'),
+                    esc_html__('The sheet\'s name is invalid. It must be a string (%s given).', 'webmakerr-cart'),
                     esc_html($actualType)
                 )
             );
@@ -83,7 +83,7 @@ class SheetManager
             $failedRulesList = "\n - " . esc_html(\implode("\n - ", $failedRequirements));
             $errorMessage = sprintf(
             /* translators: %1$s is the sheet name, %2$s is the list of failed requirements */
-                esc_html__('The sheet\'s name ("%1$s") is invalid. It did not respect these rules:%2$s', 'fluent-cart'),
+                esc_html__('The sheet\'s name ("%1$s") is invalid. It did not respect these rules:%2$s', 'webmakerr-cart'),
                 esc_html($name),
                 $failedRulesList
             );

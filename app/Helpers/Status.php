@@ -103,11 +103,11 @@ class Status
     public static function getProductStatuses($withLabel = true)
     {
         return webmakerr_apply_filters('webmakerr_cart/product_statuses', [
-            self::PRODUCT_PUBLISH => __('Publish', 'fluent-cart'),
-            self::PRODUCT_DRAFT   => __('Draft', 'fluent-cart'),
-            self::PRODUCT_PRIVATE => __('Private', 'fluent-cart'),
-            self::PRODUCT_FUTURE  => __('Scheduled', 'fluent-cart'),
-            self::PRODUCT_TRASH   => __('Trashed', 'fluent-cart'),
+            self::PRODUCT_PUBLISH => __('Publish', 'webmakerr-cart'),
+            self::PRODUCT_DRAFT   => __('Draft', 'webmakerr-cart'),
+            self::PRODUCT_PRIVATE => __('Private', 'webmakerr-cart'),
+            self::PRODUCT_FUTURE  => __('Scheduled', 'webmakerr-cart'),
+            self::PRODUCT_TRASH   => __('Trashed', 'webmakerr-cart'),
         ], []);
 
         if ($withLabel) {
@@ -152,22 +152,22 @@ class Status
     public static function getOrderStatuses()
     {
         return webmakerr_apply_filters('webmakerr_cart/order_statuses', [
-            self::ORDER_PROCESSING => __('Processing', 'fluent-cart'),
-            self::ORDER_COMPLETED  => __('Completed', 'fluent-cart'),
-            self::ORDER_ON_HOLD    => __('On Hold', 'fluent-cart'),
-            self::ORDER_CANCELED   => __('Canceled', 'fluent-cart'),
-            self::ORDER_FAILED     => __('Failed', 'fluent-cart'),
+            self::ORDER_PROCESSING => __('Processing', 'webmakerr-cart'),
+            self::ORDER_COMPLETED  => __('Completed', 'webmakerr-cart'),
+            self::ORDER_ON_HOLD    => __('On Hold', 'webmakerr-cart'),
+            self::ORDER_CANCELED   => __('Canceled', 'webmakerr-cart'),
+            self::ORDER_FAILED     => __('Failed', 'webmakerr-cart'),
         ], []);
     }
 
     public static function getEditableOrderStatuses()
     {
         return apply_filters('fluent-cart/editable_order_statuses', [
-            self::ORDER_ON_HOLD    => __('On Hold', 'fluent-cart'),
-            self::ORDER_PROCESSING => __('Processing', 'fluent-cart'),
-            self::ORDER_COMPLETED  => __('Completed', 'fluent-cart'),
-            //  'archived' => __('Archived', 'fluent-cart'),
-            self::ORDER_CANCELED   => __('Canceled', 'fluent-cart')
+            self::ORDER_ON_HOLD    => __('On Hold', 'webmakerr-cart'),
+            self::ORDER_PROCESSING => __('Processing', 'webmakerr-cart'),
+            self::ORDER_COMPLETED  => __('Completed', 'webmakerr-cart'),
+            //  'archived' => __('Archived', 'webmakerr-cart'),
+            self::ORDER_CANCELED   => __('Canceled', 'webmakerr-cart')
         ], []);
     }
 
@@ -176,13 +176,13 @@ class Status
     public static function getPaymentStatuses()
     {
         return webmakerr_apply_filters('webmakerr_cart/payment_statuses', [
-            self::PAYMENT_PENDING            => __('Pending', 'fluent-cart'),
-            self::PAYMENT_PAID               => __('Paid', 'fluent-cart'),
-            self::PAYMENT_PARTIALLY_PAID     => __('Partially Paid', 'fluent-cart'),
-            self::PAYMENT_FAILED             => __('Failed', 'fluent-cart'),
-            self::PAYMENT_REFUNDED           => __('Refunded', 'fluent-cart'),
-            self::PAYMENT_PARTIALLY_REFUNDED => __('Partially Refunded', 'fluent-cart'),
-            self::PAYMENT_AUTHORIZED         => __('Authorized', 'fluent-cart'),
+            self::PAYMENT_PENDING            => __('Pending', 'webmakerr-cart'),
+            self::PAYMENT_PAID               => __('Paid', 'webmakerr-cart'),
+            self::PAYMENT_PARTIALLY_PAID     => __('Partially Paid', 'webmakerr-cart'),
+            self::PAYMENT_FAILED             => __('Failed', 'webmakerr-cart'),
+            self::PAYMENT_REFUNDED           => __('Refunded', 'webmakerr-cart'),
+            self::PAYMENT_PARTIALLY_REFUNDED => __('Partially Refunded', 'webmakerr-cart'),
+            self::PAYMENT_AUTHORIZED         => __('Authorized', 'webmakerr-cart'),
         ], []);
     }
 
@@ -190,11 +190,11 @@ class Status
     public static function getTransactionStatuses($withLabel = true)
     {
         return webmakerr_apply_filters('webmakerr_cart/transaction_statuses', [
-            self::TRANSACTION_PENDING   => __('Pending', 'fluent-cart'),
-            self::TRANSACTION_SUCCEEDED => __('Succeeded', 'fluent-cart'),
-            self::TRANSACTION_AUTHORIZED => __('Authorized', 'fluent-cart'),
-            self::TRANSACTION_FAILED    => __('Failed', 'fluent-cart'),
-            self::TRANSACTION_REFUNDED  => __('Refunded', 'fluent-cart'),
+            self::TRANSACTION_PENDING   => __('Pending', 'webmakerr-cart'),
+            self::TRANSACTION_SUCCEEDED => __('Succeeded', 'webmakerr-cart'),
+            self::TRANSACTION_AUTHORIZED => __('Authorized', 'webmakerr-cart'),
+            self::TRANSACTION_FAILED    => __('Failed', 'webmakerr-cart'),
+            self::TRANSACTION_REFUNDED  => __('Refunded', 'webmakerr-cart'),
         ], []);
 
         if ($withLabel) {
@@ -207,11 +207,11 @@ class Status
     public static function getEditableTransactionStatuses($withLabel = true)
     {
         $statuses = apply_filters('fluent-cart/editable_transaction_statuses', [
-            self::TRANSACTION_PENDING   => __('Pending', 'fluent-cart'),
-            self::TRANSACTION_SUCCEEDED => __('Succeeded', 'fluent-cart'),
-            self::TRANSACTION_AUTHORIZED => __('Authorized', 'fluent-cart'),
-            self::TRANSACTION_FAILED    => __('Failed', 'fluent-cart'),
-            self::TRANSACTION_REFUNDED  => __('Refunded', 'fluent-cart'),
+            self::TRANSACTION_PENDING   => __('Pending', 'webmakerr-cart'),
+            self::TRANSACTION_SUCCEEDED => __('Succeeded', 'webmakerr-cart'),
+            self::TRANSACTION_AUTHORIZED => __('Authorized', 'webmakerr-cart'),
+            self::TRANSACTION_FAILED    => __('Failed', 'webmakerr-cart'),
+            self::TRANSACTION_REFUNDED  => __('Refunded', 'webmakerr-cart'),
         ], []);
 
         if ($withLabel) {
@@ -225,20 +225,20 @@ class Status
     public static function getShippingStatuses()
     {
         return webmakerr_apply_filters('webmakerr_cart/shipping_statuses', [
-            self::SHIPPING_UNSHIPPED   => __('Unshipped', 'fluent-cart'),
-            self::SHIPPING_SHIPPED     => __('Shipped', 'fluent-cart'),
-            self::SHIPPING_DELIVERED   => __('Delivered', 'fluent-cart'),
-            self::SHIPPING_UNSHIPPABLE => __('Unshippable', 'fluent-cart'),
+            self::SHIPPING_UNSHIPPED   => __('Unshipped', 'webmakerr-cart'),
+            self::SHIPPING_SHIPPED     => __('Shipped', 'webmakerr-cart'),
+            self::SHIPPING_DELIVERED   => __('Delivered', 'webmakerr-cart'),
+            self::SHIPPING_UNSHIPPABLE => __('Unshippable', 'webmakerr-cart'),
         ], []);
     }
 
     public static function getEditableShippingStatuses()
     {
         return apply_filters('fluent-cart/editable_order_statuses', [
-            self::SHIPPING_UNSHIPPED   => __('Unshipped', 'fluent-cart'),
-            self::SHIPPING_SHIPPED     => __('Shipped', 'fluent-cart'),
-            self::SHIPPING_DELIVERED   => __('Delivered', 'fluent-cart'),
-            self::SHIPPING_UNSHIPPABLE => __('Unshippable', 'fluent-cart'),
+            self::SHIPPING_UNSHIPPED   => __('Unshipped', 'webmakerr-cart'),
+            self::SHIPPING_SHIPPED     => __('Shipped', 'webmakerr-cart'),
+            self::SHIPPING_DELIVERED   => __('Delivered', 'webmakerr-cart'),
+            self::SHIPPING_UNSHIPPABLE => __('Unshippable', 'webmakerr-cart'),
         ], []);
     }
 
@@ -246,17 +246,17 @@ class Status
     public static function getSubscriptionStatuses()
     {
         return webmakerr_apply_filters('webmakerr_cart/subscription_statuses', [
-            self::SUBSCRIPTION_PENDING  => __('Pending', 'fluent-cart'),
-            self::SUBSCRIPTION_ACTIVE   => __('Active', 'fluent-cart'),
-            self::SUBSCRIPTION_FAILING  => __('Failing', 'fluent-cart'),
-            self::SUBSCRIPTION_PAUSED   => __('Paused', 'fluent-cart'),
-            self::SUBSCRIPTION_EXPIRED  => __('Expired', 'fluent-cart'),
-            self::SUBSCRIPTION_EXPIRING => __('Expiring', 'fluent-cart'),
-            self::SUBSCRIPTION_CANCELED => __('Canceled', 'fluent-cart'),
-            self::SUBSCRIPTION_TRIALING => __('Trialing', 'fluent-cart'),
-            self::SUBSCRIPTION_INTENDED => __('Intended', 'fluent-cart'),
-            self::SUBSCRIPTION_PAST_DUE => __('Past Due', 'fluent-cart'),
-            self::SUBSCRIPTION_COMPLETED   => __('Completed', 'fluent-cart'),
+            self::SUBSCRIPTION_PENDING  => __('Pending', 'webmakerr-cart'),
+            self::SUBSCRIPTION_ACTIVE   => __('Active', 'webmakerr-cart'),
+            self::SUBSCRIPTION_FAILING  => __('Failing', 'webmakerr-cart'),
+            self::SUBSCRIPTION_PAUSED   => __('Paused', 'webmakerr-cart'),
+            self::SUBSCRIPTION_EXPIRED  => __('Expired', 'webmakerr-cart'),
+            self::SUBSCRIPTION_EXPIRING => __('Expiring', 'webmakerr-cart'),
+            self::SUBSCRIPTION_CANCELED => __('Canceled', 'webmakerr-cart'),
+            self::SUBSCRIPTION_TRIALING => __('Trialing', 'webmakerr-cart'),
+            self::SUBSCRIPTION_INTENDED => __('Intended', 'webmakerr-cart'),
+            self::SUBSCRIPTION_PAST_DUE => __('Past Due', 'webmakerr-cart'),
+            self::SUBSCRIPTION_COMPLETED   => __('Completed', 'webmakerr-cart'),
         ], []);
     }
 
@@ -274,8 +274,8 @@ class Status
     public static function getStockStatuses($withLabel = true)
     {
         $statues = [
-            self::STOCK_INSTOCK    => __('In Stock', 'fluent-cart'),
-            self::STOCK_OUTOFSTOCK => __('Out Of Stock', 'fluent-cart'),
+            self::STOCK_INSTOCK    => __('In Stock', 'webmakerr-cart'),
+            self::STOCK_OUTOFSTOCK => __('Out Of Stock', 'webmakerr-cart'),
         ];
 
         if ($withLabel) {
@@ -343,8 +343,8 @@ class Status
     public static function getEditableCustomerStatuses()
     {
         return apply_filters('fluent-cart/editable_customer_statuses', [
-            self::CUSTOMER_ACTIVE   => __('Active', 'fluent-cart'),
-            self::CUSTOMER_INACTIVE => __('Inactive', 'fluent-cart'),
+            self::CUSTOMER_ACTIVE   => __('Active', 'webmakerr-cart'),
+            self::CUSTOMER_INACTIVE => __('Inactive', 'webmakerr-cart'),
         ], []);
     }
 
@@ -404,66 +404,66 @@ class Status
             'key'            => 'event_trigger',
             'options'        => [
                 'order'        => [
-                    'label'   => __('Orders', 'fluent-cart'),
+                    'label'   => __('Orders', 'webmakerr-cart'),
                     'options' => [
                         [
                             'value' => 'order_paid_done',
-                            'label' => __('Order Paid (Payment / Subscription)', 'fluent-cart')
+                            'label' => __('Order Paid (Payment / Subscription)', 'webmakerr-cart')
                         ],
                         [
                             'value' => 'order_status_changed_to_canceled',
-                            'label' => __('Order Canceled', 'fluent-cart')
+                            'label' => __('Order Canceled', 'webmakerr-cart')
                         ],
                         [
                             'value' => 'order_fully_refunded',
-                            'label' => __('Order Refunded (Full)', 'fluent-cart')
+                            'label' => __('Order Refunded (Full)', 'webmakerr-cart')
                         ]
                     ]
                 ],
                 'subscription' => [
-                    'label'   => __('Subscriptions', 'fluent-cart'),
+                    'label'   => __('Subscriptions', 'webmakerr-cart'),
                     'options' => [
                         [
                             'value' => 'subscription_activated',
-                            'label' => __('Subscription Activated', 'fluent-cart')
+                            'label' => __('Subscription Activated', 'webmakerr-cart')
                         ],
                         [
                             'value' => 'subscription_canceled',
-                            'label' => __('Subscription Canceled', 'fluent-cart')
+                            'label' => __('Subscription Canceled', 'webmakerr-cart')
                         ],
                         [
                             'value' => 'subscription_renewed',
-                            'label' => __('Subscription Renewed', 'fluent-cart')
+                            'label' => __('Subscription Renewed', 'webmakerr-cart')
                         ],
                         [
                             'value' => 'subscription_eot',
-                            'label' => __('Subscription End of Term (Completed)', 'fluent-cart')
+                            'label' => __('Subscription End of Term (Completed)', 'webmakerr-cart')
                         ],
                         [
                             'value' => 'subscription_expired_validity',
-                            'label' => __('Subscription Expired / End of Access Validity', 'fluent-cart')
+                            'label' => __('Subscription Expired / End of Access Validity', 'webmakerr-cart')
                         ]
                     ]
                 ],
                 'product'      => [
-                    'label'   => __('Shipping', 'fluent-cart'),
+                    'label'   => __('Shipping', 'webmakerr-cart'),
                     'options' => [
                         [
                             'value' => 'shipping_status_changed_to_shipped',
-                            'label' => __('Order Shipped', 'fluent-cart')
+                            'label' => __('Order Shipped', 'webmakerr-cart')
                         ],
                         [
                             'value' => 'shipping_status_changed_to_delivered',
-                            'label' => __('Order Delivered', 'fluent-cart')
+                            'label' => __('Order Delivered', 'webmakerr-cart')
                         ]
                     ]
                 ]
             ],
-            'inline_tip'     => __('Select in which event you want to trigger this feed', 'fluent-cart'),
-            'label'          => __('Event Trigger', 'fluent-cart'),
-            'placeholder'    => __('Select Event', 'fluent-cart'),
+            'inline_tip'     => __('Select in which event you want to trigger this feed', 'webmakerr-cart'),
+            'label'          => __('Event Trigger', 'webmakerr-cart'),
+            'placeholder'    => __('Select Event', 'webmakerr-cart'),
             'component'      => 'selection_group',
-            'checkbox_label' => __('Event Trigger For This Feed', 'fluent-cart'),
+            'checkbox_label' => __('Event Trigger For This Feed', 'webmakerr-cart'),
         ];
     }
 

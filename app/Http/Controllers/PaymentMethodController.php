@@ -62,7 +62,7 @@ class PaymentMethodController extends Controller
                 200
             );
         } else {
-            throw new \Exception(esc_html__('No valid payment method found!', 'fluent-cart'));
+            throw new \Exception(esc_html__('No valid payment method found!', 'webmakerr-cart'));
         }
     }
 
@@ -82,7 +82,7 @@ public function saveDesign(Request $request)
     try {
         $method = sanitize_text_field($request->get('method'));
         if (!GatewayManager::has($method)) {
-            return $this->sendError(['message' => __('Invalid payment method', 'fluent-cart')], 422);
+            return $this->sendError(['message' => __('Invalid payment method', 'webmakerr-cart')], 422);
         }
 
         $checkoutLabel = $request->getSafe('checkout_label', 'sanitize_text_field');
@@ -91,7 +91,7 @@ public function saveDesign(Request $request)
         $methodInstance = GatewayManager::getInstance($method);
      
         if (!$methodInstance) {
-            return $this->sendError(['message' => __('Invalid payment method instance', 'fluent-cart')], 422);
+            return $this->sendError(['message' => __('Invalid payment method instance', 'webmakerr-cart')], 422);
         }
 
         // Merge into existing settings and persist via gateway's updateSettings
@@ -103,11 +103,11 @@ public function saveDesign(Request $request)
         if (method_exists($methodInstance, 'updateSettings')) {
             $saved = $methodInstance->updateSettings($current);
         } else {
-            return $this->sendError(['message' => __('Gateway cannot update settings', 'fluent-cart')], 500);
+            return $this->sendError(['message' => __('Gateway cannot update settings', 'webmakerr-cart')], 500);
         }
 
         return $this->sendSuccess([
-            'message' => __('Checkout design settings saved', 'fluent-cart'),
+            'message' => __('Checkout design settings saved', 'webmakerr-cart'),
             'settings' => $saved
         ]);
     } catch (\Throwable $e) {
@@ -146,7 +146,7 @@ public function saveDesign(Request $request)
         }
 
         return $this->sendSuccess([
-            'message' => __('Webhook setup successfully! Please reload the page.', 'fluent-cart')
+            'message' => __('Webhook setup successfully! Please reload the page.', 'webmakerr-cart')
         ]);
     }
 
@@ -161,7 +161,7 @@ public function saveDesign(Request $request)
             $order = $request->get('order');
             if (!is_array($order)) {
                 return $this->sendError([
-                    'message' => __('Invalid order format', 'fluent-cart')
+                    'message' => __('Invalid order format', 'webmakerr-cart')
                 ], 422);
             }
             
@@ -172,7 +172,7 @@ public function saveDesign(Request $request)
             update_option('fluent_cart_payment_methods_order', $order);
             
             return $this->sendSuccess([
-                'message' => __('Payment methods order saved successfully', 'fluent-cart'),
+                'message' => __('Payment methods order saved successfully', 'webmakerr-cart'),
                 'order' => $order
             ]);
         } catch (\Exception $e) {
@@ -191,13 +191,13 @@ public function saveDesign(Request $request)
             
             if (empty($pluginSlug) || empty($sourceType)) {
                 return $this->sendError([
-                    'message' => __('Plugin slug, source type are required', 'fluent-cart')
+                    'message' => __('Plugin slug, source type are required', 'webmakerr-cart')
                 ], 422);
             }
 
             if ($sourceType === 'github' && empty($sourceLink)) {
                 return $this->sendError([
-                    'message' => __('Source link is required', 'fluent-cart')
+                    'message' => __('Source link is required', 'webmakerr-cart')
                 ], 422);
             }
 
@@ -211,7 +211,7 @@ public function saveDesign(Request $request)
             }
 
             return $this->sendSuccess([
-                'message' => __('Payment addon installed and activated successfully!', 'fluent-cart')
+                'message' => __('Payment addon installed and activated successfully!', 'webmakerr-cart')
             ]);
         } catch (\Exception $e) {
             return $this->sendError([
@@ -227,7 +227,7 @@ public function saveDesign(Request $request)
             
             if (empty($pluginFile)) {
                 return $this->sendError([
-                    'message' => __('Plugin file path is required', 'fluent-cart')
+                    'message' => __('Plugin file path is required', 'webmakerr-cart')
                 ], 422);
             }
 
@@ -241,7 +241,7 @@ public function saveDesign(Request $request)
             }
 
             return $this->sendSuccess([
-                'message' => __('Payment addon activated successfully!', 'fluent-cart')
+                'message' => __('Payment addon activated successfully!', 'webmakerr-cart')
             ]);
         } catch (\Exception $e) {
             return $this->sendError([

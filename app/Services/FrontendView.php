@@ -57,10 +57,10 @@ class FrontendView
 
     public static function renderNotFoundPage($pageTitle = null, $title = null, $text = null, $buttonText = null, $notFoundImg = null, $buttonUrl = null)
     {
-        $pageTitle = $pageTitle ?? __('404 - Page not found', 'fluent-cart');
-        $title = $title ?? __('404 - Page not found', 'fluent-cart');
-        $text = $text ?? __('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'fluent-cart');
-        $buttonText = $buttonText ?? __('Go Back to Home Page', 'fluent-cart');
+        $pageTitle = $pageTitle ?? __('404 - Page not found', 'webmakerr-cart');
+        $title = $title ?? __('404 - Page not found', 'webmakerr-cart');
+        $text = $text ?? __('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'webmakerr-cart');
+        $buttonText = $buttonText ?? __('Go Back to Home Page', 'webmakerr-cart');
         $notFoundImg = empty($notFoundImg) ? Vite::getAssetUrl() . 'images/404.svg': $notFoundImg;
 
         $data = [
@@ -79,9 +79,9 @@ class FrontendView
     public static function renderFileNotFoundPage()
     {
         return static::renderNotFoundPage(
-            __('File Not Found', 'fluent-cart'),
-            __('404 - File Not Found', 'fluent-cart'),
-            __('The requested file is unavailable or the download link has expired.', 'fluent-cart')
+            __('File Not Found', 'webmakerr-cart'),
+            __('404 - File Not Found', 'webmakerr-cart'),
+            __('The requested file is unavailable or the download link has expired.', 'webmakerr-cart')
         );
     }
 
