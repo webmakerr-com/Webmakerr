@@ -23,7 +23,7 @@ done
 # Configuration
 SOURCE_DIR="$(pwd)"
 BUILDS_DIR="$(pwd)/builds"
-OUTPUT_FILE="$BUILDS_DIR/fluent-cart.zip"
+OUTPUT_FILE="$BUILDS_DIR/webmakerr-cart.zip"
 
 mkdir -p "$BUILDS_DIR"
 
@@ -43,7 +43,7 @@ IGNORE_PATTERNS=(
     "builds/*"
     "storage/session/*"
     "vendor/fakerphp.zip"
-    "fluent-cart.zip"
+    "webmakerr-cart.zip"
     ".git/*"
     "build.sh"
     "svn/*"
@@ -143,4 +143,4 @@ fi
 
 echo ""
 echo -e "${YELLOW}💡 One-liner alternative:${NC}"
-echo 'mkdir -p builds && zip -r9 builds/fluent-cart.zip . -x "composer.lock" "package*.json" "jsconfig.json" "node_modules/*" "builds/*" "storage/session/*" "vendor/fakerphp.zip" "fluent-cart.zip" ".git/*" "build.sh" "research/*" "resources/*" "logs/*" ".*" "dev-docs/*" "dev/*" "fallBackCheck.js" "yarn.lock" "wpf/*" "vite.config.js" "*lock.yaml" "postcss.config.js" "tailwind.config.js" && echo "✅ ZIP created: $(ls -lh builds/fluent-cart.zip | awk "{print \$5}")"'
+echo 'mkdir -p builds && zip -r9 builds/webmakerr-cart.zip . -x "composer.lock" "package*.json" "jsconfig.json" "node_modules/*" "builds/*" "storage/session/*" "vendor/fakerphp.zip" "webmakerr-cart.zip" ".git/*" "build.sh" "research/*" "resources/*" "logs/*" ".*" "dev-docs/*" "dev/*" "fallBackCheck.js" "yarn.lock" "wpf/*" "vite.config.js" "*lock.yaml" "postcss.config.js" "tailwind.config.js" && echo "✅ ZIP created: $(ls -lh builds/webmakerr-cart.zip | awk "{print \$5}")"'
