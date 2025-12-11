@@ -91,6 +91,8 @@ class S3Driver extends BaseDriver
             $fileName = basename($filePath);
         }
 
+        $fileName = explode('_____webmakerr-cart_____', $fileName)[0];
+        $fileName = explode('__webmakerr-cart__', $fileName)[0];
         $fileName = explode('_____fluent-cart_____', $fileName)[0];
         $fileName = explode('__fluent-cart__', $fileName)[0];
 
@@ -130,6 +132,8 @@ class S3Driver extends BaseDriver
             $fileName = basename($filePath);
         }
 
+        $fileName = explode('_____webmakerr-cart_____', $fileName)[0];
+        $fileName = explode('__webmakerr-cart__', $fileName)[0];
         $fileName = explode('_____fluent-cart_____', $fileName)[0];
         $fileName = explode('__fluent-cart__', $fileName)[0];
 

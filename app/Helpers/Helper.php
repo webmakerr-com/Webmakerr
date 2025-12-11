@@ -448,6 +448,20 @@ class Helper
     public static function getProductImageBaseUri(): string
     {
         $uploads = wp_upload_dir();
+        $directories = [
+            WEBMAKERR_UPLOAD_DIR,
+        ];
+
+        if (defined('WEBMAKERR_LEGACY_UPLOAD_DIR')) {
+            $directories[] = WEBMAKERR_LEGACY_UPLOAD_DIR;
+        }
+
+        foreach ($directories as $dir) {
+            $path = $uploads['basedir'] . '/' . $dir . '/product_image/';
+            if (is_dir($path)) {
+                return $uploads['baseurl'] . '/' . $dir . '/product_image/';
+            }
+        }
 
         return $uploads['baseurl'] . '/' . WEBMAKERR_UPLOAD_DIR . '/product_image/';
     }
@@ -455,6 +469,21 @@ class Helper
     public static function getProductImageBaseDir()
     {
         $uploads = wp_upload_dir();
+        $directories = [
+            WEBMAKERR_UPLOAD_DIR,
+        ];
+
+        if (defined('WEBMAKERR_LEGACY_UPLOAD_DIR')) {
+            $directories[] = WEBMAKERR_LEGACY_UPLOAD_DIR;
+        }
+
+        foreach ($directories as $dir) {
+            $path = $uploads['basedir'] . '/' . $dir . '/product_image/';
+
+            if (is_dir($path)) {
+                return $path;
+            }
+        }
 
         return $uploads['basedir'] . '/' . WEBMAKERR_UPLOAD_DIR . '/product_image/';
     }

@@ -2,10 +2,19 @@ const path = require('path');
 const { exec, spawn } = require('child_process');
 const { promisify } = require('util');
 const execAsync = promisify(exec);
-function buildWithSpawn(includeFaker = false) {
+
+function buildWithSpawn(includeFaker = false, includeLegacyZip = true) {
     return new Promise((resolve, reject) => {
         const scriptPath = path.join(__dirname, 'build.sh');
-        const args = includeFaker ? ['--faker'] : [];
+        const args = [];
+
+        if (includeFaker) {
+            args.push('--faker');
+        }
+
+        if (!includeLegacyZip) {
+            args.push('--no-legacy-zip');
+        }
 
         console.log(`🚀 Running: ${scriptPath} ${args.join(' ')}`);
 
@@ -31,8 +40,7 @@ function buildWithSpawn(includeFaker = false) {
     });
 }
 
-if (typeof process.env.npm_config_faker === 'undefined') {
-    buildWithSpawn(false);
-}else{
-    buildWithSpawn(true);
-}
+const includeFaker = typeof process.env.npm_config_faker !== 'undefined';
+const includeLegacyZip = process.env.npm_config_legacy_zip !== 'false' && process.env.WEBMAKERR_LEGACY_ZIP !== 'false';
+
+buildWithSpawn(includeFaker, includeLegacyZip);

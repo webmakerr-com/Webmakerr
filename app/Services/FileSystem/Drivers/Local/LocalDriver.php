@@ -12,6 +12,8 @@ use Webmakerr\Framework\Support\Str;
 
 class LocalDriver extends BaseDriver
 {
+    protected string $legacyDirName = 'fluent-cart';
+
     public function getDirName(): string
     {
         return $this->dirName;
@@ -21,8 +23,8 @@ class LocalDriver extends BaseDriver
     public function __construct(?string $dirPath = null, ?string $dirName = null)
     {
         parent::__construct($dirPath, $dirName);
-        $this->dirName = $dirName ?? 'fluent-cart';
-        $this->dirPath = $dirPath ?? $this->getDefaultDirPath();
+        $this->dirName = $dirName ?? 'webmakerr-cart';
+        $this->dirPath = $dirPath ?? $this->resolvePreferredDirPath();
         $this->storageDriver = new LocalStorageDriver();
 
         global $wp_filesystem;
@@ -33,7 +35,11 @@ class LocalDriver extends BaseDriver
             WP_Filesystem();
         }
 
-        $this->ensureDirectoryExist();
+        $this->ensureDirectoryExist($this->dirPath);
+
+        if (!$dirPath) {
+            $this->ensureDirectoryExist($this->getLegacyDirPath());
+        }
 
     }
 
@@ -42,10 +48,28 @@ class LocalDriver extends BaseDriver
         return wp_get_upload_dir()['basedir'] . DIRECTORY_SEPARATOR . $this->getDirName();
     }
 
-    private function ensureDirectoryExist() {
+    protected function getLegacyDirPath(): string
+    {
+        return wp_get_upload_dir()['basedir'] . DIRECTORY_SEPARATOR . $this->legacyDirName;
+    }
+
+    private function resolvePreferredDirPath(): string
+    {
+        $primaryPath = $this->getDefaultDirPath();
+        $legacyPath = $this->getLegacyDirPath();
+
+        if (is_dir($legacyPath) && !is_dir($primaryPath)) {
+            $this->dirName = $this->legacyDirName;
+            return $legacyPath;
+        }
+
+        return $primaryPath;
+    }
+
+    private function ensureDirectoryExist($uploadDirectory = null) {
 
 
-        $uploadDirectory = $this->getDefaultDirPath();
+        $uploadDirectory = $uploadDirectory ?? $this->getDefaultDirPath();
         global $wp_filesystem;
         // Check if directory exists
         if (! $wp_filesystem->is_dir($uploadDirectory)) {
@@ -143,7 +167,7 @@ class LocalDriver extends BaseDriver
         }
 
         // Generate unique filename
-        $uploadToFilePath = $uploadToFilePath . '__fluent-cart__.' . time() . '.' . $file->getClientOriginalExtension();
+        $uploadToFilePath = $uploadToFilePath . '__webmakerr-cart__.' . time() . '.' . $file->getClientOriginalExtension();
 
         // Define destination
         $destination = trailingslashit( $this->getDefaultDirPath() ) . $uploadToFilePath;
@@ -200,6 +224,8 @@ class LocalDriver extends BaseDriver
         }
         $fileSize = filesize($file);
         $fileName = $fileName ?? basename($filePath);
+        $fileName = explode('_____webmakerr-cart_____', $fileName)[0];
+        $fileName = explode('__webmakerr-cart__', $fileName)[0];
         $fileName = explode('_____fluent-cart_____', $fileName)[0];
         $fileName = explode('__fluent-cart__', $fileName)[0];
         $this->setDownloadHeader($fileName ?? basename($filePath), $file, $fileSize);

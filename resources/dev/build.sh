@@ -9,10 +9,15 @@ NC='\033[0m' # No Color
 
 # Parse command line arguments
 INCLUDE_FAKER=false
+INCLUDE_LEGACY_ZIP=true
 for arg in "$@"; do
     case $arg in
         --faker)
             INCLUDE_FAKER=true
+            shift
+            ;;
+        --no-legacy-zip)
+            INCLUDE_LEGACY_ZIP=false
             shift
             ;;
         *)
@@ -23,7 +28,8 @@ done
 # Configuration
 SOURCE_DIR="$(pwd)"
 BUILDS_DIR="$(pwd)/builds"
-OUTPUT_FILE="$BUILDS_DIR/webmakerr-cart.zip"
+PRIMARY_OUTPUT_FILE="$BUILDS_DIR/webmakerr-cart.zip"
+LEGACY_OUTPUT_FILE="$BUILDS_DIR/fluent-cart.zip"
 
 mkdir -p "$BUILDS_DIR"
 
@@ -44,6 +50,7 @@ IGNORE_PATTERNS=(
     "storage/session/*"
     "vendor/fakerphp.zip"
     "webmakerr-cart.zip"
+    "fluent-cart.zip"
     ".git/*"
     "build.sh"
     "svn/*"
@@ -79,7 +86,8 @@ for pattern in "${IGNORE_PATTERNS[@]}"; do
     EXCLUDE_ARGS+=("-x" "$pattern")
 done
 
-[[ -f "$OUTPUT_FILE" ]] && rm "$OUTPUT_FILE"
+[[ -f "$PRIMARY_OUTPUT_FILE" ]] && rm "$PRIMARY_OUTPUT_FILE"
+[[ -f "$LEGACY_OUTPUT_FILE" ]] && rm "$LEGACY_OUTPUT_FILE"
 
 echo -e "${YELLOW}📁 Scanning files...${NC}"
 
@@ -115,7 +123,7 @@ echo -e "${BLUE}📦 Creating ZIP archive...${NC}"
 count=0
 
 # Actual progress tracking
-zip -r9 "$OUTPUT_FILE" . "${EXCLUDE_ARGS[@]}" | while read -r line; do
+zip -r9 "$PRIMARY_OUTPUT_FILE" . "${EXCLUDE_ARGS[@]}" | while read -r line; do
     ((count++))
     show_progress "$count" "$TOTAL_FILES"
 done
@@ -125,17 +133,24 @@ show_progress "$TOTAL_FILES" "$TOTAL_FILES"
 
 echo "" # move to next line cleanly
 
-if [[ -f "$OUTPUT_FILE" ]]; then
+if [[ -f "$PRIMARY_OUTPUT_FILE" ]]; then
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        FILE_SIZE=$(stat -f%z "$OUTPUT_FILE")
+        FILE_SIZE=$(stat -f%z "$PRIMARY_OUTPUT_FILE")
     else
-        FILE_SIZE=$(stat -c%s "$OUTPUT_FILE")
+        FILE_SIZE=$(stat -c%s "$PRIMARY_OUTPUT_FILE")
     fi
     FILE_SIZE_MB=$(echo "scale=2; $FILE_SIZE / 1024 / 1024" | bc)
 
 
     echo -e "${GREEN}✅ ZIP file created in: $BUILDS_DIR${NC}"
     echo -e "${GREEN}📏 Plugin size: ${FILE_SIZE_MB} MB${NC}"
+
+    if [[ "$INCLUDE_LEGACY_ZIP" == true ]]; then
+        cp "$PRIMARY_OUTPUT_FILE" "$LEGACY_OUTPUT_FILE"
+        echo -e "${YELLOW}📦 Legacy archive copied to: $LEGACY_OUTPUT_FILE${NC}"
+    else
+        echo -e "${YELLOW}⚙️  Legacy archive creation skipped${NC}"
+    fi
 else
     echo -e "${RED}❌ Failed to create ZIP file${NC}"
     exit 1

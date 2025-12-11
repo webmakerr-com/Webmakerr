@@ -32,7 +32,8 @@ class CoreDependencyHandler
         }
 
         //just temporary force to download from outside link
-        $otherSource = 'https://wpcolorlab.s3.amazonaws.com/fluent-cart.zip';
+        $primarySource = 'https://wpcolorlab.s3.amazonaws.com/webmakerr-cart.zip';
+        $legacySource  = 'https://wpcolorlab.s3.amazonaws.com/fluent-cart.zip';
 
         // verify nonce
         if (!wp_verify_nonce($_POST['_nonce'], 'fluent-cart-onboarding-nonce')) {
@@ -43,17 +44,20 @@ class CoreDependencyHandler
             wp_send_json(['message' => 'Already installed'], 200);
         }
 
-        $result = true;
+        $installerPayload = [
+            'name'      => 'Webmakerr',
+            'repo-slug' => 'webmakerr-cart',
+            'file'      => 'fluent-cart.php'
+        ];
 
-        $otherSource = '';
+        $result = OutsideInstaller::backgroundInstallerDirect($installerPayload, 'webmakerr-cart', $primarySource);
 
-        if ($otherSource) {
-            OutsideInstaller::backgroundInstallerDirect([
-                'name'      => 'Webmakerr',
-                'repo-slug' => 'fluent-cart',
-                'file'      => 'fluent-cart.php'
-            ], 'fluent-cart', $otherSource);
-        } else {
+        if (is_wp_error($result) && $legacySource) {
+            $installerPayload['repo-slug'] = 'fluent-cart';
+            $result = OutsideInstaller::backgroundInstallerDirect($installerPayload, 'fluent-cart', $legacySource);
+        }
+
+        if (is_wp_error($result)) {
             $result = $this->installPlugin('fluent-cart');
         }
 
