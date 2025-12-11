@@ -40,7 +40,7 @@ class ProductCardBlockEditor extends BlockEditor
                 'slug'  => $this->slugPrefix,
                 'name'  => static::getEditorName(),
                 'title' => __('Product Card', 'webmakerr-cart'),
-                'description' => __('This block will display the product card.', 'webmakerr-cart'),
+                'description' => __('Showcase a Webmakerr product card anywhere on your site.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
                 'currency_sign' => $currencySign,
                 'currency_position' => $currencyPosition

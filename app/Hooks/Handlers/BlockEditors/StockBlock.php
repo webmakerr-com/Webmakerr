@@ -55,7 +55,7 @@ class StockBlock extends BlockEditor
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
                 'title'             => __('Stock', 'webmakerr-cart'),
-                'description'       => __('This block will display the stock.', 'webmakerr-cart'),
+                'description'       => __('Display Webmakerr stock status and availability messaging.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
                 'supports'          => $this->supports()
             ],

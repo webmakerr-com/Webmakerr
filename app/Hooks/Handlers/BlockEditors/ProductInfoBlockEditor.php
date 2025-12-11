@@ -41,7 +41,7 @@ class ProductInfoBlockEditor extends BlockEditor
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
                 'title'             => __('Product Info', 'webmakerr-cart'),
-                'description'       => __('This block will display the product information.', 'webmakerr-cart'),
+                'description'       => __('Highlight Webmakerr product information alongside purchase controls.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings(),

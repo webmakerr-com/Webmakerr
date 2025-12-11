@@ -722,9 +722,10 @@ class Commands
      *
      * ## EXAMPLES
      *
-     *     wp fluent_cart migrate_customers
-     *     wp fluent_cart migrate_customers --force
-     *     wp fluent_cart migrate_customers --debug
+     *     wp webmakerr migrate_customers
+     *     wp webmakerr migrate_customers --force
+     *     wp webmakerr migrate_customers --debug
+     *     wp fluent_cart migrate_customers --debug (legacy alias)
      */
     public function migrate_customers($args, $assoc_args)
     {
@@ -819,10 +820,11 @@ class Commands
      *
      * ## EXAMPLES
      *
-     *     wp fluent_cart migrate_orders
-     *     wp fluent_cart migrate_orders --batch-size=25
-     *     wp fluent_cart migrate_orders --start-date=2024-01-01 --end-date=2024-12-31
-     *     wp fluent_cart migrate_orders --debug
+     *     wp webmakerr migrate_orders
+     *     wp webmakerr migrate_orders --batch-size=25
+     *     wp webmakerr migrate_orders --start-date=2024-01-01 --end-date=2024-12-31
+     *     wp webmakerr migrate_orders --debug
+     *     wp fluent_cart migrate_orders --debug (legacy alias)
      */
     public function migrate_orders($args, $assoc_args)
     {
@@ -903,7 +905,8 @@ class Commands
      *
      * ## EXAMPLES
      *
-     *     wp fluent_cart update_customer_stats
+     *     wp webmakerr update_customer_stats
+     *     wp fluent_cart update_customer_stats (legacy alias)
      *
      * @when after_wp_load
      */
@@ -945,10 +948,11 @@ class Commands
      *
      * ## EXAMPLES
      *
-     *     wp fluent_cart migrate_all
-     *     wp fluent_cart migrate_all --skip-products
-     *     wp fluent_cart migrate_all --skip-customers
-     *     wp fluent_cart migrate_all --skip-orders
+     *     wp webmakerr migrate_all
+     *     wp webmakerr migrate_all --skip-products
+     *     wp webmakerr migrate_all --skip-customers
+     *     wp webmakerr migrate_all --skip-orders
+     *     wp fluent_cart migrate_all --skip-orders (legacy alias)
      */
     public function migrate_all($args, $assoc_args)
     {
@@ -1097,9 +1101,10 @@ class Commands
      *
      * ## EXAMPLES
      *
-     *     wp fluent_cart clone_orders --count=50
-     *     wp fluent_cart clone_orders --count=25 --start-date=2024-01-01 --end-date=2024-12-31
-     *     wp fluent_cart clone_orders --source-order-id=123 --count=5
+     *     wp webmakerr clone_orders --count=50
+     *     wp webmakerr clone_orders --count=25 --start-date=2024-01-01 --end-date=2024-12-31
+     *     wp webmakerr clone_orders --source-order-id=123 --count=5
+     *     wp fluent_cart clone_orders --source-order-id=123 --count=5 (legacy alias)
      */
     public function clone_orders($args, $assoc_args)
     {

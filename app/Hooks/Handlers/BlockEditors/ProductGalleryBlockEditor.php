@@ -41,7 +41,7 @@ class ProductGalleryBlockEditor extends BlockEditor
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
                 'title'             => __('Product Gallery', 'webmakerr-cart'),
-                'description'       => __('This block will display the product gallery.', 'webmakerr-cart'),
+                'description'       => __('Show the Webmakerr product gallery with your chosen layout.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings(),
