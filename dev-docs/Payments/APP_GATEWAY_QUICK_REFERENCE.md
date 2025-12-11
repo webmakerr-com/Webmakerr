@@ -2,7 +2,7 @@
 
 ## Overview
 
-Webmakerr provides multiple ways to access payment gateways through the `App::gateway()` facade and `GatewayManager`. This guide covers all available patterns and usage examples.
+Webmakerr Cart provides multiple ways to access payment gateways through the `App::gateway()` facade and `GatewayManager`. This guide covers all available patterns and usage examples.
 
 ## Access Patterns
 

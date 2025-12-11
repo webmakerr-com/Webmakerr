@@ -1,6 +1,6 @@
 # 🧩 Plugin Development Guide
 
-This project provides a streamlined workflow for developing, building, and packaging a plugin, including support for
+Webmakerr Cart provides a streamlined workflow for developing, building, and packaging the plugin, including support for
 optional fake data.
 
 ## ⚙️ Requirements

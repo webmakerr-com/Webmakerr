@@ -1,18 +1,19 @@
-# Webmakerr 🚀 - The New Era of WordPress eCommerce
+# Webmakerr Cart 🚀 - The New Era of WordPress eCommerce
 
 **Faster, Lighter, Simpler, and 100% Open Source**
 
 [![WordPress Plugin](https://img.shields.io/wordpress/plugin/v/webmakerr-cart?label=WP.org%20Version)](https://wordpress.org/plugins/webmakerr-cart/)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/webmakerr/webmakerr/issues)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/webmakerr/webmakerr-cart/issues)
 
-Welcome to the official GitHub repository of **Webmakerr** – the performance-first, fully open-source eCommerce solution built exclusively for modern WordPress.
+Welcome to the official GitHub repository of **Webmakerr Cart** – the performance-first, fully open-source eCommerce solution built exclusively for modern WordPress.
 
 We're reimagining what WordPress eCommerce can be: blazing-fast checkouts, zero bloat, no transaction fees, and a clean, scalable foundation that grows with your business.
 
-Legacy solutions slow down as you scale. Webmakerr was built from scratch with a custom database schema, efficient queries, and modern architecture so your store stays lightning-fast – even with thousands of orders.
+Legacy solutions slow down as you scale. Webmakerr Cart was built from scratch with a custom database schema, efficient queries, and modern architecture so your store stays lightning-fast – even with thousands of orders.
 
 And now? **The entire codebase is open source under GPL** – because the future of WordPress eCommerce belongs to the community ❤️
+
 
 ### ✨ Why Webmakerr?
 
@@ -32,8 +33,8 @@ https://wordpress.org/plugins/webmakerr-cart/
 
 ```bash
 # Clone the repository
-git clone https://github.com/webmakerr/webmakerr.git
-cd webmakerr
+git clone https://github.com/webmakerr/webmakerr-cart.git
+cd webmakerr-cart
 
 # Install dependencies
 npm i
@@ -63,7 +64,7 @@ npm run translate:all
 
 ### 🤝 Contributing
 
-Webmakerr is now **100% community-driven**! We welcome contributions of all sizes – from typo fixes to entire new payment gateways.
+Webmakerr Cart is now **100% community-driven**! We welcome contributions of all sizes – from typo fixes to entire new payment gateways.
 
 We especially love help with:
 - Writing Tests
@@ -87,7 +88,7 @@ New to open source? No problem – we’re super friendly and happy to guide you
 
 - **Dev Documentation** – https://dev.webmakerr.com
 - **User Documentation** – https://docs.webmakerr.com/
-- **Issues** – https://github.com/webmakerr/webmakerr/issues
+- **Issues** – https://github.com/webmakerr/webmakerr-cart/issues
 - **Discussions** – https://community.webmakerr.com/
 - **Website** – https://webmakerr.com
 
@@ -98,7 +99,7 @@ New to open source? No problem – we’re super friendly and happy to guide you
 
 ### License
 
-Webmakerr is proudly licensed under **GNU GPLv3** – just like WordPress itself.
+Webmakerr Cart is proudly licensed under **GNU GPLv3** – just like WordPress itself.
 
 ---
 
@@ -106,5 +107,5 @@ Webmakerr is proudly licensed under **GNU GPLv3** – just like WordPress itself
 
 Made with ❤️ by the [WPManageNinja](https://wpmanageninja.com) team and **you** – the incredible WordPress community.
 
-**Star this repo if you believe in open-source eCommerce!** ⭐  
+**Star this repo if you believe in open-source eCommerce!** ⭐
 Let’s go! 🚀
