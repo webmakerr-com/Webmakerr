@@ -9,13 +9,13 @@ use WP_CLI;
 /**
  * WooCommerceMigratorCli
  *
- * This class handles the migration of WooCommerce products, categories, attachments, and downloadable files to FluentCart.
- * It provides CLI commands for bulk migration and ensures data is mapped and transformed to match FluentCart's structure and logic.
+ * This class handles the migration of WooCommerce products, categories, attachments, and downloadable files to Webmakerr.
+ * It provides CLI commands for bulk migration and ensures data is mapped and transformed to match Webmakerr's structure and logic.
  *
  * Major responsibilities:
  * - Migrate product posts, variations, categories, and attachments
- * - Map WooCommerce product types, stock, downloadable, and virtual flags to FluentCart equivalents
- * - Copy downloadable files to FluentCart's upload directory
+ * - Map WooCommerce product types, stock, downloadable, and virtual flags to Webmakerr equivalents
+ * - Copy downloadable files to Webmakerr's upload directory
  * - Ensure all product meta, images, and downloadable assets are correctly linked
  */
 class WooCommerceMigratorCli

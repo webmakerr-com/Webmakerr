@@ -340,7 +340,7 @@ const setStep = (step) => {
               {{ headerTitle }}
             </h2>
             <p class="fct-onboarding-card-text">
-              {{ translate('You\'ve successfully Installed The Plugin.') }}
+              {{ translate('You\'ve successfully installed Webmakerr.') }}
             </p>
           </div><!-- .fct-onboarding-card-head -->
 
