@@ -58,8 +58,8 @@ class CustomerController extends Controller
 
         if (empty($customer)) {
             return $this->entityNotFoundError(
-                __('Customer not found', 'fluent-cart'),
-                __('Back to Customer List', 'fluent-cart'),
+                __('Customer not found', 'webmakerr-cart'),
+                __('Back to Customer List', 'webmakerr-cart'),
                 '/customers'
             );
         }
@@ -196,13 +196,13 @@ class CustomerController extends Controller
         if (empty($customer)) {
 
             return $this->sendError([
-                'message' => __('Customer not found.', 'fluent-cart')
+                'message' => __('Customer not found.', 'webmakerr-cart')
             ]);
         }
 
         if (!empty($customer->wpUser)) {
             return $this->sendError([
-                'message' => __('Can not attach user', 'fluent-cart')
+                'message' => __('Can not attach user', 'webmakerr-cart')
             ]);
         }
 
@@ -215,11 +215,11 @@ class CustomerController extends Controller
 
         if ($attached) {
             return $this->sendSuccess([
-                'message' => __('User attached successfully', 'fluent-cart')
+                'message' => __('User attached successfully', 'webmakerr-cart')
             ]);
         } else {
             return $this->sendError([
-                'message' => __('Can not attach user', 'fluent-cart')
+                'message' => __('Can not attach user', 'webmakerr-cart')
             ]);
         }
 
@@ -233,7 +233,7 @@ class CustomerController extends Controller
 
         if (empty($customer)) {
             return $this->sendError([
-                'message' => __('Customer not found.', 'fluent-cart')
+                'message' => __('Customer not found.', 'webmakerr-cart')
             ]);
         }
 
@@ -243,11 +243,11 @@ class CustomerController extends Controller
 
         if ($detached) {
             return $this->sendSuccess([
-                'message' => __('User detached successfully', 'fluent-cart')
+                'message' => __('User detached successfully', 'webmakerr-cart')
             ]);
         } else {
             return $this->sendError([
-                'message' => __('Can not detach user', 'fluent-cart')
+                'message' => __('Can not detach user', 'webmakerr-cart')
             ]);
         }
     }

@@ -45,7 +45,7 @@ class PaddleSettings extends BaseGatewaySettings
             'test_is_encrypted' => 'no',
             'live_is_encrypted' => 'no',
             'tax_mode' => 'account_setting',
-            'paddle_checkout_button_text' => __('Pay with Paddle', 'fluent-cart-pro'),
+            'paddle_checkout_button_text' => __('Pay with Paddle', 'webmakerr-cart-pro'),
             'paddle_checkout_button_color' => '',
             'paddle_checkout_button_hover_color' => '',
             'paddle_checkout_button_text_color' => '',

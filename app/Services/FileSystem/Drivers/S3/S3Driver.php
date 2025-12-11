@@ -57,7 +57,7 @@ class S3Driver extends BaseDriver
         }
 
         return [
-            'message' => __('File Uploaded Successfully', 'fluent-cart'),
+            'message' => __('File Uploaded Successfully', 'webmakerr-cart'),
             'path'    => $response['path'],
             'file'    => [
                 'driver' => 's3',

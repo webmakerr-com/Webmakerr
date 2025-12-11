@@ -11,7 +11,7 @@ abstract class AbstractSubscriptionModule
      */
     public function fetchSubscription($data, $order, $subscription)
     {
-        throw new \Exception(esc_html__('Subscription fetching not available for this method!', 'fluent-cart'), 404);
+        throw new \Exception(esc_html__('Subscription fetching not available for this method!', 'webmakerr-cart'), 404);
     }
 
     /**
@@ -19,7 +19,7 @@ abstract class AbstractSubscriptionModule
      */
     public function cardUpdate($data, $subscriptionId)
     {
-        throw new \Exception(esc_html__('No valid payment method to update!', 'fluent-cart'), 404);
+        throw new \Exception(esc_html__('No valid payment method to update!', 'webmakerr-cart'), 404);
     }
 
     /**
@@ -27,7 +27,7 @@ abstract class AbstractSubscriptionModule
      */
     public function switchPaymentMethod($data, $subscriptionId)
     {
-        throw new \Exception(esc_html__('No valid payment method to switch!', 'fluent-cart'), 404);
+        throw new \Exception(esc_html__('No valid payment method to switch!', 'webmakerr-cart'), 404);
     }
 
     /**
@@ -35,7 +35,7 @@ abstract class AbstractSubscriptionModule
      */
     public function reactivateSubscription($data, $subscriptionId)
     {
-        throw new \Exception(esc_html__('No valid payment method to reactivate!', 'fluent-cart'), 404);
+        throw new \Exception(esc_html__('No valid payment method to reactivate!', 'webmakerr-cart'), 404);
     }
 
     /**
@@ -43,7 +43,7 @@ abstract class AbstractSubscriptionModule
      */
     public function pauseSubscription($data, $order, $subscription)
     {
-        throw new \Exception(esc_html__('No valid payment method to pause!', 'fluent-cart'), 404);
+        throw new \Exception(esc_html__('No valid payment method to pause!', 'webmakerr-cart'), 404);
     }
 
     /**
@@ -51,14 +51,14 @@ abstract class AbstractSubscriptionModule
      */
     public function resumeSubscription($data, $order, $subscription)
     {
-        throw new \Exception(esc_html__('No valid payment method to resume!', 'fluent-cart'), 404);
+        throw new \Exception(esc_html__('No valid payment method to resume!', 'webmakerr-cart'), 404);
     }
 
     public function cancel($vendorSubscriptionId, $args = [])
     {
         return new \WP_Error(
             'not_implemented',
-            esc_html__('Cancel subscription is not implemented for this payment method.', 'fluent-cart')
+            esc_html__('Cancel subscription is not implemented for this payment method.', 'webmakerr-cart')
         );
     }
 
@@ -67,7 +67,7 @@ abstract class AbstractSubscriptionModule
      */
     public function cancelSubscription($data, $order, $subscription)
     {
-        throw new \Exception(esc_html__('No valid payment method to cancel!', 'fluent-cart'), 404);
+        throw new \Exception(esc_html__('No valid payment method to cancel!', 'webmakerr-cart'), 404);
     }
 
     public function cancelOnPlanChange($vendorSubscriptionId, $parentOrderId, $subscriptionId, $reason)
@@ -89,7 +89,7 @@ abstract class AbstractSubscriptionModule
     {
         return new \WP_Error(
             'not_implemented',
-            esc_html__('Re-sync subscription from remote is not implemented for this payment method.', 'fluent-cart')
+            esc_html__('Re-sync subscription from remote is not implemented for this payment method.', 'webmakerr-cart')
         );
     }
 }

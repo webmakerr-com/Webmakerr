@@ -39,7 +39,7 @@ class ShippingZoneFilter extends BaseFilter
         return [
             'search' => [
                 'type'  => 'text',
-                'label' => __('Search', 'fluent-cart')
+                'label' => __('Search', 'webmakerr-cart')
             ]
         ];
     }

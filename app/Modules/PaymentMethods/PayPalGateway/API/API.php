@@ -66,7 +66,7 @@ class API
     public static function makeRequest($path, $version = 'v1', $method = 'POST', $args = [], $mode = '')
     {
         if (empty($path)) {
-            return new \WP_Error('invalid_path', esc_html__('API path is required', 'fluent-cart'));
+            return new \WP_Error('invalid_path', esc_html__('API path is required', 'webmakerr-cart'));
         }
 
         $settings = self::getPayPalSettings();
@@ -363,7 +363,7 @@ class API
         }
 
         $error = json_decode($response_body, true);
-        $errorMessage = $error['error_description'] ?? $error['error'] ?? esc_html__('Failed to retrieve access token from PayPal.', 'fluent-cart');
+        $errorMessage = $error['error_description'] ?? $error['error'] ?? esc_html__('Failed to retrieve access token from PayPal.', 'webmakerr-cart');
 
         return new \WP_Error(
             'access_token_error',

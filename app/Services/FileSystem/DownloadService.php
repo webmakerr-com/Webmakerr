@@ -59,7 +59,7 @@ class DownloadService
     {
         $productDownload = ProductDownload::query()->where('download_identifier', $downloadId)->first();
         if (empty($productDownload)) {
-            return __('File not found', 'fluent-cart');
+            return __('File not found', 'webmakerr-cart');
         }
         $driver = Arr::get($productDownload, 'driver');
         $file = Arr::get($productDownload, 'file_path');

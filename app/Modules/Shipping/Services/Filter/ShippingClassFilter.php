@@ -42,14 +42,14 @@ class ShippingClassFilter extends BaseFilter
         return [
             'search' => [
                 'type' => 'text',
-                'label' => __('Search', 'fluent-cart')
+                'label' => __('Search', 'webmakerr-cart')
             ],
             'type' => [
                 'type' => 'selections',
-                'label' => __('Type', 'fluent-cart'),
+                'label' => __('Type', 'webmakerr-cart'),
                 'options' => [
-                    'fixed' => __('Fixed', 'fluent-cart'),
-                    'percentage' => __('Percentage', 'fluent-cart')
+                    'fixed' => __('Fixed', 'webmakerr-cart'),
+                    'percentage' => __('Percentage', 'webmakerr-cart')
                 ],
                 'is_multiple' => true
             ]

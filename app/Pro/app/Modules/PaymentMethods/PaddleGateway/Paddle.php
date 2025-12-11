@@ -48,10 +48,10 @@ class Paddle extends AbstractPaymentGateway
     public function meta(): array
     {
         return [
-            'title' => __('Paddle', 'fluent-cart-pro'),
+            'title' => __('Paddle', 'webmakerr-cart-pro'),
             'route' => 'paddle',
             'slug' => 'paddle',
-            'description' => __('Pay securely with Paddle - Complete payment solution', 'fluent-cart-pro'),
+            'description' => __('Pay securely with Paddle - Complete payment solution', 'webmakerr-cart-pro'),
             'logo' => Vite::getAssetUrl("images/payment-methods/paddle-logo.svg"),
             'icon' => Vite::getAssetUrl("images/payment-methods/paddle-logo.svg"),
             'brand_color' => '#7c3aed',
@@ -84,7 +84,7 @@ class Paddle extends AbstractPaymentGateway
         if (!$amount) {
             return new \WP_Error(
                 'paddle_refund_error',
-                __('Refund amount is required.', 'fluent-cart-pro')
+                __('Refund amount is required.', 'webmakerr-cart-pro')
             );
         }
 
@@ -105,13 +105,13 @@ class Paddle extends AbstractPaymentGateway
         if (empty($apiKey)) {
             return [
                 'status' => 'failed',
-                'message' => __('API key is required.', 'fluent-cart-pro')
+                'message' => __('API key is required.', 'webmakerr-cart-pro')
             ];
         }
 
         return [
             'status' => 'success',
-            'message' => __('Paddle gateway credentials verified successfully!', 'fluent-cart-pro')
+            'message' => __('Paddle gateway credentials verified successfully!', 'webmakerr-cart-pro')
         ];
     }
 
@@ -171,7 +171,7 @@ class Paddle extends AbstractPaymentGateway
             'payment_args'     => $paymentArgs,
             'intent'           => $paymentDetails,
             'has_subscription' => $hasSubscription,
-            'message'          => __('Order info retrieved!', 'fluent-cart-pro')
+            'message'          => __('Order info retrieved!', 'webmakerr-cart-pro')
         ], 200);
     }
 
@@ -202,20 +202,20 @@ class Paddle extends AbstractPaymentGateway
         // Construct valid, translatable, sanitized HTML for instructions
         $instructionsHtml =
             '<div class="paddle-webhook-instructions" style="padding:12px 0;">'
-            . '<p><strong>' . esc_html__('Webhook URL:', 'fluent-cart-pro') . '</strong> '
+            . '<p><strong>' . esc_html__('Webhook URL:', 'webmakerr-cart-pro') . '</strong> '
             . '<code class="copyable-content" data-copy="' . esc_attr($webhook_url) . '">' . esc_html($webhook_url) . '</code></p>'
-            . '<p>' . esc_html__('You should configure your Paddle webhooks to get all updates of your payments remotely.', 'fluent-cart-pro') . '</p>'
-            . '<p>' . esc_html__('You can do it by following the instructions below. Or provide valid API Key and save the settings and reload.', 'fluent-cart-pro') . '</p>'
-            . '<h4>' . esc_html__('How to configure?', 'fluent-cart-pro') . '</h4>'
-            . '<p>' . esc_html__('In your Paddle Dashboard:', 'fluent-cart-pro') . '</p>'
+            . '<p>' . esc_html__('You should configure your Paddle webhooks to get all updates of your payments remotely.', 'webmakerr-cart-pro') . '</p>'
+            . '<p>' . esc_html__('You can do it by following the instructions below. Or provide valid API Key and save the settings and reload.', 'webmakerr-cart-pro') . '</p>'
+            . '<h4>' . esc_html__('How to configure?', 'webmakerr-cart-pro') . '</h4>'
+            . '<p>' . esc_html__('In your Paddle Dashboard:', 'webmakerr-cart-pro') . '</p>'
             . '<p>' . sprintf(
                 /* translators: %s is a link to Paddle webhook docs */
-                esc_html__('Go to Developer Tools > Notifications > %s', 'fluent-cart-pro'),
-                '<a href="https://developer.paddle.com/webhooks/overview" target="_blank" rel="noopener noreferrer">' . esc_html__('Add webhook', 'fluent-cart-pro') . '</a>'
+                esc_html__('Go to Developer Tools > Notifications > %s', 'webmakerr-cart-pro'),
+                '<a href="https://developer.paddle.com/webhooks/overview" target="_blank" rel="noopener noreferrer">' . esc_html__('Add webhook', 'webmakerr-cart-pro') . '</a>'
             ) . '</p>'
-            . '<p>' . esc_html__('Enter The Webhook URL:', 'fluent-cart-pro') . ' '
+            . '<p>' . esc_html__('Enter The Webhook URL:', 'webmakerr-cart-pro') . ' '
             . '<code class="copyable-content" data-copy="' . esc_attr($webhook_url) . '">' . esc_html($webhook_url) . '</code></p>'
-            . '<p>' . esc_html__('Select the following events:', 'fluent-cart-pro') . '</p>'
+            . '<p>' . esc_html__('Select the following events:', 'webmakerr-cart-pro') . '</p>'
             . '<p style="display:flex; align-items:center; flex-wrap:wrap; gap:8px 4px;">' . wp_kses_post($eventsHtml) . '</p>'
             . '</div>';
 
@@ -229,28 +229,28 @@ class Paddle extends AbstractPaymentGateway
         $testSchema = [
             'test_api_key' => array(
                 'value' => '',
-                'label' => __('Sandbox API Key', 'fluent-cart-pro'),
+                'label' => __('Sandbox API Key', 'webmakerr-cart-pro'),
                 'type' => 'password',
-                'placeholder' => __('Your sandbox API key', 'fluent-cart-pro'),
-                'help_text' => __('Get your API key from Paddle Dashboard > Developer Tools > Authentication', 'fluent-cart-pro')
+                'placeholder' => __('Your sandbox API key', 'webmakerr-cart-pro'),
+                'help_text' => __('Get your API key from Paddle Dashboard > Developer Tools > Authentication', 'webmakerr-cart-pro')
             ),
             'test_client_token' => array(
                 'value' => '',
-                'label' => __('Sandbox Client Token / Public Key', 'fluent-cart-pro'),
+                'label' => __('Sandbox Client Token / Public Key', 'webmakerr-cart-pro'),
                 'type' => 'text',
-                'placeholder' => __('Your sandbox client token', 'fluent-cart-pro'),
-                'help_text' => __('Optional: Used for frontend checkout integration', 'fluent-cart-pro')
+                'placeholder' => __('Your sandbox client token', 'webmakerr-cart-pro'),
+                'help_text' => __('Optional: Used for frontend checkout integration', 'webmakerr-cart-pro')
             ),
             'test_webhook_secret' => array(
                 'value' => '',
-                'label' => __('Sandbox Webhook Secret', 'fluent-cart-pro'),
+                'label' => __('Sandbox Webhook Secret', 'webmakerr-cart-pro'),
                 'type' => 'password',
-                'placeholder' => __('Your sandbox webhook secret', 'fluent-cart-pro'),
-                'help_text' => __('Used to verify webhook signatures', 'fluent-cart-pro')
+                'placeholder' => __('Your sandbox webhook secret', 'webmakerr-cart-pro'),
+                'help_text' => __('Used to verify webhook signatures', 'webmakerr-cart-pro')
             ),
             'test_webhook_desc' => array(
                 'value' => $webhookInstructions,
-                'label' => __('Webhook Configuration', 'fluent-cart-pro'),
+                'label' => __('Webhook Configuration', 'webmakerr-cart-pro'),
                 'type' => 'html_attr'
             ),
         ];
@@ -258,28 +258,28 @@ class Paddle extends AbstractPaymentGateway
         $liveSchema = [
             'live_api_key' => array(
                 'value' => '',
-                'label' => __('Live API Key', 'fluent-cart-pro'),
+                'label' => __('Live API Key', 'webmakerr-cart-pro'),
                 'type' => 'password',
-                'placeholder' => __('Your live API key', 'fluent-cart-pro'),
-                'help_text' => __('Get your API key from Paddle Dashboard > Developer Tools > Authentication', 'fluent-cart-pro')
+                'placeholder' => __('Your live API key', 'webmakerr-cart-pro'),
+                'help_text' => __('Get your API key from Paddle Dashboard > Developer Tools > Authentication', 'webmakerr-cart-pro')
             ),
             'live_client_token' => array(
                 'value' => '',
-                'label' => __('Live Client Token / Public Key', 'fluent-cart-pro'),
+                'label' => __('Live Client Token / Public Key', 'webmakerr-cart-pro'),
                 'type' => 'text',
-                'placeholder' => __('Your live client token', 'fluent-cart-pro'),
-                'help_text' => __('Optional: Used for frontend checkout integration', 'fluent-cart-pro')
+                'placeholder' => __('Your live client token', 'webmakerr-cart-pro'),
+                'help_text' => __('Optional: Used for frontend checkout integration', 'webmakerr-cart-pro')
             ),
             'live_webhook_secret' => array(
                 'value' => '',
-                'label' => __('Live Webhook Secret', 'fluent-cart-pro'),
+                'label' => __('Live Webhook Secret', 'webmakerr-cart-pro'),
                 'type' => 'password',
-                'placeholder' => __('Your live webhook secret', 'fluent-cart-pro'),
-                'help_text' => __('Used to verify webhook signatures', 'fluent-cart-pro')
+                'placeholder' => __('Your live webhook secret', 'webmakerr-cart-pro'),
+                'help_text' => __('Used to verify webhook signatures', 'webmakerr-cart-pro')
             ),
             'live_webhook_desc' => array(
                 'value' => $webhookInstructions,
-                'label' => __('Webhook Configuration', 'fluent-cart-pro'),
+                'label' => __('Webhook Configuration', 'webmakerr-cart-pro'),
                 'type' => 'html_attr'
             ),
         ];
@@ -288,9 +288,9 @@ class Paddle extends AbstractPaymentGateway
             // Use the same sanitized, code-tag list of events
             $configuredHtml =
                 '<div class="paddle-webhook-instructions" style="padding:12px 0;">'
-                . '<p><strong>' . esc_html__('Webhook URL:', 'fluent-cart-pro') . '</strong> '
+                . '<p><strong>' . esc_html__('Webhook URL:', 'webmakerr-cart-pro') . '</strong> '
                 . '<code class="copyable-content" data-copy="' . esc_attr($this->getWebhookUrl()) . '">' . esc_html($this->getWebhookUrl()) . '</code></p>'
-                . '<p>' . esc_html__('Webhook is configured and listening to the following events:', 'fluent-cart-pro') . '</p>'
+                . '<p>' . esc_html__('Webhook is configured and listening to the following events:', 'webmakerr-cart-pro') . '</p>'
                 . '<p style="display:flex;align-items:center;flex-wrap:wrap;gap:8px 4px;">' . wp_kses_post($this->getEventshtml()). '</p>'
                 . '</div>';
 
@@ -300,28 +300,28 @@ class Paddle extends AbstractPaymentGateway
         if (!empty(Arr::get($this->settings->get(), 'live_webhook_secret'))) {
             $configuredHtml =
                 '<div class="paddle-webhook-instructions" style="padding:12px 0;">'
-                . '<p><strong>' . esc_html__('Webhook URL:', 'fluent-cart-pro') . '</strong> '
+                . '<p><strong>' . esc_html__('Webhook URL:', 'webmakerr-cart-pro') . '</strong> '
                 . '<code class="copyable-content" data-copy="' . esc_attr($this->getWebhookUrl()) . '">' . esc_html($this->getWebhookUrl()) . '</code></p>'
-                . '<p>' . esc_html__('Webhook is configured and listening to the following events:', 'fluent-cart-pro') . '</p>'
+                . '<p>' . esc_html__('Webhook is configured and listening to the following events:', 'webmakerr-cart-pro') . '</p>'
                 . '<p style="display:flex;align-items:center;flex-wrap:wrap;gap:8px 4px;">' . wp_kses_post($this->getEventshtml()) . '</p>'
                 . '</div>';
 
             $liveSchema['live_webhook_desc']['value'] = $configuredHtml;
         }
 
-         $betaNotice = __('Paddle payment gateway is currently in beta. Test properly before going live!', 'fluent-cart-pro');
+         $betaNotice = __('Paddle payment gateway is currently in beta. Test properly before going live!', 'webmakerr-cart-pro');
 
         return array(
             'notice' => [
                 'value' => $this->renderStoreModeNotice(),
-                'label' => __('Store Mode notice', 'fluent-cart-pro'),
+                'label' => __('Store Mode notice', 'webmakerr-cart-pro'),
                 'type' => 'notice'
             ],
             'beta_notice' => [
                 'value' => '<p class="text-gray-500">
                         <svg class="w-4 h-4 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a448 448 0 1 1 0 896.064A448 448 0 0 1 512 64m67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344M590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 0 1-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 0 1 7.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"></path></svg>
                        ' . $betaNotice . ' </p>',
-                'label' => __('Beta Notice', 'fluent-cart-pro'),
+                'label' => __('Beta Notice', 'webmakerr-cart-pro'),
                 'type' => 'html_attr'
             ],
             'payment_mode' => [
@@ -329,13 +329,13 @@ class Paddle extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type'   => 'tab',
-                        'label'  => __('Live credentials', 'fluent-cart-pro'),
+                        'label'  => __('Live credentials', 'webmakerr-cart-pro'),
                         'value'  => 'live',
                         'schema' => $liveSchema
                     ],
                     [
                         'type'   => 'tab',
-                        'label'  => __('Test credentials', 'fluent-cart-pro'),
+                        'label'  => __('Test credentials', 'webmakerr-cart-pro'),
                         'value'  => 'test',
                         'schema' => $testSchema
                     ]
@@ -343,76 +343,76 @@ class Paddle extends AbstractPaymentGateway
             ],
             'tax_mode' => [
                 'value' => 'internal',
-                'label' => __('Tax Mode', 'fluent-cart-pro'),
+                'label' => __('Tax Mode', 'webmakerr-cart-pro'),
                 'type' => 'select',
                 'options' => [
                     'internal' => [
-                        'label' => __('Internal', 'fluent-cart-pro'),
+                        'label' => __('Internal', 'webmakerr-cart-pro'),
                         'value' => 'internal'
                     ],
                     'external' => [
-                        'label' => __('External', 'fluent-cart-pro'),
+                        'label' => __('External', 'webmakerr-cart-pro'),
                         'value' => 'external'
                     ],
                     'account_setting' => [
-                        'label' => __('Use Paddle Account Settings', 'fluent-cart-pro'),
+                        'label' => __('Use Paddle Account Settings', 'webmakerr-cart-pro'),
                         'value' => 'account_setting'
                     ]
                 ],
-                'tooltip' => __('Tax mode to use for Paddle transactions', 'fluent-cart-pro')
+                'tooltip' => __('Tax mode to use for Paddle transactions', 'webmakerr-cart-pro')
             ],
             'paddle_checkout_theme' => [
                 'value' => 'light',
-                'label' => __('Paddle Checkout Theme', 'fluent-cart-pro'),
+                'label' => __('Paddle Checkout Theme', 'webmakerr-cart-pro'),
                 'type' => 'select',
                 'options' => [
                     'light' => [
-                        'label' => __('Light', 'fluent-cart-pro'),
+                        'label' => __('Light', 'webmakerr-cart-pro'),
                         'value' => 'light'
                     ],
                     'dark' => [
-                        'label' => __('Dark', 'fluent-cart-pro'),
+                        'label' => __('Dark', 'webmakerr-cart-pro'),
                         'value' => 'dark'
                     ]
                 ],
-                'tooltip' => __('Theme to use for Paddle checkout modal', 'fluent-cart-pro')
+                'tooltip' => __('Theme to use for Paddle checkout modal', 'webmakerr-cart-pro')
             ],
             'paddle_checkout_button_text' => [
-                'value' => __('Pay with Paddle', 'fluent-cart-pro'),
-                'label' => __('Paddle Checkout Button Text', 'fluent-cart-pro'),
+                'value' => __('Pay with Paddle', 'webmakerr-cart-pro'),
+                'label' => __('Paddle Checkout Button Text', 'webmakerr-cart-pro'),
                 'type' => 'text',
-                'placeholder' => __('Pay with Paddle', 'fluent-cart-pro'),
-                'tooltip' => __('Text to display on the Paddle checkout button', 'fluent-cart-pro')
+                'placeholder' => __('Pay with Paddle', 'webmakerr-cart-pro'),
+                'tooltip' => __('Text to display on the Paddle checkout button', 'webmakerr-cart-pro')
             ],
             'paddle_checkout_button_color' => [
                 'value' => '',
-                'label' => __('Paddle Checkout Button Color', 'fluent-cart-pro'),
+                'label' => __('Paddle Checkout Button Color', 'webmakerr-cart-pro'),
                 'type' => 'color',
-                'tooltip' => __('Color of the Paddle checkout button', 'fluent-cart-pro')
+                'tooltip' => __('Color of the Paddle checkout button', 'webmakerr-cart-pro')
             ],
             'paddle_checkout_button_hover_color' => [
                 'value' => '',
-                'label' => __('Paddle Checkout Button Hover Color', 'fluent-cart-pro'),
+                'label' => __('Paddle Checkout Button Hover Color', 'webmakerr-cart-pro'),
                 'type' => 'color',
-                'tooltip' => __('Hover color of the Paddle checkout button', 'fluent-cart-pro')
+                'tooltip' => __('Hover color of the Paddle checkout button', 'webmakerr-cart-pro')
             ],
             'paddle_checkout_button_text_color' => [
                 'value' => '',
-                'label' => __('Paddle Checkout Button Text Color', 'fluent-cart-pro'),
+                'label' => __('Paddle Checkout Button Text Color', 'webmakerr-cart-pro'),
                 'type' => 'color',
-                'tooltip' => __('Text color of the Paddle checkout button', 'fluent-cart-pro')
+                'tooltip' => __('Text color of the Paddle checkout button', 'webmakerr-cart-pro')
             ],
             'paddle_checkout_button_font_size' => [
                 'value' => '16px',
-                'label' => __('Paddle Checkout Button Font Size', 'fluent-cart-pro'),
+                'label' => __('Paddle Checkout Button Font Size', 'webmakerr-cart-pro'),
                 'type' => 'text',
-                'tooltip' => __('Font size of the Paddle checkout button', 'fluent-cart-pro')
+                'tooltip' => __('Font size of the Paddle checkout button', 'webmakerr-cart-pro')
             ],
             'disable_webhook_verification' => [
                 'value' => 'no',
-                'label' => __('Disable Webhook Verification', 'fluent-cart-pro'),
+                'label' => __('Disable Webhook Verification', 'webmakerr-cart-pro'),
                 'type' => 'checkbox',
-                'tooltip' => __('Only disable this for testing purposes. Keep enabled for production.', 'fluent-cart-pro')
+                'tooltip' => __('Only disable this for testing purposes. Keep enabled for production.', 'webmakerr-cart-pro')
             ]
         );
     }
@@ -449,7 +449,7 @@ class Paddle extends AbstractPaymentGateway
 //        } else if (!$notificationId && !empty($data[$apiKeyField])) {
 //            $response = API::createPaddleObject('notification-settings',
 //                [
-//                    'description' => __('FluentCart Test Paddle Webhook', 'fluent-cart-pro'),
+//                    'description' => __('FluentCart Test Paddle Webhook', 'webmakerr-cart-pro'),
 //                    'type' => 'url',
 //                    'destination' => (new Paddle())->getWebhookUrl(),
 //                    'api_version' => 1,
@@ -488,24 +488,24 @@ class Paddle extends AbstractPaymentGateway
         return [
             'fct_paddle_data' => [
                 'translations' => [
-                    'Paddle SDK is not loaded. Please ensure the Paddle script is included.' => __('Paddle SDK is not loaded. Please ensure the Paddle script is included.', 'fluent-cart-pro'),
-                    'Paddle client token is missing or invalid.' => __('Paddle client token is missing or invalid.', 'fluent-cart-pro'),
-                    'Pay with Paddle' => __('Pay with Paddle', 'fluent-cart-pro'),
-                    'Secure payment powered by Paddle' => __('Secure payment powered by Paddle', 'fluent-cart-pro'),
-                    'Order creation failed' => __('Order creation failed', 'fluent-cart-pro'),
-                    'Failed to create order' => __('Failed to create order', 'fluent-cart-pro'),
-                    'Order handler not available' => __('Order handler not available', 'fluent-cart-pro'),
-                    'Order handler is not properly configured' => __('Order handler is not properly configured', 'fluent-cart-pro'),
-                    'No Paddle price IDs found in order data. Please ensure Paddle products are properly configured.' => __('No Paddle price IDs found in order data. Please ensure Paddle products are properly configured.', 'fluent-cart-pro'),
-                    'Failed to prepare valid Paddle items from order data.' => __('Failed to prepare valid Paddle items from order data.', 'fluent-cart-pro'),
-                    'Error: Missing transaction ID' => __('Error: Missing transaction ID', 'fluent-cart-pro'),
-                    'Confirmation failed' => __('Confirmation failed', 'fluent-cart-pro'),
-                    'Network error' => __('Network error', 'fluent-cart-pro'),
-                    'Error: %s' => __('Error: %s', 'fluent-cart-pro'),
-                    'Payment failed' => __('Payment failed', 'fluent-cart-pro'),
-                    'Error occurred' => __('Error occurred', 'fluent-cart-pro'),
-                    'An error occurred. Please try again.' => __('An error occurred. Please try again.', 'fluent-cart-pro'),
-                    'An error occurred while loading Paddle.' => __('An error occurred while loading Paddle.', 'fluent-cart-pro'),
+                    'Paddle SDK is not loaded. Please ensure the Paddle script is included.' => __('Paddle SDK is not loaded. Please ensure the Paddle script is included.', 'webmakerr-cart-pro'),
+                    'Paddle client token is missing or invalid.' => __('Paddle client token is missing or invalid.', 'webmakerr-cart-pro'),
+                    'Pay with Paddle' => __('Pay with Paddle', 'webmakerr-cart-pro'),
+                    'Secure payment powered by Paddle' => __('Secure payment powered by Paddle', 'webmakerr-cart-pro'),
+                    'Order creation failed' => __('Order creation failed', 'webmakerr-cart-pro'),
+                    'Failed to create order' => __('Failed to create order', 'webmakerr-cart-pro'),
+                    'Order handler not available' => __('Order handler not available', 'webmakerr-cart-pro'),
+                    'Order handler is not properly configured' => __('Order handler is not properly configured', 'webmakerr-cart-pro'),
+                    'No Paddle price IDs found in order data. Please ensure Paddle products are properly configured.' => __('No Paddle price IDs found in order data. Please ensure Paddle products are properly configured.', 'webmakerr-cart-pro'),
+                    'Failed to prepare valid Paddle items from order data.' => __('Failed to prepare valid Paddle items from order data.', 'webmakerr-cart-pro'),
+                    'Error: Missing transaction ID' => __('Error: Missing transaction ID', 'webmakerr-cart-pro'),
+                    'Confirmation failed' => __('Confirmation failed', 'webmakerr-cart-pro'),
+                    'Network error' => __('Network error', 'webmakerr-cart-pro'),
+                    'Error: %s' => __('Error: %s', 'webmakerr-cart-pro'),
+                    'Payment failed' => __('Payment failed', 'webmakerr-cart-pro'),
+                    'Error occurred' => __('Error occurred', 'webmakerr-cart-pro'),
+                    'An error occurred. Please try again.' => __('An error occurred. Please try again.', 'webmakerr-cart-pro'),
+                    'An error occurred while loading Paddle.' => __('An error occurred while loading Paddle.', 'webmakerr-cart-pro'),
                 ]
             ]
         ];
@@ -589,7 +589,7 @@ class Paddle extends AbstractPaymentGateway
             wp_send_json([
                 'status' => 'failed',
                 'message' => sprintf(
-                    __('Currency %s is not supported by Paddle. Please check supported currencies.', 'fluent-cart-pro'),
+                    __('Currency %s is not supported by Paddle. Please check supported currencies.', 'webmakerr-cart-pro'),
                     $currentCurrency
                 )
             ], 422);

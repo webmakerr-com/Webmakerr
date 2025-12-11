@@ -59,7 +59,7 @@ class ReaderFactory
                 throw new UnsupportedTypeException(
                     sprintf(
                     /* translators: %s is the reader type */
-                        esc_html__('No readers supporting the given type: %s', 'fluent-cart'),
+                        esc_html__('No readers supporting the given type: %s', 'webmakerr-cart'),
                         esc_html($readerType)
                     )
                 );

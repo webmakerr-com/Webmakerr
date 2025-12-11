@@ -40,8 +40,8 @@ class OrderBumpFilter extends BaseFilter
     public function tabsMap(): array
     {
         return [
-            'active'   => __('Active', 'fluent-cart'),
-            'inactive' => __('Inactive', 'fluent-cart'),
+            'active'   => __('Active', 'webmakerr-cart'),
+            'inactive' => __('Inactive', 'webmakerr-cart'),
         ];
     }
 
@@ -101,11 +101,11 @@ class OrderBumpFilter extends BaseFilter
     {
         $filters = [
             'product'  => [
-                'label'    => __('Products', 'fluent-cart'),
+                'label'    => __('Products', 'webmakerr-cart'),
                 'value'    => 'product',
                 'children' => [
                     [
-                        'label'           => __('By Products', 'fluent-cart'),
+                        'label'           => __('By Products', 'webmakerr-cart'),
                         'value'           => 'product',
                         'column'          => 'variation_id',
                         'filter_type'     => 'relation',
@@ -117,11 +117,11 @@ class OrderBumpFilter extends BaseFilter
                 ],
             ],
             'customer' => [
-                'label'    => __('Customer Property', 'fluent-cart'),
+                'label'    => __('Customer Property', 'webmakerr-cart'),
                 'value'    => 'customer',
                 'children' => [
                     [
-                        'label'       => __('Customer first name', 'fluent-cart'),
+                        'label'       => __('Customer first name', 'webmakerr-cart'),
                         'value'       => 'customer_first_name',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -129,7 +129,7 @@ class OrderBumpFilter extends BaseFilter
                         'relation'    => 'customer',
                     ],
                     [
-                        'label'       => __('Customer last name', 'fluent-cart'),
+                        'label'       => __('Customer last name', 'webmakerr-cart'),
                         'value'       => 'customer_last_name',
                         'type'        => 'text',
                         'filter_type' => 'relation',
@@ -139,39 +139,39 @@ class OrderBumpFilter extends BaseFilter
                 ],
             ],
             'license'  => [
-                'label'    => __('License Property', 'fluent-cart'),
+                'label'    => __('License Property', 'webmakerr-cart'),
                 'value'    => 'license',
                 'children' => [
                     [
-                        'label'       => __('License key', 'fluent-cart'),
+                        'label'       => __('License key', 'webmakerr-cart'),
                         'value'       => 'license_key',
                         'type'        => 'text',
                         'filter_type' => 'column',
                         'column'      => 'license_key',
                     ],
                     [
-                        'label'       => __('Status', 'fluent-cart'),
+                        'label'       => __('Status', 'webmakerr-cart'),
                         'value'       => 'status',
                         'type'        => 'selections',
                         'filter_type' => 'column',
                         'column'      => 'status',
                         'options'     => [
-                            Status::LICENSE_ACTIVE   => __('Active', 'fluent-cart'),
-                            Status::LICENSE_DISABLED => __('Disabled', 'fluent-cart'),
-                            Status::LICENSE_EXPIRED  => __('Expired', 'fluent-cart'),
+                            Status::LICENSE_ACTIVE   => __('Active', 'webmakerr-cart'),
+                            Status::LICENSE_DISABLED => __('Disabled', 'webmakerr-cart'),
+                            Status::LICENSE_EXPIRED  => __('Expired', 'webmakerr-cart'),
                         ],
                         'is_multiple' => true,
                         'is_only_in'  => true
                     ],
                     [
-                        'label'       => __('Activation Count', 'fluent-cart'),
+                        'label'       => __('Activation Count', 'webmakerr-cart'),
                         'value'       => 'activation_count',
                         'type'        => 'numeric',
                         'filter_type' => 'column',
                         'column'      => 'activation_count',
                     ],
                     [
-                        'label'       => __('Expiration Date', 'fluent-cart'),
+                        'label'       => __('Expiration Date', 'webmakerr-cart'),
                         'value'       => 'expiration_date',
                         'type'        => 'dates',
                         'filter_type' => 'date',

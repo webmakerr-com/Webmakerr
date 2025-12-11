@@ -26,7 +26,7 @@ class TaxConfigurationController extends Controller
         $taxManager->generateTaxClasses($countryCodes);
 
         return $this->sendSuccess([
-            'message' => __('Countries saved successfully', 'fluent-cart')
+            'message' => __('Countries saved successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -71,7 +71,7 @@ class TaxConfigurationController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Settings saved successfully', 'fluent-cart')
+            'message' => __('Settings saved successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -92,4 +92,3 @@ class TaxConfigurationController extends Controller
     }
 
 }
-

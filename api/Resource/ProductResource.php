@@ -98,12 +98,12 @@ class ProductResource extends BaseResourceApi
                     'ID'              => $createdPostId,
                     'product_details' => Arr::get($createdProductDetail, 'data'),
                 ],
-                __('Product has been created successfully', 'fluent-cart')
+                __('Product has been created successfully', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Product creation failed!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Product creation failed!', 'webmakerr-cart')]
         ]);
     }
 
@@ -305,7 +305,7 @@ class ProductResource extends BaseResourceApi
 
         return static::makeSuccessResponse(
             $product,
-            __('Product has been updated', 'fluent-cart')
+            __('Product has been updated', 'webmakerr-cart')
         );
     }
 
@@ -392,7 +392,7 @@ class ProductResource extends BaseResourceApi
         if (!empty($product)) {
             if (count($product->orderItems) > 0) {
                 return static::makeErrorResponse([
-                    ['code' => 400, 'message' => __('This product cannot be deleted at the moment. There are pending orders associated with it. Deleting the product will disrupt the order processing and might cause inconvenience to our customers.', 'fluent-cart')]
+                    ['code' => 400, 'message' => __('This product cannot be deleted at the moment. There are pending orders associated with it. Deleting the product will disrupt the order processing and might cause inconvenience to our customers.', 'webmakerr-cart')]
                 ]);
             }
             foreach ($product->variants as $variant) {
@@ -420,10 +420,10 @@ class ProductResource extends BaseResourceApi
             if ($deletedProduct) {
 
                 fluent_cart_success_log(
-                    __('Product deleted', 'fluent-cart'),
+                    __('Product deleted', 'webmakerr-cart'),
                     sprintf(
                         /* translators: %s is the product title */
-                        __('Product %s is deleted', 'fluent-cart'), $productTitle),
+                        __('Product %s is deleted', 'webmakerr-cart'), $productTitle),
                     [
                         'module_name' => 'Product',
                         'module_id'   => 0,
@@ -432,16 +432,16 @@ class ProductResource extends BaseResourceApi
                 );
                 return static::makeSuccessResponse(
                     '',
-                    __('Selected product and associated data has been deleted', 'fluent-cart')
+                    __('Selected product and associated data has been deleted', 'webmakerr-cart')
                 );
             }
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Product deletion failed!', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Product deletion failed!', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 404, 'message' => __('Product not found in database.', 'fluent-cart')]
+            ['code' => 404, 'message' => __('Product not found in database.', 'webmakerr-cart')]
         ]);
 
     }
@@ -512,12 +512,12 @@ class ProductResource extends BaseResourceApi
 
             return static::makeSuccessResponse(
                 $variants,
-                __('Variation combination updated!', 'fluent-cart')
+                __('Variation combination updated!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Illegal data provided.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Illegal data provided.', 'webmakerr-cart')]
         ]);
     }
 
@@ -545,7 +545,7 @@ class ProductResource extends BaseResourceApi
 
         if (!$productIds) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Products selection is required', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Products selection is required', 'webmakerr-cart')]
             ]);
         }
 
@@ -576,7 +576,7 @@ class ProductResource extends BaseResourceApi
                             /* translators: %s: The product ID(s) that could not be deleted. */
                             esc_html__(
                                 'The Product ID - %s cannot be deleted at the moment as there are pending orders associated with it. And remaining product and its associated data have been deleted.',
-                                'fluent-cart'
+                                'webmakerr-cart'
                             ),
                             esc_html($failedProductIds)
                         )
@@ -588,7 +588,7 @@ class ProductResource extends BaseResourceApi
                                 /* translators: %s: The product ID(s) that could not be deleted. */
                                 esc_html__(
                                     'The Product ID - %s cannot be deleted at the moment as there are pending orders associated with it.',
-                                    'fluent-cart'
+                                    'webmakerr-cart'
                                 ),
                                 esc_html($failedProductIds)
                             ),
@@ -597,12 +597,12 @@ class ProductResource extends BaseResourceApi
             }
 
             if (count($deletedProductIds) > 0 && count($failedProductIds) < 1) {
-                return static::makeSuccessResponse('', __('Selected product and associated data have been deleted', 'fluent-cart'));
+                return static::makeSuccessResponse('', __('Selected product and associated data have been deleted', 'webmakerr-cart'));
             }
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Selected action is invalid', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Selected action is invalid', 'webmakerr-cart')]
         ]);
     }
 
@@ -637,7 +637,7 @@ class ProductResource extends BaseResourceApi
                 if ($count == 0) {
                     $errors['variants.' . $index . '.downloadable'] = sprintf(
                         /* translators: %s is the variant title */
-                        __('%s variant is downloadable without any downloadable file', 'fluent-cart'),
+                        __('%s variant is downloadable without any downloadable file', 'webmakerr-cart'),
                         $variant['variation_title']
 
                     );
@@ -677,12 +677,12 @@ class ProductResource extends BaseResourceApi
         if (!is_wp_error($isSynced)) {
             return static::makeSuccessResponse(
                 $isSynced,
-                __("Product has been updated", 'fluent-cart')
+                __("Product has been updated", 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __("Product update failed!", 'fluent-cart')]
+            ['code' => 400, 'message' => __("Product update failed!", 'webmakerr-cart')]
         ]);
     }
 
@@ -699,12 +699,12 @@ class ProductResource extends BaseResourceApi
         if (!is_wp_error($isDeleted)) {
             return static::makeSuccessResponse(
                 $isDeleted,
-                __("Product has been updated", 'fluent-cart')
+                __("Product has been updated", 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __("Product update failed!", 'fluent-cart')]
+            ['code' => 400, 'message' => __("Product update failed!", 'webmakerr-cart')]
         ]);
     }
 

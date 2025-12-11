@@ -25,7 +25,7 @@ class ShippingClassController extends Controller
 
         return $this->sendSuccess([
             'shipping_class' => $shippingClass,
-            'message' => __('Shipping class has been created successfully', 'fluent-cart')
+            'message' => __('Shipping class has been created successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -47,7 +47,7 @@ class ShippingClassController extends Controller
 
         return $this->sendSuccess([
             'shipping_class' => $shippingClass,
-            'message' => __('Shipping class has been updated successfully', 'fluent-cart')
+            'message' => __('Shipping class has been updated successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -57,7 +57,7 @@ class ShippingClassController extends Controller
         $shippingClass->delete();
 
         return $this->sendSuccess([
-            'message' => __('Shipping class has been deleted successfully', 'fluent-cart')
+            'message' => __('Shipping class has been deleted successfully', 'webmakerr-cart')
         ]);
     }
 }

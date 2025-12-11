@@ -26,7 +26,7 @@ class ShippingFrontendController extends Controller
         if (!$countryCode) {
             return [
                 'status'  => false,
-                'message' => __('Country code is required', 'fluent-cart')
+                'message' => __('Country code is required', 'webmakerr-cart')
             ];
         }
 
@@ -34,12 +34,12 @@ class ShippingFrontendController extends Controller
 
         if (!$availableShippingMethods || $availableShippingMethods->isEmpty()) {
             $settingView = '<div class="fct-empty-state">'
-                . esc_html__('No shipping methods available for this address.', 'fluent-cart');
+                . esc_html__('No shipping methods available for this address.', 'webmakerr-cart');
 
             if (current_user_can('manage_options')) {
                 $settingsPageUrl = admin_url('admin.php?page=webmakerr#/settings/shipping');
 
-                $settingsLink = '<a href="' . esc_url($settingsPageUrl??'') . '" target="_blank">' . esc_html__('Activate from settings.', 'fluent-cart') . '</a>';
+                $settingsLink = '<a href="' . esc_url($settingsPageUrl??'') . '" target="_blank">' . esc_html__('Activate from settings.', 'webmakerr-cart') . '</a>';
 
                 $settingView .= ' ' . $settingsLink;
             }

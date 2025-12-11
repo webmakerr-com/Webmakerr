@@ -8,11 +8,11 @@ if (!defined('ABSPATH')) {
  */
 ?>
 
-<div id="fct-customer-dashboard-navs-wrap" class="fct-customer-dashboard-navs-wrap" role="navigation" aria-label="<?php esc_attr_e('Customer Dashboard', 'fluent-cart'); ?>">
+<div id="fct-customer-dashboard-navs-wrap" class="fct-customer-dashboard-navs-wrap" role="navigation" aria-label="<?php esc_attr_e('Customer Dashboard', 'webmakerr-cart'); ?>">
     <div class="fct-nav-compact-toggle-wrap">
         <button
             type="button"
-            aria-label="<?php esc_attr_e('Toggle navigation menu', 'fluent-cart'); ?>"
+            aria-label="<?php esc_attr_e('Toggle navigation menu', 'webmakerr-cart'); ?>"
             id="fct-customer-nav-compact-toggle"
         >
             <svg class="fct-compact-toggle-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -37,7 +37,7 @@ if (!defined('ABSPATH')) {
             type="button"
             aria-expanded="false"
             aria-controls="fct-customer-menu-holder"
-            aria-label="<?php esc_attr_e('Toggle navigation menu', 'fluent-cart'); ?>"
+            aria-label="<?php esc_attr_e('Toggle navigation menu', 'webmakerr-cart'); ?>"
         >
             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 4H21V6H3V4ZM3 11H21V13H3V11ZM3 18H21V20H3V18Z"></path></svg>
         </button>
@@ -80,13 +80,12 @@ if (!defined('ABSPATH')) {
 
             <!-- Logout Button -->
             <div id="fct-customer-logout-button">
-                <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>" title="<?php echo esc_attr__('Logout', 'fluent-cart'); ?>" class="fct-customer-logout-btn" aria-label="<?php esc_attr_e('Logout', 'fluent-cart'); ?>">
+                <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>" title="<?php echo esc_attr__('Logout', 'webmakerr-cart'); ?>" class="fct-customer-logout-btn" aria-label="<?php esc_attr_e('Logout', 'webmakerr-cart'); ?>">
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 22C4.44772 22 4 21.5523 4 21V3C4 2.44772 4.44772 2 5 2H19C19.5523 2 20 2.44772 20 3V6H18V4H6V20H18V18H20V21C20 21.5523 19.5523 22 19 22H5ZM18 16V13H11V11H18V8L23 12L18 16Z"></path></svg>
 
-                    <span class="button-text"><?php esc_html_e('Logout', 'fluent-cart'); ?></span>
+                    <span class="button-text"><?php esc_html_e('Logout', 'webmakerr-cart'); ?></span>
                 </a>
             </div>
         </div>
     </div>
 </div>
-

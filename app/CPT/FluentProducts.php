@@ -180,10 +180,10 @@ class FluentProducts
         $productSlug = (new StoreSettings())->get('product_slug') ?? 'item';
         $urlSlug = webmakerr_apply_filters('webmakerr_cart/front_url_slug', $productSlug, []);
 
-        $singularName = __('Product', 'fluent-cart');
+        $singularName = __('Product', 'webmakerr-cart');
 
         if (defined('WC_PLUGIN_FILE')) {
-            $singularName = __('Product (FluentCart)', 'fluent-cart');
+            $singularName = __('Product (FluentCart)', 'webmakerr-cart');
         }
 
         register_post_type(self::CPT_NAME, [
@@ -198,18 +198,18 @@ class FluentProducts
 //                'read_private_posts' => 'read_private_your_post_types',
 //            ],
 //            'map_meta_cap'          => true,
-                'label'                 => __('Products', 'fluent-cart'),
+                'label'                 => __('Products', 'webmakerr-cart'),
                 'labels'                => [
-                        'name'          => __('Products', 'fluent-cart'),
+                        'name'          => __('Products', 'webmakerr-cart'),
                         'singular_name' => $singularName,
-                        'add_new'       => _x('Add New Product', 'product', 'fluent-cart'),
-                        'add_new_item'  => __('Add New Product', 'fluent-cart'),
-                        'edit_item'     => __('Edit Product', 'fluent-cart'),
-                        'view_item'     => __('View Product', 'fluent-cart'),
-                        'search_items'  => __('Search products', 'fluent-cart'),
+                        'add_new'       => _x('Add New Product', 'product', 'webmakerr-cart'),
+                        'add_new_item'  => __('Add New Product', 'webmakerr-cart'),
+                        'edit_item'     => __('Edit Product', 'webmakerr-cart'),
+                        'view_item'     => __('View Product', 'webmakerr-cart'),
+                        'search_items'  => __('Search products', 'webmakerr-cart'),
                 ],
             //'_edit_link' => 'admin.php?page=webmakerr#/products/%d/pricing',
-                'description'           => __('FluentCart products post type', 'fluent-cart'),
+                'description'           => __('FluentCart products post type', 'webmakerr-cart'),
                 'public'                => true,
                 'hierarchical'          => false,
                 'exclude_from_search'   => false,
@@ -273,18 +273,18 @@ class FluentProducts
                 'query_var'         => true,
                 'rewrite'           => ['slug' => 'product-categories'],
                 'labels'            => [
-                        'name'              => __('Categories', 'fluent-cart'),
-                        'singular_name'     => __('Category', 'fluent-cart'),
-                        'search_items'      => __('Search Categories', 'fluent-cart'),
-                        'all_items'         => __('All Categories', 'fluent-cart'),
-                        'parent_item'       => __('Parent Category', 'fluent-cart'),
-                        'parent_item_colon' => __('Parent Category:', 'fluent-cart'),
-                        'edit_item'         => __('Edit Category', 'fluent-cart'),
-                        'update_item'       => __('Update Category', 'fluent-cart'),
-                        'add_new_item'      => __('Add New Category', 'fluent-cart'),
-                        'new_item_name'     => __('New Category Name', 'fluent-cart'),
-                        'menu_name'         => __('Product Category', 'fluent-cart'),
-                        'not_found'         => __('No categories found.', 'fluent-cart'),
+                        'name'              => __('Categories', 'webmakerr-cart'),
+                        'singular_name'     => __('Category', 'webmakerr-cart'),
+                        'search_items'      => __('Search Categories', 'webmakerr-cart'),
+                        'all_items'         => __('All Categories', 'webmakerr-cart'),
+                        'parent_item'       => __('Parent Category', 'webmakerr-cart'),
+                        'parent_item_colon' => __('Parent Category:', 'webmakerr-cart'),
+                        'edit_item'         => __('Edit Category', 'webmakerr-cart'),
+                        'update_item'       => __('Update Category', 'webmakerr-cart'),
+                        'add_new_item'      => __('Add New Category', 'webmakerr-cart'),
+                        'new_item_name'     => __('New Category Name', 'webmakerr-cart'),
+                        'menu_name'         => __('Product Category', 'webmakerr-cart'),
+                        'not_found'         => __('No categories found.', 'webmakerr-cart'),
                 ],
         ]);
 
@@ -296,18 +296,18 @@ class FluentProducts
                 'query_var'         => true,
                 'rewrite'           => ['slug' => 'product-brands'],
                 'labels'            => [
-                        'name'          => __('Brands', 'fluent-cart'),
-                        'singular_name' => __('Brand', 'fluent-cart'),
-                        'search_items'  => __('All Brand', 'fluent-cart'),
-                        'all_items'     => __('All Brands', 'fluent-cart'),
-                        'parent_item'   => __('Parent Brand', 'fluent-cart'),
-                        'edit_item'     => __('Edit Brand', 'fluent-cart'),
-                        'update_item'   => __('Update Brand', 'fluent-cart'),
-                        'add_new_item'  => __('Add New Brand', 'fluent-cart'),
-                        'new_item_name' => __('New Brand Name', 'fluent-cart'),
-                        'menu_name'     => __('Product Brand', 'fluent-cart'),
-                        'view_item'     => __('View Brand', 'fluent-cart'),
-                        'not_found'     => __('No Brand found', 'fluent-cart'),
+                        'name'          => __('Brands', 'webmakerr-cart'),
+                        'singular_name' => __('Brand', 'webmakerr-cart'),
+                        'search_items'  => __('All Brand', 'webmakerr-cart'),
+                        'all_items'     => __('All Brands', 'webmakerr-cart'),
+                        'parent_item'   => __('Parent Brand', 'webmakerr-cart'),
+                        'edit_item'     => __('Edit Brand', 'webmakerr-cart'),
+                        'update_item'   => __('Update Brand', 'webmakerr-cart'),
+                        'add_new_item'  => __('Add New Brand', 'webmakerr-cart'),
+                        'new_item_name' => __('New Brand Name', 'webmakerr-cart'),
+                        'menu_name'     => __('Product Brand', 'webmakerr-cart'),
+                        'view_item'     => __('View Brand', 'webmakerr-cart'),
+                        'not_found'     => __('No Brand found', 'webmakerr-cart'),
                 ],
         ]);
     }

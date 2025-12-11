@@ -57,11 +57,11 @@ class Helper
         if (current_user_can('manage_options')) {
             fluent_cart_update_option('_fluent_cart_admin_permissions', $capability);
         } else {
-            throw new \Exception(esc_html__('Sorry, You can not update permissions. Only administrators can update permissions', 'fluent-cart'));
+            throw new \Exception(esc_html__('Sorry, You can not update permissions. Only administrators can update permissions', 'webmakerr-cart'));
         }
 
         return array(
-            'message' => esc_html__('Successfully updated the role(s).', 'fluent-cart')
+            'message' => esc_html__('Successfully updated the role(s).', 'webmakerr-cart')
         );
     }
 

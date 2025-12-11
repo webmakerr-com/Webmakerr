@@ -111,15 +111,15 @@ class FileDownloader extends Controller
                     $settingsUrl = admin_url('admin.php?page=webmakerr#/settings/storage/' . $download->driver);
 
                     FrontendView::renderNotFoundPage(
-                        __('Driver Error', 'fluent-cart'),
-                        __('Configuration Error', 'fluent-cart'),
+                        __('Driver Error', 'webmakerr-cart'),
+                        __('Configuration Error', 'webmakerr-cart'),
                         sprintf(
                             /* translators: %s is the driver name */
-                            __('The storage driver %s is not configured correctly.', 'fluent-cart'),
+                            __('The storage driver %s is not configured correctly.', 'webmakerr-cart'),
                             $download->driver
                         ),
 
-                        __('Check Storage Settings', 'fluent-cart'),
+                        __('Check Storage Settings', 'webmakerr-cart'),
                         '',
                         $settingsUrl
                     );
@@ -137,7 +137,7 @@ class FileDownloader extends Controller
     public function returnError()
     {
         if (App::request()->wantsJson()) {
-            wp_send_json(['message' => __('Invalid download Url', 'fluent-cart')], 422);
+            wp_send_json(['message' => __('Invalid download Url', 'webmakerr-cart')], 422);
         } else {
             FrontendView::renderFileNotFoundPage();
         }

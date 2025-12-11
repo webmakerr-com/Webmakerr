@@ -34,8 +34,8 @@ class CheckoutBlockEditor extends BlockEditor
             $this->getLocalizationKey()     => [
                 'slug'        => $this->slugPrefix,
                 'name'        => static::getEditorName(),
-                'title'       => __('Checkout Page', 'fluent-cart'),
-                'description' => __('This block will display the checkout page.', 'fluent-cart')
+                'title'       => __('Checkout Page', 'webmakerr-cart'),
+                'description' => __('This block will display the checkout page.', 'webmakerr-cart')
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings()
         ];
@@ -79,13 +79,13 @@ class CheckoutBlockEditor extends BlockEditor
     public static function getDefaultAddressModal(): array
     {
         return [
-            'billingAddress'   => __('Billing Address', 'fluent-cart'),
-            'shippingAddress'  => __('Shipping Address', 'fluent-cart'),
-            'openButtonText'   => __('Change', 'fluent-cart'),
-            'addButtonText'    => __('Add Address', 'fluent-cart'),
-            'applyButtonText'  => __('Apply', 'fluent-cart'),
-            'submitButtonText' => __('Submit', 'fluent-cart'),
-            'cancelButtonText' => __('Cancel', 'fluent-cart')
+            'billingAddress'   => __('Billing Address', 'webmakerr-cart'),
+            'shippingAddress'  => __('Shipping Address', 'webmakerr-cart'),
+            'openButtonText'   => __('Change', 'webmakerr-cart'),
+            'addButtonText'    => __('Add Address', 'webmakerr-cart'),
+            'applyButtonText'  => __('Apply', 'webmakerr-cart'),
+            'submitButtonText' => __('Submit', 'webmakerr-cart'),
+            'cancelButtonText' => __('Cancel', 'webmakerr-cart')
         ];
     }
 
@@ -97,7 +97,7 @@ class CheckoutBlockEditor extends BlockEditor
     public static function getDefaultSippingMethods(): array
     {
         return [
-            'heading' => __('Shipping Method', 'fluent-cart')
+            'heading' => __('Shipping Method', 'webmakerr-cart')
         ];
     }
 
@@ -109,7 +109,7 @@ class CheckoutBlockEditor extends BlockEditor
     public static function getDefaultPaymentMethods(): array
     {
         return [
-            'heading' => __('Payment', 'fluent-cart')
+            'heading' => __('Payment', 'webmakerr-cart')
         ];
     }
 
@@ -121,10 +121,10 @@ class CheckoutBlockEditor extends BlockEditor
     public static function getDefaultOrderSummary(): array
     {
         return [
-            'toggleButtonText' => __('View Items', 'fluent-cart'),
-            'removeButtonText' => __('Remove', 'fluent-cart'),
-            'totalText'        => __('Total', 'fluent-cart'),
-            'heading'          => __('Summary', 'fluent-cart'),
+            'toggleButtonText' => __('View Items', 'webmakerr-cart'),
+            'removeButtonText' => __('Remove', 'webmakerr-cart'),
+            'totalText'        => __('Total', 'webmakerr-cart'),
+            'heading'          => __('Summary', 'webmakerr-cart'),
             'maxVisibleItems'  => 2,
             'showRemoveButton' => true,
             'coupons'          => self::getDefaultCoupons()
@@ -140,9 +140,9 @@ class CheckoutBlockEditor extends BlockEditor
     {
         return [
             'iconVisibility' => true,
-            'placeholder'    => __('Apply Here', 'fluent-cart'),
-            'applyButton'    => __('Apply', 'fluent-cart'),
-            'label'          => __('Have a Coupon?', 'fluent-cart'),
+            'placeholder'    => __('Apply Here', 'webmakerr-cart'),
+            'applyButton'    => __('Apply', 'webmakerr-cart'),
+            'label'          => __('Have a Coupon?', 'webmakerr-cart'),
             'collapsible'    => true
         ];
     }
@@ -155,7 +155,7 @@ class CheckoutBlockEditor extends BlockEditor
     public static function getDefaultSubmitButton(): array
     {
         return [
-            'text'      => __('Place Order', 'fluent-cart'),
+            'text'      => __('Place Order', 'webmakerr-cart'),
             'alignment' => 'left',
             'size'      => 'large',
             'full'      => true
@@ -170,8 +170,8 @@ class CheckoutBlockEditor extends BlockEditor
     public static function getDefaultAllowCreateAccount(): array
     {
         return [
-            'label'    => __('Create my user account', 'fluent-cart'),
-            'infoText' => __('By checking this box, you agree to create an account with us to manage your subscription and order details. This is mandatory for subscription-based purchases.', 'fluent-cart')
+            'label'    => __('Create my user account', 'webmakerr-cart'),
+            'infoText' => __('By checking this box, you agree to create an account with us to manage your subscription and order details. This is mandatory for subscription-based purchases.', 'webmakerr-cart')
         ];
     }
 

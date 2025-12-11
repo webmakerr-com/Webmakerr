@@ -51,11 +51,11 @@ class S3ConnectionVerify
 
         if ($responseCode == '200') {
             return [
-                'message' => __('Successfully verified S3 connection!', 'fluent-cart'),
+                'message' => __('Successfully verified S3 connection!', 'webmakerr-cart'),
                 'code'    => $responseCode
             ];
         } else {
-            $error_message = __('Invalid S3 credentials', 'fluent-cart');
+            $error_message = __('Invalid S3 credentials', 'webmakerr-cart');
 
             $responseBody = wp_remote_retrieve_body($response);
             if (!empty($responseBody)) {
@@ -66,9 +66,9 @@ class S3ConnectionVerify
                     $error_message = $message ?: $error_message;
 
                     if(str_contains($error_message,'User:')) {
-                        $error_message = __('Your IAM user does not have permission to use S3 buckets', 'fluent-cart');
+                        $error_message = __('Your IAM user does not have permission to use S3 buckets', 'webmakerr-cart');
                     }else{
-                        $error_message = __('Invalid S3 credentials', 'fluent-cart');
+                        $error_message = __('Invalid S3 credentials', 'webmakerr-cart');
                     }
                 }
             }

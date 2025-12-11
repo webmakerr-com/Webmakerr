@@ -17,7 +17,7 @@ class MollieSubscriptions extends AbstractSubscriptionModule
     public function reSyncSubscriptionFromRemote(Subscription $subscriptionModel)
     {
         if ($subscriptionModel->current_payment_method !== 'mollie') {
-            return new \WP_Error('invalid_payment_method', __('This subscription is not using Mollie as payment method.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_payment_method', __('This subscription is not using Mollie as payment method.', 'webmakerr-cart-pro'));
         }
 
         
@@ -27,7 +27,7 @@ class MollieSubscriptions extends AbstractSubscriptionModule
         if (!$vendorSubscriptionId) {
             return new \WP_Error(
                 'invalid_subscription',
-                __('Invalid vendor subscription ID.', 'fluent-cart-pro')
+                __('Invalid vendor subscription ID.', 'webmakerr-cart-pro')
             );
         }
 
@@ -129,7 +129,7 @@ class MollieSubscriptions extends AbstractSubscriptionModule
         if (!$subscriptionModel) {
             return new \WP_Error(
                 'invalid_subscription',
-                __('Invalid vendor subscription ID.', 'fluent-cart-pro')
+                __('Invalid vendor subscription ID.', 'webmakerr-cart-pro')
             );
         }
 

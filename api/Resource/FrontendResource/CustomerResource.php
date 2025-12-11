@@ -107,12 +107,12 @@ class CustomerResource extends BaseResourceApi
         if ($customer) {
             return static::makeSuccessResponse(
                 $customer,
-                __('Customer created successfully!', 'fluent-cart')
+                __('Customer created successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Customer creation failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Customer creation failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -140,12 +140,12 @@ class CustomerResource extends BaseResourceApi
         if ($customer) {
             return static::makeSuccessResponse(
                 $customer,
-                __('Customer updated successfully!', 'fluent-cart')
+                __('Customer updated successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Customer update failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Customer update failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -173,12 +173,12 @@ class CustomerResource extends BaseResourceApi
         if ($customer) {
             return static::makeSuccessResponse(
                 '',
-                __('Selected Customers has been deleted permanently', 'fluent-cart')
+                __('Selected Customers has been deleted permanently', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Customer update failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Customer update failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -216,14 +216,14 @@ class CustomerResource extends BaseResourceApi
 
         if (!$newStatus) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Please select status', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Please select status', 'webmakerr-cart')]
             ]);
         }
 
         $validStatuses = Status::getEditableCustomerStatuses();
         if (!isset($validStatuses[$newStatus])) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Provided customer status is not valid', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Provided customer status is not valid', 'webmakerr-cart')]
             ]);
         }
 
@@ -235,7 +235,7 @@ class CustomerResource extends BaseResourceApi
 
         return static::makeSuccessResponse(
             '',
-            __('Customer Status has been changed', 'fluent-cart')
+            __('Customer Status has been changed', 'webmakerr-cart')
         );
     }
 
@@ -265,7 +265,7 @@ class CustomerResource extends BaseResourceApi
 
         if (!$customerIds) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Customers selection is required', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Customers selection is required', 'webmakerr-cart')]
             ]);
         }
 
@@ -278,7 +278,7 @@ class CustomerResource extends BaseResourceApi
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Selected action is invalid', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Selected action is invalid', 'webmakerr-cart')]
         ]);
     }
 }

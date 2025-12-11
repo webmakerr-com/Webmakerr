@@ -107,7 +107,7 @@ class ProductDownloadablesController extends Controller
             ]);
         } else {
             return $this->sendError([
-                'message' => __('Failed to attach downloadable files', 'fluent-cart')
+                'message' => __('Failed to attach downloadable files', 'webmakerr-cart')
             ]);
         }
     }
@@ -119,7 +119,7 @@ class ProductDownloadablesController extends Controller
 
         if (empty($productDownload)) {
             return $this->sendError([
-                'message' => __('Failed to generate downloadable link', 'fluent-cart')
+                'message' => __('Failed to generate downloadable link', 'webmakerr-cart')
             ]);
         }
 
@@ -164,11 +164,11 @@ class ProductDownloadablesController extends Controller
 
         if ($productDownload->save()) {
             return $this->sendSuccess([
-                'message' => __('Product downloadable files updated successfully', 'fluent-cart')
+                'message' => __('Product downloadable files updated successfully', 'webmakerr-cart')
             ]);
         } else {
             return $this->sendError([
-                'message' => __('Failed to update product downloadable files', 'fluent-cart')
+                'message' => __('Failed to update product downloadable files', 'webmakerr-cart')
             ]);
         }
 

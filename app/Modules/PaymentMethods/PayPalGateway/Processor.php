@@ -103,7 +103,7 @@ class Processor
         } else if ($chargingAmount > $pushedTotal) {
             $extraChargeNeedToBeAdded = $chargingAmount - $pushedTotal;
             $formattedItems[] = [
-                'name'        => __('Adjustment Amount', 'fluent-cart'),
+                'name'        => __('Adjustment Amount', 'webmakerr-cart'),
                 'unit_amount' => [
                     'currency_code' => $transaction->currency,
                     'value'         => number_format($extraChargeNeedToBeAdded, 2, '.', ''),
@@ -130,7 +130,7 @@ class Processor
                     'uuid' => $transaction->uuid,
                 ]
             ],
-            'message'            => __('Order has been placed successfully', 'fluent-cart'),
+            'message'            => __('Order has been placed successfully', 'webmakerr-cart'),
             'custom_payment_url' => PaymentHelper::getCustomPaymentLink($order->uuid),
             'response'           => $purchaseUnits
         ];
@@ -147,7 +147,7 @@ class Processor
             $requiredBillTimes = $subscription->getRequiredBillTimes();
 
             if ($requiredBillTimes === -1) {
-                return new \WP_Error('already_completed', __('Invalid bill times for the subscription.', 'fluent-cart'));
+                return new \WP_Error('already_completed', __('Invalid bill times for the subscription.', 'webmakerr-cart'));
             }
 
             $data = [
@@ -193,7 +193,7 @@ class Processor
             'status'     => 'success',
             'nextAction' => 'paypal',
             'actionName' => 'custom',
-            'message'    => __('Order has been placed successfully', 'fluent-cart'),
+            'message'    => __('Order has been placed successfully', 'webmakerr-cart'),
             'data'       => [
                 'order'        => [
                     'uuid' => $paymentInstance->order->uuid,
@@ -257,7 +257,7 @@ class Processor
         $transaction->fill($transactionUpdateData);
         $transaction->save();
 
-        fluent_cart_add_log(__('PayPal Payment Confirmation', 'fluent-cart'), __('Payment confirmation received from PayPal. Transaction ID: ', 'fluent-cart') . Arr::get($transactionArgs, 'vendor_charge_id', ''), 'info', [
+        fluent_cart_add_log(__('PayPal Payment Confirmation', 'webmakerr-cart'), __('Payment confirmation received from PayPal. Transaction ID: ', 'webmakerr-cart') . Arr::get($transactionArgs, 'vendor_charge_id', ''), 'info', [
             'module_name' => 'order',
             'module_id'   => $order->id,
         ]);

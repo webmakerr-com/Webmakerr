@@ -108,7 +108,7 @@ class OrderParser extends BaseParser
                 return \Webmakerr\App\App::make('view')->make('emails.parts.items_table', [
                     'order'          => $order,
                     'formattedItems' => $order->order_items,
-                    'heading'        => __('Order Summary', 'fluent-cart'),
+                    'heading'        => __('Order Summary', 'webmakerr-cart'),
                 ]);
             }
 
@@ -127,7 +127,7 @@ class OrderParser extends BaseParser
                 if ($licenses && $licenses->count() > 0) {
                     return \Webmakerr\App\App::make('view')->make('emails.parts.licenses', [
                         'licenses'    => $licenses,
-                        'heading'     => _n('License', 'Licenses', $licenses->count(), 'fluent-cart'),
+                        'heading'     => _n('License', 'Licenses', $licenses->count(), 'webmakerr-cart'),
                         'show_notice' => false
                     ]);
                 }
@@ -139,7 +139,7 @@ class OrderParser extends BaseParser
                 if ($downloads) {
                     return \Webmakerr\App\App::make('view')->make('emails.parts.downloads', [
                         'order'         => $order,
-                        'heading'       => _n('Download', 'Downloads', count($downloads), 'fluent-cart'),
+                        'heading'       => _n('Download', 'Downloads', count($downloads), 'webmakerr-cart'),
                         'downloadItems' => $downloads,
                     ]);
                 }
@@ -213,7 +213,7 @@ class OrderParser extends BaseParser
         \Webmakerr\App\App::make('view')->render('emails.parts.items_table', [
             'order'          => $order,
             'formattedItems' => $order->order_items,
-            'heading'        => __('Order Summary', 'fluent-cart'),
+            'heading'        => __('Order Summary', 'webmakerr-cart'),
         ]);
 
 
@@ -228,7 +228,7 @@ class OrderParser extends BaseParser
         if ($licenses && $licenses->count() > 0) {
             \Webmakerr\App\App::make('view')->render('emails.parts.licenses', [
                 'licenses'    => $licenses,
-                'heading'     => __('Licenses', 'fluent-cart'),
+                'heading'     => __('Licenses', 'webmakerr-cart'),
                 'show_notice' => false
             ]);
         }
@@ -237,7 +237,7 @@ class OrderParser extends BaseParser
         if ($downloads) {
             \Webmakerr\App\App::make('view')->render('emails.parts.downloads', [
                 'order'         => $order,
-                'heading'       => __('Downloads', 'fluent-cart'),
+                'heading'       => __('Downloads', 'webmakerr-cart'),
                 'downloadItems' => $downloads,
             ]);
         }
@@ -349,7 +349,7 @@ class OrderParser extends BaseParser
         if ($licenses && $licenses->count() > 0) {
             return (string)\Webmakerr\App\App::make('view')->make('emails.parts.licenses', [
                 'licenses'    => $licenses,
-                'heading'     => __('Licenses', 'fluent-cart'),
+                'heading'     => __('Licenses', 'webmakerr-cart'),
                 'show_notice' => false
             ]);
         }
@@ -368,5 +368,4 @@ class OrderParser extends BaseParser
     }
 
 }
-
 

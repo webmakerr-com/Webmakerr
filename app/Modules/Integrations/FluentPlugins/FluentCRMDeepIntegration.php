@@ -49,155 +49,155 @@ class FluentCRMDeepIntegration
         $conditionItems = [
             [
                 'value'             => 'commerce_exist',
-                'label'             => __('Is a customer?', 'fluent-cart'),
+                'label'             => __('Is a customer?', 'webmakerr-cart'),
                 'type'              => 'selections',
                 'is_multiple'       => false,
                 'disable_values'    => true,
-                'value_description' => __('This filter will check if a contact has at least one shop order or not', 'fluent-cart'),
+                'value_description' => __('This filter will check if a contact has at least one shop order or not', 'webmakerr-cart'),
                 'custom_operators'  => [
-                    'exist'     => __('Yes', 'fluent-cart'),
-                    'not_exist' => __('No', 'fluent-cart'),
+                    'exist'     => __('Yes', 'webmakerr-cart'),
+                    'not_exist' => __('No', 'webmakerr-cart'),
                 ]
             ],
             [
                 'value' => 'ltv',
-                'label' => __('Lifetime Value', 'fluent-cart'),
+                'label' => __('Lifetime Value', 'webmakerr-cart'),
                 'type'  => 'numeric'
             ],
             [
                 'value' => 'aov',
-                'label' => __('Average Order Value', 'fluent-cart'),
+                'label' => __('Average Order Value', 'webmakerr-cart'),
                 'type'  => 'numeric',
             ],
             [
                 'value' => 'first_purchase_date',
-                'label' => __('First Order Date', 'fluent-cart'),
+                'label' => __('First Order Date', 'webmakerr-cart'),
                 'type'  => 'dates'
             ],
             [
                 'value' => 'last_purchase_date',
-                'label' => __('Last Order Date', 'fluent-cart'),
+                'label' => __('Last Order Date', 'webmakerr-cart'),
                 'type'  => 'dates'
             ],
             [
                 'value'            => 'purchased_items',
-                'label'            => __('Products', 'fluent-cart'),
+                'label'            => __('Products', 'webmakerr-cart'),
                 'type'             => 'selections',
                 'component'        => 'product_selector',
                 'is_multiple'      => true,
                 'custom_operators' => [
-                    'exist'     => __('purchased', 'fluent-cart'),
-                    'not_exist' => __('not purchased', 'fluent-cart'),
+                    'exist'     => __('purchased', 'webmakerr-cart'),
+                    'not_exist' => __('not purchased', 'webmakerr-cart'),
                 ],
-                'help'             => __('Will filter the contacts who have at least one order', 'fluent-cart')
+                'help'             => __('Will filter the contacts who have at least one order', 'webmakerr-cart')
             ],
             [
                 'value'             => 'variation_purchased',
-                'label'             => __('Product Variations', 'fluent-cart'),
+                'label'             => __('Product Variations', 'webmakerr-cart'),
                 'type'              => 'cascade_selections',
                 'provider'          => 'fct_variations',
                 'is_multiple'       => true,
-                'value_description' => __('This filter will check if a contact has purchased at least one specific product variation or not', 'fluent-cart'),
+                'value_description' => __('This filter will check if a contact has purchased at least one specific product variation or not', 'webmakerr-cart'),
                 'custom_operators'  => [
-                    'exist'     => __('purchased', 'fluent-cart'),
-                    'not_exist' => __('not purchased', 'fluent-cart'),
+                    'exist'     => __('purchased', 'webmakerr-cart'),
+                    'not_exist' => __('not purchased', 'webmakerr-cart'),
                 ]
             ],
             [
                 'value'            => 'purchased_categories',
-                'label'            => __('Product Categories', 'fluent-cart'),
+                'label'            => __('Product Categories', 'webmakerr-cart'),
                 'type'             => 'selections',
                 'component'        => 'tax_selector',
                 'taxonomy'         => 'product-categories',
                 'is_multiple'      => true,
                 'disabled'         => true,
-                'help'             => __('Will filter the contacts who have at least one order', 'fluent-cart'),
+                'help'             => __('Will filter the contacts who have at least one order', 'webmakerr-cart'),
                 'custom_operators' => [
-                    'exist'     => __('purchased', 'fluent-cart'),
-                    'not_exist' => __('not purchased', 'fluent-cart'),
+                    'exist'     => __('purchased', 'webmakerr-cart'),
+                    'not_exist' => __('not purchased', 'webmakerr-cart'),
                 ]
             ],
             [
                 'value'            => 'commerce_coupons',
-                'label'            => __('Used Coupons', 'fluent-cart'),
+                'label'            => __('Used Coupons', 'webmakerr-cart'),
                 'type'             => 'selections',
                 'component'        => 'ajax_selector',
                 'option_key'       => 'fct_coupons',
                 'is_multiple'      => true,
                 'disabled'         => true,
                 'custom_operators' => [
-                    'exist'     => __('in', 'fluent-cart'),
-                    'not_exist' => __('not in', 'fluent-cart'),
+                    'exist'     => __('in', 'webmakerr-cart'),
+                    'not_exist' => __('not in', 'webmakerr-cart'),
                 ],
-                'help'             => __('Will filter the contacts who have at least one order', 'fluent-cart')
+                'help'             => __('Will filter the contacts who have at least one order', 'webmakerr-cart')
             ]
         ];
 
         if (ModuleSettings::isActive('license')) {
             $conditionItems[] = [
                 'value'            => 'active_licenses',
-                'label'            => __('Active Licenses', 'fluent-cart'),
+                'label'            => __('Active Licenses', 'webmakerr-cart'),
                 'type'             => 'selections',
                 'component'        => 'product_selector',
                 'is_multiple'      => true,
                 'custom_operators' => [
-                    'exist'     => __('have', 'fluent-cart'),
-                    'not_exist' => __('do not have', 'fluent-cart'),
+                    'exist'     => __('have', 'webmakerr-cart'),
+                    'not_exist' => __('do not have', 'webmakerr-cart'),
                 ],
-                'help'             => __('Will filter the contacts who have at least one active licenses or not', 'fluent-cart')
+                'help'             => __('Will filter the contacts who have at least one active licenses or not', 'webmakerr-cart')
             ];
             $conditionItems[] = [
                 'value'             => 'active_variation_licenses',
-                'label'             => __('Active Variation Licenses', 'fluent-cart'),
+                'label'             => __('Active Variation Licenses', 'webmakerr-cart'),
                 'type'              => 'cascade_selections',
                 'provider'          => 'fct_variations',
                 'is_multiple'       => true,
-                'value_description' => __('This filter will check if a contact has at least one specific variation license or not', 'fluent-cart'),
+                'value_description' => __('This filter will check if a contact has at least one specific variation license or not', 'webmakerr-cart'),
                 'custom_operators'  => [
-                    'exist'     => __('have', 'fluent-cart'),
-                    'not_exist' => __('do not have', 'fluent-cart'),
+                    'exist'     => __('have', 'webmakerr-cart'),
+                    'not_exist' => __('do not have', 'webmakerr-cart'),
                 ]
             ];
             $conditionItems[] = [
                 'value'            => 'expired_licenses',
-                'label'            => __('Expired Licenses', 'fluent-cart'),
+                'label'            => __('Expired Licenses', 'webmakerr-cart'),
                 'type'             => 'selections',
                 'component'        => 'product_selector',
                 'is_multiple'      => true,
                 'custom_operators' => [
-                    'exist'     => __('have', 'fluent-cart'),
-                    'not_exist' => __('do not have', 'fluent-cart'),
+                    'exist'     => __('have', 'webmakerr-cart'),
+                    'not_exist' => __('do not have', 'webmakerr-cart'),
                 ],
-                'help'             => __('Will filter the contacts who have at least one expired licenses or not', 'fluent-cart')
+                'help'             => __('Will filter the contacts who have at least one expired licenses or not', 'webmakerr-cart')
             ];
             $conditionItems[] = [
                 'value'             => 'expired_variation_licenses',
-                'label'             => __('Expired Variation Licenses', 'fluent-cart'),
+                'label'             => __('Expired Variation Licenses', 'webmakerr-cart'),
                 'type'              => 'cascade_selections',
                 'provider'          => 'fct_variations',
                 'is_multiple'       => true,
-                'value_description' => __('This filter will check if a contact has at least one specific variation expired license or not', 'fluent-cart'),
+                'value_description' => __('This filter will check if a contact has at least one specific variation expired license or not', 'webmakerr-cart'),
                 'custom_operators'  => [
-                    'exist'     => __('have', 'fluent-cart'),
-                    'not_exist' => __('do not have', 'fluent-cart'),
+                    'exist'     => __('have', 'webmakerr-cart'),
+                    'not_exist' => __('do not have', 'webmakerr-cart'),
                 ]
             ];
             $conditionItems[] = [
                 'value'             => 'license_exist',
-                'label'             => __('Has any active license?', 'fluent-cart'),
+                'label'             => __('Has any active license?', 'webmakerr-cart'),
                 'type'              => 'selections',
                 'is_multiple'       => false,
                 'disable_values'    => true,
-                'value_description' => __('Check if contacts has any active license from any products', 'fluent-cart'),
+                'value_description' => __('Check if contacts has any active license from any products', 'webmakerr-cart'),
                 'custom_operators'  => [
-                    'exist'     => __('Yes', 'fluent-cart'),
-                    'not_exist' => __('No', 'fluent-cart'),
+                    'exist'     => __('Yes', 'webmakerr-cart'),
+                    'not_exist' => __('No', 'webmakerr-cart'),
                 ]
             ];
         }
 
         $groups['fluent_cart'] = [
-            'label'    => __('FluentCart', 'fluent-cart'),
+            'label'    => __('FluentCart', 'webmakerr-cart'),
             'value'    => 'fluent_cart',
             'children' => $conditionItems
         ];
@@ -554,7 +554,7 @@ class FluentCRMDeepIntegration
 
 
         $widgets['fluent_cart'] = [
-            'title'   => __('Commerce Info', 'fluent-cart'),
+            'title'   => __('Commerce Info', 'webmakerr-cart'),
             'content' => $this->getStatsHtml($customer)
         ];
 
@@ -565,19 +565,19 @@ class FluentCRMDeepIntegration
     {
         $stats = [
             [
-                'title' => __('Lifetime Value', 'fluent-cart'),
+                'title' => __('Lifetime Value', 'webmakerr-cart'),
                 'value' => '<a href="' . URL::getDashboardUrl('customers/' . $customer->id . '/view') . '" target="_blank" class="fc_view_more">' . \Webmakerr\App\Helpers\Helper::toDecimal($customer->ltv) . '</a>'
             ],
             [
-                'title' => __('Purchases', 'fluent-cart'),
+                'title' => __('Purchases', 'webmakerr-cart'),
                 'value' => $customer->purchase_count
             ],
             [
-                'title' => __('First Purchased: ', 'fluent-cart'),
+                'title' => __('First Purchased: ', 'webmakerr-cart'),
                 'value' => $customer->first_purchase_date ? gmdate('F j, Y', strtotime($customer->first_purchase_date)) : 'N/A'
             ],
             [
-                'title' => __('Last Purchased: ', 'fluent-cart'),
+                'title' => __('Last Purchased: ', 'webmakerr-cart'),
                 'value' => $customer->last_purchase_date ? gmdate('F j, Y', strtotime($customer->last_purchase_date)) : 'N/A'
             ],
         ];

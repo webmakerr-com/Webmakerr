@@ -152,11 +152,11 @@ class ProductVariationResource extends BaseResourceApi
             }
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Pricing has been created', 'fluent-cart')
+                __('Pricing has been created', 'webmakerr-cart')
             );
         }
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Pricing creation failed!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Pricing creation failed!', 'webmakerr-cart')]
         ]);
     }
 
@@ -277,11 +277,11 @@ class ProductVariationResource extends BaseResourceApi
 
             return static::makeSuccessResponse(
                 $isUpdated,
-                __('Pricing has been updated', 'fluent-cart')
+                __('Pricing has been updated', 'webmakerr-cart')
             );
         }
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Pricing creation failed!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Pricing creation failed!', 'webmakerr-cart')]
         ]);
     }
 
@@ -307,7 +307,7 @@ class ProductVariationResource extends BaseResourceApi
         if (!empty($variant)) {
             if (count($variant->order_items) > 0) {
                 return static::makeErrorResponse([
-                    ['code' => 400, 'message' => __('This pricing cannot be deleted at the moment. There are pending orders associated with it. Deleting the pricing will disrupt the order processing and might cause inconvenience to our customers.', 'fluent-cart')]
+                    ['code' => 400, 'message' => __('This pricing cannot be deleted at the moment. There are pending orders associated with it. Deleting the pricing will disrupt the order processing and might cause inconvenience to our customers.', 'webmakerr-cart')]
                 ]);
             }
             $variant->media()->delete();
@@ -315,10 +315,10 @@ class ProductVariationResource extends BaseResourceApi
             $deletedVariant = $variant->delete();
             if ($deletedVariant) {
                 fluent_cart_success_log(
-                    __('Pricing deleted', 'fluent-cart'),
+                    __('Pricing deleted', 'webmakerr-cart'),
                     sprintf(
                         /* translators: %s is the pricing title */
-                        __('Pricing %s is deleted', 'fluent-cart'), $variantTitle),
+                        __('Pricing %s is deleted', 'webmakerr-cart'), $variantTitle),
                     [
                         'module_name' => 'Product',
                         'module_id'   => 0,
@@ -327,18 +327,18 @@ class ProductVariationResource extends BaseResourceApi
                 );
                 return static::makeSuccessResponse(
                     '',
-                    __('Selected pricing and associated data has been deleted', 'fluent-cart')
+                    __('Selected pricing and associated data has been deleted', 'webmakerr-cart')
                 );
             }
 
 
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Pricing deletion failed!', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Pricing deletion failed!', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 404, 'message' => __('Pricing not found in database.', 'fluent-cart')]
+            ['code' => 404, 'message' => __('Pricing not found in database.', 'webmakerr-cart')]
         ]);
 
     }
@@ -380,11 +380,11 @@ class ProductVariationResource extends BaseResourceApi
         if ($isUpdated) {
             return static::makeSuccessResponse(
                 $isUpdated,
-                __('Pricing table has been updated', 'fluent-cart')
+                __('Pricing table has been updated', 'webmakerr-cart')
             );
         }
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to update pricing table!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to update pricing table!', 'webmakerr-cart')]
         ]);
     }
 }

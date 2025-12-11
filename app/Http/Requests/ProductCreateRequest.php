@@ -37,7 +37,7 @@ class ProductCreateRequest extends RequestGuard
             'post_status'             => ['nullable', 'string'],
             'detail.fulfillment_type' => ['sanitizeText', 'maxLength:100', function ($attribute, $value) {
                 if (!in_array($value, ['physical', 'digital'])) {
-                    return __('Invalid fulfillment type.', 'fluent-cart');
+                    return __('Invalid fulfillment type.', 'webmakerr-cart');
                 }
                 return null;
             }],
@@ -51,9 +51,9 @@ class ProductCreateRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'post_title.required'              => esc_html__('Title is required.', 'fluent-cart'),
-            'post_title.max'                   => esc_html__('Title may not be greater than 200 characters.', 'fluent-cart'),
-            'detail.fulfillment_type.required' => esc_html__('Fulfilment Type is required.', 'fluent-cart'),
+            'post_title.required'              => esc_html__('Title is required.', 'webmakerr-cart'),
+            'post_title.max'                   => esc_html__('Title may not be greater than 200 characters.', 'webmakerr-cart'),
+            'detail.fulfillment_type.required' => esc_html__('Fulfilment Type is required.', 'webmakerr-cart'),
         ];
     }
 

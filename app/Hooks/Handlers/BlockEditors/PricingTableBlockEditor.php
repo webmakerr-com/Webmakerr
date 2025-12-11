@@ -40,7 +40,7 @@ class PricingTableBlockEditor extends BlockEditor
                 'name' => static::getEditorName(),
 
                 'trans' => TransStrings::getShopAppBlockEditorString(),
-                'title' => __('Pricing Table', 'fluent-cart'),
+                'title' => __('Pricing Table', 'webmakerr-cart'),
             ],
             'fluent_cart_block_editor_asset' => [
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),

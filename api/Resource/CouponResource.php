@@ -88,12 +88,12 @@ class CouponResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Coupon created successfully!', 'fluent-cart')
+                __('Coupon created successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Coupon creation failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Coupon creation failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -122,7 +122,7 @@ class CouponResource extends BaseResourceApi
 
         if (!$id) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Please edit a valid coupon!', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Please edit a valid coupon!', 'webmakerr-cart')]
             ]);
         }
 
@@ -130,7 +130,7 @@ class CouponResource extends BaseResourceApi
 
         if (!$hasCoupon) {
             return static::makeErrorResponse([
-                ['code' => 404, 'message' => __('Coupon not found, please reload the page and try again!', 'fluent-cart')]
+                ['code' => 404, 'message' => __('Coupon not found, please reload the page and try again!', 'webmakerr-cart')]
             ]);
         }
 
@@ -139,11 +139,11 @@ class CouponResource extends BaseResourceApi
         $isUpdated = $hasCoupon->update($data);
 
         if ($isUpdated) {
-            return static::makeSuccessResponse($hasCoupon, __('Coupon updated successfully!', 'fluent-cart'));
+            return static::makeSuccessResponse($hasCoupon, __('Coupon updated successfully!', 'webmakerr-cart'));
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Coupon update failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Coupon update failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -151,7 +151,7 @@ class CouponResource extends BaseResourceApi
     {
         if (!$id) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Please use a valid coupon ID!', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Please use a valid coupon ID!', 'webmakerr-cart')]
             ]);
         }
 
@@ -159,16 +159,16 @@ class CouponResource extends BaseResourceApi
 
         if ($hasCoupon) {
             if ($hasCoupon->delete()) {
-                return static::makeSuccessResponse('', __('Coupon successfully deleted.', 'fluent-cart'));
+                return static::makeSuccessResponse('', __('Coupon successfully deleted.', 'webmakerr-cart'));
             }
 
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Coupon deletion failed!', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Coupon deletion failed!', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 404, 'message' => __('Coupon not found in database, failed to remove.', 'fluent-cart')]
+            ['code' => 404, 'message' => __('Coupon not found in database, failed to remove.', 'webmakerr-cart')]
         ]);
     }
 
@@ -233,7 +233,7 @@ class CouponResource extends BaseResourceApi
             ];
         }
 
-        return new WP_Error(__('Something went wrong while updating the cart.', 'fluent-cart'));
+        return new WP_Error(__('Something went wrong while updating the cart.', 'webmakerr-cart'));
     }
 
     public static function cancelCoupon($data, $returnCouponService = true)
@@ -280,7 +280,7 @@ class CouponResource extends BaseResourceApi
             ];
         }
 
-        return new WP_Error(__('Something went wrong while updating the cart.', 'fluent-cart'));
+        return new WP_Error(__('Something went wrong while updating the cart.', 'webmakerr-cart'));
     }
 
     public static function reapplyCoupon($data, $returnCouponService = true)
@@ -315,7 +315,7 @@ class CouponResource extends BaseResourceApi
             ];
         }
 
-        return new WP_Error(__('Something went wrong while updating the cart.', 'fluent-cart'));
+        return new WP_Error(__('Something went wrong while updating the cart.', 'webmakerr-cart'));
     }
 
     private static function makeCouponFromAppliedCoupons($previouslyAppliedCouponCodes)

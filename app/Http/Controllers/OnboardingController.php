@@ -99,7 +99,7 @@ class OnboardingController extends Controller
         }
 
         return $this->response->sendError([
-            'message' => __('Unable to create page', 'fluent-cart')
+            'message' => __('Unable to create page', 'webmakerr-cart')
         ]);
     }
 
@@ -117,12 +117,12 @@ class OnboardingController extends Controller
 
         if ($savedStoreSettings) {
             return $this->response->sendSuccess([
-                'message' => __('Store has been updated successfully', 'fluent-cart')
+                'message' => __('Store has been updated successfully', 'webmakerr-cart')
             ]);
         }
 
         return $this->response->sendError([
-            'errors' => __('Failed to update!', 'fluent-cart')
+            'errors' => __('Failed to update!', 'webmakerr-cart')
         ], 400);
     }
 }

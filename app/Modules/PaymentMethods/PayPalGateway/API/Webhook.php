@@ -47,10 +47,10 @@ class Webhook
             %2$s
             <b>%3$s</b>
             %4$s',
-            __('Payments and Payout:', 'fluent-cart'),
-            __('- Payment capture refunded | Payment sale completed | Payment sale refunded', 'fluent-cart'),
-            __('Billing Subscriptions:', 'fluent-cart'),
-            __('- Billing subscription activated | Billing subscription cancelled | Billing subscription created | Billing subscription expired | Billing subscription suspended', 'fluent-cart')
+            __('Payments and Payout:', 'webmakerr-cart'),
+            __('- Payment capture refunded | Payment sale completed | Payment sale refunded', 'webmakerr-cart'),
+            __('Billing Subscriptions:', 'webmakerr-cart'),
+            __('- Billing subscription activated | Billing subscription cancelled | Billing subscription created | Billing subscription expired | Billing subscription suspended', 'webmakerr-cart')
         );
 
         return sprintf(
@@ -67,15 +67,15 @@ class Webhook
                 <br/>
             </div>
             <br/>',
-            __('How to configure webhook?', 'fluent-cart'),                    // %1$s
-            __('You should configure your PayPal webhooks manually if you connected manually. Follow the instruction to Create webhook and paste the webhook ID below.', 'fluent-cart'), // %2$s
-            __('In your PayPal account:', 'fluent-cart'),                     // %3$s
-            __('Go to', 'fluent-cart'),                                       // %4$s
-            __('PayPal developers', 'fluent-cart'),                           // %5$s
-            __('App & Credentials > Your App > Webhooks section > Add webhook', 'fluent-cart'), // %6$s
-            __('Enter The Webhook URL:', 'fluent-cart'),                      // %7$s
+            __('How to configure webhook?', 'webmakerr-cart'),                    // %1$s
+            __('You should configure your PayPal webhooks manually if you connected manually. Follow the instruction to Create webhook and paste the webhook ID below.', 'webmakerr-cart'), // %2$s
+            __('In your PayPal account:', 'webmakerr-cart'),                     // %3$s
+            __('Go to', 'webmakerr-cart'),                                       // %4$s
+            __('PayPal developers', 'webmakerr-cart'),                           // %5$s
+            __('App & Credentials > Your App > Webhooks section > Add webhook', 'webmakerr-cart'), // %6$s
+            __('Enter The Webhook URL:', 'webmakerr-cart'),                      // %7$s
             $webhook_url,                                                     // %8$s
-            __('Select these events', 'fluent-cart'),                         // %9$s
+            __('Select these events', 'webmakerr-cart'),                         // %9$s
             $events                                                           // %10$s
         );
     }
@@ -133,7 +133,7 @@ class Webhook
         if (!$payPalSettings->getApiKey($mode)) {
             return [
                 'status'  => 'false',
-                'message' => __('No API key found for webhook setup. Please connect your PayPal account first.', 'fluent-cart')
+                'message' => __('No API key found for webhook setup. Please connect your PayPal account first.', 'webmakerr-cart')
             ];
         }
 

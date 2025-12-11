@@ -9,6 +9,6 @@ defined('ABSPATH') || exit;
 
 <div style="display: flex; justify-content: center; padding:20px;">
     <button style="background: var(--fluent-cart-primary-color, #253241); color: #fff; padding: 7px 20px; border-radius: 8px; border: none; font-size: 16px; font-weight: 500; min-height: 40px;" id="print-button">
-        <?php echo esc_html__('Print', 'fluent-cart'); ?>
+        <?php echo esc_html__('Print', 'webmakerr-cart'); ?>
     </button>
 </div>

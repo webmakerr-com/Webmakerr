@@ -70,7 +70,7 @@ class ShopAppBlockEditor extends BlockEditor
                 'product_categories' => $this->getMetaFilterOptions('categories'),
                 'trans'              => TransStrings::getShopAppBlockEditorString(),
                 'taxonomies'         => $taxonomies,
-                'title'              => __('Products', 'fluent-cart'),
+                'title'              => __('Products', 'webmakerr-cart'),
             ],
             'fluent_cart_block_editor_asset' => [
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),

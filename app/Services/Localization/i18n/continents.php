@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 return array(
 	'AF' => array(
-		'name'      => __( 'Africa', 'fluent-cart' ),
+		'name'      => __( 'Africa', 'webmakerr-cart' ),
 		'countries' => array(
 			'AO',
 			'BF',
@@ -74,7 +74,7 @@ return array(
 		),
 	),
 	'AN' => array(
-		'name'      => __( 'Antarctica', 'fluent-cart' ),
+		'name'      => __( 'Antarctica', 'webmakerr-cart' ),
 		'countries' => array(
 			'AQ',
 			'BV',
@@ -84,7 +84,7 @@ return array(
 		),
 	),
 	'AS' => array(
-		'name'      => __( 'Asia', 'fluent-cart' ),
+		'name'      => __( 'Asia', 'webmakerr-cart' ),
 		'countries' => array(
 			'AE',
 			'AF',
@@ -142,7 +142,7 @@ return array(
 		),
 	),
 	'EU' => array(
-		'name'      => __( 'Europe', 'fluent-cart' ),
+		'name'      => __( 'Europe', 'webmakerr-cart' ),
 		'countries' => array(
 			'AD',
 			'AL',
@@ -199,7 +199,7 @@ return array(
 		),
 	),
 	'NA' => array(
-		'name'      => __( 'North America', 'fluent-cart' ),
+		'name'      => __( 'North America', 'webmakerr-cart' ),
 		'countries' => array(
 			'AG',
 			'AI',
@@ -245,7 +245,7 @@ return array(
 		),
 	),
 	'OC' => array(
-		'name'      => __( 'Oceania', 'fluent-cart' ),
+		'name'      => __( 'Oceania', 'webmakerr-cart' ),
 		'countries' => array(
 			'AS',
 			'AU',
@@ -276,7 +276,7 @@ return array(
 		),
 	),
 	'SA' => array(
-		'name'      => __( 'South America', 'fluent-cart' ),
+		'name'      => __( 'South America', 'webmakerr-cart' ),
 		'countries' => array(
 			'AR',
 			'BO',

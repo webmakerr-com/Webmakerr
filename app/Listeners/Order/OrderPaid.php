@@ -36,14 +36,14 @@ class OrderPaid
 
         $createdUserId = \Webmakerr\App\Services\AuthService::createUserFromCustomer($customer, true);
         if (is_wp_error($createdUserId)) {
-            $order->addLog(__('User creation failed: ', 'fluent-cart') . $createdUserId->get_error_message(), 'error');
+            $order->addLog(__('User creation failed: ', 'webmakerr-cart') . $createdUserId->get_error_message(), 'error');
             return;
         }
 
         $customer->user_id = $createdUserId;
         $customer->save();
 
-        $order->addLog(__('User created successfully', 'fluent-cart'), __('User account has been created automatically on payment success. Created User ID: ', 'fluent-cart') . $createdUserId, 'info');
+        $order->addLog(__('User created successfully', 'webmakerr-cart'), __('User account has been created automatically on payment success. Created User ID: ', 'webmakerr-cart') . $createdUserId, 'info');
         $action = App::request()->get('fluent-cart') ?? '';
         if (!get_current_user_id() && empty($action)) {
             // this is a browser request. So we can make the user logged in automatically

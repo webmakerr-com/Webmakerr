@@ -35,7 +35,7 @@ class ProductPageTemplate
      */
     public function getTitle()
     {
-        return _x('Single Product', 'Template name', 'fluent-cart');
+        return _x('Single Product', 'Template name', 'webmakerr-cart');
     }
 
     /**
@@ -45,7 +45,7 @@ class ProductPageTemplate
      */
     public function getDescription()
     {
-        return __('Displays Single Webmakerr Product.', 'fluent-cart');
+        return __('Displays Single Webmakerr Product.', 'webmakerr-cart');
     }
 
 

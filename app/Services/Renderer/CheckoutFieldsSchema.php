@@ -42,8 +42,8 @@ class CheckoutFieldsSchema
                 'required'     => 'yes',
                 'autocomplete' => 'given-name',
                 'value'        => $customerName,
-                'placeholder'  => esc_attr__('Full Name', 'fluent-cart'),
-                'aria-label'   => esc_attr__('Your Full Name', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Full Name', 'webmakerr-cart'),
+                'aria-label'   => esc_attr__('Your Full Name', 'webmakerr-cart'),
             ],
             'billing_email'     => [
                 'id'           => 'billing_email',
@@ -56,8 +56,8 @@ class CheckoutFieldsSchema
                 'autocomplete' => 'email',
                 'value'        => $customerEmail,
                 'disabled'     => is_user_logged_in(),
-                'placeholder'  => esc_attr__('Email address *', 'fluent-cart'),
-                'aria-label'   => esc_attr__('Email address', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Email address *', 'webmakerr-cart'),
+                'aria-label'   => esc_attr__('Email address', 'webmakerr-cart'),
             ]
         ];
 
@@ -76,8 +76,8 @@ class CheckoutFieldsSchema
                 'data-type'    => 'text',
                 'required'     => $isRequired,
                 'label'        => '',
-                'aria-label'   => esc_attr__('Company name', 'fluent-cart'),
-                'placeholder'  => esc_attr__('Company name', 'fluent-cart') . ($isRequired ? ' *' : ''),
+                'aria-label'   => esc_attr__('Company name', 'webmakerr-cart'),
+                'placeholder'  => esc_attr__('Company name', 'webmakerr-cart') . ($isRequired ? ' *' : ''),
                 'autocomplete' => 'organization',
                 'value'        => $companyName,
             ];
@@ -126,7 +126,7 @@ class CheckoutFieldsSchema
         if (empty($config['state']) || empty($selectedCountry)) {
             $states = [
                 [
-                    'name'  => __('Select an option', 'fluent-cart'),
+                    'name'  => __('Select an option', 'webmakerr-cart'),
                     'value' => ''
                 ]
             ];
@@ -138,10 +138,10 @@ class CheckoutFieldsSchema
             $addressLocale = LocalizationManager::getInstance()->addressLocales($selectedCountry);
         }
 
-        $stateLabel = Arr::get($addressLocale, 'state.label', __('State', 'fluent-cart'));
+        $stateLabel = Arr::get($addressLocale, 'state.label', __('State', 'webmakerr-cart'));
         $countries = [
             [
-                'name'  => __('Select a Country', 'fluent-cart'),
+                'name'  => __('Select a Country', 'webmakerr-cart'),
                 'value' => ''
             ]
         ];
@@ -201,8 +201,8 @@ class CheckoutFieldsSchema
                 'required'     => 'yes',
                 'autocomplete' => 'given-name',
                 'value'        => $config['full_name'],
-                'placeholder'  => esc_attr__('Full Name', 'fluent-cart'),
-                'aria-label'   => esc_attr__('Your Full Name', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Full Name', 'webmakerr-cart'),
+                'aria-label'   => esc_attr__('Your Full Name', 'webmakerr-cart'),
             ],
             'country'      => [
                 'name'         => $type . '_country',
@@ -211,10 +211,10 @@ class CheckoutFieldsSchema
                 'options'      => $countries,
                 'data-type'    => 'text',
                 'label'        => '',
-                'aria-label'   => esc_attr__('Country / Region', 'fluent-cart'),
+                'aria-label'   => esc_attr__('Country / Region', 'webmakerr-cart'),
                 'required'     => 'yes',
                 'autocomplete' => 'country',
-                'placeholder'  => esc_attr__('Country / Region', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Country / Region', 'webmakerr-cart'),
                 'value'        => $selectedCountry,
             ],
             'address_1'    => [
@@ -223,9 +223,9 @@ class CheckoutFieldsSchema
                 'type'         => 'text',
                 'data-type'    => 'text',
                 'label'        => '',
-                'aria-label'   => esc_attr__('Street Address', 'fluent-cart'),
+                'aria-label'   => esc_attr__('Street Address', 'webmakerr-cart'),
                 /* translators: use local order of street name and house number. */
-                'placeholder'  => esc_attr__('Street Address', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Street Address', 'webmakerr-cart'),
                 'required'     => 'yes',
                 'autocomplete' => 'address-line1',
                 'value'        => $config['address_1'],
@@ -236,9 +236,9 @@ class CheckoutFieldsSchema
                 'type'         => 'text',
                 'data-type'    => 'text',
                 'label'        => '',
-                'aria-label'   => esc_attr__('Apt, suite, unit', 'fluent-cart'),
+                'aria-label'   => esc_attr__('Apt, suite, unit', 'webmakerr-cart'),
                 'label_class'  => array(''),
-                'placeholder'  => esc_attr__('Apt, suite, unit', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Apt, suite, unit', 'webmakerr-cart'),
                 'autocomplete' => 'address-line2',
                 'value'        => $config['address_2'],
             ],
@@ -249,10 +249,10 @@ class CheckoutFieldsSchema
                 'type'         => 'text',
                 'data-type'    => 'text',
                 'label'        => '',
-                'aria-label'   => esc_attr__('Town / City', 'fluent-cart'),
+                'aria-label'   => esc_attr__('Town / City', 'webmakerr-cart'),
                 'required'     => 'yes',
                 'autocomplete' => 'address-level2',
-                'placeholder'  => esc_attr__('Town / City', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Town / City', 'webmakerr-cart'),
                 'value'        => $config['city'],
             ],
             'postcode'     => [
@@ -261,11 +261,11 @@ class CheckoutFieldsSchema
                 'type'         => 'text',
                 'data-type'    => 'text',
                 'label'        => '',
-                'aria-label'   => esc_attr__('Postal / ZIP Code', 'fluent-cart'),
+                'aria-label'   => esc_attr__('Postal / ZIP Code', 'webmakerr-cart'),
                 'required'     => 'yes',
                 'validate'     => array('postcode'),
                 'autocomplete' => 'postal-code',
-                'placeholder'  => esc_attr__('Postcode / ZIP', 'fluent-cart'),
+                'placeholder'  => esc_attr__('Postcode / ZIP', 'webmakerr-cart'),
                 'value'        => $config['postcode'],
             ],
             'phone'        => [
@@ -274,8 +274,8 @@ class CheckoutFieldsSchema
                 'type'         => 'tel',
                 'data-type'    => 'text',
                 'label'        => '',
-                'aria-label'   => esc_attr__('Phone number', 'fluent-cart'),
-                'placeholder'  => esc_attr__('Phone number', 'fluent-cart'),
+                'aria-label'   => esc_attr__('Phone number', 'webmakerr-cart'),
+                'placeholder'  => esc_attr__('Phone number', 'webmakerr-cart'),
                 'autocomplete' => 'tel',
                 'value'        => $config['phone'],
             ],
@@ -285,8 +285,8 @@ class CheckoutFieldsSchema
                 'type'         => 'text',
                 'data-type'    => 'text',
                 'label'        => '',
-                'aria-label'   => esc_attr__('Company name', 'fluent-cart'),
-                'placeholder'  => esc_attr__('Company name', 'fluent-cart'),
+                'aria-label'   => esc_attr__('Company name', 'webmakerr-cart'),
+                'placeholder'  => esc_attr__('Company name', 'webmakerr-cart'),
                 'autocomplete' => 'organization',
                 'value'        => $config['company_name'],
             ],
@@ -415,102 +415,102 @@ class CheckoutFieldsSchema
         return [
             'basic_info'       => [
                 'full_name'    => [
-                    'label'     => __('Full Name', 'fluent-cart'),
+                    'label'     => __('Full Name', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'no',
                 ],
                 'email'        => [
-                    'label'     => __('Email Address', 'fluent-cart'),
+                    'label'     => __('Email Address', 'webmakerr-cart'),
                     'type'      => 'email',
                     'can_alter' => 'no',
                 ],
                 'company_name' => [
-                    'label'     => __('Company', 'fluent-cart'),
+                    'label'     => __('Company', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ]
             ],
             'billing_address'  => [
                 'country'   => [
-                    'label'     => __('Country', 'fluent-cart'),
+                    'label'     => __('Country', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'state'     => [
-                    'label'     => __('State', 'fluent-cart'),
+                    'label'     => __('State', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'address_1' => [
-                    'label'     => __('Street Address', 'fluent-cart'),
+                    'label'     => __('Street Address', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'address_2' => [
-                    'label'     => __('Apt, suite, unit', 'fluent-cart'),
+                    'label'     => __('Apt, suite, unit', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'city'      => [
-                    'label'     => __('City', 'fluent-cart'),
+                    'label'     => __('City', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'postcode'  => [
-                    'label'     => __('Post Code', 'fluent-cart'),
+                    'label'     => __('Post Code', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'phone'     => [
-                    'label'     => __('Phone', 'fluent-cart'),
+                    'label'     => __('Phone', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ]
             ],
             'shipping_address' => [
                 'full_name' => [
-                    'label'     => __('Full Name', 'fluent-cart'),
+                    'label'     => __('Full Name', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'no',
                 ],
                 'country'   => [
-                    'label'     => __('Country', 'fluent-cart'),
+                    'label'     => __('Country', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'state'     => [
-                    'label'     => __('State', 'fluent-cart'),
+                    'label'     => __('State', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'address_1' => [
-                    'label'     => __('Street Address', 'fluent-cart'),
+                    'label'     => __('Street Address', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'address_2' => [
-                    'label'     => __('Apt, suite, unit', 'fluent-cart'),
+                    'label'     => __('Apt, suite, unit', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'city'      => [
-                    'label'     => __('City', 'fluent-cart'),
+                    'label'     => __('City', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'postcode'  => [
-                    'label'     => __('Post Code', 'fluent-cart'),
+                    'label'     => __('Post Code', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ],
                 'phone'     => [
-                    'label'     => __('Phone', 'fluent-cart'),
+                    'label'     => __('Phone', 'webmakerr-cart'),
                     'type'      => 'text',
                     'can_alter' => 'yes',
                 ]
             ],
             'agree_terms'      => [
-                'label'     => __('Agree Terms and Conditions', 'fluent-cart'),
+                'label'     => __('Agree Terms and Conditions', 'webmakerr-cart'),
                 'type'      => 'checkbox',
                 'can_alter' => 'yes',
             ]
@@ -601,7 +601,7 @@ class CheckoutFieldsSchema
             'agree_terms'      => [
                 'required' => 'no',
                 'enabled'  => 'no',
-                'text'     => __('I agree to the terms and conditions.', 'fluent-cart')
+                'text'     => __('I agree to the terms and conditions.', 'webmakerr-cart')
             ]
         ];
 
@@ -636,7 +636,7 @@ class CheckoutFieldsSchema
         $text = Arr::get(self::getFieldsSettings(), 'agree_terms.text', '');
 
         if (!$text) {
-            $text = __('I agree to the terms and conditions.', 'fluent-cart');
+            $text = __('I agree to the terms and conditions.', 'webmakerr-cart');
         }
 
         return $text;

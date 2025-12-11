@@ -15,69 +15,69 @@ class AddonsController extends Controller
             'fluent-crm'       => [
                 'installable' => 'fluent-crm',
                 'enabled'     => defined('FLUENTCRM'),
-                'title'       => __('FluentCRM', 'fluent-cart'),
+                'title'       => __('FluentCRM', 'webmakerr-cart'),
                 'logo'        => Vite::getAssetUrl('images/integrations/fluentcrm.svg'),
                 'categories'   => [
                     'crm',
                     'core',
                     'marketing',
                 ],
-                'description' => __('The most powerful and user-friendly email marketing automation plugin for WordPress. Send newsletters, marketing emails, customer onboard emails, Automations with FluentCart + FluentCRM integration.', 'fluent-cart' ),
+                'description' => __('The most powerful and user-friendly email marketing automation plugin for WordPress. Send newsletters, marketing emails, customer onboard emails, Automations with FluentCart + FluentCRM integration.', 'webmakerr-cart' ),
             ],
             'fluent-smtp'      => [
                 'installable' => 'fluent-smtp',
                 'logo'        => Vite::getAssetUrl('images/integrations/fluent-smtp.svg'),
                 'enabled'     => defined('FLUENTMAIL_PLUGIN_FILE'),
-                'title'       => __('FluentSMTP', 'fluent-cart'),
+                'title'       => __('FluentSMTP', 'webmakerr-cart'),
                 'categories'   => [
                     'core',
                     'marketing',
                 ],
-                'description' => __('A free and open-source WordPress SMTP plugin to send emails via multiple SMTP providers. Ensure email deliverability for your WooCommerce and FluentCart emails with FluentSMTP.', 'fluent-cart'),
+                'description' => __('A free and open-source WordPress SMTP plugin to send emails via multiple SMTP providers. Ensure email deliverability for your WooCommerce and FluentCart emails with FluentSMTP.', 'webmakerr-cart'),
             ],
             'fluent-community' => [
                 'installable' => 'fluent-community',
                 'logo'        => Vite::getAssetUrl('images/integrations/fluent-community.svg'),
                 'enabled'     => defined('FLUENT_COMMUNITY_PLUGIN_VERSION'),
-                'title'       => __('FluentCommunity', 'fluent-cart'),
+                'title'       => __('FluentCommunity', 'webmakerr-cart'),
                 'categories'   => [
                     'core',
                     'community',
                     'lms'
                 ],
-                'description' => __('Build a community, membership site, or online forum with FluentCart + FluentCommunity integration. Engage your customers and users right from your WordPress dashboard.', 'fluent-cart'),
+                'description' => __('Build a community, membership site, or online forum with FluentCart + FluentCommunity integration. Engage your customers and users right from your WordPress dashboard.', 'webmakerr-cart'),
             ],
             'fluent-security'  => [
                 'installable' => 'fluent-security',
                 'logo'        => Vite::getAssetUrl('images/integrations/fluent-auth.svg'),
                 'enabled'     => defined('FLUENT_AUTH_VERSION'),
-                'title'       => __('FluentAuth', 'fluent-cart'),
+                'title'       => __('FluentAuth', 'webmakerr-cart'),
                 'categories'   => [
                     'core'
                 ],
-                'description' => __('Customize WordPress emails, customized login & signup forms with enhanced security and social logins. Enhance your site security with FluentCart + FluentSecurity integration.', 'fluent-cart'),
+                'description' => __('Customize WordPress emails, customized login & signup forms with enhanced security and social logins. Enhance your site security with FluentCart + FluentSecurity integration.', 'webmakerr-cart'),
             ],
             'fluentform'       => [
                 'installable' => 'fluentform',
                 'logo'        => Vite::getAssetUrl('images/integrations/fluent-form.svg'),
                 'enabled'     => defined('FLUENTFORM'),
-                'title'       => __('Fluent Forms', 'fluent-cart'),
+                'title'       => __('Fluent Forms', 'webmakerr-cart'),
                 'categories'   => [
                     'core',
                     'marketing'
                 ],
-                'description' => __('Create advanced forms and surveys with an easy-to-use drag & drop form builder.', 'fluent-cart'),
+                'description' => __('Create advanced forms and surveys with an easy-to-use drag & drop form builder.', 'webmakerr-cart'),
             ],
             'fluent-support'   => [
                 'installable' => 'fluent-support',
                 'logo'        => Vite::getAssetUrl('images/integrations/fluent-support.svg'),
                 'enabled'     => defined('FLUENT_SUPPORT_VERSION'),
-                'title'       => __('FluentSupport', 'fluent-cart'),
+                'title'       => __('FluentSupport', 'webmakerr-cart'),
                 'categories'   => [
                     'core',
                     'marketing'
                 ],
-                'description' => __('A powerful helpdesk and customer support plugin for WordPress. Manage customer support tickets directly from your WordPress dashboard with FluentCart + FluentSupport integration.', 'fluent-cart'),
+                'description' => __('A powerful helpdesk and customer support plugin for WordPress. Manage customer support tickets directly from your WordPress dashboard with FluentCart + FluentSupport integration.', 'webmakerr-cart'),
             ]
         ];
 
@@ -103,7 +103,7 @@ class AddonsController extends Controller
 
         if (!$addon || !in_array($addon, $listedPlugins)) {
             return $this->sendError([
-                'message' => __('This addon cannot be installed at this time', 'fluent-cart')
+                'message' => __('This addon cannot be installed at this time', 'webmakerr-cart')
             ]);
         }
 
@@ -116,7 +116,7 @@ class AddonsController extends Controller
         }
 
         return $this->sendSuccess([
-            'message'  => __('Addon installation started successfully.', 'fluent-cart'),
+            'message'  => __('Addon installation started successfully.', 'webmakerr-cart'),
             'redirect' => admin_url('admin.php?page=webmakerr#/integrations')
         ]);
     }

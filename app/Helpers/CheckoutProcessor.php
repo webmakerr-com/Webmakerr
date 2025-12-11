@@ -66,7 +66,7 @@ class CheckoutProcessor
 
         $customerId = Arr::get($this->args, 'customer_id', '');
         if (!$customerId) {
-            return new \WP_Error('customer_id_missing', __('Customer ID is required to create a draft order.', 'fluent-cart'));
+            return new \WP_Error('customer_id_missing', __('Customer ID is required to create a draft order.', 'webmakerr-cart'));
         }
 
         $orderData = $this->orderData;
@@ -82,7 +82,7 @@ class CheckoutProcessor
         $this->orderModel = \Webmakerr\App\Models\Order::query()->create($orderData);
 
         if (!$this->orderModel) {
-            return new \WP_Error('order_creation_failed', __('Failed to create order.', 'fluent-cart'));
+            return new \WP_Error('order_creation_failed', __('Failed to create order.', 'webmakerr-cart'));
         }
 
         // save order meta
@@ -264,7 +264,7 @@ class CheckoutProcessor
         $this->orderModel = $prevOrder;
 
         if (!$this->orderModel) {
-            return new \WP_Error('order_creation_failed', __('Failed to create order.', 'fluent-cart'));
+            return new \WP_Error('order_creation_failed', __('Failed to create order.', 'webmakerr-cart'));
         }
 
         //for previous order if tax is enabled then we need to update the tax total
@@ -529,7 +529,7 @@ class CheckoutProcessor
                     'post_id'          => $item['post_id'],
                     'object_id'        => $item['object_id'],
                     'post_title'       => $item['post_title'],
-                    'title'            => __('Signup Fee', 'fluent-cart'),
+                    'title'            => __('Signup Fee', 'webmakerr-cart'),
                     'fulfillment_type' => $item['fulfillment_type'],
                     'quantity'         => $quantity,
                     'cost'             => 0,

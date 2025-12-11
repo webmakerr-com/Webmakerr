@@ -49,7 +49,7 @@ class SubscriptionCanceled extends EventDispatcher
             'subscription' => $this->subscription,
             'order'        => $this->order,
             'customer'     => $this->customer ?? [],
-            'reason'       => $this->reason ?: __('canceled on customer request', 'fluent-cart'),
+            'reason'       => $this->reason ?: __('canceled on customer request', 'webmakerr-cart'),
         ];
     }
 

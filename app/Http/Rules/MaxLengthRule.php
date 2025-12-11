@@ -18,7 +18,7 @@ class MaxLengthRule
         if(!is_string($value)) {
             return sprintf(
                 /* translators: 1: attribute name */
-                __('The %s must be a valid text', 'fluent-cart'),
+                __('The %s must be a valid text', 'webmakerr-cart'),
                 $attr
             );
         }
@@ -28,7 +28,7 @@ class MaxLengthRule
         if(strlen($value) > $maxLength) {
             return sprintf(
                 /* translators: 1: attribute name, 2: max length */
-                __('The %1$s must not be greater than %2$s characters.', 'fluent-cart'),
+                __('The %1$s must not be greater than %2$s characters.', 'webmakerr-cart'),
                 $attr,
                 $maxLength
             );

@@ -28,20 +28,20 @@ class GlobalIntegrationSettings
             wp_send_json([
                 'settings'     => $settings,
                 'settings_key' => $settingsKey,
-                'message'      => __('Sorry! No integration failed found with: ', 'fluent-cart') . $settingsKey
+                'message'      => __('Sorry! No integration failed found with: ', 'webmakerr-cart') . $settingsKey
             ], 422);
         }
 
         if (empty($fieldSettings['save_button_text'])) {
-            $fieldSettings['save_button_text'] = __('Save Settings', 'fluent-cart');
+            $fieldSettings['save_button_text'] = __('Save Settings', 'webmakerr-cart');
         }
 
         if (empty($fieldSettings['valid_message'])) {
-            $fieldSettings['valid_message'] = __('Your API Key is valid', 'fluent-cart');
+            $fieldSettings['valid_message'] = __('Your API Key is valid', 'webmakerr-cart');
         }
 
         if (empty($fieldSettings['invalid_message'])) {
-            $fieldSettings['invalid_message'] = __('Your API Key is not valid', 'fluent-cart');
+            $fieldSettings['invalid_message'] = __('Your API Key is not valid', 'webmakerr-cart');
         }
 
         wp_send_json([
@@ -71,7 +71,7 @@ class GlobalIntegrationSettings
 
         // Someone should catch that above action and send response
         wp_send_json([
-            'message' => __('Sorry, no Integration found. Please make sure that latest version of installed', 'fluent-cart')
+            'message' => __('Sorry, no Integration found. Please make sure that latest version of installed', 'webmakerr-cart')
         ], 422);
     }
 
@@ -158,7 +158,7 @@ class GlobalIntegrationSettings
     //     fct_update_option('fluent_cart_global_integrations', $integrations);
 
     //     return [
-    //         'message' => __('Integration successfully updated', 'fluent-cart')
+    //         'message' => __('Integration successfully updated', 'webmakerr-cart')
     //     ];
     // }
 
@@ -191,7 +191,7 @@ class GlobalIntegrationSettings
             if (!$feed) {
                 return new \WP_Error(
                     'integration_not_found',
-                    __('Integration not found', 'fluent-cart')
+                    __('Integration not found', 'webmakerr-cart')
                 );
             }
 
@@ -219,10 +219,10 @@ class GlobalIntegrationSettings
 
         if (!$integrationName) {
             wp_send_json([
-                'message' => __('Validation Failed', 'fluent-cart'),
+                'message' => __('Validation Failed', 'webmakerr-cart'),
                 'errors'  => [
                     'name' => [
-                        __('Feed name is required', 'fluent-cart')
+                        __('Feed name is required', 'webmakerr-cart')
                     ]
                 ]
             ], 422);
@@ -234,7 +234,7 @@ class GlobalIntegrationSettings
 
             return new \WP_Error(
                 'validation_error',
-                __('Validation Failed, Please fill up the required fields.', 'fluent-cart'),
+                __('Validation Failed, Please fill up the required fields.', 'webmakerr-cart'),
                 $errors
             );
         }
@@ -265,9 +265,9 @@ class GlobalIntegrationSettings
     {
         if (empty($data['integration'])) {
             return [
-                'message' => __('Validation Failed, No valid data found.', 'fluent-cart'),
+                'message' => __('Validation Failed, No valid data found.', 'webmakerr-cart'),
                 'errors'  => [
-                    'name' => [__('Feed data is required', 'fluent-cart')]
+                    'name' => [__('Feed data is required', 'webmakerr-cart')]
                 ]
             ];
         }
@@ -308,7 +308,7 @@ class GlobalIntegrationSettings
             if (!$integrationMeta) {
                 return new \WP_Error(
                     'integration_not_found',
-                    __('Integration not found', 'fluent-cart')
+                    __('Integration not found', 'webmakerr-cart')
                 );
             }
         }
@@ -343,7 +343,7 @@ class GlobalIntegrationSettings
         }
 
         return [
-            'message'          => __('Integration successfully saved', 'fluent-cart'),
+            'message'          => __('Integration successfully saved', 'webmakerr-cart'),
             'integration_id'   => $integrationId,
             'integration_name' => $provider,
             'created'          => $integrationMeta->wasRecentlyCreated
@@ -357,7 +357,7 @@ class GlobalIntegrationSettings
         Meta::where('id', $integrationId)->delete();
 
         return [
-            'message' => __('Selected integration feed successfully deleted', 'fluent-cart')
+            'message' => __('Selected integration feed successfully deleted', 'webmakerr-cart')
         ];
     }
 
@@ -386,7 +386,7 @@ class GlobalIntegrationSettings
         }
 
         if (!current_user_can('install_plugins')) {
-            return new \WP_Error('permission_denied', __('You do not have permission to install plugins.', 'fluent-cart'));
+            return new \WP_Error('permission_denied', __('You do not have permission to install plugins.', 'webmakerr-cart'));
         }
 
         if ($pluginSlug === 'fluentcrm') {
@@ -403,7 +403,7 @@ class GlobalIntegrationSettings
         ]);
 
         if (empty($pluginSlug) || !in_array($pluginSlug, $listedPlugins)) {
-            return new \WP_Error('invalid_plugin', __('Invalid plugin selected for installation.', 'fluent-cart'));
+            return new \WP_Error('invalid_plugin', __('Invalid plugin selected for installation.', 'webmakerr-cart'));
         }
 
         $result = (new BackgroundInstaller())->installPlugin($pluginSlug);
@@ -413,7 +413,7 @@ class GlobalIntegrationSettings
         }
 
         return [
-            'message' => __('The selected plugin has been installed. Please refresh the page.', 'fluent-cart')
+            'message' => __('The selected plugin has been installed. Please refresh the page.', 'webmakerr-cart')
         ];
 
     }
@@ -429,7 +429,7 @@ class GlobalIntegrationSettings
 
         if (!$feed) {
             return [
-                'message' => __('Feed not found', 'fluent-cart')
+                'message' => __('Feed not found', 'webmakerr-cart')
             ];
         }
 
@@ -440,7 +440,7 @@ class GlobalIntegrationSettings
             'meta_value' => $feedData
         ]);
         return [
-            'message' => __('Feed status updated', 'fluent-cart')
+            'message' => __('Feed status updated', 'webmakerr-cart')
         ];
 
     }

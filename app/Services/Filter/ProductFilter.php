@@ -139,13 +139,13 @@ class ProductFilter extends BaseFilter
 
         return [
             'order' => [
-                'label'    => __('Order Property', 'fluent-cart'),
+                'label'    => __('Order Property', 'webmakerr-cart'),
                 'value'    => 'order',
                 'children' => [
                     [
                         'filter_type' => 'relation',
                         'relation'    => 'orderItems',
-                        'label'       => __('Order Count', 'fluent-cart'),
+                        'label'       => __('Order Count', 'webmakerr-cart'),
                         'value'       => 'has',
                         'type'        => 'numeric',
                         'is_multiple' => false,
@@ -154,18 +154,18 @@ class ProductFilter extends BaseFilter
             ],
 
             'variations' => [
-                'label'    => __('Variations', 'fluent-cart'),
+                'label'    => __('Variations', 'webmakerr-cart'),
                 'value'    => 'variations',
                 'children' => [
                     [
                         'filter_type' => 'relation',
                         'relation'    => 'variants',
-                        'label'       => __('Variation Count', 'fluent-cart'),
+                        'label'       => __('Variation Count', 'webmakerr-cart'),
                         'value'       => 'has',
                         'type'        => 'numeric',
                     ],
                     [
-                        'label'           => __('Variation', 'fluent-cart'),
+                        'label'           => __('Variation', 'webmakerr-cart'),
                         'value'           => 'variation_items',
                         'column'          => 'id',
                         'filter_type'     => 'relation',
@@ -175,15 +175,15 @@ class ProductFilter extends BaseFilter
                         'limit'           => 10,
                     ],
                     [
-                        'label'       => __('Variation Type', 'fluent-cart'),
+                        'label'       => __('Variation Type', 'webmakerr-cart'),
                         'value'       => 'variation_type',
                         'filter_type' => 'relation',
                         'relation'    => 'detail',
                         'column'      => 'variation_type',
                         'type'        => 'selections',
                         'options'     => [
-                            Helper::PRODUCT_TYPE_SIMPLE           => __('Simple', 'fluent-cart'),
-                            Helper::PRODUCT_TYPE_SIMPLE_VARIATION => __('Simple Variations', 'fluent-cart'),
+                            Helper::PRODUCT_TYPE_SIMPLE           => __('Simple', 'webmakerr-cart'),
+                            Helper::PRODUCT_TYPE_SIMPLE_VARIATION => __('Simple Variations', 'webmakerr-cart'),
                         ],
                         'is_multiple' => false,
                         //'is_only_in'  => true
@@ -191,7 +191,7 @@ class ProductFilter extends BaseFilter
                 ],
             ],
             'taxonomy'   => [
-                'label'    => __('Taxonomies', 'fluent-cart'),
+                'label'    => __('Taxonomies', 'webmakerr-cart'),
                 'value'    => 'taxonomy',
                 'children' => $taxonomyFilters
             ]

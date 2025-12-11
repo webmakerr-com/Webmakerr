@@ -73,7 +73,7 @@ class OrderController extends Controller
 
             if (!$isSubscriptionAllowedInManualOrder) {
                 return $this->sendError([
-                    'message' => __('Subscription order with Manual Order is not supported yet!', 'fluent-cart')
+                    'message' => __('Subscription order with Manual Order is not supported yet!', 'webmakerr-cart')
                 ], 400);
             }
 
@@ -92,7 +92,7 @@ class OrderController extends Controller
         (new OrderCreated($order, null, $order->customer))->dispatch();
 
         return $this->response->sendSuccess([
-            'message'  => __('Order created successfully!', 'fluent-cart'),
+            'message'  => __('Order created successfully!', 'webmakerr-cart'),
             'order_id' => $order->id
         ]);
     }
@@ -115,7 +115,7 @@ class OrderController extends Controller
 
         if ($order->isSubscription()) {
             return $this->sendError([
-                'message' => __('Subscription Order cannot be edited.', 'fluent-cart')
+                'message' => __('Subscription Order cannot be edited.', 'webmakerr-cart')
             ], 400);
         }
 
@@ -135,7 +135,7 @@ class OrderController extends Controller
         $status = Arr::get($requestData, 'status');
         if ($status == Status::ORDER_COMPLETED) {
             return $this->sendError([
-                'message' => esc_html__('Completed status can not be updated', 'fluent-cart')
+                'message' => esc_html__('Completed status can not be updated', 'webmakerr-cart')
             ], 400);
         }
 
@@ -176,7 +176,7 @@ class OrderController extends Controller
 
         if (!$order) {
             return $this->sendError([
-                'message' => __('Order not found', 'fluent-cart')
+                'message' => __('Order not found', 'webmakerr-cart')
             ], 404);
         }
         $data = OrderResource::updateOrderAddressId($request->only([
@@ -198,7 +198,7 @@ class OrderController extends Controller
     {
         if (!$order) {
             return $this->sendError([
-                'message' => __('Order not found', 'fluent-cart')
+                'message' => __('Order not found', 'webmakerr-cart')
             ], 404);
         }
 
@@ -209,7 +209,7 @@ class OrderController extends Controller
 
         if ($generatedLicenseCount >= $expectedLicenseCount) {
             return $this->sendError([
-                'message' => __('No missing licenses found!', 'fluent-cart')
+                'message' => __('No missing licenses found!', 'webmakerr-cart')
             ], 400);
         }
 
@@ -226,7 +226,7 @@ class OrderController extends Controller
 
         if (!$order->canBeRefunded()) {
             return $this->sendError([
-                'message' => __('Order can not be refunded.', 'fluent-cart')
+                'message' => __('Order can not be refunded.', 'webmakerr-cart')
             ], 400);
         }
 
@@ -236,8 +236,8 @@ class OrderController extends Controller
             'transaction_id' => 'required',
             'amount'         => 'required',
         ], [
-            'transaction_id.required' => __('Transaction ID is required', 'fluent-cart'),
-            'amount.required'         => __('Refund amount is required', 'fluent-cart'),
+            'transaction_id.required' => __('Transaction ID is required', 'webmakerr-cart'),
+            'amount.required'         => __('Refund amount is required', 'webmakerr-cart'),
         ]);
 
         $transaction = OrderTransaction::query()->findOrFail($refundInfo['transaction_id']);
@@ -287,7 +287,7 @@ class OrderController extends Controller
                 $responseData['subscription_cancel']['status'] = is_wp_error($vendorResult) ? 'failed' : 'success';
                 $responseData['subscription_cancel']['message'] = is_wp_error($vendorResult)
                     ? $vendorResult->get_error_message()
-                    : __('Subscription cancelled successfully', 'fluent-cart');
+                    : __('Subscription cancelled successfully', 'webmakerr-cart');
             }
         }
 
@@ -306,7 +306,7 @@ class OrderController extends Controller
         if (is_wp_error($isCreated)) {
             return $this->sendError(
                 [
-                    'message' => __('Failed to attach customer', 'fluent-cart')
+                    'message' => __('Failed to attach customer', 'webmakerr-cart')
                 ]
             );
         }
@@ -332,7 +332,7 @@ class OrderController extends Controller
 
         if (!$customerId) {
             return $this->sendError([
-                'message' => __('Customer id is required', 'fluent-cart')
+                'message' => __('Customer id is required', 'webmakerr-cart')
             ], 423);
         }
 
@@ -367,7 +367,7 @@ class OrderController extends Controller
 
         if ($order->customer_id == $customerId) {
             return [
-                'message' => __('Customer is already attached to this order', 'fluent-cart')
+                'message' => __('Customer is already attached to this order', 'webmakerr-cart')
             ];
         }
         $newCustomer = Customer::query()->findOrFail($customerId);
@@ -403,10 +403,10 @@ class OrderController extends Controller
         ]);
 
         fluent_cart_success_log(
-            __('Customer changed', 'fluent-cart'),
+            __('Customer changed', 'webmakerr-cart'),
             sprintf(
                 /* translators: 1: old customer name, 2: new customer name */
-                __('Customer changed from %1$s to %2$s', 'fluent-cart'), $oldCustomer->full_name, $newCustomer->full_name),
+                __('Customer changed from %1$s to %2$s', 'webmakerr-cart'), $oldCustomer->full_name, $newCustomer->full_name),
             [
                 'module_name' => 'order',
                 'module_id'   => $orderId,
@@ -414,7 +414,7 @@ class OrderController extends Controller
             ]);
 
         return [
-            'message' => __('Customer changed successfully', 'fluent-cart')
+            'message' => __('Customer changed successfully', 'webmakerr-cart')
         ];
     }
 
@@ -425,7 +425,7 @@ class OrderController extends Controller
 
         if (empty($order)) {
             return $this->sendError([
-                'message' => __('Order not found', 'fluent-cart'),
+                'message' => __('Order not found', 'webmakerr-cart'),
                 'data'    => [
                     'order_id' => $order_id,
                     'status'   => 'error'
@@ -470,7 +470,7 @@ class OrderController extends Controller
             return $this->sendSuccess([
                 'message' => sprintf(
                     /* translators: %s is the order/invoice number */
-                    __('Order %s deleted successfully', 'fluent-cart'), $order_id),
+                    __('Order %s deleted successfully', 'webmakerr-cart'), $order_id),
                 'data'    => [
                     'order_id'   => $order_id,
                     'invoice_no' => $order->invoice_no,
@@ -489,7 +489,7 @@ class OrderController extends Controller
         return $this->sendSuccess([
             'message' => sprintf(
                 /* translators: %s is the order id */
-                __('Order %s deleted successfully', 'fluent-cart'), $order_id),
+                __('Order %s deleted successfully', 'webmakerr-cart'), $order_id),
             'data'    => [
                 'order_id'   => $order_id,
                 'invoice_no' => $order->invoice_no,
@@ -521,8 +521,8 @@ class OrderController extends Controller
 
         if (is_wp_error($data) || empty($data['order'])) {
             return $this->entityNotFoundError(
-                __('Order not found', 'fluent-cart'),
-                __('Back to orders', 'fluent-cart'),
+                __('Order not found', 'webmakerr-cart'),
+                __('Back to orders', 'webmakerr-cart'),
                 '/orders'
             );
         }
@@ -624,13 +624,13 @@ class OrderController extends Controller
 
         if ($dueAmount <= 0) {
             return $this->sendError([
-                'message' => __('Order has already been paid', 'fluent-cart')
+                'message' => __('Order has already been paid', 'webmakerr-cart')
             ], 423);
         }
 
         if (Arr::get($order, 'status') === 'canceled') {
             return $this->sendError([
-                'message' => __('Unable to mark paid for canceled order', 'fluent-cart')
+                'message' => __('Unable to mark paid for canceled order', 'webmakerr-cart')
             ], 423);
         }
 
@@ -673,10 +673,10 @@ class OrderController extends Controller
         $order->save();
 
         $actionActivity = [
-            'title'   => __('Order status updated', 'fluent-cart'),
+            'title'   => __('Order status updated', 'webmakerr-cart'),
             'content' => sprintf(
                 /* translators: 1: old status, 2: new status */
-                __('Order status has been updated from %1$s to %2$s', 'fluent-cart'), $oldStatus, $order->status)
+                __('Order status has been updated from %1$s to %2$s', 'webmakerr-cart'), $oldStatus, $order->status)
         ];
 
         // dispatching events related to order status update and payment paid
@@ -691,10 +691,10 @@ class OrderController extends Controller
             $order->save();
 
             $actionActivity = [
-                'title'   => __('Order status updated', 'fluent-cart'),
+                'title'   => __('Order status updated', 'webmakerr-cart'),
                 'content' => sprintf(
                     /* translators: 1: old status, 2: new status */
-                    __('Order status has been updated from %1$s to %2$s', 'fluent-cart'), Status::ORDER_PROCESSING, $order->status)
+                    __('Order status has been updated from %1$s to %2$s', 'webmakerr-cart'), Status::ORDER_PROCESSING, $order->status)
             ];
 
             (new OrderStatusUpdated($order, Status::ORDER_PROCESSING, $order->status, true, $actionActivity, 'order_status'))->dispatch();
@@ -717,7 +717,7 @@ class OrderController extends Controller
         webmakerr_do_action('webmakerr_cart/order_paid_done', $eventData);
 
         return $this->response->sendSuccess([
-            'message' => __('Order has been marked as paid', 'fluent-cart')
+            'message' => __('Order has been marked as paid', 'webmakerr-cart')
         ]);
     }
 
@@ -735,7 +735,7 @@ class OrderController extends Controller
 
         if (!$orderIds) {
             return $this->sendError([
-                'message' => __('Orders selection is required', 'fluent-cart')
+                'message' => __('Orders selection is required', 'webmakerr-cart')
             ]);
         }
 
@@ -764,12 +764,12 @@ class OrderController extends Controller
             //     $DB->commit();
 
             //     return [
-            //         'message' => __('Selected orders and their associated resources have been deleted permanently', 'fluent-cart')
+            //         'message' => __('Selected orders and their associated resources have been deleted permanently', 'webmakerr-cart')
             //     ];
             // } catch (\Exception $e) {
             //     $DB->rollBack();
             //     return static::makeErrorResponse([
-            //         ['code' => 400, 'message' => __('Failed to delete orders and their associated resources', 'fluent-cart')]
+            //         ['code' => 400, 'message' => __('Failed to delete orders and their associated resources', 'webmakerr-cart')]
             //     ]);
             // }
 
@@ -779,14 +779,14 @@ class OrderController extends Controller
             $newStatus = sanitize_text_field($request->get('new_status', ''));
             if (!$newStatus) {
                 return $this->sendError([
-                    'message' => __('Please select status', 'fluent-cart')
+                    'message' => __('Please select status', 'webmakerr-cart')
                 ]);
             }
 
             $validStatuses = Helper::getShippingStatuses();
             if (!isset($validStatuses[$newStatus])) {
                 return $this->sendError([
-                    'message' => __('Provided shipping status is not valid', 'fluent-cart')
+                    'message' => __('Provided shipping status is not valid', 'webmakerr-cart')
                 ]);
             }
 
@@ -795,7 +795,7 @@ class OrderController extends Controller
             // }
 
             return [
-                'message' => __('Shipping Status has been changed for the selected orders', 'fluent-cart')
+                'message' => __('Shipping Status has been changed for the selected orders', 'webmakerr-cart')
             ];
 
         }
@@ -804,14 +804,14 @@ class OrderController extends Controller
             $newStatus = sanitize_text_field($request->get('new_status', ''));
             if (!$newStatus) {
                 return $this->sendError([
-                    'message' => __('Please select status', 'fluent-cart')
+                    'message' => __('Please select status', 'webmakerr-cart')
                 ]);
             }
 
             $validStatuses = Status::getEditableOrderStatuses();
             if (!isset($validStatuses[$newStatus])) {
                 return $this->sendError([
-                    'message' => __('Provided order status is not valid', 'fluent-cart')
+                    'message' => __('Provided order status is not valid', 'webmakerr-cart')
                 ]);
             }
 
@@ -840,19 +840,19 @@ class OrderController extends Controller
                     ? $this->sendSuccess([
                         'message' => sprintf(
                             /* translators: %s is the order ids */
-                            __("The order ID - %s cannot be updated because they are either already cancelled or have the same status. And remaining order status has been successfully changed", 'fluent-cart'), $failedOrderIds)
+                            __("The order ID - %s cannot be updated because they are either already cancelled or have the same status. And remaining order status has been successfully changed", 'webmakerr-cart'), $failedOrderIds)
                     ])
                     :
                     $this->sendError([
                         'message' => sprintf(
                             /* translators: %s is the order ids */
-                            __("The order ID - %s cannot be updated because they are either already cancelled or have the same status.", 'fluent-cart'), $failedOrderIds)
+                            __("The order ID - %s cannot be updated because they are either already cancelled or have the same status.", 'webmakerr-cart'), $failedOrderIds)
                     ], 423);
             }
 
             if (count($updatedOrderIds) > 0 && count($failedOrderIds) < 1) {
                 return $this->sendSuccess([
-                    'message' => __('Order Status has been changed for the selected orders', 'fluent-cart')
+                    'message' => __('Order Status has been changed for the selected orders', 'webmakerr-cart')
                 ]);
             }
         }
@@ -863,7 +863,7 @@ class OrderController extends Controller
             }
 
             return [
-                'message' => __('Selected payments has been successfully captured', 'fluent-cart')
+                'message' => __('Selected payments has been successfully captured', 'webmakerr-cart')
             ];
         }
 
@@ -871,14 +871,14 @@ class OrderController extends Controller
             $newStatus = sanitize_text_field($request->get('new_status', ''));
             if (!$newStatus) {
                 return $this->sendError([
-                    'message' => __('Please select status', 'fluent-cart')
+                    'message' => __('Please select status', 'webmakerr-cart')
                 ]);
             }
 
             $validStatuses = Status::getEditableTransactionStatuses();
             if (!isset($validStatuses[$newStatus])) {
                 return $this->sendError([
-                    'message' => __('Provided payment status is not valid', 'fluent-cart')
+                    'message' => __('Provided payment status is not valid', 'webmakerr-cart')
                 ]);
             }
 
@@ -914,13 +914,13 @@ class OrderController extends Controller
                     ? $this->sendSuccess([
                         'message' => sprintf(
                             /* translators: %s is the order ids */
-                            __("The order ID - %s cannot be updated at the moment because the transaction either already has the same status or does not match the provided order. The remaining orders statuses have been updated successfully.", 'fluent-cart'), $failedOrderIds)
+                            __("The order ID - %s cannot be updated at the moment because the transaction either already has the same status or does not match the provided order. The remaining orders statuses have been updated successfully.", 'webmakerr-cart'), $failedOrderIds)
                     ])
                     :
                     $this->sendError([
                         'message' => sprintf(
                             /* translators: %s is the order ids */
-                            __("The order ID - %s cannot be updated at the moment because its payment status is either the same as before or has already been refunded.", 'fluent-cart'), $failedOrderIds)
+                            __("The order ID - %s cannot be updated at the moment because its payment status is either the same as before or has already been refunded.", 'webmakerr-cart'), $failedOrderIds)
                     ], 423);
             }
 
@@ -928,7 +928,7 @@ class OrderController extends Controller
                 return $this->sendSuccess([
                     'message' => sprintf(
                         /* translators: %s is the payment status */
-                        __("Selected orders payment status has been marked as %s", 'fluent-cart'),
+                        __("Selected orders payment status has been marked as %s", 'webmakerr-cart'),
                         $newStatus
                     )
                 ]);
@@ -936,7 +936,7 @@ class OrderController extends Controller
         }
 
         return $this->sendError([
-            'message' => __('Selected action is invalid', 'fluent-cart')
+            'message' => __('Selected action is invalid', 'webmakerr-cart')
         ]);
 
     }
@@ -949,13 +949,13 @@ class OrderController extends Controller
         if ($transaction->status == $newStatus) {
             return $this->sendError([
                 'reload'  => true,
-                'message' => __('Transaction already has the same status', 'fluent-cart')
+                'message' => __('Transaction already has the same status', 'webmakerr-cart')
             ]);
         }
 
         if ($transaction->order_id != $order->id) {
             return $this->sendError([
-                'message' => __('The selected transaction does not match with the provided order', 'fluent-cart')
+                'message' => __('The selected transaction does not match with the provided order', 'webmakerr-cart')
             ]);
         }
 
@@ -964,7 +964,7 @@ class OrderController extends Controller
 
         return [
             'transaction' => $transaction,
-            'message'     => __('Payment status been successfully updated', 'fluent-cart')
+            'message'     => __('Payment status been successfully updated', 'webmakerr-cart')
         ];
     }
 
@@ -1026,7 +1026,7 @@ class OrderController extends Controller
         $totalShippingCharge = CartHelper::calculateShippingMethodCharge($method, $orderItems);
 
         return $this->sendSuccess([
-            'message'         => __('Shipping updated', 'fluent-cart'),
+            'message'         => __('Shipping updated', 'webmakerr-cart'),
             'shipping_charge' => $totalShippingCharge,
             'order_items'     => $orderItems
         ]);
@@ -1082,7 +1082,7 @@ class OrderController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Dipute accepeted!', 'fluent-cart')
+            'message' => __('Dipute accepeted!', 'webmakerr-cart')
         ]);
     }
 

@@ -22,28 +22,28 @@ class ProductAddToCart extends Element
 
     public function get_label()
     {
-        return esc_html__('Buy Section', 'fluent-cart');
+        return esc_html__('Buy Section', 'webmakerr-cart');
     }
 
     public function set_control_groups()
     {
         $this->control_groups['variation-swatches'] = [
-            'title' => esc_html__('Variation swatches', 'fluent-cart'),
+            'title' => esc_html__('Variation swatches', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
 
         $this->control_groups['quantity'] = [
-            'title' => esc_html__('Quantity', 'fluent-cart'),
+            'title' => esc_html__('Quantity', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
 
         $this->control_groups['buy_button'] = [
-            'title' => esc_html__('Direct Buy Button', 'fluent-cart'),
+            'title' => esc_html__('Direct Buy Button', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
 
         $this->control_groups['button'] = [
-            'title' => esc_html__('Add to Cart Button', 'fluent-cart'),
+            'title' => esc_html__('Add to Cart Button', 'webmakerr-cart'),
             'tab'   => 'content',
         ];
 
@@ -55,13 +55,13 @@ class ProductAddToCart extends Element
         // Common swatch controls (for all types) (@since 2.0)
         $this->controls['swatchesWrap'] = [
             'group'   => 'variation-swatches',
-            'label'   => esc_html__('Wrap', 'fluent-cart'),
+            'label'   => esc_html__('Wrap', 'webmakerr-cart'),
             'type'    => 'select',
             'inline'  => true,
             'options' => [
-                'nowrap'       => esc_html__('No wrap', 'fluent-cart'),
-                'wrap'         => esc_html__('Wrap', 'fluent-cart'),
-                'wrap-reverse' => esc_html__('Wrap reverse', 'fluent-cart'),
+                'nowrap'       => esc_html__('No wrap', 'webmakerr-cart'),
+                'wrap'         => esc_html__('Wrap', 'webmakerr-cart'),
+                'wrap-reverse' => esc_html__('Wrap reverse', 'webmakerr-cart'),
             ],
             'css'     => [
                 [
@@ -73,7 +73,7 @@ class ProductAddToCart extends Element
 
         $this->controls['swatchesDirection'] = [
             'group'  => 'variation-swatches',
-            'label'  => esc_html__('Direction', 'fluent-cart'),
+            'label'  => esc_html__('Direction', 'webmakerr-cart'),
             'type'   => 'direction',
             'css'    => [
                 [
@@ -86,7 +86,7 @@ class ProductAddToCart extends Element
 
         $this->controls['swatchesJustifyContent'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Align main axis', 'fluent-cart'),
+            'label' => esc_html__('Align main axis', 'webmakerr-cart'),
             'type'  => 'justify-content',
             'css'   => [
                 [
@@ -98,7 +98,7 @@ class ProductAddToCart extends Element
 
         $this->controls['swatchesAlignItems'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Align cross axis', 'fluent-cart'),
+            'label' => esc_html__('Align cross axis', 'webmakerr-cart'),
             'type'  => 'align-items',
             'css'   => [
                 [
@@ -110,7 +110,7 @@ class ProductAddToCart extends Element
 
         $this->controls['swatchesColumnGap'] = [
             'group'       => 'variation-swatches',
-            'label'       => esc_html__('Column gap', 'fluent-cart'),
+            'label'       => esc_html__('Column gap', 'webmakerr-cart'),
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -124,7 +124,7 @@ class ProductAddToCart extends Element
 
         $this->controls['swatchesRowGap'] = [
             'group'       => 'variation-swatches',
-            'label'       => esc_html__('Row gap', 'fluent-cart'),
+            'label'       => esc_html__('Row gap', 'webmakerr-cart'),
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -138,7 +138,7 @@ class ProductAddToCart extends Element
 
         $this->controls['colorSwatchBorder'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Border', 'fluent-cart'),
+            'label' => esc_html__('Border', 'webmakerr-cart'),
             'type'  => 'border',
             'css'   => [
                 [
@@ -150,7 +150,7 @@ class ProductAddToCart extends Element
 
         $this->controls['colorSwatchActiveBorder'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Border', 'fluent-cart') . ' (' . esc_html__('Active', 'fluent-cart') . ')',
+            'label' => esc_html__('Border', 'webmakerr-cart') . ' (' . esc_html__('Active', 'webmakerr-cart') . ')',
             'type'  => 'border',
             'css'   => [
                 [
@@ -163,13 +163,13 @@ class ProductAddToCart extends Element
         // Label swatch specific controls
         $this->controls['labelSwatchSeparator'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Type', 'fluent-cart') . ': ' . esc_html__('Label', 'fluent-cart'),
+            'label' => esc_html__('Type', 'webmakerr-cart') . ': ' . esc_html__('Label', 'webmakerr-cart'),
             'type'  => 'separator',
         ];
 
         $this->controls['labelSwatchPadding'] = [
             'group'       => 'variation-swatches',
-            'label'       => esc_html__('Padding', 'fluent-cart'),
+            'label'       => esc_html__('Padding', 'webmakerr-cart'),
             'type'        => 'spacing',
             'css'         => [
                 [
@@ -187,7 +187,7 @@ class ProductAddToCart extends Element
 
         $this->controls['labelSwatchTypography'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Typography', 'fluent-cart'),
+            'label' => esc_html__('Typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -199,7 +199,7 @@ class ProductAddToCart extends Element
 
         $this->controls['labelSwatchActiveTypography'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Typography', 'fluent-cart') . ' (' . esc_html__('Active', 'fluent-cart') . ')',
+            'label' => esc_html__('Typography', 'webmakerr-cart') . ' (' . esc_html__('Active', 'webmakerr-cart') . ')',
             'type'  => 'typography',
             'css'   => [
                 [
@@ -211,7 +211,7 @@ class ProductAddToCart extends Element
 
         $this->controls['labelSwatchBackgroundColor'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Background color', 'fluent-cart'),
+            'label' => esc_html__('Background color', 'webmakerr-cart'),
             'type'  => 'color',
             'css'   => [
                 [
@@ -223,7 +223,7 @@ class ProductAddToCart extends Element
 
         $this->controls['labelSwatchActiveBackgroundColor'] = [
             'group' => 'variation-swatches',
-            'label' => esc_html__('Background color', 'fluent-cart') . ' (' . esc_html__('Active', 'fluent-cart') . ')',
+            'label' => esc_html__('Background color', 'webmakerr-cart') . ' (' . esc_html__('Active', 'webmakerr-cart') . ')',
             'type'  => 'color',
             'css'   => [
                 [
@@ -235,7 +235,7 @@ class ProductAddToCart extends Element
 
         $this->controls['imageSwatchWidth'] = [
             'group'       => 'variation-swatches',
-            'label'       => esc_html__('Swatch Image Width', 'fluent-cart'),
+            'label'       => esc_html__('Swatch Image Width', 'webmakerr-cart'),
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -249,7 +249,7 @@ class ProductAddToCart extends Element
 
         $this->controls['imageSwatchHeight'] = [
             'group'       => 'variation-swatches',
-            'label'       => esc_html__('Swatch Image Height', 'fluent-cart'),
+            'label'       => esc_html__('Swatch Image Height', 'webmakerr-cart'),
             'type'        => 'number',
             'units'       => true,
             'css'         => [
@@ -267,7 +267,7 @@ class ProductAddToCart extends Element
             'group' => 'quantity',
             'type'  => 'number',
             'units' => true,
-            'label' => esc_html__('Width', 'fluent-cart'),
+            'label' => esc_html__('Width', 'webmakerr-cart'),
             'css'   => [
                 [
                     'selector' => '.fct-product-quantity',
@@ -280,7 +280,7 @@ class ProductAddToCart extends Element
             'tab'   => 'content',
             'group' => 'quantity',
             'type'  => 'color',
-            'label' => esc_html__('Background', 'fluent-cart'),
+            'label' => esc_html__('Background', 'webmakerr-cart'),
             'css'   => [
                 [
                     'selector' => '.fct-product-quantity',
@@ -293,7 +293,7 @@ class ProductAddToCart extends Element
             'tab'   => 'content',
             'group' => 'quantity',
             'type'  => 'border',
-            'label' => esc_html__('Border', 'fluent-cart'),
+            'label' => esc_html__('Border', 'webmakerr-cart'),
             'css'   => [
                 [
                     'selector' => '.fct-product-quantity .fct-quantity-input',
@@ -315,20 +315,20 @@ class ProductAddToCart extends Element
             'tab'     => 'content',
             'group'   => 'button',
             'type'    => 'info',
-            'content' => esc_html__('Add to Cart Button will be shown only for non-subscribable products.', 'fluent-cart'),
+            'content' => esc_html__('Add to Cart Button will be shown only for non-subscribable products.', 'webmakerr-cart'),
         ];
         $this->controls['buttonText'] = [
             'tab'         => 'content',
             'group'       => 'button',
             'type'        => 'text',
             'inline'      => true,
-            'label'       => esc_html__('Button Text', 'fluent-cart'),
-            'placeholder' => esc_html__('Add to cart', 'fluent-cart'),
+            'label'       => esc_html__('Button Text', 'webmakerr-cart'),
+            'placeholder' => esc_html__('Add to cart', 'webmakerr-cart'),
         ];
         $this->controls['buttonMargin'] = [
             'tab'   => 'content',
             'group' => 'button',
-            'label' => esc_html__('Buttons Margin', 'fluent-cart'),
+            'label' => esc_html__('Buttons Margin', 'webmakerr-cart'),
             'type'  => 'spacing',
             'css'   => [
                 [
@@ -340,7 +340,7 @@ class ProductAddToCart extends Element
         $this->controls['buttonPadding'] = [
             'tab'   => 'content',
             'group' => 'button',
-            'label' => esc_html__('Padding', 'fluent-cart'),
+            'label' => esc_html__('Padding', 'webmakerr-cart'),
             'type'  => 'spacing',
             'css'   => [
                 [
@@ -352,7 +352,7 @@ class ProductAddToCart extends Element
         $this->controls['buttonWidth'] = [
             'tab'   => 'content',
             'group' => 'button',
-            'label' => esc_html__('Width', 'fluent-cart'),
+            'label' => esc_html__('Width', 'webmakerr-cart'),
             'type'  => 'number',
             'units' => true,
             'css'   => [
@@ -365,7 +365,7 @@ class ProductAddToCart extends Element
         $this->controls['buttonBackgroundColor'] = [
             'tab'   => 'content',
             'group' => 'button',
-            'label' => esc_html__('Background color', 'fluent-cart'),
+            'label' => esc_html__('Background color', 'webmakerr-cart'),
             'type'  => 'color',
             'css'   => [
                 [
@@ -377,7 +377,7 @@ class ProductAddToCart extends Element
         $this->controls['buttonBorder'] = [
             'tab'   => 'content',
             'group' => 'button',
-            'label' => esc_html__('Border', 'fluent-cart'),
+            'label' => esc_html__('Border', 'webmakerr-cart'),
             'type'  => 'border',
             'css'   => [
                 [
@@ -389,7 +389,7 @@ class ProductAddToCart extends Element
         $this->controls['buttonTypography'] = [
             'tab'   => 'content',
             'group' => 'button',
-            'label' => esc_html__('Typography', 'fluent-cart'),
+            'label' => esc_html__('Typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -402,14 +402,14 @@ class ProductAddToCart extends Element
         $this->controls['icon'] = [
             'tab'      => 'content',
             'group'    => 'button',
-            'label'    => esc_html__('Icon', 'fluent-cart'),
+            'label'    => esc_html__('Icon', 'webmakerr-cart'),
             'type'     => 'icon',
             'rerender' => true,
         ];
         $this->controls['iconTypography'] = [
             'tab'   => 'content',
             'group' => 'button',
-            'label' => esc_html__('Icon typography', 'fluent-cart'),
+            'label' => esc_html__('Icon typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -421,20 +421,20 @@ class ProductAddToCart extends Element
         $this->controls['iconOnly'] = [
             'tab'         => 'content',
             'group'       => 'button',
-            'label'       => esc_html__('Icon only', 'fluent-cart'),
+            'label'       => esc_html__('Icon only', 'webmakerr-cart'),
             'type'        => 'checkbox',
             'inline'      => true,
-            'placeholder' => esc_html__('Yes', 'fluent-cart'),
+            'placeholder' => esc_html__('Yes', 'webmakerr-cart'),
             'required'    => ['icon', '!=', ''],
         ];
         $this->controls['iconPosition'] = [
             'tab'         => 'content',
             'group'       => 'button',
-            'label'       => esc_html__('Icon position', 'fluent-cart'),
+            'label'       => esc_html__('Icon position', 'webmakerr-cart'),
             'type'        => 'select',
             'options'     => $this->control_options['iconPosition'],
             'inline'      => true,
-            'placeholder' => esc_html__('Left', 'fluent-cart'),
+            'placeholder' => esc_html__('Left', 'webmakerr-cart'),
             'required'    => [
                 ['icon', '!=', ''],
                 ['iconOnly', '=', ''],
@@ -447,13 +447,13 @@ class ProductAddToCart extends Element
             'group'       => 'buy_button',
             'type'        => 'text',
             'inline'      => true,
-            'label'       => esc_html__('Button Text', 'fluent-cart'),
-            'placeholder' => esc_html__('Buy Now', 'fluent-cart'),
+            'label'       => esc_html__('Button Text', 'webmakerr-cart'),
+            'placeholder' => esc_html__('Buy Now', 'webmakerr-cart'),
         ];
         $this->controls['directButtonMargin'] = [
             'tab'   => 'content',
             'group' => 'buy_button',
-            'label' => esc_html__('Buttons Margin', 'fluent-cart'),
+            'label' => esc_html__('Buttons Margin', 'webmakerr-cart'),
             'type'  => 'spacing',
             'css'   => [
                 [
@@ -465,7 +465,7 @@ class ProductAddToCart extends Element
         $this->controls['directButtonPadding'] = [
             'tab'   => 'content',
             'group' => 'buy_button',
-            'label' => esc_html__('Padding', 'fluent-cart'),
+            'label' => esc_html__('Padding', 'webmakerr-cart'),
             'type'  => 'spacing',
             'css'   => [
                 [
@@ -477,7 +477,7 @@ class ProductAddToCart extends Element
         $this->controls['directButtonWidth'] = [
             'tab'   => 'content',
             'group' => 'buy_button',
-            'label' => esc_html__('Width', 'fluent-cart'),
+            'label' => esc_html__('Width', 'webmakerr-cart'),
             'type'  => 'number',
             'units' => true,
             'css'   => [
@@ -490,7 +490,7 @@ class ProductAddToCart extends Element
         $this->controls['directButtonBackgroundColor'] = [
             'tab'   => 'content',
             'group' => 'buy_button',
-            'label' => esc_html__('Background color', 'fluent-cart'),
+            'label' => esc_html__('Background color', 'webmakerr-cart'),
             'type'  => 'color',
             'css'   => [
                 [
@@ -502,7 +502,7 @@ class ProductAddToCart extends Element
         $this->controls['directButtonBorder'] = [
             'tab'   => 'content',
             'group' => 'buy_button',
-            'label' => esc_html__('Border', 'fluent-cart'),
+            'label' => esc_html__('Border', 'webmakerr-cart'),
             'type'  => 'border',
             'css'   => [
                 [
@@ -514,7 +514,7 @@ class ProductAddToCart extends Element
         $this->controls['directButtonTypography'] = [
             'tab'   => 'content',
             'group' => 'buy_button',
-            'label' => esc_html__('Typography', 'fluent-cart'),
+            'label' => esc_html__('Typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -527,14 +527,14 @@ class ProductAddToCart extends Element
         $this->controls['directButtonIcon'] = [
             'tab'      => 'content',
             'group'    => 'buy_button',
-            'label'    => esc_html__('Icon', 'fluent-cart'),
+            'label'    => esc_html__('Icon', 'webmakerr-cart'),
             'type'     => 'icon',
             'rerender' => true,
         ];
         $this->controls['directButtonIconTypography'] = [
             'tab'   => 'content',
             'group' => 'buy_button',
-            'label' => esc_html__('Icon typography', 'fluent-cart'),
+            'label' => esc_html__('Icon typography', 'webmakerr-cart'),
             'type'  => 'typography',
             'css'   => [
                 [
@@ -546,20 +546,20 @@ class ProductAddToCart extends Element
         $this->controls['directButtonIconOnly'] = [
             'tab'         => 'content',
             'group'       => 'buy_button',
-            'label'       => esc_html__('Icon only', 'fluent-cart'),
+            'label'       => esc_html__('Icon only', 'webmakerr-cart'),
             'type'        => 'checkbox',
             'inline'      => true,
-            'placeholder' => esc_html__('Yes', 'fluent-cart'),
+            'placeholder' => esc_html__('Yes', 'webmakerr-cart'),
             'required'    => ['icon', '!=', ''],
         ];
         $this->controls['directButtonIconPosition'] = [
             'tab'         => 'content',
             'group'       => 'buy_button',
-            'label'       => esc_html__('Icon position', 'fluent-cart'),
+            'label'       => esc_html__('Icon position', 'webmakerr-cart'),
             'type'        => 'select',
             'options'     => $this->control_options['iconPosition'],
             'inline'      => true,
-            'placeholder' => esc_html__('Left', 'fluent-cart'),
+            'placeholder' => esc_html__('Left', 'webmakerr-cart'),
             'required'    => [
                 ['icon', '!=', ''],
                 ['iconOnly', '=', ''],
@@ -573,8 +573,8 @@ class ProductAddToCart extends Element
         if (empty($product)) {
             return $this->render_element_placeholder(
                 [
-                    'title'       => esc_html__('For better preview select content to show.', 'fluent-cart'),
-                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'fluent-cart'),
+                    'title'       => esc_html__('For better preview select content to show.', 'webmakerr-cart'),
+                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'webmakerr-cart'),
                 ]
             );
         }
@@ -596,7 +596,7 @@ class ProductAddToCart extends Element
     public function getAddToCartText()
     {
         $settings = $this->settings;
-        $buttonText = !empty($settings['buttonText']) ? $settings['buttonText'] : __('Add to Cart', 'fluent-cart');
+        $buttonText = !empty($settings['buttonText']) ? $settings['buttonText'] : __('Add to Cart', 'webmakerr-cart');
 
         $icon = !empty($settings['icon']) ? self::render_icon($settings['icon'], ['icon']) : false;
         $icon_position = isset($settings['iconPosition']) ? $settings['iconPosition'] : 'left';
@@ -625,7 +625,7 @@ class ProductAddToCart extends Element
     public function getBuyNowText()
     {
         $settings = $this->settings;
-        $buttonText = !empty($settings['directButtonText']) ? $settings['directButtonText'] : __('Buy Now', 'fluent-cart');
+        $buttonText = !empty($settings['directButtonText']) ? $settings['directButtonText'] : __('Buy Now', 'webmakerr-cart');
 
         $icon = !empty($settings['directButtonIcon']) ? self::render_icon($settings['directButtonIcon'], ['icon']) : false;
         $icon_position = isset($settings['directButtonIconPosition']) ? $settings['directButtonIconPosition'] : 'left';

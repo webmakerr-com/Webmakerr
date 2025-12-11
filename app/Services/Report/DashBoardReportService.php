@@ -131,25 +131,25 @@ class DashBoardReportService extends ReportService
         $previousStats = App::db()->select($query, $bindings)[0];
         $this->dashBoardStats = [
             'total_orders'           => [
-                'title'         => __('All Orders', 'fluent-cart'),
+                'title'         => __('All Orders', 'webmakerr-cart'),
                 'icon'          => 'AllOrdersIcon',
                 'current_count' => (int)$currentStats->total_orders ?? 0,
                 'compare_count' => (int)$previousStats->total_orders ?? 0,
             ],
             'paid_orders'            => [
-                'title'         => __('Paid Orders', 'fluent-cart'),
+                'title'         => __('Paid Orders', 'webmakerr-cart'),
                 'icon'          => 'Money',
                 'current_count' => (int)$currentStats->paid_orders ?? 0,
                 'compare_count' => (int)$previousStats->paid_orders ?? 0,
             ],
             'total_paid_order_items' => [
-                'title'         => __('Paid Order Items', 'fluent-cart'),
+                'title'         => __('Paid Order Items', 'webmakerr-cart'),
                 'icon'          => 'OrderItemsIcon',
                 'current_count' => (int)$currentStats->total_paid_order_items ?? 0,
                 'compare_count' => (int)$previousStats->total_paid_order_items ?? 0,
             ],
             'total_paid_amounts'     => [
-                'title'         => __('Order Value (Paid)', 'fluent-cart'),
+                'title'         => __('Order Value (Paid)', 'webmakerr-cart'),
                 'icon'          => 'OrderValueIcon',
                 'current_count' => (int)$currentStats->total_paid_amounts ?? 0,
                 'compare_count' => (int)$previousStats->total_paid_amounts ?? 0,
@@ -215,7 +215,7 @@ class DashBoardReportService extends ReportService
 
         $countryLists = Helper::getCountyIsoLists();
 
-        $other = __('Uncategorized', 'fluent-cart');
+        $other = __('Uncategorized', 'webmakerr-cart');
         $transformedData = $results->map(function ($item) use ($countryLists, $other) {
             $countryName = Arr::get($countryLists, $item->country, $other);
             return [

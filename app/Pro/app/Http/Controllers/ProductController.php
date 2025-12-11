@@ -16,7 +16,7 @@ class ProductController extends Controller
 
         if (!$variant) {
             return $this->response->sendError([
-                'message' => __('Variant not found', 'fluent-cart-pro')
+                'message' => __('Variant not found', 'webmakerr-cart-pro')
             ]);
         }
 
@@ -55,12 +55,12 @@ class ProductController extends Controller
 
         if (is_wp_error($isUpdated)) {
             return $this->response->sendError([
-                'message' => __('Inventory update failed', 'fluent-cart-pro')
+                'message' => __('Inventory update failed', 'webmakerr-cart-pro')
             ]);
         }
 
         return $this->response->sendSuccess([
-            'message' => __('Inventory updated successfully', 'fluent-cart-pro')
+            'message' => __('Inventory updated successfully', 'webmakerr-cart-pro')
         ]);
     }
 
@@ -88,18 +88,18 @@ class ProductController extends Controller
 
         if (is_wp_error($updatedProductDetails)) {
             return $this->response->sendError([
-                'message' => __('Manage stock update failed', 'fluent-cart-pro')
+                'message' => __('Manage stock update failed', 'webmakerr-cart-pro')
             ]);
         }
 
         if (is_wp_error($updatedVariations)) {
             return $this->response->sendError([
-                'message' => __('Manage stock update failed', 'fluent-cart-pro')
+                'message' => __('Manage stock update failed', 'webmakerr-cart-pro')
             ]);
         }
 
         return $this->response->sendSuccess([
-            'message' => __('Manage stock updated successfully', 'fluent-cart-pro')
+            'message' => __('Manage stock updated successfully', 'webmakerr-cart-pro')
         ]);
     }
 }

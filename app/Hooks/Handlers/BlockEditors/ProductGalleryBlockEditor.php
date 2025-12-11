@@ -40,8 +40,8 @@ class ProductGalleryBlockEditor extends BlockEditor
             $this->getLocalizationKey()     => [
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
-                'title'             => __('Product Gallery', 'fluent-cart'),
-                'description'       => __('This block will display the product gallery.', 'fluent-cart'),
+                'title'             => __('Product Gallery', 'webmakerr-cart'),
+                'description'       => __('This block will display the product gallery.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings(),

@@ -44,7 +44,7 @@ class EmailNotificationController extends Controller
         }
 
         return $this->sendError([
-            'message' => __('Notification Details not found', 'fluent-cart')
+            'message' => __('Notification Details not found', 'webmakerr-cart')
         ]);
     }
 
@@ -57,11 +57,11 @@ class EmailNotificationController extends Controller
         $updated = EmailNotifications::updateNotification($notification, $settings);
         if ($updated) {
             return $this->sendSuccess([
-                'message' => __('Notification updated successfully', 'fluent-cart')
+                'message' => __('Notification updated successfully', 'webmakerr-cart')
             ]);
         } else {
             return $this->sendError([
-                'message' => __('Failed to update notification', 'fluent-cart')
+                'message' => __('Failed to update notification', 'webmakerr-cart')
             ]);
         }
 
@@ -78,11 +78,11 @@ class EmailNotificationController extends Controller
 
         if ($notification) {
             return $this->sendSuccess([
-                'message' => __('Notification updated successfully', 'fluent-cart')
+                'message' => __('Notification updated successfully', 'webmakerr-cart')
             ]);
         }
         return $this->sendError([
-            'message' => __('Failed to update notification', 'fluent-cart')
+            'message' => __('Failed to update notification', 'webmakerr-cart')
         ]);
 
     }
@@ -148,11 +148,11 @@ class EmailNotificationController extends Controller
 
         if ($updated) {
             return $this->sendSuccess([
-                'message' => __('Email settings saved successfully', 'fluent-cart')
+                'message' => __('Email settings saved successfully', 'webmakerr-cart')
             ]);
         } else {
             return $this->sendError([
-                'message' => __('Failed to save email settings', 'fluent-cart')
+                'message' => __('Failed to save email settings', 'webmakerr-cart')
             ]);
         }
     }

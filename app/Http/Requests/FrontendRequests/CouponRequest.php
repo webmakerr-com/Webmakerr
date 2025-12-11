@@ -49,8 +49,8 @@ class CouponRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'coupon_code.required' => esc_html__('Coupon code is required', 'fluent-cart'),
-            'order_items.required' => esc_html__('Item selection is required', 'fluent-cart'),
+            'coupon_code.required' => esc_html__('Coupon code is required', 'webmakerr-cart'),
+            'order_items.required' => esc_html__('Item selection is required', 'webmakerr-cart'),
         ];
     }
 

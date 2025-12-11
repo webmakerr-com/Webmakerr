@@ -25,7 +25,7 @@ use Webmakerr\Framework\Support\Arr;
     <tr>
         <th style="background-color:rgb(249,250,251); padding-left: 16px">
             <p style="font-size:12px;font-weight:600;color:rgb(55,65,81);text-transform:uppercase;line-height:24px;margin: 0;text-align: left">
-                <?php echo esc_html__('Item', 'fluent-cart'); ?>
+                <?php echo esc_html__('Item', 'webmakerr-cart'); ?>
             </p>
         </th>
 
@@ -33,7 +33,7 @@ use Webmakerr\Framework\Support\Arr;
 
         <th style="background-color:rgb(249,250,251); padding-right: 16px; width: 200px;">
             <p style="font-size:12px;font-weight:600;color:rgb(55,65,81);text-transform:uppercase;line-height:24px;margin: 0;text-align: right">
-                <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
             </p>
         </th>
     </tr>
@@ -80,7 +80,7 @@ use Webmakerr\Framework\Support\Arr;
                     <tr style="width:100%">
                         <td style="width:70%">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                <?php echo esc_html__('Subtotal', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Subtotal', 'webmakerr-cart'); ?>
                             </p>
                         </td>
                         <td style="width:30%;text-align:right">
@@ -95,7 +95,7 @@ use Webmakerr\Framework\Support\Arr;
                     <tr style="width:100%">
                         <td style="width:70%">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                <?php echo esc_html__('Shipping', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Shipping', 'webmakerr-cart'); ?>
                             </p>
                         </td>
                         <td style="width:30%;text-align:right">
@@ -109,8 +109,8 @@ use Webmakerr\Framework\Support\Arr;
                     <tr style="width:100%">
                         <td style="width:70%">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                <?php echo esc_html__('Shipping Tax', 'fluent-cart'); ?>
-                                <?php echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'fluent-cart') : __('(Excluded)', 'fluent-cart')); ?>
+                                <?php echo esc_html__('Shipping Tax', 'webmakerr-cart'); ?>
+                                <?php echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'webmakerr-cart') : __('(Excluded)', 'webmakerr-cart')); ?>
                             </p>
                         </td>
                         <td style="width:30%;text-align:right">
@@ -124,7 +124,7 @@ use Webmakerr\Framework\Support\Arr;
                     <tr style="width:100%">
                         <td style="width:70%">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                <?php echo esc_html__('Discount', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Discount', 'webmakerr-cart'); ?>
                             </p>
                         </td>
                         <td style="width:30%;text-align:right">
@@ -138,8 +138,8 @@ use Webmakerr\Framework\Support\Arr;
                     <tr style="width:100%">
                         <td style="width:70%">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                <?php echo esc_html__('Tax', 'fluent-cart'); ?>
-                                <?php echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'fluent-cart') : __('(Excluded)', 'fluent-cart')); ?>
+                                <?php echo esc_html__('Tax', 'webmakerr-cart'); ?>
+                                <?php echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'webmakerr-cart') : __('(Excluded)', 'webmakerr-cart')); ?>
                             </p>
                         </td>
                         <td style="width:30%;text-align:right">
@@ -154,7 +154,7 @@ use Webmakerr\Framework\Support\Arr;
                     <tr style="width:100%">
                         <td style="width:70%">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                <?php echo esc_html__('Refund', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Refund', 'webmakerr-cart'); ?>
                             </p>
                         </td>
                         <td style="width:30%;text-align:right">
@@ -168,7 +168,7 @@ use Webmakerr\Framework\Support\Arr;
                 <tr style="width:100%">
                     <td style="width:70%"><p
                                 style="font-size:16px;font-weight:700;color:rgb(17,24,39);line-height:24px;margin: 0;">
-                            <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
                         </p>
                     </td>
                     <td style="width:30%;text-align:right">
@@ -182,7 +182,7 @@ use Webmakerr\Framework\Support\Arr;
                     <tr style="width:100%">
                         <td style="width:70%">
                             <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                <?php echo esc_html__('Refund', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Refund', 'webmakerr-cart'); ?>
                             </p>
                         </td>
                         <td style="width:30%;text-align:right">
@@ -196,7 +196,7 @@ use Webmakerr\Framework\Support\Arr;
                 <tr style="width:100%">
                     <td style="width:70%">
                         <p style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                            <?php echo esc_html__('Payment Method', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Payment Method', 'webmakerr-cart'); ?>
                         </p>
                     </td>
                     <td style="width:30%;text-align:right">
@@ -212,13 +212,12 @@ use Webmakerr\Framework\Support\Arr;
                 $taxtotal = $order->tax_total + $order->shipping_tax;   
                 if(Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.valid') && !$taxtotal): ?>
                 <div style="text-align: right; font-size: 14px; margin-top: 10px;">
-                    <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'fluent-cart'); ?>
+                    <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'webmakerr-cart'); ?>
                 </div>
 
             <?php endif ?>
         </td>
     </tr>
 </table>
-
 
 

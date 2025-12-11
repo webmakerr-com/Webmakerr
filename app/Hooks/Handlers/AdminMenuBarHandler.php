@@ -24,12 +24,12 @@ class AdminMenuBarHandler
 
         $storeSettings = new StoreSettings();
         $id = 'fluent_cart_live_mode';
-        $menuTitle = __('Live Mode', 'fluent-cart');
+        $menuTitle = __('Live Mode', 'webmakerr-cart');
         $color = 'color: #189877;';
 
         if ($storeSettings->get('order_mode') === 'test') {
             $id = 'fluent_cart_test_mode';
-            $menuTitle = __('Test Mode', 'fluent-cart');
+            $menuTitle = __('Test Mode', 'webmakerr-cart');
             $color = 'color: #F58E07;';
         }
 
@@ -47,28 +47,28 @@ class AdminMenuBarHandler
             'href'  => false, // disables direct link to act as dropdown
             'meta'  => [
                 'class' => $id,
-                'title' => __('FluentCart', 'fluent-cart')
+                'title' => __('FluentCart', 'webmakerr-cart')
             ]
         ]);
 
         // Child: Store Settings
         $wp_admin_bar->add_node([
             'id'     => $id . '_orders',
-            'title'  => __('View Orders', 'fluent-cart'),
+            'title'  => __('View Orders', 'webmakerr-cart'),
             'href'   => URL::getDashboardUrl('orders'),
             'parent' => $id
         ]);
 
         $wp_admin_bar->add_node([
             'id'     => $id . '_products',
-            'title'  => __('View Products', 'fluent-cart'),
+            'title'  => __('View Products', 'webmakerr-cart'),
             'href'   => URL::getDashboardUrl('products'),
             'parent' => $id
         ]);
 
         $wp_admin_bar->add_node([
             'id'     => $id . '_settings',
-            'title'  => __('Store Settings', 'fluent-cart'),
+            'title'  => __('Store Settings', 'webmakerr-cart'),
             'href'   => URL::getDashboardUrl('settings/store-settings/'),
             'parent' => $id
         ]);
@@ -78,4 +78,3 @@ class AdminMenuBarHandler
     }
 
 }
-

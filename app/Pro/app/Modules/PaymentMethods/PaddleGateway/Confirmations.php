@@ -69,7 +69,7 @@ class Confirmations
                 'order' => [
                     'uuid' => $transactionModel->order->uuid,
                 ],
-                'message' => __('Payment already confirmed. Redirecting...!', 'fluent-cart-pro'),
+                'message' => __('Payment already confirmed. Redirecting...!', 'webmakerr-cart-pro'),
                 'status' => 'success'
             ], 200);
         }
@@ -90,7 +90,7 @@ class Confirmations
         // Check if payment is completed
         if ($transactionStatus !== 'paid' && $transactionStatus !== 'completed') {
             wp_send_json([
-                'message' => sprintf(__('Payment is not completed. Current status: %s', 'fluent-cart-pro'), $transactionStatus),
+                'message' => sprintf(__('Payment is not completed. Current status: %s', 'webmakerr-cart-pro'), $transactionStatus),
                 'status' => 'failed'
             ], 400);
         }
@@ -106,7 +106,7 @@ class Confirmations
             'order' => [
                 'uuid' => $transactionModel->order->uuid,
             ],
-            'message' => __('Payment confirmed successfully. Redirecting...!', 'fluent-cart-pro'),
+            'message' => __('Payment confirmed successfully. Redirecting...!', 'webmakerr-cart-pro'),
             'status' => 'success'
         ], 200);
     }
@@ -182,7 +182,7 @@ class Confirmations
         $transaction->fill($transactionUpdateData);
         $transaction->save();
 
-        fluent_cart_add_log(__('Paddle Payment Confirmation', 'fluent-cart-pro'), __('Payment confirmation received from Paddle. Transaction ID:', 'fluent-cart-pro')  . $vendorChargeId, 'info', [
+        fluent_cart_add_log(__('Paddle Payment Confirmation', 'webmakerr-cart-pro'), __('Payment confirmation received from Paddle. Transaction ID:', 'webmakerr-cart-pro')  . $vendorChargeId, 'info', [
             'module_name' => 'order',
             'module_id'   => $order->id,
         ]);

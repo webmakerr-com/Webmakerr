@@ -148,7 +148,7 @@ class WorksheetManager implements WorksheetManagerInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the file path */
-                    esc_html__('Unable to write data in %s', 'fluent-cart'),
+                    esc_html__('Unable to write data in %s', 'webmakerr-cart'),
                     esc_html($worksheet->getFilePath())
                 )
             );
@@ -254,7 +254,7 @@ class WorksheetManager implements WorksheetManagerInterface
             throw new InvalidArgumentException(
                 sprintf(
                 /* translators: %s is the variable type */
-                    esc_html__('Trying to add a value with an unsupported type: %s', 'fluent-cart'),
+                    esc_html__('Trying to add a value with an unsupported type: %s', 'webmakerr-cart'),
                     esc_html(\gettype($cell->getValue()))
                 )
             );

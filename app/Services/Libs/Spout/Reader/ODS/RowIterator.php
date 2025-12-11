@@ -198,7 +198,7 @@ class RowIterator implements IteratorInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the error message */
-                    esc_html__('The sheet\'s data cannot be read. [%s]', 'fluent-cart'),
+                    esc_html__('The sheet\'s data cannot be read. [%s]', 'webmakerr-cart'),
                     esc_html($exception->getMessage())
                 )
             );

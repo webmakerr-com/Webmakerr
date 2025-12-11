@@ -38,7 +38,7 @@ class API
         if (empty($apiKey)) {
             return new \WP_Error(
                 'paddle_api_key_missing',
-                sprintf(__('Paddle API key is missing for mode: %s', 'fluent-cart-pro'), $mode)
+                sprintf(__('Paddle API key is missing for mode: %s', 'webmakerr-cart-pro'), $mode)
             );
         }
 
@@ -170,7 +170,7 @@ class API
         if (empty($webhookSecret)) {
             return new \WP_Error(
                 'paddle_webhook_secret_missing',
-                __('Paddle webhook secret is missing', 'fluent-cart-pro')
+                __('Paddle webhook secret is missing', 'webmakerr-cart-pro')
             );
         }
 
@@ -180,7 +180,7 @@ class API
         if (!hash_equals($expectedSignature, $signature)) {
             return new \WP_Error(
                 'paddle_webhook_signature_invalid',
-                __('Invalid webhook signature', 'fluent-cart-pro')
+                __('Invalid webhook signature', 'webmakerr-cart-pro')
             );
         }
 
@@ -212,7 +212,7 @@ class API
             return implode(', ', $errors);
         }
 
-        return __('Unknown Paddle API error', 'fluent-cart-pro');
+        return __('Unknown Paddle API error', 'webmakerr-cart-pro');
     }
 
     /**

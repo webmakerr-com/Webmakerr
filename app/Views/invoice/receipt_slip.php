@@ -110,14 +110,14 @@ $orderTaxRates = $order->orderTaxRates->first();
                             </td>
                             <td style="vertical-align: middle; width: 15%; text-align: right; border: none;padding-right: 10px;">
                                 <p style="white-space: nowrap; color: #94a3b8; text-align: right; margin: 0;font-size:12px;">
-                                    <?php echo esc_html__('Order At', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Order At', 'webmakerr-cart'); ?>
                                 </p>
                                 <p style="white-space: nowrap; font-weight: bold; color: #000; text-align: right; margin: 0;font-size:14px;">
                                     <?php
                                     echo esc_html(
                                         date_i18n(
                                         /* translators: Date format for order creation date */
-                                            __('M d, Y', 'fluent-cart'),
+                                            __('M d, Y', 'webmakerr-cart'),
                                             DateTime::anyTimeToGmt($order->created_at)->getTimestamp()
                                         )
                                     );
@@ -126,7 +126,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                             </td>
                             <td style="width:15%;text-align:right;border:none;vertical-align:baseline;">
                                 <p style="white-space: nowrap; color: #94a3b8; text-align: right; margin: 0;font-size:12px;">
-                                    <?php echo esc_html__('Invoice number #', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Invoice number #', 'webmakerr-cart'); ?>
                                 </p>
                                 <p id="fct-order-invoice-no"
                                    style="white-space: nowrap; font-weight: bold; color: #000; text-align: right; margin: 0;font-size:14px;">
@@ -176,7 +176,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                         <?php endif; ?>
                         <div style="border-radius: 5px;print-color-adjust: exact;">
                             <h5 style="font-weight: bold;font-size: 14px;margin: 0 0 10px 0;color: #495057;border-bottom: 1px solid #dee2e6;padding-bottom: 5px;">
-                                <?php echo esc_html__('Bill To', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Bill To', 'webmakerr-cart'); ?>
                             </h5>
                             <?php if (!empty($order->billing_address)) : ?>
 
@@ -185,7 +185,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 </div>
                                 <?php if (!empty($vat_tax_id)) : ?>
                                     <div style="margin-bottom: 3px;">
-                                        <?php echo esc_html__('VAT/Tax ID: ', 'fluent-cart'). esc_html($vat_tax_id); ?>
+                                        <?php echo esc_html__('VAT/Tax ID: ', 'webmakerr-cart'). esc_html($vat_tax_id); ?>
                                     </div>
                                 <?php endif; ?>
                                 <div style="margin-top: 10px;">
@@ -213,7 +213,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                         $vatNumber = Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.vat_number', '');
                                         
                                         if ($vatNumber !== '') {
-                                            echo esc_html__('EU VAT', 'fluent-cart') . ': ' . esc_html($vatNumber);
+                                            echo esc_html__('EU VAT', 'webmakerr-cart') . ': ' . esc_html($vatNumber);
                                         }
                                     ?>
                                 </div>
@@ -224,7 +224,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 </div>
                                 <?php if (!empty($vat_tax_id)) : ?>
                                     <div style="margin-bottom: 3px;">
-                                        <?php echo esc_html__('VAT/Tax ID: ', 'fluent-cart'). esc_html($vat_tax_id); ?>
+                                        <?php echo esc_html__('VAT/Tax ID: ', 'webmakerr-cart'). esc_html($vat_tax_id); ?>
                                     </div>
                                 <?php endif; ?>
                                 <div style="margin-top: 3px;">
@@ -235,7 +235,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                         <?php if ($order->fulfillment_type === 'physical') : ?>
                             <div style="border-radius: 5px;print-color-adjust: exact;">
                                 <h5 style="font-weight: bold;font-size: 14px;margin: 0 0 10px 0;color: #495057;border-bottom: 1px solid #dee2e6;padding-bottom: 5px;">
-                                    <?php echo esc_html__('Ship To', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Ship To', 'webmakerr-cart'); ?>
                                 </h5>
                                 <?php if (!empty($order->shipping_address)) : ?>
                                     <div style="margin-bottom: 3px;">
@@ -266,16 +266,16 @@ $orderTaxRates = $order->orderTaxRates->first();
                             <thead>
                             <tr>
                                 <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;print-color-adjust: exact;border: none;">
-                                    <?php echo esc_html__('Description', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Description', 'webmakerr-cart'); ?>
                                 </th>
                                 <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;width: 80px;text-align: right;print-color-adjust: exact;border: none;">
-                                    <?php echo esc_html__('Qty', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Qty', 'webmakerr-cart'); ?>
                                 </th>
                                 <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;width: 80px;text-align: right;print-color-adjust: exact;border: none;">
-                                    <?php echo esc_html__('Unit price', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Unit price', 'webmakerr-cart'); ?>
                                 </th>
                                 <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;width: 80px;text-align: right;print-color-adjust: exact;border: none;">
-                                    <?php echo esc_html__('Amount', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Amount', 'webmakerr-cart'); ?>
                                 </th>
                             </tr>
                             </thead>
@@ -319,7 +319,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 if ($order->subtotal != ($order->total_amount - $order->total_refund) || $order->tax_total > 0): ?>
                                     <tr>
                                         <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                                            <?php echo esc_html__('Subtotal', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Subtotal', 'webmakerr-cart'); ?>
                                         </td>
                                         <td style="font-weight:700;padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
                                             <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->subtotal)); 
@@ -330,7 +330,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 <?php if ($order->manual_discount_total + $order->coupon_discount_total > 0): ?>
                                     <tr>
                                         <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                                            <?php echo esc_html__('Discount', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Discount', 'webmakerr-cart'); ?>
                                         </td>
                                         <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
                                             - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->manual_discount_total + $order->coupon_discount_total)); ?>
@@ -340,7 +340,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 <?php if ($order->shipping_total > 0): ?>
                                     <tr>
                                         <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                                            <?php echo esc_html__('Shipping', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Shipping', 'webmakerr-cart'); ?>
                                         </td>
                                         <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
                                             <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->shipping_total)); ?>
@@ -350,8 +350,8 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 <?php if ($order->tax_total > 0): ?>
                                     <tr>
                                         <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                                            <?php echo esc_html__('Tax', 'fluent-cart');
-                                            echo esc_html( $order->tax_behavior == 2 ? __('(Included)', 'fluent-cart') : __('(Excluded)', 'fluent-cart'));
+                                            <?php echo esc_html__('Tax', 'webmakerr-cart');
+                                            echo esc_html( $order->tax_behavior == 2 ? __('(Included)', 'webmakerr-cart') : __('(Excluded)', 'webmakerr-cart'));
                                             ?>
                                         </td>
                                         <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
@@ -362,8 +362,8 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 <?php if ($order->shipping_tax > 0): ?>
                                     <tr>
                                         <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                                            <?php echo esc_html__('Shipping Tax', 'fluent-cart');
-                                            echo esc_html( $order->tax_behavior == 2 ? __('(Included)', 'fluent-cart') : __('(Excluded)', 'fluent-cart'));
+                                            <?php echo esc_html__('Shipping Tax', 'webmakerr-cart');
+                                            echo esc_html( $order->tax_behavior == 2 ? __('(Included)', 'webmakerr-cart') : __('(Excluded)', 'webmakerr-cart'));
                                             ?>
                                         </td>
                                         <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
@@ -375,7 +375,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 <?php if ($order->total_refund > 0): ?>
                                     <tr style="font-weight: bold;font-size: 14px;">
                                         <td style="font-weight:500;padding: 8px 20px 8px 0;text-align: right;border:none;">
-                                            <?php echo esc_html__('Refund', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Refund', 'webmakerr-cart'); ?>
                                         </td>
                                         <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
                                             - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
@@ -384,7 +384,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 <?php endif; ?>
                                 <tr style="font-weight: bold;font-size: 14px;">
                                     <td style="font-weight:500;padding: 8px 20px 8px 0;text-align: right;border:none;">
-                                        <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                                        <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
                                     </td>
                                     <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
                                         <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($order->total_amount - $order->total_refund)); ?>
@@ -392,7 +392,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                 </tr>
                                 <tr style="font-weight: bold;font-size: 14px;">
                                     <td style="font-weight:500;padding: 8px 20px 8px 0;text-align: right;border:none;">
-                                        <?php echo esc_html__('Amount Paid', 'fluent-cart'); ?>
+                                        <?php echo esc_html__('Amount Paid', 'webmakerr-cart'); ?>
                                     </td>
                                     <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
                                         <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($order->total_paid - $order->total_refund)); ?>
@@ -409,7 +409,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                     if(Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.valid') && !$taxtotal): ?>
 
                         <div style="text-align: right; font-size: 14px; margin-top: 10px;">
-                            <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'fluent-cart'); ?>
+                            <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'webmakerr-cart'); ?>
                         </div>
 
                     <?php endif ?>
@@ -420,20 +420,20 @@ $orderTaxRates = $order->orderTaxRates->first();
                         ?>
                         <div style="margin-top: 30px;">
                             <div style="font-weight: bold;font-size: 14px;color: #495057;margin: 0;padding: 0;">
-                                <?php echo esc_html__('Payment history', 'fluent-cart'); ?>
+                                <?php echo esc_html__('Payment history', 'webmakerr-cart'); ?>
                             </div>
                             <table class="fct-transaction-table"
                                    style="margin-top: 10px;width: 100%;text-align: left;border-spacing: 0;border-collapse: collapse;border: none;">
                                 <thead>
                                 <tr>
                                     <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;print-color-adjust: exact;border:none;">
-                                        <?php echo esc_html__('Payment method', 'fluent-cart'); ?>
+                                        <?php echo esc_html__('Payment method', 'webmakerr-cart'); ?>
                                     </th>
                                     <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold; text-align: center;print-color-adjust: exact;border:none;">
-                                        <?php echo esc_html__('Date', 'fluent-cart'); ?>
+                                        <?php echo esc_html__('Date', 'webmakerr-cart'); ?>
                                     </th>
                                     <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold; text-align: right;print-color-adjust: exact;border:none;">
-                                        <?php echo esc_html__('Amount', 'fluent-cart'); ?>
+                                        <?php echo esc_html__('Amount', 'webmakerr-cart'); ?>
                                     </th>
                                 </tr>
                                 </thead>
@@ -452,7 +452,7 @@ $orderTaxRates = $order->orderTaxRates->first();
                                             echo esc_html(
                                                 date_i18n(
                                                 /* translators: Date format for order creation date */
-                                                    __('M d, Y', 'fluent-cart'),
+                                                    __('M d, Y', 'webmakerr-cart'),
                                                     DateTime::anyTimeToGmt($transaction->created_at)->getTimestamp()
                                                 )
                                             );

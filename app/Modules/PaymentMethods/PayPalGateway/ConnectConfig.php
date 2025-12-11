@@ -28,7 +28,7 @@ class ConnectConfig
                 'test_redirect'   => $testConnectRedirect,
                 'live_redirect'   => $liveConnectRedirect,
                 'image_url'       => Vite::getAssetUrl('images/payment-methods/paypal-icon.png'),
-                'disconnect_note' => __('Disconnecting your PayPal account will prevent you from offering PayPal services and products on your website. Do you wish to continue?', 'fluent-cart')
+                'disconnect_note' => __('Disconnecting your PayPal account will prevent you from offering PayPal services and products on your website. Do you wish to continue?', 'webmakerr-cart')
             ],
             'test_account'   => $testAccountInfo,
             'live_account'   => $liveAccountInfo,
@@ -39,7 +39,7 @@ class ConnectConfig
     public static function parseConnectInfos($vendorData)
     {
         if (!$vendorData || !Arr::get($vendorData, 'permissionsGranted')) {
-            echo '<div class="fct_message fct_message_error">' . esc_html(__('Invalid PayPal Request. Please try configuring paypal payment gateway again!', 'fluent-cart')) . '</div>';
+            echo '<div class="fct_message fct_message_error">' . esc_html(__('Invalid PayPal Request. Please try configuring paypal payment gateway again!', 'webmakerr-cart')) . '</div>';
             die();
         }
 
@@ -180,7 +180,7 @@ class ConnectConfig
         if (empty($response['paypal_user_id'])) {
             $message = Arr::get($response, 'message');
             if (!$message) {
-                $message = __('Invalid PayPal Request. Please configure paypal payment gateway again', 'fluent-cart');
+                $message = __('Invalid PayPal Request. Please configure paypal payment gateway again', 'webmakerr-cart');
             }
             echo '<div class="fct_message fct_message_error">' . esc_html($message) . '</div>';
             return;
@@ -224,7 +224,7 @@ class ConnectConfig
         if (empty($paypalSettings[$mode . '_account_id'])) {
             if ($sendResponse) {
                 wp_send_json([
-                    'message' => __('Selected Account does not exist', 'fluent-cart')
+                    'message' => __('Selected Account does not exist', 'webmakerr-cart')
                 ], 422);
             }
             return false;
@@ -255,7 +255,7 @@ class ConnectConfig
 
         if ($sendResponse) {
             wp_send_json([
-                'message'  => __('PayPal settings has been disconnected', 'fluent-cart'),
+                'message'  => __('PayPal settings has been disconnected', 'webmakerr-cart'),
                 'settings' => $paypalSettings
             ], 200);
         }

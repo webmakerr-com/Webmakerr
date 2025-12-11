@@ -47,7 +47,7 @@ class User extends Model
         $wpUser = get_user_by('ID', $this->ID);
 
         if (user_can($wpUser, 'manage_options')) {
-            return new \WP_Error('super_admin', __('The user already have all the accesses as part of Administrator Role', 'fluent-cart'));
+            return new \WP_Error('super_admin', __('The user already have all the accesses as part of Administrator Role', 'webmakerr-cart'));
         }
 
         return update_user_meta($this->ID, '_fluent_cart_admin_role', $role);

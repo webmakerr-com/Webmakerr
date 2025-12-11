@@ -63,7 +63,7 @@ class CustomerProfileHandler extends ShortCode
             if (defined('FLUENT_AUTH_VERSION') && (new \FluentAuth\App\Hooks\Handlers\CustomAuthHandler())->isEnabled()) {
                 ?>
                 <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #CBD5E0; border-radius: 8px;" class="fct_auth_wrap">
-                <h4><?php echo esc_html__('Please log in to access your customer portal.', 'fluent-cart'); ?></h4>
+                <h4><?php echo esc_html__('Please log in to access your customer portal.', 'webmakerr-cart'); ?></h4>
                 <?php
                 echo do_shortcode('[fluent_auth redirect_to="' . $redirectUrl . '"]');
                 echo '</div>';
@@ -71,10 +71,10 @@ class CustomerProfileHandler extends ShortCode
                 ?>
                 <div class="fct_auth_wrap">
                     <div class="fct_auth_message">
-                        <h2><?php echo esc_html__('Login', 'fluent-cart'); ?></h2>
-                        <p><?php echo esc_html__('Please log in to access your customer portal.', 'fluent-cart'); ?></p>
+                        <h2><?php echo esc_html__('Login', 'webmakerr-cart'); ?></h2>
+                        <p><?php echo esc_html__('Please log in to access your customer portal.', 'webmakerr-cart'); ?></p>
                         <a href="<?php echo esc_url(wp_login_url($redirectUrl ?? '')); ?>" class="button">
-                            <?php echo esc_html__('Login', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Login', 'webmakerr-cart'); ?>
                         </a>
                     </div>
                 </div>
@@ -180,7 +180,7 @@ class CustomerProfileHandler extends ShortCode
                 // Reset post data to avoid conflicts with other queries
                 wp_reset_postdata();
             else :
-                echo '<p>' . esc_html__('No content found!', 'fluent-cart') . '</p>';
+                echo '<p>' . esc_html__('No content found!', 'webmakerr-cart') . '</p>';
             endif;
         }
 
@@ -198,7 +198,7 @@ class CustomerProfileHandler extends ShortCode
 
         $menuItems = [
             'dashboard'        => [
-                'label' => __('Dashboard', 'fluent-cart'),
+                'label' => __('Dashboard', 'webmakerr-cart'),
                 'css_class' => 'fct_route',
                 'link'  => $baseUrl,
                 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -206,7 +206,7 @@ class CustomerProfileHandler extends ShortCode
                 </svg>',
             ],
             'purchase-history' => [
-                'label' => __('Purchase History', 'fluent-cart'),
+                'label' => __('Purchase History', 'webmakerr-cart'),
                 'css_class' => 'fct_route',
                 'link'  => $baseUrl . 'purchase-history',
                 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -214,7 +214,7 @@ class CustomerProfileHandler extends ShortCode
                 </svg>'
             ],
             'subscriptions'    => [
-                'label' => __('Subscription Plans', 'fluent-cart'),
+                'label' => __('Subscription Plans', 'webmakerr-cart'),
                 'css_class' => 'fct_route',
                 'link'  => $baseUrl . 'subscriptions',
                 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -222,7 +222,7 @@ class CustomerProfileHandler extends ShortCode
                 </svg>'
             ],
             'licenses'         => [
-                'label' => __('Licenses', 'fluent-cart'),
+                'label' => __('Licenses', 'webmakerr-cart'),
                 'css_class' => 'fct_route',
                 'link'  => $baseUrl . 'licenses',
                 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -230,7 +230,7 @@ class CustomerProfileHandler extends ShortCode
                 </svg>'
             ],
             'downloads'        => [
-                'label' => __('Downloads', 'fluent-cart'),
+                'label' => __('Downloads', 'webmakerr-cart'),
                 'css_class' => 'fct_route',
                 'link'  => $baseUrl . 'downloads',
                 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -238,7 +238,7 @@ class CustomerProfileHandler extends ShortCode
                 </svg>'
             ],
             'profile'          => [
-                'label' => __('Profile', 'fluent-cart'),
+                'label' => __('Profile', 'webmakerr-cart'),
                 'css_class' => 'fct_route',
                 'link'  => $baseUrl . 'profile',
                 'icon_svg' => '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">

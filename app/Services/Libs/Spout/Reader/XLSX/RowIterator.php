@@ -147,7 +147,7 @@ class RowIterator implements IteratorInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the file path */
-                    esc_html__('Could not open "%s".', 'fluent-cart'),
+                    esc_html__('Could not open "%s".', 'webmakerr-cart'),
                     esc_html($this->sheetDataXMLFilePath)
                 )
             );
@@ -229,7 +229,7 @@ class RowIterator implements IteratorInterface
             throw new IOException(
                 sprintf(
                 /* translators: %1$s is the file path, %2$s is the error message */
-                    esc_html__('The %1$s file cannot be read. [%2$s]', 'fluent-cart'),
+                    esc_html__('The %1$s file cannot be read. [%2$s]', 'webmakerr-cart'),
                     esc_html($this->sheetDataXMLFilePath),
                     esc_html($exception->getMessage())
                 )

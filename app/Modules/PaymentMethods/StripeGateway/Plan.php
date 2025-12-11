@@ -31,7 +31,7 @@ class Plan
         $variation = ProductVariation::query()->find(Arr::get($data, 'variation_id'));
         $product = Product::query()->find(Arr::get($data, 'product_id'));
         if (!$variation || !$product) {
-            return new \WP_Error('invalid_product', esc_html__('Invalid product or variation.', 'fluent-cart'));
+            return new \WP_Error('invalid_product', esc_html__('Invalid product or variation.', 'webmakerr-cart'));
         }
 
         $originalInterval = Arr::get($data, 'billing_interval');
@@ -117,7 +117,7 @@ class Plan
         $product = Product::query()->find(Arr::get($data, 'product_id'));
 
         if (!$product) {
-            return new \WP_Error('invalid_product', esc_html__('Invalid product.', 'fluent-cart'));
+            return new \WP_Error('invalid_product', esc_html__('Invalid product.', 'webmakerr-cart'));
         }
 
         $sitePrefix = Helper::getSitePrefix();

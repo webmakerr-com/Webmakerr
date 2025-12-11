@@ -34,9 +34,9 @@ webmakerr_add_action('webmakerr_cart/order_customer_changed', function ($data) {
 webmakerr_add_filter('webmakerr_cart/editor_shortcodes', function ($shortCodes) {
     if (ModuleSettings::isActive('license')) {
         $shortCodes['license'] = [
-            'title'      => __('License', 'fluent-cart-pro'),
+            'title'      => __('License', 'webmakerr-cart-pro'),
             'shortcodes' => [
-                '{{order.licenses}}' => __('Order Licenses', 'fluent-cart-pro'),
+                '{{order.licenses}}' => __('Order Licenses', 'webmakerr-cart-pro'),
             ],
         ];
     }

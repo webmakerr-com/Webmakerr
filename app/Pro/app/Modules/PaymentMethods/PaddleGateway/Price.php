@@ -131,9 +131,9 @@ class Price
         $description = $formattedRecurringAmount . ' / ' . $data['billing_interval'];
 
         if (Arr::get($data, 'bill_times') > 0) {
-            $description .= ' - ' . __('For', 'fluent-cart-pro') . ' ' . Arr::get($data, 'bill_times') . ' ' . __('Times', 'fluent-cart-pro');
+            $description .= ' - ' . __('For', 'webmakerr-cart-pro') . ' ' . Arr::get($data, 'bill_times') . ' ' . __('Times', 'webmakerr-cart-pro');
         } else {
-            $description .= ' - ' . __('Until Cancel', 'fluent-cart-pro');
+            $description .= ' - ' . __('Until Cancel', 'webmakerr-cart-pro');
         }
 
         if (strlen($description) > 345) {
@@ -200,7 +200,7 @@ class Price
                 'frequency' => (int) Arr::get($data, 'trial_days')
             ];
 
-            $description .= ' - ' . __('Trial', 'fluent-cart-pro') . ' ' . Arr::get($data, 'trial_days') . ' ' . __('Days', 'fluent-cart-pro');
+            $description .= ' - ' . __('Trial', 'webmakerr-cart-pro') . ' ' . Arr::get($data, 'trial_days') . ' ' . __('Days', 'webmakerr-cart-pro');
             $priceData['description'] = $description;
         }
 

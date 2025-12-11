@@ -37,7 +37,7 @@ class CartDrawerRenderer
     public function render(){
         ?>
 
-            <div class="fct-cart-drawer-container" data-fluent-cart-cart-drawer-container role="complementary" aria-label="<?php esc_attr_e('Shopping Cart Drawer', 'fluent-cart'); ?>">
+            <div class="fct-cart-drawer-container" data-webmakerr-cart-cart-drawer-container role="complementary" aria-label="<?php esc_attr_e('Shopping Cart Drawer', 'webmakerr-cart'); ?>">
                 <div
                         class="fct-cart-drawer-overlay <?php echo esc_attr($this->defaultOpenCart ? 'active' : '') ?>" data-fluent-cart-cart-drawer-overlay
                         tabindex="-1"
@@ -49,7 +49,7 @@ class CartDrawerRenderer
                     data-fluent-cart-cart-drawer
                     role="dialog"
                     aria-modal="true"
-                    aria-label="<?php esc_attr_e('Shopping Cart', 'fluent-cart'); ?>"
+                    aria-label="<?php esc_attr_e('Shopping Cart', 'webmakerr-cart'); ?>"
                 >
                     <?php $this->renderCartLoader(); ?>
 
@@ -65,9 +65,9 @@ class CartDrawerRenderer
 
                 <button class="fct-cart-drawer-open-btn <?php echo esc_attr($this->itemCount > 0 ? '' : 'is-hidden') ?>"
                         data-fluent-cart-cart-expand-button
-                        aria-label="<?php esc_attr_e('Open Shopping Cart', 'fluent-cart'); ?>">
+                        aria-label="<?php esc_attr_e('Open Shopping Cart', 'webmakerr-cart'); ?>">
                     <img src="<?php echo esc_url(Vite::getAssetUrl('images/cart.svg')); ?>"
-                         alt="<?php esc_attr_e('Cart Icon', 'fluent-cart'); ?>"/>
+                         alt="<?php esc_attr_e('Cart Icon', 'webmakerr-cart'); ?>"/>
 
                     <?php $this->renderItemCount(); ?>
                 </button>
@@ -91,7 +91,7 @@ class CartDrawerRenderer
 
              <div class="fct-cart-drawer-header">
                  <h5 class="title">
-                     <?php esc_html_e('Shopping Cart', 'fluent-cart'); ?>
+                     <?php esc_html_e('Shopping Cart', 'webmakerr-cart'); ?>
                      <span>
                         &#40;
                         <span data-fluent-cart-cart-total-item
@@ -99,14 +99,14 @@ class CartDrawerRenderer
                               aria-live="polite">
                             <?php echo esc_html($this->itemCount); ?>
                         </span>
-                        <?php esc_html_e('Items', 'fluent-cart'); ?>
+                        <?php esc_html_e('Items', 'webmakerr-cart'); ?>
                         &#41;
                     </span>
                  </h5>
 
                  <button data-fluent-cart-cart-collapse-button
                          class="fct-cart-drawer-close-button"
-                         aria-label="<?php esc_attr_e('Close Cart', 'fluent-cart'); ?>">
+                         aria-label="<?php esc_attr_e('Close Cart', 'webmakerr-cart'); ?>">
                      <svg xmlns="http://www.w3.org/2000/svg"
                           width="16" height="16"
                           viewBox="0 0 16 16"

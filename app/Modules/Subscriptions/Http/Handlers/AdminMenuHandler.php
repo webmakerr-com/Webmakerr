@@ -21,7 +21,7 @@ class AdminMenuHandler
         $baseUrl = Arr::get($args, 'base_url');
 
         $items['subscriptions'] = [
-            'label' => __('Subscriptions', 'fluent-cart'),
+            'label' => __('Subscriptions', 'webmakerr-cart'),
             'link'  => $baseUrl . 'subscriptions',
             'permission' => ['subscriptions/view']
         ];
@@ -30,4 +30,3 @@ class AdminMenuHandler
     }
 
 }
-

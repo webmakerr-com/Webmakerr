@@ -20,7 +20,7 @@ return array(
     ),
     'AL' => array(
         'state' => array(
-            'label' => __( 'County', 'fluent-cart' ),
+            'label' => __( 'County', 'webmakerr-cart' ),
         ),
     ),
     'AO' => array(
@@ -29,7 +29,7 @@ return array(
             'hidden'   => true,
         ),
         'state'    => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'AT' => array(
@@ -43,13 +43,13 @@ return array(
     ),
     'AU' => array(
         'city'     => array(
-            'label' => __( 'Suburb', 'fluent-cart' ),
+            'label' => __( 'Suburb', 'webmakerr-cart' ),
         ),
         'postcode' => array(
-            'label' => __( 'Postcode', 'fluent-cart' ),
+            'label' => __( 'Postcode', 'webmakerr-cart' ),
         ),
         'state'    => array(
-            'label' => __( 'State', 'fluent-cart' ),
+            'label' => __( 'State', 'webmakerr-cart' ),
         ),
     ),
     'AX' => array(
@@ -66,7 +66,7 @@ return array(
             'priority' => 65,
         ),
         'state'    => array(
-            'label'    => __( 'Canton', 'fluent-cart' ),
+            'label'    => __( 'Canton', 'webmakerr-cart' ),
             'required' => false,
             'hidden'   => true,
         ),
@@ -76,7 +76,7 @@ return array(
             'required' => false,
         ),
         'state'    => array(
-            'label' => __( 'District', 'fluent-cart' ),
+            'label' => __( 'District', 'webmakerr-cart' ),
         ),
     ),
     'BE' => array(
@@ -114,7 +114,7 @@ return array(
             'hidden'   => true,
         ),
         'state'    => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'BS' => array(
@@ -131,7 +131,7 @@ return array(
         'state'    => array(
             'required' => false,
             'hidden'   => true,
-            'label'    => __( 'District', 'fluent-cart' ),
+            'label'    => __( 'District', 'webmakerr-cart' ),
         ),
     ),
     'BZ' => array(
@@ -145,10 +145,10 @@ return array(
     ),
     'CA' => array(
         'postcode' => array(
-            'label' => __( 'Postal code', 'fluent-cart' ),
+            'label' => __( 'Postal code', 'webmakerr-cart' ),
         ),
         'state'    => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'CH' => array(
@@ -156,7 +156,7 @@ return array(
             'priority' => 65,
         ),
         'state'    => array(
-            'label'    => __( 'Canton', 'fluent-cart' ),
+            'label'    => __( 'Canton', 'webmakerr-cart' ),
             'required' => false,
         ),
     ),
@@ -169,12 +169,12 @@ return array(
             'hidden'   => 'CL'
         ),
         'state'    => array(
-            'label' => __( 'Region', 'fluent-cart' ),
+            'label' => __( 'Region', 'webmakerr-cart' ),
         ),
     ),
     'CN' => array(
         'state' => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'CO' => array(
@@ -182,12 +182,12 @@ return array(
             'required' => false,
         ),
         'state'    => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'CR' => array(
         'state' => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'CW' => array(
@@ -230,12 +230,12 @@ return array(
     ),
     'DO' => array(
         'state' => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'EC' => array(
         'state' => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'EE' => array(
@@ -274,7 +274,7 @@ return array(
     'GG' => array(
         'state' => array(
             'required' => false,
-            'label'    => __( 'Parish', 'fluent-cart' ),
+            'label'    => __( 'Parish', 'webmakerr-cart' ),
         ),
     ),
     'GH' => array(
@@ -282,7 +282,7 @@ return array(
             'required' => false,
         ),
         'state'    => array(
-            'label' => __( 'Region', 'fluent-cart' ),
+            'label' => __( 'Region', 'webmakerr-cart' ),
         ),
     ),
     'GP' => array(
@@ -307,7 +307,7 @@ return array(
             'required' => false,
         ),
         'state'    => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'HK' => array(
@@ -315,15 +315,15 @@ return array(
             'required' => false,
         ),
         'city'     => array(
-            'label' => __( 'Town / District', 'fluent-cart' ),
+            'label' => __( 'Town / District', 'webmakerr-cart' ),
         ),
         'state'    => array(
-            'label' => __( 'Region', 'fluent-cart' ),
+            'label' => __( 'Region', 'webmakerr-cart' ),
         ),
     ),
     'HN' => array(
         'state' => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'HU' => array(
@@ -349,22 +349,22 @@ return array(
             'priority' => 72,
         ),
         'state'      => array(
-            'label'    => __( 'County', 'fluent-cart' ),
+            'label'    => __( 'County', 'webmakerr-cart' ),
             'required' => false,
         ),
     ),
     'ID' => array(
         'state' => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'IE' => array(
         'postcode' => array(
             'required' => true,
-            'label'    => __( 'Eircode', 'fluent-cart' ),
+            'label'    => __( 'Eircode', 'webmakerr-cart' ),
         ),
         'state'    => array(
-            'label' => __( 'County', 'fluent-cart' ),
+            'label' => __( 'County', 'webmakerr-cart' ),
         ),
     ),
     'IS' => array(
@@ -393,10 +393,10 @@ return array(
     ),
     'IN' => array(
         'postcode' => array(
-            'label' => __( 'PIN Code', 'fluent-cart' ),
+            'label' => __( 'PIN Code', 'webmakerr-cart' ),
         ),
         'state'    => array(
-            'label' => __( 'State', 'fluent-cart' ),
+            'label' => __( 'State', 'webmakerr-cart' ),
         ),
     ),
     'IR' => array(
@@ -419,20 +419,20 @@ return array(
         ),
         'state'    => array(
             'required' => true,
-            'label'    => __( 'Province', 'fluent-cart' ),
+            'label'    => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'JM' => array(
         'city'     => array(
-            'label' => __( 'Town / City / Post Office', 'fluent-cart' ),
+            'label' => __( 'Town / City / Post Office', 'webmakerr-cart' ),
         ),
         'postcode' => array(
             'required' => false,
-            'label'    => __( 'Postal Code', 'fluent-cart' ),
+            'label'    => __( 'Postal Code', 'webmakerr-cart' ),
         ),
         'state'    => array(
             'required' => true,
-            'label'    => __( 'Parish', 'fluent-cart' ),
+            'label'    => __( 'Parish', 'webmakerr-cart' ),
         ),
     ),
     'JP' => array(
@@ -449,7 +449,7 @@ return array(
             'priority' => 65,
         ),
         'state'      => array(
-            'label'    => __( 'Prefecture', 'fluent-cart' ),
+            'label'    => __( 'Prefecture', 'webmakerr-cart' ),
             'class'    => array( 'form-row-last', 'address-field' ),
             'priority' => 66,
         ),
@@ -466,11 +466,11 @@ return array(
     'KN' => array(
         'postcode' => array(
             'required' => false,
-            'label'    => __( 'Postal code', 'fluent-cart' ),
+            'label'    => __( 'Postal code', 'webmakerr-cart' ),
         ),
         'state'    => array(
             'required' => true,
-            'label'    => __( 'Parish', 'fluent-cart' ),
+            'label'    => __( 'Parish', 'webmakerr-cart' ),
         ),
     ),
     'KR' => array(
@@ -487,7 +487,7 @@ return array(
     ),
     'LV' => array(
         'state' => array(
-            'label'    => __( 'Municipality', 'fluent-cart' ),
+            'label'    => __( 'Municipality', 'webmakerr-cart' ),
             'required' => false,
         ),
     ),
@@ -521,12 +521,12 @@ return array(
             'hidden'   => true,
         ),
         'state'    => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'NI' => array(
         'state' => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'NL' => array(
@@ -540,21 +540,21 @@ return array(
     ),
     'NG' => array(
         'postcode' => array(
-            'label'    => __( 'Postcode', 'fluent-cart' ),
+            'label'    => __( 'Postcode', 'webmakerr-cart' ),
             'required' => false,
             'hidden'   => true,
         ),
         'state'    => array(
-            'label' => __( 'State', 'fluent-cart' ),
+            'label' => __( 'State', 'webmakerr-cart' ),
         ),
     ),
     'NZ' => array(
         'postcode' => array(
-            'label' => __( 'Postcode', 'fluent-cart' ),
+            'label' => __( 'Postcode', 'webmakerr-cart' ),
         ),
         'state'    => array(
             'required' => false,
-            'label'    => __( 'Region', 'fluent-cart' ),
+            'label'    => __( 'Region', 'webmakerr-cart' ),
         ),
     ),
     'NO' => array(
@@ -568,7 +568,7 @@ return array(
     ),
     'NP' => array(
         'state'    => array(
-            'label' => __( 'State / Zone', 'fluent-cart' ),
+            'label' => __( 'State / Zone', 'webmakerr-cart' ),
         ),
         'postcode' => array(
             'required' => false,
@@ -576,7 +576,7 @@ return array(
     ),
     'PA' => array(
         'state' => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'PL' => array(
@@ -590,7 +590,7 @@ return array(
     ),
     'PR' => array(
         'city'  => array(
-            'label' => __( 'Municipality', 'fluent-cart' ),
+            'label' => __( 'Municipality', 'webmakerr-cart' ),
         ),
         'state' => array(
             'required' => false,
@@ -605,7 +605,7 @@ return array(
     ),
     'PY' => array(
         'state' => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'RE' => array(
@@ -616,7 +616,7 @@ return array(
     ),
     'RO' => array(
         'state' => array(
-            'label'    => __( 'County', 'fluent-cart' ),
+            'label'    => __( 'County', 'webmakerr-cart' ),
             'required' => true,
         ),
     ),
@@ -628,7 +628,7 @@ return array(
             'required' => true,
         ),
         'state'    => array(
-            'label'    => __( 'District', 'fluent-cart' ),
+            'label'    => __( 'District', 'webmakerr-cart' ),
             'required' => false,
         ),
     ),
@@ -673,7 +673,7 @@ return array(
     ),
     'SV' => array(
         'state' => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'ES' => array(
@@ -681,7 +681,7 @@ return array(
             'priority' => 65,
         ),
         'state'    => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'LI' => array(
@@ -707,7 +707,7 @@ return array(
     ),
     'MD' => array(
         'state' => array(
-            'label' => __( 'Municipality / District', 'fluent-cart' ),
+            'label' => __( 'Municipality / District', 'webmakerr-cart' ),
         ),
     ),
     'SE' => array(
@@ -724,7 +724,7 @@ return array(
             'priority' => 65,
         ),
         'state'    => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'UG' => array(
@@ -733,33 +733,33 @@ return array(
             'hidden'   => true,
         ),
         'city'     => array(
-            'label'    => __( 'Town / Village', 'fluent-cart' ),
+            'label'    => __( 'Town / Village', 'webmakerr-cart' ),
             'required' => true,
         ),
         'state'    => array(
-            'label'    => __( 'District', 'fluent-cart' ),
+            'label'    => __( 'District', 'webmakerr-cart' ),
             'required' => true,
         ),
     ),
     'US' => array(
         'postcode' => array(
-            'label' => __( 'ZIP Code', 'fluent-cart' ),
+            'label' => __( 'ZIP Code', 'webmakerr-cart' ),
         ),
         'state'    => array(
-            'label' => __( 'State', 'fluent-cart' ),
+            'label' => __( 'State', 'webmakerr-cart' ),
         ),
     ),
     'UY' => array(
         'state' => array(
-            'label' => __( 'Department', 'fluent-cart' ),
+            'label' => __( 'Department', 'webmakerr-cart' ),
         ),
     ),
     'GB' => array(
         'postcode' => array(
-            'label' => __( 'Postcode', 'fluent-cart' ),
+            'label' => __( 'Postcode', 'webmakerr-cart' ),
         ),
         'state'    => array(
-            'label'    => __( 'County', 'fluent-cart' ),
+            'label'    => __( 'County', 'webmakerr-cart' ),
             'required' => false,
         ),
     ),
@@ -769,7 +769,7 @@ return array(
             'hidden'   => true,
         ),
         'state'    => array(
-            'label' => __( 'District', 'fluent-cart' ),
+            'label' => __( 'District', 'webmakerr-cart' ),
         ),
     ),
     'VN' => array(
@@ -801,7 +801,7 @@ return array(
     ),
     'ZA' => array(
         'state' => array(
-            'label' => __( 'Province', 'fluent-cart' ),
+            'label' => __( 'Province', 'webmakerr-cart' ),
         ),
     ),
     'ZW' => array(

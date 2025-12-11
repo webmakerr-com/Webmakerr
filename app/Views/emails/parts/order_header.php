@@ -17,12 +17,12 @@ use Webmakerr\App\Modules\Tax\TaxModule;?>
                         </h1>
                     </td>
                     <td style="vertical-align: middle; width: 15%; text-align: right; border: 0;padding-right: 10px;">
-                        <p style="white-space: nowrap; color: #94a3b8; text-align: right; margin: 0;font-size:12px;"><?php echo esc_html__('Order Date', 'fluent-cart'); ?></p>
+                        <p style="white-space: nowrap; color: #94a3b8; text-align: right; margin: 0;font-size:12px;"><?php echo esc_html__('Order Date', 'webmakerr-cart'); ?></p>
                         <p style="white-space: nowrap; font-weight: bold; color: #000; text-align: right; margin: 0;font-size:15px;">{{order.created_at}}</p>
                     </td>
                     <td style="width:15%;text-align:right">
                         <p style="white-space: nowrap; color: #94a3b8; text-align: right; margin: 0;font-size:12px;">
-                            <?php echo esc_html__('Order #', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Order #', 'webmakerr-cart'); ?>
                         </p>
                         <p style="white-space: nowrap; font-weight: bold; color: #000; text-align: right; margin: 0;font-size:14px;">
                             <?php echo esc_html($order->invoice_no); ?>

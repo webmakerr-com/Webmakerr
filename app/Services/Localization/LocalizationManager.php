@@ -597,7 +597,7 @@ class LocalizationManager
                 static function ($attribute, $value) use ($countries) {
                     $isValid = Arr::has($countries, $value);
                     if (!$isValid) {
-                        return __('Invalid country code.', 'fluent-cart');
+                        return __('Invalid country code.', 'webmakerr-cart');
                     }
                 }
             ]);
@@ -608,7 +608,7 @@ class LocalizationManager
                 'required' => static function ($attribute, $value) use ($stateRequired) {
 
                     if ($stateRequired && !$value) {
-                        return __('State is required.', 'fluent-cart');
+                        return __('State is required.', 'webmakerr-cart');
                     }
                     return null;
                 },
@@ -624,7 +624,7 @@ class LocalizationManager
                     if ($country && $value) {
                         $isValid = Arr::has($states, $value);
                         if (!$isValid) {
-                            return __('Invalid state code.', 'fluent-cart');
+                            return __('Invalid state code.', 'webmakerr-cart');
                         }
                     }
 
@@ -648,7 +648,7 @@ class LocalizationManager
 //                    static function ($attribute, $value) use ($countries) {
 //                        $isValid = Arr::has($countries, $value);
 //                        if (!$isValid) {
-//                            return __('Invalid country code.', 'fluent-cart');
+//                            return __('Invalid country code.', 'webmakerr-cart');
 //                        }
 //                    }
 //                ]
@@ -657,14 +657,14 @@ class LocalizationManager
 //                [
 //                    static function ($attribute, $value) use ($stateRequired) {
 //                        if ($stateRequired && !$value) {
-//                            return __('State is required.', 'fluent-cart');
+//                            return __('State is required.', 'webmakerr-cart');
 //                        }
 //                    },
 //                    static function ($attribute, $value) use ($data, $country, $states) {
 //                        if ($country && $value) {
 //                            $isValid = Arr::has($states, $value);
 //                            if (!$isValid) {
-//                                return __('Invalid state code 2.', 'fluent-cart');
+//                                return __('Invalid state code 2.', 'webmakerr-cart');
 //                            }
 //                        }
 //                    }

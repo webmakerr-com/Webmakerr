@@ -58,7 +58,7 @@ abstract class Color
             throw new InvalidColorException(
                 sprintf(
                 /* translators: %s is the color component value */
-                    esc_html__('The RGB components must be between 0 and 255. Received: %s', 'fluent-cart'),
+                    esc_html__('The RGB components must be between 0 and 255. Received: %s', 'webmakerr-cart'),
                     esc_html($colorComponent)
                 )
             );

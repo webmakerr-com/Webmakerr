@@ -54,11 +54,11 @@ class LabelFilter extends BaseFilter
             $otherFilters,
             [
                 'labels' => [
-                    'label'    => __('Labels', 'fluent-cart'),
+                    'label'    => __('Labels', 'webmakerr-cart'),
                     'value'    => 'labels',
                     'children' => [
                         [
-                            'label'           => __('Label Name', 'fluent-cart'),
+                            'label'           => __('Label Name', 'webmakerr-cart'),
                             'value'           => 'customer_email',
                             'type'            => 'selections',
                             'filter_type'     => 'relation',

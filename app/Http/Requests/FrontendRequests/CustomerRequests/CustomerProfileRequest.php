@@ -50,12 +50,12 @@ class CustomerProfileRequest extends RequestGuard
     public function messages()
     {
         return [
-            'name.required' => esc_html__('Name field is required.', 'fluent-cart'),
-            'address_1.required' => esc_html__('Full Address is required.', 'fluent-cart'),
-            'city.required'      => esc_html__('City field is required.', 'fluent-cart'),
-            'postcode.required'  => esc_html__('Postcode field is required.', 'fluent-cart'),
-            'country.required'   => esc_html__('Country field is required.', 'fluent-cart'),
-            'email.required'     => esc_html__('Email field is required.', 'fluent-cart')
+            'name.required' => esc_html__('Name field is required.', 'webmakerr-cart'),
+            'address_1.required' => esc_html__('Full Address is required.', 'webmakerr-cart'),
+            'city.required'      => esc_html__('City field is required.', 'webmakerr-cart'),
+            'postcode.required'  => esc_html__('Postcode field is required.', 'webmakerr-cart'),
+            'country.required'   => esc_html__('Country field is required.', 'webmakerr-cart'),
+            'email.required'     => esc_html__('Email field is required.', 'webmakerr-cart')
         ];
     }
 

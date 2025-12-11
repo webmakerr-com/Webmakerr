@@ -16,12 +16,12 @@
                 <tr style="width:100%">
                     <td style="width:80%">
                         <p style="font-size:12px;font-weight:600;color:rgb(55,65,81);text-transform:uppercase;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                            <?php esc_html_e('Subscription', 'fluent-cart'); ?>
+                            <?php esc_html_e('Subscription', 'webmakerr-cart'); ?>
                         </p>
                     </td>
                     <td data-id="__react-email-column" style="width:20%;text-align:right">
                         <p style="font-size:12px;font-weight:600;color:rgb(55,65,81);text-transform:uppercase;margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                            <?php esc_html_e('Price', 'fluent-cart'); ?>
+                            <?php esc_html_e('Price', 'webmakerr-cart'); ?>
                         </p>
                     </td>
                 </tr>
@@ -59,7 +59,7 @@
                 <tr style="width:100%">
                     <td style="width:70%"><p
                                 style="font-size:16px;font-weight:700;color:rgb(17,24,39);margin:0px;line-height:24px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
-                            <?php esc_html_e('Total', 'fluent-cart'); ?>
+                            <?php esc_html_e('Total', 'webmakerr-cart'); ?>
                         </p>
                     </td>
                     <td style="width:30%;text-align:right">
@@ -76,7 +76,7 @@
                 <tr style="width:100%">
                     <td style="width:70%">
                         <p>
-                            <?php esc_html_e('Payment Method', 'fluent-cart'); ?>
+                            <?php esc_html_e('Payment Method', 'webmakerr-cart'); ?>
                         </p>
                     </td>
                     <td style="width:30%;text-align:right">

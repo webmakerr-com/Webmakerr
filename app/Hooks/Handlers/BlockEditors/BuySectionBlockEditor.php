@@ -39,8 +39,8 @@ class BuySectionBlockEditor extends BlockEditor
             $this->getLocalizationKey()     => [
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
-                'title'             => __('Buy Section', 'fluent-cart'),
-                'description'       => __('This block will display the buy section.', 'fluent-cart'),
+                'title'             => __('Buy Section', 'webmakerr-cart'),
+                'description'       => __('This block will display the buy section.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
             ],
             'fluent_cart_block_translation' => TransStrings::blockStrings(),

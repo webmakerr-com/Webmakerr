@@ -116,7 +116,7 @@ class ThankYouRender
                     </svg>
                 </div>
                 <h1 class="fct-thank-you-page-header-title" style="color:<?php echo esc_attr($titleColor); ?>">
-                    <?php echo esc_html__('Payment Pending!', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Payment Pending!', 'webmakerr-cart'); ?>
                 </h1>
 
             <?php else: ?>
@@ -127,7 +127,7 @@ class ThankYouRender
                     </svg>
                 </div>
                 <h1 class="fct-thank-you-page-header-title" style="color:<?php echo esc_attr($titleColor); ?>;">
-                    <?php echo esc_html__('Purchase Successful!', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Purchase Successful!', 'webmakerr-cart'); ?>
                 </h1>
             <?php endif; ?>
 
@@ -186,7 +186,7 @@ class ThankYouRender
                 <?php
                 echo sprintf(
                         /* translators: %s is the customer's full name */
-                    esc_html__('Hello %s!', 'fluent-cart'),
+                    esc_html__('Hello %s!', 'webmakerr-cart'),
                     esc_html($order->customer->full_name)
                 );
                 ?>
@@ -196,10 +196,10 @@ class ThankYouRender
                     <?php
                     printf(
                         '%s<strong style="color: #007bff;"><a href="%s">#%s</a></strong>%s',
-                        esc_html__('Your order ', 'fluent-cart'),
+                        esc_html__('Your order ', 'webmakerr-cart'),
                         esc_url($profilePage . 'order/' . $order->uuid),
                         esc_html($order->invoice_no),
-                        esc_html__(' has been placed successfully.', 'fluent-cart')
+                        esc_html__(' has been placed successfully.', 'webmakerr-cart')
                     );
                     ?>
                 </p>
@@ -210,10 +210,10 @@ class ThankYouRender
                     printf(
                         '<strong style="color: #007bff;"><a href="%s">%s</a></strong> %s <a style="color: #007bff;" target="_blank" href="%s">%s</a>.',
                         esc_url($profilePage . 'order/' . $order->uuid),
-                        esc_html__('Your order', 'fluent-cart'),
-                        esc_html__('has payment due. You can pay from', 'fluent-cart'),
+                        esc_html__('Your order', 'webmakerr-cart'),
+                        esc_html__('has payment due. You can pay from', 'webmakerr-cart'),
                         esc_url(\Webmakerr\App\Services\Payments\PaymentHelper::getCustomPaymentLink($order->uuid)),
-                        esc_html__('here', 'fluent-cart')
+                        esc_html__('here', 'webmakerr-cart')
                     );
                     ?>
 
@@ -263,10 +263,10 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-header">
             <div class="fct-thank-you-page-order-items-header-row">
-                <?php echo esc_html__('Item', 'fluent-cart'); ?>
+                <?php echo esc_html__('Item', 'webmakerr-cart'); ?>
             </div>
             <div class="fct-thank-you-page-order-items-header-row">
-                <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
             </div>
         </div>
         <?php
@@ -339,7 +339,7 @@ class ThankYouRender
         $taxtotal = $order->tax_total + $order->shipping_tax;
         if (Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.valid') && !$taxtotal): ?>
             <div style="text-align: right; font-size: 14px; margin-top: 10px;">
-                <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'fluent-cart') ?>
+                <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'webmakerr-cart') ?>
             </div>
         <?php
         endif;
@@ -351,7 +351,7 @@ class ThankYouRender
         if ($order->subtotal != $order->total_amount || $order->tax_total > 0): ?>
             <div class="fct-thank-you-page-order-items-total-subtotal">
                 <div class="fct-thank-you-page-order-items-total-label">
-                    <?php echo esc_html__('Subtotal', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Subtotal', 'webmakerr-cart'); ?>
                 </div>
                 <div class="fct-thank-you-page-order-items-total-value"><?php echo esc_html(Helper::toDecimal($order->subtotal)); ?></div>
             </div>
@@ -365,7 +365,7 @@ class ThankYouRender
         if ($order->manual_discount_total + $order->coupon_discount_total > 0): ?>
             <div class="fct-thank-you-page-order-items-total-discount">
                 <div class="fct-thank-you-page-order-items-total-label">
-                    <?php echo esc_html__('Discount', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Discount', 'webmakerr-cart'); ?>
                 </div>
                 <div class="fct-thank-you-page-order-items-total-value">
                     - <?php echo esc_html(Helper::toDecimal($order->manual_discount_total + $order->coupon_discount_total)); ?>
@@ -381,7 +381,7 @@ class ThankYouRender
         if ($order->shipping_total > 0): ?>
             <div class="fct-thank-you-page-order-items-total-shipping">
                 <div class="fct-thank-you-page-order-items-total-label">
-                    <?php echo esc_html__('Shipping', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Shipping', 'webmakerr-cart'); ?>
                 </div>
                 <div class="fct-thank-you-page-order-items-total-value"><?php echo esc_html(Helper::toDecimal($order->shipping_total)); ?></div>
             </div>
@@ -395,8 +395,8 @@ class ThankYouRender
         if ($order->tax_total > 0): ?>
             <div class="fct-thank-you-page-order-items-total-tax">
                 <div class="fct-thank-you-page-order-items-total-label">
-                    <?php echo esc_html__('Total Tax', 'fluent-cart'); ?>
-                    <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'fluent-cart') : esc_html__('(Excluded)', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Total Tax', 'webmakerr-cart'); ?>
+                    <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'webmakerr-cart') : esc_html__('(Excluded)', 'webmakerr-cart'); ?>
                 </div>
                 <div class="fct-thank-you-page-order-items-total-value">
                     <?php echo esc_html(Helper::toDecimal($order->tax_total)); ?>
@@ -412,8 +412,8 @@ class ThankYouRender
         if ($order->shipping_tax > 0): ?>
             <div class="fct-thank-you-page-order-items-total-shipping-tax">
                 <div class="fct-thank-you-page-order-items-total-label">
-                    <?php echo esc_html__('Shipping Tax', 'fluent-cart'); ?>
-                    <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'fluent-cart') : esc_html__('(Excluded)', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Shipping Tax', 'webmakerr-cart'); ?>
+                    <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'webmakerr-cart') : esc_html__('(Excluded)', 'webmakerr-cart'); ?>
                 </div>
                 <div class="fct-thank-you-page-order-items-total-value">
                     <?php echo esc_html(Helper::toDecimal($order->shipping_tax)); ?>
@@ -429,7 +429,7 @@ class ThankYouRender
         if ($order->total_refund > 0): ?>
             <div class="fct-thank-you-page-order-items-total-refund">
                 <div class="fct-thank-you-page-order-items-total-label">
-                    <?php echo esc_html__('Refund', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Refund', 'webmakerr-cart'); ?>
                 </div>
                 <div class="fct-thank-you-page-order-items-total-value">
                     - <?php echo esc_html(Helper::toDecimal($order->total_refund)); ?>
@@ -444,7 +444,7 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-total-total">
             <div class="fct-thank-you-page-order-items-total-label">
-                <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
             </div>
             <div class="fct-thank-you-page-order-items-total-value">
                 <?php echo esc_html(Helper::toDecimal($order->total_amount - $order->total_refund)); ?>
@@ -460,7 +460,7 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-total-payment-method">
             <div class="fct-thank-you-page-order-items-total-label">
-                <?php echo esc_html__('Payment Method', 'fluent-cart'); ?>
+                <?php echo esc_html__('Payment Method', 'webmakerr-cart'); ?>
             </div>
             <div class="fct-thank-you-page-order-items-total-value">
                 <?php if ($transaction->card_last_4) :
@@ -484,7 +484,7 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-subscriptions">
             <p class="fct-thank-you-page-order-items-subscriptions-heading">
-                <?php echo esc_html__('Subscription Details', 'fluent-cart'); ?>
+                <?php echo esc_html__('Subscription Details', 'webmakerr-cart'); ?>
             </p>
 
             <table class="fct-thank-you-page-order-items-subscriptions-table" role="presentation">
@@ -509,7 +509,7 @@ class ThankYouRender
                                     <p class="fct-thank-you-page-order-items-subscriptions-billing-infos-next-billing"><?php
                                         echo sprintf(
                                             /* translators: 1: Next billing date */
-                                                esc_html__('- Auto renews on %1$s', 'fluent-cart'),
+                                                esc_html__('- Auto renews on %1$s', 'webmakerr-cart'),
                                                 esc_html(
                                                         \Webmakerr\App\Services\DateTime\DateTime::anyTimeToGmt($subs->next_billing_date)->format('M d, Y h:i A')
                                                 )
@@ -543,7 +543,7 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-downloads">
             <p class="fct-thank-you-page-order-items-downloads-heading">
-                <?php echo esc_html__('Downloads', 'fluent-cart'); ?>
+                <?php echo esc_html__('Downloads', 'webmakerr-cart'); ?>
             </p>
 
             <table class="fct-thank-you-page-order-items-downloads-table"
@@ -572,7 +572,7 @@ class ThankYouRender
                                                         </td>
                                                         <td class="fct-thank-you-page-order-items-downloads-button">
                                                             <a href="<?php echo esc_url($download['download_url'] ?? ''); ?>">
-                                                                <?php echo esc_html__('Download', 'fluent-cart'); ?>
+                                                                <?php echo esc_html__('Download', 'webmakerr-cart'); ?>
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -612,11 +612,11 @@ class ThankYouRender
             <tr>
                 <td>
                     <p class="fct-thank-you-page-order-items-downloads-notice-title">
-                        <?php echo esc_html__('Important', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Important', 'webmakerr-cart'); ?>
                     </p>
                     <p class="fct-thank-you-page-order-items-downloads-notice-content">
                         <?php echo esc_html__('This download link is valid for 7 days. After that, you can download the files again from your account
-                        on our website.', 'fluent-cart'); ?>
+                        on our website.', 'webmakerr-cart'); ?>
                     </p>
                 </td>
             </tr>
@@ -639,10 +639,10 @@ class ThankYouRender
             <tr>
                 <td>
                     <p class="fct-thank-you-page-order-items-downloads-notice-title">
-                        <?php echo esc_html__('Important', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Important', 'webmakerr-cart'); ?>
                     </p>
                     <p class="fct-thank-you-page-order-items-downloads-notice-content">
-                        <?php echo esc_html__('This download link is valid for 7 days. After that, you can download the files again from your account on our website.', 'fluent-cart'); ?>
+                        <?php echo esc_html__('This download link is valid for 7 days. After that, you can download the files again from your account on our website.', 'webmakerr-cart'); ?>
                     </p>
                 </td>
             </tr>
@@ -661,7 +661,7 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-licenses">
             <p class="fct-thank-you-page-order-items-licenses-heading">
-                <?php echo esc_html__('Licenses', 'fluent-cart'); ?>
+                <?php echo esc_html__('Licenses', 'webmakerr-cart'); ?>
             </p>
             <table class="fct-thank-you-page-order-items-licenses-table" role="presentation">
                 <tbody>
@@ -709,7 +709,7 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-addresses-bill-to">
             <h5>
-                <?php echo esc_html__('Bill To', 'fluent-cart'); ?>
+                <?php echo esc_html__('Bill To', 'webmakerr-cart'); ?>
             </h5>
             <?php
             if (!empty($order->billing_address)) :
@@ -751,7 +751,7 @@ class ThankYouRender
                 <?php
                 $vatNumber = Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.vat_number', '');
                 if ($vatNumber !== '') {
-                    echo esc_html__('EU VAT', 'fluent-cart') . ': ' . esc_html($vatNumber);
+                    echo esc_html__('EU VAT', 'webmakerr-cart') . ': ' . esc_html($vatNumber);
                 }
                 ?>
             </div>
@@ -765,7 +765,7 @@ class ThankYouRender
         ?>
         <div class="fct-thank-you-page-order-items-addresses-ship-to">
             <h5 class="fct-thank-you-page-order-items-addresses-ship-to-title">
-                <?php echo esc_html__('Ship To', 'fluent-cart'); ?>
+                <?php echo esc_html__('Ship To', 'webmakerr-cart'); ?>
             </h5>
             <?php if (!empty($order->shipping_address)) : ?>
                 <div class="fct-thank-you-page-order-items-addresses-ship-to-address">
@@ -812,7 +812,7 @@ class ThankYouRender
         <a
             class="fct-thank-you-page-view-order-button"
             href="<?php echo esc_url($profilePage . 'order/' . $order->uuid); ?>">
-            <?php echo esc_html__('View Order', 'fluent-cart'); ?>
+            <?php echo esc_html__('View Order', 'webmakerr-cart'); ?>
         </a>
         <?php
     }
@@ -831,7 +831,7 @@ class ThankYouRender
                     'download'    => 1
                 ]
             )) ?>">
-            <?php echo esc_html__('Download Receipt', 'fluent-cart'); ?>
+            <?php echo esc_html__('Download Receipt', 'webmakerr-cart'); ?>
         </a>
         <?php
     }

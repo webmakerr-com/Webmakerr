@@ -199,7 +199,7 @@ class Taxonomy
 
             if (is_wp_error($search_results)) {
                 wp_send_json([
-                    'message' => __('Failed to fetch search results.', 'fluent-cart'),
+                    'message' => __('Failed to fetch search results.', 'webmakerr-cart'),
                 ], 500);
             }
 
@@ -221,7 +221,7 @@ class Taxonomy
         if (is_wp_error($terms)) {
             return wp_send_json([
                 /* translators: %s - taxonomy name */
-                'message' => sprintf(__('Failed to fetch %s.', 'fluent-cart'), Str::lower($labels['name'])),
+                'message' => sprintf(__('Failed to fetch %s.', 'webmakerr-cart'), Str::lower($labels['name'])),
             ], 500);
         }
 

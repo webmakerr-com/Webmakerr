@@ -12,8 +12,8 @@ class CoreDependencyHandler
         // add a link to an admin menu which will redirect to /portal
         add_action('admin_menu', function () {
             add_menu_page(
-                __('Webmakerrr®', 'fluent-cart-pro'),
-                __('Webmakerrr®', 'fluent-cart-pro'),
+                __('Webmakerrr®', 'webmakerr-cart-pro'),
+                __('Webmakerrr®', 'webmakerr-cart-pro'),
                 'edit_posts',
                 'webmakerr',
                 [$this, 'showAdminPage'],
@@ -74,10 +74,10 @@ class CoreDependencyHandler
     {
         vite::enqueueScript('fluent-cart-pro-onboard', 'admin/onboarding/onboarding-app.js', ['jquery'], WEBMAKERR_PRO_PLUGIN_VERSION, true);
 
-        $text = __('Install Plugin', 'fluent-cart-pro');
+        $text = __('Install Plugin', 'webmakerr-cart-pro');
 
         if (file_exists(WP_PLUGIN_DIR . '/fluent-cart/fluent-cart.php')) {
-            $text = __('Activate Plugin', 'fluent-cart-pro');
+            $text = __('Activate Plugin', 'webmakerr-cart-pro');
         }
 
         wp_localize_script('fluent-cart-pro-onboard', 'fluentCartOnboardingAdmin', [
@@ -137,11 +137,11 @@ class CoreDependencyHandler
         $UrlMaps = [
             'fluent-cart' => [
                 'admin_url' => admin_url('admin.php?page=webmakerr'),
-                'title'     => __('Go to FluentCart Dashboard', 'fluent-cart-pro'),
+                'title'     => __('Go to FluentCart Dashboard', 'webmakerr-cart-pro'),
             ],
         ];
         if (!isset($UrlMaps[$pluginSlug]) || (defined('DISALLOW_FILE_MODS') && DISALLOW_FILE_MODS)) {
-            return new \WP_Error('invalid_plugin', __('Invalid plugin or file mods are disabled.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_plugin', __('Invalid plugin or file mods are disabled.', 'webmakerr-cart-pro'));
         }
 
         try {

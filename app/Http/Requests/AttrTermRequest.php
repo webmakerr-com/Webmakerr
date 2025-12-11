@@ -34,8 +34,8 @@ class AttrTermRequest extends RequestGuard
     public function messages()
     {
         return [
-            'title.required' => esc_html__('Title is required', 'fluent-cart'),
-            'slug.required' => esc_html__('Slug is required', 'fluent-cart'),
+            'title.required' => esc_html__('Title is required', 'webmakerr-cart'),
+            'slug.required' => esc_html__('Slug is required', 'webmakerr-cart'),
 
         ];
     }

@@ -23,7 +23,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         if ($errorResponse !== null) {
             // Return error if user is not logged in
             return $this->sendSuccess([
-                'message'       => __('Success', 'fluent-cart'),
+                'message'       => __('Success', 'webmakerr-cart'),
                 'subscriptions' => [
                     'data'         => [],
                     'total'        => 0,
@@ -42,7 +42,7 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart')
+                'message' => __('Customer not found', 'webmakerr-cart')
             ]);
         }
 
@@ -62,7 +62,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         });
 
         return $this->sendSuccess([
-            'message'       => __('Success', 'fluent-cart'),
+            'message'       => __('Success', 'webmakerr-cart'),
             'subscriptions' => [
                 'data'         => $formattedSubscriptions,
                 'total'        => $subscriptions->total(),
@@ -86,7 +86,7 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart')
+                'message' => __('Customer not found', 'webmakerr-cart')
             ]);
         }
 
@@ -98,7 +98,7 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (!$subscription || $subscription->status === Status::SUBSCRIPTION_PENDING || $subscription->status === Status::SUBSCRIPTION_INTENDED) {
             return $this->sendError([
-                'message' => __('Subscription not found', 'fluent-cart')
+                'message' => __('Subscription not found', 'webmakerr-cart')
             ]);
         }
 
@@ -154,7 +154,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         ]);
 
         return $this->sendSuccess([
-            'message'      => __('Success', 'fluent-cart'),
+            'message'      => __('Success', 'webmakerr-cart'),
             'subscription' => $formattedData
         ]);
     }
@@ -167,7 +167,7 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (!$method || !$subscriptionUuid) {
             return $this->sendError([
-                'message' => __('Method and Subscription Id required.', 'fluent-cart')
+                'message' => __('Method and Subscription Id required.', 'webmakerr-cart')
             ]);
         }
 
@@ -175,7 +175,7 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (empty($subscription)) {
             return $this->sendError([
-                'message' => __('Subscription not found', 'fluent-cart')
+                'message' => __('Subscription not found', 'webmakerr-cart')
             ]);
         }
 
@@ -190,7 +190,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         }
 
         return $this->sendError([
-            'message' => __('Could not update payment method', 'fluent-cart')
+            'message' => __('Could not update payment method', 'webmakerr-cart')
         ]);
     }
 
@@ -202,14 +202,14 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (!$method || !$subscription_uuid) {
             return $this->sendError([
-                'message' => __('Missing required parameters', 'fluent-cart')
+                'message' => __('Missing required parameters', 'webmakerr-cart')
             ]);
         }
 
         $subscription = Subscription::query()->where('uuid', $subscription_uuid)->first();
         if (empty($subscription)) {
             return $this->sendError([
-                'message' => __('Subscription not found', 'fluent-cart')
+                'message' => __('Subscription not found', 'webmakerr-cart')
             ]);
         }
 
@@ -224,7 +224,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         }
 
         return $this->sendError([
-            'message' => __('Could not get or create plan', 'fluent-cart')
+            'message' => __('Could not get or create plan', 'webmakerr-cart')
         ]);
     }
 
@@ -242,14 +242,14 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (!$newPaymentMethod || !$currentPaymentMethod || !$subscription_uuid) {
             return $this->sendError([
-                'message' => __('Missing required parameters', 'fluent-cart')
+                'message' => __('Missing required parameters', 'webmakerr-cart')
             ]);
         }
 
         $subscription = Subscription::query()->where('uuid', $subscription_uuid)->first();
         if (empty($subscription)) {
             return $this->sendError([
-                'message' => __('Subscription not found', 'fluent-cart')
+                'message' => __('Subscription not found', 'webmakerr-cart')
             ]);
         }
 
@@ -264,7 +264,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         }
 
         return $this->sendError([
-            'message' => __('Could not switch payment method', 'fluent-cart')
+            'message' => __('Could not switch payment method', 'webmakerr-cart')
         ]);
 
     }
@@ -284,14 +284,14 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (!$newVendorSubscriptionId || !$method || !$subscription_uuid) {
             return $this->sendError([
-                'message' => __('Missing required parameters', 'fluent-cart')
+                'message' => __('Missing required parameters', 'webmakerr-cart')
             ]);
         }
 
         $subscription = Subscription::query()->where('uuid', $subscription_uuid)->first();
         if (empty($subscription)) {
             return $this->sendError([
-                'message' => __('Subscription not found', 'fluent-cart')
+                'message' => __('Subscription not found', 'webmakerr-cart')
             ]);
         }
 
@@ -306,7 +306,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         }
 
         return $this->sendError([
-            'message' => __('Could not confirm subscription switch', 'fluent-cart')
+            'message' => __('Could not confirm subscription switch', 'webmakerr-cart')
         ]);
 
     }
@@ -321,7 +321,7 @@ class CustomerSubscriptionController extends BaseFrontendController
         $customer = CustomerResource::getCurrentCustomer();
         if (!$customer) {
             return $this->sendError([
-                'message' => __('Customer not found', 'fluent-cart')
+                'message' => __('Customer not found', 'webmakerr-cart')
             ]);
         }
 
@@ -332,17 +332,17 @@ class CustomerSubscriptionController extends BaseFrontendController
 
         if (empty($subscription)) {
             return $this->sendError([
-                'message' => __('Subscription not found', 'fluent-cart')
+                'message' => __('Subscription not found', 'webmakerr-cart')
             ]);
         }
 
         $subscription->cancelRemoteSubscription([
             'reason' => 'cancelled_by_customer',
-            'note'   => __('Cancelled by Customer from customer portal', 'fluent-cart'),
+            'note'   => __('Cancelled by Customer from customer portal', 'webmakerr-cart'),
         ]);
 
         return [
-            'message' => __('Your subscription has been successfully cancelled', 'fluent-cart')
+            'message' => __('Your subscription has been successfully cancelled', 'webmakerr-cart')
         ];
 
     }

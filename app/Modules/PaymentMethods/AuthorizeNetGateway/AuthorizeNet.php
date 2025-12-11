@@ -23,9 +23,9 @@ class AuthorizeNet extends AbstractPaymentGateway
     public function meta(): array
     {
         return [
-            'title' => __('Authorize.Net', 'fluent-cart'),
+            'title' => __('Authorize.Net', 'webmakerr-cart'),
             'route' => 'authorize_net',
-            'description' => __('Pay securely with Authorize.Net - Credit and Debit Cards', 'fluent-cart'),
+            'description' => __('Pay securely with Authorize.Net - Credit and Debit Cards', 'webmakerr-cart'),
             'logo' => Vite::getAssetUrl("images/payment-methods/authorize-net-logo.svg"),
             'icon' => Vite::getAssetUrl("images/payment-methods/authorize-net-logo.svg"),
             'brand_color' => '#0066cc',
@@ -109,25 +109,25 @@ class AuthorizeNet extends AbstractPaymentGateway
                 <p>%7$s <code class="copyable-content">%2$s</code></p>
                 <p>%8$s</p>
             </div>',
-            __('Webhook URL: ', 'fluent-cart'),                    // %1$s
+            __('Webhook URL: ', 'webmakerr-cart'),                    // %1$s
             $webhook_url,                                          // %2$s (reused)
-            __('You should configure your Authorize.Net webhooks to get all updates of your payments remotely.', 'fluent-cart'), // %3$s
-            __('How to configure?', 'fluent-cart'),                // %4$s
-            __('In your Authorize.Net Merchant Interface:', 'fluent-cart'), // %5$s
-            __('Go to Account > Settings > Webhooks', 'fluent-cart'), // %6$s
-            __('Enter The Webhook URL: ', 'fluent-cart'),          // %7$s
-            __('Select payment events', 'fluent-cart')             // %8$s
+            __('You should configure your Authorize.Net webhooks to get all updates of your payments remotely.', 'webmakerr-cart'), // %3$s
+            __('How to configure?', 'webmakerr-cart'),                // %4$s
+            __('In your Authorize.Net Merchant Interface:', 'webmakerr-cart'), // %5$s
+            __('Go to Account > Settings > Webhooks', 'webmakerr-cart'), // %6$s
+            __('Enter The Webhook URL: ', 'webmakerr-cart'),          // %7$s
+            __('Select payment events', 'webmakerr-cart')             // %8$s
         );
 
         return array(
 //            'notice' => [
 //                'value' => $this->getStoreModeNotice(),
-//                'label' => __('Store Mode notice', 'fluent-cart'),
+//                'label' => __('Store Mode notice', 'webmakerr-cart'),
 //                'type' => 'notice'
 //            ],
             'upcoming' => [
                 'value' => $this->isUpcoming(),
-                'label' => __('Payment method is upcoming!', 'fluent-cart'),
+                'label' => __('Payment method is upcoming!', 'webmakerr-cart'),
                 'type' => 'upcoming'
             ],
             'payment_mode' => [
@@ -135,14 +135,14 @@ class AuthorizeNet extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type' => 'tab',
-                        'label' => __('Test credentials', 'fluent-cart'),
+                        'label' => __('Test credentials', 'webmakerr-cart'),
                         'value' => 'test',
                         'schema' => [
                             'test_api_login' => array(
                                 'value' => '',
-                                'label' => __('Test API Login ID', 'fluent-cart'),
+                                'label' => __('Test API Login ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('Your test API Login ID', 'fluent-cart'),
+                                'placeholder' => __('Your test API Login ID', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -151,9 +151,9 @@ class AuthorizeNet extends AbstractPaymentGateway
                             ),
                             'test_transaction_key' => array(
                                 'value' => '',
-                                'label' => __('Test Transaction Key', 'fluent-cart'),
+                                'label' => __('Test Transaction Key', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('Your test transaction key', 'fluent-cart'),
+                                'placeholder' => __('Your test transaction key', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -164,14 +164,14 @@ class AuthorizeNet extends AbstractPaymentGateway
                     ],
                     [
                         'type' => 'tab',
-                        'label' => __('Live credentials', 'fluent-cart'),
+                        'label' => __('Live credentials', 'webmakerr-cart'),
                         'value' => 'live',
                         'schema' => [
                             'live_api_login' => array(
                                 'value' => '',
-                                'label' => __('Live API Login ID', 'fluent-cart'),
+                                'label' => __('Live API Login ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('Your live API Login ID', 'fluent-cart'),
+                                'placeholder' => __('Your live API Login ID', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -180,9 +180,9 @@ class AuthorizeNet extends AbstractPaymentGateway
                             ),
                             'live_transaction_key' => array(
                                 'value' => '',
-                                'label' => __('Live Transaction Key', 'fluent-cart'),
+                                'label' => __('Live Transaction Key', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('Your live transaction key', 'fluent-cart'),
+                                'placeholder' => __('Your live transaction key', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -195,7 +195,7 @@ class AuthorizeNet extends AbstractPaymentGateway
             ],
             'webhook_desc' => array(
                 'value' => $webhook_instructions,
-                'label' => __('Webhook URL', 'fluent-cart'),
+                'label' => __('Webhook URL', 'webmakerr-cart'),
                 'type' => 'html_attr'
             ),
         );
@@ -209,7 +209,7 @@ class AuthorizeNet extends AbstractPaymentGateway
         if (empty($apiLoginId) || empty($transactionKey)) {
             return [
                 'status' => 'failed',
-                'message' => __('API Login ID and Transaction Key are required', 'fluent-cart')
+                'message' => __('API Login ID and Transaction Key are required', 'webmakerr-cart')
             ];
         }
 
@@ -218,7 +218,7 @@ class AuthorizeNet extends AbstractPaymentGateway
             
             return [
                 'status' => 'success',
-                'message' => __('Authorize.Net settings validated successfully', 'fluent-cart')
+                'message' => __('Authorize.Net settings validated successfully', 'webmakerr-cart')
             ];
         } catch (\Exception $e) {
             return [
@@ -329,7 +329,7 @@ class AuthorizeNet extends AbstractPaymentGateway
         $data = json_decode($body, true);
 
         if (!$data || $data['messages']['resultCode'] !== 'Ok') {
-            throw new \Exception(esc_html__('Invalid Authorize.Net credentials', 'fluent-cart'));
+            throw new \Exception(esc_html__('Invalid Authorize.Net credentials', 'webmakerr-cart'));
         }
 
         return true;

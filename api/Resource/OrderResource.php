@@ -205,7 +205,7 @@ class OrderResource extends BaseResourceApi
         try {
             $res = static::getQuery()->create($orderData);;
             if (!$res || !$res->id) {
-                throw new \Exception(__('Order creation failed.', 'fluent-cart'));
+                throw new \Exception(__('Order creation failed.', 'webmakerr-cart'));
             }
             return $res;
         } catch (\Exception $e) {
@@ -268,7 +268,7 @@ class OrderResource extends BaseResourceApi
                 return $order;
             } else {
                 return static::makeErrorResponse([
-                    ['code' => 423, 'message' => __('Please select a payment method first!', 'fluent-cart')]
+                    ['code' => 423, 'message' => __('Please select a payment method first!', 'webmakerr-cart')]
                 ]);
             }
         } catch (\Exception $e) {
@@ -357,15 +357,15 @@ class OrderResource extends BaseResourceApi
     {
 
         if (!$order) {
-            throw new \Exception(esc_html__('Please process order first', 'fluent-cart'));
+            throw new \Exception(esc_html__('Please process order first', 'webmakerr-cart'));
         }
 
         if (!$order->customer) {
-            throw new \Exception(esc_html__('Please set customer first', 'fluent-cart'));
+            throw new \Exception(esc_html__('Please set customer first', 'webmakerr-cart'));
         }
 
         if (!$order->latest_transaction) {
-            throw new \Exception(esc_html__('Please set Transaction First', 'fluent-cart'));
+            throw new \Exception(esc_html__('Please set Transaction First', 'webmakerr-cart'));
         }
 
         $paymentStatus = $order->payment_status;
@@ -503,14 +503,14 @@ class OrderResource extends BaseResourceApi
         if (empty($order) || $order->status === Status::ORDER_COMPLETED || $order->status === Status::ORDER_CANCELED) {
             if (empty($order)) {
                 return static::makeErrorResponse([
-                    ['code' => 404, 'message' => __('The order information does not match', 'fluent-cart')]
+                    ['code' => 404, 'message' => __('The order information does not match', 'webmakerr-cart')]
                 ]);
             }
 
             return static::makeErrorResponse([
                 ['code' => 404, 'message' => sprintf(
                     /* translators: %s is the order status */
-                    __('Your order status is marked as %s and not eligible for any further modifications at this time.', 'fluent-cart'), $order->status)]
+                    __('Your order status is marked as %s and not eligible for any further modifications at this time.', 'webmakerr-cart'), $order->status)]
             ]);
         }
 
@@ -618,13 +618,13 @@ class OrderResource extends BaseResourceApi
 
                 return static::makeSuccessResponse(
                     $isUpdated,
-                    __('Order updated successfully', 'fluent-cart')
+                    __('Order updated successfully', 'webmakerr-cart')
                 );
             }
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Order update failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Order update failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -654,7 +654,7 @@ class OrderResource extends BaseResourceApi
         $orderAddress = OrderAddress::query()->where('order_id', $orderId)->where('id', $addressId)->first();
         if (empty($orderAddress)) {
             return static::makeErrorResponse([
-                ['code' => 404, 'message' => __('The address information does not match', 'fluent-cart')]
+                ['code' => 404, 'message' => __('The address information does not match', 'webmakerr-cart')]
             ]);
         }
 
@@ -692,7 +692,7 @@ class OrderResource extends BaseResourceApi
             if (!empty($order)) {
                 if ($order->status === Status::ORDER_COMPLETED) {
                     return static::makeErrorResponse([
-                        ['code' => 400, 'message' => __('This order cannot be deleted because order status is completed.', 'fluent-cart')]
+                        ['code' => 400, 'message' => __('This order cannot be deleted because order status is completed.', 'webmakerr-cart')]
                     ]);
                 }
                 $order->orderMeta()->delete();
@@ -714,13 +714,13 @@ class OrderResource extends BaseResourceApi
 
             return static::makeSuccessResponse(
                 '',
-                __('Selected order and associated data has been deleted', 'fluent-cart')
+                __('Selected order and associated data has been deleted', 'webmakerr-cart')
             );
 
         } catch (\Exception $e) {
             $DB->rollBack();
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Failed to delete', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Failed to delete', 'webmakerr-cart')]
             ]);
         }
     }
@@ -768,7 +768,7 @@ class OrderResource extends BaseResourceApi
         );
 
         if (empty($orders[0])) {
-            return new \WP_Error('403', __('Order not found!', 'fluent-cart'));
+            return new \WP_Error('403', __('Order not found!', 'webmakerr-cart'));
         }
 
         $subscriptions = Arr::get($orders, '0.subscriptions');
@@ -941,7 +941,7 @@ class OrderResource extends BaseResourceApi
         $order = Arr::get($params, 'order');
         if (empty($order)) {
             return static::makeErrorResponse([
-                ['code' => 404, 'message' => __('Order not found!', 'fluent-cart')]
+                ['code' => 404, 'message' => __('Order not found!', 'webmakerr-cart')]
             ]);
         }
 
@@ -959,10 +959,10 @@ class OrderResource extends BaseResourceApi
             $oldStatus = Arr::get($order, 'shipping_status');
             $validStatuses = Status::getEditableShippingStatuses();
             $actionActivity = [
-                'title'   => __('Shipping status updated', 'fluent-cart'),
+                'title'   => __('Shipping status updated', 'webmakerr-cart'),
                 'content' => sprintf(
                     /* translators: %1$s is the old status, %2$s is the new status */
-                    __('Shipping status has been updated from %1$s to %2$s', 'fluent-cart'), $oldStatus, $newStatus)
+                    __('Shipping status has been updated from %1$s to %2$s', 'webmakerr-cart'), $oldStatus, $newStatus)
             ];
 
             $orderItems = OrderItem::query()->where('fulfillment_type', 'physical')->where('order_id', $orderId)->get();
@@ -981,10 +981,10 @@ class OrderResource extends BaseResourceApi
             $validStatuses = Status::getEditableOrderStatuses();
             $shippingStatus = Arr::get($order, 'shipping_status');
             $actionActivity = [
-                'title'   => __('Order status updated', 'fluent-cart'),
+                'title'   => __('Order status updated', 'webmakerr-cart'),
                 'content' => sprintf(
                     /* translators: %1$s is the old status, %2$s is the new status */
-                    __('Order status has been updated from %1$s to %2$s', 'fluent-cart'), $oldStatus, $newStatus)
+                    __('Order status has been updated from %1$s to %2$s', 'webmakerr-cart'), $oldStatus, $newStatus)
             ];
         }
 
@@ -997,7 +997,7 @@ class OrderResource extends BaseResourceApi
                     if ($action === 'change_order_status') {
                         if ($oldStatus === Status::ORDER_CANCELED) {
                             return static::makeErrorResponse([
-                                ['code' => 400, 'message' => __('You cannot change the order status once it has been canceled.', 'fluent-cart')]
+                                ['code' => 400, 'message' => __('You cannot change the order status once it has been canceled.', 'webmakerr-cart')]
                             ]);
                         }
 
@@ -1050,20 +1050,20 @@ class OrderResource extends BaseResourceApi
 
                     return static::makeSuccessResponse(
                         $order,
-                        __('Status has been updated', 'fluent-cart')
+                        __('Status has been updated', 'webmakerr-cart')
                     );
                 }
                 return static::makeErrorResponse([
-                    ['code' => 400, 'message' => __('Order already has the same status', 'fluent-cart')]
+                    ['code' => 400, 'message' => __('Order already has the same status', 'webmakerr-cart')]
                 ]);
             }
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Provided status is not valid', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Provided status is not valid', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to update status', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to update status', 'webmakerr-cart')]
         ]);
     }
 
@@ -1087,10 +1087,10 @@ class OrderResource extends BaseResourceApi
             $message = (count($outOfStockVariants) > 1)
                 ? sprintf(
                     /* translators: %s is the list of out of stock variants */
-                    __('%s are out of stock', 'fluent-cart'), implode(', ', $outOfStockVariants))
+                    __('%s are out of stock', 'webmakerr-cart'), implode(', ', $outOfStockVariants))
                 : sprintf(
                     /* translators: %s is the out of stock variant */
-                    __('%s is out of stock', 'fluent-cart'), reset($outOfStockVariants));
+                    __('%s is out of stock', 'webmakerr-cart'), reset($outOfStockVariants));
 
 
             return [
@@ -1129,14 +1129,14 @@ class OrderResource extends BaseResourceApi
             return count($deletedOrderIds) > 0
                 ? static::makeSuccessResponse('', sprintf(
                     /* translators: %s: The order ID(s) that could not be deleted. */
-                    __("The order ID - %s cannot be deleted at the moment as these orders status is not canceled. And remaining order and its associated data have been deleted", 'fluent-cart'), $failedOrderIds))
+                    __("The order ID - %s cannot be deleted at the moment as these orders status is not canceled. And remaining order and its associated data have been deleted", 'webmakerr-cart'), $failedOrderIds))
                 : static::makeErrorResponse([['code' => 400, 'message' => sprintf(
                     /* translators: %s: The order ID(s) that could not be deleted. */
-                    __("The order ID - %s cannot be deleted at the moment as these orders status is not canceled.", 'fluent-cart'), $failedOrderIds)]]);
+                    __("The order ID - %s cannot be deleted at the moment as these orders status is not canceled.", 'webmakerr-cart'), $failedOrderIds)]]);
         }
 
         if (count($deletedOrderIds) > 0 && count($failedOrderIds) < 1) {
-            return static::makeSuccessResponse('', __('Selected order and associated data have been deleted', 'fluent-cart'));
+            return static::makeSuccessResponse('', __('Selected order and associated data have been deleted', 'webmakerr-cart'));
         }
     }
 
@@ -1148,19 +1148,19 @@ class OrderResource extends BaseResourceApi
 
         if (empty($transaction)) {
             return static::makeErrorResponse([
-                ['code' => 404, 'message' => __('Transaction not found!', 'fluent-cart')]
+                ['code' => 404, 'message' => __('Transaction not found!', 'webmakerr-cart')]
             ]);
         }
 
         if ($transaction->status == $newStatus) {
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Transaction already has the same status', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Transaction already has the same status', 'webmakerr-cart')]
             ]);
         }
 
         if ($transaction->order_id != $order->id) {
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('The selected transaction does not match with the provided order', 'fluent-cart')]
+                ['code' => 400, 'message' => __('The selected transaction does not match with the provided order', 'webmakerr-cart')]
             ]);
         }
 
@@ -1197,7 +1197,7 @@ class OrderResource extends BaseResourceApi
                 'title'   => 'Payment status updated',
                 'content' => sprintf(
                     /* translators: %1$s is the old status, %2$s is the new status */
-                    __('Payment status has been updated from %1$s to %2$s', 'fluent-cart'), $oldStatus, $newStatus)
+                    __('Payment status has been updated from %1$s to %2$s', 'webmakerr-cart'), $oldStatus, $newStatus)
             ];
 
             static::getQuery()->batchUpdate($data);
@@ -1206,12 +1206,12 @@ class OrderResource extends BaseResourceApi
 
             return static::makeSuccessResponse(
                 $order,
-                __('Payment Status has been updated', 'fluent-cart')
+                __('Payment Status has been updated', 'webmakerr-cart')
             );
 
         } else {
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Failed to update payment status', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Failed to update payment status', 'webmakerr-cart')]
             ]);
         }
     }
@@ -1227,7 +1227,7 @@ class OrderResource extends BaseResourceApi
             return $address;
         }
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed to update address', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed to update address', 'webmakerr-cart')]
         ]);
     }
 

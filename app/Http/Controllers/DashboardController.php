@@ -17,22 +17,22 @@ class DashboardController extends Controller
         $baseUrl = webmakerr_apply_filters('webmakerr_cart/admin_base_url', admin_url('admin.php?page=webmakerr#/'), []);
         $steps = [
             'page_setup'   => [
-                'title'     => __('Setup Pages', 'fluent-cart'),
-                'text'      => __("Customers to find what they're looking for by organising.", 'fluent-cart'),
+                'title'     => __('Setup Pages', 'webmakerr-cart'),
+                'text'      => __("Customers to find what they're looking for by organising.", 'webmakerr-cart'),
                 'icon'      => 'Cart',
                 'completed' => false,
                 'url'       => $baseUrl . "settings/store-settings/pages_setup"
             ],
             'store_info'   => [
-                'title'     => __('Add Details to Store', 'fluent-cart'),
-                'text'      => __('Store details such as addresses, company info etc.', 'fluent-cart'),
+                'title'     => __('Add Details to Store', 'webmakerr-cart'),
+                'text'      => __('Store details such as addresses, company info etc.', 'webmakerr-cart'),
                 'icon'      => 'StoreIcon',
                 'completed' => false,
                 'url'       => $baseUrl . "settings/store-settings/"
             ],
             'product_info' => [
-                'title'     => __('Add Your First Product', 'fluent-cart'),
-                'text'      => __('Share your brand story and build trust with customers.', 'fluent-cart'),
+                'title'     => __('Add Your First Product', 'webmakerr-cart'),
+                'text'      => __('Share your brand story and build trust with customers.', 'webmakerr-cart'),
                 'icon'      => 'ShoppingCartIcon',
                 'completed' => false,
                 'url'       => $baseUrl . "products"
@@ -40,8 +40,8 @@ class DashboardController extends Controller
 
 
             'setup_payments' => [
-                'title'     => __('Setup Payment Methods', 'fluent-cart'),
-                'text'      => __("Choose from fast & secure online and offline payment.", 'fluent-cart'),
+                'title'     => __('Setup Payment Methods', 'webmakerr-cart'),
+                'text'      => __("Choose from fast & secure online and offline payment.", 'webmakerr-cart'),
                 'icon'      => 'PaymentIcon',
                 'completed' => true,
                 'url'       => $baseUrl . "settings/payments"

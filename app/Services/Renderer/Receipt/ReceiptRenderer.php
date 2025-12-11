@@ -224,14 +224,14 @@ class ReceiptRenderer
         $order = Arr::get($this->config, 'order', null);
         ?>
         <p style="white-space: nowrap; color: #94a3b8; text-align: right; margin: 0;font-size:12px;print-color-adjust: exact;">
-            <?php echo esc_html__('Order At', 'fluent-cart'); ?>
+            <?php echo esc_html__('Order At', 'webmakerr-cart'); ?>
         </p>
         <p style="white-space: nowrap; font-weight: bold; color: #000; text-align: right; margin: 0;font-size:14px;">
             <?php
             echo esc_html(
                 date_i18n(
                 /* translators: Date format for order creation date */
-                    __('M d, Y', 'fluent-cart'),
+                    __('M d, Y', 'webmakerr-cart'),
                     DateTime::anyTimeToGmt($order->created_at)->getTimestamp()
                 )
             );
@@ -245,7 +245,7 @@ class ReceiptRenderer
         $order = Arr::get($this->config, 'order', null);
         ?>
         <p style="white-space: nowrap; color: #94a3b8; text-align: right; margin: 0;font-size:12px;print-color-adjust: exact;">
-            <?php echo esc_html__('Invoice number #', 'fluent-cart'); ?>
+            <?php echo esc_html__('Invoice number #', 'webmakerr-cart'); ?>
         </p>
         <p id="fct-order-invoice-no"
            style="white-space: nowrap; font-weight: bold; color: #000; text-align: right; margin: 0;font-size:14px;">
@@ -320,7 +320,7 @@ class ReceiptRenderer
             <h5
                     class="fct-receipt-page-order-items-addresses-bill-to-title"
                     style="font-weight: bold;font-size: 14px;margin: 0 0 10px 0;color: #495057;border-bottom: 1px solid #dee2e6;padding-bottom: 5px;">
-                <?php echo esc_html__('Bill To', 'fluent-cart'); ?>
+                <?php echo esc_html__('Bill To', 'webmakerr-cart'); ?>
             </h5>
             <?php if (!empty($order->billing_address)) : ?>
 
@@ -333,7 +333,7 @@ class ReceiptRenderer
                     <div
                             class="fct-receipt-page-order-items-addresses-bill-to-vat-number"
                             style="margin-bottom: 3px;">
-                        <?php echo esc_html__('VAT/Tax ID: ', 'fluent-cart') . esc_html($this->vat_tax_id); ?>
+                        <?php echo esc_html__('VAT/Tax ID: ', 'webmakerr-cart') . esc_html($this->vat_tax_id); ?>
                     </div>
                 <?php endif; ?>
                 <div
@@ -368,7 +368,7 @@ class ReceiptRenderer
                     $vatNumber = Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.vat_number', '');
 
                     if ($vatNumber !== '') {
-                        echo esc_html__('EU VAT', 'fluent-cart') . ': ' . esc_html($vatNumber);
+                        echo esc_html__('EU VAT', 'webmakerr-cart') . ': ' . esc_html($vatNumber);
                     }
                     ?>
                 </div>
@@ -383,7 +383,7 @@ class ReceiptRenderer
                     <div
                             class="fct-receipt-page-order-items-addresses-bill-to-vat-number"
                             style="margin-bottom: 3px;">
-                        <?php echo esc_html__('VAT/Tax ID: ', 'fluent-cart') . esc_html($vat_tax_id); ?>
+                        <?php echo esc_html__('VAT/Tax ID: ', 'webmakerr-cart') . esc_html($vat_tax_id); ?>
                     </div>
                 <?php endif; ?>
                 <div
@@ -406,7 +406,7 @@ class ReceiptRenderer
             <h5
                     class="fct-receipt-page-order-items-addresses-ship-to-title"
                     style="font-weight: bold;font-size: 14px;margin: 0 0 10px 0;color: #495057;border-bottom: 1px solid #dee2e6;padding-bottom: 5px;">
-                <?php echo esc_html__('Ship To', 'fluent-cart'); ?>
+                <?php echo esc_html__('Ship To', 'webmakerr-cart'); ?>
             </h5>
             <?php if (!empty($order->shipping_address)) : ?>
                 <div
@@ -460,16 +460,16 @@ class ReceiptRenderer
                 <thead>
                 <tr>
                     <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;print-color-adjust: exact;border: none;">
-                        <?php echo esc_html__('Description', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Description', 'webmakerr-cart'); ?>
                     </th>
                     <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;width: 80px;text-align: right;print-color-adjust: exact;border: none;">
-                        <?php echo esc_html__('Qty', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Qty', 'webmakerr-cart'); ?>
                     </th>
                     <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;width: 80px;text-align: right;print-color-adjust: exact;border: none;">
-                        <?php echo esc_html__('Unit price', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Unit price', 'webmakerr-cart'); ?>
                     </th>
                     <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;width: 80px;text-align: right;print-color-adjust: exact;border: none;">
-                        <?php echo esc_html__('Amount', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Amount', 'webmakerr-cart'); ?>
                     </th>
                 </tr>
                 </thead>
@@ -539,7 +539,7 @@ class ReceiptRenderer
         if ($order->subtotal != ($order->total_amount - $order->total_refund) || $order->tax_total > 0): ?>
             <tr>
                 <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                    <?php echo esc_html__('Subtotal', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Subtotal', 'webmakerr-cart'); ?>
                 </td>
                 <td style="font-weight:700;padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
                     <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->subtotal));
@@ -555,7 +555,7 @@ class ReceiptRenderer
         if ($order->manual_discount_total + $order->coupon_discount_total > 0): ?>
             <tr>
                 <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                    <?php echo esc_html__('Discount', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Discount', 'webmakerr-cart'); ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
                     - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->manual_discount_total + $order->coupon_discount_total)); ?>
@@ -570,7 +570,7 @@ class ReceiptRenderer
         if ($order->shipping_total > 0): ?>
             <tr>
                 <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                    <?php echo esc_html__('Shipping', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Shipping', 'webmakerr-cart'); ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
                     <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->shipping_total)); ?>
@@ -585,8 +585,8 @@ class ReceiptRenderer
         if ($order->tax_total > 0): ?>
             <tr>
                 <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                    <?php echo esc_html__('Tax', 'fluent-cart');
-                    echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'fluent-cart') : __('(Excluded)', 'fluent-cart'));
+                    <?php echo esc_html__('Tax', 'webmakerr-cart');
+                    echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'webmakerr-cart') : __('(Excluded)', 'webmakerr-cart'));
                     ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
@@ -602,8 +602,8 @@ class ReceiptRenderer
         if ($order->shipping_tax > 0): ?>
             <tr>
                 <td style="padding: 8px 20px 8px 0;text-align: right;border: none;">
-                    <?php echo esc_html__('Shipping Tax', 'fluent-cart');
-                    echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'fluent-cart') : __('(Excluded)', 'fluent-cart'));
+                    <?php echo esc_html__('Shipping Tax', 'webmakerr-cart');
+                    echo esc_html($order->tax_behavior == 2 ? __('(Included)', 'webmakerr-cart') : __('(Excluded)', 'webmakerr-cart'));
                     ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border: none;">
@@ -619,7 +619,7 @@ class ReceiptRenderer
         if ($order->total_refund > 0): ?>
             <tr style="font-weight: bold;font-size: 14px;">
                 <td style="font-weight:500;padding: 8px 20px 8px 0;text-align: right;border:none;">
-                    <?php echo esc_html__('Refund', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Refund', 'webmakerr-cart'); ?>
                 </td>
                 <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
                     - <?php echo esc_html(\Webmakerr\App\Helpers\Helper::toDecimal($order->total_refund)); ?>
@@ -634,7 +634,7 @@ class ReceiptRenderer
         ?>
         <tr style="font-weight: bold;font-size: 14px;">
             <td style="font-weight:500;padding: 8px 20px 8px 0;text-align: right;border:none;">
-                <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
             </td>
             <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
                 <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($order->total_amount - $order->total_refund)); ?>
@@ -649,7 +649,7 @@ class ReceiptRenderer
         ?>
         <tr style="font-weight: bold;font-size: 14px;">
             <td style="font-weight:500;padding: 8px 20px 8px 0;text-align: right;border:none;">
-                <?php echo esc_html__('Amount Paid', 'fluent-cart'); ?>
+                <?php echo esc_html__('Amount Paid', 'webmakerr-cart'); ?>
             </td>
             <td style="padding: 8px 8px 8px 0;width: 100px;text-align: right;border:none;">
                 <?php echo esc_html(\Webmakerr\Api\CurrencySettings::getFormattedPrice($order->total_paid - $order->total_refund)); ?>
@@ -665,7 +665,7 @@ class ReceiptRenderer
         if (Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.valid') && !$taxtotal): ?>
 
             <div style="text-align: right; font-size: 14px; margin-top: 10px;">
-                <?php echo esc_html__('* Tax to be paid on reverse charge basis', 'fluent-cart'); ?>
+                <?php echo esc_html__('* Tax to be paid on reverse charge basis', 'webmakerr-cart'); ?>
             </div>
 
         <?php endif;
@@ -683,20 +683,20 @@ class ReceiptRenderer
                 <div
                         class="fct-payment-history-heading"
                         style="font-weight: bold;font-size: 14px;color: #495057;margin: 0;padding: 0;">
-                    <?php echo esc_html__('Payment history', 'fluent-cart'); ?>
+                    <?php echo esc_html__('Payment history', 'webmakerr-cart'); ?>
                 </div>
                 <table class="fct-transaction-table"
                        style="margin-top: 10px;width: 100%;text-align: left;border-spacing: 0;border-collapse: collapse;border: none;">
                     <thead>
                     <tr>
                         <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold;print-color-adjust: exact;border:none;">
-                            <?php echo esc_html__('Payment method', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Payment method', 'webmakerr-cart'); ?>
                         </th>
                         <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold; text-align: center;print-color-adjust: exact;border:none;">
-                            <?php echo esc_html__('Date', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Date', 'webmakerr-cart'); ?>
                         </th>
                         <th style="background-color: #f8f9fa;padding: 12px 8px;font-weight: bold; text-align: right;print-color-adjust: exact;border:none;">
-                            <?php echo esc_html__('Amount', 'fluent-cart'); ?>
+                            <?php echo esc_html__('Amount', 'webmakerr-cart'); ?>
                         </th>
                     </tr>
                     </thead>
@@ -715,7 +715,7 @@ class ReceiptRenderer
                                 echo esc_html(
                                     date_i18n(
                                     /* translators: Date format for order creation date */
-                                        __('M d, Y', 'fluent-cart'),
+                                        __('M d, Y', 'webmakerr-cart'),
                                         DateTime::anyTimeToGmt($transaction->created_at)->getTimestamp()
                                     )
                                 );
@@ -748,12 +748,12 @@ class ReceiptRenderer
             }
         </style>
         <div class="fluent_cart_confirmation_failed">
-            <h3><?php echo esc_html__('Payment Confirmation Failed!', 'fluent-cart'); ?></h3>
-            <span><?php echo esc_html__('We are sorry, your order is placed but payment confirmation has failed.', 'fluent-cart'); ?></span>
+            <h3><?php echo esc_html__('Payment Confirmation Failed!', 'webmakerr-cart'); ?></h3>
+            <span><?php echo esc_html__('We are sorry, your order is placed but payment confirmation has failed.', 'webmakerr-cart'); ?></span>
             <?php if ($failed_reason) : ?>
-                <p style="color:red;font-style: italic;"><?php echo esc_html__('Failed reason- ', 'fluent-cart') . esc_html($failed_reason) ?></p>
+                <p style="color:red;font-style: italic;"><?php echo esc_html__('Failed reason- ', 'webmakerr-cart') . esc_html($failed_reason) ?></p>
             <?php endif; ?>
-            <span><?php echo esc_html__('Please try to complete payment again from here!', 'fluent-cart'); ?></span>
+            <span><?php echo esc_html__('Please try to complete payment again from here!', 'webmakerr-cart'); ?></span>
             <a href="<?php echo esc_url($custom_payment_url ?? ''); ?>"><?php echo esc_url($custom_payment_url); ?></a>
         </div>
     <?php }

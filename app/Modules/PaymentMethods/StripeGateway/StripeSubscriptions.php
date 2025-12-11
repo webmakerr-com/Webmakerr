@@ -17,14 +17,14 @@ class StripeSubscriptions extends AbstractSubscriptionModule
     public function reSyncSubscriptionFromRemote(Subscription $subscriptionModel)
     {
         if ($subscriptionModel->current_payment_method !== 'stripe') {
-            return new \WP_Error('invalid_payment_method', __('This subscription is not using Stripe as payment method.', 'fluent-cart'));
+            return new \WP_Error('invalid_payment_method', __('This subscription is not using Stripe as payment method.', 'webmakerr-cart'));
         }
 
         $order = $subscriptionModel->order;
 
         $vendorSubscriptionId = $subscriptionModel->vendor_subscription_id;
         if (!$vendorSubscriptionId) {
-            return new \WP_Error('invalid_subscription', __('Invalid vendor subscription ID.', 'fluent-cart'));
+            return new \WP_Error('invalid_subscription', __('Invalid vendor subscription ID.', 'webmakerr-cart'));
         }
 
         $stripeSubscription = (new API())->getStripeObject('subscriptions/' . $vendorSubscriptionId, [
@@ -139,7 +139,7 @@ class StripeSubscriptions extends AbstractSubscriptionModule
     public function cancel($vendorSubscriptionId, $args = [])
     {
         if (!$vendorSubscriptionId) {
-            return new \WP_Error('invalid_subscription', __('Invalid vendor subscription ID.', 'fluent-cart'));
+            return new \WP_Error('invalid_subscription', __('Invalid vendor subscription ID.', 'webmakerr-cart'));
         }
 
         $response = (new API())->deleteStripeObject('subscriptions/' . $vendorSubscriptionId, [], Arr::get($args, 'mode', 'live'));

@@ -25,12 +25,12 @@ use Webmakerr\Framework\Support\Arr;
 add_filter('block_categories_all', function ($categories) {
     $categories[] = array(
         'slug'  => 'fluent-cart',
-        'title' => __('FluentCart', 'fluent-cart'),
+        'title' => __('FluentCart', 'webmakerr-cart'),
     );
 
     $categories[] = array(
         'slug'  => 'fluent-cart-buttons',
-        'title' => __('FluentCart Buttons', 'fluent-cart'),
+        'title' => __('FluentCart Buttons', 'webmakerr-cart'),
     );
 
     return $categories;
@@ -39,30 +39,30 @@ add_filter('block_categories_all', function ($categories) {
 webmakerr_add_filter('webmakerr_cart/dummy_product_info', function ($info) {
     $infos = [
         'mens-shoes' => [
-            'title'    => __("Men’s Shoes", 'fluent-cart'),
+            'title'    => __("Men’s Shoes", 'webmakerr-cart'),
             'count'    => "0",
             'category' => 'mens-shoes',
             'icon'     => 'RunningShoe'
         ],
 
         'menswear' => [
-            'title'    => __("Menswear", 'fluent-cart'),
+            'title'    => __("Menswear", 'webmakerr-cart'),
             'count'    => "0",
             'category' => 'menswear',
             'icon'     => 'Cloth'
         ],
 //        'clothing' => [
-//            'title' => __("Clothing's", 'fluent-cart'),
+//            'title' => __("Clothing's", 'webmakerr-cart'),
 //            'count' => "0",
 //            'category' => 'clothing'
 //        ],
 //        'food' => [
-//            'title' => __("Food", 'fluent-cart'),
+//            'title' => __("Food", 'webmakerr-cart'),
 //            'count' => "0",
 //            'category' => 'food'
 //        ],
 //        'electronics' => [
-//            'title' => __('Electronics', 'fluent-cart'),
+//            'title' => __('Electronics', 'webmakerr-cart'),
 //            'count' => "0",
 //            'category' => 'electronics'
 //        ]

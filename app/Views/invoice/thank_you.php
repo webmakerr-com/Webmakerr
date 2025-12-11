@@ -38,7 +38,7 @@ if ($order->payment_status !== 'paid') {
                         </svg>
                     </div>
                     <h1 style="font-size: 2em;line-height: 1;margin: 0;font-weight: 700;color:<?php echo esc_attr($titleColor); ?>">
-                        <?php echo esc_html__('Payment Pending!', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Payment Pending!', 'webmakerr-cart'); ?>
                     </h1>
 
                 <?php else: ?>
@@ -50,7 +50,7 @@ if ($order->payment_status !== 'paid') {
                         </svg>
                     </div>
                     <h1 style="font-size: 2em;line-height: 1;margin: 0;font-weight: 700;color:<?php echo esc_attr($titleColor); ?>">
-                        <?php echo esc_html__('Purchase Successful!', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Purchase Successful!', 'webmakerr-cart'); ?>
                     </h1>
                 <?php endif; ?>
             </div>
@@ -65,7 +65,7 @@ if ($order->payment_status !== 'paid') {
                                     <?php
                                     echo sprintf(
                                         /* translators: %s is the customer's full name */
-                                        esc_html__('Hello %s!', 'fluent-cart'),
+                                        esc_html__('Hello %s!', 'webmakerr-cart'),
                                         esc_html($order->customer->full_name)
                                     );
                                     ?>
@@ -75,10 +75,10 @@ if ($order->payment_status !== 'paid') {
                                         <?php
                                         printf(
                                             '%s<strong style="color: #007bff;"><a href="%s">#%s</a></strong>%s',
-                                            esc_html__('Your order ', 'fluent-cart'),
+                                            esc_html__('Your order ', 'webmakerr-cart'),
                                             esc_url($profilePage . 'order/' . $order->uuid),
                                             esc_html($order->invoice_no),
-                                            esc_html__(' has been placed successfully.', 'fluent-cart')
+                                            esc_html__(' has been placed successfully.', 'webmakerr-cart')
                                         );
                                         ?>
                                     </p>
@@ -89,10 +89,10 @@ if ($order->payment_status !== 'paid') {
                                         printf(
                                             '<strong style="color: #007bff;"><a href="%s">%s</a></strong> %s <a style="color: #007bff;" target="_blank" href="%s">%s</a>.',
                                             esc_url($profilePage . 'order/' . $order->uuid),
-                                            esc_html__('Your order', 'fluent-cart'),
-                                            esc_html__('has payment due. You can pay from', 'fluent-cart'),
+                                            esc_html__('Your order', 'webmakerr-cart'),
+                                            esc_html__('has payment due. You can pay from', 'webmakerr-cart'),
                                             esc_url(\Webmakerr\App\Services\Payments\PaymentHelper::getCustomPaymentLink($order->uuid)),
-                                            esc_html__('here', 'fluent-cart')
+                                            esc_html__('here', 'webmakerr-cart')
                                         );
                                         ?>
 
@@ -126,11 +126,11 @@ if ($order->payment_status !== 'paid') {
                                         style="display: flex;justify-content: space-between;background: rgb(249,250,251);padding: 0 16px;">
                                         <div
                                             style="font-size: 12px;font-weight: 600;color: rgb(55, 65, 81);text-transform: uppercase;line-height: 24px;margin: 0;text-align: left;">
-                                            <?php echo esc_html__('Item', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Item', 'webmakerr-cart'); ?>
                                         </div>
                                         <div
                                             style="width: 200px;text-align:right;font-size: 12px;font-weight: 600;color: rgb(55, 65, 81);text-transform: uppercase;line-height: 24px;margin: 0;">
-                                            <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
                                         </div>
                                     </div>
 
@@ -176,7 +176,7 @@ if ($order->payment_status !== 'paid') {
                                                     style="display: flex;align-items: center; justify-content: space-between;">
                                                     <div
                                                         style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                        <?php echo esc_html__('Subtotal', 'fluent-cart'); ?>
+                                                        <?php echo esc_html__('Subtotal', 'webmakerr-cart'); ?>
                                                     </div>
                                                     <div
                                                         style="text-transform:uppercase;font-size:13px;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right"><?php echo esc_html(Helper::toDecimal($order->subtotal)); ?></div>
@@ -187,7 +187,7 @@ if ($order->payment_status !== 'paid') {
                                                     style="display: flex;align-items: center; justify-content: space-between;">
                                                     <div
                                                         style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                        <?php echo esc_html__('Discount', 'fluent-cart'); ?>
+                                                        <?php echo esc_html__('Discount', 'webmakerr-cart'); ?>
                                                     </div>
                                                     <div
                                                         style="text-transform:uppercase;font-size:13px;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right">
@@ -200,7 +200,7 @@ if ($order->payment_status !== 'paid') {
                                                     style="display: flex;align-items: center; justify-content: space-between;">
                                                     <div
                                                         style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                        <?php echo esc_html__('Shipping', 'fluent-cart'); ?>
+                                                        <?php echo esc_html__('Shipping', 'webmakerr-cart'); ?>
                                                     </div>
                                                     <div
                                                         style="text-transform:uppercase;font-size:13px;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right"><?php echo esc_html(Helper::toDecimal($order->shipping_total)); ?></div>
@@ -211,8 +211,8 @@ if ($order->payment_status !== 'paid') {
                                                     style="display: flex;align-items: center; justify-content: space-between;">
                                                     <div
                                                         style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                        <?php echo esc_html__('Total Tax', 'fluent-cart'); ?>
-                                                        <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'fluent-cart') : esc_html__('(Excluded)', 'fluent-cart'); ?>
+                                                        <?php echo esc_html__('Total Tax', 'webmakerr-cart'); ?>
+                                                        <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'webmakerr-cart') : esc_html__('(Excluded)', 'webmakerr-cart'); ?>
                                                     </div>
                                                     <div
                                                         style="text-transform:uppercase;font-size:13px;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right">
@@ -225,8 +225,8 @@ if ($order->payment_status !== 'paid') {
                                                     style="display: flex;align-items: center; justify-content: space-between;">
                                                     <div
                                                         style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                        <?php echo esc_html__('Shipping Tax', 'fluent-cart'); ?>
-                                                        <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'fluent-cart') : esc_html__('(Excluded)', 'fluent-cart'); ?>
+                                                        <?php echo esc_html__('Shipping Tax', 'webmakerr-cart'); ?>
+                                                        <?php echo $order->tax_behavior == 2 ? esc_html__('(Included)', 'webmakerr-cart') : esc_html__('(Excluded)', 'webmakerr-cart'); ?>
                                                     </div>
                                                     <div
                                                         style="text-transform:uppercase;font-size:13px;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right">
@@ -241,7 +241,7 @@ if ($order->payment_status !== 'paid') {
                                                     style="display: flex;align-items: center; justify-content: space-between;">
                                                     <div
                                                         style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                        <?php echo esc_html__('Refund', 'fluent-cart'); ?>
+                                                        <?php echo esc_html__('Refund', 'webmakerr-cart'); ?>
                                                     </div>
                                                     <div
                                                         style="text-transform:uppercase;font-size:13px;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right">
@@ -253,7 +253,7 @@ if ($order->payment_status !== 'paid') {
                                                 style="display: flex;align-items: center; justify-content: space-between;">
                                                 <div
                                                     style="font-size:16px;font-weight:700;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                    <?php echo esc_html__('Total', 'fluent-cart'); ?>
+                                                    <?php echo esc_html__('Total', 'webmakerr-cart'); ?>
                                                 </div>
                                                 <div
                                                     style="text-transform:uppercase;font-size:14px;font-weight:700;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right">
@@ -264,7 +264,7 @@ if ($order->payment_status !== 'paid') {
                                                 style="display: flex;align-items: center; justify-content: space-between;">
                                                 <div
                                                     style="font-size:14px;color:rgb(55,65,81);line-height:24px;margin: 0;">
-                                                    <?php echo esc_html__('Payment Method', 'fluent-cart'); ?>
+                                                    <?php echo esc_html__('Payment Method', 'webmakerr-cart'); ?>
                                                 </div>
                                                 <div
                                                     style="text-transform:uppercase;font-size:13px;color:rgb(55,65,81);margin:0;line-height:24px;text-align: right">
@@ -283,7 +283,7 @@ if ($order->payment_status !== 'paid') {
                                          if(Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.valid') && !$taxtotal): ?>
 
                                             <div style="text-align: right; font-size: 14px; margin-top: 10px;">
-                                                <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'fluent-cart'); ?>
+                                                <?php echo '*' . esc_html__('Tax to be paid on reverse charge basis', 'webmakerr-cart'); ?>
                                             </div>
 
                                         <?php endif ?>
@@ -329,7 +329,7 @@ if ($order->payment_status !== 'paid') {
 
                                     <div class="fct-thank-you-page-order-items-addresses-bill-to" style="font-size:14px;border-radius: 5px;">
                                         <h5 style="font-weight: bold;font-size: 14px;margin: 0 0 10px 0;color: #495057;border-bottom: 1px solid #dee2e6;padding-bottom: 5px;">
-                                            <?php echo esc_html__('Bill To', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Bill To', 'webmakerr-cart'); ?>
                                         </h5>
                                         <?php
                                         if (!empty($order->billing_address)) :
@@ -379,7 +379,7 @@ if ($order->payment_status !== 'paid') {
                                             <?php
                                                $vatNumber = Arr::get($orderTaxRates->meta ?? [], 'vat_reverse.vat_number', '');
                                                if ($vatNumber !== '') {
-                                                echo esc_html__('EU VAT', 'fluent-cart') . ': ' . esc_html($vatNumber);
+                                                echo esc_html__('EU VAT', 'webmakerr-cart') . ': ' . esc_html($vatNumber);
                                                }
                                             ?>
                                         </div>
@@ -388,7 +388,7 @@ if ($order->payment_status !== 'paid') {
                                         class="fct-thank-you-page-order-items-addresses-ship-to"
                                          style="font-size:14px;border-radius: 5px;">
                                         <h5 class="fct-thank-you-page-order-items-addresses-ship-to-title" style="font-weight: bold;font-size: 14px;margin: 0 0 10px 0;color: #495057;border-bottom: 1px solid #dee2e6;padding-bottom: 5px;">
-                                            <?php echo esc_html__('Ship To', 'fluent-cart'); ?>
+                                            <?php echo esc_html__('Ship To', 'webmakerr-cart'); ?>
                                         </h5>
                                         <?php if (!empty($order->shipping_address)) : ?>
                                             <div
@@ -435,7 +435,7 @@ if ($order->payment_status !== 'paid') {
 <div style="text-align: center;margin-top: 10px;display: flex;align-items: center;justify-content: center;gap: 10px;">
     <a href="<?php echo esc_url($profilePage . 'order/' . $order->uuid); ?>"
        style="background: var(--fluent-cart-primary-color, #253241); color: #fff; padding: 7px 20px; border-radius: 8px; border: none; font-size: 16px; font-weight: 500; text-decoration:none;display:inline-block;">
-        <?php echo esc_html__('View Order', 'fluent-cart'); ?>
+        <?php echo esc_html__('View Order', 'webmakerr-cart'); ?>
     </a>
     <a href="<?php echo esc_url(\Webmakerr\App\Services\URL::appendQueryParams(
         home_url(),
@@ -446,7 +446,7 @@ if ($order->payment_status !== 'paid') {
         ]
     )) ?>"
        style="background: var(--fluent-cart-primary-color, #253241);font-size:14px;color:#000;background: none;font-weight: 600;display:inline-block;">
-        <?php echo esc_html__('Download Receipt', 'fluent-cart'); ?>
+        <?php echo esc_html__('Download Receipt', 'webmakerr-cart'); ?>
     </a>
 </div>
 

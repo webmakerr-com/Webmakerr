@@ -120,7 +120,7 @@ class StripeHelper
     {
         $intentId = $transaction->vendor_charge_id;
         if (!$intentId) {
-            return new \WP_Error('invalid_refund', __('Invalid transaction ID for refund.', 'fluent-cart'));
+            return new \WP_Error('invalid_refund', __('Invalid transaction ID for refund.', 'webmakerr-cart'));
         }
 
         $refundData = [
@@ -143,7 +143,7 @@ class StripeHelper
         $status = Arr::get($refunded, 'status');
         $acceptedStatus = ['succeeded', 'pending'];
         if (!in_array($status, $acceptedStatus)) {
-            return new \WP_Error('refund_failed', __('Refund could not be processed in stripe. Please check on your stripe account', 'fluent-cart'));
+            return new \WP_Error('refund_failed', __('Refund could not be processed in stripe. Please check on your stripe account', 'webmakerr-cart'));
         }
 
         return Arr::get($refunded, 'id');

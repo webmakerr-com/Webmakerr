@@ -44,10 +44,10 @@ class StatusHelper
         $this->order->save();
 
         $actionActivity = [
-            'title'   => __('Order status updated', 'fluent-cart'),
+            'title'   => __('Order status updated', 'webmakerr-cart'),
             'content' => sprintf(
                 /* translators: 1: old status, 2: new status */
-                __('Order status has been updated from %1$s to %2$s', 'fluent-cart'), $oldStatus, $orderStatus)
+                __('Order status has been updated from %1$s to %2$s', 'webmakerr-cart'), $oldStatus, $orderStatus)
         ];
 
         (new OrderStatusUpdated($this->order, $oldStatus, $orderStatus, true, $actionActivity, 'order_status'))->dispatch();
@@ -180,10 +180,10 @@ class StatusHelper
 
         if ($oldOrderStatus != $this->order->status) {
             $actionActivity = [
-                'title'   => __('Order status updated', 'fluent-cart'),
+                'title'   => __('Order status updated', 'webmakerr-cart'),
                 'content' => sprintf(
                     /* translators: 1: old status, 2: new status */
-                    __('Order status has been updated from %1$s to %2$s', 'fluent-cart'), $oldOrderStatus, $this->order->status)
+                    __('Order status has been updated from %1$s to %2$s', 'webmakerr-cart'), $oldOrderStatus, $this->order->status)
             ];
             (new OrderStatusUpdated($this->order, $oldOrderStatus, $this->order->status, true, $actionActivity, 'order_status'))->dispatch();
         }
@@ -199,10 +199,10 @@ class StatusHelper
             $this->order->save();
 
             $actionActivity = [
-                'title'   => __('Order status updated', 'fluent-cart'),
+                'title'   => __('Order status updated', 'webmakerr-cart'),
                 'content' => sprintf(
                     /* translators: 1: old status, 2: new status */
-                    __('Order status has been updated from %1$s to %2$s', 'fluent-cart'), $oldOrderStatus, $this->order->status)
+                    __('Order status has been updated from %1$s to %2$s', 'webmakerr-cart'), $oldOrderStatus, $this->order->status)
             ];
 
             (new OrderStatusUpdated($this->order, $oldOrderStatus, $this->order->status, true, $actionActivity, 'order_status'))->dispatch();

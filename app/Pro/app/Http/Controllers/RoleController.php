@@ -51,7 +51,7 @@ class RoleController extends Controller
             ]);
         } else {
             return $this->sendSuccess([
-                'message'    => __('Role synced successfully', 'fluent-cart-pro'),
+                'message'    => __('Role synced successfully', 'webmakerr-cart-pro'),
                 'is_updated' => $isUpdated
             ]);
         }
@@ -68,7 +68,7 @@ class RoleController extends Controller
     {
         if (!$key) {
             return $this->sendError([
-                'message' => __('Role key is required', 'fluent-cart-pro')
+                'message' => __('Role key is required', 'webmakerr-cart-pro')
             ]);
         }
 
@@ -88,7 +88,7 @@ class RoleController extends Controller
             ]);
         } else {
             return $this->sendSuccess([
-                'message' => __('Role deleted successfully', 'fluent-cart-pro')
+                'message' => __('Role deleted successfully', 'webmakerr-cart-pro')
             ]);
         }
     }

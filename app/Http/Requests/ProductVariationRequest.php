@@ -79,7 +79,7 @@ class ProductVariationRequest extends RequestGuard
                         $itemPrice = 0;
                     }
                     if ($value !== null && $value < $itemPrice) {
-                        return sprintf(__("Compare price must be greater than or equal to item price.", 'fluent-cart'));
+                        return sprintf(__("Compare price must be greater than or equal to item price.", 'webmakerr-cart'));
                     }
                     return null;
                 },
@@ -97,7 +97,7 @@ class ProductVariationRequest extends RequestGuard
             //     'numeric',
             //     function ($attribute, $value, $fail) {
             //         if ($this->variants['stock_status'] == 'in-stock' && $value <= 0) {
-            //             return __("The available stock must be greater than 0 when stock is set to in stock", 'fluent-cart');
+            //             return __("The available stock must be greater than 0 when stock is set to in stock", 'webmakerr-cart');
             //         }
             //         return null;
             //     },
@@ -144,23 +144,23 @@ class ProductVariationRequest extends RequestGuard
     public function messages()
     {
         return [
-            'variants.variation_title.required'  => esc_html__('Title is required.', 'fluent-cart'),
-            'variants.variation_title.max'       => esc_html__('Title may not be greater than 200 characters.', 'fluent-cart'),
-            'variants.item_price.required'       => esc_html__('Price is required.', 'fluent-cart'),
-            'variants.item_price.numeric'        => esc_html__('Price must be a number.', 'fluent-cart'),
-            'variants.item_price.min'            => esc_html__('Price must be a positive number greater than 0.', 'fluent-cart'),
-            'variants.stock_status.required_if'  => esc_html__('Stock status is required.', 'fluent-cart'),
-            'variants.item_cost.required_if'     => esc_html__('Item cost is required.', 'fluent-cart'),
-            'variants.fulfillment_type.required' => esc_html__('Fulfilment Type is required.', 'fluent-cart'),
+            'variants.variation_title.required'  => esc_html__('Title is required.', 'webmakerr-cart'),
+            'variants.variation_title.max'       => esc_html__('Title may not be greater than 200 characters.', 'webmakerr-cart'),
+            'variants.item_price.required'       => esc_html__('Price is required.', 'webmakerr-cart'),
+            'variants.item_price.numeric'        => esc_html__('Price must be a number.', 'webmakerr-cart'),
+            'variants.item_price.min'            => esc_html__('Price must be a positive number greater than 0.', 'webmakerr-cart'),
+            'variants.stock_status.required_if'  => esc_html__('Stock status is required.', 'webmakerr-cart'),
+            'variants.item_cost.required_if'     => esc_html__('Item cost is required.', 'webmakerr-cart'),
+            'variants.fulfillment_type.required' => esc_html__('Fulfilment Type is required.', 'webmakerr-cart'),
 
-            'variants.other_info.description.max'             => esc_html__('Description may not be greater than 255 characters.', 'fluent-cart'),
-            'variants.other_info.payment_type.required'       => esc_html__('Payment Type is required.', 'fluent-cart'),
-            'variants.other_info.times.required_if'           => esc_html__('Times is required.', 'fluent-cart'),
-            'variants.other_info.repeat_interval.required_if' => esc_html__('Interval is required.', 'fluent-cart'),
-            'variants.other_info.signup_fee.required_if'      => esc_html__('Setup Fee Amount is required.', 'fluent-cart'),
-            'variants.other_info.signup_fee_name.required_if' => esc_html__('Setup Fee Name is required.', 'fluent-cart'),
-            'variants.other_info.trial_days.numeric'          => esc_html__('Trial days must be a number.', 'fluent-cart'),
-            'variants.other_info.trial_days.max'              => esc_html__('Trial period cannot exceed 365 days.', 'fluent-cart'),
+            'variants.other_info.description.max'             => esc_html__('Description may not be greater than 255 characters.', 'webmakerr-cart'),
+            'variants.other_info.payment_type.required'       => esc_html__('Payment Type is required.', 'webmakerr-cart'),
+            'variants.other_info.times.required_if'           => esc_html__('Times is required.', 'webmakerr-cart'),
+            'variants.other_info.repeat_interval.required_if' => esc_html__('Interval is required.', 'webmakerr-cart'),
+            'variants.other_info.signup_fee.required_if'      => esc_html__('Setup Fee Amount is required.', 'webmakerr-cart'),
+            'variants.other_info.signup_fee_name.required_if' => esc_html__('Setup Fee Name is required.', 'webmakerr-cart'),
+            'variants.other_info.trial_days.numeric'          => esc_html__('Trial days must be a number.', 'webmakerr-cart'),
+            'variants.other_info.trial_days.max'              => esc_html__('Trial period cannot exceed 365 days.', 'webmakerr-cart'),
         ];
     }
 

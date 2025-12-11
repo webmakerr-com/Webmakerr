@@ -142,7 +142,7 @@ class OrderService
         ) {
             throw new \Exception(sprintf(
                 /* translators: %s: product title */
-                esc_html__('[%s] is not available.', 'fluent-cart'),
+                esc_html__('[%s] is not available.', 'webmakerr-cart'),
                 esc_html(Arr::get($product, 'title'))
             ));
         }
@@ -156,7 +156,7 @@ class OrderService
             throw new \Exception(
                 sprintf(
                     /* translators: %s: product title */
-                    esc_html__('You cannot purchase multiple quantities of the subscription product [%s]. Please adjust the quantity to 1.', 'fluent-cart'),
+                    esc_html__('You cannot purchase multiple quantities of the subscription product [%s]. Please adjust the quantity to 1.', 'webmakerr-cart'),
                     esc_html(Arr::get($product, 'title'))
                 )
             );
@@ -224,7 +224,7 @@ class OrderService
             ) {
                 throw new \Exception(sprintf(
                     /* translators: %s: product title */
-                    esc_html__('[%s] is out of stock.', 'fluent-cart'),
+                    esc_html__('[%s] is out of stock.', 'webmakerr-cart'),
                     esc_html(Arr::get($product, 'title'))
                 ));
             }
@@ -238,7 +238,7 @@ class OrderService
             ) {
                 throw new \Exception(sprintf(
                 /* translators: %s: product title */
-                    esc_html__('[%s] is out of stock.', 'fluent-cart'),
+                    esc_html__('[%s] is out of stock.', 'webmakerr-cart'),
                     esc_html(Arr::get($product, 'title'))
                 ));
             }
@@ -304,7 +304,7 @@ class OrderService
         if (!static::allowItemToOrder($currentVariation, $productQuantity)) {
             $note = sprintf(
                 /* translators: %s: product title */
-                esc_html__('[%1$s] is out of stock. Only %2$s left.', 'fluent-cart'),
+                esc_html__('[%1$s] is out of stock. Only %2$s left.', 'webmakerr-cart'),
                 esc_html(Arr::get($product, 'title')),
                 esc_html(Arr::get($currentVariation, 'available'))
             );

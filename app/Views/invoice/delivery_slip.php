@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title><?php use Webmakerr\App\App;
 
-        echo esc_html__('Order Created Notification', 'fluent-cart'); ?></title>
+        echo esc_html__('Order Created Notification', 'webmakerr-cart'); ?></title>
 </head>
 
 <body style="font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 0;margin: 0;">
@@ -27,10 +27,10 @@
                     <table style="width: 100%; border: none !important;">
                         <tr style="width: 100%;">
                             <td style="width: 50%; border: none !important;">
-                                <h3 style="color: #2F3448; font-size: 16px; font-weight: 600; line-height: 24px; margin-bottom: 10px;"><?php esc_html_e('Order Summary', 'fluent-cart'); ?></h3>
+                                <h3 style="color: #2F3448; font-size: 16px; font-weight: 600; line-height: 24px; margin-bottom: 10px;"><?php esc_html_e('Order Summary', 'webmakerr-cart'); ?></h3>
                                 <table style="font-size: 14px; font-weight: 400; width: 100%; border-collapse: collapse; border: 0; margin-bottom: 20px;">
                                     <tr>
-                                        <td style="color: #565865; border: 0; width: 100px; padding-top: 5px; padding-bottom: 5px; "><?php echo esc_html__('Order ID:', 'fluent-cart') ?></td>
+                                        <td style="color: #565865; border: 0; width: 100px; padding-top: 5px; padding-bottom: 5px; "><?php echo esc_html__('Order ID:', 'webmakerr-cart') ?></td>
                                         <td style="color: #2F3448; border: 0; padding-top: 5px; padding-bottom: 3px;">
                                             <a href="{{order.customer_order_link}}" style="color: #007bff; text-decoration: none;">
                                                 #{{order.id}}
@@ -38,7 +38,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td style="color: #565865; border: 0; width: 100px; padding-top: 5px; padding-bottom: 5px;"><?php echo esc_html__('Date:', 'fluent-cart') ?></td>
+                                        <td style="color: #565865; border: 0; width: 100px; padding-top: 5px; padding-bottom: 5px;"><?php echo esc_html__('Date:', 'webmakerr-cart') ?></td>
                                         <td style="color: #2F3448; border: 0; padding-top: 5px; padding-bottom: 3px;font-size: 12px;">
                                             {{order.updated_at}}
                                         </td>
@@ -47,7 +47,7 @@
                             </td>
 
                             <td style="width: 50%; border: none !important;">
-                                <h3 style="color: #2F3448; font-size: 16px; font-weight: 600; line-height: 24px; margin-bottom: 10px; text-align: right"><?php esc_html_e('Customer Info', 'fluent-cart'); ?></h3>
+                                <h3 style="color: #2F3448; font-size: 16px; font-weight: 600; line-height: 24px; margin-bottom: 10px; text-align: right"><?php esc_html_e('Customer Info', 'webmakerr-cart'); ?></h3>
                                 <table style="font-size: 14px; font-weight: 400; width: 100%; border-collapse: collapse; border: 0; margin-bottom: 20px;">
                                     <tr>
                                         <td style="text-align: right; color: #565865; border: 0; width: 100px; padding-top: 5px; padding-bottom: 5px; ">

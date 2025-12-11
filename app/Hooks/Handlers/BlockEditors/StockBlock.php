@@ -54,8 +54,8 @@ class StockBlock extends BlockEditor
             $this->getLocalizationKey()     => [
                 'slug'              => $this->slugPrefix,
                 'name'              => static::getEditorName(),
-                'title'             => __('Stock', 'fluent-cart'),
-                'description'       => __('This block will display the stock.', 'fluent-cart'),
+                'title'             => __('Stock', 'webmakerr-cart'),
+                'description'       => __('This block will display the stock.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
                 'supports'          => $this->supports()
             ],

@@ -25,7 +25,7 @@ class SubscriptionsManager
     public function validate($vendorChargeId, $data)
     {
         if ($vendorChargeId !== Arr::get($data, 'vendor_charge_id')) {
-            return new \WP_Error('invalid_vendor_charge_id', __('Invalid vendor charge ID.', 'fluent-cart'));
+            return new \WP_Error('invalid_vendor_charge_id', __('Invalid vendor charge ID.', 'webmakerr-cart'));
         }
         return true;
     }
@@ -52,7 +52,7 @@ class SubscriptionsManager
         if ('requires_action' === $status) {
             wp_send_json([
                 'status'        => 'requires_action',
-                'message'       => __('Payment method updated successfully', 'fluent-cart'),
+                'message'       => __('Payment method updated successfully', 'webmakerr-cart'),
                 'client_secret' => Arr::get($setupIntent, 'client_secret'),
                 'customer_id'   => $customerId,
             ], 200);
@@ -61,7 +61,7 @@ class SubscriptionsManager
         if ('succeeded' !== $status) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Card verification failed', 'fluent-cart')
+                'message' => __('Card verification failed', 'webmakerr-cart')
             ], 423);
         }
         return true;

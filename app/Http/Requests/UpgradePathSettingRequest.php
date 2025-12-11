@@ -24,10 +24,10 @@ class UpgradePathSettingRequest extends RequestGuard
     public function messages()
     {
         return [
-            'from_variant.required'   => __('From is required.', 'fluent-cart'),
-            'to_variants.required'  => __('Variation is required.', 'fluent-cart'),
-            'to_variants.*.required'  => __('Variation is required.', 'fluent-cart'),
-            'discount_amount.numeric' => __('Discount amount is should be a number.', 'fluent-cart'),
+            'from_variant.required'   => __('From is required.', 'webmakerr-cart'),
+            'to_variants.required'  => __('Variation is required.', 'webmakerr-cart'),
+            'to_variants.*.required'  => __('Variation is required.', 'webmakerr-cart'),
+            'discount_amount.numeric' => __('Discount amount is should be a number.', 'webmakerr-cart'),
         ];
     }
 

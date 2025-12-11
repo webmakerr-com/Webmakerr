@@ -15,13 +15,13 @@ class ProductContent extends Element
 
     public function get_label()
     {
-        return esc_html__('Product content', 'fluent-cart');
+        return esc_html__('Product content', 'webmakerr-cart');
     }
 
     public function set_controls()
     {
         $edit_link = Helpers::get_preview_post_link( get_the_ID() );
-        $label = esc_html__('Edit product content in FluentCart.', 'fluent-cart');
+        $label = esc_html__('Edit product content in FluentCart.', 'webmakerr-cart');
 
         $this->controls['info'] = [
             'tab'     => 'content',
@@ -39,8 +39,8 @@ class ProductContent extends Element
         if (empty($product) || $product->post_type !== FluentProducts::CPT_NAME) {
             return $this->render_element_placeholder(
                 [
-                    'title'       => esc_html__('For better preview select content to show.', 'fluent-cart'),
-                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'fluent-cart'),
+                    'title'       => esc_html__('For better preview select content to show.', 'webmakerr-cart'),
+                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'webmakerr-cart'),
                 ]
             );
         }
@@ -50,7 +50,7 @@ class ProductContent extends Element
         if (!$content) {
             return $this->render_element_placeholder(
                 [
-                    'title' => esc_html__('Product content is empty.', 'fluent-cart'),
+                    'title' => esc_html__('Product content is empty.', 'webmakerr-cart'),
                 ]
             );
         }

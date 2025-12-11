@@ -344,7 +344,7 @@ class IntegrationEventListener
         $orderHash = App::request()->get('order_hash');
         if (!$orderHash) {
             return wp_send_json([
-                'message' => __('Order hash is required', 'fluent-cart')
+                'message' => __('Order hash is required', 'webmakerr-cart')
             ]);
         }
 
@@ -352,7 +352,7 @@ class IntegrationEventListener
 
         if (!$order) {
             return wp_send_json([
-                'message' => __('Order not found', 'fluent-cart')
+                'message' => __('Order not found', 'webmakerr-cart')
             ]);
         }
 
@@ -369,14 +369,14 @@ class IntegrationEventListener
 
         if (!$action || $action->status !== 'pending') {
             return wp_send_json([
-                'message' => __('No pending actions found for this order', 'fluent-cart')
+                'message' => __('No pending actions found for this order', 'webmakerr-cart')
             ]);
         }
 
         $this->initOrderAsyncRunner($action->id);
 
         return wp_send_json([
-            'message' => __('Integration actions are being processed', 'fluent-cart')
+            'message' => __('Integration actions are being processed', 'webmakerr-cart')
         ]);
     }
 

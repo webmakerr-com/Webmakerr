@@ -168,7 +168,7 @@ class GatewayManager
                     throw new \Exception(
                         sprintf(
                             /* translators: %1$s is the required meta key, %2$s is the gateway identifier */
-                            esc_html__('Missing required meta key "%1$s" for gateway: %2$s', 'fluent-cart'),
+                            esc_html__('Missing required meta key "%1$s" for gateway: %2$s', 'webmakerr-cart'),
                             esc_html($rKey),
                             esc_html($key)
                         )

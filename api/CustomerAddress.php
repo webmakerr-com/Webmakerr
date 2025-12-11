@@ -86,12 +86,12 @@ class CustomerAddress
         $addressId = Arr::get($data, 'address.id', false);
 
         if (!$addressId) {
-            throw new Exception(esc_html__('Please edit a valid address!', 'fluent-cart'));
+            throw new Exception(esc_html__('Please edit a valid address!', 'webmakerr-cart'));
         }
 
         $address = CustomerAddresses::query()->findOrFail($addressId);
         if (!$address) {
-            throw new Exception(esc_html__('Address not found, please reload the page and try again!', 'fluent-cart'));
+            throw new Exception(esc_html__('Address not found, please reload the page and try again!', 'webmakerr-cart'));
         }
 
         $data = Arr::get($data, 'address');
@@ -113,7 +113,7 @@ class CustomerAddress
     public function delete($id)
     {
         if (!$id) {
-            throw new Exception(esc_html__('Please use a valid address ID!', 'fluent-cart'));
+            throw new Exception(esc_html__('Please use a valid address ID!', 'webmakerr-cart'));
         }
         return CustomerAddresses::query()->where('id', $id)->delete();
     }

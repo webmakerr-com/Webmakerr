@@ -17,7 +17,7 @@ class ModuleSettingsController extends Controller
         return $this->sendSuccess([
             'fields'   => [
                 'modules_settings' => [
-                    'title'           => __('Features & addon', 'fluent-cart'),
+                    'title'           => __('Features & addon', 'webmakerr-cart'),
                     'type'            => 'section',
                     'class'           => 'no-padding',
                     'disable_nesting' => true,
@@ -61,7 +61,7 @@ class ModuleSettingsController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Settings saved successfully', 'fluent-cart')
+            'message' => __('Settings saved successfully', 'webmakerr-cart')
         ]);
     }
 }

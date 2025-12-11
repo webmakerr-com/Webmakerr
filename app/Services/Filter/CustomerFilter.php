@@ -73,11 +73,11 @@ class CustomerFilter extends BaseFilter
     {
         $filters = [
             'order'    => [
-                'label'    => __('Order Property', 'fluent-cart'),
+                'label'    => __('Order Property', 'webmakerr-cart'),
                 'value'    => 'order',
                 'children' => [
                     [
-                        'label'           => __('By Order Items', 'fluent-cart'),
+                        'label'           => __('By Order Items', 'webmakerr-cart'),
                         'value'           => 'order_items',
                         'column'          => 'object_id',
                         'filter_type'     => 'relation',
@@ -87,18 +87,18 @@ class CustomerFilter extends BaseFilter
                         'limit'           => 10,
                     ],
                     [
-                        'label' => __('Purchases', 'fluent-cart'),
+                        'label' => __('Purchases', 'webmakerr-cart'),
                         'value' => 'purchase_count',
                         'type'  => 'numeric',
                     ],
                     [
-                        'label'       => __('First Purchase Date', 'fluent-cart'),
+                        'label'       => __('First Purchase Date', 'webmakerr-cart'),
                         'value'       => 'first_purchase_date',
                         'type'        => 'dates',
                         'filter_type' => 'date',
                     ],
                     [
-                        'label'       => __('Last Purchase Date', 'fluent-cart'),
+                        'label'       => __('Last Purchase Date', 'webmakerr-cart'),
                         'value'       => 'last_purchase_date',
                         'type'        => 'dates',
                         'filter_type' => 'date',
@@ -106,33 +106,33 @@ class CustomerFilter extends BaseFilter
                 ],
             ],
             'customer' => [
-                'label'    => __('Customer Property', 'fluent-cart'),
+                'label'    => __('Customer Property', 'webmakerr-cart'),
                 'value'    => 'customer',
                 'children' => [
                     [
-                        'label'       => __('Customer Name', 'fluent-cart'),
+                        'label'       => __('Customer Name', 'webmakerr-cart'),
                         'value'       => 'customer_full_name',
                         'type'        => 'text',
                         'filter_type' => 'custom',
                         'operators'   => [
-                            'like_all'    => __('Contains', 'fluent-cart'),
-                            'starts_with' => __('Starts With', 'fluent-cart'),
-                            'ends_with'   => __('Ends With', 'fluent-cart'),
-                            'not_like'    => __('Not Contains', 'fluent-cart'),
+                            'like_all'    => __('Contains', 'webmakerr-cart'),
+                            'starts_with' => __('Starts With', 'webmakerr-cart'),
+                            'ends_with'   => __('Ends With', 'webmakerr-cart'),
+                            'not_like'    => __('Not Contains', 'webmakerr-cart'),
                         ],
                         'callback'    => function ($query, $data) {
                             $query->searchByFullName($data);
                         }
                     ],
                     [
-                        'label'       => __('Customer Email', 'fluent-cart'),
+                        'label'       => __('Customer Email', 'webmakerr-cart'),
                         'value'       => 'email',
                         'type'        => 'text',
                         'filter_type' => 'column',
                         'column'      => 'email',
                     ],
                     [
-                        'label'       => __('Customer LTV', 'fluent-cart'),
+                        'label'       => __('Customer LTV', 'webmakerr-cart'),
                         'value'       => 'ltv',
                         'type'        => 'numeric',
                         'filter_type' => 'column',

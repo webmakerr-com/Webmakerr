@@ -261,7 +261,7 @@ class FluentLicensing
             $renewUrl = $this->getConfig('api_url');
         }
 
-        return '<p>Your ' . $this->getConfig('plugin_title') . ' ' . __('license has been', 'fluent-cart-pro') . ' <b>' . __('expired at', 'fluent-cart-pro') . ' ' . gmdate('d M Y', strtotime($licenseData['expires'])) . '</b>, Please ' .
-            '<a href="' . $renewUrl . '"><b>' . __('Click Here to Renew Your License', 'fluent-cart-pro') . '</b></a>' . '</p>';
+        return '<p>Your ' . $this->getConfig('plugin_title') . ' ' . __('license has been', 'webmakerr-cart-pro') . ' <b>' . __('expired at', 'webmakerr-cart-pro') . ' ' . gmdate('d M Y', strtotime($licenseData['expires'])) . '</b>, Please ' .
+            '<a href="' . $renewUrl . '"><b>' . __('Click Here to Renew Your License', 'webmakerr-cart-pro') . '</b></a>' . '</p>';
     }
 }

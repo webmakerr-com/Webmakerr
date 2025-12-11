@@ -74,12 +74,12 @@ class OrderItemResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Order items created.', 'fluent-cart')
+                __('Order items created.', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Order items failed to create!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Order items failed to create!', 'webmakerr-cart')]
         ]);
     }
 
@@ -122,12 +122,12 @@ class OrderItemResource extends BaseResourceApi
         if ($isUpdate) {
             return static::makeSuccessResponse(
                 $isUpdate,
-                __('Order items updated.', 'fluent-cart')
+                __('Order items updated.', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Order items failed to update!', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Order items failed to update!', 'webmakerr-cart')]
         ]);
     }
 
@@ -198,7 +198,7 @@ class OrderItemResource extends BaseResourceApi
     {
         if (empty($params) || !is_array($params)) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('No items given.', 'fluent-cart')]
+                ['code' => 403, 'message' => __('No items given.', 'webmakerr-cart')]
             ]);
         }
 
@@ -270,7 +270,7 @@ class OrderItemResource extends BaseResourceApi
 
         return static::makeSuccessResponse(
             '',
-            __('Order items updated.', 'fluent-cart')
+            __('Order items updated.', 'webmakerr-cart')
         );
     }
 

@@ -57,7 +57,7 @@ class WriterFactory
                 throw new UnsupportedTypeException(
                     sprintf(
                     /* translators: %s is the writer type */
-                        esc_html__('No writers supporting the given type: %s', 'fluent-cart'),
+                        esc_html__('No writers supporting the given type: %s', 'webmakerr-cart'),
                         esc_html($writerType)
                     )
                 );

@@ -102,7 +102,7 @@ class DeclarationBlock extends RuleSet
                         throw new UnexpectedTokenException(
                             sprintf(
                                 /* translators: %s is the regular expression */
-                                esc_html__( "Selector did not match '%s'.", 'fluent-cart' ),
+                                esc_html__( "Selector did not match '%s'.", 'webmakerr-cart' ),
                                 esc_html( Selector::SELECTOR_VALIDATION_RX )
                             ),
                             esc_html( $mSelector ),

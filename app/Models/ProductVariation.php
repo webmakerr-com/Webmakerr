@@ -237,21 +237,21 @@ class ProductVariation extends Model
     {
         if ($this->item_status !== 'active' ||
             $this->product->post_status !== 'publish') {
-            return new \WP_Error('unpublished', __('This product is not available for purchase.', 'fluent-cart'));
+            return new \WP_Error('unpublished', __('This product is not available for purchase.', 'webmakerr-cart'));
         }
 
         if ($this->payment_type === 'subscription' && $quantity > 1) {
-            return new \WP_Error('invalid_subscription_quantity', __('You cannot purchase more than one subscription at a time.', 'fluent-cart'));
+            return new \WP_Error('invalid_subscription_quantity', __('You cannot purchase more than one subscription at a time.', 'webmakerr-cart'));
         }
 
         $productDetail = $this->product_detail;
         if (!$productDetail) {
-            return new \WP_Error('unpublished', __('This product is not available for purchase', 'fluent-cart'));
+            return new \WP_Error('unpublished', __('This product is not available for purchase', 'webmakerr-cart'));
         }
 
         if (ModuleSettings::isActive('stock_management')) {
             if (($productDetail->manage_stock && $this->manage_stock) && $quantity > $this->available) {
-                return new \WP_Error('insufficient_stock', __('Sorry, this product is currently out of stock.', 'fluent-cart'));
+                return new \WP_Error('insufficient_stock', __('Sorry, this product is currently out of stock.', 'webmakerr-cart'));
             }
         }
 

@@ -53,7 +53,7 @@ class ProductLicenseController extends Controller
                 $this->validate($formattedVariations[$variationId]['validity'], [
                     'unit' => 'required'
                 ], [
-                    'unit.required' => sprintf(__('Validity type is required for %s.', 'fluent-cart-pro'), $variation['title'])
+                    'unit.required' => sprintf(__('Validity type is required for %s.', 'webmakerr-cart-pro'), $variation['title'])
                 ]);
             }
         }
@@ -80,7 +80,7 @@ class ProductLicenseController extends Controller
         }
 
         return [
-            'message' => __('Settings has been updated successfully.', 'fluent-cart-pro'),
+            'message' => __('Settings has been updated successfully.', 'webmakerr-cart-pro'),
         ];
     }
 }

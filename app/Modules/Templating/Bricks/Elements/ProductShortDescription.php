@@ -17,13 +17,13 @@ class ProductShortDescription extends Element
 
     public function get_label()
     {
-        return esc_html__('Product short description', 'fluent-cart');
+        return esc_html__('Product short description', 'webmakerr-cart');
     }
 
     public function set_controls()
     {
         $edit_link = Helpers::get_preview_post_link(get_the_ID());
-        $label = esc_html__('Edit product short description in WordPress.', 'fluent-cart');
+        $label = esc_html__('Edit product short description in WordPress.', 'webmakerr-cart');
 
         $this->controls['info'] = [
             'tab'     => 'content',
@@ -40,8 +40,8 @@ class ProductShortDescription extends Element
         if (empty($product)) {
             return $this->render_element_placeholder(
                 [
-                    'title'       => esc_html__('For better preview select content to show.', 'fluent-cart'),
-                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'fluent-cart'),
+                    'title'       => esc_html__('For better preview select content to show.', 'webmakerr-cart'),
+                    'description' => esc_html__('Go to: Settings > Template Settings > Populate Content', 'webmakerr-cart'),
                 ]
             );
         }

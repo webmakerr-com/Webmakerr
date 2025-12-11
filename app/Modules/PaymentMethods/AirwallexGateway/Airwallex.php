@@ -24,9 +24,9 @@ class Airwallex extends AbstractPaymentGateway
     public function meta(): array
     {
         return [
-            'title' => __('Airwallex', 'fluent-cart'),
+            'title' => __('Airwallex', 'webmakerr-cart'),
             'route' => 'airwallex',
-            'description' => __('Pay securely with Airwallex - Global payment processing', 'fluent-cart'),
+            'description' => __('Pay securely with Airwallex - Global payment processing', 'webmakerr-cart'),
             'logo' => Vite::getAssetUrl("images/payment-methods/airwallex-logo.svg"),
             'icon' => Vite::getAssetUrl("images/payment-methods/airwallex-logo.svg"),
             'brand_color' => '#6c5ce7',
@@ -117,26 +117,26 @@ class Airwallex extends AbstractPaymentGateway
                 <p>%8$s <code class="copyable-content">%2$s</code></p>
                 <p>%9$s</p>
             </div>',
-            __('Webhook URL: ', 'fluent-cart'),                    // %1$s
+            __('Webhook URL: ', 'webmakerr-cart'),                    // %1$s
             $webhook_url,                                          // %2$s (reused)
-            __('You should configure your Airwallex webhooks to get all updates of your payments remotely.', 'fluent-cart'), // %3$s
-            __('How to configure?', 'fluent-cart'),                // %4$s
-            __('In your Airwallex Console:', 'fluent-cart'),       // %5$s
-            __('Go to Developers > Webhooks >', 'fluent-cart'),    // %6$s
-            __('Add webhook', 'fluent-cart'),                      // %7$s
-            __('Enter The Webhook URL: ', 'fluent-cart'),          // %8$s
-            __('Select payment events', 'fluent-cart')             // %9$s
+            __('You should configure your Airwallex webhooks to get all updates of your payments remotely.', 'webmakerr-cart'), // %3$s
+            __('How to configure?', 'webmakerr-cart'),                // %4$s
+            __('In your Airwallex Console:', 'webmakerr-cart'),       // %5$s
+            __('Go to Developers > Webhooks >', 'webmakerr-cart'),    // %6$s
+            __('Add webhook', 'webmakerr-cart'),                      // %7$s
+            __('Enter The Webhook URL: ', 'webmakerr-cart'),          // %8$s
+            __('Select payment events', 'webmakerr-cart')             // %9$s
         );
 
         return array(
 //            'notice' => [
 //                'value' => $this->getStoreModeNotice(),
-//                'label' => __('Store Mode notice', 'fluent-cart'),
+//                'label' => __('Store Mode notice', 'webmakerr-cart'),
 //                'type' => 'notice'
 //            ],
             'upcoming' => [
                 'value' => $this->isUpcoming(),
-                'label' => __('Payment method is upcoming!', 'fluent-cart'),
+                'label' => __('Payment method is upcoming!', 'webmakerr-cart'),
                 'type' => 'upcoming'
             ],
             'payment_mode' => [
@@ -144,14 +144,14 @@ class Airwallex extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type' => 'tab',
-                        'label' => __('Test credentials', 'fluent-cart'),
+                        'label' => __('Test credentials', 'webmakerr-cart'),
                         'value' => 'test',
                         'schema' => [
                             'test_client_id' => array(
                                 'value' => '',
-                                'label' => __('Test Client ID', 'fluent-cart'),
+                                'label' => __('Test Client ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('Your test client ID', 'fluent-cart'),
+                                'placeholder' => __('Your test client ID', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -160,9 +160,9 @@ class Airwallex extends AbstractPaymentGateway
                             ),
                             'test_api_key' => array(
                                 'value' => '',
-                                'label' => __('Test API Key', 'fluent-cart'),
+                                'label' => __('Test API Key', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('Your test API key', 'fluent-cart'),
+                                'placeholder' => __('Your test API key', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -173,14 +173,14 @@ class Airwallex extends AbstractPaymentGateway
                     ],
                     [
                         'type' => 'tab',
-                        'label' => __('Live credentials', 'fluent-cart'),
+                        'label' => __('Live credentials', 'webmakerr-cart'),
                         'value' => 'live',
                         'schema' => [
                             'live_client_id' => array(
                                 'value' => '',
-                                'label' => __('Live Client ID', 'fluent-cart'),
+                                'label' => __('Live Client ID', 'webmakerr-cart'),
                                 'type' => 'text',
-                                'placeholder' => __('Your live client ID', 'fluent-cart'),
+                                'placeholder' => __('Your live client ID', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -189,9 +189,9 @@ class Airwallex extends AbstractPaymentGateway
                             ),
                             'live_api_key' => array(
                                 'value' => '',
-                                'label' => __('Live API Key', 'fluent-cart'),
+                                'label' => __('Live API Key', 'webmakerr-cart'),
                                 'type' => 'password',
-                                'placeholder' => __('Your live API key', 'fluent-cart'),
+                                'placeholder' => __('Your live API key', 'webmakerr-cart'),
                                 'dependency' => [
                                     'depends_on' => 'payment_mode',
                                     'operator' => '=',
@@ -204,7 +204,7 @@ class Airwallex extends AbstractPaymentGateway
             ],
             'webhook_desc' => array(
                 'value' => $webhook_instructions,
-                'label' => __('Webhook URL', 'fluent-cart'),
+                'label' => __('Webhook URL', 'webmakerr-cart'),
                 'type' => 'html_attr'
             ),
         );
@@ -218,7 +218,7 @@ class Airwallex extends AbstractPaymentGateway
         if (empty($clientId) || empty($apiKey)) {
             return [
                 'status' => 'failed',
-                'message' => __('Client ID and API Key are required', 'fluent-cart')
+                'message' => __('Client ID and API Key are required', 'webmakerr-cart')
             ];
         }
 
@@ -227,7 +227,7 @@ class Airwallex extends AbstractPaymentGateway
             
             return [
                 'status' => 'success',
-                'message' => __('Airwallex settings validated successfully', 'fluent-cart')
+                'message' => __('Airwallex settings validated successfully', 'webmakerr-cart')
             ];
         } catch (\Exception $e) {
             return [
@@ -292,7 +292,7 @@ class Airwallex extends AbstractPaymentGateway
         $data = json_decode($body, true);
 
         if (wp_remote_retrieve_response_code($response) !== 201) {
-            throw new \Exception(esc_html__('Failed to authenticate with Airwallex', 'fluent-cart'));
+            throw new \Exception(esc_html__('Failed to authenticate with Airwallex', 'webmakerr-cart'));
         }
 
         return $data['token'];
@@ -376,7 +376,7 @@ class Airwallex extends AbstractPaymentGateway
         }
 
         if (wp_remote_retrieve_response_code($response) !== 201) {
-            throw new \Exception(esc_html__('Invalid Airwallex credentials', 'fluent-cart'));
+            throw new \Exception(esc_html__('Invalid Airwallex credentials', 'webmakerr-cart'));
         }
 
         return true;

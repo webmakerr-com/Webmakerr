@@ -57,7 +57,7 @@ class FileUploadController extends Controller
 
         if (empty($file)) {
             return $this->sendError([
-                'message'    => __('Failed To Upload File', 'fluent-cart'),
+                'message'    => __('Failed To Upload File', 'webmakerr-cart'),
                 'additional' => 'File is empty'
             ]);
         }
@@ -93,10 +93,10 @@ class FileUploadController extends Controller
                 $attachment_id = media_handle_upload('file', 0, []);
                 return wp_prepare_attachment_for_js($attachment_id);
             }
-            return $this->sendError(__('Error Uploading File', 'fluent-cart'));
+            return $this->sendError(__('Error Uploading File', 'webmakerr-cart'));
         }
 
-        return $this->sendError(__('No File Attached', 'fluent-cart'));
+        return $this->sendError(__('No File Attached', 'webmakerr-cart'));
     }
 
     public function deleteFile(Request $request)

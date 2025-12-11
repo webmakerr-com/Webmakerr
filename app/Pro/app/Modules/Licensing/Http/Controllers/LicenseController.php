@@ -99,21 +99,21 @@ class LicenseController extends Controller
         if ($newExpirationDate !== 'lifetime') {
             if (!$newExpirationDate || strtotime($newExpirationDate) === false) {
                 return $this->sendError([
-                    'message' => __('Invalid expiration date!', 'fluent-cart-pro')
+                    'message' => __('Invalid expiration date!', 'webmakerr-cart-pro')
                 ], 423);
             }
         }
 
         $license = $license->extendValidity($newExpirationDate);
 
-        $message = __('License validity extended!', 'fluent-cart-pro');
+        $message = __('License validity extended!', 'webmakerr-cart-pro');
 
         if (($currentExpirationDate && $newExpirationDate < $currentExpirationDate) || !$currentExpirationDate) {
-            $message = __('License validity reduced!', 'fluent-cart-pro');
+            $message = __('License validity reduced!', 'webmakerr-cart-pro');
         }
 
         if ($newExpirationDate == 'lifetime') {
-            $message = __('Marked license as lifetime!', 'fluent-cart-pro');
+            $message = __('Marked license as lifetime!', 'webmakerr-cart-pro');
         }
 
         return [
@@ -134,7 +134,7 @@ class LicenseController extends Controller
 
         if (!in_array($newStatus, $validStatuses)) {
             return $this->sendError([
-                'message' => __('Invalid status!', 'fluent-cart-pro')
+                'message' => __('Invalid status!', 'webmakerr-cart-pro')
             ], 423);
         }
 
@@ -143,7 +143,7 @@ class LicenseController extends Controller
 
         return [
             'license' => $license,
-            'message' => __('License status has been updated successfully!', 'fluent-cart-pro')
+            'message' => __('License status has been updated successfully!', 'webmakerr-cart-pro')
         ];
     }
 
@@ -157,7 +157,7 @@ class LicenseController extends Controller
 
         return [
             'license' => $license,
-            'message' => __('License limit has been updated successfully!', 'fluent-cart-pro')
+            'message' => __('License limit has been updated successfully!', 'webmakerr-cart-pro')
         ];
     }
 
@@ -177,7 +177,7 @@ class LicenseController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Site has been deactivated successfully!', 'fluent-cart-pro')
+            'message' => __('Site has been deactivated successfully!', 'webmakerr-cart-pro')
         ]);
     }
 
@@ -198,7 +198,7 @@ class LicenseController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Site has been activated successfully!', 'fluent-cart-pro')
+            'message' => __('Site has been activated successfully!', 'webmakerr-cart-pro')
         ]);
 
     }
@@ -230,7 +230,7 @@ class LicenseController extends Controller
         ]);
 
         return $this->sendSuccess([
-            'message' => __('License deleted successfully!', 'fluent-cart-pro')
+            'message' => __('License deleted successfully!', 'webmakerr-cart-pro')
         ]);
     }
 

@@ -33,8 +33,8 @@ class CartRequest extends RequestGuard
     public function messages()
     {
         return [
-            'customer_id' => esc_html__('Customer Id must be a number.', 'fluent-cart'),
-            'user_id' => esc_html__('User Id must be a number.', 'fluent-cart'),
+            'customer_id' => esc_html__('Customer Id must be a number.', 'webmakerr-cart'),
+            'user_id' => esc_html__('User Id must be a number.', 'webmakerr-cart'),
         ];
     }
 
@@ -58,4 +58,3 @@ class CartRequest extends RequestGuard
         ];
     }
 }
-

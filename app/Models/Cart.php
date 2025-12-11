@@ -176,7 +176,7 @@ class Cart extends Model
     public function addItem($item = [], $replacingIndex = null)
     {
         if ($this->isLocked()) {
-            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'fluent-cart'));
+            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'webmakerr-cart'));
         }
         $cartData = $this->cart_data;
         if ($replacingIndex !== null && isset($cartData[$replacingIndex])) {
@@ -207,7 +207,7 @@ class Cart extends Model
     public function removeItem($variationId, $extraArgs = [], $triggerEvent = true)
     {
         if ($this->isLocked()) {
-            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'fluent-cart'));
+            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'webmakerr-cart'));
         }
 
         $cartData = array_values($this->cart_data);
@@ -307,7 +307,7 @@ class Cart extends Model
             }
 
             if ($this->isLocked()) {
-                return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'fluent-cart'));
+                return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'webmakerr-cart'));
             }
         }
 
@@ -350,7 +350,7 @@ class Cart extends Model
         }
 
         if ($this->isLocked()) {
-            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'fluent-cart'));
+            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'webmakerr-cart'));
         }
 
         $prevDiscountTotal = array_sum(array_map(function ($item) {
@@ -401,7 +401,7 @@ class Cart extends Model
         }
 
         if ($this->isLocked()) {
-            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'fluent-cart'));
+            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'webmakerr-cart'));
         }
 
         $this->coupons = array_filter($this->coupons, function ($code) use ($removeCodes) {
@@ -443,7 +443,7 @@ class Cart extends Model
     public function applyCoupon($codes = [])
     {
         if ($this->isLocked()) {
-            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'fluent-cart'));
+            return new \WP_Error('cart_locked', __('This cart is locked and cannot be modified.', 'webmakerr-cart'));
         }
 
         $discountService = new \Webmakerr\App\Services\Coupon\DiscountService($this);

@@ -33,7 +33,7 @@ class CartResource extends BaseResourceApi
             ->where('id', $variationId)->first();
 
         if (!$variation) {
-            return new WP_Error(__('Invalid Product', 'fluent-cart'));
+            return new WP_Error(__('Invalid Product', 'webmakerr-cart'));
         }
 
         $quantity = webmakerr_apply_filters('webmakerr_cart/item_max_quantity', $quantity, [
@@ -137,7 +137,7 @@ class CartResource extends BaseResourceApi
 
         if ($quantity <= 0) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Quantity can not be negative.', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Quantity can not be negative.', 'webmakerr-cart')]
             ]);
         }
 
@@ -156,7 +156,7 @@ class CartResource extends BaseResourceApi
 
         if (Arr::get($cartArray, 'code', '') === 'failed') {
             return static::makeErrorResponse([
-                ['code' => 423, 'message' => Arr::get($cartArray, 'message', __('Cart validation error!', 'fluent-cart'))]
+                ['code' => 423, 'message' => Arr::get($cartArray, 'message', __('Cart validation error!', 'webmakerr-cart'))]
             ]);
         }
 
@@ -168,12 +168,12 @@ class CartResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Successfully added!', 'fluent-cart')
+                __('Successfully added!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Could not add', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Could not add', 'webmakerr-cart')]
         ]);
     }
 
@@ -206,7 +206,7 @@ class CartResource extends BaseResourceApi
         if (!$itemId) {
             return new WP_Error(
                 'invalid_item',
-                __('Invalid item.', 'fluent-cart')
+                __('Invalid item.', 'webmakerr-cart')
             );
         }
 
@@ -325,7 +325,7 @@ class CartResource extends BaseResourceApi
         if (Arr::get($productVariation, 'product.post_status') !== 'publish') {
             return new WP_Error(
                 'item_not_available',
-                __('Item is not available.', 'fluent-cart')
+                __('Item is not available.', 'webmakerr-cart')
             );
         }
 
@@ -338,7 +338,7 @@ class CartResource extends BaseResourceApi
         if ($paymentType !== 'onetime' && !$hasInstantCheckoutParam) {
             return new WP_Error(
                 'item_not_available',
-                __('Item is not available.', 'fluent-cart')
+                __('Item is not available.', 'webmakerr-cart')
             );
         }
         $hasSubscription = static::hasSubscriptionProduct($existingItemsArray);
@@ -346,7 +346,7 @@ class CartResource extends BaseResourceApi
         if (!$variationIds->contains(Arr::get($productVariation, 'id')) || empty($existingItemsArray)) {
             return new WP_Error(
                 'item_not_available',
-                __('Item is not available.', 'fluent-cart')
+                __('Item is not available.', 'webmakerr-cart')
             );
 
         }
@@ -358,13 +358,13 @@ class CartResource extends BaseResourceApi
         if ($paymentType === 'onetime' && $hasSubscription) {
             return new WP_Error(
                 'subscription_items_can_not_combined',
-                __('Subscription items can\'t be combined with other products in the cart.', 'fluent-cart')
+                __('Subscription items can\'t be combined with other products in the cart.', 'webmakerr-cart')
             );
         }
 
         return new WP_Error(
             'item_not_available',
-            __('Item is not available.', 'fluent-cart')
+            __('Item is not available.', 'webmakerr-cart')
         );
     }
 
@@ -381,7 +381,7 @@ class CartResource extends BaseResourceApi
     private static function removeItemFromCart($existingItemsArray, $index): array
     {
         unset($existingItemsArray[$index]);
-        $message = __('Item removed from cart', 'fluent-cart');
+        $message = __('Item removed from cart', 'webmakerr-cart');
         return [
             'message'   => $message,
             'cart_data' => $existingItemsArray,
@@ -416,7 +416,7 @@ class CartResource extends BaseResourceApi
             if (!CartHelper::shouldAddItemToCart($productVariation, $updatedQuantity)) {
                 return [
                     'code'    => 'failed',
-                    'message' => __("You've reached the maximum quantity for this product.", 'fluent-cart')
+                    'message' => __("You've reached the maximum quantity for this product.", 'webmakerr-cart')
                 ];
             }
         }
@@ -430,7 +430,7 @@ class CartResource extends BaseResourceApi
 
         $existingItemsArray[$index] = $item;
         return [
-            'message'   => __('Quantity updated!', 'fluent-cart'),
+            'message'   => __('Quantity updated!', 'webmakerr-cart'),
             'cart_data' => $existingItemsArray,
         ];
     }
@@ -447,7 +447,7 @@ class CartResource extends BaseResourceApi
                     'code'    => 'failed',
                     'message' => sprintf(
                         /* translators: %s is the product title */
-                        __('%s is out of stock', 'fluent-cart'),
+                        __('%s is out of stock', 'webmakerr-cart'),
                         Arr::get($productVariation, 'variation_title')
                     ),
                 ];
@@ -470,7 +470,7 @@ class CartResource extends BaseResourceApi
 
 
         return [
-            'message'   => __('Item added in cart!', 'fluent-cart'),
+            'message'   => __('Item added in cart!', 'webmakerr-cart'),
             'cart_data' => $existingItemsArray,
         ];
     }
@@ -521,7 +521,7 @@ class CartResource extends BaseResourceApi
         if (empty($productVariation)) {
             return [
                 'code'    => 'failed',
-                'message' => __('Item is not available.', 'fluent-cart')
+                'message' => __('Item is not available.', 'webmakerr-cart')
             ];
         }
 

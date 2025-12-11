@@ -26,7 +26,7 @@ class AddOnModule
         fluent_cart_update_option('fluent_cart_global_integrations', $addons);
 
         return [
-            'message' => __('Status successfully updated', 'fluent-cart')
+            'message' => __('Status successfully updated', 'webmakerr-cart')
         ];
     }
 
@@ -40,13 +40,13 @@ class AddOnModule
     {
         return [
             'fluent-crm' => [
-                'title'        => __('Fluent CRM', 'fluent-cart'),
-                'description'  => __('Connect FluentCRM with FluentCart and subscribe a contact when a form is submitted', 'fluent-cart'),
+                'title'        => __('Fluent CRM', 'webmakerr-cart'),
+                'description'  => __('Connect FluentCRM with FluentCart and subscribe a contact when a form is submitted', 'webmakerr-cart'),
                 'logo'         => Vite::getAssetUrl('images/integrations/fluentcrm.svg'),
                 'enabled'      => 'yes',
                 'purchase_url' => 'https://wordpress.org/plugins/fluent-crm/',
                 'category'     => 'crm',
-                'btnTxt'       => __('Install & Activate', 'fluent-cart')
+                'btnTxt'       => __('Install & Activate', 'webmakerr-cart')
             ]
         ];
     }

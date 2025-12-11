@@ -18,7 +18,7 @@ class ConnectConfig
     {
         // Permission check - only administrators can perform Stripe connect
         if (!current_user_can('manage_options')) {
-            wp_die(__('You do not have permission to perform this action.', 'fluent-cart'), __('Security Check Failed', 'fluent-cart'), ['response' => 403]);
+            wp_die(__('You do not have permission to perform this action.', 'webmakerr-cart'), __('Security Check Failed', 'webmakerr-cart'), ['response' => 403]);
         }
 
         $intent = Arr::get($data, 'intent', '');
@@ -26,7 +26,7 @@ class ConnectConfig
         // Nonce verification for connect intent (initiated from admin)
         if ($intent == 'connect') {
             if (!isset($_REQUEST['_wpnonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])), 'fluentcart')) {
-                wp_die(__('Security check failed. Please try again.', 'fluent-cart'), __('Security Check Failed', 'fluent-cart'), ['response' => 403]);
+                wp_die(__('Security check failed. Please try again.', 'webmakerr-cart'), __('Security Check Failed', 'webmakerr-cart'), ['response' => 403]);
             }
         }
 
@@ -156,7 +156,7 @@ class ConnectConfig
         if (empty($response['stripe_user_id'])) {
             $message = Arr::get($response, 'message');
             if (!$message) {
-                $message = __('Invalid Stripe Request. Please configure stripe payment gateway again', 'fluent-cart');
+                $message = __('Invalid Stripe Request. Please configure stripe payment gateway again', 'webmakerr-cart');
             }
             echo '<div class="fct_message fct_message_error">' . esc_html($message) . '</div>';
             return;
@@ -244,7 +244,7 @@ class ConnectConfig
         if (empty($stripeSettings[$mode . '_account_id'])) {
             if ($sendResponse) {
                 wp_send_json([
-                    'message' => __('Selected Account does not exist', 'fluent-cart')
+                    'message' => __('Selected Account does not exist', 'webmakerr-cart')
                 ], 422);
             }
             return false;
@@ -272,7 +272,7 @@ class ConnectConfig
 
         if ($sendResponse) {
             wp_send_json([
-                'message'  => __('Stripe settings has been disconnected', 'fluent-cart'),
+                'message'  => __('Stripe settings has been disconnected', 'webmakerr-cart'),
                 'settings' => $stripeSettings
             ], 200);
         }

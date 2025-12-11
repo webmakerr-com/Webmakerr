@@ -29,7 +29,7 @@ class CustomerProfileAccountDetailsRequest extends RequestGuard
     public function messages()
     {
         return [
-            'email.required' => esc_html__('Email field is required.', 'fluent-cart')
+            'email.required' => esc_html__('Email field is required.', 'webmakerr-cart')
         ];
     }
 

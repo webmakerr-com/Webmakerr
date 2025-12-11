@@ -62,12 +62,12 @@ class OrderAddressResource extends BaseResourceApi
         if ($isCreated) {
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Order address created successfully!', 'fluent-cart')
+                __('Order address created successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            [ 'code' => 400, 'message' => __('Order address creation failed.', 'fluent-cart') ]
+            [ 'code' => 400, 'message' => __('Order address creation failed.', 'webmakerr-cart') ]
         ]);
     }
 

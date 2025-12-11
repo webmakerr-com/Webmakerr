@@ -17,7 +17,7 @@ class ShippingMethodController extends Controller
         ShippingMethod::create($data);
 
         return $this->sendSuccess([
-            'message' => __('Shipping method has been created successfully', 'fluent-cart')
+            'message' => __('Shipping method has been created successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -31,7 +31,7 @@ class ShippingMethodController extends Controller
         $method->update($data);
 
         return $this->sendSuccess([
-            'message' => __('Shipping method has been updated successfully', 'fluent-cart')
+            'message' => __('Shipping method has been updated successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -41,7 +41,7 @@ class ShippingMethodController extends Controller
         $method->delete();
 
         return $this->sendSuccess([
-            'message' => __('Shipping method has been deleted successfully', 'fluent-cart')
+            'message' => __('Shipping method has been deleted successfully', 'webmakerr-cart')
         ]);
     }
 

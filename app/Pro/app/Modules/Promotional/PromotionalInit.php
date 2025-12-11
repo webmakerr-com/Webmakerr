@@ -12,8 +12,8 @@ class PromotionalInit
     {
         webmakerr_add_filter('webmakerr_cart/module_setting/fields', function ($fields, $args) {
             $fields['order_bump'] = [
-                'title'       => __('Order Bump', 'fluent-cart-pro'),
-                'description' => __('Offer Bump Products in checkout and make more revenue per order', 'fluent-cart-pro'),
+                'title'       => __('Order Bump', 'webmakerr-cart-pro'),
+                'description' => __('Offer Bump Products in checkout and make more revenue per order', 'webmakerr-cart-pro'),
                 'type'        => 'component',
                 'component'   => 'ModuleSettings',
             ];

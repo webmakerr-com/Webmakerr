@@ -102,8 +102,8 @@ class OrderEditRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'customer_id.required' => esc_html__('Customer selection is required', 'fluent-cart'),
-            'order_items.required' => esc_html__('Item selection is required', 'fluent-cart'),
+            'customer_id.required' => esc_html__('Customer selection is required', 'webmakerr-cart'),
+            'order_items.required' => esc_html__('Item selection is required', 'webmakerr-cart'),
         ];
     }
 

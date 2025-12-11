@@ -48,7 +48,7 @@ class Activity
             Arr::get($eventInfo, 'title', $eventName),
             Arr::get($eventInfo, 'content', sprintf(
                 /* translators: %s is the event name */
-                __('%s successfully!', 'fluent-cart'), $eventName
+                __('%s successfully!', 'webmakerr-cart'), $eventName
             )),
             Arr::get($eventInfo, 'status', 'success'),
             [

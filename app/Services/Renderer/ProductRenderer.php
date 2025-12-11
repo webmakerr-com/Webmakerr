@@ -143,9 +143,9 @@ class ProductRenderer
             $intervalOptions = Helper::getAvailableSubscriptionIntervalOptions();
 
             $groupLanguageMap = [
-                'onetime'      => __('One Time', 'fluent-cart'),
-                'subscription' => __('Subscription', 'fluent-cart'),
-                'installment'  => __('Installment', 'fluent-cart'),
+                'onetime'      => __('One Time', 'webmakerr-cart'),
+                'subscription' => __('Subscription', 'webmakerr-cart'),
+                'installment'  => __('Installment', 'webmakerr-cart'),
             ];
 
             foreach ($intervalOptions as $interval) {
@@ -369,7 +369,7 @@ class ProductRenderer
                         type="button"
                         class="fct-product-featured-video__preview"
                         data-fluent-cart-product-video-preview
-                        aria-label="<?php esc_attr_e('Play featured video preview', 'fluent-cart'); ?>"
+                        aria-label="<?php esc_attr_e('Play featured video preview', 'webmakerr-cart'); ?>"
                     >
                         <img
                             src="<?php echo esc_url($previewImage); ?>"
@@ -396,7 +396,7 @@ class ProductRenderer
                 type="button"
                 class="fct-gallery-nav fct-gallery-nav-prev"
                 data-gallery-nav="prev"
-                aria-label="<?php esc_attr_e('Previous image', 'fluent-cart'); ?>"
+                aria-label="<?php esc_attr_e('Previous image', 'webmakerr-cart'); ?>"
             >
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -406,7 +406,7 @@ class ProductRenderer
                 type="button"
                 class="fct-gallery-nav fct-gallery-nav-next"
                 data-gallery-nav="next"
-                aria-label="<?php esc_attr_e('Next image', 'fluent-cart'); ?>"
+                aria-label="<?php esc_attr_e('Next image', 'webmakerr-cart'); ?>"
             >
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -419,12 +419,12 @@ class ProductRenderer
     protected function renderTrustBadges()
     {
         $addedToCartCount = intval($this->addedToCartCount);
-        $addedToCartTemplate = __('%d people have added this item to cart (24H)', 'fluent-cart');
+        $addedToCartTemplate = __('%d people have added this item to cart (24H)', 'webmakerr-cart');
         $viewersCount = intval($this->viewersCount);
-        $viewersTemplate = __('%d people are viewing this item', 'fluent-cart');
+        $viewersTemplate = __('%d people are viewing this item', 'webmakerr-cart');
 
         ?>
-        <div class="fct-product-trust-badges" aria-label="<?php echo esc_attr__('Product activity info', 'fluent-cart'); ?>">
+        <div class="fct-product-trust-badges" aria-label="<?php echo esc_attr__('Product activity info', 'webmakerr-cart'); ?>">
             <span class="fct-product-trust-badge">
                 <span class="fct-product-trust-badge__icon" aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -438,7 +438,7 @@ class ProductRenderer
                     data-template="<?php echo esc_attr($viewersTemplate); ?>"
                     data-count="<?php echo esc_attr($viewersCount); ?>"
                 >
-                    <?php printf(esc_html__('%d people are viewing this item', 'fluent-cart'), $viewersCount); ?>
+                    <?php printf(esc_html__('%d people are viewing this item', 'webmakerr-cart'), $viewersCount); ?>
                 </span>
             </span>
             <span class="fct-product-trust-badge fct-product-trust-badge--added-to-cart" data-fluent-cart-added-to-cart-badge>
@@ -512,11 +512,11 @@ class ProductRenderer
             data-media-type="video"
             data-url="<?php echo esc_url($videoUrl); ?>"
             data-variation-id="0"
-            aria-label="<?php echo esc_attr__('View product video', 'fluent-cart'); ?>"
+            aria-label="<?php echo esc_attr__('View product video', 'webmakerr-cart'); ?>"
             aria-pressed="true"
         >
             <span class="fct-gallery-thumb-control-button__label">
-                <?php esc_html_e('Video', 'fluent-cart'); ?>
+                <?php esc_html_e('Video', 'webmakerr-cart'); ?>
             </span>
         </button>
         <?php
@@ -552,7 +552,7 @@ class ProductRenderer
             data-fluent-cart-thumb-control-button
             data-url="<?php echo esc_url($itemUrl); ?>"
             data-variation-id="<?php echo esc_attr($imageId); ?>"
-            aria-label="<?php echo esc_attr(sprintf(__('View %s image', 'fluent-cart'), $itemTitle)); ?>"
+            aria-label="<?php echo esc_attr(sprintf(__('View %s image', 'webmakerr-cart'), $itemTitle)); ?>"
             aria-pressed="<?php echo esc_attr($isSelected); ?>"
         >
             <img
@@ -791,8 +791,8 @@ class ProductRenderer
 
         echo '<div class="fct-product-reviews" id="fct-product-reviews">';
         echo '<div class="fct-product-reviews__header">';
-        echo '<h2 class="fct-product-reviews__title">' . esc_html__('Reviews', 'fluent-cart') . '</h2>';
-        echo '<p class="fct-product-reviews__subtitle">' . esc_html__('What customers are saying', 'fluent-cart') . '</p>';
+        echo '<h2 class="fct-product-reviews__title">' . esc_html__('Reviews', 'webmakerr-cart') . '</h2>';
+        echo '<p class="fct-product-reviews__subtitle">' . esc_html__('What customers are saying', 'webmakerr-cart') . '</p>';
         echo '</div>';
         echo '<div class="fct-product-reviews__list">';
 
@@ -834,8 +834,8 @@ class ProductRenderer
             echo '</div>';
             echo '</div>';
 
-            echo '<div class="fct-review-rating" aria-label="' . esc_attr(sprintf(__('Rated %s out of 5', 'fluent-cart'), $ratingText)) . '">';
-            echo '<span class="fct-review-rating__label">' . esc_html__('Rating', 'fluent-cart') . '</span>';
+            echo '<div class="fct-review-rating" aria-label="' . esc_attr(sprintf(__('Rated %s out of 5', 'webmakerr-cart'), $ratingText)) . '">';
+            echo '<span class="fct-review-rating__label">' . esc_html__('Rating', 'webmakerr-cart') . '</span>';
             echo '<span class="fct-review-rating__value">' . esc_html($ratingText) . '</span>';
             echo '<span class="fct-review-rating__stars" aria-hidden="true">';
             echo '<span class="fct-review-rating__stars-active" style="width:' . esc_attr($this->getStarFillWidth($rating)) . '%;">★★★★★</span>';
@@ -1033,7 +1033,7 @@ class ProductRenderer
             ->where('stock_status', Helper::IN_STOCK)->exists();
 
         if (!$hasInStock) {
-            $stockLabel = __('Out of stock', 'fluent-cart');
+            $stockLabel = __('Out of stock', 'webmakerr-cart');
         }
 
         $statusClass = $stockAvailability['class'] ?? '';
@@ -1086,16 +1086,16 @@ class ProductRenderer
             ]);
 
             $aria_label = $comparePrice
-                ? sprintf(__('Original Price: %1$s, Price: %2$s', 'fluent-cart'), Helper::toDecimal($comparePrice), Helper::toDecimal($itemPrice))
-                : sprintf(__('Price: %1$s', 'fluent-cart'), Helper::toDecimal($itemPrice));
+                ? sprintf(__('Original Price: %1$s, Price: %2$s', 'webmakerr-cart'), Helper::toDecimal($comparePrice), Helper::toDecimal($itemPrice))
+                : sprintf(__('Price: %1$s', 'webmakerr-cart'), Helper::toDecimal($itemPrice));
 
             ?>
             <div class="fct-price-display" data-fluent-cart-price-display>
                 <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
                     <span class="fct-compare-price <?php echo $comparePrice ? '' : 'is-hidden'; ?>" data-fluent-cart-compare-price>
-                        <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                        <del aria-label="<?php echo esc_attr(__('Original price', 'webmakerr-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
                     </span>
-                    <span class="fct-item-price" data-fluent-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                    <span class="fct-item-price" data-webmakerr-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'webmakerr-cart')); ?>">
                         <?php echo esc_html(Helper::toDecimal($itemPrice)); ?>
                         <?php if ($priceSuffix): ?>
                             <span class="fct_price_suffix"><?php echo esc_html($priceSuffix); ?></span>
@@ -1108,7 +1108,7 @@ class ProductRenderer
                     </span>
                 </div>
                 <span class="fct-price-badge <?php echo $savingsPercent ? '' : 'is-hidden'; ?>" data-fluent-cart-savings-badge>
-                    <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
+                    <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'webmakerr-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
                 </span>
             </div>
             <?php
@@ -1137,16 +1137,16 @@ class ProductRenderer
         ]);
 
         $aria_label = $comparePrice
-            ? sprintf(__('Original Price: %1$s, Price: %2$s', 'fluent-cart'), Helper::toDecimal($comparePrice), Helper::toDecimal($defaultPrice))
-            : sprintf(__('Price: %1$s', 'fluent-cart'), Helper::toDecimal($defaultPrice));
+            ? sprintf(__('Original Price: %1$s, Price: %2$s', 'webmakerr-cart'), Helper::toDecimal($comparePrice), Helper::toDecimal($defaultPrice))
+            : sprintf(__('Price: %1$s', 'webmakerr-cart'), Helper::toDecimal($defaultPrice));
 
         ?>
         <div class="fct-price-display" data-fluent-cart-price-display>
             <div class="fct-price-range fct-product-prices" role="term" aria-label="<?php echo esc_attr($aria_label); ?>">
                 <span class="fct-compare-price <?php echo $comparePrice ? '' : 'is-hidden'; ?>" data-fluent-cart-compare-price>
-                    <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
+                    <del aria-label="<?php echo esc_attr(__('Original price', 'webmakerr-cart')); ?>"><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></del>
                 </span>
-                <span class="fct-item-price" data-fluent-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                <span class="fct-item-price" data-webmakerr-cart-item-price aria-label="<?php echo esc_attr(__('Current price', 'webmakerr-cart')); ?>">
                     <?php echo esc_html(Helper::toDecimal($defaultPrice)); ?>
                     <?php if ($priceSuffix): ?>
                         <span class="fct_price_suffix"><?php echo esc_html($priceSuffix); ?></span>
@@ -1159,7 +1159,7 @@ class ProductRenderer
                 </span>
             </div>
             <span class="fct-price-badge <?php echo $savingsPercent ? '' : 'is-hidden'; ?>" data-fluent-cart-savings-badge>
-                <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
+                <?php echo esc_html(sprintf(__('You save %1$s%% (%2$s)', 'webmakerr-cart'), $savingsPercent, Helper::toDecimal($savedAmount))); ?>
             </span>
         </div>
         <?php
@@ -1192,10 +1192,10 @@ class ProductRenderer
         $standardInterval = Helper::translateIntervalToStandardFormat($repeatInterval);
 
         $intervalLabel = str_replace('_', ' ', $standardInterval);
-        $intervalLabel = _n($intervalLabel, $intervalLabel . 's', $intervalCount, 'fluent-cart');
+        $intervalLabel = _n($intervalLabel, $intervalLabel . 's', $intervalCount, 'webmakerr-cart');
 
         if ($intervalCount > 1) {
-            $intervalLabel = sprintf(__('%1$d %2$s', 'fluent-cart'), $intervalCount, $intervalLabel);
+            $intervalLabel = sprintf(__('%1$d %2$s', 'webmakerr-cart'), $intervalCount, $intervalLabel);
         }
 
         $subscriptionSuffix = '/' . $intervalLabel;
@@ -1228,7 +1228,7 @@ class ProductRenderer
 
         ?>
         <div class="<?php echo esc_attr(implode(' ', $classes)); ?>" role="radiogroup"
-             aria-label="<?php esc_attr_e('Product Variants', 'fluent-cart'); ?>">
+             aria-label="<?php esc_attr_e('Product Variants', 'webmakerr-cart'); ?>">
             <?php foreach ($variants as $variant) {
                 webmakerr_do_action('webmakerr_cart/product/single/before_variant_item', [
                     'product' => $this->product,
@@ -1355,14 +1355,14 @@ class ProductRenderer
         ?>
         <div <?php $this->renderAttributes($attributes); ?>>
             <label for="fct-product-qty-input" class="quantity-title">
-                <?php esc_html_e('Quantity', 'fluent-cart'); ?>
+                <?php esc_html_e('Quantity', 'webmakerr-cart'); ?>
             </label>
 
             <div class="fct-product-quantity">
                 <button class="fct-quantity-decrease-button"
                         data-fluent-cart-product-qty-decrease-button
-                        title="<?php esc_html_e('Decrease Quantity', 'fluent-cart'); ?>"
-                        aria-label="<?php esc_attr_e('Decrease Quantity', 'fluent-cart'); ?>"
+                        title="<?php esc_html_e('Decrease Quantity', 'webmakerr-cart'); ?>"
+                        aria-label="<?php esc_attr_e('Decrease Quantity', 'webmakerr-cart'); ?>"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="2" viewBox="0 0 14 2" fill="none">
                         <path d="M12.3333 1L1.66659 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -1377,15 +1377,15 @@ class ProductRenderer
                     class="fct-quantity-input"
                     data-fluent-cart-single-product-page-product-quantity-input
                     type="text"
-                    placeholder="<?php esc_attr_e('Quantity', 'fluent-cart'); ?>"
+                    placeholder="<?php esc_attr_e('Quantity', 'webmakerr-cart'); ?>"
                     value="1"
-                    aria-label="<?php esc_attr_e('Product quantity', 'fluent-cart'); ?>"
+                    aria-label="<?php esc_attr_e('Product quantity', 'webmakerr-cart'); ?>"
                 />
 
                 <button class="fct-quantity-increase-button"
                         data-fluent-cart-product-qty-increase-button
-                        title="<?php esc_attr_e('Increase Quantity', 'fluent-cart'); ?>"
-                        aria-label="<?php esc_attr_e('Increase Quantity', 'fluent-cart'); ?>"
+                        title="<?php esc_attr_e('Increase Quantity', 'webmakerr-cart'); ?>"
+                        aria-label="<?php esc_attr_e('Increase Quantity', 'webmakerr-cart'); ?>"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
                         <path d="M6.99996 1.66666L6.99996 12.3333M12.3333 6.99999L1.66663 6.99999" stroke="currentColor"
@@ -1419,13 +1419,13 @@ class ProductRenderer
 
     protected function renderOutOfStockMessage()
     {
-        echo '<span aria-disabled="true">' . esc_html__('Out of stock', 'fluent-cart') . '</span>';
+        echo '<span aria-disabled="true">' . esc_html__('Out of stock', 'webmakerr-cart') . '</span>';
     }
 
     protected function getAddToCartButtonConfig($atts = []): array
     {
         $defaults = [
-            'add_to_cart_text' => __('Add To Cart', 'fluent-cart'),
+            'add_to_cart_text' => __('Add To Cart', 'webmakerr-cart'),
         ];
 
         $atts = wp_parse_args($atts, $defaults);
@@ -1488,8 +1488,8 @@ class ProductRenderer
         }
 
         $defaults = [
-            'buy_now_text'     => __('Buy Now', 'fluent-cart'),
-            'add_to_cart_text' => __('Add To Cart', 'fluent-cart'),
+            'buy_now_text'     => __('Buy Now', 'webmakerr-cart'),
+            'add_to_cart_text' => __('Add To Cart', 'webmakerr-cart'),
         ];
 
         $atts = wp_parse_args($atts, $defaults);
@@ -1525,12 +1525,12 @@ class ProductRenderer
     {
         $icons = ['f1.png', 'f2.png', 'f3.png', 'f4.png', 'f5.png'];
         ?>
-        <div class="fct-payment-icons" aria-label="<?php esc_attr_e('Accepted payment methods', 'fluent-cart'); ?>">
+        <div class="fct-payment-icons" aria-label="<?php esc_attr_e('Accepted payment methods', 'webmakerr-cart'); ?>">
             <?php foreach ($icons as $icon): ?>
                 <span class="fct-payment-icon" aria-hidden="true">
                     <img
                         src="<?php echo esc_url(Vite::getAssetUrl('images/' . $icon)); ?>"
-                        alt="<?php esc_attr_e('Payment method', 'fluent-cart'); ?>"
+                        alt="<?php esc_attr_e('Payment method', 'webmakerr-cart'); ?>"
                         width="64.98"
                         height="43.82"
                     >
@@ -1546,11 +1546,11 @@ class ProductRenderer
         <div class="fluent-cart-shop-no-result-found" data-fluent-cart-shop-no-result-found role="status"
              aria-live="polite">
             <p class="has-text-align-center has-large-font-size m-0">
-                <?php echo esc_html__('No Product Found!', 'fluent-cart'); ?>
+                <?php echo esc_html__('No Product Found!', 'webmakerr-cart'); ?>
             </p>
 
             <p class="has-text-align-center">
-                <?php echo esc_html__('You can try clearing any filters.', 'fluent-cart'); ?>
+                <?php echo esc_html__('You can try clearing any filters.', 'webmakerr-cart'); ?>
             </p>
         </div>
         <?php
@@ -1560,7 +1560,7 @@ class ProductRenderer
     {
         ?>
         <div class="fct-product-assurances"
-             aria-label="<?php echo esc_attr__('Purchase assurances', 'fluent-cart'); ?>">
+             aria-label="<?php echo esc_attr__('Purchase assurances', 'webmakerr-cart'); ?>">
             <div class="fct-product-assurance-item">
                 <div class="fct-product-assurance-icon" aria-hidden="true">
                     <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1573,8 +1573,8 @@ class ProductRenderer
                     </svg>
                 </div>
                 <div class="fct-product-assurance-copy">
-                    <p class="title"><?php esc_html_e('Fast & Reliable Delivery', 'fluent-cart'); ?></p>
-                    <p class="subtitle"><?php esc_html_e('Your service or assets are delivered quickly', 'fluent-cart'); ?></p>
+                    <p class="title"><?php esc_html_e('Fast & Reliable Delivery', 'webmakerr-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Your service or assets are delivered quickly', 'webmakerr-cart'); ?></p>
                 </div>
             </div>
 
@@ -1588,8 +1588,8 @@ class ProductRenderer
                     </svg>
                 </div>
                 <div class="fct-product-assurance-copy">
-                    <p class="title"><?php esc_html_e('Hassle-Free Revisions', 'fluent-cart'); ?></p>
-                    <p class="subtitle"><?php esc_html_e('Need adjustments? We fix it without extra complexity', 'fluent-cart'); ?></p>
+                    <p class="title"><?php esc_html_e('Hassle-Free Revisions', 'webmakerr-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('Need adjustments? We fix it without extra complexity', 'webmakerr-cart'); ?></p>
                 </div>
             </div>
 
@@ -1609,8 +1609,8 @@ class ProductRenderer
                     </svg>
                 </div>
                 <div class="fct-product-assurance-copy">
-                    <p class="title"><?php esc_html_e('Buyer Protection', 'fluent-cart'); ?></p>
-                    <p class="subtitle"><?php esc_html_e('You’re fully protected from order to delivery — guaranteed.', 'fluent-cart'); ?></p>
+                    <p class="title"><?php esc_html_e('Buyer Protection', 'webmakerr-cart'); ?></p>
+                    <p class="subtitle"><?php esc_html_e('You’re fully protected from order to delivery — guaranteed.', 'webmakerr-cart'); ?></p>
                 </div>
             </div>
         </div>
@@ -1628,7 +1628,7 @@ class ProductRenderer
                         <path d="M15.5 10H19L21 12V16.5H15.5V10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
-                <span class="title"><?php esc_html_e('Instant Delivery', 'fluent-cart'); ?></span>
+                <span class="title"><?php esc_html_e('Instant Delivery', 'webmakerr-cart'); ?></span>
             </div>
             <div class="fct-product-perk" role="listitem">
                 <span class="fct-product-perk__icon" aria-hidden="true">
@@ -1637,7 +1637,7 @@ class ProductRenderer
                         <path d="M8 8C8 5.791 9.791 4 12 4C14.209 4 16 5.791 16 8V9C16 11.209 14.209 13 12 13C9.791 13 8 11.209 8 9V8Z" stroke="currentColor" stroke-width="1.5"/>
                     </svg>
                 </span>
-                <span class="title"><?php esc_html_e('100% Money-Back Guarantee', 'fluent-cart'); ?></span>
+                <span class="title"><?php esc_html_e('100% Money-Back Guarantee', 'webmakerr-cart'); ?></span>
             </div>
         </div>
         <?php
@@ -1662,7 +1662,7 @@ class ProductRenderer
         $savedAmount           = $rawComparePrice ? $rawComparePrice - $rawItemPrice : 0;
         $savingsPercent        = $rawComparePrice ? round((($rawComparePrice - $rawItemPrice) / $rawComparePrice) * 100) : 0;
         $savingsText           = $savingsPercent
-            ? sprintf(__('You save %1$s%% (%2$s)', 'fluent-cart'), $savingsPercent, Helper::toDecimal($savedAmount))
+            ? sprintf(__('You save %1$s%% (%2$s)', 'webmakerr-cart'), $savingsPercent, Helper::toDecimal($savedAmount))
             : '';
 
         $paymentType = Arr::get($variant->other_info, 'payment_type');
@@ -1740,7 +1740,7 @@ class ProductRenderer
                     $this->renderVariantImage($variant);
                 }
                 if ($this->viewType === 'both' || $this->viewType === 'text') {
-                    echo '<div class="fct-product-variant-title" aria-label="' . esc_attr(__('Variant title', 'fluent-cart')) . '">' . esc_html($variant->variation_title) . '</div>';
+                    echo '<div class="fct-product-variant-title" aria-label="' . esc_attr(__('Variant title', 'webmakerr-cart')) . '">' . esc_html($variant->variation_title) . '</div>';
                 }
                 ?>
             </div>
@@ -1753,12 +1753,12 @@ class ProductRenderer
                 <div class="fct-product-variant-price">
                     <?php if ($comparePrice): ?>
                         <div class="fct-product-variant-compare-price">
-                            <del aria-label="<?php echo esc_attr(__('Original price', 'fluent-cart')); ?>">
+                            <del aria-label="<?php echo esc_attr(__('Original price', 'webmakerr-cart')); ?>">
                                 <span><?php echo esc_html(Helper::toDecimal($comparePrice)); ?></span></del>
                         </div>
                     <?php endif; ?>
                     <div class="fct-product-variant-item-price"
-                         aria-label="<?php echo esc_attr(__('Current price', 'fluent-cart')); ?>">
+                         aria-label="<?php echo esc_attr(__('Current price', 'webmakerr-cart')); ?>">
                         <span><?php echo esc_html(Helper::toDecimal($itemPrice)); ?></span>
                     </div>
                 </div>

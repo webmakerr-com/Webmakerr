@@ -19,7 +19,7 @@ class Processor
         $subscriptionModel = $paymentInstance->subscription;
 
         if (!$subscriptionModel) {
-            return new \WP_Error('no_subscription', __('No subscription found.', 'fluent-cart'));
+            return new \WP_Error('no_subscription', __('No subscription found.', 'webmakerr-cart'));
         }
 
         $stripeCustomer = StripeHelper::createOrGetStripeCustomer($paymentInstance->order->customer);
@@ -158,7 +158,7 @@ class Processor
             'nextAction'   => 'stripe',
             'actionName'   => 'custom',
             'status'       => 'success',
-            'message'      => __('Order has been placed successfully', 'fluent-cart'),
+            'message'      => __('Order has been placed successfully', 'webmakerr-cart'),
             'payment_args' => $paymentArgs,
             'response'     => $stripeSubscription,
             'fc_customer'  => $customerData
@@ -236,7 +236,7 @@ class Processor
             'status'       => 'success',
             'nextAction'   => 'stripe',
             'actionName'   => 'custom',
-            'message'      => __('Order has been placed successfully', 'fluent-cart'),
+            'message'      => __('Order has been placed successfully', 'webmakerr-cart'),
             'response'     => $intent,
             'payment_args' => $paymentArgs,
             'fc_customer'  => $customerData

@@ -56,7 +56,7 @@ class TaxClassController extends Controller
         }
 
         return $this->sendSuccess([
-            'message' => __('Tax class has been created successfully', 'fluent-cart')
+            'message' => __('Tax class has been created successfully', 'webmakerr-cart')
         ]);
 
     }
@@ -69,27 +69,27 @@ class TaxClassController extends Controller
 
         $taxClasses = [
             [
-                'title' => __('Standard', 'fluent-cart'),
+                'title' => __('Standard', 'webmakerr-cart'),
                 'slug' => 'standard',
-                'description' => __('Standard tax rate for most products', 'fluent-cart'),
+                'description' => __('Standard tax rate for most products', 'webmakerr-cart'),
                 'meta' => [
                     'categories' => [],
                     'priority' => 10,
                 ]
             ],
             [
-                'title' => __('Reduced', 'fluent-cart'),
+                'title' => __('Reduced', 'webmakerr-cart'),
                 'slug' => 'reduced',
-                'description' => __('Reduced tax rate for essential goods', 'fluent-cart'),
+                'description' => __('Reduced tax rate for essential goods', 'webmakerr-cart'),
                 'meta' => [
                     'categories' => [],
                     'priority' => 5,
                 ]
             ],
             [
-                'title' => __('Zero', 'fluent-cart'),
+                'title' => __('Zero', 'webmakerr-cart'),
                 'slug' => 'zero',
-                'description' => __('Zero tax rate for exempt products', 'fluent-cart'),
+                'description' => __('Zero tax rate for exempt products', 'webmakerr-cart'),
                 'meta' => [
                     'categories' => [],
                     'priority' => 2,
@@ -129,12 +129,12 @@ class TaxClassController extends Controller
 
         if (!$isUpdated) {
             return $this->sendError([
-                'message' => __('Failed to update tax class', 'fluent-cart')
+                'message' => __('Failed to update tax class', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendSuccess([
-            'message' => __('Tax class has been updated successfully', 'fluent-cart')
+            'message' => __('Tax class has been updated successfully', 'webmakerr-cart')
         ]);
     }
 
@@ -147,12 +147,12 @@ class TaxClassController extends Controller
 
         if (!$isDeleted) {
             return $this->sendError([
-                'message' => __('Failed to delete tax class', 'fluent-cart')
+                'message' => __('Failed to delete tax class', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendSuccess([
-            'message' => __('Tax class has been deleted successfully', 'fluent-cart')
+            'message' => __('Tax class has been deleted successfully', 'webmakerr-cart')
         ]);
     }
 

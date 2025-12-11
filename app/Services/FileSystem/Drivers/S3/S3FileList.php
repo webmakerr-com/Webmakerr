@@ -74,7 +74,7 @@ class S3FileList
 
         return new \WP_Error(
             $responseCode,
-            __('Invalid Credential', 'fluent-cart')
+            __('Invalid Credential', 'webmakerr-cart')
         );
     }
 
@@ -91,12 +91,12 @@ class S3FileList
 
         if ($responseCode === 200) {
             return [
-                'message' => __('Successfully tested S3!', 'fluent-cart'),
+                'message' => __('Successfully tested S3!', 'webmakerr-cart'),
                 'code'    => $responseCode,
             ];
         }
 
-        $error_message = __('Invalid Credential', 'fluent-cart');
+        $error_message = __('Invalid Credential', 'webmakerr-cart');
         $responseBody = wp_remote_retrieve_body($response);
 
         if (!empty($responseBody)) {

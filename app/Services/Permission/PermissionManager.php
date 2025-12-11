@@ -18,13 +18,13 @@ class PermissionManager
 
         $allRoles = [
             'super_admin' => [
-                'title'        => __('Super Admin', 'fluent-cart'),
-                'descriptions' => __('With All Permissions', 'fluent-cart'),
+                'title'        => __('Super Admin', 'webmakerr-cart'),
+                'descriptions' => __('With All Permissions', 'webmakerr-cart'),
                 'permissions'  => array_keys(self::getAllPermissions())
             ],
             'manager'     => [
-                'title'        => __('Manager', 'fluent-cart'),
-                'descriptions' => __('With All Permissions Except Sensitive Settings', 'fluent-cart'),
+                'title'        => __('Manager', 'webmakerr-cart'),
+                'descriptions' => __('With All Permissions Except Sensitive Settings', 'webmakerr-cart'),
                 'permissions'  => [
                     'store/settings',
                     'products/view',
@@ -57,8 +57,8 @@ class PermissionManager
                 ]
             ],
             'worker'      => [
-                'title'        => __('Worker', 'fluent-cart'),
-                'descriptions' => __('View Access for products, customers, coupons, integretions. Manage Access for Order Statuses', 'fluent-cart'),
+                'title'        => __('Worker', 'webmakerr-cart'),
+                'descriptions' => __('View Access for products, customers, coupons, integretions. Manage Access for Order Statuses', 'webmakerr-cart'),
                 'permissions'  => [
                     'products/view',
                     'customers/view',
@@ -72,8 +72,8 @@ class PermissionManager
                 ]
             ],
             'accountant'  => [
-                'title'        => __('Accountant', 'fluent-cart'),
-                'descriptions' => __('View Access for products, customers, orders, subscriptions, licenses, coupons, reports and integrations', 'fluent-cart'),
+                'title'        => __('Accountant', 'webmakerr-cart'),
+                'descriptions' => __('View Access for products, customers, orders, subscriptions, licenses, coupons, reports and integrations', 'webmakerr-cart'),
                 'permissions'  => [
                     'orders/view',
                     'orders/export',
@@ -179,40 +179,40 @@ class PermissionManager
     public static function getAllPermissions(): array
     {
         return [
-            'store/settings'         => __('Store Settings', 'fluent-cart'),
-            'store/sensitive'        => __('Sensitive Settings', 'fluent-cart'),
-            'products/view'          => __('View Products', 'fluent-cart'),
-            'products/create'        => __('Create Products', 'fluent-cart'),
-            'products/edit'          => __('Edit Products', 'fluent-cart'),
-            'products/delete'        => __('Delete Products', 'fluent-cart'),
-            'customers/view'         => __('View Customers', 'fluent-cart'),
-            'customers/manage'       => __('Manage Customers', 'fluent-cart'),
-            'customers/delete'       => __('Delete Customers', 'fluent-cart'),
-            'orders/view'            => __('View Orders', 'fluent-cart'),
-            'orders/create'          => __('Create Orders', 'fluent-cart'),
-            'orders/manage_statuses' => __('Manage Order Statuses', 'fluent-cart'),
-            'orders/manage'          => __('Manage Orders', 'fluent-cart'),
-            'orders/can_refund'      => __('Can Refund Orders', 'fluent-cart'),
-            'orders/export'          => __('Export Orders', 'fluent-cart'),
-            'orders/delete'          => __('Delete Orders', 'fluent-cart'),
-            'subscriptions/view'     => __('View Subscriptions', 'fluent-cart'),
-            'subscriptions/manage'   => __('Manage Subscriptions', 'fluent-cart'),
-            'subscriptions/delete'   => __('Delete Subscriptions', 'fluent-cart'),
-            'licenses/view'          => __('View Licenses', 'fluent-cart'),
-            'licenses/manage'        => __('Manage Licenses', 'fluent-cart'),
-            'licenses/delete'        => __('Delete Licenses', 'fluent-cart'),
-            'coupons/view'           => __('View Coupons', 'fluent-cart'),
-            'coupons/manage'         => __('Manage Coupons', 'fluent-cart'),
-            'coupons/delete'         => __('Delete Coupons', 'fluent-cart'),
-            'reports/view'           => __('View Reports', 'fluent-cart'),
-            'reports/export'         => __('Export Reports', 'fluent-cart'),
-            'integrations/view'      => __('View Integrations', 'fluent-cart'),
-            'integrations/manage'    => __('Manage Integrations', 'fluent-cart'),
-            'integrations/delete'    => __('Delete Integrations', 'fluent-cart'),
-            'labels/view'            => __('View Labels', 'fluent-cart'),
-            'labels/manage'          => __('Manage Labels', 'fluent-cart'),
-            'labels/delete'          => __('Delete Labels', 'fluent-cart'),
-            'dashboard_stats/view'   => __('View Dashboard Stats', 'fluent-cart')
+            'store/settings'         => __('Store Settings', 'webmakerr-cart'),
+            'store/sensitive'        => __('Sensitive Settings', 'webmakerr-cart'),
+            'products/view'          => __('View Products', 'webmakerr-cart'),
+            'products/create'        => __('Create Products', 'webmakerr-cart'),
+            'products/edit'          => __('Edit Products', 'webmakerr-cart'),
+            'products/delete'        => __('Delete Products', 'webmakerr-cart'),
+            'customers/view'         => __('View Customers', 'webmakerr-cart'),
+            'customers/manage'       => __('Manage Customers', 'webmakerr-cart'),
+            'customers/delete'       => __('Delete Customers', 'webmakerr-cart'),
+            'orders/view'            => __('View Orders', 'webmakerr-cart'),
+            'orders/create'          => __('Create Orders', 'webmakerr-cart'),
+            'orders/manage_statuses' => __('Manage Order Statuses', 'webmakerr-cart'),
+            'orders/manage'          => __('Manage Orders', 'webmakerr-cart'),
+            'orders/can_refund'      => __('Can Refund Orders', 'webmakerr-cart'),
+            'orders/export'          => __('Export Orders', 'webmakerr-cart'),
+            'orders/delete'          => __('Delete Orders', 'webmakerr-cart'),
+            'subscriptions/view'     => __('View Subscriptions', 'webmakerr-cart'),
+            'subscriptions/manage'   => __('Manage Subscriptions', 'webmakerr-cart'),
+            'subscriptions/delete'   => __('Delete Subscriptions', 'webmakerr-cart'),
+            'licenses/view'          => __('View Licenses', 'webmakerr-cart'),
+            'licenses/manage'        => __('Manage Licenses', 'webmakerr-cart'),
+            'licenses/delete'        => __('Delete Licenses', 'webmakerr-cart'),
+            'coupons/view'           => __('View Coupons', 'webmakerr-cart'),
+            'coupons/manage'         => __('Manage Coupons', 'webmakerr-cart'),
+            'coupons/delete'         => __('Delete Coupons', 'webmakerr-cart'),
+            'reports/view'           => __('View Reports', 'webmakerr-cart'),
+            'reports/export'         => __('Export Reports', 'webmakerr-cart'),
+            'integrations/view'      => __('View Integrations', 'webmakerr-cart'),
+            'integrations/manage'    => __('Manage Integrations', 'webmakerr-cart'),
+            'integrations/delete'    => __('Delete Integrations', 'webmakerr-cart'),
+            'labels/view'            => __('View Labels', 'webmakerr-cart'),
+            'labels/manage'          => __('Manage Labels', 'webmakerr-cart'),
+            'labels/delete'          => __('Delete Labels', 'webmakerr-cart'),
+            'dashboard_stats/view'   => __('View Dashboard Stats', 'webmakerr-cart')
         ];
     }
 
@@ -262,10 +262,10 @@ class PermissionManager
         $wpUser = get_user_by('ID', $userId);
 
         if (!$wpUser) {
-            return new \WP_Error('user_not_found', __('User not found', 'fluent-cart'));
+            return new \WP_Error('user_not_found', __('User not found', 'webmakerr-cart'));
         }
         if (user_can($wpUser, 'manage_options')) {
-            return new \WP_Error('super_admin', __('The user already have all the accesses as part of Administrator Role', 'fluent-cart'));
+            return new \WP_Error('super_admin', __('The user already have all the accesses as part of Administrator Role', 'webmakerr-cart'));
         }
         // Assign the capability directly to the user
         if (!$wpUser->has_cap(static::ADMIN_CAP)) {
@@ -280,10 +280,10 @@ class PermissionManager
         $wpUser = get_user_by('ID', $userId);
 
         if (!$wpUser) {
-            return new \WP_Error('user_not_found', __('User not found', 'fluent-cart'));
+            return new \WP_Error('user_not_found', __('User not found', 'webmakerr-cart'));
         }
         if (user_can($wpUser, 'manage_options')) {
-            return new \WP_Error('super_admin', __('The user already have all the accesses as part of Administrator Role', 'fluent-cart'));
+            return new \WP_Error('super_admin', __('The user already have all the accesses as part of Administrator Role', 'webmakerr-cart'));
         }
 
         if (!$wpUser->has_cap(static::ADMIN_CAP)) {
@@ -299,5 +299,4 @@ class PermissionManager
         return $currentUser && $currentUser->userCan($permission);
     }
 }
-
 

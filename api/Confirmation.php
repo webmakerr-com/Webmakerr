@@ -65,7 +65,7 @@ class Confirmation
 
         $fields = [
             "confirmation_page_id" => [
-                "label" => __('Select custom page', 'fluent-cart'),
+                "label" => __('Select custom page', 'webmakerr-cart'),
                 "type" => "select",
                 "options" => $pages,
                 "value" => "",

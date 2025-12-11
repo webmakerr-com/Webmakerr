@@ -80,7 +80,7 @@ class Confirmations
         if (empty($intentId)) {
             wp_send_json(
                 [
-                    'message' => __('Intent ID is required to confirm the payment.', 'fluent-cart'),
+                    'message' => __('Intent ID is required to confirm the payment.', 'webmakerr-cart'),
                 ],
                 400
             );
@@ -93,7 +93,7 @@ class Confirmations
             $this->confirmSetupIntent($intentId);
             wp_send_json(
                 [
-                    'message' => __('Setup intent confirmed successfully. Please check your subscriptions.', 'fluent-cart'),
+                    'message' => __('Setup intent confirmed successfully. Please check your subscriptions.', 'webmakerr-cart'),
                 ], 200
             );
         }
@@ -117,7 +117,7 @@ class Confirmations
         if (!$transaction) {
             wp_send_json(
                 [
-                    'message' => __('Order not found for the provided intent ID.', 'fluent-cart'),
+                    'message' => __('Order not found for the provided intent ID.', 'webmakerr-cart'),
                 ],
                 404
             );
@@ -134,7 +134,7 @@ class Confirmations
                 'order'        => [
                     'uuid' => $transaction->order->uuid,
                 ],
-                'message'      => __('Payment confirmed successfully. Redirecting...!', 'fluent-cart')
+                'message'      => __('Payment confirmed successfully. Redirecting...!', 'webmakerr-cart')
             ], 200
         );
     }
@@ -249,7 +249,7 @@ class Confirmations
         if (!$transaction) {
             return new \WP_Error(
                 'transaction_not_found',
-                __('Transaction not found for the provided setup intent.', 'fluent-cart')
+                __('Transaction not found for the provided setup intent.', 'webmakerr-cart')
             );
         }
 
@@ -421,7 +421,7 @@ class Confirmations
         $transaction->fill($transactionUpdateData);
         $transaction->save();
 
-        fluent_cart_add_log(__('Stripe Payment Confirmation', 'fluent-cart'), __('Payment confirmation received from Stripe. Transaction ID: ', 'fluent-cart') . $intentId,  'info', [
+        fluent_cart_add_log(__('Stripe Payment Confirmation', 'webmakerr-cart'), __('Payment confirmation received from Stripe. Transaction ID: ', 'webmakerr-cart') . $intentId,  'info', [
             'module_name' => 'order',
             'module_id'   => $order->id,
         ]);

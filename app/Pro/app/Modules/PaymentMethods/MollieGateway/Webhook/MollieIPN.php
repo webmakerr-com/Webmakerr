@@ -290,7 +290,7 @@ class MollieIPN
 
          fluent_cart_error_log(
              'Payment ' . $reason,
-             __('Payment ' . $reason . ' via Mollie', 'fluent-cart-pro'),
+             __('Payment ' . $reason . ' via Mollie', 'webmakerr-cart-pro'),
              [
                  'module_name' => 'order',
                  'module_id'   => $order->id,
@@ -417,4 +417,3 @@ class MollieIPN
         exit;
     }
 }
-

@@ -148,33 +148,33 @@ class SubscriptionRenewalHandler
         $subscriptionUID = $data['subscription_hash'] ?? '';
 
         if (empty($subscriptionUID)) {
-            $this->showError(__('Subscription UID is required.', 'fluent-cart-pro'));
+            $this->showError(__('Subscription UID is required.', 'webmakerr-cart-pro'));
         }
 
         $subscription = Subscription::query()->where('uuid', $subscriptionUID)->first();
 
         if (!$subscription) {
-            $this->showError(__('Subscription not found.', 'fluent-cart-pro'));
+            $this->showError(__('Subscription not found.', 'webmakerr-cart-pro'));
         }
 
         if ($subscription->recurring_amount <= 0) {
-            $this->showError(__('The recurring amount for this subscription is not valid.', 'fluent-cart-pro'));
+            $this->showError(__('The recurring amount for this subscription is not valid.', 'webmakerr-cart-pro'));
         }
 
         if (!$subscription->canReactive()) {
-            $this->showError(__('This subscription cannot be reactivated.', 'fluent-cart-pro'));
+            $this->showError(__('This subscription cannot be reactivated.', 'webmakerr-cart-pro'));
         }
 
         $parentOrder = $subscription->order;
         if (!$parentOrder || !in_array($parentOrder->payment_status, Status::getOrderPaymentSuccessStatuses())) {
-            $this->showError(__('The parent order of this subscription is not in a valid state for reactivation.', 'fluent-cart-pro'));
+            $this->showError(__('The parent order of this subscription is not in a valid state for reactivation.', 'webmakerr-cart-pro'));
         }
 
         $product = $subscription->product;
         $variation = $subscription->variation;
 
         if (!$variation || !$product || Arr::get($variation->other_info, 'repeat_interval') != $subscription->billing_interval || $variation->payment_type != 'subscription') {
-            $this->showError(__('The product variant for this subscription is not valid.', 'fluent-cart-pro'));
+            $this->showError(__('The product variant for this subscription is not valid.', 'webmakerr-cart-pro'));
         }
 
         $billCount = OrderTransaction::query()->where('subscription_id', $subscription->id)
@@ -185,7 +185,7 @@ class SubscriptionRenewalHandler
         $requiredBillTimes = ($subscription->bill_times - $billCount) < 0 ? 0 : ($subscription->bill_times - $subscription->bill_count);
 
         if (!$variation->canPurchase() && !$requiredBillTimes) {
-            $this->showError(__('This subscription is not available for renew. Please purchase a new one!', 'fluent-cart-pro'));
+            $this->showError(__('This subscription is not available for renew. Please purchase a new one!', 'webmakerr-cart-pro'));
         }
 
         $newItem = $variation->toArray();
@@ -262,7 +262,7 @@ class SubscriptionRenewalHandler
                     'type'    => 'info',
                     'content' => sprintf(
                         /* translators: %1$s Item Title */
-                        __('You are reactivating your subscription: %1$s .','fluent-cart-pro'),
+                        __('You are reactivating your subscription: %1$s .','webmakerr-cart-pro'),
                         $subscription->item_name
                     ),
                 ]

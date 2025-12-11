@@ -83,7 +83,7 @@ class API
                 $message = Arr::get($responseBodyArray, 'error.message');
             }
             if (!$message) {
-                $message = __('Unknown Stripe API request error', 'fluent-cart');
+                $message = __('Unknown Stripe API request error', 'webmakerr-cart');
             }
 
             return new \WP_Error('api_error', $message, $responseBodyArray);
@@ -109,7 +109,7 @@ class API
             return $data;
         }
 
-        return new \WP_Error('invalid_data', __('Invalid data received from Stripe', 'fluent-cart'));
+        return new \WP_Error('invalid_data', __('Invalid data received from Stripe', 'webmakerr-cart'));
     }
 
     public function getEvent($eventId)

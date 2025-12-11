@@ -44,7 +44,7 @@ class ShippingZone extends Model
     public function getFormattedRegionAttribute()
     {
         if ($this->region === 'all') {
-            return __('Whole World', 'fluent-cart');
+            return __('Whole World', 'webmakerr-cart');
         }
         if (!empty($this->region)) {
             return AddressHelper::getCountryNameByCode($this->region);

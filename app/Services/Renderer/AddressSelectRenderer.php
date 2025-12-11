@@ -17,7 +17,7 @@ class AddressSelectRenderer
 
     public function __construct($addresses, $primary_address, $requirements_fields, $address_type)
     {
-        $this->title = $address_type === 'billing' ? __('Billing Address', 'fluent-cart') : __('Shipping Address', 'fluent-cart');
+        $this->title = $address_type === 'billing' ? __('Billing Address', 'webmakerr-cart') : __('Shipping Address', 'webmakerr-cart');
         $this->addresses = $addresses;
         $this->primary_address = $primary_address;
         $this->requirements_fields = $requirements_fields;
@@ -92,7 +92,7 @@ class AddressSelectRenderer
                     class="fct_address_modal_open_btn"
                     type="button"
                     data-fluent-cart-checkout-page-form-address-modal-open-button
-                    aria-label="<?php echo esc_attr__('Change Address', 'fluent-cart'); ?>"
+                    aria-label="<?php echo esc_attr__('Change Address', 'webmakerr-cart'); ?>"
             >
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="none">
                     <g clip-path="url(#clip0_3536_3207)">
@@ -108,7 +108,7 @@ class AddressSelectRenderer
                         </clipPath>
                     </defs>
                 </svg>
-                <?php echo esc_html__('Change', 'fluent-cart'); ?>
+                <?php echo esc_html__('Change', 'webmakerr-cart'); ?>
             </button>
             
             <div data-fluent-cart-checkout-page-form-address-modal-body="" class="fct_address_modal hidden"
@@ -129,7 +129,7 @@ class AddressSelectRenderer
                             class="fct_address_modal_close_btn"
                             type="button"
                             data-fluent-cart-checkout-page-form-address-modal-close-button
-                            aria-label="<?php echo esc_attr__('Close', 'fluent-cart'); ?>"
+                            aria-label="<?php echo esc_attr__('Close', 'webmakerr-cart'); ?>"
                     >
                         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"></path>
@@ -157,7 +157,7 @@ class AddressSelectRenderer
             <div
                 class="fct_address_add_btn"
                 data-fluent-cart-checkout-page-form-address-show-add-new-modal-button
-                aria-label="<?php echo esc_attr__('Add new address', 'fluent-cart'); ?>"
+                aria-label="<?php echo esc_attr__('Add new address', 'webmakerr-cart'); ?>"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"
                      fill="none">
@@ -166,12 +166,12 @@ class AddressSelectRenderer
                     <path d="M1.6665 7H12.3332" stroke="currentColor" stroke-width="1.5"
                           stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
-                <?php echo esc_html__('Add Address', 'fluent-cart'); ?>
+                <?php echo esc_html__('Add Address', 'webmakerr-cart'); ?>
             </div>
 
             <button class="fct_address_apply_btn" type="button"
-                    data-fluent-cart-checkout-page-form-address-modal-apply-button="" data-address-id="1" aria-label="<?php echo esc_attr__('Apply selected address', 'fluent-cart'); ?>">
-                    <?php echo esc_html__('Apply', 'fluent-cart'); ?>
+                    data-webmakerr-cart-checkout-page-form-address-modal-apply-button="" data-address-id="1" aria-label="<?php echo esc_attr__('Apply selected address', 'webmakerr-cart'); ?>">
+                    <?php echo esc_html__('Apply', 'webmakerr-cart'); ?>
             </button>
         </div>
         <?php
@@ -222,7 +222,7 @@ class AddressSelectRenderer
             <?php else: ?>
                 <div class="fct_address_selector">
                     <p class="fct_address_selector_info">
-                        <?php echo esc_html__('No address found', 'fluent-cart'); ?>
+                        <?php echo esc_html__('No address found', 'webmakerr-cart'); ?>
                     </p>
                 </div>
             <?php endif; ?>
@@ -239,7 +239,7 @@ class AddressSelectRenderer
                      data-fluent-cart-checkout-page-form-section=""
                      class="fct_checkout_form_section additional-address-field">
                     <div class="fct_form_section_header">
-                        <h4 class="fct_form_section_header_label"><?php echo esc_html__('Address', 'fluent-cart'); ?></h4>
+                        <h4 class="fct_form_section_header_label"><?php echo esc_html__('Address', 'webmakerr-cart'); ?></h4>
                     </div>
 
                     <div class="fct_form_section_body">
@@ -249,14 +249,14 @@ class AddressSelectRenderer
                                  id="<?php echo esc_attr($this->address_type); ?>_label_wrapper"
                             >
                                 <label for="<?php echo esc_attr($this->address_type); ?>_label" class="sr-only">
-                                    <?php echo esc_html__('Address Label', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Address Label', 'webmakerr-cart'); ?>
                                 </label>
 
                                 <input
                                     type="text"
                                     name="<?php echo esc_attr($this->address_type); ?>_label"
                                     autocomplete="label"
-                                    placeholder="<?php echo esc_html__('e.g Home, Office', 'fluent-cart'); ?>"
+                                    placeholder="<?php echo esc_html__('e.g Home, Office', 'webmakerr-cart'); ?>"
                                     data-required="yes"
                                     data-type="input"
                                     id="<?php echo esc_attr($this->address_type); ?>_label"
@@ -265,7 +265,7 @@ class AddressSelectRenderer
                                 >
 
                                 <span id="<?php echo esc_attr($this->address_type); ?>_label_description" class="sr-only">
-                                    <?php echo esc_html__('Maximum 15 characters', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Maximum 15 characters', 'webmakerr-cart'); ?>
                                 </span>
 
                             </div>
@@ -275,14 +275,14 @@ class AddressSelectRenderer
                                  id="<?php echo esc_attr($this->address_type); ?>_name_wrapper"
                             >
                                 <label for="<?php echo esc_attr($this->address_type); ?>_full_name" class="sr-only">
-                                    <?php echo esc_html__('Full Name', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Full Name', 'webmakerr-cart'); ?>
                                 </label>
 
                                 <input
                                     type="text"
                                     name="<?php echo esc_attr($this->address_type); ?>_full_name"
                                     autocomplete="name"
-                                    placeholder="<?php echo esc_attr__('Name', 'fluent-cart'); ?>"
+                                    placeholder="<?php echo esc_attr__('Name', 'webmakerr-cart'); ?>"
                                     data-required="no"
                                     data-type="input"
                                     id="<?php echo esc_attr($this->address_type); ?>_full_name"
@@ -295,13 +295,13 @@ class AddressSelectRenderer
                                      id="<?php echo esc_attr($this->address_type); ?>_phone_wrapper"
                                 >
                                     <label for="<?php echo esc_attr($this->address_type); ?>_phone" class="sr-only">
-                                        <?php echo esc_html__('Phone Number', 'fluent-cart'); ?>
+                                        <?php echo esc_html__('Phone Number', 'webmakerr-cart'); ?>
                                     </label>
 
                                     <input
                                         type="text"
                                         name="<?php echo esc_attr($this->address_type); ?>_phone"
-                                        placeholder="<?php echo esc_html__('Phone number', 'fluent-cart'); ?>"
+                                        placeholder="<?php echo esc_html__('Phone number', 'webmakerr-cart'); ?>"
                                         data-required="no"
                                         data-type="input"
                                         id="<?php echo esc_attr($this->address_type); ?>_phone"
@@ -315,7 +315,7 @@ class AddressSelectRenderer
                                  id="<?php echo esc_attr($this->address_type); ?>_country_wrapper"
                             >
                                 <label for="<?php echo esc_attr($this->address_type); ?>_country" class="sr-only">
-                                    <?php echo esc_html__('Country / Region', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Country / Region', 'webmakerr-cart'); ?>
                                 </label>
 
                                 <select
@@ -328,7 +328,7 @@ class AddressSelectRenderer
                                         class="hidden-select"
                                 >
                                     <option value="">
-                                        <?php echo esc_html__('Select a Country', 'fluent-cart'); ?>
+                                        <?php echo esc_html__('Select a Country', 'webmakerr-cart'); ?>
                                     </option>
                                     <?php foreach ($this->countries as $countryCode => $country) :?>
                                         <option value="<?php echo esc_attr($countryCode); ?>">
@@ -345,13 +345,13 @@ class AddressSelectRenderer
                                  id="<?php echo esc_attr($this->address_type); ?>_address_1_wrapper"
                             >
                                 <label for="<?php echo esc_attr($this->address_type); ?>_address_1" class="sr-only">
-                                    <?php echo esc_html__('Street Address', 'fluent-cart'); ?>
-                                    <?php echo Arr::get($this->requirements_fields, 'address_1') === 'required' ? esc_html__(' (required)', 'fluent-cart') : ''; ?>
+                                    <?php echo esc_html__('Street Address', 'webmakerr-cart'); ?>
+                                    <?php echo Arr::get($this->requirements_fields, 'address_1') === 'required' ? esc_html__(' (required)', 'webmakerr-cart') : ''; ?>
                                 </label>
                                 <?php
-                                    $placeholder_text = esc_html__('Street Address', 'fluent-cart');
+                                    $placeholder_text = esc_html__('Street Address', 'webmakerr-cart');
                                     if (Arr::get($this->requirements_fields, 'address_1') === 'required') {
-                                        $placeholder_text .= ' ' . esc_html__('*', 'fluent-cart');
+                                        $placeholder_text .= ' ' . esc_html__('*', 'webmakerr-cart');
                                     }
                                 ?>
                                 <input
@@ -372,13 +372,13 @@ class AddressSelectRenderer
                                  id="<?php echo esc_attr($this->address_type); ?>_address_2_wrapper"
                             >
                                 <label for="<?php echo esc_attr($this->address_type); ?>_address_2" class="sr-only">
-                                    <?php echo esc_html__('Apartment, suite, unit, etc.', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('Apartment, suite, unit, etc.', 'webmakerr-cart'); ?>
                                 </label>
                                 <input
                                     type="text"
                                     name="<?php echo esc_attr($this->address_type); ?>_address_2"
                                     autocomplete="address-line2"
-                                    placeholder="<?php echo esc_html__('Apt, suite, unit', 'fluent-cart'); ?>"
+                                    placeholder="<?php echo esc_html__('Apt, suite, unit', 'webmakerr-cart'); ?>"
                                     data-required="no"
                                     data-type="input"
                                     id="<?php echo esc_attr($this->address_type); ?>_address_2"
@@ -393,7 +393,7 @@ class AddressSelectRenderer
                                  style="display: block;"
                             >
                                 <label for="<?php echo esc_attr($this->address_type); ?>_state" class="sr-only">
-                                    <?php echo esc_html__('State / Province', 'fluent-cart'); ?>
+                                    <?php echo esc_html__('State / Province', 'webmakerr-cart'); ?>
                                 </label>
 
                                 <select
@@ -405,7 +405,7 @@ class AddressSelectRenderer
                                     id="<?php echo esc_attr($this->address_type); ?>_state" checked="no"
                                     class="hidden-select"
                                 >
-                                    <option value=""><?php echo esc_html__('Select a State', 'fluent-cart'); ?></option>
+                                    <option value=""><?php echo esc_html__('Select a State', 'webmakerr-cart'); ?></option>
                                 </select>
                             </div>
                             <?php endif; ?>
@@ -423,13 +423,13 @@ class AddressSelectRenderer
                                              id="<?php echo esc_attr($this->address_type); ?>_city_wrapper"
                                         >
                                             <label for="<?php echo esc_attr($this->address_type); ?>_city" class="sr-only">
-                                                <?php echo esc_html__('City / Town', 'fluent-cart'); ?>
+                                                <?php echo esc_html__('City / Town', 'webmakerr-cart'); ?>
                                             </label>
 
                                             <input type="text"
                                                    name="<?php echo esc_attr($this->address_type); ?>_city"
                                                    autocomplete="address-level2"
-                                                   placeholder="<?php echo esc_html__('City / Town', 'fluent-cart'); ?>" data-required="yes"
+                                                   placeholder="<?php echo esc_html__('City / Town', 'webmakerr-cart'); ?>" data-required="yes"
                                                    data-type="input"
                                                    id="<?php echo esc_attr($this->address_type); ?>_city"
                                                    aria-required="true"
@@ -442,13 +442,13 @@ class AddressSelectRenderer
                                              id="<?php echo esc_attr($this->address_type); ?>_postcode_wrapper"
                                         >
                                             <label for="<?php echo esc_attr($this->address_type); ?>_postcode" class="sr-only">
-                                                <?php echo esc_html__('Postcode / ZIP', 'fluent-cart'); ?>
+                                                <?php echo esc_html__('Postcode / ZIP', 'webmakerr-cart'); ?>
                                             </label>
 
                                             <input type="text"
                                                    name="<?php echo esc_attr($this->address_type); ?>_postcode"
                                                    autocomplete="postal-code"
-                                                   placeholder="<?php echo esc_attr__('Postcode / ZIP', 'fluent-cart'); ?>"
+                                                   placeholder="<?php echo esc_attr__('Postcode / ZIP', 'webmakerr-cart'); ?>"
                                                    data-required="yes"
                                                    data-type="input"
                                                    id="<?php echo esc_attr($this->address_type); ?>_postcode"
@@ -469,18 +469,18 @@ class AddressSelectRenderer
                         class="fct_address_cancel_btn"
                         type="button"
                         data-fluent-cart-checkout-page-form-address-show-add-new-modal-cancel-button
-                        aria-label="<?php echo esc_attr__('Cancel', 'fluent-cart'); ?>"
+                        aria-label="<?php echo esc_attr__('Cancel', 'webmakerr-cart'); ?>"
                     >
-                        <?php echo esc_html__('Cancel', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Cancel', 'webmakerr-cart'); ?>
                     </button>
 
                     <button
                         class="fct_address_submit_btn"
                         type="submit"
                         data-fluent-cart-checkout-page-form-address-show-add-new-modal-submit-button
-                        aria-label="<?php echo esc_attr__('Submit', 'fluent-cart'); ?>"
+                        aria-label="<?php echo esc_attr__('Submit', 'webmakerr-cart'); ?>"
                     >
-                        <?php echo esc_html__('Submit', 'fluent-cart'); ?>
+                        <?php echo esc_html__('Submit', 'webmakerr-cart'); ?>
                     </button>
                 </div>
             </div>

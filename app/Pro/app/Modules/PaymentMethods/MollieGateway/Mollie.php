@@ -37,12 +37,12 @@ class Mollie extends AbstractPaymentGateway
         $logo = Vite::getAssetUrl("images/payment-methods/mollie-logo.svg");
         
         return [
-            'title'              => __('Mollie', 'fluent-cart-pro'),
+            'title'              => __('Mollie', 'webmakerr-cart-pro'),
             'route'              => $this->methodSlug,
             'slug'               => $this->methodSlug,
             'label'              => 'Mollie',
             'admin_title'        => 'Mollie',
-            'description'        => __('Pay securely with Mollie - Credit Card, PayPal, SEPA, and more', 'fluent-cart-pro'),
+            'description'        => __('Pay securely with Mollie - Credit Card, PayPal, SEPA, and more', 'webmakerr-cart-pro'),
             'logo'               => $logo,
             'icon'               => Vite::getAssetUrl("images/payment-methods/mollie-logo.svg"),
             'brand_color'        => '#5265e3',
@@ -86,10 +86,10 @@ class Mollie extends AbstractPaymentGateway
         $activeMethods = (new MollieAPI())->getActivatedPaymentMethodsConfigs(($mode));
 
         if (empty(Arr::get($activeMethods, 'activated_methods', []))) {
-            $message = __('No Mollie payment methods are activated for Live mode. Please contact site owner.', 'fluent-cart-pro');
+            $message = __('No Mollie payment methods are activated for Live mode. Please contact site owner.', 'webmakerr-cart-pro');
 
             if ($mode === 'test') {
-                $message = __('No Mollie payment methods are activated for Test mode. Please contact site owner.', 'fluent-cart-pro');
+                $message = __('No Mollie payment methods are activated for Test mode. Please contact site owner.', 'webmakerr-cart-pro');
             }
             wp_send_json([
                 'status'  => 'failed',
@@ -100,7 +100,7 @@ class Mollie extends AbstractPaymentGateway
         wp_send_json(
             [
                 'status'       => 'success',
-                'message'      => __('Order info retrieved!', 'fluent-cart-pro'),
+                'message'      => __('Order info retrieved!', 'webmakerr-cart-pro'),
                 'data'         => [],
                 'payment_args' => [
                     'activat_methods' => Arr::get($activeMethods, 'activated_methods', []),
@@ -117,7 +117,7 @@ class Mollie extends AbstractPaymentGateway
         if (!in_array(strtoupper($currency), self::getMollieSupportedCurrency())) {
             wp_send_json([
                 'status'  => 'failed',
-                'message' => __('Mollie does not support the currency you are using!', 'fluent-cart')
+                'message' => __('Mollie does not support the currency you are using!', 'webmakerr-cart')
             ], 422);
         }
     }
@@ -157,12 +157,12 @@ class Mollie extends AbstractPaymentGateway
         return [
             'fct_mollie_data' => [
                 'translations' => [
-                    'Redirecting to Mollie...' => __('Redirecting to Mollie...', 'fluent-cart-pro'),
-                    'Pay Now' => __('Pay Now', 'fluent-cart-pro'),
-                    'Place Order' => __('Place Order', 'fluent-cart-pro'),
-                    'Loading payment methods...' => __('Loading payment methods...', 'fluent-cart-pro'),
-                    'Available payment methods on Checkout' => __('Available payment methods on Checkout', 'fluent-cart-pro'),
-                    'Pay securely with Mollie' => __('Pay securely with Mollie', 'fluent-cart-pro'),
+                    'Redirecting to Mollie...' => __('Redirecting to Mollie...', 'webmakerr-cart-pro'),
+                    'Pay Now' => __('Pay Now', 'webmakerr-cart-pro'),
+                    'Place Order' => __('Place Order', 'webmakerr-cart-pro'),
+                    'Loading payment methods...' => __('Loading payment methods...', 'webmakerr-cart-pro'),
+                    'Available payment methods on Checkout' => __('Available payment methods on Checkout', 'webmakerr-cart-pro'),
+                    'Pay securely with Mollie' => __('Pay securely with Mollie', 'webmakerr-cart-pro'),
                 ]
             ]
         ];
@@ -213,7 +213,7 @@ class Mollie extends AbstractPaymentGateway
         if (!$amount) {
             return new \WP_Error(
                 'fluent_cart_mollie_refund_error',
-                __('Refund amount is required.', 'fluent-cart-pro')
+                __('Refund amount is required.', 'webmakerr-cart-pro')
             );
         }
 
@@ -235,23 +235,23 @@ class Mollie extends AbstractPaymentGateway
                 <p>%8$s <code class="copyable-content">%2$s</code></p>
                 <p>%9$s</p>
             </div>',
-            __('Webhook URL: ', 'fluent-cart-pro'),
+            __('Webhook URL: ', 'webmakerr-cart-pro'),
             $webhook_url,
-            __('You should configure your Mollie webhooks to get all updates of your payments remotely.', 'fluent-cart-pro'),
-            __('How to configure?', 'fluent-cart-pro'),
-            __('In your Mollie Dashboard:', 'fluent-cart-pro'),
-            __('Go to Settings > Webhooks >', 'fluent-cart-pro'),
-            __('Add webhook', 'fluent-cart-pro'),
-            __('Enter The Webhook URL: ', 'fluent-cart-pro'),
-            __('Select all events', 'fluent-cart-pro')
+            __('You should configure your Mollie webhooks to get all updates of your payments remotely.', 'webmakerr-cart-pro'),
+            __('How to configure?', 'webmakerr-cart-pro'),
+            __('In your Mollie Dashboard:', 'webmakerr-cart-pro'),
+            __('Go to Settings > Webhooks >', 'webmakerr-cart-pro'),
+            __('Add webhook', 'webmakerr-cart-pro'),
+            __('Enter The Webhook URL: ', 'webmakerr-cart-pro'),
+            __('Select all events', 'webmakerr-cart-pro')
         );
 
-        $betaNotice = __('Mollie payment gateway is currently in beta. Test properly before going live!', 'fluent-cart-pro');
+        $betaNotice = __('Mollie payment gateway is currently in beta. Test properly before going live!', 'webmakerr-cart-pro');
 
         return array(
             'notice'              => [
                 'value' => $this->renderStoreModeNotice(),
-                'label' => __('Store Mode notice', 'fluent-cart-pro'),
+                'label' => __('Store Mode notice', 'webmakerr-cart-pro'),
                 'type'  => 'notice'
             ],
             'beta_notice' => [
@@ -259,7 +259,7 @@ class Mollie extends AbstractPaymentGateway
                         <svg class="w-4 h-4 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a448 448 0 1 1 0 896.064A448 448 0 0 1 512 64m67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344M590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 0 1-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 0 1 7.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"></path></svg>
                         ' . $betaNotice . '
                     </p>',
-                'label' => __('Beta Notice', 'fluent-cart-pro'),
+                'label' => __('Beta Notice', 'webmakerr-cart-pro'),
                 'type' => 'html_attr'
             ],
             'payment_mode'        => [
@@ -267,14 +267,14 @@ class Mollie extends AbstractPaymentGateway
                 'schema' => [
                     [
                         'type'   => 'tab',
-                        'label'  => __('Live credentials', 'fluent-cart-pro'),
+                        'label'  => __('Live credentials', 'webmakerr-cart-pro'),
                         'value'  => 'live',
                         'schema' => [
                             'live_api_key' => array(
                                 'value'       => '',
-                                'label'       => __('Live API Key', 'fluent-cart-pro'),
+                                'label'       => __('Live API Key', 'webmakerr-cart-pro'),
                                 'type'        => 'password',
-                                'placeholder' => __('live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'fluent-cart-pro'),
+                                'placeholder' => __('live_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'webmakerr-cart-pro'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -285,14 +285,14 @@ class Mollie extends AbstractPaymentGateway
                     ],
                     [
                         'type'   => 'tab',
-                        'label'  => __('Test credentials', 'fluent-cart-pro'),
+                        'label'  => __('Test credentials', 'webmakerr-cart-pro'),
                         'value'  => 'test',
                         'schema' => [
                             'test_api_key' => array(
                                 'value'       => '',
-                                'label'       => __('Test API Key', 'fluent-cart-pro'),
+                                'label'       => __('Test API Key', 'webmakerr-cart-pro'),
                                 'type'        => 'password',
-                                'placeholder' => __('test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'fluent-cart-pro'),
+                                'placeholder' => __('test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'webmakerr-cart-pro'),
                                 'dependency'  => [
                                     'depends_on' => 'payment_mode',
                                     'operator'   => '=',
@@ -305,32 +305,32 @@ class Mollie extends AbstractPaymentGateway
             ],
 //            'is_authorize_a_success_state' => [
 //                'value' => '',
-//                'label' => __('Authorize is a Success State', 'fluent-cart-pro-pro'),
+//                'label' => __('Authorize is a Success State', 'webmakerr-cart-pro-pro'),
 //                'type'  => 'checkbox',
-//                'tooltip' => __('If you want to use Authorize as a Success State, please enable this option.', 'fluent-cart-pro-pro')
+//                'tooltip' => __('If you want to use Authorize as a Success State, please enable this option.', 'webmakerr-cart-pro-pro')
 //            ],
 //            'webhook_desc'        => array(
 //                'value' => $webhook_instructions,
-//                'label' => __('Webhook URL', 'fluent-cart-pro'),
+//                'label' => __('Webhook URL', 'webmakerr-cart-pro'),
 //                'type'  => 'html_attr'
 //            ),
 
             'test_active_methods' => [
                 'value' => (new MollieAPI())->getActivatedPaymentMethodsConfigs('test'),
-                'label' => __('Activated Methods', 'fluent-cart-pro'),
+                'label' => __('Activated Methods', 'webmakerr-cart-pro'),
                 'type'  => 'active_methods'
             ],
             'live_active_methods' => [
                 'value' => (new MollieAPI())->getActivatedPaymentMethodsConfigs('live'),
-                'label' => __('Activated Methods', 'fluent-cart-pro'),
+                'label' => __('Activated Methods', 'webmakerr-cart-pro'),
                 'type'  => 'active_methods'
             ],
             'render_selected_methods_only' => [
                 'disabled' => true,
                 'value' => '',
-                'label' => __('Render Selected Methods Only (Coming soon)', 'fluent-cart-pro'),
+                'label' => __('Render Selected Methods Only (Coming soon)', 'webmakerr-cart-pro'),
                 'type'  => 'checkbox',
-                'tooltip' => __('If enabled, only the selected Mollie payment methods will be displayed during checkout.', 'fluent-cart-pro')
+                'tooltip' => __('If enabled, only the selected Mollie payment methods will be displayed during checkout.', 'webmakerr-cart-pro')
             ],
         );
     }

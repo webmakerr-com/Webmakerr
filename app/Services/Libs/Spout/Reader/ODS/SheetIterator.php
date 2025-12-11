@@ -88,7 +88,7 @@ class SheetIterator implements IteratorInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the file path */
-                    esc_html__('Could not open "%s".', 'fluent-cart'),
+                    esc_html__('Could not open "%s".', 'webmakerr-cart'),
                     esc_html($contentXmlFilePath)
                 )
             );
@@ -101,7 +101,7 @@ class SheetIterator implements IteratorInterface
             throw new IOException(
                 sprintf(
                 /* translators: %s is the error message */
-                    esc_html__('The content.xml file is invalid and cannot be read. [%s]', 'fluent-cart'),
+                    esc_html__('The content.xml file is invalid and cannot be read. [%s]', 'webmakerr-cart'),
                     esc_html($exception->getMessage())
                 )
             );

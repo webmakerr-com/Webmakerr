@@ -349,7 +349,7 @@ class CssInliner extends AbstractHtmlProcessor
             throw new \RuntimeException(
                 sprintf(
                 /* translators: %s is the XPath query */
-                    esc_html__('XPatch query failed: %s', 'fluent-cart'),
+                    esc_html__('XPatch query failed: %s', 'webmakerr-cart'),
                     esc_html($query)
                 ),
                 1618577797

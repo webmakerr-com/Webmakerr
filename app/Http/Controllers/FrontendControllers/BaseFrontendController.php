@@ -18,7 +18,7 @@ class BaseFrontendController extends Controller
         // Check if the user is logged in, return an error if not
         if (empty($customer)) {
             return $this->sendError([
-                'message' => __('You are not logged in', 'fluent-cart')
+                'message' => __('You are not logged in', 'webmakerr-cart')
             ]);
         }
 

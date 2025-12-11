@@ -53,7 +53,7 @@ class AppController extends Controller
         }
         return $this->sendError(
             [
-                'message' => __('No Images Found', 'fluent-cart')
+                'message' => __('No Images Found', 'webmakerr-cart')
             ]
         );
 
@@ -89,13 +89,13 @@ class AppController extends Controller
                     );
                 }
                 return $this->sendError([
-                    'error' => __('Error Uploading File', 'fluent-cart')
+                    'error' => __('Error Uploading File', 'webmakerr-cart')
                 ]);
 
 
             }
         }
 
-        return $this->sendError(__('No File Attached', 'fluent-cart'));
+        return $this->sendError(__('No File Attached', 'webmakerr-cart'));
     }
 }

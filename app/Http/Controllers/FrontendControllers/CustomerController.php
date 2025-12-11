@@ -42,7 +42,7 @@ class CustomerController extends Controller
         $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
-                'message' => __('You are not authorized to update this customer', 'fluent-cart')
+                'message' => __('You are not authorized to update this customer', 'webmakerr-cart')
             ]);
         }
         $data = $request->getSafe($request->sanitize());
@@ -58,7 +58,7 @@ class CustomerController extends Controller
         $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
-                'message' => __('You are not authorized to view this customer', 'fluent-cart')
+                'message' => __('You are not authorized to view this customer', 'webmakerr-cart')
             ]);
         }
         return CustomerResource::find($customerId, ['with' => $request->get('with', [])]);
@@ -78,7 +78,7 @@ class CustomerController extends Controller
 
         if (!$address) {
             return $this->sendError([
-                'message' => __('Address not found', 'fluent-cart')
+                'message' => __('Address not found', 'webmakerr-cart')
             ]);
         }
 
@@ -108,7 +108,7 @@ class CustomerController extends Controller
         $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
-                'message' => __('You are not authorized to view this address', 'fluent-cart')
+                'message' => __('You are not authorized to view this address', 'webmakerr-cart')
             ]);
         }
 
@@ -145,7 +145,7 @@ class CustomerController extends Controller
         $result =  (new WebCheckoutHandler())->handleGetCheckoutSummaryViewAjax();
 
         return $this->response->sendSuccess([
-            'message' => __('Address Attached', 'fluent-cart'),
+            'message' => __('Address Attached', 'webmakerr-cart'),
             'data'    => $htmlOutput,
             'fragments' => $result['fragments']
         ]);
@@ -158,7 +158,7 @@ class CustomerController extends Controller
 
         if (empty($customer)) {
             return $this->sendError([
-                'message' => __('You don\'t have any associated account', 'fluent-cart')
+                'message' => __('You don\'t have any associated account', 'webmakerr-cart')
             ]);
         }
 
@@ -202,7 +202,7 @@ class CustomerController extends Controller
         // Validate label length
         if (!empty($data['label']) && strlen($data['label']) > 15) {
             return $this->sendError([
-                'message' => __('Label must not exceed 15 characters.', 'fluent-cart')
+                'message' => __('Label must not exceed 15 characters.', 'webmakerr-cart')
             ]);
         }
 
@@ -245,7 +245,7 @@ class CustomerController extends Controller
 
 
         return $this->response->sendSuccess([
-            'message' => __('Customer address created successfully!', 'fluent-cart'),
+            'message' => __('Customer address created successfully!', 'webmakerr-cart'),
             'fragment' => [
                 [
                     'selector' => '[data-fluent-cart-checkout-page-form-address-modal-address-selector-button-wrapper]',
@@ -296,7 +296,7 @@ class CustomerController extends Controller
                     }
                     $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: 1: attribute name */
-                        __('%s is required.', 'fluent-cart'),
+                        __('%s is required.', 'webmakerr-cart'),
                         $titledKey
                     );
                     continue;
@@ -308,7 +308,7 @@ class CustomerController extends Controller
                     }
                     $errors[$prefixedKey]['invalid'] = sprintf(
                     /* translators: 1: attribute name */
-                        __('%s is invalid.', 'fluent-cart'),
+                        __('%s is invalid.', 'webmakerr-cart'),
                         $titledKey
                     );
                     continue;
@@ -321,7 +321,7 @@ class CustomerController extends Controller
                 }
                 $errors[$prefixedKey]['required'] = sprintf(
                     /* translators: 1: attribute name */
-                    __('%s is required.', 'fluent-cart'),
+                    __('%s is required.', 'webmakerr-cart'),
                     $titledKey
                 );
             }
@@ -330,7 +330,7 @@ class CustomerController extends Controller
         }
 
         if (count($errors) > 0) {
-            return new \Wp_Error('validation_error', __('Validation error', 'fluent-cart'), $errors);
+            return new \Wp_Error('validation_error', __('Validation error', 'webmakerr-cart'), $errors);
         }
 
         return $data;
@@ -356,7 +356,7 @@ class CustomerController extends Controller
                 }
                 $errors['required'] = sprintf(
                 /* translators: 1: attribute name */
-                    __('%s is required.', 'fluent-cart'),
+                    __('%s is required.', 'webmakerr-cart'),
                     $titledKey
                 );
             }
@@ -365,7 +365,7 @@ class CustomerController extends Controller
         if ( !in_array($value, array_column($states, 'value'))) {
             $errors['invalid'] = sprintf(
                 /* translators: 1: attribute name */
-                __('%s is invalid.', 'fluent-cart'),
+                __('%s is invalid.', 'webmakerr-cart'),
                 $titledKey
             );
         }
@@ -384,18 +384,18 @@ class CustomerController extends Controller
         $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $address->customer_id) {
             $this->sendError([
-                'message' => __('You are not authorized to update this address', 'fluent-cart')
+                'message' => __('You are not authorized to update this address', 'webmakerr-cart')
             ]);
         }
 
         if ($address->update($data)) {
             return $this->response->sendSuccess([
-                'message' => __('Address updated successfully', 'fluent-cart')
+                'message' => __('Address updated successfully', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendError([
-            'message' => __('Failed to update address', 'fluent-cart')
+            'message' => __('Failed to update address', 'webmakerr-cart')
         ]);
     }
 
@@ -409,18 +409,18 @@ class CustomerController extends Controller
         $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $address->customer_id) {
             $this->sendError([
-                'message' => __('You are not authorized to delete this address', 'fluent-cart')
+                'message' => __('You are not authorized to delete this address', 'webmakerr-cart')
             ]);
         }
 
         if ($address->delete()) {
             return $this->response->sendSuccess([
-                'message' => __('Address deleted successfully', 'fluent-cart')
+                'message' => __('Address deleted successfully', 'webmakerr-cart')
             ]);
         }
 
         return $this->sendError([
-            'message' => __('Failed to delete address', 'fluent-cart')
+            'message' => __('Failed to delete address', 'webmakerr-cart')
         ]);
     }
 
@@ -429,7 +429,7 @@ class CustomerController extends Controller
         $customer = \Webmakerr\Api\Resource\CustomerResource::getCurrentCustomer();
         if (empty($customer) || $customer->id != $customerId) {
             return $this->sendError([
-                'message' => __('You are not authorized to update this address', 'fluent-cart')
+                'message' => __('You are not authorized to update this address', 'webmakerr-cart')
             ]);
         }
 

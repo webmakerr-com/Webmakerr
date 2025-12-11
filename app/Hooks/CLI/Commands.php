@@ -172,7 +172,7 @@ class Commands
         $licenseClass = '\\FluentCartPro\\App\\Modules\\Licensing\\Models\\License';
 
         if (!$proManager->isProActive() || !$proManager->ensureClassAvailable($licenseClass)) {
-            \WP_CLI::warning($proManager->getLockedMessage(__('License anonymization', 'fluent-cart')));
+            \WP_CLI::warning($proManager->getLockedMessage(__('License anonymization', 'webmakerr-cart')));
             return;
         }
 
@@ -514,7 +514,7 @@ class Commands
                 // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                 echo \WP_CLI::colorize('%yYou Are Not In Dev Mode');
             } else {
-                echo esc_html__("You Are Not In Dev Mode", "fluent-cart");
+                echo esc_html__("You Are Not In Dev Mode", "webmakerr-cart");
             }
             return;
         }

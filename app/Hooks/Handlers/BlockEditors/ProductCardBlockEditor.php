@@ -39,8 +39,8 @@ class ProductCardBlockEditor extends BlockEditor
             $this->getLocalizationKey()      => [
                 'slug'  => $this->slugPrefix,
                 'name'  => static::getEditorName(),
-                'title' => __('Product Card', 'fluent-cart'),
-                'description' => __('This block will display the product card.', 'fluent-cart'),
+                'title' => __('Product Card', 'webmakerr-cart'),
+                'description' => __('This block will display the product card.', 'webmakerr-cart'),
                 'placeholder_image' => Vite::getAssetUrl('images/placeholder.svg'),
                 'currency_sign' => $currencySign,
                 'currency_position' => $currencyPosition

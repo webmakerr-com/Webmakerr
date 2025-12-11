@@ -38,13 +38,13 @@ class CustomerAddressRequest extends RequestGuard
         $type = $this->get('type') . '_';
 
         return [
-            $type . 'address_1.required' => esc_html__('Address field is required.', 'fluent-cart'),
-            $type . 'label.max'          => esc_html__('Label may not be greater than 15 characters.', 'fluent-cart'),
-            $type . 'city.required'      => esc_html__('City field is required.', 'fluent-cart'),
-            $type . 'state.required'     => esc_html__('State field is required.', 'fluent-cart'),
-            $type . 'postcode.required'  => esc_html__('Postcode field is required.', 'fluent-cart'),
-            $type . 'country.required'   => esc_html__('Country field is required.', 'fluent-cart'),
-            $type . 'label.required'     => esc_html__('Label field is required.', 'fluent-cart')
+            $type . 'address_1.required' => esc_html__('Address field is required.', 'webmakerr-cart'),
+            $type . 'label.max'          => esc_html__('Label may not be greater than 15 characters.', 'webmakerr-cart'),
+            $type . 'city.required'      => esc_html__('City field is required.', 'webmakerr-cart'),
+            $type . 'state.required'     => esc_html__('State field is required.', 'webmakerr-cart'),
+            $type . 'postcode.required'  => esc_html__('Postcode field is required.', 'webmakerr-cart'),
+            $type . 'country.required'   => esc_html__('Country field is required.', 'webmakerr-cart'),
+            $type . 'label.required'     => esc_html__('Label field is required.', 'webmakerr-cart')
         ];
     }
 

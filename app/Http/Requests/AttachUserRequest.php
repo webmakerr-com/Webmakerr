@@ -25,11 +25,11 @@ class AttachUserRequest extends RequestGuard
                 function ($attribute, $value) use ($user) {
 
                     if (empty($user)) {
-                        return __('User not found.', 'fluent-cart');
+                        return __('User not found.', 'webmakerr-cart');
                     }
 
                     if (!empty($user->customer)) {
-                        return (__('User already linked to a customer.', 'fluent-cart'));
+                        return (__('User already linked to a customer.', 'webmakerr-cart'));
                     }
                     return null;
                 }
@@ -43,8 +43,8 @@ class AttachUserRequest extends RequestGuard
     public function messages(): array
     {
         return [
-            'user_id.required' => esc_html__('User is required.', 'fluent-cart'),
-            'user_id.exists'   => esc_html__('User not found.', 'fluent-cart'),
+            'user_id.required' => esc_html__('User is required.', 'webmakerr-cart'),
+            'user_id.exists'   => esc_html__('User not found.', 'webmakerr-cart'),
         ];
     }
 

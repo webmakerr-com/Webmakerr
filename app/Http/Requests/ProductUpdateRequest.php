@@ -86,12 +86,12 @@ class ProductUpdateRequest extends RequestGuard
         }
 
         if (!is_numeric($value)) {
-            $checked[$value] = __("Invalid Shipping Class.", 'fluent-cart');
+            $checked[$value] = __("Invalid Shipping Class.", 'webmakerr-cart');
             return $checked[$value];
         }
 
         if (empty(ShippingClass::query()->find($value))) {
-            $checked[$value] = __("Invalid Shipping Class.", 'fluent-cart');
+            $checked[$value] = __("Invalid Shipping Class.", 'webmakerr-cart');
             return $checked[$value];
         }
 
@@ -113,12 +113,12 @@ class ProductUpdateRequest extends RequestGuard
         }
 
         if (!is_numeric($value)) {
-            $checked[$value] = __("Invalid Tax Class.", 'fluent-cart');
+            $checked[$value] = __("Invalid Tax Class.", 'webmakerr-cart');
             return $checked[$value];
         }
 
         if (empty(\Webmakerr\App\Models\TaxClass::query()->find($value))) {
-            $checked[$value] = __("Invalid Tax Class.", 'fluent-cart');
+            $checked[$value] = __("Invalid Tax Class.", 'webmakerr-cart');
             return $checked[$value];
         }
 
@@ -133,17 +133,17 @@ class ProductUpdateRequest extends RequestGuard
         }
 
         if (empty($value)) {
-            return __("The post date is required when status is scheduled.", 'fluent-cart');
+            return __("The post date is required when status is scheduled.", 'webmakerr-cart');
         }
         $currentTime = DateTime::gmtNow();
         try {
             $postDate = DateTime::anyTimeToGmt($value);
         } catch (\Exception $exception) {
-            return __("The post date is invalid.", 'fluent-cart');
+            return __("The post date is invalid.", 'webmakerr-cart');
         }
 
         if ($postDate < $currentTime) {
-            return sprintf(__("The post date must be in the future.", 'fluent-cart'));
+            return sprintf(__("The post date must be in the future.", 'webmakerr-cart'));
         }
         return null;
     }
@@ -167,7 +167,7 @@ class ProductUpdateRequest extends RequestGuard
                     if (count($words) > $excerpt_length) {
                         return sprintf(
                             /* translators: %d: The maximum number of words allowed */
-                            __("The excerpt field cannot contain more than %d words.", 'fluent-cart'),
+                            __("The excerpt field cannot contain more than %d words.", 'webmakerr-cart'),
                             $excerpt_length
                         );
                     }
@@ -240,7 +240,7 @@ class ProductUpdateRequest extends RequestGuard
                         $itemPrice = 0;
                     }
                     if ($value !== null && $value < $itemPrice) {
-                        return sprintf(__("Compare price must be greater than or equal to item price.", 'fluent-cart'));
+                        return sprintf(__("Compare price must be greater than or equal to item price.", 'webmakerr-cart'));
                     }
                     return null;
                 },
@@ -306,30 +306,30 @@ class ProductUpdateRequest extends RequestGuard
     public function messages(): array
     {
         $messages = [
-            'post_title.required'                 => esc_html__('Title is required.', 'fluent-cart'),
-            'post_title.max'                      => esc_html__('Title may not be greater than 200 characters.', 'fluent-cart'),
-            'detail.fulfillment_type.required'    => esc_html__('Fulfilment Type is required.', 'fluent-cart'),
-            'detail.variation_type.required'      => esc_html__('Variation Type is required.', 'fluent-cart'),
-            'variants.required_if'                => esc_html__('Pricing is required when status is publish or scheduled.', 'fluent-cart'),
-            'variants.*.variation_title.required' => esc_html__('Title is required.', 'fluent-cart'),
-            'variants.*.variation_title.max'      => esc_html__('Title may not be greater than 200 characters.', 'fluent-cart'),
-            'variants.*.item_price.required'      => esc_html__('Price is required.', 'fluent-cart'),
-            'variants.*.item_price.numeric'       => esc_html__('Price must be a number.', 'fluent-cart'),
-            'variants.*.item_price.min'           => esc_html__('Price must be a positive number greater than 0.', 'fluent-cart'),
+            'post_title.required'                 => esc_html__('Title is required.', 'webmakerr-cart'),
+            'post_title.max'                      => esc_html__('Title may not be greater than 200 characters.', 'webmakerr-cart'),
+            'detail.fulfillment_type.required'    => esc_html__('Fulfilment Type is required.', 'webmakerr-cart'),
+            'detail.variation_type.required'      => esc_html__('Variation Type is required.', 'webmakerr-cart'),
+            'variants.required_if'                => esc_html__('Pricing is required when status is publish or scheduled.', 'webmakerr-cart'),
+            'variants.*.variation_title.required' => esc_html__('Title is required.', 'webmakerr-cart'),
+            'variants.*.variation_title.max'      => esc_html__('Title may not be greater than 200 characters.', 'webmakerr-cart'),
+            'variants.*.item_price.required'      => esc_html__('Price is required.', 'webmakerr-cart'),
+            'variants.*.item_price.numeric'       => esc_html__('Price must be a number.', 'webmakerr-cart'),
+            'variants.*.item_price.min'           => esc_html__('Price must be a positive number greater than 0.', 'webmakerr-cart'),
 
         ];
 
         $variationType = Arr::get($this->all(), 'detail.variation_type', 'simple');
         if ($variationType === 'simple') {
             $otherInfoMessages = [
-                'variants.*.stock_status.required_if'               => esc_html__('Stock status is required.', 'fluent-cart'),
-                'variants.*.item_cost.required_if'                  => esc_html__('Item cost is required.', 'fluent-cart'),
-                'variants.*.other_info.description.max'             => esc_html__('Description may not be greater than 255 characters.', 'fluent-cart'),
-                'variants.*.other_info.payment_type.required'       => esc_html__('Payment Type is required.', 'fluent-cart'),
-                'variants.*.other_info.times.required_if'           => esc_html__('Times is required.', 'fluent-cart'),
-                'variants.*.other_info.repeat_interval.required_if' => esc_html__('Interval is required.', 'fluent-cart'),
-                'variants.*.other_info.signup_fee.required_if'      => esc_html__('Setup Fee Amount is required.', 'fluent-cart'),
-                'variants.*.other_info.signup_fee_name.required_if' => esc_html__('Setup Fee Name is required.', 'fluent-cart'),
+                'variants.*.stock_status.required_if'               => esc_html__('Stock status is required.', 'webmakerr-cart'),
+                'variants.*.item_cost.required_if'                  => esc_html__('Item cost is required.', 'webmakerr-cart'),
+                'variants.*.other_info.description.max'             => esc_html__('Description may not be greater than 255 characters.', 'webmakerr-cart'),
+                'variants.*.other_info.payment_type.required'       => esc_html__('Payment Type is required.', 'webmakerr-cart'),
+                'variants.*.other_info.times.required_if'           => esc_html__('Times is required.', 'webmakerr-cart'),
+                'variants.*.other_info.repeat_interval.required_if' => esc_html__('Interval is required.', 'webmakerr-cart'),
+                'variants.*.other_info.signup_fee.required_if'      => esc_html__('Setup Fee Amount is required.', 'webmakerr-cart'),
+                'variants.*.other_info.signup_fee_name.required_if' => esc_html__('Setup Fee Name is required.', 'webmakerr-cart'),
             ];
 
             $messages = array_merge($messages, $otherInfoMessages);

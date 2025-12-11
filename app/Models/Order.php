@@ -758,7 +758,7 @@ class Order extends Model
                     'order_cannot_be_deleted',
                     sprintf(
                         /* translators: 1: order/invoice number, 2: payment status */
-                        __('Order %1$s cannot be deleted due to its current payment status: %2$s.', 'fluent-cart'),
+                        __('Order %1$s cannot be deleted due to its current payment status: %2$s.', 'webmakerr-cart'),
                         $this->invoice_no,
                         $this->payment_status
                     )
@@ -770,7 +770,7 @@ class Order extends Model
                 'order_cannot_be_deleted',
                 sprintf(
                     /* translators: 1: order/invoice number, 2: order status */
-                    __('Order %1$s cannot be deleted due to its current order status: %2$s.', 'fluent-cart'),
+                    __('Order %1$s cannot be deleted due to its current order status: %2$s.', 'webmakerr-cart'),
                     $this->invoice_no,
                     $this->status
                 )
@@ -795,7 +795,7 @@ class Order extends Model
                     'order_cannot_be_deleted',
                     sprintf(
                         /* translators: %s is the order/invoice number */
-                        __('Order %s cannot be deleted as it has an active subscription.', 'fluent-cart'),
+                        __('Order %s cannot be deleted as it has an active subscription.', 'webmakerr-cart'),
                         $this->invoice_no
                     )
                 );

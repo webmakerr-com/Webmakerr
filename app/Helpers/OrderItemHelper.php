@@ -70,7 +70,7 @@ class OrderItemHelper
         }
 
         return [
-            'message' => __('Product Updates!', 'fluent-cart')
+            'message' => __('Product Updates!', 'webmakerr-cart')
         ];
     }
 
@@ -81,11 +81,11 @@ class OrderItemHelper
     public function processProducts($orderId, $items)
     {
         if (empty($items)) {
-            throw new \Exception(esc_html__('Please add some products!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Please add some products!', 'webmakerr-cart'));
         }
 
         if (!$orderId) {
-            throw new \Exception(esc_html__('Order Not valid!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Order Not valid!', 'webmakerr-cart'));
         }
 
         $this->orderId = $orderId;
@@ -108,11 +108,11 @@ class OrderItemHelper
         $quantity = Arr::get($product, 'quantity', false);
 
         if (!Arr::get($product, 'item_name', false)) {
-            throw new \Exception(esc_html__('Item must have a name!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Item must have a name!', 'webmakerr-cart'));
         }
 
         if (!$price || !$quantity) {
-            throw new \Exception(esc_html__('Price, Quantity field should not be empty or zero!', 'fluent-cart'));
+            throw new \Exception(esc_html__('Price, Quantity field should not be empty or zero!', 'webmakerr-cart'));
         }
 
         //$total = floatVal($price * 100 * $quantity);

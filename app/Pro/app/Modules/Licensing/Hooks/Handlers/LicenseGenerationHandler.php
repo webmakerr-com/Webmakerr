@@ -80,7 +80,7 @@ class LicenseGenerationHandler
         }
 
         wp_send_json([
-            'message' => __('Licenses generated successfully', 'fluent-cart-pro')
+            'message' => __('Licenses generated successfully', 'webmakerr-cart-pro')
         ], 200);
     }
 

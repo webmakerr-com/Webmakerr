@@ -27,16 +27,16 @@ class Refund
 
 
         if ($refundAmount <= 0) {
-            return new \WP_Error('invalid_refund_amount', __('Invalid refund amount.', 'fluent-cart'));
+            return new \WP_Error('invalid_refund_amount', __('Invalid refund amount.', 'webmakerr-cart'));
         }
 
         $netOrderPaidAmount = $order->total_paid - $order->total_refunded;
         if ($refundAmount > $netOrderPaidAmount) {
-            return new \WP_Error('invalid_refund_amount', __('Refund amount exceeds the net paid amount for this order.', 'fluent-cart'));
+            return new \WP_Error('invalid_refund_amount', __('Refund amount exceeds the net paid amount for this order.', 'webmakerr-cart'));
         }
 
         if ($transaction->getMaxRefundableAmount() < $refundAmount) {
-            return new \WP_Error('invalid_refund_amount', __('Refund amount exceeds the maximum refundable amount for this transaction.', 'fluent-cart'));
+            return new \WP_Error('invalid_refund_amount', __('Refund amount exceeds the maximum refundable amount for this transaction.', 'webmakerr-cart'));
         }
 
         $orderTransactions = [
@@ -123,7 +123,7 @@ class Refund
     public static function recordRefund($refundData, OrderTransaction $parentTransaction)
     {
         if (empty($refundData['total']) || $refundData['total'] <= 0) {
-            return new \WP_Error('invalid_refund_amount', __('Invalid refund amount.', 'fluent-cart'));
+            return new \WP_Error('invalid_refund_amount', __('Invalid refund amount.', 'webmakerr-cart'));
         }
 
         $status = Arr::get($refundData, 'status', Status::TRANSACTION_REFUNDED);

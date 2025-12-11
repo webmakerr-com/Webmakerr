@@ -80,11 +80,11 @@ class ProFeatureManager
 
     public function getLockedMessage(string $feature = ''): string
     {
-        $message = __('Pro feature locked. Install and activate Webmakerr Pro to unlock all premium features.', 'fluent-cart');
+        $message = __('Pro feature locked. Install and activate Webmakerr Pro to unlock all premium features.', 'webmakerr-cart');
 
         if ($feature) {
             $message = sprintf(
-                __('Pro feature locked: %s. Install and activate Webmakerr Pro to continue.', 'fluent-cart'),
+                __('Pro feature locked: %s. Install and activate Webmakerr Pro to continue.', 'webmakerr-cart'),
                 $feature
             );
         }
@@ -133,7 +133,7 @@ class ProFeatureManager
         if (version_compare(WEBMAKERR_MIN_PRO_VERSION, WEBMAKERR_PRO_PLUGIN_VERSION, '>')) {
             $updateUrl = admin_url('plugins.php?s=fluent-cart&plugin_status=all&fluent-cart-pro-check-update=' . time());
             $notices[] = '<div>' . sprintf(
-                    __('Webmakerr Pro needs to be updated to at least version %s. %sUpdate now%s', 'fluent-cart'),
+                    __('Webmakerr Pro needs to be updated to at least version %s. %sUpdate now%s', 'webmakerr-cart'),
                     WEBMAKERR_MIN_PRO_VERSION,
                     '<a href="' . esc_url($updateUrl) . '">',
                     '</a>'

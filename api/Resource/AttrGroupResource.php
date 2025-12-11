@@ -114,12 +114,12 @@ class AttrGroupResource extends BaseResourceApi
         if ($groupCreated) {
             return static::makeSuccessResponse(
                 $groupCreated,
-                __('Successfully created!', 'fluent-cart')
+                __('Successfully created!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Group creation failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Group creation failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -146,12 +146,12 @@ class AttrGroupResource extends BaseResourceApi
         if ($isUpdated) {
             return static::makeSuccessResponse(
                 $isUpdated,
-                __('Group updated successfully!', 'fluent-cart')
+                __('Group updated successfully!', 'webmakerr-cart')
             );
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Group info update failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Group info update failed.', 'webmakerr-cart')]
         ]);
     }
 
@@ -176,17 +176,17 @@ class AttrGroupResource extends BaseResourceApi
                 $group->delete();
                 return static::makeSuccessResponse(
                     '',
-                    __('Attribute group successfully deleted!', 'fluent-cart')
+                    __('Attribute group successfully deleted!', 'webmakerr-cart')
                 );
             }
 
             return static::makeErrorResponse([
-                ['code' => 404, 'message' => __('Attribute group not found in database, failed to remove.', 'fluent-cart')]
+                ['code' => 404, 'message' => __('Attribute group not found in database, failed to remove.', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 403, 'message' => __('This group is already in use, can not be deleted.', 'fluent-cart')]
+            ['code' => 403, 'message' => __('This group is already in use, can not be deleted.', 'webmakerr-cart')]
         ]);
     }
 }

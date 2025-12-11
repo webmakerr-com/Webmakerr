@@ -20,7 +20,7 @@ class IntegrationHelper
         if (empty($args['provider']) || empty($args['scope'])) {
             return new \WP_Error(
                 'integration_validation_error',
-                __('Provider and scope are required for integration settings.', 'fluent-cart')
+                __('Provider and scope are required for integration settings.', 'webmakerr-cart')
             );
         }
 
@@ -45,14 +45,14 @@ class IntegrationHelper
                 $label = $field['label'] ?? $key;
                 $errors[$key] = sprintf(
                     /* translators: 1: attribute name */
-                    __('%s is required.', 'fluent-cart'), $label);
+                    __('%s is required.', 'webmakerr-cart'), $label);
             }
         }
 
         if ($errors && $integration['enabled']) {
             return new \WP_Error(
                 'integration_validation_error',
-                __('Please fill up the required fields:', 'fluent-cart'),
+                __('Please fill up the required fields:', 'webmakerr-cart'),
                 $errors
             );
         }

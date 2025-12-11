@@ -15,7 +15,7 @@ class SanitizeText
         if (!$isString) {
             return sprintf(
                 /* translators: 1: attribute name */
-                __('The %s must be a valid text', 'fluent-cart'),
+                __('The %s must be a valid text', 'webmakerr-cart'),
                 $attr
             );
         }
@@ -23,7 +23,7 @@ class SanitizeText
         if ($sanitizedValue !== $value) {
             return sprintf(
                 /* translators: 1: attribute name */
-                __('The %s must be a valid text', 'fluent-cart'),
+                __('The %s must be a valid text', 'webmakerr-cart'),
                 $attr
             );
         }

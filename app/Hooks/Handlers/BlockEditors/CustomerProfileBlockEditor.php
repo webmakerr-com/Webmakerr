@@ -32,7 +32,7 @@ class CustomerProfileBlockEditor extends BlockEditor
             $this->getLocalizationKey() => [
                 'slug'  => $this->slugPrefix,
                 'name'  => static::getEditorName(),
-                'title' => __('Customer Dashboard', 'fluent-cart'),
+                'title' => __('Customer Dashboard', 'webmakerr-cart'),
             ]
         ];
     }
@@ -40,10 +40,10 @@ class CustomerProfileBlockEditor extends BlockEditor
     public function render(array $shortCodeAttribute, $block = null): string
     {
         $defaultsTitles = [
-            'purchaseHistory' => __('Purchase History', 'fluent-cart'),
-            'subscriptions'   => __('Subscriptions', 'fluent-cart'),
-            'licenses'        => __('Licenses', 'fluent-cart'),
-            'downloads'       => __('Downloads', 'fluent-cart')
+            'purchaseHistory' => __('Purchase History', 'webmakerr-cart'),
+            'subscriptions'   => __('Subscriptions', 'webmakerr-cart'),
+            'licenses'        => __('Licenses', 'webmakerr-cart'),
+            'downloads'       => __('Downloads', 'webmakerr-cart')
         ];
 
         $sectionTitles = Arr::get($shortCodeAttribute, 'sectionTitles', $defaultsTitles);

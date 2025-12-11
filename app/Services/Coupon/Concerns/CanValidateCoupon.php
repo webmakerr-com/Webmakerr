@@ -31,17 +31,17 @@ trait CanValidateCoupon
         }
 
         if (empty($couponCode)) {
-            return $this->makeError(__('Invalid Coupon Code', 'fluent-cart'), 404);
+            return $this->makeError(__('Invalid Coupon Code', 'webmakerr-cart'), 404);
         }
 
         $coupon = $this->applicableCoupons->firstWhere('code', $couponCode);
 
         if (empty($coupon)) {
-            return $this->makeError(__('Coupon Not Found', 'fluent-cart'), 404);
+            return $this->makeError(__('Coupon Not Found', 'webmakerr-cart'), 404);
         }
 
         if ($this->isAlreadyApplied($coupon)) {
-            return $this->makeError(__('Coupon already applied', 'fluent-cart'), 401);
+            return $this->makeError(__('Coupon already applied', 'webmakerr-cart'), 401);
         }
 
         //Return true at this point is not using cart, because at this point coupon is already used in an order
@@ -50,35 +50,35 @@ trait CanValidateCoupon
         }
 
         if (!$this->canBeStacked($coupon)) {
-            return $this->makeError(__('Can not apply the coupons together', 'fluent-cart'), 401);
+            return $this->makeError(__('Can not apply the coupons together', 'webmakerr-cart'), 401);
         }
 
         if (!$this->isCouponActive($coupon)) {
 
-            return $this->makeError(__('This coupon has expired or is not valid', 'fluent-cart'), 401);
+            return $this->makeError(__('This coupon has expired or is not valid', 'webmakerr-cart'), 401);
         }
 
         if ($this->requiredUserToBeLoggedIn($coupon)) {
 
             if (!is_user_logged_in()) {
-                return $this->makeError(__('You Need To be logged in', 'fluent-cart'), 403);
+                return $this->makeError(__('You Need To be logged in', 'webmakerr-cart'), 403);
             }
 
             if (!$this->hasMaxPerUserLimit($coupon)) {
-                return $this->makeError(__('Coupon Uses Limit Exceeded', 'fluent-cart'), 401);
+                return $this->makeError(__('Coupon Uses Limit Exceeded', 'webmakerr-cart'), 401);
             }
         }
 
         if (!$this->hasUseLimit($coupon)) {
-            return $this->makeError(__('Coupon Uses Limit Exceeded', 'fluent-cart'), 403);
+            return $this->makeError(__('Coupon Uses Limit Exceeded', 'webmakerr-cart'), 403);
         }
 
         if (!$this->ensureMinimumPurchaseAmount($coupon)) {
-            return $this->makeError(__('Purchase amount is smaller than required amount', 'fluent-cart'), 403);
+            return $this->makeError(__('Purchase amount is smaller than required amount', 'webmakerr-cart'), 403);
         }
 
         if (!$this->isProductValidated($coupon)) {
-            return $this->makeError(__('No applicable products in the cart for this coupon', 'fluent-cart'), 403);
+            return $this->makeError(__('No applicable products in the cart for this coupon', 'webmakerr-cart'), 403);
         }
 
         return true;

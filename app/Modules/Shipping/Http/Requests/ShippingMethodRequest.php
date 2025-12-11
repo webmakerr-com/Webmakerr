@@ -36,9 +36,9 @@ class ShippingMethodRequest extends RequestGuard
     public function messages()
     {
         return [
-            'zone_id.required' => esc_html__('Shipping zone is required.', 'fluent-cart'),
-            'title.required'   => esc_html__('Shipping method title is required.', 'fluent-cart'),
-            'type.required'    => esc_html__('Shipping method type is required.', 'fluent-cart')
+            'zone_id.required' => esc_html__('Shipping zone is required.', 'webmakerr-cart'),
+            'title.required'   => esc_html__('Shipping method title is required.', 'webmakerr-cart'),
+            'type.required'    => esc_html__('Shipping method type is required.', 'webmakerr-cart')
         ];
     }
 

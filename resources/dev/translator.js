@@ -45,3 +45,4 @@ const {translations, comments} = TranslationHelper.extractTranslations(resources
 
 commentsArray = comments;
 TranslationHelper.updatePhpTranslations(translations, {}, phpFile, includeSource, comments);
+TranslationHelper.writePotFiles(translations, commentsArray);

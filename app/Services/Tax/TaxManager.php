@@ -44,9 +44,9 @@ class TaxManager
     private function __construct()
     {
         $this->descriptionMap = [
-            'standard' => __('Default tax class for most products.', 'fluent-cart'),
-            'zero'     => __('For items with 0% tax.', 'fluent-cart'),
-            'reduced'  => __('For items with a reduced tax rate.', 'fluent-cart'),
+            'standard' => __('Default tax class for most products.', 'webmakerr-cart'),
+            'zero'     => __('For items with 0% tax.', 'webmakerr-cart'),
+            'reduced'  => __('For items with a reduced tax rate.', 'webmakerr-cart'),
         ];
         $this->rates = require __DIR__ . '/tax.php';
         $this->config = require __DIR__ . '/config.php';
@@ -85,8 +85,8 @@ class TaxManager
     {
         // Special mappings
         $map = [
-            'standard' => __('Standard', 'fluent-cart'),
-            'zero'     => __('Zero', 'fluent-cart'),
+            'standard' => __('Standard', 'webmakerr-cart'),
+            'zero'     => __('Zero', 'webmakerr-cart'),
         ];
 
         if (isset($map[$key])) {
@@ -99,21 +99,21 @@ class TaxManager
             $num = (int)$matches[2];
 
             $numberMap = [
-                1  => __('One', 'fluent-cart'),
-                2  => __('Two', 'fluent-cart'),
-                3  => __('Three', 'fluent-cart'),
-                4  => __('Four', 'fluent-cart'),
-                5  => __('Five', 'fluent-cart'),
-                6  => __('Six', 'fluent-cart'),
-                7  => __('Seven', 'fluent-cart'),
-                8  => __('Eight', 'fluent-cart'),
-                9  => __('Nine', 'fluent-cart'),
-                10 => __('Ten', 'fluent-cart'),
-                11 => __('Eleven', 'fluent-cart'),
-                12 => __('Twelve', 'fluent-cart'),
-                13 => __('Thirteen', 'fluent-cart'),
-                14 => __('Fourteen', 'fluent-cart'),
-                15 => __('Fifteen', 'fluent-cart')
+                1  => __('One', 'webmakerr-cart'),
+                2  => __('Two', 'webmakerr-cart'),
+                3  => __('Three', 'webmakerr-cart'),
+                4  => __('Four', 'webmakerr-cart'),
+                5  => __('Five', 'webmakerr-cart'),
+                6  => __('Six', 'webmakerr-cart'),
+                7  => __('Seven', 'webmakerr-cart'),
+                8  => __('Eight', 'webmakerr-cart'),
+                9  => __('Nine', 'webmakerr-cart'),
+                10 => __('Ten', 'webmakerr-cart'),
+                11 => __('Eleven', 'webmakerr-cart'),
+                12 => __('Twelve', 'webmakerr-cart'),
+                13 => __('Thirteen', 'webmakerr-cart'),
+                14 => __('Fourteen', 'webmakerr-cart'),
+                15 => __('Fifteen', 'webmakerr-cart')
             ];
 
             return $prefix . ' ' . ($numberMap[$num] ?? $num);
@@ -157,9 +157,9 @@ class TaxManager
     {
 
         $taxClassLabels = [
-            'standard' => __('Standard', 'fluent-cart'),
-            'reduced'  => __('Reduced', 'fluent-cart'),
-            'zero'     => __('Zero', 'fluent-cart'),
+            'standard' => __('Standard', 'webmakerr-cart'),
+            'reduced'  => __('Reduced', 'webmakerr-cart'),
+            'zero'     => __('Zero', 'webmakerr-cart'),
         ];
 
         $taxClassIds = [];
@@ -271,9 +271,9 @@ class TaxManager
                 $continent = $localization->continents($group);
 
                 if ($group === 'EU') {
-                    $groupName = __('European Union', 'fluent-cart');
+                    $groupName = __('European Union', 'webmakerr-cart');
                 } else {
-                    $groupName = Arr::get($continent, 'name') ?? __('Rest of the World', 'fluent-cart');
+                    $groupName = Arr::get($continent, 'name') ?? __('Rest of the World', 'webmakerr-cart');
                 }
 
                 $formattedData[$group] = [
@@ -317,7 +317,7 @@ class TaxManager
         foreach ($taxRates as $rate) {
             $localization = App::localization();
             $continent = $localization->continents($rate->group);
-            $groupName = Arr::get($continent, 'name') ?? __('Other', 'fluent-cart');
+            $groupName = Arr::get($continent, 'name') ?? __('Other', 'webmakerr-cart');
             $countryCode = $rate->country;
             $countryName = AddressHelper::getCountryNameByCode($countryCode);
 

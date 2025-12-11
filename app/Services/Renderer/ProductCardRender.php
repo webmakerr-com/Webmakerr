@@ -55,7 +55,7 @@ class ProductCardRender
                 <?php echo esc_attr($cardWidth); ?>
                  aria-label="<?php echo esc_attr(sprintf(
                  /* translators: %s: product title */
-                         __('%s product card', 'fluent-cart'), $this->product->post_title));
+                         __('%s product card', 'webmakerr-cart'), $this->product->post_title));
                  ?>">
             <?php $this->renderProductImage(); ?>
             <?php $this->renderTitle(); ?>
@@ -129,7 +129,7 @@ class ProductCardRender
         $altText = $isPlaceholder
                 ? sprintf(
                 /* translators: %s: product title */
-                        __('Placeholder image for %s', 'fluent-cart'), $this->product->post_title)
+                        __('Placeholder image for %s', 'webmakerr-cart'), $this->product->post_title)
                 : $this->product->post_title;
         ?>
         <a class="fct-product-card-image-wrap"
@@ -137,7 +137,7 @@ class ProductCardRender
            style="display: block;"
            aria-label="<?php echo esc_attr(sprintf(
            /* translators: %s: product title */
-                   __('View %s product image', 'fluent-cart'), $this->product->post_title)); ?>">
+                   __('View %s product image', 'webmakerr-cart'), $this->product->post_title)); ?>">
             <img class="fct-product-card-image"
                  data-fluent-cart-shop-app-single-product-image
                  src="<?php echo esc_url($image); ?>"
@@ -180,11 +180,11 @@ class ProductCardRender
         <div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 class="fct-product-card-prices"
                 role="region"
-                aria-label="<?php echo esc_attr__('Product pricing', 'fluent-cart'); ?>">
+                aria-label="<?php echo esc_attr__('Product pricing', 'webmakerr-cart'); ?>">
             <?php if ($comparePrice): ?>
                 <span class="fct-compare-price" aria-label="<?php echo esc_attr(sprintf(
                 /* translators: %s: product price */
-                        __('Original price: %s', 'fluent-cart'), $formattedComparePrice)); ?>">
+                        __('Original price: %s', 'webmakerr-cart'), $formattedComparePrice)); ?>">
                     <del aria-hidden="true"><?php echo esc_html($formattedComparePrice); ?></del>
                 </span>
             <?php endif; ?>
@@ -194,16 +194,16 @@ class ProductCardRender
                 <?php if ($priceFormat === 'range'): ?>
                     <span class="fct-item-price" aria-label="<?php echo esc_attr(sprintf(
                     /* translators: %1$s: min price, %2$s: max price */
-                            __('Price range from %1$s to %2$s', 'fluent-cart'), $formattedMinPrice, $formattedMaxPrice)); ?>">
+                            __('Price range from %1$s to %2$s', 'webmakerr-cart'), $formattedMinPrice, $formattedMaxPrice)); ?>">
                         <span aria-hidden="true"><?php echo esc_html($formattedMinPrice); ?> - <?php echo esc_html($formattedMaxPrice); ?></span>
                     </span>
                 <?php else: ?>
                     <span class="fct-item-price" aria-label="<?php echo esc_attr(sprintf(
                     /* translators: %s: min price */
-                            __('Starting from %s', 'fluent-cart'), $formattedMinPrice)); ?>">
+                            __('Starting from %s', 'webmakerr-cart'), $formattedMinPrice)); ?>">
                         <span aria-hidden="true"><?php
                             /* translators: %s is the minimum price */
-                            printf(esc_html__('From %s', 'fluent-cart'), esc_html($formattedMinPrice));
+                            printf(esc_html__('From %s', 'webmakerr-cart'), esc_html($formattedMinPrice));
                             ?></span>
                     </span>
                 <?php endif; ?>
@@ -212,7 +212,7 @@ class ProductCardRender
                 <!-- Case 3: Simple or single price -->
                 <span class="fct-item-price" aria-label="<?php echo esc_attr(sprintf(
                 /* translators: %s: product price */
-                        __('Price: %s', 'fluent-cart'), $formattedMinPrice)); ?>">
+                        __('Price: %s', 'webmakerr-cart'), $formattedMinPrice)); ?>">
                     <span aria-hidden="true"><?php echo esc_html($formattedMinPrice); ?></span>
                 </span>
             <?php endif; ?>
@@ -237,10 +237,10 @@ class ProductCardRender
     public function showBuyButton($atts = '')
     {
         if (Arr::get($this->config, 'force_view_offer')) {
-            $buttonText = __('View Offer', 'fluent-cart');
+            $buttonText = __('View Offer', 'webmakerr-cart');
             $ariaLabel = sprintf(
             /* translators: %s: product title */
-                    __('View offer for %s', 'fluent-cart'), $this->product->post_title);
+                    __('View offer for %s', 'webmakerr-cart'), $this->product->post_title);
 
             $anchorAttributes = [
                     'href'       => $this->viewUrl,
@@ -278,24 +278,24 @@ class ProductCardRender
 
         $isInstantCheckout = false;
         $hasSubscription = $this->product->has_subscription;
-        $buttonText = __('View Options', 'fluent-cart');
+        $buttonText = __('View Options', 'webmakerr-cart');
         $ariaLabel = sprintf(
         /* translators: %s: product title */
-                __('View options for %s', 'fluent-cart'), $this->product->post_title);
+                __('View options for %s', 'webmakerr-cart'), $this->product->post_title);
 
         if ($isSimple) {
             if ($hasSubscription) {
-                $buttonText = __('Buy Now', 'fluent-cart');
+                $buttonText = __('Buy Now', 'webmakerr-cart');
                 $ariaLabel = sprintf(
                 /* translators: %s: product title */
-                        __('Buy %s now', 'fluent-cart'), $this->product->post_title);
+                        __('Buy %s now', 'webmakerr-cart'), $this->product->post_title);
                 $buttonHref = $firstVariant->getPurchaseUrl();
                 $isInstantCheckout = true;
             } else {
-                $buttonText = __('Add to Cart', 'fluent-cart');
+                $buttonText = __('Add to Cart', 'webmakerr-cart');
                 $ariaLabel = sprintf(
                 /* translators: %s: product title */
-                        __('Add %s to cart', 'fluent-cart'), $this->product->post_title);
+                        __('Add %s to cart', 'webmakerr-cart'), $this->product->post_title);
             }
         }
 
@@ -357,7 +357,7 @@ class ProductCardRender
                   class="fluent-cart-loader"
                   role="status"
                   aria-live="polite"
-                  aria-label="<?php echo esc_attr__('Loading', 'fluent-cart'); ?>">
+                  aria-label="<?php echo esc_attr__('Loading', 'webmakerr-cart'); ?>">
                 <svg aria-hidden="true"
                      viewBox="0 0 100 101"
                      fill="none"

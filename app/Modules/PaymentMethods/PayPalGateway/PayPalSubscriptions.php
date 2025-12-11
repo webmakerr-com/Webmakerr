@@ -138,11 +138,11 @@ class PayPalSubscriptions extends AbstractSubscriptionModule
     public function cancel($vendorSubscriptionId, $args = [])
     {
         if (!$vendorSubscriptionId) {
-            return new \WP_Error('invalid_subscription', __('Invalid vendor subscription ID.', 'fluent-cart'));
+            return new \WP_Error('invalid_subscription', __('Invalid vendor subscription ID.', 'webmakerr-cart'));
         }
 
         $response = API::createResource('billing/subscriptions/' . $vendorSubscriptionId . '/cancel', [
-            'reason' => Arr::get($args, 'reason', __('Subscription canceled.', 'fluent-cart')),
+            'reason' => Arr::get($args, 'reason', __('Subscription canceled.', 'webmakerr-cart')),
         ], Arr::get($args, 'mode', ''));
 
         if (is_wp_error($response)) {

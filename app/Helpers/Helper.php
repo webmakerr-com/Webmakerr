@@ -136,50 +136,50 @@ class Helper
     public static function getOrderStatuses()
     {
         return apply_filters('fluent-cart/order_statuses', [
-            'on-hold'    => __('On Hold', 'fluent-cart'),
-            'processing' => __('Processing', 'fluent-cart'),
-            'completed'  => __('Completed', 'fluent-cart'),
-            //'archived' => __('Archived', 'fluent-cart'),
-            'cancelled'  => __('Cancelled', 'fluent-cart'),
+            'on-hold'    => __('On Hold', 'webmakerr-cart'),
+            'processing' => __('Processing', 'webmakerr-cart'),
+            'completed'  => __('Completed', 'webmakerr-cart'),
+            //'archived' => __('Archived', 'webmakerr-cart'),
+            'cancelled'  => __('Cancelled', 'webmakerr-cart'),
         ], []);
     }
 
     public static function getEditableOrderStatuses()
     {
         return apply_filters('fluent-cart/editable_order_statuses', [
-            'on-hold'    => __('On Hold', 'fluent-cart'),
-            'processing' => __('Processing', 'fluent-cart'),
-            'completed'  => __('Completed', 'fluent-cart'),
-            //  'archived' => __('Archived', 'fluent-cart'),
-            'cancelled'  => __('Cancelled', 'fluent-cart')
+            'on-hold'    => __('On Hold', 'webmakerr-cart'),
+            'processing' => __('Processing', 'webmakerr-cart'),
+            'completed'  => __('Completed', 'webmakerr-cart'),
+            //  'archived' => __('Archived', 'webmakerr-cart'),
+            'cancelled'  => __('Cancelled', 'webmakerr-cart')
         ], []);
     }
 
     public static function getEditableCustomerStatuses()
     {
         return apply_filters('fluent-cart/editable_customer_statuses', [
-            'active'   => __('Active', 'fluent-cart'),
-            'inactive' => __('Inactive', 'fluent-cart'),
+            'active'   => __('Active', 'webmakerr-cart'),
+            'inactive' => __('Inactive', 'webmakerr-cart'),
         ], []);
     }
 
     public static function getShippingStatuses()
     {
         return apply_filters('fluent-cart/shipping_statuses', [
-            'unshipped'   => __('Unhipped', 'fluent-cart'),
-            'shipped'     => __('Shipped', 'fluent-cart'),
-            'delivered'   => __('Delivered', 'fluent-cart'),
-            'unshippable' => __('Unshippable', 'fluent-cart'),
+            'unshipped'   => __('Unhipped', 'webmakerr-cart'),
+            'shipped'     => __('Shipped', 'webmakerr-cart'),
+            'delivered'   => __('Delivered', 'webmakerr-cart'),
+            'unshippable' => __('Unshippable', 'webmakerr-cart'),
         ], []);
     }
 
     public static function getEditableShippingStatuses()
     {
         return apply_filters('fluent-cart/editable_order_statuses', [
-            'unshipped'   => __('Unhipped', 'fluent-cart'),
-            'shipped'     => __('Shipped', 'fluent-cart'),
-            'delivered'   => __('Delivered', 'fluent-cart'),
-            'unshippable' => __('Unshippable', 'fluent-cart'),
+            'unshipped'   => __('Unhipped', 'webmakerr-cart'),
+            'shipped'     => __('Shipped', 'webmakerr-cart'),
+            'delivered'   => __('Delivered', 'webmakerr-cart'),
+            'unshippable' => __('Unshippable', 'webmakerr-cart'),
         ], []);
     }
 
@@ -211,12 +211,12 @@ class Helper
     public static function getTransactionStatuses($withLabel = true)
     {
         $statuses = apply_filters('fluent-cart/transaction_statuses', [
-            'pending'         => __('Pending', 'fluent-cart'),
-            'paid'            => __('Paid', 'fluent-cart'),
-            'require_capture' => __('Authorized (Require Capture)', 'fluent-cart'),
-            'failed'          => __('Failed', 'fluent-cart'),
-            'refunded'        => __('Refunded', 'fluent-cart'),
-            'active'          => __('Active', 'fluent-cart'),
+            'pending'         => __('Pending', 'webmakerr-cart'),
+            'paid'            => __('Paid', 'webmakerr-cart'),
+            'require_capture' => __('Authorized (Require Capture)', 'webmakerr-cart'),
+            'failed'          => __('Failed', 'webmakerr-cart'),
+            'refunded'        => __('Refunded', 'webmakerr-cart'),
+            'active'          => __('Active', 'webmakerr-cart'),
         ], []);
 
         if ($withLabel) {
@@ -229,10 +229,10 @@ class Helper
     public static function getEditableTransactionStatuses($withLabel = true)
     {
         $statuses = apply_filters('fluent-cart/editable_transaction_statuses', [
-            'pending'  => __('Pending', 'fluent-cart'),
-            'paid'     => __('Paid', 'fluent-cart'),
-            'failed'   => __('Failed', 'fluent-cart'),
-            'refunded' => __('Refunded', 'fluent-cart'),
+            'pending'  => __('Pending', 'webmakerr-cart'),
+            'paid'     => __('Paid', 'webmakerr-cart'),
+            'failed'   => __('Failed', 'webmakerr-cart'),
+            'refunded' => __('Refunded', 'webmakerr-cart'),
         ], []);
 
         if ($withLabel) {
@@ -258,11 +258,11 @@ class Helper
     public static function productStatuses($withLabel = true): array
     {
         $statues = [
-            'publish' => __('Publish', 'fluent-cart'),
-            'draft'   => __('Draft', 'fluent-cart'),
-            'future'  => __('Scheduled', 'fluent-cart'),
-            'private' => __('Private', 'fluent-cart'),
-            'trash'   => __('Trashed', 'fluent-cart'),
+            'publish' => __('Publish', 'webmakerr-cart'),
+            'draft'   => __('Draft', 'webmakerr-cart'),
+            'future'  => __('Scheduled', 'webmakerr-cart'),
+            'private' => __('Private', 'webmakerr-cart'),
+            'trash'   => __('Trashed', 'webmakerr-cart'),
         ];
 
         if ($withLabel) {
@@ -463,17 +463,17 @@ class Helper
     {
         return apply_filters('fluent-cart/available_currencies', [
             'BDT' => [
-                "label"  => __('Bangladeshi Taka', 'fluent-cart'),
+                "label"  => __('Bangladeshi Taka', 'webmakerr-cart'),
                 "value"  => 'BDT',
                 "symbol" => '৳',
             ],
             'USD' => [
-                "label"  => __('United State Dollar', 'fluent-cart'),
+                "label"  => __('United State Dollar', 'webmakerr-cart'),
                 "value"  => 'USD',
                 "symbol" => '$',
             ],
             'GBP' => [
-                "label"  => __('United Kingdom', 'fluent-cart'),
+                "label"  => __('United Kingdom', 'webmakerr-cart'),
                 "value"  => 'GBP',
                 "symbol" => '£',
             ],
@@ -566,8 +566,8 @@ class Helper
     public static function getStockStatuses($withLabel = true)
     {
         $statues = [
-            'in-stock'     => __('In Stock', 'fluent-cart'),
-            'out-of-stock' => __('Out Of Stock', 'fluent-cart'),
+            'in-stock'     => __('In Stock', 'webmakerr-cart'),
+            'out-of-stock' => __('Out Of Stock', 'webmakerr-cart'),
         ];
 
         if ($withLabel) {
@@ -580,8 +580,8 @@ class Helper
     public static function getFulfilmentTypes($withLabel = true)
     {
         $statues = [
-            'physical' => __('Physical', 'fluent-cart'),
-            'digital'  => __('Digital', 'fluent-cart'),
+            'physical' => __('Physical', 'webmakerr-cart'),
+            'digital'  => __('Digital', 'webmakerr-cart'),
         ];
 
         if ($withLabel) {
@@ -594,8 +594,8 @@ class Helper
     public static function getVariationTypes($withLabel = true)
     {
         $statues = [
-            'simple'            => __('Simple', 'fluent-cart'),
-            'simple_variations' => __('Simple Variation', 'fluent-cart'),
+            'simple'            => __('Simple', 'webmakerr-cart'),
+            'simple_variations' => __('Simple Variation', 'webmakerr-cart'),
         ];
 
         if ($withLabel) {
@@ -808,9 +808,9 @@ class Helper
     public static function getCouponStatuses()
     {
         return apply_filters('fluent-cart/coupon_statuses', [
-            'active'   => __('Active', 'fluent-cart'),
-            'expired'  => __('Expired', 'fluent-cart'),
-            'disabled' => __('Disabled', 'fluent-cart'),
+            'active'   => __('Active', 'webmakerr-cart'),
+            'expired'  => __('Expired', 'webmakerr-cart'),
+            'disabled' => __('Disabled', 'webmakerr-cart'),
         ], []);
     }
 
@@ -877,23 +877,23 @@ class Helper
         $signupFee = $data['signup_fee'] ?? '';
         $compare = $data['compare_price'] ?? '';
 
-        $signupFeeLabel = $data['signup_fee_label'] ?? __('signup fee', 'fluent-cart');
+        $signupFeeLabel = $data['signup_fee_label'] ?? __('signup fee', 'webmakerr-cart');
 
         // helpers
         $pluralUnit = static function (string $unit, int $n): string {
             switch ($unit) {
                 case 'day':
-                    return _n('day', 'days', $n, 'fluent-cart');
+                    return _n('day', 'days', $n, 'webmakerr-cart');
                 case 'week':
-                    return _n('week', 'weeks', $n, 'fluent-cart');
+                    return _n('week', 'weeks', $n, 'webmakerr-cart');
                 case 'quarter':
-                    return _n('quarter', 'quarters', $n, 'fluent-cart');
+                    return _n('quarter', 'quarters', $n, 'webmakerr-cart');
                 case 'half_year':
-                    return _n('half year', 'half years', $n, 'fluent-cart');
+                    return _n('half year', 'half years', $n, 'webmakerr-cart');
                 case 'year':
-                    return _n('year', 'years', $n, 'fluent-cart');
+                    return _n('year', 'years', $n, 'webmakerr-cart');
                 case 'month':
-                    return _n('month', 'months', $n, 'fluent-cart');
+                    return _n('month', 'months', $n, 'webmakerr-cart');
                 default:
                     // For custom intervals, add 's' for plural
                     return ($n > 1) ? $unit . 's' : $unit;
@@ -904,12 +904,12 @@ class Helper
         $perPhrase = ($count === 1)
             ? sprintf(
             /* translators: %s is the singular unit name (e.g., day, month, year) */
-                __('per %s', 'fluent-cart'),
+                __('per %s', 'webmakerr-cart'),
                 $pluralUnit($unit, 1)
             )
             : sprintf(
             /* translators: %1$d is the count number, %2$s is the plural unit name (e.g., days, months, years) */
-                __('per %1$d %2$s', 'fluent-cart'),
+                __('per %1$d %2$s', 'webmakerr-cart'),
                 $count,
                 $pluralUnit($unit, $count)
             );
@@ -922,28 +922,28 @@ class Helper
             if ($unit === 'month' && $count === 1) {
                 $installmentTail = sprintf(
                 /* translators: %s: pluralized 'month(s)' */
-                    __('for %1$d %2$s', 'fluent-cart'),
+                    __('for %1$d %2$s', 'webmakerr-cart'),
                     $times,
                     $pluralUnit('month', $times)
                 );
                 $main = sprintf(
                 /* translators: Compact monthly installment, e.g. "$100/month for 4 months" */
-                    __('%1$s/%2$s %3$s', 'fluent-cart'),
+                    __('%1$s/%2$s %3$s', 'webmakerr-cart'),
                     $price,
-                    __('month', 'fluent-cart'),
+                    __('month', 'webmakerr-cart'),
                     $installmentTail
                 );
             } else {
                 // Generic installment wording: "for N cycle(s)"
                 $cyclesTail = sprintf(
                 /* translators: %1$d is the number of cycles, %2$s is "cycle" or "cycles" */
-                    __('for %1$d %2$s', 'fluent-cart'),
+                    __('for %1$d %2$s', 'webmakerr-cart'),
                     $times,
-                    _n('cycle', 'cycles', $times, 'fluent-cart')
+                    _n('cycle', 'cycles', $times, 'webmakerr-cart')
                 );
                 $main = sprintf(
                 /* translators: e.g. "$100 per 3 months for 4 cycles" */
-                    __('%1$s %2$s %3$s', 'fluent-cart'),
+                    __('%1$s %2$s %3$s', 'webmakerr-cart'),
                     $price,
                     $perPhrase,
                     $cyclesTail
@@ -953,7 +953,7 @@ class Helper
             // Open-ended subscription
             $main = sprintf(
             /* translators: e.g. "$99 per month" */
-                __('%1$s %2$s', 'fluent-cart'),
+                __('%1$s %2$s', 'webmakerr-cart'),
                 $price,
                 $perPhrase
             );
@@ -963,7 +963,7 @@ class Helper
         if ($trialDays > 0) {
             $trialFrag = sprintf(
             /* translators: "30 days free then" */
-                __('%1$d %2$s free then', 'fluent-cart'),
+                __('%1$d %2$s free then', 'webmakerr-cart'),
                 $trialDays,
                 $pluralUnit('day', $trialDays)
             );
@@ -974,7 +974,7 @@ class Helper
         if ($signupFee) {
             $main .= ' ' . sprintf(
                 /* translators: e.g. "+ $10 one-time signup fee" */
-                    __('+ %1$s one-time %2$s', 'fluent-cart'),
+                    __('+ %1$s one-time %2$s', 'webmakerr-cart'),
                     $signupFee,
                     $signupFeeLabel
                 );
@@ -1019,7 +1019,7 @@ class Helper
         $interval = $intervalUnit
             ? sprintf(
             /* translators: %s is the interval (e.g., day, week, month, quarter, half_year, year) */
-                __(' per %s', 'fluent-cart'), $intervalUnit)
+                __(' per %s', 'webmakerr-cart'), $intervalUnit)
             : '';
 
         $time = $intervalUnit
@@ -1028,7 +1028,7 @@ class Helper
 
         $paymentInfo = sprintf(
         /* translators: %1$s is the price, %2$s is the interval, %3$s is "until cancel" text, %4$s is the occurrence count, %5$s is the time period */
-            __('%1$s %2$s, for %3$s %4$s', 'fluent-cart'),
+            __('%1$s %2$s, for %3$s %4$s', 'webmakerr-cart'),
             $price,
             $interval,
             $occurrence,
@@ -1038,10 +1038,10 @@ class Helper
         if (empty($occurrence)) {
             $paymentInfo = sprintf(
             /* translators: %1$s is the price, %2$s is the interval, %3$s is "until cancel" text */
-                __('%1$s %2$s %3$s', 'fluent-cart'),
+                __('%1$s %2$s %3$s', 'webmakerr-cart'),
                 $price,
                 $interval,
-                __('until cancel', 'fluent-cart')
+                __('until cancel', 'webmakerr-cart')
             );
         }
 
@@ -1055,7 +1055,7 @@ class Helper
             $otherInfo = json_decode(json_encode($otherInfo), true);
         }
 
-        $signupFeeName = Arr::get($otherInfo, 'signup_fee_name', __('Setup Fee', 'fluent-cart'));
+        $signupFeeName = Arr::get($otherInfo, 'signup_fee_name', __('Setup Fee', 'webmakerr-cart'));
         $fee = Arr::get($otherInfo, 'signup_fee', 0);
         $manageSetupFee = Arr::get($otherInfo, 'manage_setup_fee', 'no');
 
@@ -1066,7 +1066,7 @@ class Helper
 
         if ($originalSetupFee = Arr::get($otherInfo, 'original_signup_fee', 0)) {
             if ($fee != $originalSetupFee) {
-                return __('Adjusted setup fee', 'fluent-cart') . CurrencySettings::getPriceHtml($fee);
+                return __('Adjusted setup fee', 'webmakerr-cart') . CurrencySettings::getPriceHtml($fee);
             }
         }
 
@@ -1083,7 +1083,7 @@ class Helper
         if ($trialDays && Arr::get($otherInfo, 'is_trial_days_simulated', 'no') !== 'yes') {
             $trialInfo = sprintf(
             /* translators: %d is the number of trial days */
-                __('Free Trial: %d days', 'fluent-cart'),
+                __('Free Trial: %d days', 'webmakerr-cart'),
                 $trialDays
             );
         }
@@ -1328,10 +1328,10 @@ class Helper
      */
     public static function getShortcodeInstructionString(string $shortcode, $pageName = ''): string
     {
-        $copyToClipboard = __('Copy to clipboard', 'fluent-cart');
+        $copyToClipboard = __('Copy to clipboard', 'webmakerr-cart');
         return sprintf(
         /* translators: %s: Shortcode */
-            '<p>' . _x('Use %1$s shortcode in your page.', 'Shortcode instruction message', 'fluent-cart') . '</p>',
+            '<p>' . _x('Use %1$s shortcode in your page.', 'Shortcode instruction message', 'webmakerr-cart') . '</p>',
             '<code class="copyable-content" title="' . $copyToClipboard . '">' . ($shortcode) . '</code>',
         //$pageName
         );
@@ -1455,32 +1455,32 @@ class Helper
     {
         $intervals = [
             [
-                'label' => __('Yearly', 'fluent-cart'),
+                'label' => __('Yearly', 'webmakerr-cart'),
                 'value' => 'yearly',
                 'map_value' => 'year',
             ],
             [
-                'label' => __('Half Yearly', 'fluent-cart'),
+                'label' => __('Half Yearly', 'webmakerr-cart'),
                 'value' => 'half_yearly',
                 'map_value' => 'half_year',
             ],
             [
-                'label' => __('Quarterly', 'fluent-cart'),
+                'label' => __('Quarterly', 'webmakerr-cart'),
                 'value' => 'quarterly',
                 'map_value' => 'quarter',
             ],
             [
-                'label' => __('Monthly', 'fluent-cart'),
+                'label' => __('Monthly', 'webmakerr-cart'),
                 'value' => 'monthly',
                 'map_value' => 'month',
             ],
             [
-                'label' => __('Weekly', 'fluent-cart'),
+                'label' => __('Weekly', 'webmakerr-cart'),
                 'value' => 'weekly',
                 'map_value' => 'week',
             ],
             [
-                'label' => __('Daily', 'fluent-cart'),
+                'label' => __('Daily', 'webmakerr-cart'),
                 'value' => 'daily',
                 'map_value' => 'day',
             ]

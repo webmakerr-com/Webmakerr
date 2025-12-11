@@ -147,23 +147,23 @@ class CustomerAddressResource extends BaseResourceApi
             if ($addressType === 'billing') {
                 return static::makeSuccessResponse(
                     $isCreated,
-                    __('Billing address created successfully!', 'fluent-cart')
+                    __('Billing address created successfully!', 'webmakerr-cart')
                 );
             }
             return static::makeSuccessResponse(
                 $isCreated,
-                __('Shipping address created successfully!', 'fluent-cart')
+                __('Shipping address created successfully!', 'webmakerr-cart')
             );
         }
 
         if ($addressType === 'billing') {
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Failed creating billing address', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Failed creating billing address', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed creating shipping address', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed creating shipping address', 'webmakerr-cart')]
         ]);
     }
 
@@ -190,7 +190,7 @@ class CustomerAddressResource extends BaseResourceApi
     {
         if (!$id) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Please edit a valid address!', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Please edit a valid address!', 'webmakerr-cart')]
             ]);
         }
 
@@ -202,7 +202,7 @@ class CustomerAddressResource extends BaseResourceApi
 
         if (!$address) {
             return static::makeErrorResponse([
-                ['code' => 404, 'message' => __('Address not found, please reload the page and try again!', 'fluent-cart')]
+                ['code' => 404, 'message' => __('Address not found, please reload the page and try again!', 'webmakerr-cart')]
             ]);
         }
 
@@ -217,24 +217,24 @@ class CustomerAddressResource extends BaseResourceApi
             if ($addressType === 'billing') {
                 return static::makeSuccessResponse(
                     $address,
-                    __('Billing address created successfully!', 'fluent-cart')
+                    __('Billing address created successfully!', 'webmakerr-cart')
                 );
             }
 
             return static::makeSuccessResponse(
                 $address,
-                __('Shipping address created successfully!', 'fluent-cart')
+                __('Shipping address created successfully!', 'webmakerr-cart')
             );
         }
 
         if ($addressType === 'billing') {
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Failed creating billing address', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Failed creating billing address', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Failed creating shipping address', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Failed creating shipping address', 'webmakerr-cart')]
         ]);
     }
 
@@ -250,7 +250,7 @@ class CustomerAddressResource extends BaseResourceApi
         // Check if a valid ID is provided
         if (!$id) {
             return static::makeErrorResponse([
-                ['code' => 403, 'message' => __('Please use a valid address ID!', 'fluent-cart')]
+                ['code' => 403, 'message' => __('Please use a valid address ID!', 'webmakerr-cart')]
             ]);
         }
 
@@ -261,7 +261,7 @@ class CustomerAddressResource extends BaseResourceApi
             // Check if the address is marked as primary
             if ($customerAddress->is_primary) {
                 return static::makeErrorResponse([
-                    ['code' => 403, 'message' => __('Primary address cannot be deleted!', 'fluent-cart')]
+                    ['code' => 403, 'message' => __('Primary address cannot be deleted!', 'webmakerr-cart')]
                 ]);
             }
             // Get the count of addresses for this customer
@@ -270,23 +270,23 @@ class CustomerAddressResource extends BaseResourceApi
             // Check if there's only one address, do not allow deletion in that case
             if ($addressCount <= 1) {
                 return static::makeErrorResponse([
-                    ['code' => 403, 'message' => __('At least one address must remain. Address deletion failed!', 'fluent-cart')]
+                    ['code' => 403, 'message' => __('At least one address must remain. Address deletion failed!', 'webmakerr-cart')]
                 ]);
             }
 
             // If the address is not primary and there are multiple addresses, proceed with deletion
             if ($customerAddress->delete()) {
-                return static::makeSuccessResponse('', __('Address successfully deleted.', 'fluent-cart'));
+                return static::makeSuccessResponse('', __('Address successfully deleted.', 'webmakerr-cart'));
             }
 
             // Return an error if the address is not found in the database
             return static::makeErrorResponse([
-                ['code' => 400, 'message' => __('Address deletion failed!', 'fluent-cart')]
+                ['code' => 400, 'message' => __('Address deletion failed!', 'webmakerr-cart')]
             ]);
         }
 
         return static::makeErrorResponse([
-            ['code' => 404, 'message' => __('Address not found in database, failed to remove.', 'fluent-cart')]
+            ['code' => 404, 'message' => __('Address not found in database, failed to remove.', 'webmakerr-cart')]
         ]);
     }
 
@@ -311,11 +311,11 @@ class CustomerAddressResource extends BaseResourceApi
         $isUpdated = static::getQuery()->where('id', $addressId)->update(array('is_primary' => '1'));
 
         if ($isUpdated) {
-            return static::makeSuccessResponse('', __('Address successfully set as the primary', 'fluent-cart'));
+            return static::makeSuccessResponse('', __('Address successfully set as the primary', 'webmakerr-cart'));
         }
 
         return static::makeErrorResponse([
-            ['code' => 400, 'message' => __('Address set as primary failed.', 'fluent-cart')]
+            ['code' => 400, 'message' => __('Address set as primary failed.', 'webmakerr-cart')]
         ]);
     }
 }

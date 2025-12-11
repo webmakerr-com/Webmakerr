@@ -75,7 +75,7 @@ class Processor
                     'success_url' => $transaction->getReceiptPageUrl(),
                     'cancel_url' =>  Paddle::getCancelUrl()
                 ],
-                'message' => __('Order has been placed successfully', 'fluent-cart-pro'),
+                'message' => __('Order has been placed successfully', 'webmakerr-cart-pro'),
                 'response' => $paddleData,
             ];
 
@@ -103,7 +103,7 @@ class Processor
         if (!$subscription) {
             return new \WP_Error(
                 'no_subscription',
-                __('No subscription found for this order', 'fluent-cart-pro')
+                __('No subscription found for this order', 'webmakerr-cart-pro')
             );
         }
 
@@ -210,10 +210,10 @@ class Processor
             ];
 
             if ($initialAmount) {
-                $initialPriceName = __('Signup Fee', 'fluent-cart-pro');
+                $initialPriceName = __('Signup Fee', 'webmakerr-cart-pro');
                 $subscriptionSignupFee = Arr::get($subscriptionItem->other_info, 'signup_fee', 0);
                 if ($initialAmount != $subscriptionSignupFee) {
-                    $initialPriceName = __('Initial Payment', 'fluent-cart-pro');
+                    $initialPriceName = __('Initial Payment', 'webmakerr-cart-pro');
                 }
 
                 $signupFeePriceType = webmakerr_apply_filters('webmakerr_cart/paddle_signup_fee_price_type', 'custom', [
@@ -275,7 +275,7 @@ class Processor
                     'success_url' => $transaction->getReceiptPageUrl(),
                     'cancel_url' =>  Paddle::getCancelUrl()
                 ],
-                'message' => __('Order has been placed successfully', 'fluent-cart-pro'),
+                'message' => __('Order has been placed successfully', 'webmakerr-cart-pro'),
                 'response' => $paddleData,
             ];
 
@@ -368,7 +368,7 @@ class Processor
                  'product_id'     => 'fct_paddle_shipping_product_amount_' . $order->shipping_total . '_' . $order->currency . '_' . $order->mode,
                  'currency'       => $order->currency,
                  'mode'           => $order->mode,
-                 'name'           => __('Shipping Fee', 'fluent-cart-pro'),
+                 'name'           => __('Shipping Fee', 'webmakerr-cart-pro'),
                  'type'           => $addonProductType
              ]);
 
@@ -385,7 +385,7 @@ class Processor
                 'variation_id'   => 0,
                 'currency'       => $order->currency,
                 'mode'           => $order->mode,
-                'name'           => __('Shipping Fee', 'fluent-cart-pro'),
+                'name'           => __('Shipping Fee', 'webmakerr-cart-pro'),
                 'description'    => 'Shipping Fee of ' . (string) ($order->shipping_total / 100) . ' ' . strtoupper($order->currency),
                 'amount'         => PaddleHelper::formatAmount($order->shipping_total),
                 'quantity'       => 1,

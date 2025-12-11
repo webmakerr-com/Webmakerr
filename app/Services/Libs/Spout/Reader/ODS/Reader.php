@@ -51,7 +51,7 @@ class Reader extends ReaderAbstract
             throw new IOException(
                 sprintf(
                 /* translators: %s is the file path */
-                    esc_html__('Could not open %s for reading.', 'fluent-cart'),
+                    esc_html__('Could not open %s for reading.', 'webmakerr-cart'),
                     esc_html($filePath)
                 )
             );

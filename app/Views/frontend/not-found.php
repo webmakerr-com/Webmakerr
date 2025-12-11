@@ -4,7 +4,7 @@
         <?php if (!empty($notFoundImg)): ?>
             <img class="fct-not-found-image"
                  src="<?php echo esc_url($notFoundImg ?? ''); ?>"
-                 alt="<?php esc_attr_e('Page not found illustration', 'fluent-cart'); ?>"
+                 alt="<?php esc_attr_e('Page not found illustration', 'webmakerr-cart'); ?>"
             >
         <?php endif; ?>
 
@@ -28,7 +28,7 @@
                     aria-label="<?php
                     printf(
                         /* translators: %s is the button text/destination */
-                        esc_attr__('Return to %s', 'fluent-cart'),
+                        esc_attr__('Return to %s', 'webmakerr-cart'),
                         esc_html($buttonText)
                     );
                     ?>"

@@ -67,7 +67,7 @@ class GlobalPaymentHandler
                 wp_send_json([
                     'message' => sprintf(
                         /* translators: %s is the payment method name */
-                        __('IPN processing failed. - %s', 'fluent-cart'),
+                        __('IPN processing failed. - %s', 'webmakerr-cart'),
                         $paymentMethod
                     )
                 ], 500);
@@ -129,7 +129,7 @@ class GlobalPaymentHandler
                 'settings' => $methodInstance->settings->get()
             ];
         } else {
-            throw new \Exception(esc_html__('No valid payment method found!', 'fluent-cart'));
+            throw new \Exception(esc_html__('No valid payment method found!', 'webmakerr-cart'));
         }
     }
 

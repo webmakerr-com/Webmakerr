@@ -294,7 +294,7 @@
                 <?php 
                     echo sprintf(
                             /* translators: %s is the order mode */
-                        esc_html__('Connect URL is not available for order mode %s. Please try again or contact FluentCart support.', 'fluent-cart'),
+                        esc_html__('Connect URL is not available for order mode %s. Please try again or contact FluentCart support.', 'webmakerr-cart'),
                         '<strong>' . esc_html($mode) . '</strong>'
                     );
                 ?>

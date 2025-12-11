@@ -71,7 +71,7 @@ class DateTime extends \Webmakerr\Framework\Support\DateTime
             return $dt->setTimezone(new \DateTimeZone('UTC'));
         }
 
-        throw new \InvalidArgumentException(esc_html__('Invalid datetime format.', 'fluent-cart'));
+        throw new \InvalidArgumentException(esc_html__('Invalid datetime format.', 'webmakerr-cart'));
     }
 
     public static function gmdate($datetime = null, $fromTz = null)
@@ -114,7 +114,7 @@ class DateTime extends \Webmakerr\Framework\Support\DateTime
             $dt = static::parse($datetime, new \DateTimeZone('UTC')); // assume UTC
             return $dt->setTimezone($timezone);
         }
-        throw new \InvalidArgumentException(esc_html__('Invalid datetime format.', 'fluent-cart'));
+        throw new \InvalidArgumentException(esc_html__('Invalid datetime format.', 'webmakerr-cart'));
 
     }
 
@@ -144,7 +144,7 @@ class DateTime extends \Webmakerr\Framework\Support\DateTime
             return new static($dt->format('Y-m-d H:i:s'), $dt->getTimezone());
         } catch (\Exception $e) {
             throw new \InvalidArgumentException(
-                esc_html__('Unable to parse datetime: ', 'fluent-cart') . esc_html($e->getMessage())
+                esc_html__('Unable to parse datetime: ', 'webmakerr-cart') . esc_html($e->getMessage())
             );
         }
     }

@@ -96,7 +96,7 @@ class LicenseHelper
             ->first();
 
         if (!$license) {
-            return new \WP_Error('invalid_license', __('Invalid License key provided.', 'fluent-cart-pro'));
+            return new \WP_Error('invalid_license', __('Invalid License key provided.', 'webmakerr-cart-pro'));
         }
 
         if ($license->expiration_date && DateTime::gmtNow() > $license->expiration_date) {
@@ -115,8 +115,8 @@ class LicenseHelper
         if (empty($license)) {
             return wp_send_json([
                 'data' => [
-                    'message'    => __('License not found', 'fluent-cart-pro'),
-                    'buttonText' => __('Back to License List', 'fluent-cart-pro'),
+                    'message'    => __('License not found', 'webmakerr-cart-pro'),
+                    'buttonText' => __('Back to License List', 'webmakerr-cart-pro'),
                     'route'      => '/licenses'
                 ],
                 'code' => 'fluent_cart_entity_not_found',
@@ -219,7 +219,7 @@ class LicenseHelper
                 ->first();
 
             if (!$license) {
-                return [new \WP_Error('invalid_license', __('Invalid License key provided.', 'fluent-cart-pro')), null];
+                return [new \WP_Error('invalid_license', __('Invalid License key provided.', 'webmakerr-cart-pro')), null];
             }
             // verify license validity
             if ($license->isExpired()) {
@@ -235,24 +235,24 @@ class LicenseHelper
                 ->first();
 
             if (!$activation && $checkActivation) {
-                return [new \WP_Error('invalid_activation', __('License activation could not be found', 'fluent-cart-pro')), null];
+                return [new \WP_Error('invalid_activation', __('License activation could not be found', 'webmakerr-cart-pro')), null];
             }
         } else if (!empty($data['activation_hash'])) {
             $activation = LicenseActivation::where('activation_hash', $data['activation_hash'])
                 ->first();
             if (!$activation) {
-                return [new \WP_Error('invalid_activation', __('License activation could not be found', 'fluent-cart-pro')), null];
+                return [new \WP_Error('invalid_activation', __('License activation could not be found', 'webmakerr-cart-pro')), null];
             }
             $license = $activation->license;
             if (!$license) {
-                return [new \WP_Error('invalid_license', __('Invalid License key provided.', 'fluent-cart-pro')), null];
+                return [new \WP_Error('invalid_license', __('Invalid License key provided.', 'webmakerr-cart-pro')), null];
             }
             // verify license validity
             if ($license->isExpired()) {
                 $license->status = 'expired';
             }
         } else {
-            return [new \WP_Error('invalid_license', __('Invalid License key provided.', 'fluent-cart-pro')), null];
+            return [new \WP_Error('invalid_license', __('Invalid License key provided.', 'webmakerr-cart-pro')), null];
         }
 
         return [$license, $activation];

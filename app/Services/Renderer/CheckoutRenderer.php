@@ -153,7 +153,7 @@ class CheckoutRenderer
             'cart' => $this->cart
         ]);
         ?>
-        <div <?php RenderHelper::renderAtts($atts); ?> role="main" aria-label="<?php esc_attr_e('Checkout Page', 'fluent-cart'); ?>">
+        <div <?php RenderHelper::renderAtts($atts); ?> role="main" aria-label="<?php esc_attr_e('Checkout Page', 'webmakerr-cart'); ?>">
         <?php
         webmakerr_do_action('webmakerr_cart/afrer_checkout_page_start', [
             'cart' => $this->cart
@@ -206,7 +206,7 @@ class CheckoutRenderer
         ];
         webmakerr_do_action('webmakerr_cart/before_checkout_form', ['cart' => $this->cart]);
         ?>
-        <form <?php RenderHelper::renderAtts($formAttributes); ?> aria-label="<?php esc_attr_e('Checkout Form', 'fluent-cart'); ?>">
+        <form <?php RenderHelper::renderAtts($formAttributes); ?> aria-label="<?php esc_attr_e('Checkout Form', 'webmakerr-cart'); ?>">
             <?php webmakerr_do_action('webmakerr_cart/checkout_form_opening', ['cart' => $this->cart]); ?>
             <div class="fct_checkout_inner">
                 <div class="fct_checkout_form">
@@ -242,7 +242,7 @@ class CheckoutRenderer
                 <div class="fct_checkout_summary">
                     <div class="fct_summary active" data-fluent-cart-checkout-page-checkout-form-order-summary aria-labelledby="order-summary-heading">
                         <span id="order-summary-heading" class="sr-only">
-                            <?php esc_html_e('Order Summary', 'fluent-cart'); ?>
+                            <?php esc_html_e('Order Summary', 'webmakerr-cart'); ?>
                         </span>
 
                         <?php (new CartSummaryRender($this->cart))->render(); ?>
@@ -279,7 +279,7 @@ class CheckoutRenderer
                 'id'             => 'allow_create_account',
                 'name'           => 'allow_create_account',
                 'checkbox_value' => 'yes',
-                'label'          => __('Create an account?', 'fluent-cart'),
+                'label'          => __('Create an account?', 'webmakerr-cart'),
                 'value'          => Arr::get($this->cart->checkout_data, 'form_data.allow_create_account', ''),
                 'wrapper_class'  => 'fct_create_account_wrapper',
             ]);
@@ -317,8 +317,8 @@ class CheckoutRenderer
 
 
                 $addressLabel = $type === 'billing' ?
-                    __('Billing Address', 'fluent-cart') :
-                    __('Shipping Address', 'fluent-cart');
+                    __('Billing Address', 'webmakerr-cart') :
+                    __('Shipping Address', 'webmakerr-cart');
 
                 $countries = LocalizationManager::getInstance()->countries();
 
@@ -386,12 +386,12 @@ class CheckoutRenderer
         $formRender->renderSection([
             'id'           => 'billing_address_section_section',
             'type'         => 'section',
-            'heading'      => __('Billing Address', 'fluent-cart'),
+            'heading'      => __('Billing Address', 'webmakerr-cart'),
             'fields'       => $billingFields,
             'wrapper_atts' => [
                 'data-fluent-cart-checkout-page-form-section' => '',
                 'role'  => 'region',
-                'aria-label' => __('Billing Address', 'fluent-cart')
+                'aria-label' => __('Billing Address', 'webmakerr-cart')
             ]
         ]);
 
@@ -409,7 +409,7 @@ class CheckoutRenderer
             'id'             => 'ship_to_different',
             'name'           => 'ship_to_different',
             'checkbox_value' => 'yes',
-            'label'          => __('Ship to a different address?', 'fluent-cart'),
+            'label'          => __('Ship to a different address?', 'webmakerr-cart'),
             'value'          => Arr::get($this->cart->checkout_data, 'form_data.ship_to_different', ''),
             'wrapper_class'  => 'fct_ship_to_different_wrapper',
             'extra_atts'     => [
@@ -445,13 +445,13 @@ class CheckoutRenderer
         $formRender->renderSection([
             'id'           => 'shipping_address_section_section',
             'type'         => 'section',
-            'heading'      => __('Shipping Address', 'fluent-cart'),
+            'heading'      => __('Shipping Address', 'webmakerr-cart'),
             'fields'       => $shippingFields,
             'wrapper_atts' => [
                 'data-fluent-cart-checkout-page-shipping-fields' => '',
                 'style'                                          => Arr::get($this->cart->checkout_data, 'form_data.ship_to_different', '') === 'yes' ? '' : 'display:none',
                 'role'  => 'region',
-                'aria-label' => __('Shipping Address', 'fluent-cart')
+                'aria-label' => __('Shipping Address', 'webmakerr-cart')
             ]
         ]);
         webmakerr_do_action('webmakerr_cart/after_shipping_fields_section', ['cart' => $this->cart]);
@@ -475,8 +475,8 @@ class CheckoutRenderer
             'type'            => 'textarea',
             'id'              => $fieldId,
             'name'            => 'order_notes',
-            'aria-label'      => __('Order Notes', 'fluent-cart'),
-            'placeholder'     => __('Notes about your order, e.g. Leave it at my doorstep.', 'fluent-cart'),
+            'aria-label'      => __('Order Notes', 'webmakerr-cart'),
+            'placeholder'     => __('Notes about your order, e.g. Leave it at my doorstep.', 'webmakerr-cart'),
             'extra_atts'      => [
                 'rows' => 4
             ],
@@ -500,7 +500,7 @@ class CheckoutRenderer
                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M15.6 12.0001L10.2 17.4001V6.6001L15.6 12.0001Z" fill="currentColor"/>
                     </svg>
-                    <?php esc_html_e('Leave a Note', 'fluent-cart'); ?>
+                    <?php esc_html_e('Leave a Note', 'webmakerr-cart'); ?>
                 </button>
 
                 <div
@@ -568,7 +568,7 @@ class CheckoutRenderer
             <div class="fct_checkout_form_section" aria-labelledby="payment_methods_label"
             role="radiogroup">
                 <div class="fct_form_section_header">
-                    <h4 id="payment_methods_label" class="fct_form_section_header_label"><?php esc_html_e('Payment', 'fluent-cart'); ?>
+                    <h4 id="payment_methods_label" class="fct_form_section_header_label"><?php esc_html_e('Payment', 'webmakerr-cart'); ?>
                     </h4>
                 </div>
                 <div class="fct_form_section_body">
@@ -588,9 +588,9 @@ class CheckoutRenderer
                             <?php endforeach; ?>
                         <?php else: ?>
                             <?php
-                                $emptyText = esc_html__('No Payment method is activated for this site yet.', 'fluent-cart');
+                                $emptyText = esc_html__('No Payment method is activated for this site yet.', 'webmakerr-cart');
                                 if (current_user_can('manage_options')) {
-                                    $emptyText .= '<a href="' . esc_url(URL::getDashboardUrl('settings/payments')) . '" target="_blank">' . esc_html__('Activate from settings.', 'fluent-cart') . '</a>';
+                                    $emptyText .= '<a href="' . esc_url(URL::getDashboardUrl('settings/payments')) . '" target="_blank">' . esc_html__('Activate from settings.', 'webmakerr-cart') . '</a>';
                                 }
                                 echo '<div class="fct-empty-state">' . wp_kses_post($emptyText) . '</div>';
                             ?>
@@ -609,13 +609,13 @@ class CheckoutRenderer
             'class' => 'fct_place_order_btn large',
             'id' => 'fluent_cart_order_btn',
             'data-fluent-cart-checkout-page-checkout-button' => '',
-            'data-value' => __('Place Order', 'fluent-cart'),
+            'data-value' => __('Place Order', 'webmakerr-cart'),
             'disabled' => ''
         ];
         ?>
         <div class="fct_place_order_btn_wrap">
             <button <?php RenderHelper::renderAtts($attributes); ?>>
-                <?php esc_html_e('Place Order', 'fluent-cart'); ?>
+                <?php esc_html_e('Place Order', 'webmakerr-cart'); ?>
             </button>
         </div>
         <?php

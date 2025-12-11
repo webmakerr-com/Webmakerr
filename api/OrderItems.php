@@ -74,7 +74,7 @@ class OrderItems
 
         if (empty($items) || !is_array($items)) {
 
-            throw new \Exception(esc_html__('No items given.', 'fluent-cart'));
+            throw new \Exception(esc_html__('No items given.', 'webmakerr-cart'));
         }
 
         foreach ($items as $idx => $item) {
@@ -103,7 +103,7 @@ class OrderItems
         }
 
         return [
-            'message' => __('Order items updated.', 'fluent-cart')
+            'message' => __('Order items updated.', 'webmakerr-cart')
         ];
     }
 

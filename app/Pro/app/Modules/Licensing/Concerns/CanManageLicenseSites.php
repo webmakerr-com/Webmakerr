@@ -116,13 +116,13 @@ trait CanManageLicenseSites
 
         if (empty($activation)) {
             return $this->makeError([
-                'error' => __('Activation not found', 'fluent-cart-pro')
+                'error' => __('Activation not found', 'webmakerr-cart-pro')
             ], 'activation_not_found');
         }
 
         if ($activation->license_id != $license->id) {
             return $this->makeError([
-                'error' => __('Activation mismatched', 'fluent-cart-pro')
+                'error' => __('Activation mismatched', 'webmakerr-cart-pro')
             ], 'activation_mismatched');
         }
 

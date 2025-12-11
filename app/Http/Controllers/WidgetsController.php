@@ -12,7 +12,7 @@ class WidgetsController extends Controller
     {
         if (!PermissionManager::hasAnyPermission(['customers/view', 'orders/view'])) {
             return $this->sendError([
-                'message' => __('You do not have permission to access this resource', 'fluent-cart')
+                'message' => __('You do not have permission to access this resource', 'webmakerr-cart')
             ]);
         }
 

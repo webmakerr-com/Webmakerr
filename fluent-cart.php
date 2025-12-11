@@ -3,11 +3,11 @@
 defined('ABSPATH') or die;
 
 /*
-Plugin Name: Webmakerrr®
+Plugin Name: Webmakerr Cart
 Description: Webmakerr makes eCommerce, bookings, and service selling fast and effortless.
 Version: 1.3.1
-Author: Webmakerr Team
-Author URI: https://webmakerr.com/about-us
+Author: Webmakerr
+Author URI: https://webmakerr.com
 Plugin URI: https://webmakerr.com
 License: GPLv2 or later
 Text Domain: webmakerr-cart

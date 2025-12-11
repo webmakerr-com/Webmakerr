@@ -120,7 +120,7 @@ class LocalDriver extends BaseDriver
         if (empty($checked['ext']) || empty($checked['type'])) {
             return new \WP_Error(
                 'invalid_file_type',
-                __('Invalid or unsupported file type.', 'fluent-cart')
+                __('Invalid or unsupported file type.', 'webmakerr-cart')
             );
         }
 
@@ -138,7 +138,7 @@ class LocalDriver extends BaseDriver
         if (in_array($checked['ext'], $blockedExts, true)) {
             return new \WP_Error(
                 'forbidden_type',
-                __('This file type is not allowed.', 'fluent-cart')
+                __('This file type is not allowed.', 'webmakerr-cart')
             );
         }
 
@@ -152,7 +152,7 @@ class LocalDriver extends BaseDriver
         $contents = @file_get_contents( $localFilePath );
 
         if ( $contents === false ) {
-            return new \WP_Error( 'failed_to_read', __( 'Failed to read uploaded file', 'fluent-cart' ) );
+            return new \WP_Error( 'failed_to_read', __( 'Failed to read uploaded file', 'webmakerr-cart' ) );
         }
 
         // Write file using WP_Filesystem
@@ -164,11 +164,11 @@ class LocalDriver extends BaseDriver
         }
 
         if ( ! $isUploaded ) {
-            return new \WP_Error( 'failed_to_upload', __( 'Failed to upload file', 'fluent-cart' ) );
+            return new \WP_Error( 'failed_to_upload', __( 'Failed to upload file', 'webmakerr-cart' ) );
         }
 
         return [
-            'message' => __( 'File Uploaded Successfully', 'fluent-cart' ),
+            'message' => __( 'File Uploaded Successfully', 'webmakerr-cart' ),
             'path'    => $uploadToFilePath,
             'file'    => [
                 'driver' => 'local',
@@ -196,7 +196,7 @@ class LocalDriver extends BaseDriver
         }
 
         if(!file_exists($file)) {
-            return new \WP_Error('file_not_found', __('File not found', 'fluent-cart'));
+            return new \WP_Error('file_not_found', __('File not found', 'webmakerr-cart'));
         }
         $fileSize = filesize($file);
         $fileName = $fileName ?? basename($filePath);
@@ -226,28 +226,28 @@ class LocalDriver extends BaseDriver
     {
 
         if ( !current_user_can('manage_options') ) {
-            return new \WP_Error('permission_error', __('You are not allowed to delete file', 'fluent-cart'));
+            return new \WP_Error('permission_error', __('You are not allowed to delete file', 'webmakerr-cart'));
         }
 
         $filePath = wp_normalize_path($filePath);
         $fullPath = $this->getFilePath($filePath);
         
         if (!file_exists($fullPath)) {
-            return new \WP_Error('file_not_found', __('File not found', 'fluent-cart'));
+            return new \WP_Error('file_not_found', __('File not found', 'webmakerr-cart'));
         }
         
         if (!is_file($fullPath)) {
-            return new \WP_Error('not_a_file', __('Path is not a file', 'fluent-cart'));
+            return new \WP_Error('not_a_file', __('Path is not a file', 'webmakerr-cart'));
         }
         
         if (wp_delete_file($fullPath)) {
             return [
-                'message' => __('File Deleted Successfully', 'fluent-cart'),
+                'message' => __('File Deleted Successfully', 'webmakerr-cart'),
                 'driver' => 'local',
                 'path' => $filePath
             ];
         }
         
-        return new \WP_Error('failed_to_delete', __('Failed to delete file', 'fluent-cart'));
+        return new \WP_Error('failed_to_delete', __('Failed to delete file', 'webmakerr-cart'));
     }
 }

@@ -98,7 +98,7 @@ class UpdateCustomerPaymentMethod
 
         wp_send_json([
             'status'  => 'success',
-            'message' => __('Payment method updated successfully', 'fluent-cart'),
+            'message' => __('Payment method updated successfully', 'webmakerr-cart'),
             'action'  => 'none',
             'data'    => $billingInfo
         ], 200);
