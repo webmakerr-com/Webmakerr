@@ -10,7 +10,7 @@ class SubscriptionModule
     public static function register()
     {
         $self = new static();
-        App::getInstance()->addAction('fluentcart_loaded', [$self, 'init']);
+        App::getInstance()->addAction('webmakerr_loaded', [$self, 'init']);
     }
 
     public function init($app)
