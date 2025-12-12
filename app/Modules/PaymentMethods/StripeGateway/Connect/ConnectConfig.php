@@ -6,6 +6,7 @@ use FluentCart\App\Helpers\Helper;
 use FluentCart\App\Modules\PaymentMethods\Core\GatewayManager;
 use FluentCart\App\Modules\PaymentMethods\StripeGateway\API\Account;
 use FluentCart\App\Modules\PaymentMethods\StripeGateway\Stripe;
+use FluentCart\App\Modules\PaymentMethods\StripeGateway\Webhook\Webhook;
 use FluentCart\App\Modules\PaymentMethods\StripeGateway\StripeSettingsBase;
 use FluentCart\App\Vite;
 use FluentCart\Framework\Support\Arr;
@@ -66,7 +67,7 @@ class ConnectConfig
                 'hash'        => $stripeSettings->get($mode . '_connect_hash'),
                 'state'       => Arr::get($data, 'state', ''),
                 'mode'        => Arr::get($data, 'mode', '') === 'live' ? 'live' : 'test',
-                'set_webhook' => home_url('?fluent-cart=fct_payment_listener_ipn&method=stripe'),
+                'set_webhook' => home_url(Webhook::WEBHOOK_ENDPOINT),
                 'code'        => Arr::get($data, 'code', '')
             ];
 

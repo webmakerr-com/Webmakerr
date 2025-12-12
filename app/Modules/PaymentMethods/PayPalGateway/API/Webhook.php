@@ -30,12 +30,18 @@ class Webhook
         ['name' => 'PAYMENT.ORDER.CREATED']
     ];
 
-    const WEBHOOK_ENDPOINT = '?fluent-cart=fct_payment_listener_ipn&method=paypal';
+    const WEBHOOK_ENDPOINT = '?webmakerr=wm_payment_listener_ipn&method=paypal';
+    const LEGACY_WEBHOOK_ENDPOINT = '?fluent-cart=fct_payment_listener_ipn&method=paypal';
 
     public static function getWebhookURL(): string
     {
         // return 'https://webhook.site/9f647f0d-3514-47b7-acca-95a2c168b917';
         return site_url() . self::WEBHOOK_ENDPOINT;
+    }
+
+    public static function getLegacyWebhookURL(): string
+    {
+        return site_url() . self::LEGACY_WEBHOOK_ENDPOINT;
     }
 
     public static function webhookInstruction(): string
