@@ -11,6 +11,7 @@ use FluentCart\Api\StoreSettings;
 use FluentCart\Api\PaymentMethods;
 use FluentCart\App\Helpers\Helper;
 use FluentCart\App\Helpers\Status;
+use FluentCart\App\Helpers\SupportBoardAssets;
 use FluentCart\App\Models\Product;
 use FluentCart\App\Models\Customer;
 use FluentCart\Database\DBMigrator;
@@ -41,6 +42,8 @@ class MenuHandler
     public function register()
     {
         add_action('init', [$this, 'init']);
+
+        add_action('admin_enqueue_scripts', [$this, 'enqueueSupportBoardAdminAssets']);
 
         add_action('admin_init', function () {
             $page = App::request()->get('page') ?? '';
@@ -120,6 +123,30 @@ class MenuHandler
 
         return $states;
 
+    }
+
+    public function enqueueSupportBoardAdminAssets()
+    {
+        if (!function_exists('get_current_screen')) {
+            return;
+        }
+
+        $screen = get_current_screen();
+
+        if (!$screen) {
+            return;
+        }
+
+        $isPluginScreen = ($screen->base === 'toplevel_page_webmakerr')
+            || Str::contains($screen->id, 'fluent-cart')
+            || Str::contains($screen->id, 'webmakerr')
+            || ($screen->post_type === FluentProducts::CPT_NAME);
+
+        if (!$isPluginScreen) {
+            return;
+        }
+
+        SupportBoardAssets::enqueue();
     }
 
     public function init()

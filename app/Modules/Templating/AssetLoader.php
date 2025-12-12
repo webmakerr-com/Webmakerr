@@ -5,6 +5,7 @@ namespace FluentCart\App\Modules\Templating;
 use FluentCart\Api\CurrencySettings;
 use FluentCart\Api\StoreSettings;
 use FluentCart\App\App;
+use FluentCart\App\Helpers\SupportBoardAssets;
 use FluentCart\App\Helpers\CartHelper;
 use FluentCart\App\Helpers\Helper;
 use FluentCart\App\Helpers\UtmHelper;
@@ -34,6 +35,13 @@ class AssetLoader
     public static function enqueueAssets()
     {
         $pageType = TemplateService::getCurrentFcPageType();
+
+        if (!$pageType) {
+            return;
+        }
+
+        SupportBoardAssets::enqueue();
+
         switch ($pageType) {
             case 'single_product':
                 self::loadSingleProductAssets();
