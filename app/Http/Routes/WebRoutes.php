@@ -30,13 +30,24 @@ class WebRoutes
     public static function registerRoutes()
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-       $page = sanitize_text_field(wp_unslash($_REQUEST['fluent-cart'] ?? $_REQUEST['webmakerr'] ?? ''));
+        $legacyPage = wp_unslash($_REQUEST['fluent-cart'] ?? '');
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $brandedPage = wp_unslash($_REQUEST['webmakerr'] ?? '');
+
+        $page = sanitize_text_field($legacyPage ?: $brandedPage);
 
         if (empty($page)) {
             return;
         }
 
-        $page = sanitize_text_field($page);
+        // Normalize both legacy and new query vars so downstream handlers receive consistent actions.
+        App::request()->merge([
+            'fluent-cart' => $page,
+            'webmakerr'   => $page,
+        ]);
+
+        $_REQUEST['fluent-cart'] = $_REQUEST['webmakerr'] = $page;
+        $_GET['fluent-cart'] = $_GET['webmakerr'] = $page;
 
         if (!$page) {
             return;

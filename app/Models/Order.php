@@ -688,7 +688,7 @@ class Order extends Model
     public function getReceiptUrl()
     {
         return add_query_arg([
-            'fluent-cart' => 'receipt',
+            'webmakerr' => 'receipt',
             'order_hash'  => $this->uuid,
             'download'    => 1
         ], home_url());

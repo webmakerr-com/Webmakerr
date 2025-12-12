@@ -1406,7 +1406,7 @@ class Helper
         $url = (new BaseUrl())->sign(site_url('/'), $signParams);
 
         return URL::appendQueryParams($url, [
-            'fluent-cart' => 'download-by-id',
+            'webmakerr' => 'download-by-id',
         ]);
 
     }
