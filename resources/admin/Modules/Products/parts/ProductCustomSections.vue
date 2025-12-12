@@ -2,6 +2,7 @@
 import * as Card from '@/Bits/Components/Card/Card.js';
 import MediaButton from "@/Bits/Components/Buttons/MediaButton.vue";
 import translate from "@/utils/translator/Translator";
+import AppConfig from "@/utils/Config/AppConfig";
 import {computed, ref, watch} from "vue";
 
 const props = defineProps({
@@ -10,6 +11,11 @@ const props = defineProps({
 })
 
 const maxSections = 4;
+const isPremiumLocked = computed(() => !AppConfig.get('app_config.isProActive'));
+
+const preventPremiumAction = () => {
+  return isPremiumLocked.value;
+};
 
 const getDefaultVideo = () => ({
   url: '',
@@ -93,10 +99,18 @@ watch(() => props.product?.detail?.other_info?.custom_sections, (value) => {
 const hasReachedLimit = computed(() => sections.value.length >= maxSections);
 
 const persistSections = () => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   props.productEditModel.onChangeInputField('custom_sections', sections.value);
 };
 
 const updateSectionField = (index, key, value) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   const updatedSections = [...sections.value];
   const section = normalizeSection(updatedSections[index]);
   section[key] = value;
@@ -106,7 +120,7 @@ const updateSectionField = (index, key, value) => {
 };
 
 const addSection = () => {
-  if (hasReachedLimit.value) {
+  if (preventPremiumAction() || hasReachedLimit.value) {
     return;
   }
 
@@ -116,6 +130,10 @@ const addSection = () => {
 };
 
 const removeSection = (index) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   const updated = [...sections.value];
   updated.splice(index, 1);
   sections.value = normalizeSections(updated);
@@ -124,6 +142,10 @@ const removeSection = (index) => {
 };
 
 const onImageSelected = (index, selected) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   const image = Array.isArray(selected) && selected.length
       ? {
         id: selected[0]?.id ?? '',
@@ -137,10 +159,18 @@ const onImageSelected = (index, selected) => {
 };
 
 const clearImage = (index) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   updateSectionField(index, 'image', null);
 };
 
 const onVideoSelected = (index, selected) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   if (!Array.isArray(selected) || !selected.length) {
     updateSectionField(index, 'video', getDefaultVideo());
     return;
@@ -159,6 +189,10 @@ const onVideoSelected = (index, selected) => {
 };
 
 const updateVideoUrl = (index, value) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   const url = value ? value.trim() : '';
   const current = normalizeVideo(sections.value[index]?.video);
 
@@ -170,6 +204,10 @@ const updateVideoUrl = (index, value) => {
 };
 
 const clearVideo = (index) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   updateSectionField(index, 'video', getDefaultVideo());
 };
 
@@ -223,13 +261,15 @@ const ensureActiveSection = () => {
           border_bottom
       />
       <Card.Body>
-        <el-collapse v-model="activeSection" accordion class="fct-custom-sections">
-          <el-collapse-item
-              v-for="(section, index) in sections"
-              :key="`section-${index}`"
-              :name="`section-${index}`"
-              class="fct-custom-section"
-          >
+        <div class="fct-premium-gated" :class="{'is-locked': isPremiumLocked}" tabindex="0">
+          <el-collapse v-model="activeSection" accordion class="fct-custom-sections">
+            <el-collapse-item
+                v-for="(section, index) in sections"
+                :key="`section-${index}`"
+                :name="`section-${index}`"
+                class="fct-custom-section"
+                :disabled="isPremiumLocked"
+            >
             <template #title>
               <div class="fct-custom-section__header">
                 <p class="fct-custom-section__title">
@@ -241,111 +281,120 @@ const ensureActiveSection = () => {
                     type="danger"
                     size="small"
                     @click.stop="removeSection(index)"
+                    :disabled="isPremiumLocked"
                 >
                   {{ translate('Remove') }}
                 </el-button>
               </div>
             </template>
 
-            <div class="fct-custom-section__body">
-              <el-form label-position="top" require-asterisk-position="right">
-                <div class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Heading')">
-                    <el-input
-                        :placeholder="translate('Add heading')"
-                        :model-value="section.title"
-                        @input="value => updateSectionField(index, 'title', value)"
-                    />
-                  </el-form-item>
-                </div>
+              <div class="fct-custom-section__body">
+                <el-form label-position="top" require-asterisk-position="right">
+                  <div class="fct-admin-input-wrapper">
+                    <el-form-item :label="translate('Heading')">
+                      <el-input
+                          :placeholder="translate('Add heading')"
+                          :model-value="section.title"
+                          @input="value => updateSectionField(index, 'title', value)"
+                          :disabled="isPremiumLocked"
+                      />
+                    </el-form-item>
+                  </div>
 
-                <div class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Short description')">
-                    <el-input
-                        type="textarea"
-                        :rows="2"
-                        :placeholder="translate('Add a concise description')"
-                        :model-value="section.description"
-                        @input="value => updateSectionField(index, 'description', value)"
-                    />
-                  </el-form-item>
-                </div>
+                  <div class="fct-admin-input-wrapper">
+                    <el-form-item :label="translate('Short description')">
+                      <el-input
+                          type="textarea"
+                          :rows="2"
+                          :placeholder="translate('Add a concise description')"
+                          :model-value="section.description"
+                          @input="value => updateSectionField(index, 'description', value)"
+                          :disabled="isPremiumLocked"
+                      />
+                    </el-form-item>
+                  </div>
 
-                <div class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Media type')">
-                    <el-radio-group
-                        :model-value="section.media_type"
-                        @change="value => updateSectionField(index, 'media_type', value)"
-                    >
-                      <el-radio-button label="image">{{ translate('Image') }}</el-radio-button>
-                      <el-radio-button label="video">{{ translate('Video') }}</el-radio-button>
+                  <div class="fct-admin-input-wrapper">
+                    <el-form-item :label="translate('Media type')">
+                      <el-radio-group
+                          :model-value="section.media_type"
+                          @change="value => updateSectionField(index, 'media_type', value)"
+                          :disabled="isPremiumLocked"
+                      >
+                        <el-radio-button label="image">{{ translate('Image') }}</el-radio-button>
+                        <el-radio-button label="video">{{ translate('Video') }}</el-radio-button>
                     </el-radio-group>
                   </el-form-item>
                 </div>
 
                 <div v-if="section.media_type === 'image'" class="fct-admin-input-wrapper">
-                  <el-form-item :label="translate('Section image')">
-                    <div class="fct-section-media-picker">
-                      <div v-if="section.image?.url" class="fct-section-attachment">
-                        <div class="fct-section-attachment__thumb">
-                          <img :src="section.image.url" :alt="section.image.title || section.title || translate('Section image')">
-                        </div>
-                        <div class="fct-section-attachment__info">
-                          <p class="fct-section-attachment__title">{{ section.image.title || section.title || translate('Selected image') }}</p>
-                          <span class="fct-section-media-meta">{{ translate('Image attachment') }}</span>
-                        </div>
-                        <div class="fct-section-attachment__actions">
-                          <el-button
-                              text
-                              type="danger"
-                              size="small"
-                              @click="clearImage(index)"
-                          >
-                            {{ translate('Remove') }}
-                          </el-button>
+                    <el-form-item :label="translate('Section image')">
+                      <div class="fct-section-media-picker">
+                        <div v-if="section.image?.url" class="fct-section-attachment">
+                          <div class="fct-section-attachment__thumb">
+                            <img :src="section.image.url" :alt="section.image.title || section.title || translate('Section image')">
+                          </div>
+                          <div class="fct-section-attachment__info">
+                            <p class="fct-section-attachment__title">{{ section.image.title || section.title || translate('Selected image') }}</p>
+                            <span class="fct-section-media-meta">{{ translate('Image attachment') }}</span>
+                          </div>
+                          <div class="fct-section-attachment__actions">
+                            <el-button
+                                text
+                                type="danger"
+                                size="small"
+                                @click="clearImage(index)"
+                                :disabled="isPremiumLocked"
+                            >
+                              {{ translate('Remove') }}
+                            </el-button>
                         </div>
                       </div>
 
                       <div class="fct-section-media-actions">
-                        <MediaButton
-                            icon="Picture"
-                            :title="section.image ? translate('Change image') : translate('Select image')"
-                            :attachments="section.image ? [section.image] : []"
-                            :multiple="false"
-                            @onMediaSelected="selected => onImageSelected(index, selected)"
-                        />
+                          <MediaButton
+                              icon="Picture"
+                              :title="section.image ? translate('Change image') : translate('Select image')"
+                              :attachments="section.image ? [section.image] : []"
+                              :multiple="false"
+                              @onMediaSelected="selected => onImageSelected(index, selected)"
+                              :class="{'fct-pointer-none': isPremiumLocked}"
+                          />
+                        </div>
                       </div>
-                    </div>
                   </el-form-item>
                 </div>
 
                 <div v-else class="fct-admin-input-wrapper">
                   <el-form-item :label="translate('Section video')">
                     <div class="fct-section-media-picker">
-                      <div class="fct-section-media-actions">
-                        <el-input
-                            :model-value="section.video?.url"
-                            :placeholder="translate('YouTube, Vimeo or direct MP4 URL')"
-                            @input="value => updateVideoUrl(index, value)"
-                        />
-
-                        <div class="fct-section-video-actions">
-                          <MediaButton
-                              icon="Video"
-                              :title="section.video?.url ? translate('Replace video') : translate('Upload video')"
-                              :attachments="getVideoAttachments(section)"
-                              :library-type="'video'"
-                              :multiple="false"
-                            @onMediaSelected="selected => onVideoSelected(index, selected)"
+                        <div class="fct-section-media-actions">
+                          <el-input
+                              :model-value="section.video?.url"
+                              :placeholder="translate('YouTube, Vimeo or direct MP4 URL')"
+                              @input="value => updateVideoUrl(index, value)"
+                              :disabled="isPremiumLocked"
                           />
-                          <el-button
-                              v-if="hasVideoUrl(section)"
-                              text
-                              type="danger"
-                              @click="clearVideo(index)"
-                          >
-                            {{ translate('Remove') }}
-                          </el-button>
+
+                          <div class="fct-section-video-actions">
+                            <MediaButton
+                                icon="Video"
+                                :title="section.video?.url ? translate('Replace video') : translate('Upload video')"
+                                :attachments="getVideoAttachments(section)"
+                                :library-type="'video'"
+                                :multiple="false"
+                              @onMediaSelected="selected => onVideoSelected(index, selected)"
+                              :class="{'fct-pointer-none': isPremiumLocked}"
+                            />
+                            <el-button
+                                v-if="hasVideoUrl(section)"
+                                text
+                                type="danger"
+                                @click="clearVideo(index)"
+                                :disabled="isPremiumLocked"
+                            >
+                              {{ translate('Remove') }}
+                            </el-button>
                         </div>
                       </div>
 
@@ -363,16 +412,28 @@ const ensureActiveSection = () => {
           </el-collapse-item>
         </el-collapse>
 
-        <div class="fct-custom-section-footer">
-          <el-button
-              type="primary"
-              plain
-              :disabled="hasReachedLimit"
-              @click="addSection"
-          >
-            {{ translate('Add section') }}
-          </el-button>
-          <p class="text-muted" v-if="hasReachedLimit">{{ translate('You can add up to four sections.') }}</p>
+          <div class="fct-custom-section-footer">
+            <el-button
+                type="primary"
+                plain
+                :disabled="isPremiumLocked || hasReachedLimit"
+                @click="addSection"
+            >
+              {{ translate('Add section') }}
+            </el-button>
+            <p class="text-muted" v-if="hasReachedLimit">{{ translate('You can add up to four sections.') }}</p>
+          </div>
+
+          <div v-if="isPremiumLocked" class="fct-premium-overlay" tabindex="0">
+            <div class="fct-premium-overlay__content">
+              <p class="fct-premium-overlay__title">{{ translate('This is a premium feature') }}</p>
+              <p class="fct-premium-overlay__text">{{ translate('Upgrade to unlock Featured Video and Custom Sections.') }}</p>
+              <el-button type="primary" tag="a" href="https://webmakerr.com/item/webmakerr-pro-plugin" target="_blank">
+                {{ translate('Upgrade Now') }}
+              </el-button>
+              <p class="fct-premium-overlay__subtext">{{ translate('Available in Pro plan') }}</p>
+            </div>
+          </div>
         </div>
       </Card.Body>
     </Card.Container>
@@ -462,5 +523,48 @@ const ensureActiveSection = () => {
   .text-muted {
     @apply text-sm text-gray-500 m-0;
   }
+}
+
+.fct-premium-gated {
+  @apply relative;
+}
+
+.fct-premium-overlay {
+  @apply absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center text-center px-4 rounded-lg;
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.fct-premium-overlay__content {
+  @apply flex flex-col gap-2 items-center justify-center text-white;
+}
+
+.fct-premium-overlay__title {
+  @apply text-lg font-semibold m-0;
+}
+
+.fct-premium-overlay__text,
+.fct-premium-overlay__subtext {
+  @apply text-sm m-0;
+}
+
+.fct-premium-gated.is-locked .fct-premium-overlay {
+  opacity: 0;
+}
+
+.fct-premium-gated.is-locked:hover .fct-premium-overlay,
+.fct-premium-gated.is-locked:focus-within .fct-premium-overlay,
+.fct-premium-gated.is-locked:active .fct-premium-overlay {
+  opacity: 1;
+}
+
+.fct-premium-gated.is-locked .fct-premium-overlay {
+  @apply pointer-events-auto;
+}
+
+.fct-pointer-none {
+  pointer-events: none;
 }
 </style>

@@ -3,6 +3,7 @@ import * as Card from '@/Bits/Components/Card/Card.js';
 import Gallery from '@/Bits/Components/Attachment/Gallery.vue';
 import MediaButton from '@/Bits/Components/Buttons/MediaButton.vue';
 import Asset from '@/utils/support/Asset';
+import AppConfig from '@/utils/Config/AppConfig';
 import {computed, ref, watch} from 'vue';
 
 const props = defineProps({
@@ -11,6 +12,11 @@ const props = defineProps({
 })
 
 const isVideoActive = ref(false);
+const isPremiumLocked = computed(() => !AppConfig.get('app_config.isProActive'));
+
+const preventPremiumAction = () => {
+  return isPremiumLocked.value;
+};
 
 const getFirstImageUrl = (images) => {
   if (!Array.isArray(images)) {
@@ -71,6 +77,10 @@ const normalizeFeaturedVideo = (video) => {
 };
 
 const updateFeaturedVideo = (video) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   const formattedVideo = normalizeFeaturedVideo(video);
 
   props.product.featured_video = formattedVideo;
@@ -78,6 +88,10 @@ const updateFeaturedVideo = (video) => {
 }
 
 const onVideoSelected = (selected) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   if (!Array.isArray(selected) || !selected.length) {
     updateFeaturedVideo({});
     return;
@@ -101,6 +115,10 @@ const detectVideoType = (url) => {
 }
 
 const updateVideoUrl = (value) => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   const url = value ? value.trim() : '';
 
   const currentVideo = props.product.featured_video || {};
@@ -113,6 +131,10 @@ const updateVideoUrl = (value) => {
 }
 
 const clearVideo = () => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   isVideoActive.value = false;
   updateFeaturedVideo({});
 }
@@ -144,6 +166,10 @@ const iframeSrc = computed(() => {
 });
 
 const activateVideo = () => {
+  if (preventPremiumAction()) {
+    return;
+  }
+
   isVideoActive.value = true;
 };
 
@@ -193,14 +219,14 @@ const videoAttachments = computed(() => {
           />
         </div>
 
-        <div class="fct-admin-summary-item mt-4">
+        <div class="fct-admin-summary-item mt-4 fct-premium-gated" :class="{'is-locked': isPremiumLocked}" tabindex="0">
           <div class="flex items-start justify-between gap-3">
             <div>
               <p class="fct-admin-summary-item-title">{{ $t('Featured Video') }}</p>
               <p class="fct-admin-summary-item-desc">{{ $t('Use a product video as the featured media on the product page.') }}</p>
             </div>
 
-            <el-button v-if="videoUrl" type="danger" text @click="clearVideo">
+            <el-button v-if="videoUrl" type="danger" text @click="clearVideo" :disabled="isPremiumLocked">
               {{ $t('Remove') }}
             </el-button>
           </div>
@@ -212,6 +238,7 @@ const videoAttachments = computed(() => {
                     :model-value="videoUrl"
                     :placeholder="$t('YouTube, Vimeo or direct MP4 URL')"
                     @input="updateVideoUrl"
+                    :disabled="isPremiumLocked"
                 />
               </el-form-item>
             </el-form>
@@ -224,6 +251,7 @@ const videoAttachments = computed(() => {
                 :attachments="videoAttachments"
                 :library-type="'video'"
                 @onMediaSelected="onVideoSelected"
+                :class="{'fct-pointer-none': isPremiumLocked}"
             />
             <p class="text-xs text-gray-500">{{ $t('Upload a video file or paste a public video link.') }}</p>
           </div>
@@ -271,8 +299,64 @@ const videoAttachments = computed(() => {
                 style="width: 100%; min-height: 260px; border: 0; border-radius: 8px;"
             ></iframe>
           </div>
+
+          <div v-if="isPremiumLocked" class="fct-premium-overlay" tabindex="0">
+            <div class="fct-premium-overlay__content">
+              <p class="fct-premium-overlay__title">{{ $t('This is a premium feature') }}</p>
+              <p class="fct-premium-overlay__text">{{ $t('Upgrade to unlock Featured Video and Custom Sections.') }}</p>
+              <el-button type="primary" tag="a" href="https://webmakerr.com/item/webmakerr-pro-plugin" target="_blank">
+                {{ $t('Upgrade Now') }}
+              </el-button>
+              <p class="fct-premium-overlay__subtext">{{ $t('Available in Pro plan') }}</p>
+            </div>
+          </div>
         </div>
       </Card.Body>
     </Card.Container>
   </div>
 </template>
+
+<style scoped lang="scss">
+.fct-premium-gated {
+  @apply relative;
+}
+
+.fct-premium-overlay {
+  @apply absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center text-center px-4 rounded-lg;
+  opacity: 0;
+  pointer-events: auto;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.fct-premium-overlay__content {
+  @apply flex flex-col gap-2 items-center justify-center text-white;
+}
+
+.fct-premium-overlay__title {
+  @apply text-lg font-semibold m-0;
+}
+
+.fct-premium-overlay__text,
+.fct-premium-overlay__subtext {
+  @apply text-sm m-0;
+}
+
+.fct-premium-gated.is-locked .fct-premium-overlay {
+  opacity: 0;
+}
+
+.fct-premium-gated.is-locked:hover .fct-premium-overlay,
+.fct-premium-gated.is-locked:focus-within .fct-premium-overlay,
+.fct-premium-gated.is-locked:active .fct-premium-overlay {
+  opacity: 1;
+}
+
+.fct-premium-gated.is-locked .fct-premium-overlay {
+  @apply pointer-events-auto;
+}
+
+.fct-pointer-none {
+  pointer-events: none;
+}
+</style>
