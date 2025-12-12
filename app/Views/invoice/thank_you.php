@@ -440,9 +440,9 @@ if ($order->payment_status !== 'paid') {
     <a href="<?php echo esc_url(\FluentCart\App\Services\URL::appendQueryParams(
         home_url(),
         [
-            'fluent-cart' => 'receipt',
-            'order_hash'  => esc_attr($order->uuid),
-            'download'    => 1
+            'webmakerr'  => 'receipt',
+            'order_hash' => esc_attr($order->uuid),
+            'download'   => 1
         ]
     )) ?>"
        style="background: var(--fluent-cart-primary-color, #253241);font-size:14px;color:#000;background: none;font-weight: 600;display:inline-block;">

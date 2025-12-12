@@ -826,9 +826,9 @@ class ThankYouRender
             href="<?php echo esc_url(\FluentCart\App\Services\URL::appendQueryParams(
                 home_url(),
                 [
-                    'fluent-cart' => 'receipt',
-                    'order_hash'  => $order->uuid,
-                    'download'    => 1
+                    'webmakerr'  => 'receipt',
+                    'order_hash' => $order->uuid,
+                    'download'   => 1
                 ]
             )) ?>">
             <?php echo esc_html__('Download Receipt', 'fluent-cart'); ?>
