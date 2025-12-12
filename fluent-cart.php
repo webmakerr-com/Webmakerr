@@ -27,7 +27,49 @@ if (!defined('FLUENTCART_PLUGIN_PATH')) {
 }
 
 register_activation_hook(__FILE__, function () {
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+    $conflicting_plugin = 'fluent-cart/fluent-cart.php';
+
+    if (is_plugin_active($conflicting_plugin)) {
+        // Prevent activation when FluentCart is already active.
+        set_transient('webmakerr_fluentcart_conflict_notice', true, 30);
+        deactivate_plugins(plugin_basename(__FILE__));
+
+        return;
+    }
+
     update_option('fluent_cart_do_activation_redirect', true);
+});
+
+add_action('activated_plugin', function ($plugin) {
+    if ($plugin !== 'fluent-cart/fluent-cart.php') {
+        return;
+    }
+
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+    if (is_plugin_active(plugin_basename(__FILE__))) {
+        // Deactivate this plugin when FluentCart gets activated.
+        set_transient('webmakerr_fluentcart_conflict_notice', true, 30);
+        deactivate_plugins(plugin_basename(__FILE__));
+    }
+});
+
+add_action('admin_notices', function () {
+    if (!current_user_can('activate_plugins')) {
+        return;
+    }
+
+    $notice_flag = get_transient('webmakerr_fluentcart_conflict_notice');
+
+    if (!$notice_flag) {
+        return;
+    }
+
+    delete_transient('webmakerr_fluentcart_conflict_notice');
+
+    echo '<div class="notice notice-error"><p>' . esc_html__('This plugin cannot be used together with FluentCart. Please deactivate FluentCart first.', 'webmakerr-cart') . '</p></div>';
 });
 
 return (function ($_) {
