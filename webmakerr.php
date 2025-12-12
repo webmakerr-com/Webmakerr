@@ -32,6 +32,8 @@ if (!defined('FLUENTCART_PLUGIN_PATH')) {
     define('FLUENTCART_PRO_PLUGIN_BASENAME', 'fluentcart-pro/fluentcart-pro.php');
 }
 
+require __DIR__ . '/boot/licensing.php';
+
 if (is_admin() && defined('WP_DEBUG') && WP_DEBUG) {
     add_action('admin_init', function () {
         if (!current_user_can('manage_options')) {
