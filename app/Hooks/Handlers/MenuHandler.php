@@ -56,17 +56,6 @@ class MenuHandler
                         'admin/global.js',
                     );
 
-                    // Enqueue Support Board widget scripts only for plugin admin pages
-                    wp_enqueue_script('jquery');
-
-                    wp_enqueue_script(
-                        'fluent_cart_support_board',
-                        'https://webmakerr.com/wp-content/plugins/supportboard/supportboard/js/main.js',
-                        ['jquery'],
-                        null,
-                        true
-                    );
-
                     wp_add_inline_script(
                         'fluent_cart_admin_global_js',
                         'document.addEventListener("DOMContentLoaded", function () {' .
