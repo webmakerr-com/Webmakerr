@@ -32,7 +32,7 @@ class Razorpay extends AbstractPaymentGateway
             'icon' => Vite::getAssetUrl("images/payment-methods/razorpay-logo.svg"),
             'brand_color' => '#3395ff',
             'status' => $this->settings->get('is_active') === 'yes',
-            'upcoming' => true,
+            'requires_pro' => true,
         ];
     }
 

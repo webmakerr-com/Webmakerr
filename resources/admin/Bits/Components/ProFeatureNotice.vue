@@ -15,7 +15,7 @@
 
       <slot></slot>
 
-      <el-button type="primary" tag="a" href="https://fluentcart.com/discount-deal" target="_blank">
+      <el-button type="primary" tag="a" href="https://webmakerr.com/item/webmakerr-pro-plugin" target="_blank">
         {{translate('Upgrade to Pro')}}
       </el-button>
     </div>
