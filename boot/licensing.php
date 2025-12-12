@@ -58,6 +58,8 @@ add_action('init', function () {
         require_once WEBMAKERR_PLUGIN_PATH . 'updater/LicenseSettings.php';
     }
 
+    $licensePageSlug = 'Webmakerr-manage-license';
+
     $licensing = (new FluentLicensing())->register([
         'version'           => defined('FLUENTCART_VERSION') ? FLUENTCART_VERSION : '1.0.0',
         'item_id'           => 112,
@@ -65,7 +67,7 @@ add_action('init', function () {
         'api_url'           => 'https://webmakerr.com/',
         'plugin_title'      => 'Webmakerr',
         'purchase_url'      => 'https://webmakerr.com/',
-        'activate_url'      => admin_url('admin.php?page=webmakerr-manage-license'),
+        'activate_url'      => admin_url('admin.php?page=' . $licensePageSlug),
         'show_check_update' => true,
     ]);
 
@@ -92,5 +94,6 @@ add_action('init', function () {
         ->addPage([
             'type'        => 'submenu',
             'parent_slug' => 'webmakerr',
+            'menu_slug'   => $licensePageSlug,
         ]);
 });

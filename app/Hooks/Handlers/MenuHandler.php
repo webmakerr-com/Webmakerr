@@ -38,26 +38,29 @@ use FluentCart\App\Services\Pro\ProFeatureManager;
 
 class MenuHandler
 {
+    private const LICENSE_PAGE_SLUG = 'Webmakerr-manage-license';
+
     public function register()
     {
         add_action('init', [$this, 'init']);
 
         add_action('admin_init', function () {
-            $page = strtolower((string)(App::request()->get('page') ?? ''));
+            $page = (string)(App::request()->get('page') ?? '');
+            $pageLower = strtolower($page);
 
             if (wp_doing_ajax() || App::doingRestRequest()) {
                 return;
             }
 
-            $allowedPages = ['webmakerr-manage-license'];
-            $isWebmakerrPage = Str::startsWith($page, 'webmakerr');
+            $allowedPages = [strtolower(self::LICENSE_PAGE_SLUG)];
+            $isWebmakerrPage = Str::startsWith($pageLower, 'webmakerr');
 
-            if ($isWebmakerrPage && !in_array($page, $allowedPages, true) && !webmakerr_is_license_active()) {
-                wp_safe_redirect(admin_url('admin.php?page=webmakerr-manage-license'));
+            if ($isWebmakerrPage && !in_array($pageLower, $allowedPages, true) && !webmakerr_is_license_active()) {
+                wp_safe_redirect(admin_url('admin.php?page=' . self::LICENSE_PAGE_SLUG));
                 exit;
             }
 
-            if ($page == 'webmakerr') {
+            if ($pageLower == 'webmakerr') {
                 \FluentCart\App\Events\FirstTimePluginActivation::handle();
 
                 add_action('admin_enqueue_scripts', function () {
@@ -312,7 +315,7 @@ class MenuHandler
     public function renderAdmin()
     {
         if (!webmakerr_is_license_active()) {
-            wp_safe_redirect(admin_url('admin.php?page=webmakerr-manage-license'));
+            wp_safe_redirect(admin_url('admin.php?page=' . self::LICENSE_PAGE_SLUG));
             exit;
         }
 
