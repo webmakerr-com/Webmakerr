@@ -222,16 +222,6 @@ class MenuHandler
             );
         }
 
-        if (PermissionManager::userCan('is_super_admin')) {
-            $submenu['webmakerr']['integrations'] = array(
-                __('Integrations', 'fluent-cart'),
-                $capability,
-                'admin.php?page=webmakerr#/integrations',
-                '',
-                'fluent_cart_integrations'
-            );
-        }
-
         if (PermissionManager::hasPermission(['reports/view'])) {
             $submenu['webmakerr']['reports'] = array(
                 __('Reports', 'fluent-cart'),
