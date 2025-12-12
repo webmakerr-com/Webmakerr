@@ -85,12 +85,12 @@
         class="fct-pro-addon-dialog"
     >
       <p class="text-sm text-gray-700 dark:text-gray-200 mb-4">
-        {{ translate('Upgrade to Webmakerr Pro to activate this add-on and unlock premium functionality.') }}
+        {{ translate('This is a Pro feature') }}
       </p>
       <div class="flex justify-end gap-3">
         <el-button @click="showProModal = false">{{ translate('Close') }}</el-button>
         <a :href="upgradeUrl" target="_blank" rel="noopener" class="no-underline">
-          <el-button type="primary">{{ translate('Upgrade Now') }}</el-button>
+          <el-button type="primary">{{ translate('Upgrade to Pro') }}</el-button>
         </a>
       </div>
     </el-dialog>

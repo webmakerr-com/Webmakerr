@@ -4,7 +4,6 @@ namespace FluentCart\App\Modules\PaymentMethods\AddonGateways;
 
 use FluentCart\App\Modules\PaymentMethods\Core\AbstractPaymentGateway;
 use FluentCart\App\Services\Payments\PaymentInstance;
-use FluentCart\App\Services\PluginInstaller\PaymentAddonManager;
 use FluentCart\App\Vite;
 use FluentCart\Framework\Support\Arr;
 
@@ -22,8 +21,6 @@ class PaystackAddon extends AbstractPaymentGateway
 
     public function meta(): array
     {
-        $addonStatus = PaymentAddonManager::getAddonStatus($this->addonSlug, $this->addonFile);
-
         return [
             'title' => 'Paystack',
             'route' => 'paystack',
@@ -33,13 +30,8 @@ class PaystackAddon extends AbstractPaymentGateway
             'icon' => Vite::getAssetUrl("images/payment-methods/paystack-logo.svg"),
             'brand_color' => '#0fa958',
             'status' => false,
-            'is_addon' => true,
-            'addon_status' => $addonStatus,
-            'addon_source' => [
-                'type' => 'github', // 'github' or 'wordpress' , only github and wordpress are supported
-                'link' => 'https://github.com/WPManageNinja/paystack-for-fluent-cart/releases/latest', // link not needed for wordpress
-                'slug' => 'paystack-for-fluent-cart'
-            ]
+            'requires_pro' => true,
+            'is_addon' => false
         ];
     }
 
