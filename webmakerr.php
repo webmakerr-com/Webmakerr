@@ -32,6 +32,26 @@ if (!defined('FLUENTCART_PLUGIN_PATH')) {
     define('FLUENTCART_PRO_PLUGIN_BASENAME', 'fluentcart-pro/fluentcart-pro.php');
 }
 
+if (is_admin() && defined('WP_DEBUG') && WP_DEBUG) {
+    add_action('admin_init', function () {
+        if (!current_user_can('manage_options')) {
+            return;
+        }
+
+        if (get_transient('webmakerr_plugin_entry_notice_shown')) {
+            return;
+        }
+
+        set_transient('webmakerr_plugin_entry_notice_shown', true, DAY_IN_SECONDS);
+
+        add_action('admin_notices', function () {
+            $entry_file = plugin_basename(WEBMAKERR_PLUGIN_FILE);
+
+            echo '<div class="notice notice-info"><p>' . esc_html(sprintf(__('Webmakerr is loading from: %s', 'webmakerr'), $entry_file)) . '</p></div>';
+        });
+    });
+}
+
 register_activation_hook(WEBMAKERR_PLUGIN_FILE, function () {
     include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
