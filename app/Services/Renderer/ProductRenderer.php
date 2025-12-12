@@ -33,6 +33,7 @@ class ProductRenderer
     protected $renderCustomSections = true;
     protected $viewersCount = 0;
     protected $addedToCartCount = 0;
+    protected $saleBoosterEnabled = true;
 
     public function __construct(Product $product, $config = [])
     {
@@ -47,6 +48,14 @@ class ProductRenderer
         );
         $this->viewersCount = random_int(3, 21);
         $this->addedToCartCount = random_int(15, 29);
+
+        $storeSettings = new StoreSettings();
+        $saleBoosterEnabled = $storeSettings->get('enable_sale_booster_addon', 'yes') === 'yes';
+        $this->saleBoosterEnabled = (bool)apply_filters(
+            'fluent_cart/single_product_page/sale_booster_enabled',
+            $saleBoosterEnabled,
+            $product
+        );
 
         if (!$defaultVariationId) {
             $variationIds = $product->variants->pluck('id')->toArray();
@@ -418,6 +427,10 @@ class ProductRenderer
 
     protected function renderTrustBadges()
     {
+        if (!$this->saleBoosterEnabled) {
+            return;
+        }
+
         $addedToCartCount = intval($this->addedToCartCount);
         $addedToCartTemplate = __('%d people have added this item to cart (24H)', 'fluent-cart');
         $viewersCount = intval($this->viewersCount);

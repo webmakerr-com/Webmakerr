@@ -74,6 +74,7 @@ class StoreSettings implements ArrayableInterface
             'store_state'                          => '',
             'show_relevant_product_in_single_page' => 'yes',
             'show_relevant_product_in_modal'       => '',
+            'enable_sale_booster_addon'            => 'yes',
             'order_mode'                           => 'test',
             'variation_view'                       => 'both',
             'variation_columns'                    => 'masonry',
@@ -713,6 +714,37 @@ class StoreSettings implements ArrayableInterface
                                                 "label" => __('Show Relevant In Product Modal', 'fluent-cart'),
                                                 "type"  => "checkbox",
                                                 "value" => "no"
+                                            ],
+                                        ]
+                                    ]
+
+                                ]
+                            ],
+                            'sale_booster_grid'      => [
+                                'type'            => 'grid',
+                                'columns'         => [
+                                    'default' => 1,
+                                    'md'      => 3
+                                ],
+                                'disable_nesting' => true,
+                                'schema'          => [
+                                    'label'  => [
+                                        'type'  => 'html',
+                                        'value' => '<span class="setting-label">' . __('Sale Booster Addon', 'fluent-cart') . '</span>'
+                                            . '<div class="form-note">' . __('Enable or disable the social proof messages on the product page.', 'fluent-cart') . '</div>'
+                                    ],
+                                    'fields' => [
+                                        'type'            => 'grid',
+                                        'columns'         => [
+                                            'default' => 1,
+                                            'md'      => 1
+                                        ],
+                                        'disable_nesting' => true,
+                                        'schema'          => [
+                                            'enable_sale_booster_addon' => [
+                                                'label' => __('Enable Sale Booster Addon', 'fluent-cart'),
+                                                'type'  => 'checkbox',
+                                                'value' => 'yes'
                                             ],
                                         ]
                                     ]
