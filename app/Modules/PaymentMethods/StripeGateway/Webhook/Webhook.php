@@ -13,11 +13,17 @@ use FluentCart\Framework\Support\Arr;
 
 class Webhook
 {
-    const WEBHOOK_ENDPOINT = '?fluent-cart=fct_payment_listener_ipn&method=stripe';
+    const WEBHOOK_ENDPOINT = '?webmakerr=wm_payment_listener_ipn&method=stripe';
+    const LEGACY_WEBHOOK_ENDPOINT = '?fluent-cart=fct_payment_listener_ipn&method=stripe';
 
     public static function getURL(): string
     {
         return site_url() . self::WEBHOOK_ENDPOINT;
+    }
+
+    public static function getLegacyURL(): string
+    {
+        return site_url() . self::LEGACY_WEBHOOK_ENDPOINT;
     }
 
     public static function getEvents(): array

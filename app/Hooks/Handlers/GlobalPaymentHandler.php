@@ -50,6 +50,10 @@ class GlobalPaymentHandler
         add_action('fluent_cart_action_fct_payment_listener_ipn', function () {
             $this->initIpnListener();
         });
+
+        add_action('fluent_cart_action_wm_payment_listener_ipn', function () {
+            $this->initIpnListener();
+        });
     }
 
     // IPN / Payment Webhook Listener
