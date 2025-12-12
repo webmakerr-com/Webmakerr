@@ -7,6 +7,48 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+if (!function_exists('webmakerr_get_license_status')) {
+    function webmakerr_get_license_status($remoteFetch = false)
+    {
+        $defaultStatus = [
+            'license_key'     => '',
+            'status'          => 'unregistered',
+            'variation_id'    => '',
+            'variation_title' => '',
+            'expires'         => '',
+            'activation_hash' => ''
+        ];
+
+        try {
+            if (!class_exists('\\Webmakerr\\FluentLicensing')) {
+                require_once WEBMAKERR_PLUGIN_PATH . 'updater/FluentLicensing.php';
+            }
+
+            $licensing = \Webmakerr\FluentLicensing::getInstance();
+            $status = $licensing->getStatus($remoteFetch);
+
+            if (is_array($status)) {
+                return wp_parse_args($status, $defaultStatus);
+            }
+        } catch (\Throwable $exception) {
+            // We will fallback to saved data when the licensing instance is not available yet.
+        }
+
+        $savedStatus = get_option('__webmakerr_sl_info', []);
+
+        return wp_parse_args($savedStatus, $defaultStatus);
+    }
+}
+
+if (!function_exists('webmakerr_is_license_active')) {
+    function webmakerr_is_license_active()
+    {
+        $licenseStatus = webmakerr_get_license_status();
+
+        return isset($licenseStatus['status']) && $licenseStatus['status'] === 'valid';
+    }
+}
+
 add_action('init', function () {
     if (!class_exists('\\Webmakerr\\FluentLicensing')) {
         require_once WEBMAKERR_PLUGIN_PATH . 'updater/FluentLicensing.php';

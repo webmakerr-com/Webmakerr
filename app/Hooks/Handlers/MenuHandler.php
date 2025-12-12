@@ -43,7 +43,20 @@ class MenuHandler
         add_action('init', [$this, 'init']);
 
         add_action('admin_init', function () {
-            $page = App::request()->get('page') ?? '';
+            $page = strtolower((string)(App::request()->get('page') ?? ''));
+
+            if (wp_doing_ajax() || App::doingRestRequest()) {
+                return;
+            }
+
+            $allowedPages = ['webmakerr-manage-license'];
+            $isWebmakerrPage = Str::startsWith($page, 'webmakerr');
+
+            if ($isWebmakerrPage && !in_array($page, $allowedPages, true) && !webmakerr_is_license_active()) {
+                wp_safe_redirect(admin_url('admin.php?page=webmakerr-manage-license'));
+                exit;
+            }
+
             if ($page == 'webmakerr') {
                 \FluentCart\App\Events\FirstTimePluginActivation::handle();
 
@@ -170,6 +183,11 @@ class MenuHandler
         }
 
         global $submenu;
+        if (!is_array($submenu)) {
+            $submenu = [];
+        }
+
+        $licenseActive = webmakerr_is_license_active();
 
         $adminMenuTitle = apply_filters('fluent_cart/admin_menu_title', 'Webmakerrr®', []);
 
@@ -182,6 +200,12 @@ class MenuHandler
             $this->getMenuIcon(),
             apply_filters('fluent_cart/admin_menu_position', 3)
         );
+
+        if (!$licenseActive) {
+            do_action('fluent_cart/admin_submenu_added', $submenu);
+
+            return;
+        }
 
         $submenu['webmakerr']['dashboard'] = array(
             __('Dashboard', 'fluent-cart'),
@@ -285,6 +309,11 @@ class MenuHandler
 
     public function renderAdmin()
     {
+        if (!webmakerr_is_license_active()) {
+            wp_safe_redirect(admin_url('admin.php?page=webmakerr-manage-license'));
+            exit;
+        }
+
         $isCustomDashboardSlugChanged = (new StoreSettings())->getCustomerDashboardPageSlug() != (new StoreSettings())->get('customer_profile_page_slug');
 
         if ($isCustomDashboardSlugChanged) {
