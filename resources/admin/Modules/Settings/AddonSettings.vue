@@ -42,7 +42,58 @@
           </Card.Body>
         </Card.Container>
       </el-form>
+
+      <Card.Container class="mt-6">
+        <Card.Header :title="translate('Pro Add-ons (Preview)')" border_bottom/>
+        <Card.Body>
+          <div class="space-y-4">
+            <div
+                v-for="addon in proAddons"
+                :key="addon.key"
+                class="flex items-start justify-between gap-4 py-4 border border-gray-divider border-x-0 border-t-0 last:border-b-0 dark:border-dark-500"
+            >
+              <div>
+                <p class="text-base font-semibold text-gray-900 dark:text-white mb-1">
+                  {{ addon.title }}
+                </p>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                  {{ addon.description }}
+                </p>
+                <span class="inline-flex items-center text-xs font-medium uppercase tracking-wide text-primary-500">
+                  {{ translate('Pro Feature') }}
+                </span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-sm text-gray-700 dark:text-gray-200">{{ translate('Activate') }}</span>
+                <el-switch
+                    v-model="proAddonStates[addon.key]"
+                    @change="(value) => handleProToggle(addon, value)"
+                    :active-value="true"
+                    :inactive-value="false"
+                />
+              </div>
+            </div>
+          </div>
+        </Card.Body>
+      </Card.Container>
     </template>
+
+    <el-dialog
+        v-model="showProModal"
+        :title="translate('This is a Pro feature')"
+        width="420px"
+        class="fct-pro-addon-dialog"
+    >
+      <p class="text-sm text-gray-700 dark:text-gray-200 mb-4">
+        {{ translate('Upgrade to Webmakerr Pro to activate this add-on and unlock premium functionality.') }}
+      </p>
+      <div class="flex justify-end gap-3">
+        <el-button @click="showProModal = false">{{ translate('Close') }}</el-button>
+        <a :href="upgradeUrl" target="_blank" rel="noopener" class="no-underline">
+          <el-button type="primary">{{ translate('Upgrade Now') }}</el-button>
+        </a>
+      </div>
+    </el-dialog>
   </div>
   <!-- .setting-wrap -->
 </template>
@@ -51,6 +102,7 @@
 
 import {
   getCurrentInstance,
+  nextTick,
   onMounted,
   ref,
 } from "vue";
@@ -81,6 +133,29 @@ const saving = ref(false);
 const formLoading = ref(true);
 const validationErrors = ref({});
 const hasSettings = ref(false);
+const showProModal = ref(false);
+const upgradeUrl = 'https://webmakerr.com/item/webmakerr-pro-plugin';
+const proAddons = ref([
+  {
+    key: 'license_module',
+    title: translate('License Module'),
+    description: translate('Manage license keys, activations, and entitlements directly inside Webmakerr.'),
+  },
+  {
+    key: 'advanced_reporting',
+    title: translate('Advanced Reporting'),
+    description: translate('Unlock detailed revenue analytics, retention cohorts, and sales trend insights.'),
+  },
+  {
+    key: 'priority_support',
+    title: translate('Priority Support & SLA'),
+    description: translate('Get priority ticket routing, faster response times, and SLA-backed assistance.'),
+  }
+]);
+const proAddonStates = ref(proAddons.value.reduce((acc, addon) => {
+  acc[addon.key] = false;
+  return acc;
+}, {}));
 
 const saveSettings = () => {
 
@@ -134,6 +209,15 @@ const getSettings = () => {
       .finally(() => {
         loading.value = false;
       });
+};
+
+const handleProToggle = (addon, isActivated) => {
+  if (isActivated) {
+    showProModal.value = true;
+  }
+  nextTick(() => {
+    proAddonStates.value[addon.key] = false;
+  });
 };
 
 onMounted(() => {
