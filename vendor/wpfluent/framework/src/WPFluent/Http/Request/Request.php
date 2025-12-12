@@ -108,15 +108,15 @@ class Request
      * @param $_GET $get
      * @param $_POST $post
      */
-    public function __construct(Application $app, $get, $post)
+    public function __construct(Application $app, $get = null, $post = null)
     {
         $this->app = $app;
         $this->server = $_SERVER;
         $this->cookie = $_COOKIE;
-        
+
         $this->request = array_merge(
-            $this->get = $this->clean($get),
-            $this->post = $this->clean($post)
+            $this->get = $this->clean($get ?? $_GET),
+            $this->post = $this->clean($post ?? $_POST)
         );
     }
 
